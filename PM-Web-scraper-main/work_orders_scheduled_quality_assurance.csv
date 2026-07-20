@@ -1,0 +1,571 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+2082,EQ ID 2082,"Digital PSI gauge , 9228301003",Quality Assurance,11282,Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+2082,EQ ID 2082,"Digital PSI gauge , 9228301003",Quality Assurance,1014,Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:48:51 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+2083,EQ ID 2083,"Digital Force Gauge, 3784067",Quality Assurance,11256,Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+2083,EQ ID 2083,"Digital Force Gauge, 3784067",Quality Assurance,1015,Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:45:27 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1945,EQ ID 1945,"EZ Torq II 150i Torque Analyzer, EZ1705007, QA",Quality Assurance,11255,Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1945,EQ ID 1945,"EZ Torq II 150i Torque Analyzer, EZ1705007, QA",Quality Assurance,1000,Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:45:16 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1529,EQ ID 1529,"Digital Force Gage, W08848, QA (CMS Recall)",Quality Assurance,11278,Calibrated by Cornerstone Metrology Service,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1529,EQ ID 1529,"Digital Force Gage, W08848, QA (CMS Recall)",Quality Assurance,11279,Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1529,EQ ID 1529,"Digital Force Gage, W08848, QA (CMS Recall)",Quality Assurance,915,Calibrated by Cornerstone Metrology Service,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:48:17 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1529,EQ ID 1529,"Digital Force Gage, W08848, QA (CMS Recall)",Quality Assurance,916,Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:48:24 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1591,EQ ID 1591,"Boundary Board, Center Bend Tooling Marks, QA",Quality Assurance,11280,"Any items that need to be replaced, must be ordered from BED.",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1591,EQ ID 1591,"Boundary Board, Center Bend Tooling Marks, QA",Quality Assurance,937,"Any items that need to be replaced, must be ordered from BED.",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:48:37 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1592,EQ ID 1592,"Boundary Board, Weld Spatter, QA",Quality Assurance,11277,"Any items that need to be replaced, must be ordered from BED",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1592,EQ ID 1592,"Boundary Board, Weld Spatter, QA",Quality Assurance,938,"Any items that need to be replaced, must be ordered from BED",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:48:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1628,EQ ID 1628,"EZ Torq II Torque Analyzer, EZ1410017, QA (CMS Recall)",Quality Assurance,11281,Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1628,EQ ID 1628,"EZ Torq II Torque Analyzer, EZ1410017, QA (CMS Recall)",Quality Assurance,952,Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:48:45 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1664,EQ ID 1664,"Boundary Board, Flange Welding, QA",Quality Assurance,6572,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BED.",Pending,7/24/2024,,0.00,0.00,0.00,,,[]
+1664,EQ ID 1664,"Boundary Board, Flange Welding, QA",Quality Assurance,956,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BED.",Closed and Completed,3/18/2023,Carmen Yauri,0.20,0.00,0.00,7/11/2023,,[]
+1878,EQ ID 1878,"Boundary Board, Grab Bar Bending Tooling Marks, QA",Quality Assurance,11232,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BED.",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1878,EQ ID 1878,"Boundary Board, Grab Bar Bending Tooling Marks, QA",Quality Assurance,987,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BED.",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:42:13 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+76,EQ ID 76,"Boundary Board, Assembly, 150 brackets",Quality Assurance,6573,"Review board for condition, location, use, and accuracy",Pending,7/24/2024,,0.00,0.00,0.00,,,[]
+76,EQ ID 76,"Boundary Board, Assembly, 150 brackets",Quality Assurance,57,"Review board for condition, location, use, and accuracy",Closed and Completed,3/18/2023,Carmen Yauri,0.25,0.00,0.00,7/12/2023,,[]
+77,EQ ID 77,"Boundary Board, Assembly, 5050 / 5090 Vessels",Quality Assurance,6574,"Review board for condition, location, use, and accuracy",Pending,7/24/2024,,0.00,0.00,0.00,,,[]
+77,EQ ID 77,"Boundary Board, Assembly, 5050 / 5090 Vessels",Quality Assurance,58,"Review board for condition, location, use, and accuracy",Closed and Completed,3/18/2023,Carmen Yauri,0.25,0.00,0.00,7/12/2023,,[]
+78,EQ ID 78,"Boundary Board, TPF, Edge Bander",Quality Assurance,6575,"Audit samples for damage, location and proper use.",Pending,7/24/2024,,0.00,0.00,0.00,,,[]
+78,EQ ID 78,"Boundary Board, TPF, Edge Bander",Quality Assurance,11218,"Audit samples for damage, location, and proper use.",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+78,EQ ID 78,"Boundary Board, TPF, Edge Bander",Quality Assurance,59,"Audit samples for damage, location and proper use.",Closed and Completed,3/18/2023,Carmen Yauri,0.20,0.00,0.00,7/12/2023,,[]
+78,EQ ID 78,"Boundary Board, TPF, Edge Bander",Quality Assurance,60,"Audit samples for damage, location, and proper use.",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:40:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+80,EQ ID 80,"Boundary Board, TPF, 1540 Door Notcher",Quality Assurance,6576,"Audit samples for damage, location, and proper use",Pending,7/24/2024,,0.00,0.00,0.00,,,[]
+80,EQ ID 80,"Boundary Board, TPF, 1540 Door Notcher",Quality Assurance,61,"Audit samples for damage, location, and proper use",Closed and Completed,3/18/2023,Carmen Yauri,0.20,0.00,0.00,7/12/2023,,[]
+83,EQ ID 83,"Boundary Board, Soap Dispenser Assembly, 40 Vessel",Quality Assurance,6577,"Audit samples for damage, location, and proper use",Pending,7/24/2024,,0.00,0.00,0.00,,,[]
+83,EQ ID 83,"Boundary Board, Soap Dispenser Assembly, 40 Vessel",Quality Assurance,63,"Audit samples for damage, location, and proper use",Closed and Completed,3/18/2023,Carmen Yauri,0.30,0.00,0.00,7/12/2023,,[]
+86,EQ ID 86,"Boundary Board, Soap Dispenser Assembly, 4112 can",Quality Assurance,11200,"Audit samples for damage, location, and proper use",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+86,EQ ID 86,"Boundary Board, Soap Dispenser Assembly, 4112 can",Quality Assurance,64,"Audit samples for damage, location, and proper use",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:37:41 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+87,EQ ID 87,"Boundary Board, TPF, 1540 /1040 Edge Finisher",Quality Assurance,6578,"Audit samples for damage, location, and proper use.",Pending,7/24/2024,,0.00,0.00,0.00,,,[]
+87,EQ ID 87,"Boundary Board, TPF, 1540 /1040 Edge Finisher",Quality Assurance,65,"Audit samples for damage, location, and proper use.",Closed and Completed,3/18/2023,Carmen Yauri,0.30,0.00,0.00,7/13/2023,,[]
+1212,EQ ID 1212,"Function Gage, T-4112-7 AC 3, Adams Campbell",Quality Assurance,11296,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1212,EQ ID 1212,"Function Gage, T-4112-7 AC 3, Adams Campbell",Quality Assurance,722,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:50:46 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1213,EQ ID 1213,"Surface Plate 36x48, PQ-51-14, QA (CMS Recall)",Quality Assurance,11250,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1213,EQ ID 1213,"Surface Plate 36x48, PQ-51-14, QA (CMS Recall)",Quality Assurance,723,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:44:40 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1214,EQ ID 1214,"18"" Digital Height Gage, 1409748, QA (CMS Recall)",Quality Assurance,11275,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1214,EQ ID 1214,"18"" Digital Height Gage, 1409748, QA (CMS Recall)",Quality Assurance,724,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:47:52 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1215,EQ ID 1215,"Pin Gage Set, B005, QA",Quality Assurance,11252,changing from Cornerstone Metrology Service to Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1215,EQ ID 1215,"Pin Gage Set, B005, QA",Quality Assurance,725,changing from Cornerstone Metrology Service to Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:44:54 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1216,EQ ID 1216,"Dial Indicator, B112138, QA",Quality Assurance,11276,moving from Cornerstone Metrology Service to Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1216,EQ ID 1216,"Dial Indicator, B112138, QA",Quality Assurance,726,moving from Cornerstone Metrology Service to Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:48:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1217,EQ ID 1217,"Dial Indicator, B147449, QA",Quality Assurance,11226,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1217,EQ ID 1217,"Dial Indicator, B147449, QA",Quality Assurance,727,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:41:20 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1218,EQ ID 1218,"Boundary Board, Grab Bar Welding",Quality Assurance,11227,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BWEC",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1218,EQ ID 1218,"Boundary Board, Grab Bar Welding",Quality Assurance,11229,"1) Review Samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BED",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1218,EQ ID 1218,"Boundary Board, Grab Bar Welding",Quality Assurance,728,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BWEC",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:41:30 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1218,EQ ID 1218,"Boundary Board, Grab Bar Welding",Quality Assurance,729,"1) Review Samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BED",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:41:49 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1330,EQ ID 1330,"Drill Fixture, 1080 Drill Machine RH O/S Door, Sample from Machine",Quality Assurance,11245,Measure dimensions as shown,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1330,EQ ID 1330,"Drill Fixture, 1080 Drill Machine RH O/S Door, Sample from Machine",Quality Assurance,832,Measure dimensions as shown,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:43:53 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1344,EQ ID 1344,"Digital Micrometer, 6194113, QA (CMS Recall)",Quality Assurance,5910,See Cornerstone Metrology Service Certificate,Pending,6/6/2024,,0.00,0.00,0.00,,,[]
+1344,EQ ID 1344,"Digital Micrometer, 6194113, QA (CMS Recall)",Quality Assurance,846,See Cornerstone Metrology Service Certificate,Closed and Completed,3/18/2023,Alex Davila,1.00,0.00,0.00,6/6/2023,,[]
+1345,EQ ID 1345,"Torque Wrench, 5200",Quality Assurance,11254,Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1345,EQ ID 1345,"Torque Wrench, 5200",Quality Assurance,847,Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,-1.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:45:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1346,EQ ID 1346,"Angle Iron Set, 15327, QA (CMS Recall)",Quality Assurance,11297,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1346,EQ ID 1346,"Angle Iron Set, 15327, QA (CMS Recall)",Quality Assurance,848,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:50:57 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1347,EQ ID 1347,"Radius Gage Set, 15324, QA (CMS Recall)",Quality Assurance,11298,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1347,EQ ID 1347,"Radius Gage Set, 15324, QA (CMS Recall)",Quality Assurance,849,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:51:06 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1348,EQ ID 1348,"Micrometer Checker, 10468, QA (CMS Recall)",Quality Assurance,11299,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1348,EQ ID 1348,"Micrometer Checker, 10468, QA (CMS Recall)",Quality Assurance,850,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:51:11 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1349,EQ ID 1349,"Caliper Checker, 529, QA (CMS Recall)",Quality Assurance,11300,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1349,EQ ID 1349,"Caliper Checker, 529, QA (CMS Recall)",Quality Assurance,851,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:51:20 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1374,EQ ID 1374,"Boundary Board, Miter Weld",Quality Assurance,864,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BMC",Closed and Completed,3/18/2023,Carmen Y,0.30,0.00,0.00,7/11/2023,,[]
+1374,EQ ID 1374,"Boundary Board, Miter Weld",Quality Assurance,6524,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BMC",Closed without Action,7/19/2024,Alex Davila,0.00,0.00,0.00,10/8/2025,,[]
+1375,EQ ID 1375,"Boundary Board, Corner Weld, QA",Quality Assurance,6526,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BMC",Pending,7/19/2024,,0.00,0.00,0.00,,,[]
+1375,EQ ID 1375,"Boundary Board, Corner Weld, QA",Quality Assurance,865,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BMC",Closed and Completed,3/18/2023,Carmen Y,0.20,0.00,0.00,7/11/2023,,[]
+807,EQ ID 807,"Drill Fixture, 1047206, Inswing Stile Hinge-C. Hung Plam",Quality Assurance,11201,"1)Inspect bushings, screws and locating dowel pins
+2)Inspect straightness
+3)Inspect general physical condition
+4)Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+807,EQ ID 807,"Drill Fixture, 1047206, Inswing Stile Hinge-C. Hung Plam",Quality Assurance,534,"1)Inspect bushings, screws and locating dowel pins
+2)Inspect straightness
+3)Inspect general physical condition
+4)Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:37:55 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+808,EQ ID 808,"Drill Fixture, 1542003, 1542 Drill Jig T-1542004",Quality Assurance,11251,"1)Inspect bushings, screws and locating dowel pins
+2)Inspect straightness
+3)Inspect physical condition
+4)Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+808,EQ ID 808,"Drill Fixture, 1542003, 1542 Drill Jig T-1542004",Quality Assurance,535,"1)Inspect bushings, screws and locating dowel pins
+2)Inspect straightness
+3)Inspect physical condition
+4)Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:44:46 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+821,EQ ID 821,"Drill Fixture, T1002246, Tube Wall Post 1080 Series",Quality Assurance,11253,"1)Inspect bushings, screws and locating dowel pins
+2)Inspect straightness
+3)Inspect general physical condition
+4)Measure dimensions on audit sheet
+5)Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+821,EQ ID 821,"Drill Fixture, T1002246, Tube Wall Post 1080 Series",Quality Assurance,540,"1)Inspect bushings, screws and locating dowel pins
+2)Inspect straightness
+3)Inspect general physical condition
+4)Measure dimensions on audit sheet
+5)Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:45:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+826,EQ ID 826,"8"" Digital Caliper, 0189152, M.E. Primo Uy",Quality Assurance,11202,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+826,EQ ID 826,"8"" Digital Caliper, 0189152, M.E. Primo Uy",Quality Assurance,541,"1) Cleaning
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:38:01 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+827,EQ ID 827,"8"" Digimatic Caliper, 03320488, QA",Quality Assurance,11203,"Cleaning, visual, functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+827,EQ ID 827,"8"" Digimatic Caliper, 03320488, QA",Quality Assurance,542,"Cleaning, visual, functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:38:07 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+828,EQ ID 828,"Drill Fixture, 2080622, Door Hinge Max Privacy (2040/2080)",Quality Assurance,11204,"1)Inspect bushings, screws and locating dowel pins
+2)Inspect straightness
+3)Inspect general physical condition
+4)Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+828,EQ ID 828,"Drill Fixture, 2080622, Door Hinge Max Privacy (2040/2080)",Quality Assurance,543,"1)Inspect bushings, screws and locating dowel pins
+2)Inspect straightness
+3)Inspect general physical condition
+4)Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:38:14 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+835,EQ ID 835,"Drill Fixture, 1040622, Inswing Door Latch-Plam",Quality Assurance,11257,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+835,EQ ID 835,"Drill Fixture, 1040622, Inswing Door Latch-Plam",Quality Assurance,549,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:45:33 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+836,EQ ID 836,"1"" Micrometer, 27085352, Machine Shop",Quality Assurance,11228,"1) Use Mikemaster Gage Ser #10468
+2) Clean, visual, functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+836,EQ ID 836,"1"" Micrometer, 27085352, Machine Shop",Quality Assurance,550,"1) Use Mikemaster Gage Ser #10468
+2) Clean, visual, functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:41:37 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+837,EQ ID 837,"6"" Digital Caliper, 12345580, QA",Quality Assurance,11283,"1) Use Kalmaster Ser #529
+2) Clean, visual, functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+837,EQ ID 837,"6"" Digital Caliper, 12345580, QA",Quality Assurance,551,"1) Use Kalmaster Ser #529
+2) Clean, visual, functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:48:59 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+838,EQ ID 838,"6"" Dial Caliper, BB054225, TPF",Quality Assurance,11284,"1) Use Kalmaster Ser #529
+2) Clean, visual, functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+838,EQ ID 838,"6"" Dial Caliper, BB054225, TPF",Quality Assurance,552,"1) Use Kalmaster Ser #529
+2) Clean, visual, functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:49:05 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+839,EQ ID 839,"24"" Dial Caliper, 3-18.3197, Machine Shop",Quality Assurance,11285,"1) Use Kalmaster Ser #529
+2) Clean, visual, functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+839,EQ ID 839,"24"" Dial Caliper, 3-18.3197, Machine Shop",Quality Assurance,553,"1) Use Kalmaster Ser #529
+2) Clean, visual, functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:49:12 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+844,EQ ID 844,"Drill Fixture, T-1541-1548-5, 5"" Stile-Leveling Device-1540",Quality Assurance,11286,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+844,EQ ID 844,"Drill Fixture, T-1541-1548-5, 5"" Stile-Leveling Device-1540",Quality Assurance,554,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:49:20 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1026,EQ ID 1026,"Drill Fixture, T1002347, .67 Wall Post",Quality Assurance,11205,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1026,EQ ID 1026,"Drill Fixture, T1002347, .67 Wall Post",Quality Assurance,625,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:38:24 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1027,EQ ID 1027,"Boundary Board, TPF, 1080/1090 Inserts",Quality Assurance,11206,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1027,EQ ID 1027,"Boundary Board, TPF, 1080/1090 Inserts",Quality Assurance,626,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:38:31 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1028,EQ ID 1028,"Boundary Board, TPF, Sierra Material Defects",Quality Assurance,11207,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1028,EQ ID 1028,"Boundary Board, TPF, Sierra Material Defects",Quality Assurance,627,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:38:42 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1029,EQ ID 1029,"Boundary Board, TPF, 1080/1090 Edge Finish",Quality Assurance,6579,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Pending,7/24/2024,,0.00,0.00,0.00,,,[]
+1029,EQ ID 1029,"Boundary Board, TPF, 1080/1090 Edge Finish",Quality Assurance,628,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Closed and Completed,3/18/2023,Carmen Yauri,0.25,0.00,0.00,7/13/2023,,[]
+1030,EQ ID 1030,"Boundary Board, TPF, 1080/1090 Bevel",Quality Assurance,11258,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1030,EQ ID 1030,"Boundary Board, TPF, 1080/1090 Bevel",Quality Assurance,629,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:45:42 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1062,EQ ID 1062,"Drill Fixture, 1047930, Outswing Stile Hinge-C. Hung Plam",Quality Assurance,11208,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1062,EQ ID 1062,"Drill Fixture, 1047930, Outswing Stile Hinge-C. Hung Plam",Quality Assurance,631,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:38:50 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1063,EQ ID 1063,"36"" Adjustable bar w/6"" Dial Calipers, 4088, QA",Quality Assurance,11209,"1) Clean
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1063,EQ ID 1063,"36"" Adjustable bar w/6"" Dial Calipers, 4088, QA",Quality Assurance,632,"1) Clean
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:39:01 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1064,EQ ID 1064,"6"" Digital Caliper, 0082301, QA",Quality Assurance,11210,"1) Clean
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1064,EQ ID 1064,"6"" Digital Caliper, 0082301, QA",Quality Assurance,11211,"1) Clean
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1064,EQ ID 1064,"6"" Digital Caliper, 0082301, QA",Quality Assurance,633,"1) Clean
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:39:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1064,EQ ID 1064,"6"" Digital Caliper, 0082301, QA",Quality Assurance,634,"1) Clean
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:39:15 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1065,EQ ID 1065,"6"" Digital Caliper, 06172539, Carmen",Quality Assurance,11259,"1) Clean
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1065,EQ ID 1065,"6"" Digital Caliper, 06172539, Carmen",Quality Assurance,635,"1) Clean
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:45:48 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1066,EQ ID 1066,"6"" Digital Caliper, 0742780, QA, Alex",Quality Assurance,11230,Re-assigned from Larry to Alex,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1066,EQ ID 1066,"6"" Digital Caliper, 0742780, QA, Alex",Quality Assurance,11231,"1) Clean
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1066,EQ ID 1066,"6"" Digital Caliper, 0742780, QA, Alex",Quality Assurance,636,Re-assigned from Larry to Alex,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:41:55 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1066,EQ ID 1066,"6"" Digital Caliper, 0742780, QA, Alex",Quality Assurance,637,"1) Clean
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:42:05 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1075,EQ ID 1075,"Drill Fixture, 2088007, Stile Hinge-Max Privacy C. Hung (2040/2080)",Quality Assurance,11260,"1) Inpect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1075,EQ ID 1075,"Drill Fixture, 2088007, Stile Hinge-Max Privacy C. Hung (2040/2080)",Quality Assurance,638,"1) Inpect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:45:54 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1089,EQ ID 1089,"Boundary Board, Soap Dispensers, 822",Quality Assurance,6580,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Pending,7/24/2024,,0.00,0.00,0.00,,,[]
+1089,EQ ID 1089,"Boundary Board, Soap Dispensers, 822",Quality Assurance,656,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Closed and Completed,3/18/2023,Carmen Yauri,0.30,0.00,0.00,7/12/2023,,[]
+1090,EQ ID 1090,"Boundary Board, Assembly, NT Vendor Bezels",Quality Assurance,11236,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1090,EQ ID 1090,"Boundary Board, Assembly, NT Vendor Bezels",Quality Assurance,657,"1) Review Samples 
+2) Review labels and stickers
+
+-Replace anything damaged or missing, which may require request from manufacturing.",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:42:38 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1091,EQ ID 1091,"Sample Board, Scratch, All Products",Quality Assurance,11261,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1091,EQ ID 1091,"Sample Board, Scratch, All Products",Quality Assurance,658,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:46:01 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1092,EQ ID 1092,"Sample Board, Weld, All Products, QA",Quality Assurance,11237,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BMC",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1092,EQ ID 1092,"Sample Board, Weld, All Products, QA",Quality Assurance,11238,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1092,EQ ID 1092,"Sample Board, Weld, All Products, QA",Quality Assurance,11234,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1092,EQ ID 1092,"Sample Board, Weld, All Products, QA",Quality Assurance,659,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing. Replacements must be requested from BMC",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:42:48 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1092,EQ ID 1092,"Sample Board, Weld, All Products, QA",Quality Assurance,661,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:42:25 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1092,EQ ID 1092,"Sample Board, Weld, All Products, QA",Quality Assurance,660,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:42:55 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1093,EQ ID 1093,"Sample Board, Burr, All Products",Quality Assurance,11212,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1093,EQ ID 1093,"Sample Board, Burr, All Products",Quality Assurance,662,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:39:22 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1094,EQ ID 1094,"Sample Board, Dent, All Products",Quality Assurance,11213,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1094,EQ ID 1094,"Sample Board, Dent, All Products",Quality Assurance,663,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing.  Replacements must be requested from BWC",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:39:32 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1116,EQ ID 1116,"6"" Digimatic Caliper, 06172566, Steve",Quality Assurance,11214,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1116,EQ ID 1116,"6"" Digimatic Caliper, 06172566, Steve",Quality Assurance,664,"1) Cleaning
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:39:40 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1117,EQ ID 1117,"12"" Dial Caliper, MM 84, QA",Quality Assurance,11215,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1117,EQ ID 1117,"12"" Dial Caliper, MM 84, QA",Quality Assurance,665,"1) Cleaning
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:39:47 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1118,EQ ID 1118,"3"" Machinist Square, 0157, QA",Quality Assurance,11235,1) Verify squareness,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1118,EQ ID 1118,"3"" Machinist Square, 0157, QA",Quality Assurance,666,1) Verify squareness,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:42:32 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1119,EQ ID 1119,"4"" Machinist Square, 0158, QA",Quality Assurance,11262,1) Verify squareness,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1119,EQ ID 1119,"4"" Machinist Square, 0158, QA",Quality Assurance,667,1) Verify squareness,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:46:08 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1120,EQ ID 1120,"6"" Machinist Square, 0159, QA",Quality Assurance,11239,1) Verify squareness,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1120,EQ ID 1120,"6"" Machinist Square, 0159, QA",Quality Assurance,668,1) Verify squareness,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:43:03 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1126,EQ ID 1126,"Drill Fixture, T-1540003, 3"" Stile Leveling Device-1540",Quality Assurance,11263,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) General physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1126,EQ ID 1126,"Drill Fixture, T-1540003, 3"" Stile Leveling Device-1540",Quality Assurance,671,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) General physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:46:18 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1128,EQ ID 1128,"Drill Fixture, T-1540004, 4"" Stile Leveling Device-1540",Quality Assurance,11287,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1128,EQ ID 1128,"Drill Fixture, T-1540004, 4"" Stile Leveling Device-1540",Quality Assurance,672,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:49:29 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1130,EQ ID 1130,"Gage Block Set, 63845, QA",Quality Assurance,11288,Moving from Cornerstone Metrology to Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1130,EQ ID 1130,"Gage Block Set, 63845, QA",Quality Assurance,673,Moving from Cornerstone Metrology to Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:49:37 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1131,EQ ID 1131,"Pin Gage Set, B002, QA (CMS Recall)",Quality Assurance,11289,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1131,EQ ID 1131,"Pin Gage Set, B002, QA (CMS Recall)",Quality Assurance,674,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:49:44 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1132,EQ ID 1132,"Pin Gage Set, B003, QA (CMS Recall)",Quality Assurance,11290,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1132,EQ ID 1132,"Pin Gage Set, B003, QA (CMS Recall)",Quality Assurance,675,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:49:50 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1133,EQ ID 1133,"Pin Gage Set, B004, QA (CMS Recall)",Quality Assurance,11264,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1133,EQ ID 1133,"Pin Gage Set, B004, QA (CMS Recall)",Quality Assurance,676,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/16/2024,Miguel Diaz - 04/15/24  9:46:30 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1134,EQ ID 1134,"Digital Force Gage, 3709, QA (CMS Recall)",Quality Assurance,11240,See Cornerstone Metrology Service Certificate,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1134,EQ ID 1134,"Digital Force Gage, 3709, QA (CMS Recall)",Quality Assurance,677,See Cornerstone Metrology Service Certificate,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:43:16 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1135,EQ ID 1135,"Parallel Set, 1/2""x7/8""x6"" A & B, QA",Quality Assurance,11265,"1) Check for dents and damage
+2) Check flatness",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1135,EQ ID 1135,"Parallel Set, 1/2""x7/8""x6"" A & B, QA",Quality Assurance,678,"1) Check for dents and damage
+2) Check flatness",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:46:38 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1136,EQ ID 1136,"Parallel Set, 1/2""x1""x6"" A & B, QA",Quality Assurance,11241,"1) Check for dents and damage
+2) Check flatness",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1136,EQ ID 1136,"Parallel Set, 1/2""x1""x6"" A & B, QA",Quality Assurance,679,"1) Check for dents and damage
+2) Check flatness",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:43:27 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1137,EQ ID 1137,"Parallel Set, 1/2""x1-1/8""x6"" A & B, QA",Quality Assurance,11266,"1) Check for dents and damage
+2) Check flatness",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1137,EQ ID 1137,"Parallel Set, 1/2""x1-1/8""x6"" A & B, QA",Quality Assurance,680,"1) Check for dents and damage
+2) Check flatness",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:46:45 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1138,EQ ID 1138,"Parallel Set, 1/2""x1-1/4""x6"" A & B, QA",Quality Assurance,11216,"1) Check for dents and damage
+2) Check flatness",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1138,EQ ID 1138,"Parallel Set, 1/2""x1-1/4""x6"" A & B, QA",Quality Assurance,681,"1) Check for dents and damage
+2) Check flatness",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:39:54 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1139,EQ ID 1139,"Parallel Set, 1/2""x1-3/8""x6"" A & B, QA",Quality Assurance,11217,"1) Check for dents and damage
+2) Check flatness",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1139,EQ ID 1139,"Parallel Set, 1/2""x1-3/8""x6"" A & B, QA",Quality Assurance,682,"1) Check for dents and damage
+2) Check flatness",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:40:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1140,EQ ID 1140,"Parallel Set, 1/2""x1-1/2""x6"" A & B, QA",Quality Assurance,11219,"1) Check for dents and damage
+2) Check flatness",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1140,EQ ID 1140,"Parallel Set, 1/2""x1-1/2""x6"" A & B, QA",Quality Assurance,683,"1) Check for dents and damage
+2) Check flatness",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:40:17 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1141,EQ ID 1141,"1"" Micrometer, 80047, QA",Quality Assurance,11220,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1141,EQ ID 1141,"1"" Micrometer, 80047, QA",Quality Assurance,684,"1) Cleaning
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:40:26 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1142,EQ ID 1142,"6"" Digimatic Caliper, 06488259, QA",Quality Assurance,11267,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1142,EQ ID 1142,"6"" Digimatic Caliper, 06488259, QA",Quality Assurance,685,"1) Cleaning
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:46:52 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1143,EQ ID 1143,"6"" Digital Caliper, 0082354, QA",Quality Assurance,11233,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1143,EQ ID 1143,"6"" Digital Caliper, 0082354, QA",Quality Assurance,686,"1) Cleaning
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:42:19 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1149,EQ ID 1149,"Drill Fixture, 1040 Drill Machine R (S), Sample from Machine",Quality Assurance,11268,Measure dimensions as shown.,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1149,EQ ID 1149,"Drill Fixture, 1040 Drill Machine R (S), Sample from Machine",Quality Assurance,687,Measure dimensions as shown.,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:47:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1150,EQ ID 1150,"Drill Fixture, 1087007, Stile Hinge-C. Hung Phenolic",Quality Assurance,11242,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1150,EQ ID 1150,"Drill Fixture, 1087007, Stile Hinge-C. Hung Phenolic",Quality Assurance,688,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:43:35 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1151,EQ ID 1151,"Drill Fixture, 2082006, Stile/WP Hinge-Max Privacy OH/FA (2080/2040)",Quality Assurance,11291,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1151,EQ ID 1151,"Drill Fixture, 2082006, Stile/WP Hinge-Max Privacy OH/FA (2080/2040)",Quality Assurance,689,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:49:59 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1152,EQ ID 1152,"8"" Digital Caliper, 0171370, M.E. Matt Guner",Quality Assurance,11292,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1152,EQ ID 1152,"8"" Digital Caliper, 0171370, M.E. Matt Guner",Quality Assurance,690,"1) Cleaning
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:50:07 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1153,EQ ID 1153,"1"" Micrometer, 7115132, Machine Shop",Quality Assurance,11293,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1153,EQ ID 1153,"1"" Micrometer, 7115132, Machine Shop",Quality Assurance,691,"1) Cleaning
+2) Visual
+3) Functional",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:50:17 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1154,EQ ID 1154,"Parallel Set, 1/2""x1-5/8""x6"" A & B, QA",Quality Assurance,11294,"1) Check for dents and damage
+2) Check flatness",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1154,EQ ID 1154,"Parallel Set, 1/2""x1-5/8""x6"" A & B, QA",Quality Assurance,692,"1) Check for dents and damage
+2) Check flatness",Closed without Action,3/18/2023,md,0.00,-1.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:50:25 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1155,EQ ID 1155,"Parallel Set, 1/2""x1-3/4""x6"" A & B, QA",Quality Assurance,11243,"1) Check for dents and damage
+2) Check flatness",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1155,EQ ID 1155,"Parallel Set, 1/2""x1-3/4""x6"" A & B, QA",Quality Assurance,693,"1) Check for dents and damage
+2) Check flatness",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:43:41 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1156,EQ ID 1156,"Pin Gage Set, B001, QA",Quality Assurance,11269,Moving from Cornerstone Metrology Service to Micro Quality calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1156,EQ ID 1156,"Pin Gage Set, B001, QA",Quality Assurance,694,Moving from Cornerstone Metrology Service to Micro Quality calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:47:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1157,EQ ID 1157,"Pin Gage Set, 15447, QA",Quality Assurance,11244,Micro Quality calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1157,EQ ID 1157,"Pin Gage Set, 15447, QA",Quality Assurance,695,Micro Quality calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:43:47 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1158,EQ ID 1158,"Drill Fixture, T-1542003-1, Drill Jig (Stile)",Quality Assurance,11270,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1158,EQ ID 1158,"Drill Fixture, T-1542003-1, Drill Jig (Stile)",Quality Assurance,696,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:47:20 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1161,EQ ID 1161,"Drill Fixture, 1040 Drill Machine L (S), Sample from Machine",Quality Assurance,11221,Measure dimensions as shown.,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1161,EQ ID 1161,"Drill Fixture, 1040 Drill Machine L (S), Sample from Machine",Quality Assurance,698,Measure dimensions as shown.,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:40:35 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1164,EQ ID 1164,"Drill Fixture, 1080622, Door Hinge-Phenolic",Quality Assurance,11222,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1164,EQ ID 1164,"Drill Fixture, 1080622, Door Hinge-Phenolic",Quality Assurance,699,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:40:48 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1168,EQ ID 1168,"Drill Fixture, 1040632, Outswing Door Latch-Plam",Quality Assurance,11271,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1168,EQ ID 1168,"Drill Fixture, 1040632, Outswing Door Latch-Plam",Quality Assurance,703,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:47:27 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1187,EQ ID 1187,"Drill Fixture, 2080622, Inswing Door Latch-Max Privacy (2040/2080)",Quality Assurance,11295,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1187,EQ ID 1187,"Drill Fixture, 2080622, Inswing Door Latch-Max Privacy (2040/2080)",Quality Assurance,709,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:50:37 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1189,EQ ID 1189,"Drill Fixture, 2080632, Outswing Door Latch-Max Privacy (2040/2080)",Quality Assurance,11272,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1189,EQ ID 1189,"Drill Fixture, 2080632, Outswing Door Latch-Max Privacy (2040/2080)",Quality Assurance,710,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:47:32 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1190,EQ ID 1190,"Function Gage, T-4112-7 BLA 1, QA",Quality Assurance,11246,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1190,EQ ID 1190,"Function Gage, T-4112-7 BLA 1, QA",Quality Assurance,711,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:44:03 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1191,EQ ID 1191,"Function Gage, T-4112-7 LX I, PPM",Quality Assurance,11273,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1191,EQ ID 1191,"Function Gage, T-4112-7 LX I, PPM",Quality Assurance,712,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:47:40 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1192,EQ ID 1192,"Function Gage, T-4112-7 BLA 2, 4112 Line",Quality Assurance,11247,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1192,EQ ID 1192,"Function Gage, T-4112-7 BLA 2, 4112 Line",Quality Assurance,713,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:44:18 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1193,EQ ID 1193,"Function Gage, T-4112-7 LX II, PPM",Quality Assurance,11223,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1193,EQ ID 1193,"Function Gage, T-4112-7 LX II, PPM",Quality Assurance,714,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:41:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1195,EQ ID 1195,"Function Gage, T-4112-7 LX III, PPM",Quality Assurance,11224,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1195,EQ ID 1195,"Function Gage, T-4112-7 LX III, PPM",Quality Assurance,715,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:41:06 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1196,EQ ID 1196,"Function Gage, T-4112-7 AC 2, Adams Campbell",Quality Assurance,11225,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1196,EQ ID 1196,"Function Gage, T-4112-7 AC 2, Adams Campbell",Quality Assurance,716,"1) Measure 6.906 +/- .002
+2) Measure 6.034 +/- .002",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:41:12 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1203,EQ ID 1203,"Drill Fixture, 1080632, Outswing Door Latch-Phenolic",Quality Assurance,11248,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1203,EQ ID 1203,"Drill Fixture, 1080632, Outswing Door Latch-Phenolic",Quality Assurance,717,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:44:24 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1205,EQ ID 1205,"Drill Fixture, 1040159, Outswing Stile/WP Hinge-Floor Anchored Plam",Quality Assurance,11249,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1205,EQ ID 1205,"Drill Fixture, 1040159, Outswing Stile/WP Hinge-Floor Anchored Plam",Quality Assurance,718,"1) Inspect bushings, screws and locating dowel pins
+2) Inspect straightness
+3) Inspect general physical condition
+4) Change inspection label",Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:44:32 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1207,EQ ID 1207,"Optical Comparator, 313118550, QA",Quality Assurance,11274,Micro Quality Calibration,Pending,4/15/2025,,0.00,0.00,0.00,,,[]
+1207,EQ ID 1207,"Optical Comparator, 313118550, QA",Quality Assurance,719,Micro Quality Calibration,Closed without Action,3/18/2023,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:47:46 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+1210,EQ ID 1210,38030 Cell,Quality Assurance,11199,"1. Calibration sticker on Tester is valid and up to date.
+2. “Dummy” test is in place and working properly (should be tested/verified).
+3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.
+4. Procedure for Testing equipment is up to date (may be within the VMP).
+5. Ensure mfg. is recording and logging all information on units tested.
+6. Ensure mfg. is following the Line Reject Procedure.
+   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.
+7. Are there any safety relevant complaints?
+8. Are there any changes in construction or components?
+9. Is the final test performed according to the actual requirements of VDE (PM332e)?
+10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?
+11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",Pending,7/15/2024,,0.00,0.00,0.00,,,[]
+1210,EQ ID 1210,38030 Cell,Quality Assurance,720,"1. Calibration sticker on Tester is valid and up to date.
+2. “Dummy” test is in place and working properly (should be tested/verified).
+3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.
+4. Procedure for Testing equipment is up to date (may be within the VMP).
+5. Ensure mfg. is recording and logging all information on units tested.
+6. Ensure mfg. is following the Line Reject Procedure.
+   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.
+7. Are there any safety relevant complaints?
+8. Are there any changes in construction or components?
+9. Is the final test performed according to the actual requirements of VDE (PM332e)?
+10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?
+11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",Closed without Action,6/18/2022,md,0.00,0.00,0.00,4/15/2024,Miguel Diaz - 04/15/24  9:37:33 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]

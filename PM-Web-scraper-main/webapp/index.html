@@ -1,0 +1,2338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MINT - Maintenance Intelligence & Troubleshooting</title>
+  <script src="/vendor/react.js"></script>
+  <script src="/vendor/react-dom.js"></script>
+  <script src="/vendor/htm.js"></script>
+  <script src="/vendor/tailwind.js"></script>
+  <script src="/vendor/marked.js"></script>
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f0f6ff; }
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-thumb { background: #bfdbfe; border-radius: 9999px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+
+    /* Rendered markdown / checklist styling */
+    .guide h1 { font-size: 1.5rem; font-weight: 800; color: #1d4ed8; margin: .25rem 0 .75rem; }
+    .guide h2 { font-size: 1.15rem; font-weight: 700; color: #1e40af; margin: 1.5rem 0 .5rem; }
+    .guide h3 { font-size: 1rem; font-weight: 700; color: #1e40af; margin: 1rem 0 .4rem; }
+    .guide p { margin: .5rem 0; line-height: 1.6; color: #334155; }
+    .guide ul, .guide ol { margin: .5rem 0 .5rem 1.3rem; line-height: 1.7; color: #334155; }
+    .guide ul { list-style: disc; }
+    .guide ol { list-style: decimal; }
+    .guide li { margin: .15rem 0; }
+    .guide strong { color: #1e293b; }
+    .guide table { width: 100%; border-collapse: collapse; margin: .75rem 0 1.5rem;
+                   font-size: .88rem; border: 1px solid #cbd5e1; border-radius: .5rem; overflow: hidden; }
+    .guide th { background: #1d4ed8; color: #fff; text-align: left; padding: .6rem .75rem;
+                font-weight: 600; border: 1px solid #1e40af; vertical-align: top; }
+    .guide td { border: 1px solid #cbd5e1; padding: .55rem .75rem; vertical-align: top;
+                color: #334155; line-height: 1.5; }
+    .guide tbody tr:nth-child(even) { background: #f1f5f9; }
+    .guide tbody tr:hover { background: #eff6ff; }
+    .guide code { background: #eff6ff; padding: .1rem .35rem; border-radius: .35rem; font-size: .85em; }
+    .guide hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.2rem 0; }
+    .guide input[type=checkbox] { margin-right: .4rem; accent-color: #2563eb; }
+
+    .wo-link { color: #1d4ed8; font-weight: 600; cursor: pointer; text-decoration: underline;
+               text-decoration-style: dotted; }
+    .wo-link:hover { color: #1e40af; background: #dbeafe; border-radius: .25rem; }
+
+    .fade-in { animation: fade .25s ease; }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    const { useState, useEffect, useCallback, useRef } = React;
+    const html = htm.bind(React.createElement);
+    const API = "";
+
+    /* ------------------------------------------------------------------ */
+    /* Formatting helpers                                                  */
+    /* ------------------------------------------------------------------ */
+    const money = (n) =>
+      "$" + (Number(n) || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const hours = (n) => (Number(n) || 0).toLocaleString(undefined, { maximumFractionDigits: 1 }) + " h";
+    const num = (n) => (Number(n) || 0).toLocaleString();
+
+    function urgencyColor(u) {
+      const s = (u || "").toLowerCase();
+      if (s.startsWith("1.")) return "bg-rose-100 text-rose-700 border-rose-200";
+      if (s.startsWith("2.")) return "bg-orange-100 text-orange-700 border-orange-200";
+      if (s.startsWith("3.")) return "bg-amber-100 text-amber-700 border-amber-200";
+      if (s.startsWith("4.")) return "bg-yellow-100 text-yellow-700 border-yellow-200";
+      if (s.startsWith("5.")) return "bg-sky-100 text-sky-700 border-sky-200";
+      return "bg-slate-100 text-slate-600 border-slate-200";
+    }
+
+    function statusColor(st) {
+      const s = (st || "").toLowerCase();
+      if (s.includes("pending")) return "bg-amber-100 text-amber-700 border-amber-200";
+      if (s.includes("progress") || s.includes("open") || s.includes("assigned"))
+        return "bg-blue-100 text-blue-700 border-blue-200";
+      if (s.includes("complete") || s.includes("closed") || s.includes("done"))
+        return "bg-emerald-100 text-emerald-700 border-emerald-200";
+      if (s.includes("cancel") || s.includes("void"))
+        return "bg-rose-100 text-rose-700 border-rose-200";
+      return "bg-slate-100 text-slate-600 border-slate-200";
+    }
+
+    async function getJSON(url) {
+      const r = await fetch(API + url);
+      if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || ("HTTP " + r.status));
+      return r.json();
+    }
+
+    // Send JSON to the API (POST/PATCH/PUT/DELETE) and return the parsed body.
+    async function sendJSON(url, method, body) {
+      const r = await fetch(API + url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body || {}),
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(d.error || ("HTTP " + r.status));
+      return d;
+    }
+
+    // Upload one or more files to a work order (multipart).
+    async function uploadAttachments(woId, files, author) {
+      if (!files || !files.length) return null;
+      const fd = new FormData();
+      fd.append("author", author || "");
+      for (const f of files) fd.append("file", f);
+      const r = await fetch(API + "/api/workorder/" + encodeURIComponent(woId) + "/attachments",
+        { method: "POST", body: fd });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(d.error || "attachment upload failed");
+      return d;
+    }
+
+    // The "your name" value is remembered across actions (localStorage) so
+    // people don't have to retype it every time - but it is always required.
+    function getUserName() { try { return localStorage.getItem("mintUser") || ""; } catch (e) { return ""; } }
+    function setUserName(v) { try { localStorage.setItem("mintUser", v || ""); } catch (e) {} }
+
+    // The admin password (gates deleting work orders + viewing version history)
+    // is kept only in sessionStorage - cleared when the browser tab closes -
+    // and sent as a header on the protected requests.
+    function getAdminPw() { try { return sessionStorage.getItem("mintAdminPw") || ""; } catch (e) { return ""; } }
+    function setAdminPw(v) { try { v ? sessionStorage.setItem("mintAdminPw", v) : sessionStorage.removeItem("mintAdminPw"); } catch (e) {} }
+    function adminHeaders(extra) {
+      const h = Object.assign({}, extra || {});
+      const pw = getAdminPw();
+      if (pw) h["X-Admin-Password"] = pw;
+      return h;
+    }
+
+    const STATUS_OPTIONS = ["Pending", "In Progress", "Closed and Completed", "Cancelled"];
+    const URGENCY_OPTIONS = [
+      "1. Prod Stopped",
+      "2. General Maint - High Priority",
+      "3. Prod Affected, Not Stopped",
+      "4. Prod Continuing but Affected Equipment stopped",
+      "5. Prod Ongoing, Maint Required",
+      "6. General Maint",
+    ];
+
+    /* ------------------------------------------------------------------ */
+    /* Form building blocks (shared by all create/edit modals)            */
+    /* ------------------------------------------------------------------ */
+    const inputCls =
+      "w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm text-slate-700 " +
+      "focus:outline-none focus:ring-2 focus:ring-blue-300";
+
+    function LabeledField({ label, required, children, hint }) {
+      return html`
+        <label className="block">
+          <div className="text-xs uppercase tracking-wide text-blue-500 font-semibold mb-1">
+            ${label}${required && html`<span className="text-rose-500"> *</span>`}
+          </div>
+          ${children}
+          ${hint && html`<div className="text-[11px] text-slate-400 mt-1">${hint}</div>`}
+        </label>`;
+    }
+
+    function TextInput({ label, value, onChange, placeholder, required, type, hint }) {
+      return html`
+        <${LabeledField} label=${label} required=${required} hint=${hint}>
+          <input type=${type || "text"} value=${value} placeholder=${placeholder || ""}
+            onInput=${(e) => onChange(e.target.value)} className=${inputCls} />
+        </${LabeledField}>`;
+    }
+
+    function TextArea({ label, value, onChange, placeholder, required, rows, hint }) {
+      return html`
+        <${LabeledField} label=${label} required=${required} hint=${hint}>
+          <textarea rows=${rows || 3} value=${value} placeholder=${placeholder || ""}
+            onInput=${(e) => onChange(e.target.value)} className=${inputCls}></textarea>
+        </${LabeledField}>`;
+    }
+
+    function SelectInput({ label, value, onChange, options, required, placeholder, hint }) {
+      return html`
+        <${LabeledField} label=${label} required=${required} hint=${hint}>
+          <select value=${value} onChange=${(e) => onChange(e.target.value)} className=${inputCls}>
+            ${placeholder && html`<option value="">${placeholder}</option>`}
+            ${options.map((o) => {
+              const val = typeof o === "string" ? o : o.value;
+              const lbl = typeof o === "string" ? o : o.label;
+              return html`<option key=${val} value=${val}>${lbl}</option>`;
+            })}
+          </select>
+        </${LabeledField}>`;
+    }
+
+    // The mandatory "Your name" field, wired to remember the value.
+    function NameInput({ value, onChange }) {
+      return html`
+        <${TextInput} label="Your name" required=${true} value=${value}
+          placeholder="e.g. Jane Smith"
+          hint="Recorded on every work order you create or change."
+          onChange=${(v) => { onChange(v); setUserName(v); }} />`;
+    }
+
+    function FileInput({ label, files, onChange, hint }) {
+      return html`
+        <${LabeledField} label=${label || "Attachments"} hint=${hint || "Photos, PDFs, docs - optional."}>
+          <input type="file" multiple onChange=${(e) => onChange([...e.target.files])}
+            className="block w-full text-sm text-slate-600 file:mr-3 file:py-1.5 file:px-3
+                       file:rounded-full file:border-0 file:bg-blue-600 file:text-white
+                       file:text-sm file:font-semibold hover:file:bg-blue-700" />
+          ${files && files.length > 0 && html`
+            <div className="text-[11px] text-slate-500 mt-1">${files.length} file(s) selected: ${files.map((f) => f.name).join(", ")}</div>`}
+        </${LabeledField}>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Small UI building blocks                                           */
+    /* ------------------------------------------------------------------ */
+    function Spinner({ label }) {
+      return html`
+        <div className="flex items-center gap-3 text-blue-600 py-6">
+          <div className="w-5 h-5 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+          <span>${label || "Loading…"}</span>
+        </div>`;
+    }
+
+    const KPI_DEFS = [
+      { key: "unscheduled_count", label: "Unscheduled WOs", fmt: num, accent: "from-rose-500 to-rose-400" },
+      { key: "scheduled_count",   label: "Scheduled WOs",   fmt: num, accent: "from-sky-500 to-sky-400" },
+      { key: "labor_time",        label: "Labor Time",      fmt: hours, accent: "from-indigo-500 to-indigo-400" },
+      { key: "material_cost",     label: "Material Cost",   fmt: money, accent: "from-blue-600 to-blue-500" },
+      { key: "downtime_hours",    label: "Downtime",        fmt: hours, accent: "from-cyan-500 to-cyan-400" },
+    ];
+
+    function KpiCard({ def, value }) {
+      return html`
+        <div className="bg-white rounded-2xl p-4 shadow-sm border border-blue-100 fade-in">
+          <div className="text-xs uppercase tracking-wide text-blue-500 font-semibold">${def.label}</div>
+          <div className="mt-1 text-2xl font-extrabold text-slate-800">${def.fmt(value)}</div>
+          <div className=${"mt-3 h-1.5 rounded-full bg-gradient-to-r " + def.accent}></div>
+        </div>`;
+    }
+
+    function KpiRow({ stats }) {
+      if (!stats) return null;
+      return html`
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+          ${KPI_DEFS.map((d) => html`<${KpiCard} key=${d.key} def=${d} value=${stats[d.key]} />`)}
+        </div>`;
+    }
+
+    function Breadcrumb({ items }) {
+      return html`
+        <nav className="flex items-center flex-wrap gap-1 text-sm text-blue-600 mb-5">
+          ${items.map((it, i) => html`
+            <span key=${i} className="flex items-center gap-1">
+              ${i > 0 && html`<span className="text-blue-300">/</span>`}
+              ${it.onClick
+                ? html`<button onClick=${it.onClick}
+                          className="hover:underline font-medium hover:text-blue-800">${it.label}</button>`
+                : html`<span className="font-semibold text-slate-700">${it.label}</span>`}
+            </span>`)}
+        </nav>`;
+    }
+
+    function Header() {
+      return html`
+        <header className="bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow-lg">
+          <div className="max-w-6xl mx-auto px-6 py-5 flex items-center gap-3">
+            <div className="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center shadow-inner">
+              <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor"
+                   strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.1-.5-.5-2.1 2.6-2.6z"/>
+                <circle cx="18" cy="6" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+            <div>
+              <div className="text-xl font-extrabold tracking-tight">MINT</div>
+              <div className="text-blue-100 text-sm">Maintenance Intelligence & Troubleshooting</div>
+            </div>
+          </div>
+        </header>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Company dashboard (top layer)                                       */
+    /* ------------------------------------------------------------------ */
+    function CompanyDashboard({ onOpenDivision }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+
+      useEffect(() => {
+        getJSON("/api/company").then(setData).catch((e) => setErr(e.message));
+      }, []);
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading company…" />`;
+
+      return html`
+        <div className="fade-in">
+          <h1 className="text-2xl font-extrabold text-slate-800 mb-1">${data.name}</h1>
+          <p className="text-slate-500 mb-5">Company-wide maintenance overview across all divisions.</p>
+          <${KpiRow} stats=${data.totals} />
+
+          <h2 className="text-lg font-extrabold text-slate-700 mt-8 mb-4">Divisions</h2>
+          <div className="grid md:grid-cols-2 gap-5">
+            ${data.divisions.map((d) => html`
+              <button key=${d.key} onClick=${() => onOpenDivision(d.key)}
+                className="text-left bg-white rounded-3xl p-6 shadow-sm border border-blue-100
+                           hover:shadow-xl hover:border-blue-300 transition group">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-xl font-extrabold text-slate-800 group-hover:text-blue-700">${d.name}</div>
+                    <div className="text-sm text-slate-500">${d.department_count} departments · ${d.machine_count} machines</div>
+                  </div>
+                  <span className="text-blue-400 text-2xl group-hover:translate-x-1 transition">→</span>
+                </div>
+                <div className="grid grid-cols-2 gap-2 mt-5 text-sm">
+                  <div className="bg-rose-50 rounded-xl px-3 py-2">
+                    <div className="text-rose-500 font-semibold">${num(d.unscheduled_count)}</div>
+                    <div className="text-slate-500 text-xs">Unscheduled</div></div>
+                  <div className="bg-sky-50 rounded-xl px-3 py-2">
+                    <div className="text-sky-600 font-semibold">${num(d.scheduled_count)}</div>
+                    <div className="text-slate-500 text-xs">Scheduled</div></div>
+                  <div className="bg-indigo-50 rounded-xl px-3 py-2">
+                    <div className="text-indigo-600 font-semibold">${hours(d.labor_time)}</div>
+                    <div className="text-slate-500 text-xs">Labor</div></div>
+                  <div className="bg-blue-50 rounded-xl px-3 py-2">
+                    <div className="text-blue-700 font-semibold">${money(d.material_cost)}</div>
+                    <div className="text-slate-500 text-xs">Material</div></div>
+                  <div className="bg-cyan-50 rounded-xl px-3 py-2 col-span-2">
+                    <div className="text-cyan-700 font-semibold">${hours(d.downtime_hours)}</div>
+                    <div className="text-slate-500 text-xs">Downtime</div></div>
+                </div>
+              </button>`)}
+          </div>
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Division dashboard                                                 */
+    /* ------------------------------------------------------------------ */
+    const DIV_TABS = ["Departments", "Weekly Schedule", "Unscheduled", "Scheduled"];
+
+    function DivisionDashboard({ divisionKey, onHome, onOpenDept, onOpenWo, refreshSignal }) {
+      const divKey = divisionKey || "bla";
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [tab, setTab] = useState("Departments");
+      const [woData, setWoData] = useState(null);
+      const [woErr, setWoErr] = useState(null);
+      const [creating, setCreating] = useState(false);
+      const [reloadKey, setReloadKey] = useState(0);
+
+      useEffect(() => {
+        setData(null);
+        getJSON("/api/divisions/" + divKey).then(setData).catch((e) => setErr(e.message));
+      }, [divKey, reloadKey, refreshSignal]);
+
+      // Drop the cached work-order lists when a WO is created/edited/deleted so
+      // the open tab refetches.
+      useEffect(() => { setWoData(null); setWoErr(null); }, [refreshSignal]);
+
+      // Lazily load the division-wide work-order lists the first time the user
+      // opens the Unscheduled/Scheduled tab (it's a large payload).
+      useEffect(() => {
+        if ((tab === "Unscheduled" || tab === "Scheduled") && !woData && !woErr) {
+          getJSON("/api/workorders").then(setWoData).catch((e) => setWoErr(e.message));
+        }
+      }, [tab, woData, woErr]);
+
+      const refreshAll = () => { setReloadKey((k) => k + 1); setWoData(null); setWoErr(null); };
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading division…" />`;
+
+      const totalUns = data.departments.reduce((a, d) => a + (d.unscheduled_count || 0), 0);
+      const totalSch = data.departments.reduce((a, d) => a + (d.scheduled_count || 0), 0);
+
+      return html`
+        <div className="fade-in">
+          ${onHome && html`<${Breadcrumb} items=${[
+            { label: "Company", onClick: onHome },
+            { label: data.name + " Division" },
+          ]} />`}
+          <div className="flex items-start justify-between flex-wrap gap-3 mb-1">
+            <h1 className="text-2xl font-extrabold text-slate-800">${data.name} Division</h1>
+            <button onClick=${() => setCreating(true)}
+              className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 shadow-sm">
+              + New Work Order</button>
+          </div>
+          <p className="text-slate-500 mb-5">Combined quick view across all departments.</p>
+          <${KpiRow} stats=${data.totals} />
+          ${creating && html`<${CreateWorkOrderModal} divisionKey=${divKey}
+            onClose=${() => setCreating(false)} onCreated=${refreshAll} onOpenWo=${onOpenWo} />`}
+
+          <div className="flex gap-2 mt-8 mb-6 bg-white p-1.5 rounded-full shadow-sm border border-blue-100 w-fit flex-wrap">
+            ${DIV_TABS.map((t) => html`
+              <button key=${t} onClick=${() => setTab(t)}
+                className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
+                  (tab === t ? "bg-blue-600 text-white shadow" : "text-slate-500 hover:bg-blue-50")}>
+                ${t}
+                ${t === "Unscheduled" && html`<span className="ml-1 opacity-70">(${num(totalUns)})</span>`}
+                ${t === "Scheduled" && html`<span className="ml-1 opacity-70">(${num(totalSch)})</span>`}
+              </button>`)}
+          </div>
+
+          ${tab === "Weekly Schedule" && html`
+            <div className="fade-in">
+              <${EmbeddedWeekly}
+                predicate=${() => true}
+                showDept=${true}
+                onOpenWo=${onOpenWo}
+                subtitle="All departments · scheduled & unscheduled work orders by week (Sunday → Sunday)." />
+            </div>`}
+
+          ${(tab === "Unscheduled" || tab === "Scheduled") && html`
+            <div className="fade-in">
+              ${woErr
+                ? html`<div className="text-rose-600">${woErr}</div>`
+                : !woData
+                  ? html`<${Spinner} label="Loading all work orders…" />`
+                  : html`<${WorkOrderList}
+                      records=${tab === "Unscheduled" ? woData.unscheduled : woData.scheduled}
+                      kind=${tab.toLowerCase()} onOpen=${onOpenWo} />`}
+            </div>`}
+
+          ${tab === "Departments" && html`
+          <div className="fade-in grid md:grid-cols-2 gap-5">
+            ${data.departments.map((d) => html`
+              <button key=${d.key} onClick=${() => onOpenDept(d.key)}
+                className="text-left bg-white rounded-3xl p-6 shadow-sm border border-blue-100
+                           hover:shadow-xl hover:border-blue-300 transition group">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-xl font-extrabold text-slate-800 group-hover:text-blue-700">${d.label}</div>
+                    <div className="text-sm text-slate-500">${d.machine_count} machines</div>
+                  </div>
+                  <span className="text-blue-400 text-2xl group-hover:translate-x-1 transition">→</span>
+                </div>
+                <div className="grid grid-cols-2 gap-2 mt-5 text-sm">
+                  <div className="bg-rose-50 rounded-xl px-3 py-2">
+                    <div className="text-rose-500 font-semibold">${num(d.unscheduled_count)}</div>
+                    <div className="text-slate-500 text-xs">Unscheduled</div></div>
+                  <div className="bg-sky-50 rounded-xl px-3 py-2">
+                    <div className="text-sky-600 font-semibold">${num(d.scheduled_count)}</div>
+                    <div className="text-slate-500 text-xs">Scheduled</div></div>
+                  <div className="bg-indigo-50 rounded-xl px-3 py-2">
+                    <div className="text-indigo-600 font-semibold">${hours(d.labor_time)}</div>
+                    <div className="text-slate-500 text-xs">Labor</div></div>
+                  <div className="bg-blue-50 rounded-xl px-3 py-2">
+                    <div className="text-blue-700 font-semibold">${money(d.material_cost)}</div>
+                    <div className="text-slate-500 text-xs">Material</div></div>
+                  <div className="bg-cyan-50 rounded-xl px-3 py-2 col-span-2">
+                    <div className="text-cyan-700 font-semibold">${hours(d.downtime_hours)}</div>
+                    <div className="text-slate-500 text-xs">Downtime</div></div>
+                </div>
+              </button>`)}
+          </div>`}
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Department dashboard                                               */
+    /* ------------------------------------------------------------------ */
+    function MachineCard({ m, onOpen }) {
+      return html`
+        <button key=${m.eq_id} onClick=${() => onOpen(m.eq_id)}
+          className="text-left bg-white rounded-2xl p-5 shadow-sm border border-blue-100
+                     hover:shadow-lg hover:border-blue-300 transition group">
+          <div className="flex items-start justify-between gap-2">
+            <div className="font-bold text-slate-800 group-hover:text-blue-700 leading-tight">${m.name}</div>
+            ${m.has_guide && html`<span className="text-[10px] font-bold uppercase bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">Guide</span>`}
+          </div>
+          <div className="text-xs text-blue-500 font-mono mt-0.5">${m.eq_label}</div>
+          <div className="flex flex-wrap gap-2 mt-4 text-xs">
+            <span className="bg-rose-50 text-rose-600 rounded-lg px-2 py-1 font-semibold">${num(m.unscheduled_count)} unsch.</span>
+            <span className="bg-sky-50 text-sky-600 rounded-lg px-2 py-1 font-semibold">${num(m.scheduled_count)} sch.</span>
+            <span className="bg-cyan-50 text-cyan-700 rounded-lg px-2 py-1 font-semibold" title="Downtime">${hours(m.downtime_hours)} down</span>
+            <span className="bg-indigo-50 text-indigo-600 rounded-lg px-2 py-1 font-semibold" title="Labor time">${hours(m.labor_time)} labor</span>
+            <span className="bg-blue-50 text-blue-700 rounded-lg px-2 py-1 font-semibold" title="Material cost">${money(m.material_cost)}</span>
+          </div>
+        </button>`;
+    }
+
+    function MachineGrid({ machines, onOpenMachine }) {
+      return html`
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          ${machines.map((m) => html`<${MachineCard} key=${m.eq_id} m=${m} onOpen=${onOpenMachine} />`)}
+        </div>`;
+    }
+
+    const DEPT_TABS = ["Machines", "Weekly Schedule", "Unscheduled", "Scheduled"];
+
+    function DepartmentDashboard({ deptKey, divisionKey, divisionLabel, onHome, onCompany, onOpenMachine, onOpenWo, refreshSignal }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [q, setQ] = useState("");
+      const [tab, setTab] = useState("Machines");
+      const [creating, setCreating] = useState(false);
+      const [reloadKey, setReloadKey] = useState(0);
+
+      useEffect(() => { setTab("Machines"); }, [deptKey]);
+
+      useEffect(() => {
+        setData(null);
+        getJSON("/api/departments/" + deptKey).then(setData).catch((e) => setErr(e.message));
+      }, [deptKey, reloadKey, refreshSignal]);
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading department…" />`;
+
+      const machines = data.machines.filter((m) => {
+        const s = q.trim().toLowerCase();
+        if (!s) return true;
+        return (m.name || "").toLowerCase().includes(s) ||
+               (m.eq_label || "").toLowerCase().includes(s) ||
+               (m.eq_id || "").toLowerCase().includes(s);
+      });
+      const groups = data.groups || [];
+
+      return html`
+        <div className="fade-in">
+          <${Breadcrumb} items=${[
+            { label: "Company", onClick: onCompany },
+            { label: (divisionLabel || "BLA") + " Division", onClick: onHome },
+            { label: data.label },
+          ]} />
+          <div className="flex items-start justify-between flex-wrap gap-3 mb-1">
+            <h1 className="text-2xl font-extrabold text-slate-800">${data.label}</h1>
+            <button onClick=${() => setCreating(true)}
+              className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 shadow-sm">
+              + New Work Order</button>
+          </div>
+          <p className="text-slate-500 mb-5">${data.machines.length} machines · department quick view.</p>
+          <${KpiRow} stats=${data.stats} />
+          ${creating && html`<${CreateWorkOrderModal} divisionKey=${divisionKey || "bla"} presetDeptKey=${deptKey}
+            onClose=${() => setCreating(false)} onCreated=${() => setReloadKey((k) => k + 1)} onOpenWo=${onOpenWo} />`}
+
+          <div className="flex gap-2 mt-8 mb-6 bg-white p-1.5 rounded-full shadow-sm border border-blue-100 w-fit flex-wrap">
+            ${DEPT_TABS.map((t) => html`
+              <button key=${t} onClick=${() => setTab(t)}
+                className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
+                  (tab === t ? "bg-blue-600 text-white shadow" : "text-slate-500 hover:bg-blue-50")}>
+                ${t}
+                ${t === "Unscheduled" && html`<span className="ml-1 opacity-70">(${data.stats.unscheduled_count})</span>`}
+                ${t === "Scheduled" && html`<span className="ml-1 opacity-70">(${data.stats.scheduled_count})</span>`}
+              </button>`)}
+          </div>
+
+          ${tab === "Weekly Schedule" && html`
+            <div className="fade-in">
+              <${EmbeddedWeekly}
+                predicate=${(r) => r.department_key === deptKey}
+                showDept=${false}
+                onOpenWo=${onOpenWo}
+                subtitle=${data.label + " · scheduled & unscheduled work orders by week (Sunday → Sunday)."} />
+            </div>`}
+
+          ${tab === "Machines" && html`
+            <div className="fade-in">
+              <div className="flex items-center justify-end mb-3 gap-3 flex-wrap">
+                <input value=${q} onInput=${(e) => setQ(e.target.value)}
+                  placeholder="Search by name or EQ ID…"
+                  className="px-4 py-2 rounded-full border border-blue-200 bg-white text-sm w-64
+                             focus:outline-none focus:ring-2 focus:ring-blue-300" />
+              </div>
+              ${groups.length === 0
+                ? html`<${MachineGrid} machines=${machines} onOpenMachine=${onOpenMachine} />`
+                : html`
+                  <div className="space-y-8">
+                    ${groups.map((g) => {
+                      const inGroup = machines.filter((m) => m.group === g);
+                      if (inGroup.length === 0) return null;
+                      return html`
+                        <section key=${g}>
+                          <div className="flex items-center gap-3 mb-3">
+                            <h3 className="text-base font-bold text-slate-700">${g}</h3>
+                            <span className="text-xs font-semibold text-blue-600 bg-blue-50 rounded-full px-2.5 py-0.5">${inGroup.length}</span>
+                            <div className="flex-1 h-px bg-blue-100"></div>
+                          </div>
+                          <${MachineGrid} machines=${inGroup} onOpenMachine=${onOpenMachine} />
+                        </section>`;
+                    })}
+                  </div>`}
+              ${machines.length === 0 && html`<div className="text-slate-400 mt-6">No machines match “${q}”.</div>`}
+            </div>`}
+
+          ${tab === "Unscheduled" && html`
+            <div className="fade-in">
+              <${WorkOrderList} records=${data.unscheduled} kind="unscheduled" onOpen=${onOpenWo} />
+            </div>`}
+
+          ${tab === "Scheduled" && html`
+            <div className="fade-in">
+              <${WorkOrderList} records=${data.scheduled} kind="scheduled" onOpen=${onOpenWo} />
+            </div>`}
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Work order list + modal                                            */
+    /* ------------------------------------------------------------------ */
+    function WorkOrderList({ records, kind, onOpen }) {
+      const [q, setQ] = useState("");
+      if (!records || records.length === 0)
+        return html`<div className="text-slate-400 py-8 text-center">No ${kind} work orders.</div>`;
+
+      // Always show newest first. Scheduled orders by due date, unscheduled by
+      // the date they were reported; undated records sort to the bottom.
+      const woTime = (r) => {
+        const raw = kind === "scheduled"
+          ? (r.due_date || r.date_notified)
+          : (r.date_notified || r.due_date);
+        const t = parseWODate(raw);
+        return t === Infinity ? -Infinity : t;
+      };
+      const sorted = [...records].sort((a, b) => {
+        const diff = woTime(b) - woTime(a);
+        if (diff) return diff;
+        // Same date: newest work-order number first (stable, deterministic).
+        return String(b.wo_id || "").localeCompare(String(a.wo_id || ""), undefined, { numeric: true });
+      });
+
+      const filtered = sorted.filter((r) => {
+        const s = q.trim().toLowerCase();
+        if (!s) return true;
+        return (r.wo_id || "").toLowerCase().includes(s) ||
+               (r.problem || r.audit_item || "").toLowerCase().includes(s) ||
+               (r.status || "").toLowerCase().includes(s);
+      });
+
+      return html`
+        <div>
+          <input value=${q} onInput=${(e) => setQ(e.target.value)}
+            placeholder=${"Search " + kind + " work orders…"}
+            className="px-4 py-2 mb-4 rounded-full border border-blue-200 bg-white text-sm w-full max-w-sm
+                       focus:outline-none focus:ring-2 focus:ring-blue-300" />
+          <div className="space-y-3">
+            ${filtered.map((r) => html`
+              <button key=${r.wo_id} onClick=${() => onOpen(r.wo_id)}
+                className="w-full text-left bg-white rounded-2xl p-4 shadow-sm border border-blue-100
+                           hover:shadow-md hover:border-blue-300 transition">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-bold text-blue-700">WO #${r.wo_id}</span>
+                    ${r.urgency && html`<span className=${"text-xs px-2 py-0.5 rounded-full border " + urgencyColor(r.urgency)}>${r.urgency}</span>`}
+                    ${r.status && html`<span className=${"text-xs px-2 py-0.5 rounded-full border " + statusColor(r.status)}>${r.status}</span>`}
+                    ${r.department_label && html`<span className="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100">${r.department_label}</span>`}
+                  </div>
+                  <div className="text-xs text-slate-400 whitespace-nowrap">${r.date_notified || r.due_date || ""}</div>
+                </div>
+                <div className="text-sm text-slate-600 mt-1.5 line-clamp-2">${r.problem || r.audit_item || "—"}</div>
+                <div className="flex gap-3 mt-2 text-xs text-slate-400">
+                  <span>Labor ${hours(r.labor_time)}</span>
+                  <span>Material ${money(r.material_cost)}</span>
+                  <span>Downtime ${hours(r.downtime_hours)}</span>
+                  ${(() => { const n = r.attachment_count != null ? r.attachment_count : (r.attachments ? r.attachments.length : 0); return n > 0 && html`<span className="text-blue-500 font-semibold">📎 ${n}</span>`; })()}
+                </div>
+              </button>`)}
+          </div>
+          ${filtered.length === 0 && html`<div className="text-slate-400 py-6 text-center">No matches for “${q}”.</div>`}
+        </div>`;
+    }
+
+    function Field({ label, value }) {
+      if (value === undefined || value === null || value === "") return null;
+      return html`
+        <div>
+          <div className="text-xs uppercase tracking-wide text-blue-500 font-semibold">${label}</div>
+          <div className="text-slate-700 whitespace-pre-wrap">${value}</div>
+        </div>`;
+    }
+
+    // Inline editor for a work order's core fields. Requires a name.
+    function WoEditForm({ rec, name, setName, onSaved, onCancel }) {
+      const scheduled = rec.wo_type === "scheduled";
+      const [f, setF] = useState({
+        equipment_name: rec.equipment_name || "",
+        equipment_eq_id: rec.equipment_eq_id || "",
+        status: rec.status || "Pending",
+        urgency: rec.urgency || "",
+        date_notified: rec.date_notified || "",
+        due_date: rec.due_date || "",
+        problem: rec.problem || "",
+        audit_item: rec.audit_item || "",
+        work_performed_by: rec.work_performed_by || "",
+        labor_time: rec.labor_time || "",
+        material_cost: rec.material_cost || "",
+        downtime_hours: rec.downtime_hours || "",
+        completed_datetime: rec.completed_datetime || "",
+      });
+      const set = (k) => (v) => setF((s) => ({ ...s, [k]: v }));
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+
+      const save = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const d = await sendJSON("/api/workorder/" + rec.wo_id, "PATCH",
+            { author: name.trim(), fields: f });
+          onSaved(d.work_order);
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      return html`
+        <div className="space-y-4">
+          <${NameInput} value=${name} onChange=${setName} />
+          <div className="grid sm:grid-cols-2 gap-3">
+            <${TextInput} label="Machine" value=${f.equipment_name} onChange=${set("equipment_name")} />
+            <${TextInput} label="EQ ID" value=${f.equipment_eq_id} onChange=${set("equipment_eq_id")} />
+            <${SelectInput} label="Status" value=${f.status} onChange=${set("status")} options=${STATUS_OPTIONS} />
+            ${scheduled
+              ? html`<${TextInput} label="Due Date" value=${f.due_date} onChange=${set("due_date")} placeholder="M/D/YYYY" />`
+              : html`<${SelectInput} label="Urgency" value=${f.urgency} onChange=${set("urgency")} options=${URGENCY_OPTIONS} placeholder="Select urgency…" />`}
+            ${!scheduled && html`<${TextInput} label="Date Notified" value=${f.date_notified} onChange=${set("date_notified")} placeholder="MM/DD/YYYY" />`}
+            <${TextInput} label="Work Performed By" value=${f.work_performed_by} onChange=${set("work_performed_by")} />
+            <${TextInput} label="Labor Time (h)" value=${f.labor_time} onChange=${set("labor_time")} type="number" />
+            <${TextInput} label="Material Cost ($)" value=${f.material_cost} onChange=${set("material_cost")} type="number" />
+            <${TextInput} label="Downtime (h)" value=${f.downtime_hours} onChange=${set("downtime_hours")} type="number" />
+            <${TextInput} label="Completed" value=${f.completed_datetime} onChange=${set("completed_datetime")} placeholder="MM/DD/YYYY" />
+          </div>
+          ${scheduled
+            ? html`<${TextArea} label="Audit Item" value=${f.audit_item} onChange=${set("audit_item")} rows=${4} />`
+            : html`<${TextArea} label="Problem" value=${f.problem} onChange=${set("problem")} rows=${4} />`}
+          ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+          <div className="flex gap-2 justify-end">
+            <button onClick=${onCancel} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+            <button onClick=${save} disabled=${busy}
+              className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 disabled:opacity-60">
+              ${busy ? "Saving…" : "Save changes"}</button>
+          </div>
+        </div>`;
+    }
+
+    // The "Solution" log for a work order: an append-only list of dated,
+    // attributed entries. Legacy scraped "comments" show as an imported note.
+    function SolutionSection({ rec, name, setName, onChanged }) {
+      const label = rec.wo_type === "scheduled" ? "Notes" : "Solution";
+      const [text, setText] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const solutions = rec.solutions || [];
+
+      const add = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!text.trim()) { setErr(label + " text is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/workorder/" + rec.wo_id + "/solutions", "POST",
+            { author: name.trim(), text: text.trim() });
+          setText("");
+          onChanged();
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      return html`
+        <div className="mt-6">
+          <div className="text-xs uppercase tracking-wide text-blue-500 font-semibold mb-2">${label}</div>
+          <div className="space-y-2">
+            ${rec.comments && html`
+              <div className="rounded-xl bg-slate-50 border border-slate-100 p-3">
+                <div className="text-[11px] font-semibold text-slate-400 uppercase mb-1">Imported note (from PM)</div>
+                <div className="text-sm text-slate-600 whitespace-pre-wrap">${rec.comments}</div>
+              </div>`}
+            ${solutions.map((s) => html`
+              <div key=${s.id} className="rounded-xl bg-blue-50/60 border border-blue-100 p-3">
+                <div className="flex items-center justify-between gap-2 mb-1">
+                  <span className="text-sm font-semibold text-blue-700">${s.author || "Unknown"}</span>
+                  <span className="text-[11px] text-slate-400">${(s.created_at || "").replace("T", " ")}</span>
+                </div>
+                <div className="text-sm text-slate-700 whitespace-pre-wrap">${s.text}</div>
+              </div>`)}
+            ${!rec.comments && solutions.length === 0 && html`
+              <div className="text-slate-400 text-sm italic">No ${label.toLowerCase()} recorded yet.</div>`}
+          </div>
+          <div className="mt-3 space-y-2 rounded-xl border border-slate-100 p-3">
+            <${NameInput} value=${name} onChange=${setName} />
+            <${TextArea} label=${"Add to " + label.toLowerCase()} value=${text} onChange=${setText}
+              rows=${3} placeholder=${"Describe what was tried / done…"} />
+            ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+            <div className="flex justify-end">
+              <button onClick=${add} disabled=${busy}
+                className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 disabled:opacity-60">
+                ${busy ? "Adding…" : "Add " + label.toLowerCase()}</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    // Attachments list + uploader for a work order.
+    function AttachmentSection({ rec, name, setName, onChanged }) {
+      const [files, setFiles] = useState([]);
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const atts = rec.attachments || [];
+
+      const upload = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!files.length) { setErr("Choose at least one file."); return; }
+        setBusy(true); setErr(null);
+        try {
+          await uploadAttachments(rec.wo_id, files, name.trim());
+          setFiles([]);
+          onChanged();
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      return html`
+        <div className="mt-6">
+          <div className="text-xs uppercase tracking-wide text-blue-500 font-semibold mb-2">Attachments</div>
+          ${atts.length > 0
+            ? html`<div className="flex flex-col gap-2 mb-3">
+                ${atts.map((a) => html`
+                  <a key=${a.id || a.url} href=${a.url} target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium transition">
+                    <span>📎</span><span className="truncate flex-1">${a.filename || a.name || a.url}</span>
+                    ${a.uploaded_by && html`<span className="text-[11px] text-slate-400">by ${a.uploaded_by}</span>`}
+                  </a>`)}
+              </div>`
+            : html`<div className="text-slate-400 text-sm italic mb-3">No attachments yet.</div>`}
+          <div className="space-y-2 rounded-xl border border-slate-100 p-3">
+            <${NameInput} value=${name} onChange=${setName} />
+            <${FileInput} files=${files} onChange=${setFiles} />
+            ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+            <div className="flex justify-end">
+              <button onClick=${upload} disabled=${busy}
+                className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 disabled:opacity-60">
+                ${busy ? "Uploading…" : "Upload"}</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    // Password prompt for admin-gated actions (delete WO / view history).
+    // Verifies against the server, then remembers it for the browser session.
+    function AdminGate({ actionLabel, onUnlock, onCancel }) {
+      const [pw, setPw] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const submit = async () => {
+        if (!pw) return;
+        setBusy(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/verify-admin-password", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ password: pw }),
+          });
+          const d = await r.json();
+          if (!r.ok || !d.ok) throw new Error(d.error || "Incorrect password");
+          setAdminPw(pw);
+          onUnlock();
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+      return html`
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+          onClick=${onCancel}>
+          <div className="bg-white rounded-2xl shadow-xl border border-blue-100 w-full max-w-sm p-6"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xl">🔒</span>
+              <h3 className="text-lg font-extrabold text-slate-800">Admin password required</h3>
+            </div>
+            <p className="text-sm text-slate-500 mb-4">Enter the admin password to ${actionLabel || "continue"}.</p>
+            <input type="password" value=${pw} autoFocus
+              onInput=${(e) => setPw(e.target.value)}
+              onKeyDown=${(e) => { if (e.key === "Enter") submit(); }}
+              placeholder="Admin password"
+              className=${inputCls} />
+            ${err && html`<div className="text-rose-600 text-sm mt-2">${err}</div>`}
+            <div className="flex gap-2 justify-end mt-4">
+              <button onClick=${onCancel}
+                className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+              <button onClick=${submit} disabled=${busy || !pw}
+                className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 disabled:opacity-60">
+                ${busy ? "Checking…" : "Unlock"}</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function WorkOrderModal({ woId, onClose, onOpenWo, onChanged }) {
+      const [rec, setRec] = useState(null);
+      const [err, setErr] = useState(null);
+      const [editing, setEditing] = useState(false);
+      const [showHistory, setShowHistory] = useState(false);
+      const [name, setName] = useState(getUserName());
+      const [adminProtected, setAdminProtected] = useState(false);
+      const [gate, setGate] = useState(null);       // {label, action} when a password is needed
+      const [audit, setAudit] = useState(null);      // version history (loaded on demand, gated)
+      const [auditLoading, setAuditLoading] = useState(false);
+      const [deleting, setDeleting] = useState(false);
+
+      const load = useCallback(() => {
+        setRec(null); setErr(null);
+        getJSON("/api/workorder/" + woId).then(setRec).catch((e) => setErr(e.message));
+      }, [woId]);
+
+      useEffect(() => { load(); setEditing(false); setShowHistory(false); setAudit(null); }, [load]);
+      useEffect(() => {
+        getJSON("/api/admin-auth").then((d) => setAdminProtected(!!d.protected)).catch(() => {});
+      }, []);
+
+      const refresh = () => {
+        getJSON("/api/workorder/" + woId).then(setRec).catch((e) => setErr(e.message));
+        if (onChanged) onChanged();
+      };
+
+      // Run `action` if admin isn't required / already unlocked this session;
+      // otherwise pop the password gate first and run it once unlocked.
+      const requireAdmin = (label, action) => {
+        if (!adminProtected || getAdminPw()) { action(); return; }
+        setGate({ label, action });
+      };
+
+      const doDelete = async () => {
+        if (!window.confirm("Delete work order #" + woId + " permanently? This cannot be undone.")) return;
+        setDeleting(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/workorder/" + woId, { method: "DELETE", headers: adminHeaders() });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setAdminPw(""); setDeleting(false); setGate({ label: "delete this work order", action: doDelete }); return; }
+          if (!r.ok) throw new Error(d.error || "delete failed");
+          if (onChanged) onChanged();
+          onClose();
+        } catch (e) { setErr(e.message); setDeleting(false); }
+      };
+      const remove = () => requireAdmin("delete this work order", doDelete);
+
+      const loadAudit = async () => {
+        setAuditLoading(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/workorder/" + woId + "/audit", { headers: adminHeaders() });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setAdminPw(""); setAuditLoading(false); setGate({ label: "view version history", action: loadAudit }); return; }
+          if (!r.ok) throw new Error(d.error || "failed to load history");
+          setAudit(d.audit || []);
+          setShowHistory(true);
+        } catch (e) { setErr(e.message); } finally { setAuditLoading(false); }
+      };
+      const toggleHistory = () => {
+        if (showHistory) { setShowHistory(false); return; }
+        requireAdmin("view version history", loadAudit);
+      };
+
+      return html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-start justify-center p-4 overflow-y-auto"
+             onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl my-8 fade-in"
+               onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-blue-100 sticky top-0 bg-white rounded-t-3xl z-10">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-extrabold text-lg text-blue-700">Work Order #${woId}</span>
+                ${rec && rec.is_manual && html`<span className="text-[10px] font-bold uppercase bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">MINT</span>`}
+              </div>
+              <div className="flex items-center gap-2">
+                ${rec && !editing && html`<button onClick=${() => setEditing(true)}
+                  className="px-3 py-1.5 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-semibold">Edit</button>`}
+                ${rec && rec.is_manual && !editing && html`<button onClick=${remove} disabled=${deleting}
+                  className="px-3 py-1.5 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-600 text-sm font-semibold disabled:opacity-60">
+                  ${deleting ? "Deleting…" : "Delete"}</button>`}
+                <button onClick=${onClose}
+                  className="w-9 h-9 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 text-xl leading-none">×</button>
+              </div>
+            </div>
+            <div className="p-6">
+              ${err && html`<div className="text-rose-600">${err}</div>`}
+              ${!rec && !err && html`<${Spinner} label="Loading work order…" />`}
+              ${rec && editing && html`
+                <${WoEditForm} rec=${rec} name=${name} setName=${setName}
+                  onCancel=${() => setEditing(false)}
+                  onSaved=${(wo) => { setRec(wo); setEditing(false); if (onChanged) onChanged(); }} />`}
+              ${rec && !editing && html`
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <${Field} label="Machine" value=${rec.equipment_name} />
+                  <${Field} label="EQ ID" value=${rec.equipment_eq_id} />
+                  <${Field} label="Department" value=${rec.department} />
+                  <${Field} label="Type" value=${rec.wo_type} />
+                  <${Field} label="Status" value=${rec.status} />
+                  <${Field} label="Urgency" value=${rec.urgency} />
+                  <${Field} label="Date Notified" value=${rec.date_notified} />
+                  <${Field} label="Due Date" value=${rec.due_date} />
+                  <${Field} label="Completed" value=${rec.completed_datetime} />
+                  <${Field} label="Work Performed By" value=${rec.work_performed_by} />
+                  <${Field} label="Labor Time" value=${rec.labor_time ? hours(rec.labor_time) : ""} />
+                  <${Field} label="Material Cost" value=${rec.material_cost ? money(rec.material_cost) : ""} />
+                  <${Field} label="Downtime" value=${rec.downtime_hours ? hours(rec.downtime_hours) : ""} />
+                </div>
+                <div className="mt-4 space-y-4">
+                  <${Field} label="Problem" value=${rec.problem} />
+                  <${Field} label="Audit Item" value=${rec.audit_item} />
+                </div>
+                <${SolutionSection} rec=${rec} name=${name} setName=${setName} onChanged=${refresh} />
+                <${AttachmentSection} rec=${rec} name=${name} setName=${setName} onChanged=${refresh} />
+                <div className="mt-6 border-t border-slate-100 pt-3">
+                  <button onClick=${toggleHistory} disabled=${auditLoading}
+                    className="text-sm font-semibold text-slate-500 hover:text-blue-700 disabled:opacity-60 flex items-center gap-1">
+                    <span>${showHistory ? "▾" : "▸"}</span>
+                    <span>${auditLoading ? "Loading history…" : "Change history"}</span>
+                    ${adminProtected && !getAdminPw() && html`<span title="Password required">🔒</span>`}
+                  </button>
+                  ${showHistory && audit && html`
+                    <div className="mt-2 space-y-1.5">
+                      ${audit.length === 0
+                        ? html`<div className="text-slate-400 text-sm italic">No recorded changes.</div>`
+                        : audit.map((a) => html`
+                          <div key=${a.id} className="text-xs text-slate-500 flex gap-2">
+                            <span className="text-slate-400 whitespace-nowrap">${(a.created_at || "").replace("T", " ")}</span>
+                            <span className="font-semibold text-slate-600">${a.author || "?"}</span>
+                            <span>${a.action}${a.detail ? " — " + a.detail : ""}</span>
+                          </div>`)}
+                    </div>`}
+                </div>
+              `}
+            </div>
+          </div>
+          ${gate && html`<${AdminGate} actionLabel=${gate.label}
+            onCancel=${() => setGate(null)}
+            onUnlock=${() => { const a = gate.action; setGate(null); a(); }} />`}
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Create work order + add machine/department                          */
+    /* ------------------------------------------------------------------ */
+    function CreateWorkOrderModal({ divisionKey, presetDeptKey, defaultType, onClose, onCreated, onOpenWo }) {
+      const [depts, setDepts] = useState(null);
+      const [deptKey, setDeptKey] = useState(presetDeptKey || "");
+      const [machines, setMachines] = useState([]);
+      const [woType, setWoType] = useState(defaultType || "scheduled");
+      const [name, setName] = useState(getUserName());
+      const todayStr = (() => {
+        const d = new Date();
+        return (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
+      })();
+      const [f, setF] = useState({
+        equipment_eq_id: "", equipment_name: "", status: "Pending",
+        urgency: "", date_notified: todayStr, due_date: "", problem: "",
+        audit_item: "", work_performed_by: "", labor_time: "",
+        material_cost: "", downtime_hours: "", solution: "",
+      });
+      const set = (k) => (v) => setF((s) => ({ ...s, [k]: v }));
+      const [files, setFiles] = useState([]);
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [adding, setAdding] = useState(null); // null | "machine" | "dept"
+
+      useEffect(() => {
+        getJSON("/api/divisions/" + (divisionKey || "bla"))
+          .then((d) => setDepts(d.departments || []))
+          .catch((e) => setErr(e.message));
+      }, [divisionKey]);
+
+      const loadMachines = useCallback((dk) => {
+        if (!dk) { setMachines([]); return; }
+        getJSON("/api/departments/" + dk)
+          .then((d) => setMachines(d.machines || []))
+          .catch(() => setMachines([]));
+      }, []);
+      useEffect(() => { loadMachines(deptKey); }, [deptKey, loadMachines]);
+
+      const pickMachine = (eqId) => {
+        const m = machines.find((x) => String(x.eq_id) === String(eqId));
+        if (m) setF((s) => ({ ...s, equipment_eq_id: m.eq_label, equipment_name: m.name }));
+        else setF((s) => ({ ...s, equipment_eq_id: "", equipment_name: "" }));
+      };
+
+      const submit = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!deptKey) { setErr("Choose a department."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const payload = {
+            author: name.trim(), department_key: deptKey, wo_type: woType,
+            equipment_name: f.equipment_name, equipment_eq_id: f.equipment_eq_id,
+            status: f.status, work_performed_by: f.work_performed_by,
+            labor_time: f.labor_time, material_cost: f.material_cost,
+            downtime_hours: f.downtime_hours,
+          };
+          if (woType === "unscheduled") {
+            Object.assign(payload, { urgency: f.urgency, date_notified: f.date_notified,
+              problem: f.problem, solution: f.solution });
+          } else {
+            Object.assign(payload, { due_date: f.due_date, audit_item: f.audit_item });
+          }
+          const d = await sendJSON("/api/workorders", "POST", payload);
+          if (files.length) await uploadAttachments(d.wo_id, files, name.trim());
+          if (onCreated) onCreated(d.wo_id);
+          onClose();
+          if (onOpenWo) onOpenWo(d.wo_id);
+        } catch (e) { setErr(e.message); setBusy(false); }
+      };
+
+      const machineOptions = machines.map((m) => ({ value: m.eq_id, label: m.name + " (" + m.eq_label + ")" }));
+      const selectedEq = machines.find((m) => m.eq_label === f.equipment_eq_id);
+
+      return html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-start justify-center p-4 overflow-y-auto"
+             onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl my-8 fade-in"
+               onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-blue-100 sticky top-0 bg-white rounded-t-3xl z-10">
+              <div className="font-extrabold text-lg text-blue-700">New Work Order</div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 text-xl leading-none">×</button>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="inline-flex rounded-full border border-blue-200 bg-white p-0.5 text-sm font-semibold">
+                ${["scheduled", "unscheduled"].map((t) => html`
+                  <button key=${t} onClick=${() => setWoType(t)}
+                    className=${"px-4 py-1.5 rounded-full transition capitalize " +
+                      (woType === t ? "bg-blue-600 text-white shadow-sm" : "text-slate-600 hover:text-blue-700")}>${t}</button>`)}
+              </div>
+
+              <${NameInput} value=${name} onChange=${setName} />
+
+              ${depts === null
+                ? html`<${Spinner} label="Loading departments…" />`
+                : html`
+                  <div className="flex items-end gap-2">
+                    <div className="flex-1">
+                      <${SelectInput} label="Department" required=${true} value=${deptKey}
+                        onChange=${setDeptKey} placeholder="Select department…"
+                        options=${depts.map((d) => ({ value: d.key, label: d.label }))} />
+                    </div>
+                    <button onClick=${() => setAdding(adding === "dept" ? null : "dept")}
+                      className="px-3 py-2 rounded-xl border border-blue-200 text-blue-700 text-sm font-semibold hover:bg-blue-50 whitespace-nowrap">+ Dept</button>
+                  </div>`}
+
+              ${adding === "dept" && html`<${AddDepartmentForm} divisionKey=${divisionKey}
+                onClose=${() => setAdding(null)}
+                onAdded=${(dep) => { getJSON("/api/divisions/" + (divisionKey || "bla")).then((d) => setDepts(d.departments || [])); setDeptKey(dep.key); setAdding(null); }} />`}
+
+              ${deptKey && html`
+                <div className="flex items-end gap-2">
+                  <div className="flex-1">
+                    <${SelectInput} label="Machine" value=${selectedEq ? selectedEq.eq_id : ""}
+                      onChange=${pickMachine} placeholder="Select machine…" options=${machineOptions} />
+                  </div>
+                  <button onClick=${() => setAdding(adding === "machine" ? null : "machine")}
+                    className="px-3 py-2 rounded-xl border border-blue-200 text-blue-700 text-sm font-semibold hover:bg-blue-50 whitespace-nowrap">+ Machine</button>
+                </div>`}
+
+              ${adding === "machine" && html`<${AddMachineForm} deptKey=${deptKey}
+                onClose=${() => setAdding(null)}
+                onAdded=${(m) => { loadMachines(deptKey); setF((s) => ({ ...s, equipment_eq_id: m.eq_id, equipment_name: m.equipment_name })); setAdding(null); }} />`}
+
+              <div className="grid sm:grid-cols-2 gap-3">
+                <${SelectInput} label="Status" value=${f.status} onChange=${set("status")} options=${STATUS_OPTIONS} />
+                ${woType === "unscheduled"
+                  ? html`
+                    <${SelectInput} label="Urgency" value=${f.urgency} onChange=${set("urgency")} options=${URGENCY_OPTIONS} placeholder="Select urgency…" />
+                    <${TextInput} label="Date Notified" value=${f.date_notified} onChange=${set("date_notified")} placeholder="MM/DD/YYYY" />`
+                  : html`
+                    <${TextInput} label="Due Date" value=${f.due_date} onChange=${set("due_date")} placeholder="M/D/YYYY" />`}
+                <${TextInput} label="Work Performed By" value=${f.work_performed_by} onChange=${set("work_performed_by")} />
+                <${TextInput} label="Labor Time (h)" value=${f.labor_time} onChange=${set("labor_time")} type="number" />
+                <${TextInput} label="Material Cost ($)" value=${f.material_cost} onChange=${set("material_cost")} type="number" />
+                <${TextInput} label="Downtime (h)" value=${f.downtime_hours} onChange=${set("downtime_hours")} type="number" />
+              </div>
+
+              ${woType === "unscheduled"
+                ? html`
+                  <${TextArea} label="Problem" required=${true} value=${f.problem} onChange=${set("problem")} rows=${3} />
+                  <${TextArea} label="Solution (optional first entry)" value=${f.solution} onChange=${set("solution")} rows=${2}
+                    hint="You (and others) can keep adding to the solution over time." />`
+                : html`<${TextArea} label="Audit Item" value=${f.audit_item} onChange=${set("audit_item")} rows=${4} />`}
+
+              <${FileInput} files=${files} onChange=${setFiles} />
+
+              ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+              <div className="flex gap-2 justify-end pt-2">
+                <button onClick=${onClose} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+                <button onClick=${submit} disabled=${busy}
+                  className="px-5 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 disabled:opacity-60">
+                  ${busy ? "Creating…" : "Create work order"}</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function AddMachineForm({ deptKey, onAdded, onClose }) {
+      const [name, setName] = useState(getUserName());
+      const [f, setF] = useState({ equipment_name: "", make: "", model: "", eq_id: "" });
+      const set = (k) => (v) => setF((s) => ({ ...s, [k]: v }));
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const save = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!f.equipment_name.trim()) { setErr("Machine name is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const d = await sendJSON("/api/machines", "POST",
+            { author: name.trim(), dept_key: deptKey, ...f });
+          onAdded(d.machine);
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+      return html`
+        <div className="rounded-2xl border border-blue-100 bg-blue-50/40 p-4 space-y-3">
+          <div className="text-sm font-bold text-blue-700">Add a new machine</div>
+          <${NameInput} value=${name} onChange=${setName} />
+          <${TextInput} label="Machine name" required=${true} value=${f.equipment_name} onChange=${set("equipment_name")} />
+          <div className="grid sm:grid-cols-3 gap-3">
+            <${TextInput} label="Make" value=${f.make} onChange=${set("make")} />
+            <${TextInput} label="Model" value=${f.model} onChange=${set("model")} />
+            <${TextInput} label="EQ ID (optional)" value=${f.eq_id} onChange=${set("eq_id")} hint="Auto-assigned if blank." />
+          </div>
+          ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+          <div className="flex gap-2 justify-end">
+            <button onClick=${onClose} className="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-white">Cancel</button>
+            <button onClick=${save} disabled=${busy}
+              className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 disabled:opacity-60">${busy ? "Saving…" : "Add machine"}</button>
+          </div>
+        </div>`;
+    }
+
+    function AddDepartmentForm({ divisionKey, onAdded, onClose }) {
+      const [name, setName] = useState(getUserName());
+      const [dept, setDept] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const save = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!dept.trim()) { setErr("Department name is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const d = await sendJSON("/api/departments", "POST",
+            { author: name.trim(), name: dept.trim(), division_key: divisionKey || "bla" });
+          onAdded(d.department);
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+      return html`
+        <div className="rounded-2xl border border-blue-100 bg-blue-50/40 p-4 space-y-3">
+          <div className="text-sm font-bold text-blue-700">Add a new department</div>
+          <${NameInput} value=${name} onChange=${setName} />
+          <${TextInput} label="Department name" required=${true} value=${dept} onChange=${setDept} />
+          ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+          <div className="flex gap-2 justify-end">
+            <button onClick=${onClose} className="px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-white">Cancel</button>
+            <button onClick=${save} disabled=${busy}
+              className="px-4 py-1.5 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 disabled:opacity-60">${busy ? "Saving…" : "Add department"}</button>
+          </div>
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Checklist edit auth + markdown-table helpers                       */
+    /* ------------------------------------------------------------------ */
+    // The shared edit password is kept only in sessionStorage (cleared when the
+    // browser tab closes) and sent as a header on every mutating request.
+    function getEditPw() { try { return sessionStorage.getItem("blaEditPw") || ""; } catch (e) { return ""; } }
+    function setEditPw(v) { try { v ? sessionStorage.setItem("blaEditPw", v) : sessionStorage.removeItem("blaEditPw"); } catch (e) {} }
+    function editHeaders(extra) {
+      const h = Object.assign({}, extra || {});
+      const pw = getEditPw();
+      if (pw) h["X-Edit-Password"] = pw;
+      return h;
+    }
+
+    // Convert between a table cell's stored markdown (<br>-joined) and the
+    // newline-per-item text shown in the friendly editor.
+    function cellToText(s) { return String(s == null ? "" : s).replace(/<br\s*\/?>/gi, "\n"); }
+    function cellToMd(s) {
+      return String(s == null ? "" : s).split(/\r?\n/).map((x) => x.trim()).filter((x) => x.length).join("<br>");
+    }
+    function splitGuideRow(line) {
+      let s = line.trim();
+      if (s.startsWith("|")) s = s.slice(1);
+      if (s.endsWith("|")) s = s.slice(0, -1);
+      return s.split("|").map((c) => c.trim());
+    }
+    // Split guide markdown into ordered blocks of {type:"text"} and
+    // {type:"table", headers, rows} so we can render a form-based editor and
+    // faithfully rebuild the markdown afterwards.
+    function parseGuideBlocks(md) {
+      const lines = (md || "").split(/\r?\n/);
+      const blocks = []; let buf = []; let i = 0;
+      const flush = () => {
+        const text = buf.join("\n").replace(/\s+$/, "");
+        if (text.trim().length) blocks.push({ type: "text", text });
+        buf = [];
+      };
+      while (i < lines.length) {
+        const isRow = /^\s*\|.*\|\s*$/.test(lines[i]);
+        const nextSep = i + 1 < lines.length && /^\s*\|?[\s:|-]*-{2,}[\s:|-]*$/.test(lines[i + 1]);
+        if (isRow && nextSep) {
+          flush();
+          const headers = splitGuideRow(lines[i]);
+          i += 2;
+          const rows = [];
+          while (i < lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) { rows.push(splitGuideRow(lines[i])); i++; }
+          blocks.push({ type: "table", headers, rows });
+          continue;
+        }
+        buf.push(lines[i]); i++;
+      }
+      flush();
+      return blocks.length ? blocks : [{ type: "text", text: md || "" }];
+    }
+    function blocksToGuideMarkdown(blocks) {
+      const parts = blocks.map((b) => {
+        if (b.type === "text") return (b.text || "").replace(/\s+$/, "");
+        const cols = b.headers.length;
+        const head = "| " + b.headers.map((h) => (h || "").trim()).join(" | ") + " |";
+        const sep = "| " + b.headers.map(() => ":---").join(" | ") + " |";
+        const rows = b.rows.map((r) => {
+          const cells = [];
+          for (let c = 0; c < cols; c++) cells.push(cellToMd(r[c] || ""));
+          return "| " + cells.join(" | ") + " |";
+        });
+        return [head, sep, ...rows].join("\n");
+      });
+      return parts.filter((p) => p !== "").join("\n\n").replace(/\n{3,}/g, "\n\n").trim() + "\n";
+    }
+
+    // Modal that verifies the shared edit password against the server.
+    function PasswordGate({ onUnlock, onCancel }) {
+      const [pw, setPw] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const submit = async () => {
+        if (!pw) return;
+        setBusy(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/verify-edit-password", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ password: pw }),
+          });
+          const d = await r.json();
+          if (!r.ok || !d.ok) throw new Error(d.error || "Incorrect password");
+          setEditPw(pw);
+          onUnlock();
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(false); }
+      };
+      return html`
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4"
+          onClick=${onCancel}>
+          <div className="bg-white rounded-2xl shadow-xl border border-blue-100 w-full max-w-sm p-6"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xl">🔒</span>
+              <h3 className="text-lg font-extrabold text-slate-800">Unlock editing</h3>
+            </div>
+            <p className="text-sm text-slate-500 mb-4">Enter the shared edit password to make changes to checklists.</p>
+            <input type="password" value=${pw} autoFocus
+              onInput=${(e) => setPw(e.target.value)}
+              onKeyDown=${(e) => { if (e.key === "Enter") submit(); }}
+              placeholder="Password"
+              className="w-full px-4 py-2 rounded-xl border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300 mb-3" />
+            ${err && html`<div className="bg-rose-50 text-rose-700 rounded-lg px-3 py-2 text-sm mb-3">${err}</div>`}
+            <div className="flex justify-end gap-2">
+              <button onClick=${onCancel} className="px-4 py-2 rounded-full text-sm font-semibold text-slate-600 hover:bg-slate-50">Cancel</button>
+              <button onClick=${submit} disabled=${busy || !pw}
+                className="px-4 py-2 rounded-full text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50">
+                ${busy ? "Checking…" : "Unlock"}
+              </button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    // Friendly, form-based editor for the checklist. Each table row becomes a
+    // labeled card with one field per column; each field is a plain textarea
+    // where every line is a bullet (stored as <br> in the markdown).
+    function GuideFormEditor({ blocks, onChange }) {
+      const clone = () => blocks.map((b) => b.type === "table"
+        ? { type: "table", headers: [...b.headers], rows: b.rows.map((r) => [...r]) }
+        : { ...b });
+      const apply = (fn) => { const c = clone(); fn(c); onChange(c); };
+      const rowsOf = (s) => Math.max(2, (cellToText(s).match(/\n/g) || []).length + 1);
+      return html`
+        <div className="space-y-5">
+          ${blocks.map((b, bi) => b.type === "text"
+            ? html`<div key=${"t" + bi} className="bg-white rounded-2xl border border-slate-200 p-4">
+                <label className="block text-xs font-bold uppercase tracking-wide text-slate-400 mb-2">Heading / notes</label>
+                <textarea value=${b.text}
+                  onInput=${(e) => apply((c) => { c[bi].text = e.target.value; })}
+                  rows=${Math.max(2, (b.text.match(/\n/g) || []).length + 1)}
+                  className="w-full text-sm leading-relaxed bg-slate-50 rounded-xl p-3 border border-slate-200
+                             focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
+              </div>`
+            : html`<div key=${"tb" + bi} className="bg-white rounded-2xl border border-blue-100 p-4">
+                <div className="flex items-center flex-wrap gap-2 mb-3">
+                  ${b.headers.map((h, hi) => html`
+                    <input key=${hi} value=${h}
+                      onInput=${(e) => apply((c) => { c[bi].headers[hi] = e.target.value; })}
+                      className="text-[11px] font-bold uppercase tracking-wide text-blue-700 bg-blue-50 rounded-lg px-2 py-1
+                                 border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-300" />`)}
+                </div>
+                <div className="space-y-3">
+                  ${b.rows.map((row, ri) => html`
+                    <div key=${ri} className="rounded-xl border border-slate-200 bg-slate-50/60 p-3">
+                      <div className="grid gap-3" style=${{ gridTemplateColumns: "repeat(" + b.headers.length + ", minmax(0,1fr))" }}>
+                        ${b.headers.map((h, ci) => html`
+                          <div key=${ci}>
+                            <label className="block text-[11px] font-semibold text-slate-500 mb-1">${h}</label>
+                            <textarea value=${cellToText(row[ci] || "")}
+                              placeholder="One item per line"
+                              onInput=${(e) => apply((c) => { c[bi].rows[ri][ci] = e.target.value; })}
+                              rows=${rowsOf(row[ci] || "")}
+                              className="w-full text-sm leading-relaxed bg-white rounded-lg p-2 border border-slate-200
+                                         focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
+                          </div>`)}
+                      </div>
+                      <div className="flex justify-end mt-2">
+                        <button onClick=${() => apply((c) => { c[bi].rows.splice(ri, 1); })}
+                          className="text-xs font-semibold text-rose-500 hover:text-rose-700">Remove row</button>
+                      </div>
+                    </div>`)}
+                </div>
+                <button onClick=${() => apply((c) => { c[bi].rows.push(b.headers.map(() => "")); })}
+                  className="mt-3 text-sm font-semibold text-blue-600 hover:text-blue-800">+ Add row</button>
+              </div>`)}
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Checklist (Ollama) tab                                             */
+    /* ------------------------------------------------------------------ */
+    function ChecklistTab({ deptKey, eqId, woIds, onOpenWo }) {
+      const [state, setState] = useState({ loading: true });
+      const [busy, setBusy] = useState(null);   // null | "generate" | "update" | "save"
+      const [err, setErr] = useState(null);
+      const [info, setInfo] = useState(null);
+      const [editing, setEditing] = useState(false);
+      const [editorMode, setEditorMode] = useState("form");  // "form" | "raw"
+      const [blocks, setBlocks] = useState([]);
+      const [rawDraft, setRawDraft] = useState("");
+      const [protectedEdit, setProtectedEdit] = useState(false);
+      const [gateAction, setGateAction] = useState(null);    // pending action while locked
+      const ref = useRef(null);
+      const base = "/api/departments/" + deptKey + "/machines/" + eqId + "/guide";
+
+      const [showHistory, setShowHistory] = useState(false);
+      const [versions, setVersions] = useState(null);
+      const [histBusy, setHistBusy] = useState(false);
+      const [viewing, setViewing] = useState(null);  // historical version being previewed
+
+      const isAuthed = () => !protectedEdit || !!getEditPw();
+      const requireAuth = (action) => { if (isAuthed()) action(); else setGateAction(() => action); };
+
+      const load = useCallback(() => {
+        setState({ loading: true });
+        getJSON(base).then((d) => setState({ loading: false, ...d })).catch((e) => setErr(e.message));
+      }, [base]);
+
+      useEffect(() => {
+        load(); setEditing(false); setInfo(null); setErr(null);
+        setViewing(null); setShowHistory(false); setVersions(null);
+      }, [load]);
+      useEffect(() => { getJSON("/api/edit-auth").then((d) => setProtectedEdit(!!d.protected)).catch(() => {}); }, []);
+
+      // Any 401 means the stored password is missing/stale: drop it and re-prompt.
+      const handleLocked = () => { setEditPw(""); setErr("Editing is locked. Enter the shared edit password."); };
+
+      const generate = useCallback(async () => {
+        setBusy("generate"); setErr(null); setInfo(null);
+        try {
+          const r = await fetch(API + base, { method: "POST", headers: editHeaders() });
+          const d = await r.json();
+          if (r.status === 401) { handleLocked(); return; }
+          if (!r.ok) throw new Error(d.error || "generation failed");
+          setState({ loading: false, ...d });
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(null); }
+      }, [base]);
+
+      const update = useCallback(async () => {
+        setBusy("update"); setErr(null); setInfo(null);
+        try {
+          const r = await fetch(API + base + "/update", { method: "POST", headers: editHeaders() });
+          const d = await r.json();
+          if (r.status === 401) { handleLocked(); return; }
+          if (!r.ok) throw new Error(d.error || "update failed");
+          setState({ loading: false, ...d });
+          setInfo(d.updated
+            ? `Merged ${d.new_count} new work order${d.new_count === 1 ? "" : "s"} — your edits were preserved.`
+            : "No new work orders since the last build — checklist unchanged.");
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(null); }
+      }, [base]);
+
+      const startEdit = useCallback(() => {
+        const md = state.markdown || "";
+        setBlocks(parseGuideBlocks(md));
+        setRawDraft(md);
+        setEditorMode("form");
+        setEditing(true); setErr(null); setInfo(null);
+      }, [state.markdown]);
+
+      const switchMode = (mode) => {
+        if (mode === editorMode) return;
+        if (mode === "raw") setRawDraft(blocksToGuideMarkdown(blocks));
+        else setBlocks(parseGuideBlocks(rawDraft));
+        setEditorMode(mode);
+      };
+
+      const save = useCallback(async () => {
+        const markdown = editorMode === "raw" ? rawDraft : blocksToGuideMarkdown(blocks);
+        setBusy("save"); setErr(null); setInfo(null);
+        try {
+          const r = await fetch(API + base, {
+            method: "PUT",
+            headers: editHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({ markdown }),
+          });
+          const d = await r.json();
+          if (r.status === 401) { handleLocked(); return; }
+          if (!r.ok) throw new Error(d.error || "save failed");
+          setState({ loading: false, ...d });
+          setEditing(false);
+          setInfo("Your edits were saved.");
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(null); }
+      }, [base, editorMode, rawDraft, blocks]);
+
+      const loadHistory = useCallback(() => {
+        setHistBusy(true);
+        getJSON(base + "/versions")
+          .then((d) => setVersions(d.versions || []))
+          .catch((e) => setErr(e.message))
+          .finally(() => setHistBusy(false));
+      }, [base]);
+
+      const openHistory = () => { setShowHistory(true); loadHistory(); };
+
+      const openVersion = useCallback(async (n) => {
+        setErr(null);
+        try { setViewing(await getJSON(base + "/versions/" + n)); }
+        catch (e) { setErr(e.message); }
+      }, [base]);
+
+      const restoreVersion = useCallback(async (n) => {
+        setBusy("restore"); setErr(null); setInfo(null);
+        try {
+          const r = await fetch(API + base + "/versions/" + n + "/restore", {
+            method: "POST",
+            headers: editHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({}),
+          });
+          const d = await r.json();
+          if (r.status === 401) { handleLocked(); return; }
+          if (!r.ok) throw new Error(d.error || "restore failed");
+          setState({ loading: false, ...d });
+          setViewing(null);
+          loadHistory();
+          setInfo("Restored version " + n + " as a new version.");
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(null); }
+      }, [base, loadHistory]);
+
+      // Render markdown and linkify known WO numbers.
+      const renderedHtml = state.markdown ? linkifyGuide(marked.parse(state.markdown), woIds) : "";
+      const viewHtml = viewing ? linkifyGuide(marked.parse(viewing.content || ""), woIds) : "";
+
+      useEffect(() => {
+        const el = ref.current;
+        if (!el || editing) return;
+        const handler = (e) => {
+          const wo = e.target && e.target.dataset && e.target.dataset.wo;
+          if (wo) onOpenWo(wo);
+        };
+        el.addEventListener("click", handler);
+        return () => el.removeEventListener("click", handler);
+      }, [renderedHtml, onOpenWo, editing]);
+
+      if (state.loading) return html`<${Spinner} label="Loading checklist…" />`;
+
+      const btn = "px-4 py-2 rounded-full text-sm font-semibold shadow-sm disabled:opacity-50";
+      const unlocked = protectedEdit && !!getEditPw();
+
+      return html`
+        <div>
+          ${gateAction && html`<${PasswordGate}
+            onCancel=${() => setGateAction(null)}
+            onUnlock=${() => { const a = gateAction; setGateAction(null); if (a) a(); }} />`}
+
+          <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+            <div className="text-sm text-slate-500 flex items-center gap-2">
+              ${state.exists
+                ? html`Built from this machine's unscheduled work orders. Edits you make are kept when you update.`
+                : html`No checklist yet — generate one from the unscheduled work orders.`}
+              ${protectedEdit && html`<span className=${"text-[11px] px-2 py-0.5 rounded-full border " +
+                (unlocked ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-slate-100 text-slate-500 border-slate-200")}>
+                ${unlocked ? "🔓 Editing unlocked" : "🔒 Editing locked"}
+              </span>`}
+            </div>
+            <div className="flex items-center gap-2 flex-wrap">
+              ${!state.exists && html`
+                <button onClick=${() => requireAuth(generate)} disabled=${!!busy} className=${btn + " bg-blue-600 hover:bg-blue-700 text-white"}>
+                  ${busy === "generate" ? "Generating…" : "Generate Checklist"}
+                </button>`}
+
+              ${state.exists && !editing && html`
+                <button onClick=${openHistory} disabled=${!!busy} title="See and restore previous versions"
+                  className=${btn + " bg-white border border-blue-200 text-blue-700 hover:bg-blue-50"}>
+                  History
+                </button>
+                <button onClick=${() => requireAuth(startEdit)} disabled=${!!busy} className=${btn + " bg-white border border-blue-200 text-blue-700 hover:bg-blue-50"}>
+                  Edit
+                </button>
+                <button onClick=${() => requireAuth(update)} disabled=${!!busy} title="Adds newly reported issues while keeping your edits"
+                  className=${btn + " bg-blue-600 hover:bg-blue-700 text-white"}>
+                  ${busy === "update" ? "Updating…" : "Update with new work orders"}
+                </button>`}
+
+              ${editing && html`
+                <div className="inline-flex rounded-full border border-blue-200 bg-white p-0.5 text-xs font-semibold mr-1">
+                  ${["form", "raw"].map((mode) => html`
+                    <button key=${mode} onClick=${() => switchMode(mode)}
+                      className=${"px-3 py-1.5 rounded-full transition " +
+                        (editorMode === mode ? "bg-blue-600 text-white shadow-sm" : "text-slate-600 hover:text-blue-700")}>
+                      ${mode === "form" ? "Easy editor" : "Markdown"}
+                    </button>`)}
+                </div>
+                <button onClick=${() => setEditing(false)} disabled=${!!busy} className=${btn + " bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"}>
+                  Cancel
+                </button>
+                <button onClick=${save} disabled=${!!busy} className=${btn + " bg-emerald-600 hover:bg-emerald-700 text-white"}>
+                  ${busy === "save" ? "Saving…" : "Save edits"}
+                </button>`}
+            </div>
+          </div>
+
+          ${err && html`<div className="bg-rose-50 text-rose-700 rounded-xl px-4 py-3 mb-4 text-sm">${err}</div>`}
+          ${info && html`<div className="bg-emerald-50 text-emerald-700 rounded-xl px-4 py-3 mb-4 text-sm">${info}</div>`}
+          ${busy && busy !== "save" && html`<${Spinner} label="Asking Ollama to analyze the work orders…" />`}
+
+          ${editing
+            ? (editorMode === "form"
+              ? html`<div>
+                  <p className="text-xs text-slate-400 mb-3">
+                    Type one item per line in each box — each line becomes its own bullet. Use <b>+ Add row</b> for a new issue.
+                  </p>
+                  <${GuideFormEditor} blocks=${blocks} onChange=${setBlocks} />
+                </div>`
+              : html`<div>
+                  <textarea value=${rawDraft} onInput=${(e) => setRawDraft(e.target.value)} spellcheck=${false}
+                    className="w-full h-[60vh] font-mono text-sm leading-relaxed bg-white rounded-2xl p-4
+                               border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
+                  <p className="text-xs text-slate-400 mt-2">
+                    Raw Markdown. Tables use the
+                    <code className="mx-1">| col | col |</code> format with <code>&lt;br&gt;</code> for line breaks inside a cell.
+                  </p>
+                </div>`)
+            : viewing
+              ? html`<div>
+                  <div className="flex items-center justify-between gap-3 flex-wrap bg-amber-50 border border-amber-200 text-amber-800 rounded-xl px-4 py-2.5 mb-3 text-sm">
+                    <span>Viewing <b>version ${viewing.version_number}</b> · ${viewing.source_label} · ${fmtVersionStamp(viewing.created_at)}
+                      <span className="opacity-70">(read-only)</span></span>
+                    <span className="flex gap-2">
+                      <button onClick=${() => setViewing(null)}
+                        className="px-3 py-1 rounded-full bg-white border border-amber-300 text-amber-700 hover:bg-amber-100 text-xs font-semibold">
+                        Back to current</button>
+                      <button onClick=${() => requireAuth(() => restoreVersion(viewing.version_number))} disabled=${!!busy}
+                        className="px-3 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold disabled:opacity-50">
+                        ${busy === "restore" ? "Restoring…" : "Restore this version"}</button>
+                    </span>
+                  </div>
+                  <div className="guide bg-white rounded-2xl p-6 shadow-sm border border-amber-200"
+                       dangerouslySetInnerHTML=${{ __html: viewHtml }}></div>
+                </div>`
+              : state.exists
+                ? html`<div ref=${ref} className="guide bg-white rounded-2xl p-6 shadow-sm border border-blue-100"
+                         dangerouslySetInnerHTML=${{ __html: renderedHtml }}></div>`
+                : !busy && html`<div className="text-slate-400 bg-white rounded-2xl p-10 text-center border border-dashed border-blue-200">
+                     Click <b>Generate Checklist</b> to build an operator troubleshooting guide.</div>`}
+
+          ${showHistory && html`
+            <div className="fixed inset-0 z-40" onClick=${() => setShowHistory(false)}>
+              <div className="absolute inset-0 bg-slate-900/20"></div>
+              <aside onClick=${(e) => e.stopPropagation()}
+                className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl border-l border-blue-100 flex flex-col fade-in">
+                <div className="flex items-center justify-between px-4 py-3 border-b border-blue-100">
+                  <div>
+                    <div className="font-extrabold text-slate-800">Version history</div>
+                    <div className="text-[11px] text-slate-400">Every change is saved automatically</div>
+                  </div>
+                  <button onClick=${() => setShowHistory(false)}
+                    className="w-8 h-8 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 text-lg leading-none">×</button>
+                </div>
+                <div className="flex-1 overflow-y-auto p-2">
+                  ${histBusy && html`<${Spinner} label="Loading history…" />`}
+                  ${versions && versions.length === 0 && !histBusy && html`
+                    <div className="text-slate-400 text-sm p-4 text-center">No versions recorded yet.</div>`}
+                  ${versions && versions.map((v, i) => {
+                    const isCurrent = i === 0;
+                    const active = viewing ? viewing.version_number === v.version_number : isCurrent;
+                    return html`
+                      <div key=${v.version_number}
+                        onClick=${() => (isCurrent ? setViewing(null) : openVersion(v.version_number))}
+                        className=${"rounded-xl border p-3 mb-2 cursor-pointer transition " +
+                          (active ? "border-blue-400 bg-blue-50" : "border-slate-100 hover:bg-slate-50")}>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-bold text-slate-700 text-sm">Version ${v.version_number}
+                            ${isCurrent && html`<span className="ml-1.5 text-[10px] uppercase tracking-wide font-semibold text-emerald-600">Current</span>`}
+                          </span>
+                          <span className=${"text-[10px] px-2 py-0.5 rounded-full font-semibold whitespace-nowrap " + sourceChip(v.source)}>${v.source_label}</span>
+                        </div>
+                        <div className="text-xs text-slate-500 mt-1">${fmtVersionStamp(v.created_at)}${v.author ? " · " + v.author : ""}</div>
+                        ${!isCurrent && html`
+                          <div className="mt-2 flex gap-3">
+                            <button onClick=${(e) => { e.stopPropagation(); openVersion(v.version_number); }}
+                              className="text-xs font-semibold text-blue-600 hover:underline">View</button>
+                            <button onClick=${(e) => { e.stopPropagation(); requireAuth(() => restoreVersion(v.version_number)); }}
+                              disabled=${!!busy}
+                              className="text-xs font-semibold text-emerald-600 hover:underline disabled:opacity-50">Restore</button>
+                          </div>`}
+                      </div>`;
+                  })}
+                </div>
+              </aside>
+            </div>`}
+        </div>`;
+    }
+
+    // Format an ISO timestamp for the version list.
+    function fmtVersionStamp(iso) {
+      if (!iso) return "";
+      const d = new Date(iso);
+      return isNaN(d.getTime()) ? iso
+        : d.toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+    }
+
+    // Colored chip class per version source.
+    function sourceChip(source) {
+      switch (source) {
+        case "ai_generate": return "bg-blue-100 text-blue-700";
+        case "ai_update":   return "bg-indigo-100 text-indigo-700";
+        case "manual_edit": return "bg-amber-100 text-amber-700";
+        case "restore":     return "bg-emerald-100 text-emerald-700";
+        default:            return "bg-slate-100 text-slate-600";
+      }
+    }
+
+    function linkifyGuide(htmlStr, woIds) {
+      if (!woIds || woIds.size === 0) return htmlStr;
+      return htmlStr.replace(/\b\d{2,7}\b/g, (m) =>
+        woIds.has(m) ? `<span class="wo-link" data-wo="${m}">${m}</span>` : m);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Trends tab (monthly timeline + SVG chart)                          */
+    /* ------------------------------------------------------------------ */
+    // Metric metadata shared by the chart, the toggles and the month table.
+    const TREND_METRICS = [
+      { key: "material_cost",     label: "Material Cost",   fmt: money, color: "#2563eb" },
+      { key: "downtime_hours",    label: "Downtime",        fmt: hours, color: "#f59e0b" },
+      { key: "labor_time",        label: "Labor Time",      fmt: hours, color: "#c026d3" },
+      { key: "unscheduled_count", label: "Unscheduled WOs", fmt: num,   color: "#ef4444" },
+      { key: "scheduled_count",   label: "Scheduled WOs",   fmt: num,   color: "#10b981" },
+    ];
+    const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+    // Multi-line SVG chart. Each selected metric is scaled to its OWN range
+    // (0 -> that series' max) so lines with different units can be compared by
+    // shape on one plot.
+    function TrendChart({ months, selectedKeys, onPointClick }) {
+      const W = 680, H = 260, padL = 12, padR = 12, padT = 16, padB = 26;
+      const plotW = W - padL - padR, plotH = H - padT - padB;
+      const x = (i) => padL + (plotW * i) / 11;
+      const defs = TREND_METRICS.filter((m) => selectedKeys.includes(m.key));
+
+      if (defs.length === 0)
+        return html`<div className="h-64 flex items-center justify-center text-slate-400 text-sm text-center px-4">
+          Select a metric below to plot it month&#8209;to&#8209;month.</div>`;
+
+      const grid = [0, 0.25, 0.5, 0.75, 1].map((f, i) => {
+        const gy = padT + plotH * f;
+        return html`<line key=${"g" + i} x1=${padL} y1=${gy} x2=${W - padR} y2=${gy}
+          stroke="#e2e8f0" strokeWidth="1" />`;
+      });
+
+      const series = defs.map((m) => {
+        const vals = months.map((mo) => Number(mo[m.key]) || 0);
+        const max = Math.max(...vals, 0);
+        const y = (v) => (max <= 0 ? padT + plotH : padT + plotH * (1 - v / max));
+        const pts = vals.map((v, i) => x(i) + "," + y(v)).join(" ");
+        const dots = vals.map((v, i) => html`<circle key=${m.key + i} cx=${x(i)} cy=${y(v)} r="4"
+          fill=${m.color} style=${{ cursor: "pointer" }}
+          onClick=${(e) => { e.stopPropagation(); onPointClick && onPointClick(i + 1); }}>
+          <title>${MONTHS[i]} · ${m.label}: ${m.fmt(v)} — click for synopsis</title></circle>`);
+        return html`<g key=${m.key}>
+          <polyline points=${pts} fill="none" stroke=${m.color} strokeWidth="2.5"
+            strokeLinejoin="round" strokeLinecap="round" />
+          ${dots}
+        </g>`;
+      });
+
+      const xlabels = MONTHS.map((mo, i) => html`<text key=${"x" + i} x=${x(i)} y=${H - 8}
+        textAnchor="middle" fill="#94a3b8" style=${{ fontSize: "10px" }}>${mo}</text>`);
+
+      return html`
+        <svg viewBox=${"0 0 " + W + " " + H} className="w-full" style=${{ height: "260px" }}>
+          ${grid}${series}${xlabels}
+        </svg>`;
+    }
+
+    // Compact 12-month timeline. Column headers and cells toggle a metric on
+    // the chart; active columns are tinted with the metric colour.
+    function MonthTable({ months, selected, onToggle, onMonthClick }) {
+      return html`
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="text-left">
+                <th className="py-2 px-2 text-xs uppercase tracking-wide text-slate-400 font-semibold">Month</th>
+                ${TREND_METRICS.map((m) => {
+                  const on = selected.includes(m.key);
+                  return html`<th key=${m.key} onClick=${() => onToggle(m.key)}
+                    className="py-2 px-2 text-xs font-semibold cursor-pointer select-none whitespace-nowrap"
+                    style=${{ color: on ? m.color : "#94a3b8" }}>
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full" style=${{ backgroundColor: m.color, opacity: on ? 1 : 0.35 }}></span>
+                      ${m.label}
+                    </span></th>`;
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              ${months.map((mo) => html`
+                <tr key=${mo.month} className="border-t border-slate-100 hover:bg-blue-50/40">
+                  <td className="py-1.5 px-2">
+                    <button onClick=${() => onMonthClick && onMonthClick(mo.month)}
+                      className="font-medium text-blue-600 hover:underline" title="What drove this month?">
+                      ${MONTHS[mo.month - 1]}</button>
+                  </td>
+                  ${TREND_METRICS.map((m) => {
+                    const v = Number(mo[m.key]) || 0;
+                    const on = selected.includes(m.key);
+                    return html`<td key=${m.key} onClick=${() => onToggle(m.key)}
+                      className=${"py-1.5 px-2 cursor-pointer tabular-nums " + (v === 0 ? "text-slate-300" : "text-slate-700")}
+                      style=${on ? { backgroundColor: m.color + "14" } : {}}>${m.fmt(v)}</td>`;
+                  })}
+                </tr>`)}
+            </tbody>
+          </table>
+        </div>`;
+    }
+
+    function MonthSynopsisModal({ deptKey, eqId, machineName, year, month, onClose, onOpenWo }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const ref = useRef(null);
+
+      useEffect(() => {
+        setData(null); setErr(null);
+        getJSON("/api/departments/" + deptKey + "/machines/" + eqId +
+          "/month-synopsis?year=" + year + "&month=" + month)
+          .then(setData).catch((e) => setErr(e.message));
+      }, [deptKey, eqId, year, month]);
+
+      const woIds = new Set((data && data.work_orders ? data.work_orders : []).map((w) => String(w.wo_id)));
+      const rendered = data && data.synopsis ? linkifyGuide(marked.parse(data.synopsis), woIds) : "";
+
+      useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const handler = (e) => {
+          const wo = e.target && e.target.dataset && e.target.dataset.wo;
+          if (wo) onOpenWo(wo);
+        };
+        el.addEventListener("click", handler);
+        return () => el.removeEventListener("click", handler);
+      }, [rendered, onOpenWo]);
+
+      return html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-start justify-center p-4 overflow-y-auto"
+             onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl my-8 fade-in"
+               onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-blue-100 sticky top-0 bg-white rounded-t-3xl">
+              <div>
+                <div className="font-extrabold text-lg text-blue-700">${MONTHS[month - 1]} ${year}</div>
+                <div className="text-xs text-slate-400">${machineName} · AI synopsis</div>
+              </div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 text-xl leading-none">×</button>
+            </div>
+            <div className="p-6">
+              ${err && html`<div className="text-rose-600">${err}</div>`}
+              ${!data && !err && html`<${Spinner} label="Analyzing month…" />`}
+              ${data && html`
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-5">
+                  ${TREND_METRICS.map((m) => html`<div key=${m.key}
+                    className="rounded-xl border border-slate-100 p-2 text-center">
+                    <div className="text-[10px] uppercase tracking-wide font-semibold" style=${{ color: m.color }}>${m.label}</div>
+                    <div className="text-sm font-bold text-slate-700">${m.fmt(data.totals[m.key])}</div>
+                  </div>`)}
+                </div>
+                ${data.synopsis
+                  ? html`<div ref=${ref} className="guide" dangerouslySetInnerHTML=${{ __html: rendered }}></div>`
+                  : html`<div className="text-slate-400">No synopsis available.</div>`}`}
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function YearSection({ yr, defaultOpen, deptKey, eqId, machineName, onOpenWo }) {
+      const [open, setOpen] = useState(!!defaultOpen);
+      const [selected, setSelected] = useState(["material_cost"]);
+      const [synMonth, setSynMonth] = useState(null);
+      const toggle = (k) =>
+        setSelected((s) => (s.includes(k) ? s.filter((x) => x !== k) : [...s, k]));
+      const woTotal = yr.totals.unscheduled_count + yr.totals.scheduled_count;
+
+      return html`
+        <${React.Fragment}>
+        <section className="bg-white rounded-2xl shadow-sm border border-blue-100 overflow-hidden">
+          <button onClick=${() => setOpen((o) => !o)}
+            className="w-full flex items-center justify-between px-5 py-3.5 hover:bg-blue-50/50">
+            <div className="flex items-center gap-3">
+              <span className=${"text-blue-400 text-xs transition-transform " + (open ? "rotate-90" : "")}>▶</span>
+              <span className="text-lg font-extrabold text-slate-800">${yr.year}</span>
+            </div>
+            <div className="flex items-center gap-4 text-sm text-slate-500">
+              <span className="font-semibold text-slate-700">${money(yr.totals.material_cost)}</span>
+              <span className="hidden sm:inline">${hours(yr.totals.downtime_hours)} down</span>
+              <span className="hidden md:inline">${num(woTotal)} WOs</span>
+            </div>
+          </button>
+          ${open && html`
+            <div className="px-5 pb-5 pt-1 fade-in">
+              <${TrendChart} months=${yr.months} selectedKeys=${selected} onPointClick=${setSynMonth} />
+              <div className="flex flex-wrap gap-2 mt-3 mb-4">
+                ${TREND_METRICS.map((m) => {
+                  const on = selected.includes(m.key);
+                  return html`<button key=${m.key} onClick=${() => toggle(m.key)}
+                    className=${"flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition " +
+                      (on ? "text-white shadow" : "bg-white text-slate-500 border-slate-200 hover:bg-slate-50")}
+                    style=${on ? { backgroundColor: m.color, borderColor: m.color } : {}}>
+                    <span className="w-2.5 h-2.5 rounded-full" style=${{ backgroundColor: on ? "#fff" : m.color }}></span>
+                    ${m.label}
+                  </button>`;
+                })}
+              </div>
+              <${MonthTable} months=${yr.months} selected=${selected} onToggle=${toggle} onMonthClick=${setSynMonth} />
+            </div>`}
+        </section>
+        ${synMonth && html`<${MonthSynopsisModal}
+          deptKey=${deptKey} eqId=${eqId} machineName=${machineName}
+          year=${yr.year} month=${synMonth}
+          onClose=${() => setSynMonth(null)} onOpenWo=${onOpenWo} />`}
+        </${React.Fragment}>`;
+    }
+
+    function TrendsTab({ deptKey, eqId, machineName, onOpenWo }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+
+      useEffect(() => {
+        setData(null); setErr(null);
+        getJSON("/api/departments/" + deptKey + "/machines/" + eqId + "/trends")
+          .then(setData).catch((e) => setErr(e.message));
+      }, [deptKey, eqId]);
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading trends…" />`;
+
+      const years = [...(data.years || [])].sort((a, b) => b.year - a.year);
+      if (years.length === 0)
+        return html`<div className="text-slate-400 py-8">No dated work orders to chart for ${machineName}.</div>`;
+
+      return html`
+        <div className="space-y-4">
+          <p className="text-slate-500 text-sm">
+            Monthly trends for <span className="font-semibold text-slate-700">${machineName}</span>.
+            Click a metric to plot it across the year; select several to compare
+            (each line is scaled to its own range). Click a point on the chart — or a
+            month name below — for an AI synopsis of what drove that month.
+          </p>
+          ${years.map((yr, i) => html`<${YearSection} key=${yr.year} yr=${yr} defaultOpen=${i === 0}
+            deptKey=${deptKey} eqId=${eqId} machineName=${machineName} onOpenWo=${onOpenWo} />`)}
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Machine view                                                       */
+    /* ------------------------------------------------------------------ */
+    const TABS = ["Dashboard", "Trends", "Weekly", "Checklist", "Unscheduled", "Scheduled"];
+
+    // Equipment IDs for which the Trends tab is enabled (the machines the team
+    // tracks trends on). All other machines hide the Trends tab.
+    const TRENDS_EQ_IDS = new Set([
+      "1361", "135", "1335", "1503", "5", "2063", "151", "1877", "1570",
+      "1724", "5273", "105", "1879", "5351", "154", "1584",
+    ]);
+
+    function MachineView({ deptKey, eqId, deptLabel, divisionLabel, onHome, onCompany, onOpenDept, onOpenWo }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [tab, setTab] = useState("Dashboard");
+
+      useEffect(() => {
+        setData(null); setTab("Dashboard");
+        getJSON("/api/departments/" + deptKey + "/machines/" + eqId)
+          .then(setData).catch((e) => setErr(e.message));
+      }, [deptKey, eqId]);
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading machine…" />`;
+
+      const m = data.machine;
+      const woIds = new Set(
+        [...(data.unscheduled || []), ...(data.scheduled || [])].map((r) => String(r.wo_id))
+      );
+
+      // Only expose the Trends tab for the enabled machines.
+      const tabs = TABS.filter((t) => t !== "Trends" || TRENDS_EQ_IDS.has(String(eqId)));
+
+      return html`
+        <div className="fade-in">
+          <${Breadcrumb} items=${[
+            { label: "Company", onClick: onCompany },
+            { label: (divisionLabel || "BLA") + " Division", onClick: onHome },
+            { label: deptLabel || m.department, onClick: () => onOpenDept(deptKey) },
+            { label: m.name },
+          ]} />
+          <div className="flex items-end justify-between flex-wrap gap-2 mb-5">
+            <div>
+              <h1 className="text-2xl font-extrabold text-slate-800">${m.name}</h1>
+              <div className="text-blue-500 font-mono text-sm">${m.eq_label} · ${m.department}</div>
+            </div>
+          </div>
+
+          <div className="flex gap-2 mb-6 bg-white p-1.5 rounded-full shadow-sm border border-blue-100 w-fit flex-wrap">
+            ${tabs.map((t) => html`
+              <button key=${t} onClick=${() => setTab(t)}
+                className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
+                  (tab === t ? "bg-blue-600 text-white shadow" : "text-slate-500 hover:bg-blue-50")}>
+                ${t}
+                ${t === "Unscheduled" && html`<span className="ml-1 opacity-70">(${data.stats.unscheduled_count})</span>`}
+                ${t === "Scheduled" && html`<span className="ml-1 opacity-70">(${data.stats.scheduled_count})</span>`}
+              </button>`)}
+          </div>
+
+          ${tab === "Dashboard" && html`
+            <div className="fade-in">
+              <${KpiRow} stats=${data.stats} />
+              <p className="text-slate-400 text-sm mt-4">
+                Quick view for ${m.name}. Use the tabs above for the troubleshooting checklist and full work-order details.
+              </p>
+            </div>`}
+
+          ${tab === "Trends" && html`
+            <div className="fade-in">
+              <${TrendsTab} deptKey=${deptKey} eqId=${eqId} machineName=${m.name} onOpenWo=${onOpenWo} />
+            </div>`}
+
+          ${tab === "Weekly" && html`
+            <div className="fade-in">
+              <${EmbeddedWeekly}
+                predicate=${(r) => String(r.equipment_id) === String(eqId)}
+                showDept=${false}
+                onOpenWo=${onOpenWo}
+                subtitle=${m.name + " · scheduled & unscheduled work orders by week (Sunday → Sunday)."} />
+            </div>`}
+
+          ${tab === "Checklist" && html`
+            <div className="fade-in">
+              <${ChecklistTab} deptKey=${deptKey} eqId=${eqId} woIds=${woIds} onOpenWo=${onOpenWo} />
+            </div>`}
+
+          ${tab === "Unscheduled" && html`
+            <div className="fade-in">
+              <${WorkOrderList} records=${data.unscheduled} kind="unscheduled" onOpen=${onOpenWo} />
+            </div>`}
+
+          ${tab === "Scheduled" && html`
+            <div className="fade-in">
+              <${WorkOrderList} records=${data.scheduled} kind="scheduled" onOpen=${onOpenWo} />
+            </div>`}
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Weekly schedule dashboard (Sunday -> Sunday)                        */
+    /* ------------------------------------------------------------------ */
+    const WEEK_DEFS = [
+      { key: "last", label: "Last Week", accent: "border-slate-300", head: "bg-slate-100 text-slate-600" },
+      { key: "this", label: "This Week", accent: "border-blue-300", head: "bg-blue-600 text-white" },
+      { key: "next", label: "Next Week", accent: "border-emerald-300", head: "bg-emerald-600 text-white" },
+    ];
+
+    // Parse "MM/DD/YYYY" or "MM/DD/YYYY HH:MM" into a sortable timestamp.
+    // Missing/unparseable dates sort last.
+    function parseWODate(s) {
+      if (!s) return Infinity;
+      const m = String(s).trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4}|\d{2})(?:\s+(\d{1,2}):(\d{2}))?/);
+      if (!m) return Infinity;
+      let year = +m[3];
+      if (m[3].length === 2) year += year <= 68 ? 2000 : 1900; // 2-digit year
+      return new Date(year, +m[1] - 1, +m[2], +(m[4] || 0), +(m[5] || 0)).getTime();
+    }
+
+    // Collect work orders into the three week buckets for the records that
+    // match `predicate`, then order each list by date: scheduled soonest-due
+    // first, unscheduled oldest-notified first (oldest to complete first).
+    function buildBuckets(data, predicate) {
+      const b = {
+        last: { scheduled: [], unscheduled: [] },
+        this: { scheduled: [], unscheduled: [] },
+        next: { scheduled: [], unscheduled: [] },
+      };
+      data.departments.forEach((d) => {
+        WEEK_DEFS.forEach(({ key }) => {
+          (d.weeks[key]?.scheduled || []).forEach((r) => { if (predicate(r)) b[key].scheduled.push(r); });
+          (d.weeks[key]?.unscheduled || []).forEach((r) => { if (predicate(r)) b[key].unscheduled.push(r); });
+        });
+      });
+      Object.values(b).forEach((w) => {
+        w.scheduled.sort((a, c) => parseWODate(a.due_date) - parseWODate(c.due_date));
+        w.unscheduled.sort((a, c) => parseWODate(a.date_notified) - parseWODate(c.date_notified));
+      });
+      return b;
+    }
+
+    function WeekWORow({ r, showDept, deptLabels, onOpenWo }) {
+      const when = r.wo_type === "scheduled" ? r.due_date : r.date_notified;
+      return html`
+        <button onClick=${() => onOpenWo(r.wo_id)}
+          className="w-full text-left bg-white rounded-xl px-3 py-2 border border-blue-100
+                     hover:border-blue-300 hover:shadow-sm transition">
+          <div className="flex items-center justify-between gap-2">
+            <span className="font-bold text-blue-700 text-sm">WO #${r.wo_id}</span>
+            <span className="text-[11px] text-slate-400 whitespace-nowrap">${when || ""}</span>
+          </div>
+          <div className="text-xs text-slate-600 mt-0.5 line-clamp-2">${r.problem || r.audit_item || r.equipment_name || "—"}</div>
+          <div className="flex items-center gap-2 mt-1 flex-wrap">
+            <span className="text-[11px] text-slate-500 truncate max-w-[11rem]">${r.equipment_name || ""}</span>
+            ${r.status && html`<span className=${"text-[10px] px-1.5 py-0.5 rounded-full border " + statusColor(r.status)}>${r.status}</span>`}
+            ${showDept && deptLabels[r.department_key] && html`<span className="text-[10px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100">${deptLabels[r.department_key]}</span>`}
+          </div>
+        </button>`;
+    }
+
+    function WeekColumn({ def, week, bucket, showDept, deptLabels, onOpenWo, typeFilter = "all" }) {
+      const sch = bucket.scheduled || [];
+      const uns = bucket.unscheduled || [];
+      const showSch = typeFilter !== "unscheduled";
+      const showUns = typeFilter !== "scheduled";
+      return html`
+        <section className=${"bg-slate-50 rounded-2xl border " + def.accent + " overflow-hidden flex flex-col"}>
+          <div className=${"px-4 py-3 " + def.head}>
+            <div className="font-extrabold">${def.label}</div>
+            <div className="text-xs opacity-80">${week ? (week.start + " → " + week.end) : ""}</div>
+            <div className="flex gap-2 mt-2 text-xs">
+              <span className="bg-white/80 text-sky-700 rounded-full px-2 py-0.5 font-semibold">${sch.length} scheduled</span>
+              <span className="bg-white/80 text-rose-700 rounded-full px-2 py-0.5 font-semibold">${uns.length} unscheduled</span>
+            </div>
+          </div>
+          <div className="p-3 space-y-4 overflow-y-auto" style=${{ maxHeight: "62vh" }}>
+            ${showSch && html`<div>
+              <div className="text-xs font-bold uppercase tracking-wide text-sky-600 mb-2">Scheduled (${sch.length})</div>
+              <div className="space-y-2">
+                ${sch.length === 0
+                  ? html`<div className="text-slate-400 text-xs italic">None</div>`
+                  : sch.map((r) => html`<${WeekWORow} key=${"s" + r.wo_id} r=${r} showDept=${showDept} deptLabels=${deptLabels} onOpenWo=${onOpenWo} />`)}
+              </div>
+            </div>`}
+            ${showUns && html`<div>
+              <div className="text-xs font-bold uppercase tracking-wide text-rose-600 mb-2">Unscheduled (${uns.length})</div>
+              <div className="space-y-2">
+                ${uns.length === 0
+                  ? html`<div className="text-slate-400 text-xs italic">None</div>`
+                  : uns.map((r) => html`<${WeekWORow} key=${"u" + r.wo_id} r=${r} showDept=${showDept} deptLabels=${deptLabels} onOpenWo=${onOpenWo} />`)}
+              </div>
+            </div>`}
+          </div>
+        </section>`;
+    }
+
+    // Pure presentational: renders the three week columns for whatever records
+    // match `predicate`. Reused by the top-level tab, the department view and
+    // the machine view.
+    function WeeklyPanels({ data, predicate, showDept, onOpenWo, typeFilter = "all" }) {
+      const deptLabels = {};
+      data.departments.forEach((d) => { deptLabels[d.key] = d.label; });
+      const buckets = buildBuckets(data, predicate);
+      return html`
+        <div className="grid md:grid-cols-3 gap-4">
+          ${WEEK_DEFS.map((def) => html`
+            <${WeekColumn} key=${def.key} def=${def} week=${data.weeks[def.key]}
+              bucket=${buckets[def.key]} showDept=${showDept}
+              deptLabels=${deptLabels} onOpenWo=${onOpenWo} typeFilter=${typeFilter} />`)}
+        </div>`;
+    }
+
+    // Fetches /api/weekly and renders panels for a fixed scope (department or
+    // machine). Used embedded inside the department and machine views so the
+    // relevant weekly schedule shows up automatically - no manual filtering.
+    function EmbeddedWeekly({ predicate, showDept, onOpenWo, title, subtitle }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [typeFilter, setTypeFilter] = useState("all");
+      useEffect(() => {
+        getJSON("/api/weekly").then(setData).catch((e) => setErr(e.message));
+      }, []);
+      if (err) return html`<div className="text-rose-600 text-sm">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading weekly schedule…" />`;
+      const TYPE_TABS = [
+        { key: "all", label: "All" },
+        { key: "scheduled", label: "Scheduled" },
+        { key: "unscheduled", label: "Unscheduled" },
+      ];
+      return html`
+        <div className="fade-in">
+          <div className="flex items-start justify-between flex-wrap gap-3 mb-4">
+            <div>
+              ${title && html`<h2 className="text-lg font-extrabold text-slate-800">${title}</h2>`}
+              ${subtitle && html`<p className="text-slate-500 text-sm">${subtitle}</p>`}
+            </div>
+            <div className="inline-flex rounded-full border border-blue-200 bg-white p-0.5 text-sm font-semibold">
+              ${TYPE_TABS.map((t) => html`
+                <button key=${t.key} onClick=${() => setTypeFilter(t.key)}
+                  className=${"px-4 py-1.5 rounded-full transition " +
+                    (typeFilter === t.key
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "text-slate-600 hover:text-blue-700")}>
+                  ${t.label}
+                </button>`)}
+            </div>
+          </div>
+          <${WeeklyPanels} data=${data} predicate=${predicate} showDept=${showDept} onOpenWo=${onOpenWo} typeFilter=${typeFilter} />
+        </div>`;
+    }
+
+    function WeeklyDashboard({ onOpenWo }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [scope, setScope] = useState("all");
+      const [typeFilter, setTypeFilter] = useState("all");
+
+      useEffect(() => {
+        getJSON("/api/weekly").then(setData).catch((e) => setErr(e.message));
+      }, []);
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading weekly schedule…" />`;
+
+      const predicate = scope === "all" ? () => true : (r) => r.department_key === scope;
+
+      const TYPE_TABS = [
+        { key: "all", label: "All" },
+        { key: "scheduled", label: "Scheduled" },
+        { key: "unscheduled", label: "Unscheduled" },
+      ];
+
+      return html`
+        <div className="fade-in">
+          <${Breadcrumb} items=${[{ label: "BLA Division" }, { label: "Weekly Schedule" }]} />
+          <div className="flex items-end justify-between flex-wrap gap-3 mb-5">
+            <div>
+              <h1 className="text-2xl font-extrabold text-slate-800 mb-1">Weekly Work Order Schedule</h1>
+              <p className="text-slate-500">Scheduled &amp; unscheduled work orders by week (Sunday → Sunday). Future weeks show scheduled work only.</p>
+            </div>
+            <div className="flex items-center gap-3 flex-wrap">
+              <div className="inline-flex rounded-full border border-blue-200 bg-white p-0.5 text-sm font-semibold">
+                ${TYPE_TABS.map((t) => html`
+                  <button key=${t.key} onClick=${() => setTypeFilter(t.key)}
+                    className=${"px-4 py-1.5 rounded-full transition " +
+                      (typeFilter === t.key
+                        ? "bg-blue-600 text-white shadow-sm"
+                        : "text-slate-600 hover:text-blue-700")}>
+                    ${t.label}
+                  </button>`)}
+              </div>
+              <select value=${scope} onChange=${(e) => setScope(e.target.value)}
+                className="px-4 py-2 rounded-full border border-blue-200 bg-white text-sm font-semibold text-slate-700
+                           focus:outline-none focus:ring-2 focus:ring-blue-300">
+                <option value="all">All Departments (Overall)</option>
+                ${data.departments.map((d) => html`<option key=${d.key} value=${d.key}>${d.label}</option>`)}
+              </select>
+            </div>
+          </div>
+          <${WeeklyPanels} data=${data} predicate=${predicate} showDept=${scope === "all"} onOpenWo=${onOpenWo} typeFilter=${typeFilter} />
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* App shell + routing                                                */
+    /* ------------------------------------------------------------------ */
+    const DEPT_LABELS = {
+      soap: "Soap & Assembly", toilet: "Toilet Partitions", assembly: "Assembly",
+      general: "General", machine_shop: "Machine Shop", maintenance: "Maintenance",
+      mfg_engineering: "Mfg Engineering", quality_assurance: "Quality Assurance",
+    };
+
+    const DIV_LABELS = { bla: "BLA", bed: "BED" };
+
+    function App() {
+      const [route, setRoute] = useState({ view: "company" });
+      const [woId, setWoId] = useState(null);
+      // Bumped whenever a work order changes, so list views can refetch.
+      const [dataVersion, setDataVersion] = useState(0);
+
+      const goCompany = () => setRoute({ view: "company" });
+      const openDivision = (divisionKey) => setRoute({ view: "division", divisionKey });
+      const goDivision = () => setRoute((r) => ({ view: "division", divisionKey: r.divisionKey || "bla" }));
+      const openDept = (deptKey) =>
+        setRoute((r) => ({ view: "department", divisionKey: r.divisionKey || "bla", deptKey }));
+      const openMachine = (eqId) =>
+        setRoute((r) => ({ view: "machine", divisionKey: r.divisionKey || "bla", deptKey: r.deptKey, eqId }));
+
+      const divLabel = DIV_LABELS[route.divisionKey || "bla"] || (route.divisionKey || "bla").toUpperCase();
+
+      return html`
+        <div className="min-h-screen">
+          <${Header} />
+          <main className="max-w-6xl mx-auto px-6 py-8">
+            ${route.view === "company" && html`<${CompanyDashboard} onOpenDivision=${openDivision} />`}
+            ${route.view === "division" && html`
+              <${DivisionDashboard} divisionKey=${route.divisionKey || "bla"} onHome=${goCompany}
+                refreshSignal=${dataVersion}
+                onOpenDept=${openDept} onOpenWo=${setWoId} />`}
+            ${route.view === "department" && html`
+              <${DepartmentDashboard} deptKey=${route.deptKey}
+                divisionKey=${route.divisionKey || "bla"} divisionLabel=${divLabel}
+                refreshSignal=${dataVersion}
+                onHome=${goDivision} onCompany=${goCompany}
+                onOpenMachine=${openMachine} onOpenWo=${setWoId} />`}
+            ${route.view === "machine" && html`
+              <${MachineView} deptKey=${route.deptKey} eqId=${route.eqId}
+                deptLabel=${DEPT_LABELS[route.deptKey]} divisionLabel=${divLabel}
+                onHome=${goDivision} onCompany=${goCompany}
+                onOpenDept=${openDept} onOpenWo=${setWoId} />`}
+          </main>
+          ${woId && html`<${WorkOrderModal} woId=${woId} onClose=${() => setWoId(null)}
+            onOpenWo=${setWoId} onChanged=${() => setDataVersion((v) => v + 1)} />`}
+        </div>`;
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(html`<${App} />`);
+  </script>
+</body>
+</html>

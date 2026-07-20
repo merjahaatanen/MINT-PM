@@ -1,0 +1,39 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,12625,Service Driver (Replace driver and factory service),Pending,8/5/2025,,0.00,0.00,0.00,,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,15033,"Technician to notify purchasing too have vendor:
+(Check and align belt; replace belt if needed)",Pending,6/12/2025,,0.00,0.00,0.00,,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,15031,"Technician to verify machine as been cleaned regularly whenever visiting vendor
+Clean and adjust machine as needed",Pending,9/12/2025,,0.00,0.00,0.00,,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,15034,"Technician to notify purchasing to have vendor:
+(Check bearings for free rotation)",Pending,9/12/2025,,0.00,0.00,0.00,,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,15030,"Technician to verify cleaning has been performed on a monthly schedule whenever at vendor location
+Empty Vacuum Bag/Container from can cleaner",Pending,4/12/2025,,0.00,0.00,0.00,,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,110,"Technician to notify purchasing to have vendor arrange to have tool calibrated:
+( 10 +/- 1 lbs. in )",Pending,6/18/2022,,0.00,0.00,0.00,,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,109,"Technician to verify cleaning has been performed on a monthly schedule whenever at vendor location
+Empty Vacuum Bag/Container from can cleaner",Closed and Completed,4/18/2022,PU,0.20,0.00,0.00,4/19/2022,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,107,"Technician to verify machine as been cleaned regularly whenever visiting vendor
+Clean and adjust machine as needed",Closed without Action,9/18/2022,PU & JA,0.00,0.00,0.00,9/7/2022,Primo Uy - 09/07/22  1:49:35 PM: Done. Machine was out source.  ME already assigned a point man in APT to perform the PM for the 2111/12,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,108,"Technician to notify purchasing to have vendor:
+(Check bearings for free rotation)",Closed and Completed,9/18/2022,PU,0.20,0.00,0.00,11/21/2022,Primo Uy - 11/21/22  7:58:49 AM: Done | Primo Uy - 11/21/22  7:58:30 AM: Done,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,2643,"Technician to verify cleaning has been performed on a monthly schedule whenever at vendor location
+Empty Vacuum Bag/Container from can cleaner",Closed and Completed,11/13/2022,PU,0.00,0.00,0.00,11/28/2022,Primo Uy - 11/28/22 10:28:53 AM: ME is taking over Task. Machine is over APT.,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,105,Service Driver (Replace driver and factory service),Closed and Completed,3/18/2023,PU,0.00,0.00,0.00,3/18/2024,Primo Uy - 08/05/24 10:18:02 AM: Notify ME.,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,3313,"Technician to notify purchasing to have vendor:
+(Check bearings for free rotation)",Closed without Action,5/21/2023,PU,0.00,0.00,0.00,5/21/2024,Primo Uy - 08/05/24 10:17:04 AM: Notify ME.,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,106,"Technician to notify purchasing too have vendor:
+(Check and align belt; replace belt if needed)",Closed without Action,6/18/2022,PU,0.00,0.00,0.00,6/18/2024,Primo Uy - 08/05/24 10:19:52 AM: Notified ME,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,12627,"Technician to notify purchasing too have vendor:
+(Check and align belt; replace belt if needed)",Closed without Action,11/5/2024,md,0.00,0.00,0.00,3/12/2025,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,2642,"Technician to verify machine as been cleaned regularly whenever visiting vendor
+Clean and adjust machine as needed",Closed without Action,4/13/2023,md,0.00,0.00,0.00,3/12/2025,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,12624,"Technician to notify purchasing to have vendor:
+(Check bearings for free rotation)",Closed without Action,2/5/2025,md,0.00,0.00,0.00,3/12/2025,,[]
+120,EQ ID 120,Assembly Machine 2111/12,Mfg Engineering,3346,"Technician to verify cleaning has been performed on a monthly schedule whenever at vendor location
+Empty Vacuum Bag/Container from can cleaner",Closed without Action,12/28/2022,md,0.00,0.00,0.00,3/12/2025,,[]
+137,EQ ID 137,ME Support Request,Mfg Engineering,124,"Audit the obsolete equipment list and delete any that are no longer needed. To do this, go to the Equipment list and click on the Obsolete Equipment view.",Pending,3/18/2023,,0.00,0.00,0.00,,,[]
+137,EQ ID 137,ME Support Request,Mfg Engineering,4993,test,Closed and Completed,4/23/2023,md,0.00,0.00,0.00,3/12/2025,,[]
+66,EQ ID 66,"2111, 2112 Can Cleaner",Mfg Engineering,15032,"Check Vaccum, debris trap, clean or replace",Pending,4/12/2025,,0.00,0.00,0.00,,,[]
+66,EQ ID 66,"2111, 2112 Can Cleaner",Mfg Engineering,47,"Check Vaccum, debris trap, clean or replace",Closed and Completed,4/18/2022,na,0.00,0.00,0.00,4/20/2022,,[]
+66,EQ ID 66,"2111, 2112 Can Cleaner",Mfg Engineering,2891,"Check Vaccum, debris trap, clean or replace",Closed and Completed,11/13/2022,Juan L,0.05,0.00,0.05,9/11/2023,,[]
+66,EQ ID 66,"2111, 2112 Can Cleaner",Mfg Engineering,7164,"Check Vaccum, debris trap, clean or replace",Closed without Action,10/11/2023,md,0.00,0.00,0.00,3/12/2025,,[]

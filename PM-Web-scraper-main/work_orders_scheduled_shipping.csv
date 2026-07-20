@@ -1,0 +1,227 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,17733,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Pending,12/18/2025,,0.00,0.00,0.00,,Sean Jennings - 06/05/26 10:21:36 AM: Team please review.,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,721,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,4/18/2022,Mike diaz,0.20,0.00,0.00,4/18/2022,Miguel Diaz - 04/19/22  7:11:17 AM: Lubed rollers,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,2764,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,11/13/2022,md,0.10,0.00,0.00,12/9/2022,Miguel Diaz - 12/09/22 12:06:50 PM: lubed rollers,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,3552,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,1/9/2023,md,0.50,0.00,0.00,2/6/2023,,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,4317,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,3/10/2023,md,0.00,0.00,0.00,3/17/2023,Miguel Diaz - 03/20/23 12:58:07 PM: Done,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,4931,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,4/20/2023,MIKE,0.20,0.00,0.00,5/12/2023,"Miguel Diaz - 05/12/23 11:32:40 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches
+*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander
+*Check tape on edge bander return system transition .
+*Check Pop up table stopper to have rubber in front of it 
+*Check tape on end cover of the return system 
+*Check for Glue spreader infeed table stile supports rounded edges 
+*Check rubber on Yellow L brackets .
+*Check Edge trimmer electrical board to be covered with Rubber 
+*Check tape on return system transition 
+*Check wheels stopper to have rubber in the front 
+*Check pop up table stile staging area replace rubber if needed .
+*Check 1540 door notcher to have rounded edges and rubber on table top 
+*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray 
+*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,5664,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,6/12/2023,mike d,0.30,0.00,0.00,7/5/2023,Miguel Diaz - 07/05/23  7:45:23 AM: lubed rollers,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,6298,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,8/5/2023,mike d,0.00,0.00,0.00,8/3/2023,Miguel Diaz - 08/03/23  6:48:53 AM: lubed rollers,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,6694,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,9/3/2023,Max Mike d,0.40,0.00,0.00,9/11/2023,Miguel Diaz - 09/11/23  8:32:55 AM: gate closing properly,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,7162,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,10/11/2023,md,0.00,0.00,0.00,11/8/2023,Miguel Diaz - 11/08/23 12:57:07 PM: lubed chain and rollers,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,7971,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,12/8/2023,miked,0.30,0.00,0.00,12/2/2023,Miguel Diaz - 12/02/23  8:03:33 AM: done,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,8223,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,1/2/2024,MD,0.30,0.00,0.00,1/6/2024,Miguel Diaz - 01/09/24  8:36:09 AM: Lubed rollers,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,9582,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,2/9/2024,md,0.30,0.00,0.00,2/16/2024,Miguel Diaz - 02/16/24  9:10:26 AM: Lube rollers and chain,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,10418,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,3/16/2024,Mike d,0.20,0.00,0.00,4/8/2024,Miguel Diaz - 04/08/24 11:54:06 AM: cost is in,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,10988,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,5/8/2024,md,0.30,0.00,0.00,5/9/2024,Miguel Diaz - 05/09/24  7:35:44 AM: lubed rollers,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,11604,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,6/9/2024,Mike d,0.20,0.00,0.00,6/6/2024,Miguel Diaz - 06/06/24 11:05:44 AM: lubed all moving parts,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,11983,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,7/6/2024,md,0.20,0.00,0.00,7/5/2024,Miguel Diaz - 07/15/24  7:59:26 AM: lubed rollers top and bottom with WD-40,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,12392,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,8/15/2024,md,0.20,0.00,0.00,9/10/2024,Miguel Diaz - 09/10/24  9:07:11 AM: lubed rollers,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,13008,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,10/10/2024,md,0.20,0.00,0.00,10/11/2024,Miguel Diaz - 12/09/24 12:57:04 PM: Done,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,14024,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,1/9/2025,md,0.00,0.00,0.00,12/12/2024,Miguel Diaz - 01/08/25  9:19:22 AM: lubed all moving parts,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,14293,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed and Completed,2/8/2025,MD,0.20,0.00,0.00,2/7/2025,Miguel Diaz - 02/27/25 10:56:59 AM: Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,[]
+1211,EQ ID 1211,Shrink Wrap Machine with Integrated Scale,Shipping,14855,Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .,Closed without Action,3/27/2025,PU,0.20,0.00,0.00,3/27/2025,Primo Uy - 11/18/25  7:23:24 AM: Done. No lubrication needed for now,[]
+1925,EQ ID 1925,Stacker 23,Shipping,14871,Raymond to perform scheduled maintenance,Pending,4/27/2025,,0.00,0.00,0.00,,,[]
+1925,EQ ID 1925,Stacker 23,Shipping,995,Raymond to perform scheduled maintenance,Closed and Completed,5/18/2022,Raymond tech,1.00,0.00,0.00,4/26/2022,Miguel Diaz - 04/27/22  7:54:28 AM: Tech performed scheduled maint on 4-26-22,[]
+1925,EQ ID 1925,Stacker 23,Shipping,2809,Raymond to perform scheduled maintenance,Closed and Completed,12/13/2022,raymond,0.00,0.00,0.00,2/10/2023,,[]
+1925,EQ ID 1925,Stacker 23,Shipping,4313,Raymond to perform scheduled maintenance,Closed and Completed,4/10/2023,RAMOND TECH,1.00,98.00,0.00,7/25/2023,Miguel Diaz - 08/03/23  6:50:54 AM: Tech performed the scheduled maintenance,[]
+1925,EQ ID 1925,Stacker 23,Shipping,6696,Raymond to perform scheduled maintenance,Closed and Completed,10/3/2023,Raymond tech Hovic,1.50,98.00,0.00,11/10/2023,Miguel Diaz - 11/27/23 10:23:13 AM: Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed,[]
+1925,EQ ID 1925,Stacker 23,Shipping,8133,Raymond to perform scheduled maintenance,Closed and Completed,1/27/2024,Raymond tech,1.50,0.00,0.00,1/30/2024,Miguel Diaz - 02/16/24  9:11:08 AM: Tech performed the scheduled maintenance,[]
+1925,EQ ID 1925,Stacker 23,Shipping,10419,Raymond to perform scheduled maintenance,Closed and Completed,4/16/2024,Raymond tech,1.00,98.00,0.00,3/22/2024,Miguel Diaz - 04/09/24  9:32:53 AM: Tech performed the scheduled maintenance,[]
+1925,EQ ID 1925,Stacker 23,Shipping,11033,Raymond to perform scheduled maintenance,Closed and Completed,6/9/2024,raymond tech,1.50,98.00,0.00,5/27/2024,Miguel Diaz - 06/06/24 11:05:13 AM: Tech performed the scheduled maintenance,[]
+1925,EQ ID 1925,Stacker 23,Shipping,11982,Raymond to perform scheduled maintenance,Closed and Completed,8/6/2024,raymond tech,1.00,0.00,0.00,7/24/2024,Miguel Diaz - 07/20/24 12:21:58 PM: Raymond tech performed the scheduled maintenance,[]
+1925,EQ ID 1925,Stacker 23,Shipping,12471,Raymond to perform scheduled maintenance,Closed and Completed,9/20/2024,raymond tech,0.00,0.00,0.00,9/20/2024,Miguel Diaz - 12/09/24 12:55:44 PM: Done,[]
+1925,EQ ID 1925,Stacker 23,Shipping,14020,Raymond to perform scheduled maintenance,Closed and Completed,2/9/2025,Raymond tech,1.00,98.00,0.00,2/11/2025,Miguel Diaz - 02/27/25 11:11:00 AM: Raymond tech performed scheduled maintenance,[]
+2025,EQ ID 2025,Dock ramps,Shipping,1009,"*Grease all fittings on the dock ramps flap 
+*Pull handle to raise the ramp go to the other side of the ramp and grease all fittings underneath the flap should be 20 grease nipples .
+*Use blue grease",Closed and Completed,3/18/2023,md Max,3.00,0.00,0.00,3/18/2023,Miguel Diaz - 03/20/23 12:58:37 PM: greased available ramps,[]
+2025,EQ ID 2025,Dock ramps,Shipping,4932,"*Grease all fittings on the dock ramps flap 
+*Pull handle to raise the ramp go to the other side of the ramp and grease all fittings underneath the flap should be 20 grease nipples .
+*Use blue grease",Closed and Completed,3/20/2024,Max Primo,1.00,0.00,0.00,4/11/2024,Miguel Diaz - 04/15/24  9:37:18 AM: they greased three docks as the trucks are gone they will get to the others when time permits,[]
+2025,EQ ID 2025,Dock ramps,Shipping,11198,"*Grease all fittings on the dock ramps flap 
+*Pull handle to raise the ramp go to the other side of the ramp and grease all fittings underneath the flap should be 20 grease nipples .
+*Use blue grease",Closed and Completed,4/15/2025,PU,1.00,0.00,0.00,4/15/2025,Primo Uy - 11/18/25  7:24:51 AM: Done,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,14291,Replace filters on wall Buy from Grainger part #11C880,Pending,7/8/2025,,0.00,0.00,0.00,,Sean Jennings - 06/05/26 10:23:00 AM: Team please review.,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,913,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed and Completed,9/18/2022,Primo,2.50,700.00,0.00,10/1/2022,,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,912,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,9/18/2022,,0.00,0.00,0.00,10/1/2022,,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,2845,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,4/13/2023,Max,1.00,194.00,0.00,4/1/2023,Miguel Diaz - 04/12/23  7:50:13 AM: done,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,2846,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed and Completed,4/13/2023,Max,2.00,781.20,0.00,4/1/2023,Miguel Diaz - 04/12/23  7:51:02 AM: done,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,5246,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed without Action,10/12/2023,MD,0.00,0.00,0.00,11/8/2023,Miguel Diaz - 11/08/23 12:48:02 PM: ANOTHER WORK ORDER IS ALREADY OPEN FOR THE SAME THING,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,5242,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,10/12/2023,Mike diaz,1.50,260.00,0.00,11/11/2023,Miguel Diaz - 11/13/23  5:50:30 AM: Replaced filters,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,7970,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed without Action,5/8/2024,md,0.00,0.00,0.00,5/9/2024,Miguel Diaz - 05/09/24  7:36:29 AM: double work order popped up closing this one,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,8011,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,5/13/2024,Mike d,1.60,745.00,0.00,5/11/2024,Miguel Diaz - 05/11/24 10:24:30 AM: Replaced filters,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,11606,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed without Action,11/9/2024,md,0.00,0.00,0.00,11/27/2024,Miguel Diaz - 12/09/24 12:58:22 PM: double work order,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,11636,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,11/11/2024,Max,1.50,714.00,0.00,12/12/2024,Miguel Diaz - 12/09/24  1:19:27 PM: Filters have been ordered,[]
+1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,14292,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
+part # 11C862 .Order from Grainger",Pending,7/8/2025,,0.00,0.00,0.00,,Sean Jennings - 06/05/26 10:23:18 AM: Team please review.,[]
+1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,914,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
+part # 11C862 .Order from Grainger",Closed and Completed,9/18/2022,Primo,1.00,150.00,0.00,10/1/2022,Miguel Diaz - 10/01/22  9:26:53 AM: Replaced filters,[]
+1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,2847,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
+part # 11C862 .Order from Grainger",Closed without Action,4/13/2023,md,0.00,0.00,0.00,4/12/2023,Miguel Diaz - 04/12/23  7:50:36 AM: double work order closing,[]
+1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,5244,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
+part # 11C862 .Order from Grainger",Closed and Completed,10/12/2023,Mike diaz,2.00,400.00,0.00,11/11/2023,Miguel Diaz - 11/13/23  5:51:35 AM: Replaced filters,[]
+1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,8012,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
+part # 11C862 .Order from Grainger",Closed and Completed,5/13/2024,Mike d,2.00,160.00,0.00,5/11/2024,Miguel Diaz - 05/11/24 10:24:14 AM: Replaced filters,[]
+1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,11635,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
+part # 11C862 .Order from Grainger",Closed and Completed,11/11/2024,Max,2.00,179.00,0.00,12/12/2024,Miguel Diaz - 12/09/24  1:19:37 PM: Filters have been ordered,[]
+182,EQ ID 182,Stacker # 10,Shipping,14870,Raymond to perform scheduled maintenance,Pending,4/27/2025,,0.00,0.00,0.00,,,[]
+182,EQ ID 182,Stacker # 10,Shipping,143,Raymond to perform scheduled maintenance,Closed and Completed,5/18/2022,Hovic raymond tech,1.00,98.00,0.00,5/18/2022,"Miguel Diaz - 05/18/22  2:11:56 PM: Tech performed the schedule maintenance .
+Open the attachment to view tech notes if needed",[]
+182,EQ ID 182,Stacker # 10,Shipping,2826,Raymond to perform scheduled maintenance,Closed and Completed,12/13/2022,md,0.00,0.00,0.00,2/10/2023,,[]
+182,EQ ID 182,Stacker # 10,Shipping,4314,Raymond to perform scheduled maintenance,Closed and Completed,4/10/2023,raymond tech,1.00,0.00,0.00,4/13/2023,Miguel Diaz - 08/03/23  6:51:28 AM: Tech performed the scheduled maintenance,[]
+182,EQ ID 182,Stacker # 10,Shipping,6697,Raymond to perform scheduled maintenance,Closed and Completed,10/3/2023,hovic,1.00,98.00,0.00,9/18/2023,Miguel Diaz - 09/25/23  7:53:09 AM: Tech performed scheduled maintenance .Open attachment to view work order if needed .,[]
+182,EQ ID 182,Stacker # 10,Shipping,7330,Raymond to perform scheduled maintenance,Closed and Completed,11/25/2023,Raymond tech Hovic,1.00,98.00,0.00,11/22/2023,Miguel Diaz - 11/27/23 10:32:54 AM: Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed,[]
+182,EQ ID 182,Stacker # 10,Shipping,8137,Raymond to perform scheduled maintenance,Closed and Completed,1/27/2024,raymond tech,1.00,98.00,0.00,1/31/2024,Miguel Diaz - 02/08/24  9:01:10 AM: Tech  performed the scheduled maintenance open the attachment to view tech notes if needed,[]
+182,EQ ID 182,Stacker # 10,Shipping,10274,Raymond to perform scheduled maintenance,Closed and Completed,4/8/2024,Raymond tech,1.00,0.00,0.00,3/22/2024,Miguel Diaz - 04/09/24  9:32:20 AM: Tech performed the scheduled maintenance,[]
+182,EQ ID 182,Stacker # 10,Shipping,11032,Raymond to perform scheduled maintenance,Closed and Completed,6/9/2024,Raymond tech,1.00,98.00,0.00,5/27/2024,,[]
+182,EQ ID 182,Stacker # 10,Shipping,11976,Raymond to perform scheduled maintenance,Closed and Completed,8/6/2024,raymond tech,1.00,98.00,0.00,7/11/2024,Miguel Diaz - 07/20/24 12:20:53 PM: Raymond tech performed the scheduled maintenance,[]
+182,EQ ID 182,Stacker # 10,Shipping,12468,Raymond to perform scheduled maintenance,Closed and Completed,9/20/2024,raymond tech,0.20,0.00,0.00,9/20/2024,Miguel Diaz - 12/09/24 12:53:45 PM: Done,[]
+182,EQ ID 182,Stacker # 10,Shipping,14017,Raymond to perform scheduled maintenance,Closed and Completed,2/9/2025,Raymond tech,1.00,98.00,0.00,2/11/2025,Miguel Diaz - 02/27/25 11:10:36 AM: Raymond tech performed scheduled maintenance,[]
+30,EQ ID 30,Forklift T 1,Shipping,14868,Raymond to perform scheduled maintenance,Pending,4/27/2025,,0.00,0.00,0.00,,,[]
+30,EQ ID 30,Forklift T 1,Shipping,26,Raymond to perform scheduled maintenance,Closed and Completed,5/18/2022,Hovic Raymond tech,1.00,120.00,0.00,5/18/2022,"Miguel Diaz - 05/18/22  2:09:52 PM: Tech performed the schedule maintenance .
+Open the attachment to view tech notes if needed",[]
+30,EQ ID 30,Forklift T 1,Shipping,2598,Complete outside service checklist,Closed and Completed,12/13/2022,aq,0.00,0.00,0.00,12/9/2022,Miguel Diaz - 12/09/22 12:07:12 PM: lubed rollers,[]
+30,EQ ID 30,Forklift T 1,Shipping,3553,Complete outside service checklist,Closed and Completed,2/9/2023,raymond tech,0.00,120.00,0.00,2/10/2023,,[]
+30,EQ ID 30,Forklift T 1,Shipping,2599,Raymond to perform scheduled maintenance,Closed and Completed,12/13/2022,raymond tech,0.00,120.00,0.00,2/10/2023,,[]
+30,EQ ID 30,Forklift T 1,Shipping,4315,Raymond to perform scheduled maintenance,Closed and Completed,4/10/2023,raymond tech,1.00,120.00,0.00,4/13/2023,Miguel Diaz - 08/03/23  6:51:51 AM: Tech performed the scheduled maintenance,[]
+30,EQ ID 30,Forklift T 1,Shipping,4319,Complete outside service checklist,Closed and Completed,4/10/2023,raymond tech,1.00,120.00,0.00,4/13/2023,Miguel Diaz - 08/03/23  6:53:07 AM: Tech performed the scheduled maintenance,[]
+30,EQ ID 30,Forklift T 1,Shipping,6700,Complete outside service checklist,Closed and Completed,10/3/2023,Hovic,1.00,98.00,0.00,9/18/2023,Miguel Diaz - 09/25/23  7:55:04 AM: Tech performed scheduled maintenance .Open attachment to view work order if needed .,[]
+30,EQ ID 30,Forklift T 1,Shipping,6698,Raymond to perform scheduled maintenance,Closed and Completed,10/3/2023,Hovic,1.00,120.00,0.00,9/18/2023,Miguel Diaz - 09/25/23  7:53:44 AM: Tech performed scheduled maintenance .Open attachment to view work order if needed .,[]
+30,EQ ID 30,Forklift T 1,Shipping,7331,Raymond to perform scheduled maintenance,Closed and Completed,11/25/2023,Raymond tech Hovic,1.00,120.00,0.00,11/20/2023,Miguel Diaz - 11/27/23 10:33:40 AM: Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed,[]
+30,EQ ID 30,Forklift T 1,Shipping,7333,Complete outside service checklist,Closed without Action,11/25/2023,md,0.00,0.00,0.00,11/27/2023,Miguel Diaz - 11/27/23 10:27:56 AM: closing double work order is showing on the pm list,[]
+30,EQ ID 30,Forklift T 1,Shipping,8135,Complete outside service checklist,Closed and Completed,1/27/2024,md,0.00,0.00,0.00,1/17/2024,Miguel Diaz - 01/17/24  1:49:53 PM: closing double work order pop up,[]
+30,EQ ID 30,Forklift T 1,Shipping,8138,Raymond to perform scheduled maintenance,Closed and Completed,1/27/2024,Raymond tech,1.00,120.00,0.00,1/29/2024,Miguel Diaz - 02/08/24  9:04:59 AM: Tech  performed the scheduled maintenance open the attachment to view tech notes if needed,[]
+30,EQ ID 30,Forklift T 1,Shipping,10016,Complete outside service checklist,Closed without Action,3/17/2024,md,0.00,0.00,0.00,4/1/2024,"Miguel Diaz - 04/08/24 11:51:19 AM: 1) Lubricate Slide,
+2) Check alignment of the side and back rails.
+3) Check sensors for proper read.
+4) Vac. out electrical cabinets.
+5) Check dust collection hose for proper operation.
+6) Inspect and clean fan filters.",[]
+30,EQ ID 30,Forklift T 1,Shipping,10276,Raymond to perform scheduled maintenance,Closed and Completed,4/8/2024,Raymond tech,1.00,120.00,0.00,4/9/2024,Miguel Diaz - 04/09/24  9:31:56 AM: Tech performed the scheduled maintenance,[]
+30,EQ ID 30,Forklift T 1,Shipping,11031,Raymond to perform scheduled maintenance,Closed and Completed,6/9/2024,raymond tech,1.00,120.00,0.00,5/27/2024,Miguel Diaz - 06/06/24 11:04:27 AM: Tech performed the scheduled maintenance,[]
+30,EQ ID 30,Forklift T 1,Shipping,10987,Complete outside service checklist,Closed and Completed,6/8/2024,raymond tech,1.00,120.00,0.00,5/27/2024,Miguel Diaz - 06/06/24 11:04:06 AM: Tech performed the scheduled maintenance,[]
+30,EQ ID 30,Forklift T 1,Shipping,11980,Raymond to perform scheduled maintenance,Closed and Completed,8/6/2024,ramond tech,1.00,120.00,0.00,7/11/2024,Miguel Diaz - 07/20/24 12:21:14 PM: Raymond tech performed the scheduled maintenance,[]
+30,EQ ID 30,Forklift T 1,Shipping,12469,Raymond to perform scheduled maintenance,Closed and Completed,9/20/2024,raymond tech,0.00,0.00,0.00,9/20/2024,Miguel Diaz - 12/09/24 12:55:23 PM: Done,[]
+30,EQ ID 30,Forklift T 1,Shipping,14018,Raymond to perform scheduled maintenance,Closed and Completed,2/9/2025,Raymond tech,1.00,120.00,0.00,2/11/2025,Miguel Diaz - 02/27/25 11:09:49 AM: Raymond tech performed scheduled maintenance,[]
+32,EQ ID 32,Stacker # 18,Shipping,14869,Raymond tech perform scheduled maintenace,Pending,4/27/2025,,0.00,0.00,0.00,,,[]
+32,EQ ID 32,Stacker # 18,Shipping,14025,Complete outside service checklist,Pending,12/9/2025,,0.00,0.00,0.00,,Sean Jennings - 06/05/26 10:24:19 AM: Team please review.,[]
+32,EQ ID 32,Stacker # 18,Shipping,27,Raymond tech perform scheduled maintenace,Closed and Completed,5/18/2022,raymond tech,1.00,98.00,0.00,5/23/2022,"Miguel Diaz - 05/23/22  1:31:45 PM: Raymond tech performed the scheduled maintenance .
+Open attachment to view tech notes if needed .",[]
+32,EQ ID 32,Stacker # 18,Shipping,2600,Raymond tech perform scheduled maintenace,Closed and Completed,12/13/2022,raymond tech,0.00,97.00,0.00,2/10/2023,,[]
+32,EQ ID 32,Stacker # 18,Shipping,4316,Raymond tech perform scheduled maintenace,Closed and Completed,4/10/2023,raymond tech,1.00,98.00,0.00,4/13/2023,Miguel Diaz - 08/03/23  6:52:28 AM: Tech performed the scheduled maintenance,[]
+32,EQ ID 32,Stacker # 18,Shipping,6699,Raymond tech perform scheduled maintenace,Closed and Completed,10/3/2023,Hovic,1.00,98.00,0.00,9/18/2023,Miguel Diaz - 09/25/23  7:54:25 AM: Tech performed scheduled maintenance .Open attachment to view work order if needed .,[]
+32,EQ ID 32,Stacker # 18,Shipping,2601,Complete outside service checklist,Closed and Completed,10/13/2023,Raymond tech Hovic,1.00,98.00,0.00,11/10/2023,Miguel Diaz - 11/27/23 10:27:15 AM: Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed,[]
+32,EQ ID 32,Stacker # 18,Shipping,7332,Raymond tech perform scheduled maintenace,Closed without Action,11/25/2023,mike d,0.00,0.00,0.00,11/27/2023,Miguel Diaz - 11/27/23 10:28:27 AM: closing double work order showing on the pm list,[]
+32,EQ ID 32,Stacker # 18,Shipping,8136,Raymond tech perform scheduled maintenace,Closed and Completed,1/27/2024,Raymond tech,1.00,98.00,0.00,1/11/2024,Miguel Diaz - 01/17/24  1:50:37 PM: Raymond tech performed the scheduled maintenance open attachment to view tech notes if needed,[]
+32,EQ ID 32,Stacker # 18,Shipping,10017,Raymond tech perform scheduled maintenace,Closed and Completed,3/17/2024,Raymond tech,1.00,98.00,0.00,4/9/2024,Miguel Diaz - 04/09/24  9:31:32 AM: Tech performed the scheduled maintenance,[]
+32,EQ ID 32,Stacker # 18,Shipping,11030,Raymond tech perform scheduled maintenace,Closed and Completed,6/9/2024,raymond tech,1.00,0.00,0.00,5/27/2024,Miguel Diaz - 06/06/24 11:04:44 AM: Tech performed the scheduled maintenance,[]
+32,EQ ID 32,Stacker # 18,Shipping,11981,Raymond tech perform scheduled maintenace,Closed and Completed,8/6/2024,raymond tech,1.00,0.00,0.00,7/11/2024,Miguel Diaz - 07/20/24 12:21:33 PM: Raymond tech performed the scheduled maintenance,[]
+32,EQ ID 32,Stacker # 18,Shipping,12470,Raymond tech perform scheduled maintenace,Closed and Completed,9/20/2024,raymond tech,0.00,0.00,0.00,9/20/2024,Miguel Diaz - 12/09/24 12:55:33 PM: Done,[]
+32,EQ ID 32,Stacker # 18,Shipping,8134,Complete outside service checklist,Closed and Completed,11/27/2024,raymond tech,1.00,98.00,0.00,11/27/2024,Miguel Diaz - 12/09/24 12:57:42 PM: Done,[]
+32,EQ ID 32,Stacker # 18,Shipping,14019,Raymond tech perform scheduled maintenace,Closed and Completed,2/9/2025,Raymond tech,1.00,98.00,0.00,2/11/2025,Miguel Diaz - 02/27/25 11:10:14 AM: Raymond tech performed scheduled maintenance,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,11598,Pull the harness off the top of the battery and place in a bucket of Luke warm water for 15 minutes then re-install.,Pending,5/9/2025,,0.00,0.00,0.00,,Sean Jennings - 06/05/26 10:22:18 AM: Team please review.,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,14872,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Pending,4/27/2025,,0.00,0.00,0.00,,,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,702,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,5/18/2022,Equipment depot,120.00,0.00,0.00,4/1/2022,Miguel Diaz - 04/27/22  7:59:49 AM: Tech was here a few weeks ago and performed the scheduled maintenance,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,2761,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,12/13/2022,equipment depot,2.00,0.00,0.00,11/28/2022,"Miguel Diaz - 12/06/22  1:32:06 PM: Checked function of cylinders and valves also check if damaged or leaks 
+*Checked hoses and hose joints for leaks or damage 
+*Cleaned or replace filter inserts if needed 
+*Checked Operating pressure 
+*Checked Limit switch for proper function 
+*Cleaned light barriers with rag no solvents
+*Cleaned all sensors free of dust 
+*Checked Vacuum and compressed air for supply and leaks 
+*Checked seals for damage replace if necessary 
+*Checked tooth belts for damage replace if worn 
+*Check power cable chain for damage 
+*Check guide rails Clean with cloth inspect for damage 
+*Greased all ball rail guides lubricate with syringe until lubricant escapes .(Part#4-017-08-0073
+*Greased central lubrication of guide carriage use grease gun 
+*Remove and clean filters from control use compressed air 
+*Check both L brackets in the middle to be leveled if they are bent upwards level back down 
+*Checked all blue collar bushings spray them with Teflon spray make sure all support arms are in place and retaining clips are in place .",[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,3490,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,2/6/2023,Equipment depot Tech,1.00,120.00,0.00,1/23/2023,,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,4320,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,4/10/2023,scmh,1.50,150.00,0.00,4/3/2023,Miguel Diaz - 08/03/23  6:53:47 AM: Tech performed the scheduled maintenance,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,701,Pull the harness off the top of the battery and place in a bucket of Luke warm water for 15 minutes then re-install.,Closed and Completed,3/18/2023,md,0.00,0.00,0.00,4/12/2023,Miguel Diaz - 04/12/23  7:48:31 AM: battery is new,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,6701,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,10/3/2023,SCMH TECH,1.50,150.00,0.00,11/8/2023,Miguel Diaz - 11/08/23 12:42:06 PM: checked cutters they are clean will check if they need to be replaced,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,7964,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,1/8/2024,equipment depot tech,2.00,140.00,0.00,1/8/2024,Miguel Diaz - 01/09/24  8:34:42 AM: Tech performed the scheduled maintenance,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,9579,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,3/9/2024,equipment depot,1.00,120.00,0.00,3/8/2024,Miguel Diaz - 04/08/24 11:54:52 AM: SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,5237,Pull the harness off the top of the battery and place in a bucket of Luke warm water for 15 minutes then re-install.,Closed and Completed,4/12/2024,md,0.00,0.00,0.00,5/9/2024,Miguel Diaz - 05/09/24  7:33:50 AM: Harness is new  because the battery is new this is not needed at this time,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,10989,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,6/8/2024,Equipment depo tech,2.00,140.00,0.00,5/27/2024,,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,11977,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,8/6/2024,equipment depot tech,1.50,140.00,0.00,7/29/2024,Miguel Diaz - 08/06/24  1:31:47 PM: Equipment depot tech performed the scheduled maintenance,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,12677,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,10/6/2024,scmh tech,2.00,120.00,0.00,10/4/2024,Miguel Diaz - 12/09/24 12:56:03 PM: Done,[]
+1167,EQ ID 1167,#20 Jungheinrich ETV 318 Hi Reach Forklift,Shipping,14021,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,2/9/2025,equipment depot tech,2.00,150.00,0.00,2/17/2025,Miguel Diaz - 02/27/25 11:11:33 AM: tech performed scheduled maintenance,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,14873,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Pending,4/27/2025,,0.00,0.00,0.00,,,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,11599,Pull the harness off the top of the battery and place in a bucket of Luke warm water for 15 minutes then re-install.,Pending,5/9/2025,,0.00,0.00,0.00,,Sean Jennings - 06/05/26 10:22:31 AM: Team please review.,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,704,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,5/18/2022,Equipment depot,1.00,120.00,0.00,4/1/2022,Miguel Diaz - 04/27/22  8:00:17 AM: Tech was here a few weeks ago and performed the scheduled maintenance,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,2762,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,12/13/2022,equipment depot,2.00,150.00,0.00,11/28/2022,"Miguel Diaz - 12/06/22  1:32:37 PM: Checked function of cylinders and valves also check if damaged or leaks 
+*Checked hoses and hose joints for leaks or damage 
+*Cleaned or replace filter inserts if needed 
+*Checked Operating pressure 
+*Checked Limit switch for proper function 
+*Cleaned light barriers with rag no solvents
+*Cleaned all sensors free of dust 
+*Checked Vacuum and compressed air for supply and leaks 
+*Checked seals for damage replace if necessary 
+*Checked tooth belts for damage replace if worn 
+*Check power cable chain for damage 
+*Check guide rails Clean with cloth inspect for damage 
+*Greased all ball rail guides lubricate with syringe until lubricant escapes .(Part#4-017-08-0073
+*Greased central lubrication of guide carriage use grease gun 
+*Remove and clean filters from control use compressed air 
+*Check both L brackets in the middle to be leveled if they are bent upwards level back down 
+*Checked all blue collar bushings spray them with Teflon spray make sure all support arms are in place and retaining clips are in place .",[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,3491,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,2/6/2023,raymond tech,1.00,120.00,0.00,1/23/2023,,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,705,Pull the harness off the top of the battery and place in a bucket of Luke warm water for 15 minutes then re-install.,Closed and Completed,3/18/2023,md,1.50,0.00,0.00,4/1/2023,Miguel Diaz - 04/12/23  7:49:10 AM: done,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,4321,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,4/10/2023,scmh,1.50,150.00,0.00,4/3/2023,Miguel Diaz - 08/03/23  6:54:39 AM: Tech performed the scheduled maintenance,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,6703,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,10/3/2023,SCMH TECH,1.50,150.00,0.00,11/8/2023,Miguel Diaz - 11/08/23 12:42:41 PM: checked cutters they are clean will check if they need to be replaced,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,7966,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,1/8/2024,Equipment depo tech,2.00,140.00,0.00,1/8/2024,Miguel Diaz - 01/09/24  8:35:13 AM: Tech performed the scheduled maintenance,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,9580,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,3/9/2024,equipment depot,1.00,120.00,0.00,3/8/2024,Miguel Diaz - 04/08/24 11:55:17 AM: SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,5239,Pull the harness off the top of the battery and place in a bucket of Luke warm water for 15 minutes then re-install.,Closed and Completed,4/12/2024,md,0.00,0.00,0.00,5/9/2024,Miguel Diaz - 05/09/24  7:34:21 AM: new battery harshness is still new service is not needed at this time,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,10990,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,6/8/2024,Mike d,2.00,0.00,0.00,5/27/2024,Miguel Diaz - 06/06/24 11:03:24 AM: Tech performed the scheduled maintenance,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,11978,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,8/6/2024,equipment depot,1.50,140.00,0.00,7/29/2024,Miguel Diaz - 08/06/24  1:32:22 PM: Equipment depot tech performed the scheduled maintenance,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,12678,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,10/6/2024,equipment depot tech,2.00,120.00,0.00,10/4/2024,Miguel Diaz - 12/09/24 12:56:26 PM: Done,[]
+1169,EQ ID 1169,#22 Jungheinrich VNA Forklift,Shipping,14022,SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,Closed and Completed,2/9/2025,Equipment depot,2.00,150.00,0.00,2/17/2025,Miguel Diaz - 02/27/25 11:12:05 AM:  tech performed scheduled maintenance,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,14874,SCMH to perform scheduled maintenance,Pending,4/27/2025,,0.00,0.00,0.00,,,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,11603,Pull the harness off the top of the battery and place in a bucket of Luke warm water for 15 minutes then re-install.,Pending,5/9/2025,,0.00,0.00,0.00,,Sean Jennings - 06/05/26 10:22:40 AM: Team please review.,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,706,SCMH to perform scheduled maintenance,Closed and Completed,5/18/2022,Equipment depot,1.00,120.00,0.00,4/1/2022,Miguel Diaz - 04/27/22  8:00:39 AM: Tech was here a few weeks ago and performed the scheduled maintenance,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,2763,SCMH to perform scheduled maintenance,Closed and Completed,12/13/2022,equipment depot,2.00,160.00,0.00,11/28/2022,"Miguel Diaz - 12/06/22  1:33:08 PM: Checked function of cylinders and valves also check if damaged or leaks 
+*Checked hoses and hose joints for leaks or damage 
+*Cleaned or replace filter inserts if needed 
+*Checked Operating pressure 
+*Checked Limit switch for proper function 
+*Cleaned light barriers with rag no solvents
+*Cleaned all sensors free of dust 
+*Checked Vacuum and compressed air for supply and leaks 
+*Checked seals for damage replace if necessary 
+*Checked tooth belts for damage replace if worn 
+*Check power cable chain for damage 
+*Check guide rails Clean with cloth inspect for damage 
+*Greased all ball rail guides lubricate with syringe until lubricant escapes .(Part#4-017-08-0073
+*Greased central lubrication of guide carriage use grease gun 
+*Remove and clean filters from control use compressed air 
+*Check both L brackets in the middle to be leveled if they are bent upwards level back down 
+*Checked all blue collar bushings spray them with Teflon spray make sure all support arms are in place and retaining clips are in place .",[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,3493,SCMH to perform scheduled maintenance,Closed and Completed,2/6/2023,raymond tech,0.00,120.00,0.00,1/23/2023,,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,4322,SCMH to perform scheduled maintenance,Closed and Completed,4/10/2023,scmh,1.50,150.00,0.00,4/3/2023,Miguel Diaz - 08/03/23  6:54:16 AM: Tech performed the scheduled maintenance,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,707,Pull the harness off the top of the battery and place in a bucket of Luke warm water for 15 minutes then re-install.,Closed and Completed,3/18/2023,md,0.00,0.00,0.00,4/12/2023,Miguel Diaz - 04/12/23  7:48:50 AM: battery is new not needed,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,6702,SCMH to perform scheduled maintenance,Closed and Completed,10/3/2023,SCMH TECH,1.50,150.00,0.00,11/8/2023,Miguel Diaz - 11/08/23 12:42:24 PM: checked cutters they are clean will check if they need to be replaced,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,7965,SCMH to perform scheduled maintenance,Closed and Completed,1/8/2024,Equipment depot tech,1.50,120.00,0.00,1/8/2024,Miguel Diaz - 01/09/24  8:35:45 AM: Tech performed the scheduled maintenance,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,9581,SCMH to perform scheduled maintenance,Closed and Completed,3/9/2024,equipment depot,1.50,120.00,0.00,3/8/2024,Miguel Diaz - 04/08/24 11:55:40 AM: SCMH to perform Scheduled - PM Service -Planned Maintenance. ----,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,5238,Pull the harness off the top of the battery and place in a bucket of Luke warm water for 15 minutes then re-install.,Closed and Completed,4/12/2024,md,1.50,0.00,0.00,5/4/2024,Miguel Diaz - 05/09/24  7:35:19 AM: Cleaned hardness removed and placed in bucket of hot water,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,10991,SCMH to perform scheduled maintenance,Closed and Completed,6/8/2024,equipment depot,1.50,140.00,0.00,5/27/2024,Miguel Diaz - 06/06/24 11:03:45 AM: Tech performed the scheduled maintenance,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,11979,SCMH to perform scheduled maintenance,Closed and Completed,8/6/2024,equipment depot,1.50,140.00,0.00,7/29/2024,Miguel Diaz - 08/06/24  1:32:49 PM: Equipment depot tech performed the scheduled maintenance,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,12679,SCMH to perform scheduled maintenance,Closed and Completed,10/6/2024,equipment depo tech,2.00,120.00,0.00,10/4/2024,Miguel Diaz - 12/09/24 12:56:50 PM: Done,[]
+1170,EQ ID 1170,#21 Jungheinrich VNA Forklift,Shipping,14023,SCMH to perform scheduled maintenance,Closed and Completed,2/9/2025,Equipment depot,2.00,150.00,0.00,2/17/2025,Miguel Diaz - 02/27/25 11:12:38 AM: Raymond tech performed scheduled maintenance,[]

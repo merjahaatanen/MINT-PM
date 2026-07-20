@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TPF Troubleshooting Hub</title>
+  <script src="/vendor/react.js"></script>
+  <script src="/vendor/react-dom.js"></script>
+  <script src="/vendor/htm.js"></script>
+  <script src="/vendor/tailwind.js"></script>
+  <script src="/vendor/marked.js"></script>
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-thumb { background: #bfdbfe; border-radius: 9999px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+
+    /* Rendered markdown / checklist styling */
+    .guide h1 { font-size: 1.5rem; font-weight: 800; color: #1d4ed8; margin: .25rem 0 .75rem; }
+    .guide h2 { font-size: 1.15rem; font-weight: 700; color: #1e40af; margin: 1.5rem 0 .5rem; }
+    .guide p { margin: .5rem 0; line-height: 1.6; color: #334155; }
+    .guide ul, .guide ol { margin: .5rem 0 .5rem 1.3rem; line-height: 1.7; color: #334155; }
+    .guide ul { list-style: disc; }
+    .guide ol { list-style: decimal; }
+    .guide li { margin: .15rem 0; }
+    .guide strong { color: #1e293b; }
+
+    /* Tables built to mirror the printed checklist */
+    .guide table { width: 100%; border-collapse: collapse; margin: .75rem 0 1.5rem;
+                   font-size: .88rem; border: 1px solid #cbd5e1; }
+    .guide th { background: #1d4ed8; color: #fff; text-align: left; padding: .6rem .75rem;
+                font-weight: 600; border: 1px solid #1e40af; vertical-align: top; }
+    .guide td { border: 1px solid #cbd5e1; padding: .55rem .75rem; vertical-align: top;
+                color: #334155; line-height: 1.5; }
+    .guide tbody tr:nth-child(even) { background: #f1f5f9; }
+    .guide tbody tr:hover { background: #eff6ff; }
+    .guide code { background: #eff6ff; padding: .1rem .35rem; border-radius: .35rem; font-size: .85em; }
+    .guide hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.2rem 0; }
+    .guide input[type=checkbox] { margin-right: .4rem; accent-color: #2563eb; }
+
+    /* Clickable work-order chips inside the guide */
+    .wo-link { color: #1d4ed8; font-weight: 600; cursor: pointer; text-decoration: underline;
+               text-decoration-style: dotted; }
+    .wo-link:hover { color: #1e40af; background: #dbeafe; border-radius: .25rem; }
+  </style>
+</head>
+<body class="bg-slate-50">
+  <div id="root"></div>
+
+  <script>
+    const { useState, useEffect, useCallback, useRef } = React;
+    const html = htm.bind(React.createElement);
+    const API = "";
+
+    function urgencyColor(u) {
+      const s = (u || "").toLowerCase();
+      if (s.startsWith("1.")) return "bg-rose-100 text-rose-700";
+      if (s.startsWith("2.")) return "bg-orange-100 text-orange-700";
+      if (s.startsWith("3.")) return "bg-amber-100 text-amber-700";
+      if (s.startsWith("4.")) return "bg-yellow-100 text-yellow-700";
+      if (s.startsWith("5.")) return "bg-sky-100 text-sky-700";
+      return "bg-slate-100 text-slate-600";
+    }
+
+    function Stat({ label, value }) {
+      return html`
+        <div className="bg-blue-50 rounded-2xl px-4 py-2 shadow-sm border border-blue-100">
+          <div className="text-xs uppercase tracking-wide text-blue-500">${label}</div>
+          <div className="text-lg font-bold text-slate-700">${value}</div>
+        </div>`;
+    }
+
+    function Spinner({ label }) {
+      return html`
+        <div className="flex items-center gap-3 text-blue-600">
+          <div className="w-5 h-5 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+          <span>${label}</span>
+        </div>`;
+    }
+
+    function WorkOrderCard({ wo, onOpen }) {
+      return html`
+        <button onClick=${() => onOpen(wo.wo_id)}
+          className="text-left w-full bg-white rounded-2xl border border-slate-200 shadow-sm p-4 hover:shadow-md hover:border-blue-300 transition">
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="font-bold text-blue-700">WO #${wo.wo_id}</span>
+              <span className="text-xs text-slate-400">${wo.date_notified}</span>
+              <span className=${"text-xs px-2 py-0.5 rounded-full font-medium " + urgencyColor(wo.urgency)}>
+                ${wo.urgency || "n/a"}
+              </span>
+            </div>
+            <span className="text-xs font-semibold text-blue-600 whitespace-nowrap">View &rarr;</span>
+          </div>
+          <p className="mt-2 text-slate-700 text-sm leading-relaxed line-clamp-2">${wo.problem || "(no problem text)"}</p>
+          <div className="mt-2 flex gap-4 text-xs text-slate-400">
+            <span>By: ${wo.work_performed_by || "-"}</span>
+            <span>Labor: ${wo.labor_time || 0}h</span>
+            <span>${wo.downtime_hours ? wo.downtime_hours + "h down" : ""}</span>
+          </div>
+        </button>`;
+    }
+
+    function Field({ label, value }) {
+      return html`
+        <div>
+          <div className="text-xs uppercase tracking-wide text-blue-500">${label}</div>
+          <div className="text-sm text-slate-700 whitespace-pre-wrap">${value || "-"}</div>
+        </div>`;
+    }
+
+    function WorkOrderModal({ woId, onClose }) {
+      const [wo, setWo] = useState(null);
+      const [err, setErr] = useState(null);
+      useEffect(() => {
+        setWo(null); setErr(null);
+        fetch(`${API}/api/workorder/${woId}`).then(r => r.json())
+          .then(d => d.error ? setErr(d.error) : setWo(d)).catch(e => setErr(String(e)));
+      }, [woId]);
+
+      const att = wo && wo.attachments;
+      const attList = Array.isArray(att) ? att : (att ? [att] : []);
+
+      return html`
+        <div onClick=${onClose}
+          className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div onClick=${e => e.stopPropagation()}
+            className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 sticky top-0 bg-white rounded-t-3xl">
+              <h3 className="text-lg font-bold text-blue-700">Work Order #${woId}</h3>
+              <button onClick=${onClose}
+                className="rounded-full w-8 h-8 flex items-center justify-center text-slate-400 hover:bg-slate-100 hover:text-slate-700">✕</button>
+            </div>
+            <div className="p-6">
+              ${err ? html`<div className="text-rose-600 text-sm">${err}</div>` : null}
+              ${!wo && !err ? html`<${Spinner} label="Loading work order..." />` : null}
+              ${wo ? html`
+                <div className="grid grid-cols-2 gap-4">
+                  <${Field} label="Equipment" value=${wo.equipment_name} />
+                  <${Field} label="Department" value=${wo.department} />
+                  <${Field} label="Date Notified" value=${wo.date_notified} />
+                  <${Field} label="Completed" value=${wo.completed_datetime} />
+                  <${Field} label="Urgency" value=${wo.urgency} />
+                  <${Field} label="Status" value=${wo.status} />
+                  <${Field} label="Performed By" value=${wo.work_performed_by} />
+                  <${Field} label="Downtime (h)" value=${String(wo.downtime_hours || 0)} />
+                  <${Field} label="Labor (h)" value=${String(wo.labor_time || 0)} />
+                  <${Field} label="Material $" value=${String(wo.material_cost || 0)} />
+                </div>
+                <div className="mt-4 space-y-4">
+                  <div className="bg-blue-50 rounded-2xl p-4">
+                    <div className="text-xs uppercase tracking-wide text-blue-500 mb-1">Problem</div>
+                    <div className="text-sm text-slate-700 whitespace-pre-wrap">${wo.problem || "-"}</div>
+                  </div>
+                  <div className="bg-slate-50 rounded-2xl p-4">
+                    <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">Work Performed / Comments</div>
+                    <div className="text-sm text-slate-700 whitespace-pre-wrap">${wo.comments || "-"}</div>
+                  </div>
+                  ${attList.length ? html`
+                    <div className="bg-slate-50 rounded-2xl p-4">
+                      <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">Attachments</div>
+                      <ul className="text-sm text-blue-600 list-disc ml-5">
+                        ${attList.map((a, i) => html`<li key=${i}>${typeof a === "string" ? a : JSON.stringify(a)}</li>`)}
+                      </ul>
+                    </div>` : null}
+                </div>` : null}
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function App() {
+      const [machines, setMachines] = useState([]);
+      const [search, setSearch] = useState("");
+      const [selected, setSelected] = useState(null);
+      const [data, setData] = useState(null);        // {machine, stats, work_orders}
+      const [guide, setGuide] = useState(null);       // {exists, markdown}
+      const [tab, setTab] = useState("guide");
+      const [loading, setLoading] = useState(false);
+      const [generating, setGenerating] = useState(false);
+      const [error, setError] = useState(null);
+      const [modalWo, setModalWo] = useState(null);
+      const [editing, setEditing] = useState(false);
+      const [draft, setDraft] = useState("");
+      const [saving, setSaving] = useState(false);
+      const [updating, setUpdating] = useState(false);
+      const [notice, setNotice] = useState(null);
+      const guideRef = useRef(null);
+
+      useEffect(() => {
+        fetch(API + "/api/machines").then(r => r.json()).then(setMachines).catch(e => setError(String(e)));
+      }, []);
+
+      const refreshMachines = useCallback(() => {
+        fetch(API + "/api/machines").then(r => r.json()).then(setMachines).catch(() => {});
+      }, []);
+
+      const selectMachine = useCallback((m) => {
+        setSelected(m.id);
+        setData(null); setGuide(null); setError(null); setNotice(null); setTab("guide"); setEditing(false); setLoading(true);
+        Promise.all([
+          fetch(`${API}/api/machines/${m.id}/workorders`).then(r => r.json()),
+          fetch(`${API}/api/machines/${m.id}/guide`).then(r => r.json()),
+        ]).then(([wo, g]) => { setData(wo); setGuide(g); })
+          .catch(e => setError(String(e)))
+          .finally(() => setLoading(false));
+      }, []);
+
+      const generateGuide = useCallback(() => {
+        if (!selected) return;
+        setGenerating(true); setError(null); setNotice(null); setEditing(false);
+        fetch(`${API}/api/machines/${selected}/guide`, { method: "POST" })
+          .then(r => r.json())
+          .then(g => { if (g.error) setError(g.error); else { setGuide(g); refreshMachines(); } })
+          .catch(e => setError(String(e)))
+          .finally(() => setGenerating(false));
+      }, [selected, refreshMachines]);
+
+      const updateGuide = useCallback(() => {
+        if (!selected) return;
+        setUpdating(true); setError(null); setNotice(null); setEditing(false);
+        fetch(`${API}/api/machines/${selected}/guide/update`, { method: "POST" })
+          .then(r => r.json())
+          .then(g => {
+            if (g.error) { setError(g.error); return; }
+            setGuide(g); refreshMachines();
+            if (g.updated) setNotice(`Merged ${g.new_count} new work order(s) into the checklist. Previous version backed up.`);
+            else setNotice("No new work orders since this checklist was last built - nothing to merge.");
+          })
+          .catch(e => setError(String(e)))
+          .finally(() => setUpdating(false));
+      }, [selected, refreshMachines]);
+
+      const startEdit = useCallback(() => {
+        setDraft((guide && guide.markdown) || "");
+        setEditing(true);
+      }, [guide]);
+
+      const saveGuide = useCallback(() => {
+        if (!selected) return;
+        setSaving(true); setError(null);
+        fetch(`${API}/api/machines/${selected}/guide`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ markdown: draft }),
+        }).then(r => r.json())
+          .then(g => { if (g.error) setError(g.error); else { setGuide(g); setEditing(false); refreshMachines(); } })
+          .catch(e => setError(String(e)))
+          .finally(() => setSaving(false));
+      }, [selected, draft, refreshMachines]);
+
+      // Make work-order numbers inside the rendered guide clickable.
+      useEffect(() => {
+        const el = guideRef.current;
+        if (!el || editing || !data) return;
+        const ids = new Set((data.work_orders || []).map(w => String(w.wo_id)));
+        el.querySelectorAll("td").forEach(td => {
+          const walker = document.createTreeWalker(td, NodeFilter.SHOW_TEXT);
+          const nodes = [];
+          while (walker.nextNode()) nodes.push(walker.currentNode);
+          nodes.forEach(node => {
+            const parts = node.nodeValue.split(/(?<![\d-])(\d{3,6})(?![\d-])/);
+            if (parts.length < 2) return;
+            let changed = false;
+            const frag = document.createDocumentFragment();
+            parts.forEach(p => {
+              if (ids.has(p)) {
+                const span = document.createElement("span");
+                span.className = "wo-link";
+                span.dataset.wo = p;
+                span.textContent = p;
+                frag.appendChild(span);
+                changed = true;
+              } else if (p) {
+                frag.appendChild(document.createTextNode(p));
+              }
+            });
+            if (changed) node.parentNode.replaceChild(frag, node);
+          });
+        });
+      }, [guide, editing, data, tab]);
+
+      const onGuideClick = useCallback((e) => {
+        const wo = e.target && e.target.dataset && e.target.dataset.wo;
+        if (wo) setModalWo(wo);
+      }, []);
+
+      const filtered = machines.filter(m =>
+        !search || (m.name + " " + m.eq_id + " " + m.department).toLowerCase().includes(search.toLowerCase()));
+
+      const tabClass = (active) => "rounded-full px-5 py-2 text-sm font-semibold transition " +
+        (active ? "bg-blue-600 text-white shadow" : "bg-white text-slate-600 border border-slate-200 hover:bg-blue-50");
+
+      return html`
+        <div className="h-screen flex flex-col">
+          <header className="bg-white border-b border-slate-200 px-6 py-4 shadow-sm flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl shadow">🔧</div>
+            <div>
+              <h1 className="text-2xl font-extrabold tracking-tight text-blue-700">TPF Troubleshooting Hub</h1>
+            </div>
+          </header>
+
+          <div className="flex flex-1 overflow-hidden">
+            <aside className="w-80 bg-white border-r border-slate-200 flex flex-col">
+              <div className="p-3">
+                <input value=${search} onInput=${e => setSearch(e.target.value)}
+                  placeholder="Search machines..."
+                  className="w-full rounded-full border border-slate-200 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+              </div>
+              <div className="flex-1 overflow-y-auto px-2 pb-3 space-y-2">
+                ${filtered.map(m => html`
+                  <button key=${m.id} onClick=${() => selectMachine(m)}
+                    className=${"w-full text-left rounded-2xl p-3 border transition " +
+                      (selected === m.id
+                        ? "bg-blue-50 border-blue-300 ring-1 ring-blue-200"
+                        : "bg-white border-slate-100 hover:border-blue-200 hover:bg-blue-50/40")}>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-semibold text-slate-700 text-sm leading-snug">${m.name}</span>
+                      <span className="shrink-0 text-xs font-bold text-blue-600 bg-blue-100 rounded-full px-2 py-0.5">${m.work_order_count}</span>
+                    </div>
+                    <div className="text-xs text-slate-400 mt-1 flex items-center gap-2">
+                      <span>${m.eq_id}</span>
+                      ${m.has_guide ? html`<span className="text-emerald-600 font-medium">guide ready</span>` : null}
+                    </div>
+                  </button>`)}
+                ${!filtered.length ? html`<div className="text-center text-slate-400 text-sm p-4">No machines</div>` : null}
+              </div>
+            </aside>
+
+            <main className="flex-1 overflow-y-auto p-6">
+              ${!selected ? html`
+                <div className="h-full flex flex-col items-center justify-center text-center text-slate-400">
+                  <div className="text-5xl mb-4">🔧</div>
+                  <p className="text-lg">Select a machine to view its troubleshooting guide.</p>
+                </div>` : null}
+
+              ${error ? html`<div className="mb-4 bg-rose-50 text-rose-700 rounded-xl p-3 text-sm">${error}</div>` : null}
+
+              ${selected && loading ? html`<${Spinner} label="Loading machine..." />` : null}
+
+              ${selected && data ? html`
+                <div>
+                  <div className="flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                      <h2 className="text-2xl font-bold text-slate-800">${data.machine.name}</h2>
+                      <p className="text-slate-400 text-sm">${data.machine.eq_id} · ${data.machine.department}</p>
+                    </div>
+                    <div className="flex gap-3 flex-wrap">
+                      <${Stat} label="Work Orders" value=${data.stats.work_order_count} />
+                      <${Stat} label="Downtime" value=${data.stats.total_downtime_hours + "h"} />
+                      <${Stat} label="Material $" value=${"$" + (data.stats.total_material_cost || 0).toLocaleString()} />
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex gap-2">
+                    <button onClick=${() => setTab("guide")} className=${tabClass(tab === "guide")}>
+                      Troubleshooting Guide
+                    </button>
+                    <button onClick=${() => setTab("wos")} className=${tabClass(tab === "wos")}>
+                      Work Orders (${data.work_orders.length})
+                    </button>
+                  </div>
+
+                  ${tab === "guide" ? html`
+                    <div className="mt-5">
+                      <div className="flex items-center justify-between gap-3 mb-3">
+                        <p className="text-xs text-slate-400">
+                          ${guide && guide.exists
+                            ? "Tip: click any work-order number to view the original work order."
+                            : "No guide generated yet for this machine."}
+                        </p>
+                        <div className="flex gap-2">
+                          ${guide && guide.exists && !editing ? html`
+                            <button onClick=${startEdit}
+                              className="rounded-full bg-white border border-blue-300 text-blue-700 px-4 py-2 text-sm font-semibold hover:bg-blue-50">
+                              Edit
+                            </button>` : null}
+                          ${editing ? html`
+                            <button onClick=${() => setEditing(false)}
+                              className="rounded-full bg-white border border-slate-300 text-slate-600 px-4 py-2 text-sm font-semibold hover:bg-slate-50">
+                              Cancel
+                            </button>
+                            <button onClick=${saveGuide} disabled=${saving}
+                              className="rounded-full bg-blue-600 text-white px-5 py-2 text-sm font-semibold shadow hover:bg-blue-700 disabled:opacity-50">
+                              ${saving ? "Saving..." : "Save"}
+                            </button>` : null}
+                          ${!editing && guide && guide.exists ? html`
+                            <button onClick=${updateGuide} disabled=${updating || generating}
+                              title="Merge newly scraped work orders into this checklist, keeping your edits"
+                              className="rounded-full bg-emerald-600 text-white px-5 py-2 text-sm font-semibold shadow hover:bg-emerald-700 disabled:opacity-50">
+                              ${updating ? "Updating..." : "Update with new issues"}
+                            </button>` : null}
+                          ${!editing ? html`
+                            <button onClick=${generateGuide} disabled=${generating || updating}
+                              title=${guide && guide.exists ? "Rebuild from scratch - this REPLACES your edits (a backup is saved)" : "Build the first checklist for this machine"}
+                              className="rounded-full bg-blue-600 text-white px-5 py-2 text-sm font-semibold shadow hover:bg-blue-700 disabled:opacity-50">
+                              ${generating ? "Generating..." : (guide && guide.exists ? "Regenerate" : "Generate Guide")}
+                            </button>` : null}
+                        </div>
+                      </div>
+
+                      ${notice && !generating && !updating ? html`
+                        <div className="mb-3 bg-emerald-50 text-emerald-700 rounded-xl p-3 text-sm">${notice}</div>` : null}
+
+                      ${generating || updating ? html`
+                        <div className="bg-white rounded-2xl border border-slate-200 p-6">
+                          <${Spinner} label=${updating ? "Asking Gemini to merge new work orders into your checklist... this can take up to a minute." : "Asking Gemini to analyze the work orders... this can take up to a minute."} />
+                        </div>` : null}
+
+                      ${!generating && !updating && editing ? html`
+                        <div>
+                          <p className="text-xs text-slate-400 mb-2">Editing Markdown. Tables use the pipe (|) format; use &lt;br&gt; for line breaks inside a cell.</p>
+                          <textarea value=${draft} onInput=${e => setDraft(e.target.value)}
+                            spellcheck="false"
+                            className="w-full h-[60vh] rounded-2xl border border-slate-300 p-4 font-mono text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
+                        </div>` : null}
+
+                      ${!generating && !updating && !editing && guide && guide.exists ? html`
+                        <div ref=${guideRef} onClick=${onGuideClick}
+                          className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 guide"
+                          dangerouslySetInnerHTML=${{ __html: marked.parse(guide.markdown) }} />` : null}
+
+                      ${!generating && !updating && !editing && guide && !guide.exists ? html`
+                        <div className="bg-white rounded-2xl border border-dashed border-blue-200 p-10 text-center text-slate-400">
+                          Click <strong className="text-blue-600">Generate Guide</strong> to build a troubleshooting checklist from ${data.work_orders.length} work orders.
+                        </div>` : null}
+                    </div>` : null}
+
+                  ${tab === "wos" ? html`
+                    <div className="mt-5 grid gap-3">
+                      ${data.work_orders.map((wo, i) => html`<${WorkOrderCard} key=${i} wo=${wo} onOpen=${setModalWo} />`)}
+                    </div>` : null}
+                </div>` : null}
+            </main>
+          </div>
+
+          ${modalWo ? html`<${WorkOrderModal} woId=${modalWo} onClose=${() => setModalWo(null)} />` : null}
+        </div>`;
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(html`<${App} />`);
+  </script>
+</body>
+</html>

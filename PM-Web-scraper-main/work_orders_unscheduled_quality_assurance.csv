@@ -1,0 +1,9 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,date_notified,urgency,problem,status,material_cost,labor_time,work_performed_by,downtime_hours,completed_datetime,comments,attachments
+1491,EQ ID 1491,General request,Quality Assurance,10217,02/05/2024,2. General Maint - High Priority,"in the returns cell, i have a step up & down transformer (on the back workstation) i would like tested for use. i have left a replacement fuse which i received from engineering. ME has a same transformer and i requested the exact one. 
+
+in the back of the transformer i would like to assure the ""input voltage selector"" is set to the correct one.",Closed and Completed,0,0.4,Mike D,0,02/05/2024 12:00 AM,Miguel Diaz - 02/05/24 11:30:46 AM: Found step up transformer uses a 15 amp fuse provided fuse and also found that the breaker was Tripped reset breaker on panel L4A breaker 38-40 .Showed this to the supervisor Alex .,[]
+1491,EQ ID 1491,General request,Quality Assurance,15358,04/11/2025,2. General Maint - High Priority,"We need a fork wrench to be able to try valves on 2111 and 2112. I explained to Gabriel Shinobi in person. Thank you!
+
+Best.
+Siamak Zarin",Closed and Completed,0,0.5,G Shinobi,0,04/11/2025 02:30 PM,Gabriel Shinobi - 04/14/25  7:09:49 AM: created tool out of ABS for QA use.,[]
+,,,Quality Assurance,19938,06/24/2026,6. General Maint,"Installation of whiteboard in QA room by soap. I have the hardware needed at my desk, please let me know when you need it.",Pending,0,0,,0,,,[]

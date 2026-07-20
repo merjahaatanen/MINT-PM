@@ -1,0 +1,526 @@
+eq_id,dept,dept_num,equipment_name,asset_num,make,model,vendor,wo_qty,modified
+EQ ID 5393,Maintenance,29,Foam Soap Dispensers (at sinks),,Bobrick Washroom Equipment,B-828 Foam Dispenser,Bobrick,1,6/17/2026 12:13 PM
+EQ ID 5390,Maintenance,29,Office Chairs,,Humanscale,N/A,,2,5/15/2026 7:37 AM
+EQ ID 36,Maintenance,29,Air compressor 75 HP,10784,Gardner Denver,EBM99K,Bobrick,0,3/12/2026 12:11 PM
+EQ ID 5380,Maintenance,29,UPS,,Myers,6-E-9-S-BD2012-Z,Bobrick,1,3/12/2026 8:40 AM
+EQ ID 5377,Maintenance,29,40HP Oil-injected Screw Air Compressor,,Atlas Copco,GA30VSDs FF,Bobrick Washrom Equipment,3,2/3/2026 8:34 AM
+EQ ID 5351,Toilet Partitions,40,VLM Storage Lift -Small Hardware,3186,Kardex Shuttle,Shuttle -XP-500-360X864-US,Bobrick Washrom Equipment,2,6/23/2025 4:59 PM
+EQ ID 1211,Shipping,32,Shrink Wrap Machine with Integrated Scale,11433,Lantech,Q-300,Bobrick,2,3/17/2025 1:08 PM
+EQ ID 2139,Soap Dispenser Assembly,21,Margarita Machine,,In-house,Margarita 1,Bobrick Washrom Equipment,1,3/12/2025 8:31 AM
+EQ ID 135,Toilet Partitions,40,"Saw,Horizontal, Holz-Her",11275,Holz Her,Cut 85 - 6210,Holz Her,5,11/27/2024 7:47 AM
+EQ ID 5354,Toilet Partitions,40,TPT CL 1005 TENO,,Bobrick Equipment,TPT-CL-1005,McMaster-Carr,0,11/7/2024 7:50 AM
+EQ ID 5352,Toilet Partitions,40,TPT CL 1005 ANDY,,Bobrick Equipment,TPT-CL-1005,McMaster-Carr,1,10/18/2024 3:49 PM
+EQ ID 5341,Toilet Partitions,40,General Maintenance,,,,Bobrick,0,7/19/2024 7:00 AM
+EQ ID 1879,Toilet Partitions,40,Gannomat Index 330 Trend/PRO (Solid),11617,Ganner,Index 330 Trend/PRO,Advantage Automation,3,7/18/2024 9:21 AM
+EQ ID 5338,Shipping,32,Stacker #24,,Raymond,730-R35TT,Bobrick,0,7/8/2024 9:01 AM
+EQ ID 2109,Toilet Partitions,40,3/4 Thomas return system,,Thomas,90 x 144,Thomas Manufacturing Inc,0,6/12/2024 9:56 AM
+EQ ID 1461,Toilet Partitions,40,"Return system,Thomas,Evolve cell",,Thomas,90 x 120 tb,Thomas Manufacturing Inc,0,6/12/2024 9:56 AM
+EQ ID 5325,Mfg Engineering,22,General Request,,,,Bobrick,1,5/10/2024 8:10 AM
+EQ ID 5319,Maintenance,29,EV Chargers,,,,Bobrick,0,4/22/2024 11:58 AM
+EQ ID 5273,Toilet Partitions,40,Edgebander Homag 2520 Servo 6 Coil,,Homag,Homag 2520 servo 6 coil,Stiles Machinery,9,2/29/2024 11:34 AM
+EQ ID 2063,Toilet Partitions,40,Tenoner A 517 Single End,,Tenoner Single End,A517,Bobrick,5,1/17/2024 6:18 AM
+EQ ID 5248,Machine Shop,25,Dremel 4000,,Dremel,4000,Bobrick,0,11/9/2023 1:06 PM
+EQ ID 63,Toilet Partitions,40,"Return System, Thomas, 1040 Edgebander",10776,THOMAS,"60 x 120, 48"" receiver, 16"" Return",Thomas Manufacturing Inc,1,10/7/2023 10:27 AM
+EQ ID 158,Toilet Partitions,40,"Return System, Thomas, Laminate Trimmer",,Thomas,60 X 120 RT TB,Thomas Manufacturing Inc,0,10/7/2023 10:23 AM
+EQ ID 156,Toilet Partitions,40,"Return System, Thomas, 1/2"" Solid Panels",10776,Thomas,90 x 144 TB,Thomas Manufacturing Inc,0,10/7/2023 10:20 AM
+EQ ID 5244,Machine Shop,25,Digital Scale for glue,,Brecknell,B120 (US),Grainger,0,10/5/2023 3:16 PM
+EQ ID 18,Soap Dispenser Assembly,21,4112 Glue Machine,,Custom,Custom,Bobrick Washrom Equipment,0,9/22/2023 7:49 AM
+EQ ID 5240,Maintenance,29,2nd Floor Patio,,,,Bobrick,0,9/21/2023 7:24 AM
+EQ ID 5239,Maintenance,29,AC VAV Valves,,,,Bobrick,0,9/20/2023 9:45 AM
+EQ ID 5218,Toilet Partitions,40,2 gallon glue tank with hand held glue nozzle gun,,,,Bobrick Washrom Equipment,0,6/29/2023 7:30 AM
+EQ ID 1503,Toilet Partitions,40,"Router, CNC, Anderson Stratos/Nest TC+D",11535,Anderson,Stratos Nest TC+D,Anderson America,7,6/20/2023 6:59 AM
+EQ ID 5215,Soap Dispenser Assembly,21,Autobag Imprinter,,Automated,PI412C,Bobrick Washrom Equipment,0,6/5/2023 1:41 PM
+EQ ID 5212,Maintenance,29,Exhaust #6 First floor line 5 glue fumes exhaust,,,,Bobrick,0,4/6/2023 7:35 AM
+EQ ID 5210,Maintenance,29,Electrical rooms,,,,Bobrick,0,3/21/2023 7:03 AM
+EQ ID 749,Toilet Partitions,40,"Dust Collector, Donaldson Downflo Oval",,Donaldson,DFO4-36,Donaldson Torit,6,2/8/2023 8:43 AM
+EQ ID 1570,Toilet Partitions,40,"1/2 "" Edge Finisher, Solid, Technolegno/ Universal 280",,Technolegno,Universal -280,Stiles Machinery,2,1/23/2023 1:14 PM
+EQ ID 151,Toilet Partitions,40,"3/4 "" Edge Finisher, Solid, Technolegno/ Universal 280",11274,Technolegno,Technolegno Universal 280,TECNOLEGNO srl,3,12/5/2022 1:15 PM
+EQ ID 1449,Maintenance,29,Umbrellas 2nd floor Patio,,,,Bobrick Washrom Equipment,0,11/23/2022 9:10 AM
+EQ ID 114,Soap Dispenser Assembly,21,"Cartoner, 822, Econoseal E-System 2000 #2",8415,E-2000 Cartoner,8415,"Econocorp, Inc.",4,11/22/2022 12:01 PM
+EQ ID 5185,Maintenance,29,Rear yard lot,,,,Bobrick,0,11/5/2022 9:53 AM
+EQ ID 5165,Maintenance,29,ET water Controller Gen 4 and watering irrigation for outside plants,,Et water gen 4,205-169T A,Bobrick,0,8/18/2022 10:14 AM
+EQ ID 1920,Maintenance,29,Water pressure to the building Bobrick 6901 Tujunga ave North hollywood Ca,,,,Bobrick,0,8/18/2022 8:45 AM
+EQ ID 5164,Maintenance,29,Storm drain by Main building water regulator south East,,,,,1,8/1/2022 10:28 AM
+EQ ID 5,Toilet Partitions,40,"Saw, 10' Panel, Laminate Line",7579,A & S,7 x 7,A & S Machinery Inc.,1,5/10/2022 8:23 AM
+EQ ID 5076,Shipping,32,International shrink wrap machine,,Lantech,,Bobrick,0,5/2/2022 8:12 AM
+EQ ID 5071,Toilet Partitions,40,Evolve cell Pop UP table,,Made in house,,Bobrick Washrom Equipment,0,4/20/2022 8:58 AM
+EQ ID 5070,Toilet Partitions,40,Edge finisher Pop UP table,,Made in house,,Bobrick Washrom Equipment,0,4/20/2022 8:57 AM
+EQ ID 2110,Toilet Partitions,40,Evolve Double Head Drilling Machine,,Custom,Bobrick,,1,4/2/2022 10:16 AM
+EQ ID 2111,Toilet Partitions,40,Vacuum Lift Evolve Cell,,Unitech,Unimove CM700,,2,4/2/2022 10:16 AM
+EQ ID 2117,Maintenance,29,Back up AC unit from Trane,,Trane,,,0,4/2/2022 10:16 AM
+EQ ID 2133,Maintenance,29,Fire Alarm Panel,,,,,1,4/2/2022 10:16 AM
+EQ ID 2136,Maintenance,29,Service kart,,,,,0,4/2/2022 10:16 AM
+EQ ID 2075,Soap Dispenser Assembly,21,SN 9680114 Cell 30 Hi-Pot Tester,,Allied Research,8204,,0,4/2/2022 10:16 AM
+EQ ID 2079,Soap Dispenser Assembly,21,Autosoap Branko Tester,,Branko,,,1,4/2/2022 10:16 AM
+EQ ID 2082,Quality Assurance,27,"Digital PSI gauge , 9228301003",,,Pressure Gauge,,1,4/2/2022 10:16 AM
+EQ ID 2083,Quality Assurance,27,"Digital Force Gauge, 3784067",,,,,1,4/2/2022 10:16 AM
+EQ ID 2099,Mfg Engineering,22,AB Control Bottom Tester,,AB Control,Bottom Tester,,0,4/2/2022 10:16 AM
+EQ ID 2100,Mfg Engineering,22,AB Control Top Tester,,AB Control,Top Tester,,0,4/2/2022 10:16 AM
+EQ ID 2101,Assembly,23,Mountz Torque screwdrivers,,Mountz,Screwdriver,,0,4/2/2022 10:16 AM
+EQ ID 2103,Toilet Partitions,40,Flamex spark detection and extinguishing system,,Flamex,FMZ-5000 MOD S,,0,4/2/2022 10:16 AM
+EQ ID 1921,Soap Dispenser Assembly,21,General Request,,,,,0,4/2/2022 10:16 AM
+EQ ID 1924,Soap Dispenser Assembly,21,DBH tester,,Bobrick,,,0,4/2/2022 10:16 AM
+EQ ID 1925,Shipping,32,Stacker 23,,Raymond,730-R35TT,,1,4/2/2022 10:16 AM
+EQ ID 1926,Maintenance,29,Exit Doors,,,,,1,4/2/2022 10:16 AM
+EQ ID 1927,Maintenance,29,Exit Doors Level 2,,,,,1,4/2/2022 10:16 AM
+EQ ID 1943,Maintenance,29,Door alarm trasmitter,,,,,1,4/2/2022 10:16 AM
+EQ ID 1945,Quality Assurance,27,"EZ Torq II 150i Torque Analyzer, EZ1705007, QA",,Mountz,Torque Analyzer,,1,4/2/2022 10:16 AM
+EQ ID 1963,Maintenance,29,test*,,,,,0,4/2/2022 10:16 AM
+EQ ID 1969,Toilet Partitions,40,Chop saw by Holzma Saw,,,,,0,4/2/2022 10:16 AM
+EQ ID 1976,Maintenance,29,Toilets all floors,,,,,1,4/2/2022 10:16 AM
+EQ ID 1977,General,0,Led wall pack lights (Over Man Doors),,Deco Lighting,"Granada, full cut off series",,0,4/2/2022 10:16 AM
+EQ ID 1978,General,0,"LSI Greenlee In-Ground light fixture 13"" (up lihgt)",,LSI Greenlee,RDB-150-277-SPV-W-RTL,,0,4/2/2022 10:16 AM
+EQ ID 1986,Maintenance,29,Electrical switch gear and sub panels,,,,,1,4/2/2022 10:16 AM
+EQ ID 2025,Shipping,32,Dock ramps,,,,,1,4/2/2022 10:16 AM
+EQ ID 2060,Quality Assurance,27,Auto Soap Boundary Board,,,,,0,4/2/2022 10:16 AM
+EQ ID 7,Maintenance,29,"Truck, Pick-Up",7332,Toyota,,,1,4/2/2022 10:16 AM
+EQ ID 11,Maintenance,29,Platform Lift (Hunterlift),8392,Hunter,,,2,4/2/2022 10:16 AM
+EQ ID 13,Toilet Partitions,40,"Notching machine, 1540 Door",,P & R Tool Co,Custom,,2,4/2/2022 10:16 AM
+EQ ID 14,Soap Dispenser Assembly,21,822 Spout Assembly Machine #1,,Advantage Automation,Custom,,3,4/2/2022 10:16 AM
+EQ ID 16,Soap Dispenser Assembly,21,4112 Pump Testing Machine,,,,,1,4/2/2022 10:16 AM
+EQ ID 17,Soap Dispenser Assembly,21,B-40 Tester,,,,,2,4/2/2022 10:16 AM
+EQ ID 154,Toilet Partitions,40,"CNC Drilling Machine, Automatic Leveling Bar",11294,Bobrick,Custom,,3,4/2/2022 10:16 AM
+EQ ID 155,Toilet Partitions,40,"Shaper, Single Spindle, Northfield",10892,Northfield,LTSP,,1,4/2/2022 10:16 AM
+EQ ID 157,Toilet Partitions,40,"Sissors Lift, HolzHer Saw",,Bishamon,Vision,,0,4/2/2022 10:16 AM
+EQ ID 1452,Maintenance,29,GMC Flat bed truck,,GMC,FLAT BED,,0,4/2/2022 10:16 AM
+EQ ID 1454,Soap Dispenser Assembly,21,Cell 3 Shell Bender Torque Driver,,Moun tz,NFT450-A ESD,,0,4/2/2022 10:16 AM
+EQ ID 1455,Soap Dispenser Assembly,21,NT vendor station 6 cleco torque driver S/N YG2675,,Cleco,,,0,4/2/2022 10:16 AM
+EQ ID 1456,Soap Dispenser Assembly,21,NT vendor station 8 cleco torque driver S/N ZJ8691,,Cleco,,,0,4/2/2022 10:16 AM
+EQ ID 1457,Toilet Partitions,40,Panel Handler - 4ft,,Shopcart ADAPA,,,0,4/2/2022 10:16 AM
+EQ ID 1881,Maintenance,29,Cabinet doors all of BLA,,,,,1,4/2/2022 10:16 AM
+EQ ID 1882,Maintenance,29,Water faucets outside the restrooms 1 and 2nd floors,,,,,1,4/2/2022 10:16 AM
+EQ ID 1918,Maintenance,29,Mezzanine light bulbs,,,,,1,4/2/2022 10:16 AM
+EQ ID 1504,Soap Dispenser Assembly,21,Auto Soap Under Counter Assembly Tester 2,,Solatron,472,,1,4/2/2022 10:16 AM
+EQ ID 1511,Toilet Partitions,40,"Jig, Drill, T-203040 ECOR T-Nut Drill, Laminate",,Bobrick,,,2,4/2/2022 10:16 AM
+EQ ID 1512,Quality Assurance,27,1080 Drill Diameter Gages Go NoGo,Drawing #?,Bobrick,,,0,4/2/2022 10:16 AM
+EQ ID 1514,Maintenance,29,2016 Hyundai tucson,,Hynndai,Tucson,,0,4/2/2022 10:16 AM
+EQ ID 1515,Maintenance,29,2016 Hyundai elantra,,Hyundai,Elantra,,1,4/2/2022 10:16 AM
+EQ ID 1521,Maintenance,29,South wall Fire riser system #1 controls 1 st floor office,,,,,0,4/2/2022 10:16 AM
+EQ ID 1522,Maintenance,29,South wall Fire riser system #1 controls mezzanine level offices,,,,,0,4/2/2022 10:16 AM
+EQ ID 1523,Maintenance,29,South wall Fire riser system #1 controls warehouse & level 2 offices,,,,,0,4/2/2022 10:16 AM
+EQ ID 1524,Maintenance,29,West wall Fire riser system #2 controls manufacturing & mezzanine level,,,,,0,4/2/2022 10:16 AM
+EQ ID 1525,Maintenance,29,West wall Fire riser system #2 controls Assembly area,,,,,0,4/2/2022 10:16 AM
+EQ ID 1526,Maintenance,29,West wall Fire riser system #2 controls level 2,,,,,0,4/2/2022 10:16 AM
+EQ ID 1527,Shipping,32,Merv Filters 13 24 x24 x1,,MERV,,,1,4/2/2022 10:16 AM
+EQ ID 1528,Shipping,32,Merv filters 13 12x24x1,,MERV,,,1,4/2/2022 10:16 AM
+EQ ID 1529,Quality Assurance,27,"Digital Force Gage, W08848, QA (CMS Recall)",,Chatillon,DFX2-010-NIST,,2,4/2/2022 10:16 AM
+EQ ID 1535,Maintenance,29,Hankinson Air dryer,,Hankinson,PR300,,0,4/2/2022 10:16 AM
+EQ ID 1541,Toilet Partitions,40,"Gage (Go/No Go), Drill Diameter, Solid",,BLA-MS,T-1080 LDG,,1,4/2/2022 10:16 AM
+EQ ID 1542,Toilet Partitions,40,"Gage (Go/No Go), Drill Diameter, Laminate",,BLA-MS,T-1040 LDG,,2,4/2/2022 10:16 AM
+EQ ID 1543,Toilet Partitions,40,"Cutout Jig B357, B347",,,,,1,4/2/2022 10:16 AM
+EQ ID 1544,Toilet Partitions,40,Cutout Jig B3471/B3571,,,,,1,4/2/2022 10:16 AM
+EQ ID 1561,Toilet Partitions,40,Step Drill 1080/1090 CNC Drilling Machine,,Custom,,,0,4/2/2022 10:16 AM
+EQ ID 1562,Toilet Partitions,40,Step Drill 1040 CNC Drilling Machine,,Custom,,,0,4/2/2022 10:16 AM
+EQ ID 1563,Toilet Partitions,40,Step Drill & Stop Phenolic Series Insert,,Custom,,,0,4/2/2022 10:16 AM
+EQ ID 1564,Toilet Partitions,40,Cart - TPF Finish Goods,,Custom,,,0,4/2/2022 10:16 AM
+EQ ID 1568,Toilet Partitions,40,CNC Drill Setup Gage-1040,,BLA MS,T-104030 CNC Set Up Gage,,0,4/2/2022 10:16 AM
+EQ ID 1569,Toilet Partitions,40,CNC Drill Setup Gage-1080,,BLA MS,T-10801090 Reb B,,1,4/2/2022 10:16 AM
+EQ ID 1571,Toilet Partitions,40,Concrete floor,,,,,1,4/2/2022 10:16 AM
+EQ ID 1575,Toilet Partitions,40,Laminate Drill Hole Depth Gage,,BLA MS,T-104030 DG Laminate,,1,4/2/2022 10:16 AM
+EQ ID 1577,Soap Dispenser Assembly,21,SN 9680990 CEll 30 Hi-Pot Tester,,Asociated Research,AR8206,,3,4/2/2022 10:16 AM
+EQ ID 1584,Toilet Partitions,40,Pinch Roller (Heated),11536,"Black Bros,Co.",Panel Express NL74,Junheinrich,4,4/2/2022 10:16 AM
+EQ ID 1587,Maintenance,29,26930-XL AquaSense Battery Powered Faucet,,,,,0,4/2/2022 10:16 AM
+EQ ID 1591,Quality Assurance,27,"Boundary Board, Center Bend Tooling Marks, QA",,BED,,,1,4/2/2022 10:16 AM
+EQ ID 1592,Quality Assurance,27,"Boundary Board, Weld Spatter, QA",,BED,,,1,4/2/2022 10:16 AM
+EQ ID 1593,Maintenance,29,Shipping Lunchroom Filter Under sink,,Everpure Part # EV953426,,,1,4/2/2022 10:16 AM
+EQ ID 1594,Maintenance,29,Lunchroom Filters across from Sandy's office under sink,,Scotman filters,,,1,4/2/2022 10:16 AM
+EQ ID 1595,Maintenance,29,Main Lunchroom filters 2nd floor under sink,,Scotsman,,,1,4/2/2022 10:16 AM
+EQ ID 1607,Maintenance,29,Scotsman ice maker Shipping lunchroom,,,MDT5N25 and MDT5N40,,1,4/2/2022 10:16 AM
+EQ ID 1608,Maintenance,29,Scotsman ice maker Executive lunchroom,,Scotsman,MDT5N25 and MDT5N40,,1,4/2/2022 10:16 AM
+EQ ID 1609,Maintenance,29,Scotsman ice maker Main lunchroom 2nd floor,,Scotsman,MDT5N25 and MDT5N40,,2,4/2/2022 10:16 AM
+EQ ID 1615,Maintenance,29,Urinals HYB-7000,,Sloan,Sloan,,2,4/2/2022 10:16 AM
+EQ ID 1616,Soap Dispenser Assembly,21,B-823 Pump Assembly Tester,11474,Bobrick,T-823-12,,0,4/2/2022 10:16 AM
+EQ ID 1618,Maintenance,29,Storm drain location South west shipping Exit,,,,,2,4/2/2022 10:16 AM
+EQ ID 1619,Maintenance,29,Storm drain Location south east next to shipping elevator,,,,,1,4/2/2022 10:16 AM
+EQ ID 1620,Maintenance,29,Storm drain Location near Dust colletor,,,,,1,4/2/2022 10:16 AM
+EQ ID 1622,Maintenance,29,East side skylights roof,,,,,0,4/2/2022 10:16 AM
+EQ ID 1623,Toilet Partitions,40,1/2 Pop-up table made in house,,Made in house,,,0,4/2/2022 10:16 AM
+EQ ID 1625,Maintenance,29,Backflow device by water meter #90398396,,FEBCO,825Y,,1,4/2/2022 10:16 AM
+EQ ID 1628,Quality Assurance,27,"EZ Torq II Torque Analyzer, EZ1410017, QA (CMS Recall)",,Mountz,50i,,1,4/2/2022 10:16 AM
+EQ ID 1647,Toilet Partitions,40,Solid Cell,,,,,1,4/2/2022 10:16 AM
+EQ ID 1648,Toilet Partitions,40,Laminate Cell,,,,,1,4/2/2022 10:16 AM
+EQ ID 1653,Toilet Partitions,40,Drill Jig - for Hinges Stile -I/S-O/S FC For Laminate,,BLA MS,T-10366006,,0,4/2/2022 10:16 AM
+EQ ID 1654,Toilet Partitions,40,Drill Jig - for Door Hinges ( 3 Hinges) Laminate,,Custom,T-1039727,,0,4/2/2022 10:16 AM
+EQ ID 1655,Toilet Partitions,40,Drill Jig - for Hinges for O/S Stile Hinges,,Custom,T- 10401590,,0,4/2/2022 10:16 AM
+EQ ID 1656,Toilet Partitions,40,Drill Jig - OS Door Hinge,,Custom,T-10406622,,1,4/2/2022 10:16 AM
+EQ ID 1657,Toilet Partitions,40,Drill Jig - for Door Hinges Laminate,,Custom,DJ-10406320,,0,4/2/2022 10:16 AM
+EQ ID 1658,Toilet Partitions,40,TPF,,,,,2,4/2/2022 10:16 AM
+EQ ID 1659,Soap Dispenser Assembly,21,SO-LOW freezer,,Environmental Equipment Co,CH45-5,,0,4/2/2022 10:16 AM
+EQ ID 1664,Quality Assurance,27,"Boundary Board, Flange Welding, QA",,,,,1,4/2/2022 10:16 AM
+EQ ID 1670,Maintenance,29,Outside locks exposed to the elements,,,,,1,4/2/2022 10:16 AM
+EQ ID 1686,Toilet Partitions,40,Edgebander Pop up table,,Made in house,,,0,4/2/2022 10:16 AM
+EQ ID 1687,Soap Dispenser Assembly,21,B-4112 Epoxy Thawing Chamber,,Harvard Apparatus,340932,,0,4/2/2022 10:16 AM
+EQ ID 1698,Maintenance,29,Exterior up lights and Ballard's,,,,,0,4/2/2022 10:16 AM
+EQ ID 1699,Maintenance,29,Exterior Man door lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1700,Maintenance,29,Exterior HPS high lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1701,Maintenance,29,Exterior parking structure lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1704,Maintenance,29,Magnetic floor sweeper,,,,,1,4/2/2022 10:16 AM
+EQ ID 1721,Machine Shop,25,10''Compound Miter Saw,,Dewalt,DW713,,0,4/2/2022 10:16 AM
+EQ ID 1724,Toilet Partitions,40,O-Sama (Joos) Glue Spreader,11536,Roller gluing machine,S2R-1900,,6,4/2/2022 10:16 AM
+EQ ID 1727,Mfg Engineering,22,B-2111 2112 assembly machine,,Solatron,476,,0,4/2/2022 10:16 AM
+EQ ID 1767,Maintenance,29,DS-Oil/Water Seprator,,Donaldson,DS-0530,,1,4/2/2022 10:16 AM
+EQ ID 1776,Maintenance,29,Front gate Facing Tujunga street,,,,,1,4/2/2022 10:16 AM
+EQ ID 1780,Soap Dispenser Assembly,21,Cell 2 B-822 Pump Functional Tester,11644,Solatron,477,,2,4/2/2022 10:16 AM
+EQ ID 1785,Maintenance,29,Terrazzo Floor,,,,,1,4/2/2022 10:16 AM
+EQ ID 1786,Maintenance,29,Exterior and indoor windows,,,,,1,4/2/2022 10:16 AM
+EQ ID 1787,Maintenance,29,Manufacturing floor high bay dusting,,,,,0,4/2/2022 10:16 AM
+EQ ID 1788,Maintenance,29,Office floor high bay dusting,,,,,0,4/2/2022 10:16 AM
+EQ ID 1789,Soap Dispenser Assembly,21,B-40 Screw Drill,,,,,0,4/2/2022 10:16 AM
+EQ ID 1790,Maintenance,29,AC HP-1 Serving Shipping lead /Luchroom,,,,,0,4/2/2022 10:16 AM
+EQ ID 1796,Machine Shop,25,"8"" Digimatic Caliper, A 18018637, MS, Victor",,Mitutoyo,"8"" Digimatic Caliper",,1,4/2/2022 10:16 AM
+EQ ID 1802,Maintenance,29,Solar panels,,,,,1,4/2/2022 10:16 AM
+EQ ID 1804,Mfg Engineering,22,Mini air compressor,,Porter Cable,c2002,,0,4/2/2022 10:16 AM
+EQ ID 1846,Soap Dispenser Assembly,21,B-824 bottle leak tester,,TM Electronics,LT-L015-E,,1,4/2/2022 10:16 AM
+EQ ID 1877,Toilet Partitions,40,TLF Intellistore (Rainbow Stacking System)- TLF211,11564,Homag,Storeteq S-200,,8,4/2/2022 10:16 AM
+EQ ID 1878,Quality Assurance,27,"Boundary Board, Grab Bar Bending Tooling Marks, QA",,Bobrick,Boundary Board,,1,4/2/2022 10:16 AM
+EQ ID 159,Machine Shop,25,Rotary Table,0784,,TSK 250/320,,0,4/2/2022 10:16 AM
+EQ ID 160,Machine Shop,25,Rotary Table,,China,TSK 250-350,,0,4/2/2022 10:16 AM
+EQ ID 163,Machine Shop,25,"Band Saw, Horiz, ACRA",,ACRA,712B,,0,4/2/2022 10:16 AM
+EQ ID 166,Machine Shop,25,Tool Post Grinder,1152,,,,0,4/2/2022 10:16 AM
+EQ ID 167,Machine Shop,25,Procunier Lead Screw Toppr,7423,Procunier,,,0,4/2/2022 10:16 AM
+EQ ID 172,Soap Dispenser Assembly,21,002156LR ASG Torque Driver,,ASG H 105,CL-6500,,2,4/2/2022 10:16 AM
+EQ ID 174,Soap Dispenser Assembly,21,740003L1 ASG Torque Driver,,ASG H 105,CL-6500,AMT Devices,1,4/2/2022 10:16 AM
+EQ ID 175,Soap Dispenser Assembly,21,UJ2651 Cleco Torque Driver,,Cleco,14SCAO5Q,,2,4/2/2022 10:16 AM
+EQ ID 176,Soap Dispenser Assembly,21,UJ2755 Cleco Torque Driver,,Cleco,14SCAO5Q,,2,4/2/2022 10:16 AM
+EQ ID 177,Machine Shop,25,Belt Grinder,0009,Burr King,,,0,4/2/2022 10:16 AM
+EQ ID 179,Machine Shop,25,Drill Grinder,,,,,0,4/2/2022 10:16 AM
+EQ ID 180,Shipping,32,"Stacker, Electric R-9",,Raymond,EASI R30TT,,0,4/2/2022 10:16 AM
+EQ ID 181,Toilet Partitions,40,Stacker R-19,,Raymond,EASI R30TT,,1,4/2/2022 10:16 AM
+EQ ID 182,Shipping,32,Stacker # 10,,Raymond,20i-R30 TT,,1,4/2/2022 10:16 AM
+EQ ID 185,Soap Dispenser Assembly,21,"Tester, 824, No Touch SD, Top Assy",98,No Touch Soap Dispenser,,,2,4/2/2022 10:16 AM
+EQ ID 743,Maintenance,29,General Maintenance Request,,,,,7,4/2/2022 10:16 AM
+EQ ID 744,General,0,General Maintenace Requests,,,,,0,4/2/2022 10:16 AM
+EQ ID 1465,Maintenance,29,Parking structure elevator,,,,,1,4/2/2022 10:16 AM
+EQ ID 1466,Maintenance,29,Employee elevator 1 Zone 42,,,,,2,4/2/2022 10:16 AM
+EQ ID 1467,Maintenance,29,Maintenance elevator 2 Zone 43,,,,,1,4/2/2022 10:16 AM
+EQ ID 1468,Maintenance,29,Emergency eye wash /shower stations,,,,,1,4/2/2022 10:16 AM
+EQ ID 1470,Maintenance,29,Shipping dock elevator,,Serco,OMH-72120-15 /SHDL68-15,,0,4/2/2022 10:16 AM
+EQ ID 1475,Maintenance,29,AC 2-1 Serving 2nd floor west,,Trane,SFHLF604,,0,4/2/2022 10:16 AM
+EQ ID 1476,Maintenance,29,AC 2-2 Serving 2nd floor east,,Trane,SFHLF604,,0,4/2/2022 10:16 AM
+EQ ID 1477,Maintenance,29,AC 2-3 Serving 2nd floor computer room,,Trane,THC092F,,0,4/2/2022 10:16 AM
+EQ ID 1478,Maintenance,29,AC 2-4 Serving 2nd Floor back offices including HR,,Trane,WSC090,,0,4/2/2022 10:16 AM
+EQ ID 1479,Maintenance,29,AC 2-5 Serving 2nd floor elevator equipment,,Trane,THC048F,,0,4/2/2022 10:16 AM
+EQ ID 1480,Maintenance,29,AC M-1 Serving mezzanine floor east,,Trane,WCD360B4,,0,4/2/2022 10:16 AM
+EQ ID 1481,Maintenance,29,AC 1-1 Serving TPF 1st floor south west,,Trane,YCD360B4,,0,4/2/2022 10:16 AM
+EQ ID 1482,Maintenance,29,AC 1-2 Serving TPF 1st floor north west,,Trane,YCD360B4,,0,4/2/2022 10:16 AM
+EQ ID 1483,Maintenance,29,AC 1-3 Serving Assembly 1st floor,,Trane,YCD360B4,,0,4/2/2022 10:16 AM
+EQ ID 1484,Maintenance,29,AC 1-4 Serving TPF 1st floor east,,Trane,YCD360B4,,0,4/2/2022 10:16 AM
+EQ ID 1485,Maintenance,29,HP WH1 Serving shipping office/luchroom warehouse south off east,,Trane,4WCC3024B1,,0,4/2/2022 10:16 AM
+EQ ID 1486,Maintenance,29,HP WH2 Serving QA Lab warehouse,,Trane,4WCC3024B1,,0,4/2/2022 10:16 AM
+EQ ID 1488,Toilet Partitions,40,"POP UP Table, 3/4"" Edge Finisher",,BLA-MS,1080-90 POP Up Table,,0,4/2/2022 10:16 AM
+EQ ID 1490,Shipping,32,General request,,,,,0,4/2/2022 10:16 AM
+EQ ID 1491,Quality Assurance,27,General request,,,,,0,4/2/2022 10:16 AM
+EQ ID 1492,Machine Shop,25,General request,,,,,0,4/2/2022 10:16 AM
+EQ ID 115,Soap Dispenser Assembly,21,Loctite Machine Cell1,,In House,,,1,4/2/2022 10:16 AM
+EQ ID 116,Soap Dispenser Assembly,21,Loctite Machine Cell2,,In House,,,1,4/2/2022 10:16 AM
+EQ ID 118,Soap Dispenser Assembly,21,"Tester, 822 Cell 2",,In House,Custom,,2,4/2/2022 10:16 AM
+EQ ID 120,Mfg Engineering,22,Assembly Machine 2111/12,10885,Advantage Automation,Custom,,6,4/2/2022 10:16 AM
+EQ ID 121,Toilet Partitions,40,"Drill Jig, 1080/ 1090 Leveling Bar",,Bobrick Drill Jig,1080/1090 Leveling Bar,,0,4/2/2022 10:16 AM
+EQ ID 123,Soap Dispenser Assembly,21,N-16828 Cleco Torque Driver,,Cleco,5BRNL-7BF-C,,2,4/2/2022 10:16 AM
+EQ ID 124,Soap Dispenser Assembly,21,43889 Aro Torque Driver,,Aro,,,1,4/2/2022 10:16 AM
+EQ ID 127,Machine Shop,25,Digital Caliper 2,2092103,Mitutuoyo,"0-8""",,0,4/2/2022 10:16 AM
+EQ ID 130,Toilet Partitions,40,"Vacuum Lift 1/2"" panels packout",1080,Unitech,Unimove CM 700,,2,4/2/2022 10:16 AM
+EQ ID 131,Toilet Partitions,40,Vacuum Lift Laminate Pack Out,1540,Unitech,Unimove CM 700,,2,4/2/2022 10:16 AM
+EQ ID 132,Machine Shop,25,Hex & Square Collet Block set,,SPI,,,0,4/2/2022 10:16 AM
+EQ ID 133,Machine Shop,25,National Diamond,,6 x 1 x 1 1/4,DL2V9 3/16 rim,,0,4/2/2022 10:16 AM
+EQ ID 134,Soap Dispenser Assembly,21,Dunk Tester 4112,11269,,,,0,4/2/2022 10:16 AM
+EQ ID 136,Soap Dispenser Assembly,21,Hot Stamping Machine B-40,10043,Franklin,1020,,0,4/2/2022 10:16 AM
+EQ ID 137,Mfg Engineering,22,ME Support Request,12345,,,,1,4/2/2022 10:16 AM
+EQ ID 138,Soap Dispenser Assembly,21,"Printer, Label, Zebra",,Zebra 110XiIII+300dpi,,,0,4/2/2022 10:16 AM
+EQ ID 139,Soap Dispenser Assembly,21,Valve Fixture #3 for 4112-110,,,3-4112-*110,,1,4/2/2022 10:16 AM
+EQ ID 140,Soap Dispenser Assembly,21,Valve Fixture #2 for 4112-110,,,2-4112-110,,0,4/2/2022 10:16 AM
+EQ ID 141,Soap Dispenser Assembly,21,Valve Fixture # 1 for 4112-110,,,1-4112-110,,0,4/2/2022 10:16 AM
+EQ ID 142,Soap Dispenser Assembly,21,822 Guide Key Fixture-Cell2,,,,,0,4/2/2022 10:16 AM
+EQ ID 143,Soap Dispenser Assembly,21,822 Guide Key Fixture - Cell 1,,,,,0,4/2/2022 10:16 AM
+EQ ID 144,Soap Dispenser Assembly,21,valve fixture 4112-119,,,,,0,4/2/2022 10:16 AM
+EQ ID 146,Mfg Engineering,22,21112 lid opener,21,1994,,,0,4/2/2022 10:16 AM
+EQ ID 147,Soap Dispenser Assembly,21,Latch assy fixture,,,,,0,4/2/2022 10:16 AM
+EQ ID 148,Soap Dispenser Assembly,21,B -40 U-PACK FIXTURE,,INHOUSE,,,1,4/2/2022 10:16 AM
+EQ ID 19,Machine Shop,25,Mill,8429,Bridgeport,,,1,4/2/2022 10:16 AM
+EQ ID 20,Machine Shop,25,Mill,5325,Alliant,,,1,4/2/2022 10:16 AM
+EQ ID 21,Machine Shop,25,"Lathe, Hardinge",7704,Hardinge,,,1,4/2/2022 10:16 AM
+EQ ID 22,Machine Shop,25,Lathe,0025,Logan Engineering,"6560-14""",,1,4/2/2022 10:16 AM
+EQ ID 27,Toilet Partitions,40,Forklift # T4,,Toyota,7FBCU25,,0,4/2/2022 10:16 AM
+EQ ID 28,Toilet Partitions,40,Forklift # T5,,Toyota,7FBCU45,,1,4/2/2022 10:16 AM
+EQ ID 29,Toilet Partitions,40,Forklift # T20,,Toyota,7FBCU25,,0,4/2/2022 10:16 AM
+EQ ID 30,Shipping,32,Forklift T 1,,Toyota,7FBEU20,,1,4/2/2022 10:16 AM
+EQ ID 32,Shipping,32,Stacker # 18,,Raymond,20i-R30TT,,2,4/2/2022 10:16 AM
+EQ ID 45,Machine Shop,25,Surface Grinder,5323,Chevalier,FSG-618,,2,4/2/2022 10:16 AM
+EQ ID 46,Machine Shop,25,Vert. Band Saw,0023,,,,1,4/2/2022 10:16 AM
+EQ ID 49,Machine Shop,25,Acu-rite lll,7705,,,,1,4/2/2022 10:16 AM
+EQ ID 50,Machine Shop,25,Acu-rite,8646,,,,1,4/2/2022 10:16 AM
+EQ ID 54,Soap Dispenser Assembly,21,Stapler Machine,5353,,,,2,4/2/2022 10:16 AM
+EQ ID 59,Toilet Partitions,40,Vacuum Lift System (Glue Line ),10772,UniTech,CM 700,,3,4/2/2022 10:16 AM
+EQ ID 60,Toilet Partitions,40,Laminate Slitter,10367,Mar Bel,MLS- 12,,2,4/2/2022 10:16 AM
+EQ ID 61,Toilet Partitions,40,"Screwdriver, Insert, 1080-2",,Cleco,88TRSAL-5BQ,,3,4/2/2022 10:16 AM
+EQ ID 64,Toilet Partitions,40,"Driver, Pulse Tool, 1080 Leveling Bar",,Cleco,20PTHL-35Q,,0,4/2/2022 10:16 AM
+EQ ID 66,Mfg Engineering,22,"2111, 2112 Can Cleaner",,ARO Corp,SAO24C-9,,1,4/2/2022 10:16 AM
+EQ ID 67,Soap Dispenser Assembly,21,822 Spout Assembly Machine #2,,Bobrick,Custom,,3,4/2/2022 10:16 AM
+EQ ID 68,Soap Dispenser Assembly,21,"Stapler, Pneumatic",,,,,0,4/2/2022 10:16 AM
+EQ ID 69,Soap Dispenser Assembly,21,"FRL - Filter, Regulator, Lubricator",,various,,,1,4/2/2022 10:16 AM
+EQ ID 70,Soap Dispenser Assembly,21,"FRL - Filter, Regulator, Lubricator",,various,,,0,4/2/2022 10:16 AM
+EQ ID 71,Machine Shop,25,"FRL - Filter, Regulator, Lubricator",,various,,,0,4/2/2022 10:16 AM
+EQ ID 72,Toilet Partitions,40,"FRL - Filter, Regulator, Lubricator",,various,,,0,4/2/2022 10:16 AM
+EQ ID 73,Maintenance,29,"FRL - Filter, Regulator, Lubricator",,various,,,0,4/2/2022 10:16 AM
+EQ ID 74,Soap Dispenser Assembly,21,"Tube cutter, automatic",,Custom,Custom,,3,4/2/2022 10:16 AM
+EQ ID 76,Quality Assurance,27,"Boundary Board, Assembly, 150 brackets",,,,,1,4/2/2022 10:16 AM
+EQ ID 77,Quality Assurance,27,"Boundary Board, Assembly, 5050 / 5090 Vessels",,,,,1,4/2/2022 10:16 AM
+EQ ID 78,Quality Assurance,27,"Boundary Board, TPF, Edge Bander",,,,,2,4/2/2022 10:16 AM
+EQ ID 80,Quality Assurance,27,"Boundary Board, TPF, 1540 Door Notcher",,,,,1,4/2/2022 10:16 AM
+EQ ID 82,Soap Dispenser Assembly,21,Sample Book: 822 shells and escutcheons,,,,,1,4/2/2022 10:16 AM
+EQ ID 83,Quality Assurance,27,"Boundary Board, Soap Dispenser Assembly, 40 Vessel",,,,,1,4/2/2022 10:16 AM
+EQ ID 84,Quality Assurance,27,"Boundary Board, Soap Dispenser Assembly, 2111/2112 window & cans",,,,,1,4/2/2022 10:16 AM
+EQ ID 86,Quality Assurance,27,"Boundary Board, Soap Dispenser Assembly, 4112 can",,,,,1,4/2/2022 10:16 AM
+EQ ID 87,Quality Assurance,27,"Boundary Board, TPF, 1540 /1040 Edge Finisher",,,,,1,4/2/2022 10:16 AM
+EQ ID 88,Soap Dispenser Assembly,21,Line 6 Documentation,,In House,Line 6 Documention,,1,4/2/2022 10:16 AM
+EQ ID 89,Soap Dispenser Assembly,21,Line# 8 Documentation,,In House,Line# 8 Documentation,,1,4/2/2022 10:16 AM
+EQ ID 90,Soap Dispenser Assembly,21,Line# 9 Documentation,,In House,Line# 9 Documentation,,1,4/2/2022 10:16 AM
+EQ ID 91,Soap Dispenser Assembly,21,Line # 12 Documentation,,In House,Line # 12,,1,4/2/2022 10:16 AM
+EQ ID 92,Soap Dispenser Assembly,21,Line 13 Documentation,,In House,Line 13,,1,4/2/2022 10:16 AM
+EQ ID 93,Soap Dispenser Assembly,21,Line# 15 Documentation,,In House,Line# 15,,1,4/2/2022 10:16 AM
+EQ ID 94,Soap Dispenser Assembly,21,Line# 30 Documentation,,In House,Line# 30,,1,4/2/2022 10:16 AM
+EQ ID 95,Soap Dispenser Assembly,21,Line# 40 Documentation,,In House,Line# 40,,1,4/2/2022 10:16 AM
+EQ ID 96,Toilet Partitions,40,Vacuum Lift 1080 Line packout,10844,Unitech,Unimove CM 700,,2,4/2/2022 10:16 AM
+EQ ID 97,Soap Dispenser Assembly,21,Stapler Machine - Bostitch Textion,4945,Bostitch,,,0,4/2/2022 10:16 AM
+EQ ID 98,Soap Dispenser Assembly,21,Label Printer,10589,LABELTRONIX,,,0,4/2/2022 10:16 AM
+EQ ID 99,Soap Dispenser Assembly,21,"Oven, 4112, Hot Room W/7 Days Tm Ctl",,,,,0,4/2/2022 10:16 AM
+EQ ID 100,Soap Dispenser Assembly,21,B-822 Tester - Cell 1 (3 nests),,In House,,,4,4/2/2022 10:16 AM
+EQ ID 101,Soap Dispenser Assembly,21,"Cartoner, 822, Econoseal E-System 2000 #1",10823,E SYSTEM 2000,7731,,4,4/2/2022 10:16 AM
+EQ ID 102,Toilet Partitions,40,"Insert Screwdriver, 1080 -1",,Cleco,8TRSATP 10BQ,,1,4/2/2022 10:16 AM
+EQ ID 103,Soap Dispenser Assembly,21,4059809 ARO Torque Driver,,ARO Corp,SAO24C-9,,3,4/2/2022 10:16 AM
+EQ ID 104,Soap Dispenser Assembly,21,4061909 ARO Torque Driver,,ARO Corp,SAO24C-9,,2,4/2/2022 10:16 AM
+EQ ID 105,Toilet Partitions,40,"Drilling Machine CNC, 1040 Laminate",10863,"Ganner, Gannomat",Index 330 Trend,,6,4/2/2022 10:16 AM
+EQ ID 106,Soap Dispenser Assembly,21,"Stapler, Electric Box Bottoming 1",10845,STANLEY-BOSTITCH,FC95EC,,0,4/2/2022 10:16 AM
+EQ ID 108,Soap Dispenser Assembly,21,"Stapler, Electric Box Bottoming 2",10847,STANLEY-BOSTITCH,FC95EC,,0,4/2/2022 10:16 AM
+EQ ID 109,Machine Shop,25,Outside Micrometer,,CRAFTSMAN,"1-2""",,1,4/2/2022 10:16 AM
+EQ ID 111,Machine Shop,25,Digital caliper 1,03150863,Mitutuoyo,"0-8""",,0,4/2/2022 10:16 AM
+EQ ID 112,Mfg Engineering,22,Digital Caliper 2,32450,mitutoyo,"0-8""",,0,4/2/2022 10:16 AM
+EQ ID 1212,Quality Assurance,27,"Function Gage, T-4112-7 AC 3, Adams Campbell",,BLA Machine Shop,T-4112-7,,1,4/2/2022 10:16 AM
+EQ ID 1213,Quality Assurance,27,"Surface Plate 36x48, PQ-51-14, QA (CMS Recall)",,Precision Granite,Surface Plate 36x48,,1,4/2/2022 10:16 AM
+EQ ID 1214,Quality Assurance,27,"18"" Digital Height Gage, 1409748, QA (CMS Recall)",,Mitutoyo,"18"" Digital Height Gage",,1,4/2/2022 10:16 AM
+EQ ID 1215,Quality Assurance,27,"Pin Gage Set, B005, QA",,Vermont Gage,Pin Gage Set,,1,4/2/2022 10:16 AM
+EQ ID 1216,Quality Assurance,27,"Dial Indicator, B112138, QA",,Brown & Sharpe,7034-1,,1,4/2/2022 10:16 AM
+EQ ID 1217,Quality Assurance,27,"Dial Indicator, B147449, QA",,Brown & Sharpe,7030-1,,1,4/2/2022 10:16 AM
+EQ ID 1218,Quality Assurance,27,"Boundary Board, Grab Bar Welding",,,,,2,4/2/2022 10:16 AM
+EQ ID 1330,Quality Assurance,27,"Drill Fixture, 1080 Drill Machine RH O/S Door, Sample from Machine",,Drill Fixture,1080 Drill Machine RH O/S Door,,1,4/2/2022 10:16 AM
+EQ ID 1335,Toilet Partitions,40,Edge Finisher Laminate,,Technolegno,Universal -300 UL SX,,4,4/2/2022 10:16 AM
+EQ ID 1336,Maintenance,29,Gate by south east side of shipping,,,,,2,4/2/2022 10:16 AM
+EQ ID 1337,Soap Dispenser Assembly,21,4112 Lid Opener,,Bobrick,,,0,4/2/2022 10:16 AM
+EQ ID 1344,Quality Assurance,27,"Digital Micrometer, 6194113, QA (CMS Recall)",,Mitutoyo,Digital Micrometer,,1,4/2/2022 10:16 AM
+EQ ID 1345,Quality Assurance,27,"Torque Wrench, 5200",,CDI,Torque Wrench,,1,4/2/2022 10:16 AM
+EQ ID 1346,Quality Assurance,27,"Angle Iron Set, 15327, QA (CMS Recall)",,Shamrock,Angle Iron Set,,1,4/2/2022 10:16 AM
+EQ ID 1347,Quality Assurance,27,"Radius Gage Set, 15324, QA (CMS Recall)",,Starrett,Radius Gage Set,,1,4/2/2022 10:16 AM
+EQ ID 1348,Quality Assurance,27,"Micrometer Checker, 10468, QA (CMS Recall)",,MikeMaster,Micrometer Checker,,1,4/2/2022 10:16 AM
+EQ ID 1349,Quality Assurance,27,"Caliper Checker, 529, QA (CMS Recall)",,Kalmaster,Caliper Checker,,1,4/2/2022 10:16 AM
+EQ ID 1350,Toilet Partitions,40,FLIP TABLE,,SHOP KARTS,STANDARD,,1,4/2/2022 10:16 AM
+EQ ID 1351,Maintenance,29,Genie GR-15 Runabout,11470,Genie,GR-15,,0,4/2/2022 10:16 AM
+EQ ID 1354,General,0,Pilfergard Door alarms,,PG21,,,1,4/2/2022 10:16 AM
+EQ ID 1359,Soap Dispenser Assembly,21,4112 valve assembly and test station,,Bobrick,Bobrick,,0,4/2/2022 10:16 AM
+EQ ID 1360,Maintenance,29,Hot loop building central plant,,,,,1,4/2/2022 10:16 AM
+EQ ID 1361,Toilet Partitions,40,"Saw, Horizontal, Holzma",11446,Holzma,HPL400 Profiline,,6,4/2/2022 10:16 AM
+EQ ID 1366,Soap Dispenser Assembly,21,Cell 3 Tube Exander,,AM,200,,1,4/2/2022 10:16 AM
+EQ ID 1367,Soap Dispenser Assembly,21,Cell 3 O-Ring Press,,AMT-800,A-0019,,1,4/2/2022 10:16 AM
+EQ ID 1368,Soap Dispenser Assembly,21,Cell 3 Tape Machine,,Better Packages Inc,555eS,,0,4/2/2022 10:16 AM
+EQ ID 1370,Soap Dispenser Assembly,21,Cell 3 Spout Assembly Torque Driver,,Mountz,SDC-40,,0,4/2/2022 10:16 AM
+EQ ID 1373,Soap Dispenser Assembly,21,Cell 1 Tube Expander,,AMT Devices,AMT-200,,1,4/2/2022 10:16 AM
+EQ ID 1374,Quality Assurance,27,"Boundary Board, Miter Weld",,,,,1,4/2/2022 10:16 AM
+EQ ID 1375,Quality Assurance,27,"Boundary Board, Corner Weld, QA",,,,,1,4/2/2022 10:16 AM
+EQ ID 1376,Maintenance,29,AC units on the roof,,,,,1,4/2/2022 10:16 AM
+EQ ID 1377,Soap Dispenser Assembly,21,Cell 3 Latch Installation Press,,AMT-800,A-0019,,1,4/2/2022 10:16 AM
+EQ ID 1384,Maintenance,29,"A/C Unit for Electrical room, parking structure",,Fujitsu,AOU36CLX1,,5,4/2/2022 10:16 AM
+EQ ID 1387,Soap Dispenser Assembly,21,Cell 2 Tube Exander,,AMT Devices,AMT-200,,1,4/2/2022 10:16 AM
+EQ ID 1388,Maintenance,29,Lift Master Rolling Gate,,,,,1,4/2/2022 10:16 AM
+EQ ID 1389,Maintenance,29,Tujunga Rolling Doors,,MGH -75- 43E,,,1,4/2/2022 10:16 AM
+EQ ID 1390,Maintenance,29,Lift Master Swinging Gates,,,CSW200UL1HP8,,1,4/2/2022 10:16 AM
+EQ ID 1391,Soap Dispenser Assembly,21,Cell 3 Ophardt Pump Tester,,Ophardt,Ophardt,,0,4/2/2022 10:16 AM
+EQ ID 1393,Maintenance,29,Backup Genset Generator,,"Kohlor, Power Systems",150REOZJF,,4,4/2/2022 10:16 AM
+EQ ID 1394,Soap Dispenser Assembly,21,Cell 1 Tube Notcher,,Bobrick,#1,,0,4/2/2022 10:16 AM
+EQ ID 1395,Soap Dispenser Assembly,21,Cell 2 Tube Notcher,,Bobrick,#2,,0,4/2/2022 10:16 AM
+EQ ID 1396,Maintenance,29,Smart grid 225 Solar System,,Solectria renewables,225,,1,4/2/2022 10:16 AM
+EQ ID 1397,Maintenance,29,Warehouse Exhaust Fan # 1,,,,,0,4/2/2022 10:16 AM
+EQ ID 1398,Maintenance,29,Warehouse Exhaust Fan # 2,,,,,0,4/2/2022 10:16 AM
+EQ ID 1399,Maintenance,29,Exhaust Fan # 3,,,,,1,4/2/2022 10:16 AM
+EQ ID 1400,Maintenance,29,Exhaust Fan # 5 1st floor Restrooms,,,,,0,4/2/2022 10:16 AM
+EQ ID 1401,Maintenance,29,Exhaust Fan # 7 Dust Collector,,,,,0,4/2/2022 10:16 AM
+EQ ID 1402,Maintenance,29,Exhaust Fan # 11,,,,,0,4/2/2022 10:16 AM
+EQ ID 1403,Maintenance,29,Gas Unit Heater # 1 UH1,,,,,0,4/2/2022 10:16 AM
+EQ ID 1404,Maintenance,29,Gas Unit Heater # 2 UH2,,,,,0,4/2/2022 10:16 AM
+EQ ID 1405,Maintenance,29,Gas Unit Heater # 3 UH3,,,,,0,4/2/2022 10:16 AM
+EQ ID 1406,Maintenance,29,Gas Unit Heater # 4 UH4,,,,,0,4/2/2022 10:16 AM
+EQ ID 1408,Soap Dispenser Assembly,21,Auto-Soap Small Air Tube Expander,,AMT Devices,AMT-200,,1,4/2/2022 10:16 AM
+EQ ID 1410,Soap Dispenser Assembly,21,Auto-Soap Large Tube Expander,,AMT Devices,AMT-200,,0,4/2/2022 10:16 AM
+EQ ID 1437,Maintenance,29,"High Speed Door, TPF/Shipping (south)",,Rytec System 4,,,0,4/2/2022 10:16 AM
+EQ ID 1438,Maintenance,29,"High Speed Door, Shipping/Assembly dep.",,Rytec System 4,,,0,4/2/2022 10:16 AM
+EQ ID 1439,Maintenance,29,"High Speed Door, TPF/Assembly dep. (east)",,Rytec System 4,,,0,4/2/2022 10:16 AM
+EQ ID 1440,Maintenance,29,"High Speed Door, TPF/Yard (west wall)",,Rytec System 4,,,0,4/2/2022 10:16 AM
+EQ ID 1441,Maintenance,29,Semaphore unit #1,,,301,,2,4/2/2022 10:16 AM
+EQ ID 1442,Maintenance,29,Semaphore unit # 2,,301,,,2,4/2/2022 10:16 AM
+EQ ID 1443,Maintenance,29,Semaphore unit #3,,,301,,2,4/2/2022 10:16 AM
+EQ ID 1444,Maintenance,29,Semaphore unit #4,,,301,,2,4/2/2022 10:16 AM
+EQ ID 1445,Maintenance,29,ANDERSON ELEVATOR SMOKE ALARMS,,,,,0,4/2/2022 10:16 AM
+EQ ID 1447,Maintenance,29,Roof Drains,,,,,1,4/2/2022 10:16 AM
+EQ ID 1448,Maintenance,29,Roof condensation drains,,,,,1,4/2/2022 10:16 AM
+EQ ID 754,Maintenance,29,Gardner Denver 54hp Compressor,,Gardner Denver,"VS 40, VFD",,1,4/2/2022 10:16 AM
+EQ ID 762,Maintenance,29,"Scissor Lift, Optimus LK, 2111/2112 Line",,Optimus,LK Series,,0,4/2/2022 10:16 AM
+EQ ID 765,Soap Dispenser Assembly,21,"Case Sealer, 3M-Matic, 8226 Cell 2",,3M,800A,,1,4/2/2022 10:16 AM
+EQ ID 768,Toilet Partitions,40,Vacuum Lift (Anderson CNC),10844,Unitech,Unimove CM 700,,2,4/2/2022 10:16 AM
+EQ ID 769,Toilet Partitions,40,Vacuum Lift Holz-Her Saw,11366,Unitech,Unimove CM 1000,,2,4/2/2022 10:16 AM
+EQ ID 773,Soap Dispenser Assembly,21,B-5050 Tester,,P&R Tool,,,0,4/2/2022 10:16 AM
+EQ ID 779,Toilet Partitions,40,Router Station (Stile Building cell),,Porter Cable,7539,,1,4/2/2022 10:16 AM
+EQ ID 780,Toilet Partitions,40,Drill Press (Stile Building Cell),,Rockwell,Delta,,0,4/2/2022 10:16 AM
+EQ ID 781,Toilet Partitions,40,Rework Station (Laminate Cell),,n/a,n/a,,0,4/2/2022 10:16 AM
+EQ ID 782,Toilet Partitions,40,Chop Saw (corner guard pack out Lam.),n/a,Dewalt,DW715,,0,4/2/2022 10:16 AM
+EQ ID 783,Maintenance,29,2111 2112 Scissor Lift,,Bishamon,Lift 2K,,0,4/2/2022 10:16 AM
+EQ ID 785,Soap Dispenser Assembly,21,WH2093 Cleco Torque Driver,,Clecomatic,14SCA05Q,,2,4/2/2022 10:16 AM
+EQ ID 786,Soap Dispenser Assembly,21,UJ2748 Clecco Torque Driver,,Cleco tools,,,2,4/2/2022 10:16 AM
+EQ ID 788,Soap Dispenser Assembly,21,"Tube Cutter, Manual",,,,,0,4/2/2022 10:16 AM
+EQ ID 789,Soap Dispenser Assembly,21,Stem Assembly Press,,Bobrick,,,0,4/2/2022 10:16 AM
+EQ ID 794,Soap Dispenser Assembly,21,B-824 \ Sta 4 \ Mixer Tester,,Bobrick,,,1,4/2/2022 10:16 AM
+EQ ID 795,Soap Dispenser Assembly,21,WG 2321 Cleco Torque Driver,,cleco,14SCA05Q,,2,4/2/2022 10:16 AM
+EQ ID 796,Soap Dispenser Assembly,21,"NT Vendor Sta 4, and 5 Milwaukee Torque Driver",,Milwaukee,0490-20,,2,4/2/2022 10:16 AM
+EQ ID 797,Soap Dispenser Assembly,21,1205586LR ASG Torque Driver,,ASG H10S,CL-6500,,2,4/2/2022 10:16 AM
+EQ ID 798,Soap Dispenser Assembly,21,12085586LR ASG Torque Driver,,ASG H10S,cl-6500,,2,4/2/2022 10:16 AM
+EQ ID 799,Soap Dispenser Assembly,21,Torque Driver / 38030,,Gleco,19SPA03Q,,0,4/2/2022 10:16 AM
+EQ ID 800,Soap Dispenser Assembly,21,Torque Driver,,Gleco,19PCA030,,0,4/2/2022 10:16 AM
+EQ ID 802,Soap Dispenser Assembly,21,7136A85 AERO Torque Driver,,ARO,SA023A-0,,2,4/2/2022 10:16 AM
+EQ ID 804,Toilet Partitions,40,Meyer rotary airlock (dust collector),11367,Meyer,10 X 10,,0,4/2/2022 10:16 AM
+EQ ID 807,Quality Assurance,27,"Drill Fixture, 1047206, Inswing Stile Hinge-C. Hung Plam",,Drill Fixture,Inswing Stile Hinge-C. Hung Plam,,1,4/2/2022 10:16 AM
+EQ ID 808,Quality Assurance,27,"Drill Fixture, 1542003, 1542 Drill Jig T-1542004",,Drill Fixture,1542 Drill Jig T-1542004,,1,4/2/2022 10:16 AM
+EQ ID 810,Toilet Partitions,40,Job Carts 1-6,,,,,1,4/2/2022 10:16 AM
+EQ ID 811,Toilet Partitions,40,Pack out Carts 1-6,,,,,1,4/2/2022 10:16 AM
+EQ ID 812,Toilet Partitions,40,Drywall Carts 1-15,,,,,1,4/2/2022 10:16 AM
+EQ ID 813,Toilet Partitions,40,Materal Carts 1-2,,,,,1,4/2/2022 10:16 AM
+EQ ID 814,Toilet Partitions,40,Scissor Lift # 2 (large) Holz-Her Saw,11278,Bishamon,Vision,,0,4/2/2022 10:16 AM
+EQ ID 815,Toilet Partitions,40,Scissor Lift #1 (small) Holz-Her Saw,11277,Vestil,,,0,4/2/2022 10:16 AM
+EQ ID 816,Toilet Partitions,40,"Scissor Lift 1/2"" Edge Finisher",11257,Bishamon,Vision,,0,4/2/2022 10:16 AM
+EQ ID 817,Toilet Partitions,40,Scissor Lift Holz-Her Edge Bander,,,,,0,4/2/2022 10:16 AM
+EQ ID 818,Toilet Partitions,40,"Scissor Lift 3/4"" solid Edge Finisher",,,,,0,4/2/2022 10:16 AM
+EQ ID 819,Toilet Partitions,40,Scissor Lift Holzma Saw,,,,,0,4/2/2022 10:16 AM
+EQ ID 821,Quality Assurance,27,"Drill Fixture, T1002246, Tube Wall Post 1080 Series",,Drill Fixture,Tube Wall Post 1080 Series,,1,4/2/2022 10:16 AM
+EQ ID 826,Quality Assurance,27,"8"" Digital Caliper, 0189152, M.E. Primo Uy",,Mitutoyo,CD-8 C5,,1,4/2/2022 10:16 AM
+EQ ID 827,Quality Assurance,27,"8"" Digimatic Caliper, 03320488, QA",,Mitutoyo,CD-8,,1,4/2/2022 10:16 AM
+EQ ID 828,Quality Assurance,27,"Drill Fixture, 2080622, Door Hinge Max Privacy (2040/2080)",,Drill Fixture,Door Hinge Max Privacy (2040/2080),,1,4/2/2022 10:16 AM
+EQ ID 832,Soap Dispenser Assembly,21,UJ2652 Cleco Torque Driver,,Cleco,14SCA05Q,,1,4/2/2022 10:16 AM
+EQ ID 833,Soap Dispenser Assembly,21,89775 Cleco Torque Driver,,Cleco,5 BRNAL-7BF-2,,2,4/2/2022 10:16 AM
+EQ ID 834,Soap Dispenser Assembly,21,RF0015 Clecomatic Torque Driver,,Cleco,14SCA05Q,,2,4/2/2022 10:16 AM
+EQ ID 835,Quality Assurance,27,"Drill Fixture, 1040622, Inswing Door Latch-Plam",,Drill Fixture,Inswing Door Latch-Plam,,1,4/2/2022 10:16 AM
+EQ ID 836,Quality Assurance,27,"1"" Micrometer, 27085352, Machine Shop",,Mitutoyo,"MDC-1""",,1,4/2/2022 10:16 AM
+EQ ID 837,Quality Assurance,27,"6"" Digital Caliper, 12345580, QA",,Mitutoyo,CD-6,,1,4/2/2022 10:16 AM
+EQ ID 838,Quality Assurance,27,"6"" Dial Caliper, BB054225, TPF",,Mitutoyo,505-637-50,,1,4/2/2022 10:16 AM
+EQ ID 839,Quality Assurance,27,"24"" Dial Caliper, 3-18.3197, Machine Shop",,China,"24"" Dial Caliper",,1,4/2/2022 10:16 AM
+EQ ID 844,Quality Assurance,27,"Drill Fixture, T-1541-1548-5, 5"" Stile-Leveling Device-1540",,Drill Fixture,"5"" Stile-Leveling Device-1540",,1,4/2/2022 10:16 AM
+EQ ID 925,Soap Dispenser Assembly,21,3944 Towel Mate Fixture,,Bobrick,3944-180 / 3944-181,,0,4/2/2022 10:16 AM
+EQ ID 926,Soap Dispenser Assembly,21,369 / 362 Towel Mate Assembly,,Bobrick,369-180 / 362-180,,0,4/2/2022 10:16 AM
+EQ ID 1020,Machine Shop,25,Spin-dex,7582,,,,0,4/2/2022 10:16 AM
+EQ ID 1021,Machine Shop,25,Universal Vise Combo,,,,,0,4/2/2022 10:16 AM
+EQ ID 1022,Machine Shop,25,Mitutoyo Vertical Caliper,,,,,1,4/2/2022 10:16 AM
+EQ ID 1023,Machine Shop,25,High Precesion Stone Table,3258-2,,,,1,4/2/2022 10:16 AM
+EQ ID 1026,Quality Assurance,27,"Drill Fixture, T1002347, .67 Wall Post",,Drill Fixture,.67 Wall Post,,1,4/2/2022 10:16 AM
+EQ ID 1027,Quality Assurance,27,"Boundary Board, TPF, 1080/1090 Inserts",,,,,1,4/2/2022 10:16 AM
+EQ ID 1028,Quality Assurance,27,"Boundary Board, TPF, Sierra Material Defects",,,,,1,4/2/2022 10:16 AM
+EQ ID 1029,Quality Assurance,27,"Boundary Board, TPF, 1080/1090 Edge Finish",,,,,1,4/2/2022 10:16 AM
+EQ ID 1030,Quality Assurance,27,"Boundary Board, TPF, 1080/1090 Bevel",,,,,1,4/2/2022 10:16 AM
+EQ ID 1031,Machine Shop,25,Reamer Set Letter size A-Z,,Lavalle & Ide,,,0,4/2/2022 10:16 AM
+EQ ID 1032,Machine Shop,25,"Reamer Set Fraction Size 1/16"" - 1/2""",,Lavalle & IDE,,,0,4/2/2022 10:16 AM
+EQ ID 1033,Machine Shop,25,Reamer Set Number Size 1-60,,,,,0,4/2/2022 10:16 AM
+EQ ID 1034,Machine Shop,25,Portable Vise Jaw,,Lord & Hodge,400,,0,4/2/2022 10:16 AM
+EQ ID 1035,Machine Shop,25,"Boring Head 2"" to 4""",,Hyden Twist Drill Co.,,,0,4/2/2022 10:16 AM
+EQ ID 1036,Machine Shop,25,"Punch & Die Set 1/8"" to 3/4""",,PSW,,,0,4/2/2022 10:16 AM
+EQ ID 1037,Machine Shop,25,"Machinest Parellel Clamp 2"" - 3"" - 4""",,Fowler,,,0,4/2/2022 10:16 AM
+EQ ID 1038,Machine Shop,25,V-Blocks set,,Starret,,,0,4/2/2022 10:16 AM
+EQ ID 1039,Machine Shop,25,Radios Gage Set,,Rutland,,,0,4/2/2022 10:16 AM
+EQ ID 1040,Machine Shop,25,"Depth Gage Set 1"" to 3 1/2""",,Accupro,,,0,4/2/2022 10:16 AM
+EQ ID 1041,Machine Shop,25,"Drive Socket Set 7/16"" to 1 1/4""",,Allen USA,,,0,4/2/2022 10:16 AM
+EQ ID 1042,Machine Shop,25,"Caliper 24""",,Starret,,,0,4/2/2022 10:16 AM
+EQ ID 1043,Machine Shop,25,"Caliper 12""",,Mitutuoyo,,,0,4/2/2022 10:16 AM
+EQ ID 1045,Machine Shop,25,Sander Router,,Porter-Cable Jackson,121 Oscillanting,,0,4/2/2022 10:16 AM
+EQ ID 1046,Machine Shop,25,Router Tool,,Makita Corporation,3707FC,,0,4/2/2022 10:16 AM
+EQ ID 1047,Machine Shop,25,Router Tool,,Porter-Cable,7301HD,,0,4/2/2022 10:16 AM
+EQ ID 1048,Machine Shop,25,Die Grinder,,Makita,GD0601,,0,4/2/2022 10:16 AM
+EQ ID 1049,Machine Shop,25,Abrasive Power Tool,,Dynabrade,12080,,0,4/2/2022 10:16 AM
+EQ ID 1050,Machine Shop,25,Abrasive Power Tool,,Dynabrade,13501,,0,4/2/2022 10:16 AM
+EQ ID 1051,Machine Shop,25,Electrical Scriber,,Ideal,11-081C,,0,4/2/2022 10:16 AM
+EQ ID 1052,Machine Shop,25,Welding Torches,,Laramy Product Co.,30-102,,0,4/2/2022 10:16 AM
+EQ ID 1053,Machine Shop,25,Tap & Die set 0.80 NF to 10-24 NC,,Greenfield Industries,00525,,0,4/2/2022 10:16 AM
+EQ ID 1054,Machine Shop,25,Metric Tap & Die Set M3 to M12,,Volkel,,,0,4/2/2022 10:16 AM
+EQ ID 1055,Machine Shop,25,"Gages Pin Set .061"" to .250""",,Vermont Gage,,,0,4/2/2022 10:16 AM
+EQ ID 1056,Machine Shop,25,"Gages Pin Set .251"" to .500""",,Vermont Gage,,,0,4/2/2022 10:16 AM
+EQ ID 1057,Machine Shop,25,"Gages Pin Set .626"" to .750""",,National Gage,,,0,4/2/2022 10:16 AM
+EQ ID 1058,Machine Shop,25,Cordless Ratchet Kit,,Ingersoll Rand,"R-380 3/8"" ratchet wrench",,0,4/2/2022 10:16 AM
+EQ ID 1061,Soap Dispenser Assembly,21,B-40 Lift Table,,Bishamon,Lift 2K,,1,4/2/2022 10:16 AM
+EQ ID 1062,Quality Assurance,27,"Drill Fixture, 1047930, Outswing Stile Hinge-C. Hung Plam",,Drill Fixture,Outswing Stile Hinge-C. Hung Plam,,1,4/2/2022 10:16 AM
+EQ ID 1063,Quality Assurance,27,"36"" Adjustable bar w/6"" Dial Calipers, 4088, QA",,Unique,Cal-X-Tender,,1,4/2/2022 10:16 AM
+EQ ID 1064,Quality Assurance,27,"6"" Digital Caliper, 0082301, QA",,Mitutoyo,"6"" Digital Caliper",,2,4/2/2022 10:16 AM
+EQ ID 1065,Quality Assurance,27,"6"" Digital Caliper, 06172539, Carmen",,Mitutoyo,"CD-6"" CSX",,1,4/2/2022 10:16 AM
+EQ ID 1066,Quality Assurance,27,"6"" Digital Caliper, 0742780, QA, Alex",,Mitutoyo,"CD-6"" CS",,2,4/2/2022 10:16 AM
+EQ ID 1075,Quality Assurance,27,"Drill Fixture, 2088007, Stile Hinge-Max Privacy C. Hung (2040/2080)",,Drill Fixture,Stile Hinge-Max Privacy C. Hung (2040/2080),,1,4/2/2022 10:16 AM
+EQ ID 1077,Soap Dispenser Assembly,21,V10145 Cleco Torque Driver,,Clecomatic,14SCA05Q,,3,4/2/2022 10:16 AM
+EQ ID 1078,Soap Dispenser Assembly,21,UJ2752 Cleco Torque Driver,,Clecomatic,14SCA05Q,,2,4/2/2022 10:16 AM
+EQ ID 1079,Soap Dispenser Assembly,21,14PCA05Q Cleco Torque Driver,,Clecomatic,14SCA05Q,,2,4/2/2022 10:16 AM
+EQ ID 1080,Soap Dispenser Assembly,21,UJ2753 Cleco Torque Driver,,Clecomatic,14SCA05Q,,2,4/2/2022 10:16 AM
+EQ ID 1081,Soap Dispenser Assembly,21,UJ2757 Cleco Torque Driver,,Clecomatic,14SCA05Q,,2,4/2/2022 10:16 AM
+EQ ID 1082,Soap Dispenser Assembly,21,UJ2751 Cleco Torque Driver,,Clecomatic,14SCA05Q,,2,4/2/2022 10:16 AM
+EQ ID 1089,Quality Assurance,27,"Boundary Board, Soap Dispensers, 822",,,,,1,4/2/2022 10:16 AM
+EQ ID 1090,Quality Assurance,27,"Boundary Board, Assembly, NT Vendor Bezels",,,,,1,4/2/2022 10:16 AM
+EQ ID 1091,Quality Assurance,27,"Sample Board, Scratch, All Products",,,,,1,4/2/2022 10:16 AM
+EQ ID 1092,Quality Assurance,27,"Sample Board, Weld, All Products, QA",,,,,3,4/2/2022 10:16 AM
+EQ ID 1093,Quality Assurance,27,"Sample Board, Burr, All Products",,,,,1,4/2/2022 10:16 AM
+EQ ID 1094,Quality Assurance,27,"Sample Board, Dent, All Products",,,,,1,4/2/2022 10:16 AM
+EQ ID 1116,Quality Assurance,27,"6"" Digimatic Caliper, 06172566, Steve",,Mitutoyo,"CD-6"" CSX",,1,4/2/2022 10:16 AM
+EQ ID 1117,Quality Assurance,27,"12"" Dial Caliper, MM 84, QA",,Mitutoyo,505-628-50,,1,4/2/2022 10:16 AM
+EQ ID 1118,Quality Assurance,27,"3"" Machinist Square, 0157, QA",,China,"3"" Machinist Square",,1,4/2/2022 10:16 AM
+EQ ID 1119,Quality Assurance,27,"4"" Machinist Square, 0158, QA",,China,"4"" Machinist Square",,1,4/2/2022 10:16 AM
+EQ ID 1120,Quality Assurance,27,"6"" Machinist Square, 0159, QA",,China,"6"" Machinist Square",,1,4/2/2022 10:16 AM
+EQ ID 1126,Quality Assurance,27,"Drill Fixture, T-1540003, 3"" Stile Leveling Device-1540",,Drill Fixture,"3"" Stile Leveling Device-1540",,1,4/2/2022 10:16 AM
+EQ ID 1128,Quality Assurance,27,"Drill Fixture, T-1540004, 4"" Stile Leveling Device-1540",,Drill Fixture,"4"" Stile Leveling Device-1540",,1,4/2/2022 10:16 AM
+EQ ID 1130,Quality Assurance,27,"Gage Block Set, 63845, QA",,J I F (Frank),Gage Block Set,,1,4/2/2022 10:16 AM
+EQ ID 1131,Quality Assurance,27,"Pin Gage Set, B002, QA (CMS Recall)",,Vermont Gage,Pin Gage Set,,1,4/2/2022 10:16 AM
+EQ ID 1132,Quality Assurance,27,"Pin Gage Set, B003, QA (CMS Recall)",,Vermont Gage,Pin Gage Set,,1,4/2/2022 10:16 AM
+EQ ID 1133,Quality Assurance,27,"Pin Gage Set, B004, QA (CMS Recall)",,Changda,Pin Gage Set,,1,4/2/2022 10:16 AM
+EQ ID 1134,Quality Assurance,27,"Digital Force Gage, 3709, QA (CMS Recall)",,Wagner,Digital Force Gage,,1,4/2/2022 10:16 AM
+EQ ID 1135,Quality Assurance,27,"Parallel Set, 1/2""x7/8""x6"" A & B, QA",,China,Parallel Set,,1,4/2/2022 10:16 AM
+EQ ID 1136,Quality Assurance,27,"Parallel Set, 1/2""x1""x6"" A & B, QA",,China,Parallel Set,,1,4/2/2022 10:16 AM
+EQ ID 1137,Quality Assurance,27,"Parallel Set, 1/2""x1-1/8""x6"" A & B, QA",,China,Parallel Set,,1,4/2/2022 10:16 AM
+EQ ID 1138,Quality Assurance,27,"Parallel Set, 1/2""x1-1/4""x6"" A & B, QA",,China,Parallel Set,,1,4/2/2022 10:16 AM
+EQ ID 1139,Quality Assurance,27,"Parallel Set, 1/2""x1-3/8""x6"" A & B, QA",,China,Parallel Set,,1,4/2/2022 10:16 AM
+EQ ID 1140,Quality Assurance,27,"Parallel Set, 1/2""x1-1/2""x6"" A & B, QA",,China,Parallel Set,,1,4/2/2022 10:16 AM
+EQ ID 1141,Quality Assurance,27,"1"" Micrometer, 80047, QA",,Mitutoyo,"1"" Micrometer",,1,4/2/2022 10:16 AM
+EQ ID 1142,Quality Assurance,27,"6"" Digimatic Caliper, 06488259, QA",,Mitutoyo,"6"" Digimatic Caliper",,1,4/2/2022 10:16 AM
+EQ ID 1143,Quality Assurance,27,"6"" Digital Caliper, 0082354, QA",,Mitutoyo,"6"" Digital Caliper",,1,4/2/2022 10:16 AM
+EQ ID 1149,Quality Assurance,27,"Drill Fixture, 1040 Drill Machine R (S), Sample from Machine",,Drill Fixture,1040 Drill Machine R (S),,1,4/2/2022 10:16 AM
+EQ ID 1150,Quality Assurance,27,"Drill Fixture, 1087007, Stile Hinge-C. Hung Phenolic",,Drill Fixture,Stile Hinge-C. Hung Phenolic,,1,4/2/2022 10:16 AM
+EQ ID 1151,Quality Assurance,27,"Drill Fixture, 2082006, Stile/WP Hinge-Max Privacy OH/FA (2080/2040)",,Drill Fixture,Stile/WP Hinge-Max Privacy OH/FA (2080/2040),,1,4/2/2022 10:16 AM
+EQ ID 1152,Quality Assurance,27,"8"" Digital Caliper, 0171370, M.E. Matt Guner",,Mitutoyo,"8"" Digital Caliper",,1,4/2/2022 10:16 AM
+EQ ID 1153,Quality Assurance,27,"1"" Micrometer, 7115132, Machine Shop",,Mitutoyo,"1"" Micrometer",,1,4/2/2022 10:16 AM
+EQ ID 1154,Quality Assurance,27,"Parallel Set, 1/2""x1-5/8""x6"" A & B, QA",,China,Parallel Set,,1,4/2/2022 10:16 AM
+EQ ID 1155,Quality Assurance,27,"Parallel Set, 1/2""x1-3/4""x6"" A & B, QA",,China,Parallel Set,,1,4/2/2022 10:16 AM
+EQ ID 1156,Quality Assurance,27,"Pin Gage Set, B001, QA",,Vermont Gage,Pin Gage Set,,1,4/2/2022 10:16 AM
+EQ ID 1157,Quality Assurance,27,"Pin Gage Set, 15447, QA",,China,Pin Gage Set,,1,4/2/2022 10:16 AM
+EQ ID 1158,Quality Assurance,27,"Drill Fixture, T-1542003-1, Drill Jig (Stile)",,Drill Fixture,Drill Jig (Stile),,1,4/2/2022 10:16 AM
+EQ ID 1159,Toilet Partitions,40,"Insert 1 Screwdriver, Auto Reverse, Lever",,Desoutter,SD140-LA510-S4,,2,4/2/2022 10:16 AM
+EQ ID 1160,Toilet Partitions,40,"Driver, Pulse Tool, 1080 Leveling Bar,Desoutter model PTF022-T6500-S4Q",,Desoutter,PTF022-T6500-S4Q,,0,4/2/2022 10:16 AM
+EQ ID 1161,Quality Assurance,27,"Drill Fixture, 1040 Drill Machine L (S), Sample from Machine",,Drill Fixture,1040 Drill Machine L (S),,1,4/2/2022 10:16 AM
+EQ ID 1164,Quality Assurance,27,"Drill Fixture, 1080622, Door Hinge-Phenolic",,Drill Fixture,Door Hinge-Phenolic,,1,4/2/2022 10:16 AM
+EQ ID 1167,Shipping,32,#20 Jungheinrich ETV 318 Hi Reach Forklift,11409,Jungheinrich,ETV 318 A,,2,4/2/2022 10:16 AM
+EQ ID 1168,Quality Assurance,27,"Drill Fixture, 1040632, Outswing Door Latch-Plam",,Drill Fixture,Outswing Door Latch-Plam,,1,4/2/2022 10:16 AM
+EQ ID 1169,Shipping,32,#22 Jungheinrich VNA Forklift,11404,Jungheinrich,EKX 515k,,2,4/2/2022 10:16 AM
+EQ ID 1170,Shipping,32,#21 Jungheinrich VNA Forklift,11403,Jungheinrich,EKX 515k,,2,4/2/2022 10:16 AM
+EQ ID 1171,Shipping,32,ACT C48 Lift Battery Charger for Jungheinrich Hi-Reach Forklift,,ACT C48,C48-750-3 HIFI,,0,4/2/2022 10:16 AM
+EQ ID 1172,Shipping,32,ACT C80 Battery Charger for Jungheinrich VNA Forklift,,ACT C80,480/3 HIFI,,0,4/2/2022 10:16 AM
+EQ ID 1173,Shipping,32,ACT C80 Battery Charger for Jungheinrich VNA Forklift,,ACT C80,480/3 HIFI,,0,4/2/2022 10:16 AM
+EQ ID 1187,Quality Assurance,27,"Drill Fixture, 2080622, Inswing Door Latch-Max Privacy (2040/2080)",,Drill Fixture,Inswing Door Latch-Max Privacy (2040/2080),,1,4/2/2022 10:16 AM
+EQ ID 1189,Quality Assurance,27,"Drill Fixture, 2080632, Outswing Door Latch-Max Privacy (2040/2080)",,Drill Fixture,Outswing Door Latch-Max Privacy (2040/2080),,1,4/2/2022 10:16 AM
+EQ ID 1190,Quality Assurance,27,"Function Gage, T-4112-7 BLA 1, QA",,BLA Machine Shop,T-4112-7,,1,4/2/2022 10:16 AM
+EQ ID 1191,Quality Assurance,27,"Function Gage, T-4112-7 LX I, PPM",,BLA Machine Shop,T-4112-7,,1,4/2/2022 10:16 AM
+EQ ID 1192,Quality Assurance,27,"Function Gage, T-4112-7 BLA 2, 4112 Line",,BLA Machine Shop,T-4112-7,,1,4/2/2022 10:16 AM
+EQ ID 1193,Quality Assurance,27,"Function Gage, T-4112-7 LX II, PPM",,BLA Machine Shop,T-4112-7,,1,4/2/2022 10:16 AM
+EQ ID 1195,Quality Assurance,27,"Function Gage, T-4112-7 LX III, PPM",,BLA Machine Shop,T-4112-7,,1,4/2/2022 10:16 AM
+EQ ID 1196,Quality Assurance,27,"Function Gage, T-4112-7 AC 2, Adams Campbell",,BLA Machine Shop,T-4112-7,,1,4/2/2022 10:16 AM
+EQ ID 1197,Maintenance,29,Genie Boom Truck,11415,Z40/23 n RJ,Z40/20n=N RJ,,0,4/2/2022 10:16 AM
+EQ ID 1203,Quality Assurance,27,"Drill Fixture, 1080632, Outswing Door Latch-Phenolic",,Drill Fixture,Outswing Door Latch-Phenolic,,1,4/2/2022 10:16 AM
+EQ ID 1204,Soap Dispenser Assembly,21,Scissor Lift / Auto-Soap,,Vision,,,0,4/2/2022 10:16 AM
+EQ ID 1205,Quality Assurance,27,"Drill Fixture, 1040159, Outswing Stile/WP Hinge-Floor Anchored Plam",,Drill Fixture,Outswing Stile/WP Hinge-Floor Anchored Plam,,1,4/2/2022 10:16 AM
+EQ ID 1207,Quality Assurance,27,"Optical Comparator, 313118550, QA",,Deltronic,DH216/MPC-5,,1,4/2/2022 10:16 AM
+EQ ID 1208,Soap Dispenser Assembly,21,822 Cell 1 U-Pack Fixture,,,,,0,4/2/2022 10:16 AM
+EQ ID 1209,Soap Dispenser Assembly,21,822 Family cell 2 U-Pack Fuxture,,,,,0,4/2/2022 10:16 AM
+EQ ID 1210,Quality Assurance,27,38030 Cell,,,,,1,4/2/2022 10:16 AM

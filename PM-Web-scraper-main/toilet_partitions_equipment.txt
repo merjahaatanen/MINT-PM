@@ -1,0 +1,95 @@
+#	EQ ID	Equipment Name	Group
+1	EQ ID 1361	Saw, Horizontal, Holzma	Machines
+2	EQ ID 135	Saw,Horizontal, Holz-Her	Machines
+3	EQ ID 1335	Edge Finisher Laminate	Machines
+4	EQ ID 1503	Router, CNC, Anderson Stratos/Nest TC+D	Machines
+5	EQ ID 5	Saw, 10' Panel, Laminate Line	Machines
+6	EQ ID 2063	Tenoner A 517 Single End	Machines
+7	EQ ID 151	3/4 " Edge Finisher, Solid, Technolegno/ Universal 280	Machines
+8	EQ ID 1877	TLF Intellistore (Rainbow Stacking System)- TLF211	Machines
+9	EQ ID 1570	1/2 " Edge Finisher, Solid, Technolegno/ Universal 280	Machines
+10	EQ ID 1724	O-Sama (Joos) Glue Spreader	Machines
+11	EQ ID 5273	Edgebander Homag 2520 Servo 6 Coil	Machines
+12	EQ ID 105	Drilling Machine CNC, 1040 Laminate	Machines
+13	EQ ID 1879	Gannomat Index 330 Trend/PRO (Solid)	Machines
+14	EQ ID 5351	VLM Storage Lift -Small Hardware	Machines
+15	EQ ID 154	CNC Drilling Machine, Automatic Leveling Bar	Machines
+16	EQ ID 2110	Evolve Double Head Drilling Machine	Machines
+17	EQ ID 1969	Chop saw by Holzma Saw	Machines
+18	EQ ID 13	Notching machine, 1540 Door	Machines
+19	EQ ID 60	Laminate Slitter	Machines
+20	EQ ID 1159	Insert 1 Screwdriver, Auto Reverse, Lever	Machines
+21	EQ ID 782	Chop Saw (corner guard pack out Lam.)	Machines
+22	EQ ID 102	Insert Screwdriver, 1080 -1	Machines
+23	EQ ID 779	Router Station (Stile Building cell)	Machines
+24	EQ ID 780	Drill Press (Stile Building Cell)	Machines
+25	EQ ID 1584	Pinch Roller (Heated)	Machines
+26	EQ ID 1561	Step Drill 1080/1090 CNC Drilling Machine	Machines
+27	EQ ID 61	Screwdriver, Insert, 1080-2	Machines
+28	EQ ID 1562	Step Drill 1040 CNC Drilling Machine	Machines
+29	EQ ID 27	Forklift # T4	Vehicles
+30	EQ ID 181	Stacker R-19	Vehicles
+31	EQ ID 29	Forklift # T20	Vehicles
+32	EQ ID 819	Scissor Lift Holzma Saw	Vehicles
+33	EQ ID 28	Forklift # T5	Vehicles
+34	EQ ID 815	Scissor Lift #1 (small) Holz-Her Saw	Vehicles
+35	EQ ID 817	Scissor Lift Holz-Her Edge Bander	Vehicles
+36	EQ ID 157	Sissors Lift, HolzHer Saw	Vehicles
+37	EQ ID 814	Scissor Lift # 2 (large) Holz-Her Saw	Vehicles
+38	EQ ID 816	Scissor Lift 1/2" Edge Finisher	Vehicles
+39	EQ ID 818	Scissor Lift 3/4" solid Edge Finisher	Vehicles
+40	EQ ID 1658	TPF	General
+41	EQ ID 5341	General Maintenance	General
+42	EQ ID 1648	Laminate Cell	General
+43	EQ ID 2103	Flamex spark detection and extinguishing system	General
+44	EQ ID 1647	Solid Cell	General
+45	EQ ID 1571	Concrete floor	General
+46	EQ ID 63	Return System, Thomas, 1040 Edgebander	Equipment
+47	EQ ID 749	Dust Collector, Donaldson Downflo Oval	Equipment
+48	EQ ID 158	Return System, Thomas, Laminate Trimmer	Equipment
+49	EQ ID 1350	FLIP TABLE	Equipment
+50	EQ ID 1461	Return system,Thomas,Evolve cell	Equipment
+51	EQ ID 768	Vacuum Lift (Anderson CNC)	Equipment
+52	EQ ID 156	Return System, Thomas, 1/2" Solid Panels	Equipment
+53	EQ ID 130	Vacuum Lift 1/2" panels packout	Equipment
+54	EQ ID 1488	POP UP Table, 3/4" Edge Finisher	Equipment
+55	EQ ID 59	Vacuum Lift System (Glue Line )	Equipment
+56	EQ ID 2109	3/4 Thomas return system	Equipment
+57	EQ ID 769	Vacuum Lift Holz-Her Saw	Equipment
+58	EQ ID 5070	Edge finisher Pop UP table	Equipment
+59	EQ ID 96	Vacuum Lift 1080 Line packout	Equipment
+60	EQ ID 1686	Edgebander Pop up table	Equipment
+61	EQ ID 1623	1/2 Pop-up table made in house	Equipment
+62	EQ ID 5218	2 gallon glue tank with hand held glue nozzle gun	Equipment
+63	EQ ID 5071	Evolve cell Pop UP table	Equipment
+64	EQ ID 131	Vacuum Lift Laminate Pack Out	Equipment
+65	EQ ID 72	FRL - Filter, Regulator, Lubricator	Equipment
+66	EQ ID 804	Meyer rotary airlock (dust collector)	Equipment
+67	EQ ID 1457	Panel Handler - 4ft	Equipment
+68	EQ ID 781	Rework Station (Laminate Cell)	Equipment
+69	EQ ID 2111	Vacuum Lift Evolve Cell	Equipment
+70	EQ ID 1569	CNC Drill Setup Gage-1080	Gages and Jigs
+71	EQ ID 1656	Drill Jig - OS Door Hinge	Gages and Jigs
+72	EQ ID 1568	CNC Drill Setup Gage-1040	Gages and Jigs
+73	EQ ID 1542	Gage (Go/No Go), Drill Diameter, Laminate	Gages and Jigs
+74	EQ ID 1544	Cutout Jig B3471/B3571	Gages and Jigs
+75	EQ ID 1543	Cutout Jig B357, B347	Gages and Jigs
+76	EQ ID 1654	Drill Jig - for Door Hinges ( 3 Hinges) Laminate	Gages and Jigs
+77	EQ ID 1657	Drill Jig - for Door Hinges Laminate	Gages and Jigs
+78	EQ ID 1653	Drill Jig - for Hinges Stile -I/S-O/S FC For Laminate	Gages and Jigs
+79	EQ ID 1655	Drill Jig - for Hinges for O/S Stile Hinges	Gages and Jigs
+80	EQ ID 121	Drill Jig, 1080/ 1090 Leveling Bar	Gages and Jigs
+81	EQ ID 1541	Gage (Go/No Go), Drill Diameter, Solid	Gages and Jigs
+82	EQ ID 1511	Jig, Drill, T-203040 ECOR T-Nut Drill, Laminate	Gages and Jigs
+83	EQ ID 1575	Laminate Drill Hole Depth Gage	Gages and Jigs
+84	EQ ID 5352	TPT CL 1005 ANDY	Gages and Jigs
+85	EQ ID 5354	TPT CL 1005 TENO	Gages and Jigs
+86	EQ ID 1564	Cart - TPF Finish Goods	Carts
+87	EQ ID 812	Drywall Carts 1-15	Carts
+88	EQ ID 810	Job Carts 1-6	Carts
+89	EQ ID 813	Materal Carts 1-2	Carts
+90	EQ ID 811	Pack out Carts 1-6	Carts
+91	EQ ID 155	Shaper, Single Spindle, Northfield	Tools
+92	EQ ID 1160	Driver, Pulse Tool, 1080 Leveling Bar,Desoutter model PTF022-T6500-S4Q	Tools
+93	EQ ID 64	Driver, Pulse Tool, 1080 Leveling Bar	Tools
+94	EQ ID 1563	Step Drill & Stop Phenolic Series Insert	Tools

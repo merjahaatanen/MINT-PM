@@ -1,0 +1,25 @@
+[
+  {
+    "equipment_id": "19",
+    "equipment_eq_id": "EQ ID 19",
+    "equipment_name": "Mill",
+    "department": "Machine Shop",
+    "wo_id": "7848",
+    "date_notified": "10/23/2023",
+    "urgency": "4. Prod Continuing but Affected Equipment stopped",
+    "problem": "Mill stopped rotating and will not work properly .",
+    "status": "Closed and Completed",
+    "material_cost": "2700",
+    "labor_time": "2",
+    "work_performed_by": "Rockwood machine LLC",
+    "downtime_hours": "0",
+    "completed_datetime": "12/04/2023 12:00 AM",
+    "comments": "Miguel Diaz - 12/04/23  9:29:46 AM: Tech came in this morning and  replaced the parts in the quote machine is back up and running . | Miguel Diaz - 10/30/23  1:39:09 PM: Reached out to rock wood machine and scheduled a date for them to come out and look at our machine they advised the following The spindles stationary varidisc had come loose. It appears the bearing went bad and then the inner race\nof the bearing spin on the varidisc itself, damaging it. The tech provided quote it has been approved by ME see attachment if needed .\nPlease note parts are out of stock and lead time is 3 to 4 weeks before they ship the parts .\nThe following costs would cover replacing the\nvaridisc, 2 bearings, a bearing cap, a spacer and two brake shoes which use the inside of the varidisc as\ntheir rotor. I would purchase the parts from sharp assemble most of the varidrive mechanism at my shop\nand then come install and test for proper operation.",
+    "attachments": [
+      {
+        "name": "Machine shop  Alliant damaged varidisc 10-26-23.pdf",
+        "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/447?guid=cb1ff776-faa0-4fd7-871a-182649fbc0ba"
+      }
+    ]
+  }
+]
