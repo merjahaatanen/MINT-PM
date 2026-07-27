@@ -30,7 +30,7 @@ import os
 import re
 import shutil
 import threading
-import traceback
+import time
 from collections import Counter
 from datetime import datetime, timedelta
 
@@ -203,6 +203,11 @@ def _rebuild_departments() -> None:
             "manual": True,
         }
         div[key] = d.get("division_key") or "bla"
+    # Drop soft-deleted (inactive) departments so they - and their machines and
+    # work orders - disappear from every view until they are restored.
+    for key in store.inactive_department_keys():
+        merged.pop(key, None)
+        div.pop(key, None)
     DEPARTMENTS = merged
     _DEPT_DIVISION = div
 
@@ -214,7 +219,7 @@ def _rebuild_departments() -> None:
 # equipment_name strings as they appear in the scraped data (matched after
 # light normalization), so minor spacing/quote differences still line up.
 TOILET_GROUP_ORDER = [
-    "Machines", "Vehicles", "General", "Equipment", "Gages and Jigs",
+    "Machines", "Vehicles", "General", "Equipment", "Gauges and Jigs",
     "Carts", "Tools",
 ]
 
@@ -296,7 +301,7 @@ TOILET_GROUPS = {
         'Vacuum Lift Laminate Pack Out',
         'Vacuum Lift System (Glue Line )',
     ],
-    "Gages and Jigs": [
+    "Gauges and Jigs": [
         'CNC Drill Setup Gage-1040',
         'CNC Drill Setup Gage-1080',
         'Cutout Jig B3471/B3571',
@@ -377,9 +382,10 @@ def _load(filename: str) -> list[dict]:
     return ae.load_work_orders(path)
 
 
-# In-memory caches. Populated by reload_data(), which is called once at startup
-# AND by the nightly job so the frontend reflects a fresh scrape WITHOUT needing
-# a server restart. A lock guards swaps so requests never see half-loaded data.
+# In-memory caches. Populated by reload_data(), which is called at startup and
+# whenever data changes (e.g. via /api/reload) so the frontend reflects fresh
+# data WITHOUT a server restart. A lock guards swaps so requests never see
+# half-loaded data.
 _DATA_LOCK = threading.RLock()
 _DEPT_DATA: dict[str, dict[str, list[dict]]] = {}
 _WO_INDEX: dict[str, dict] = {}
@@ -402,6 +408,13 @@ def _num_id(s: str) -> str:
     """Extract the numeric portion of an EQ ID (e.g. 'EQ ID 2082' -> '2082')."""
     m = re.search(r"(\d+)", s or "")
     return m.group(1) if m else ""
+
+
+def _is_completed(status) -> bool:
+    """A work order counts as done when its status mentions 'complete' or
+    'closed' (e.g. 'Closed and Completed')."""
+    s = (status or "").lower()
+    return "complete" in s or "closed" in s
 
 
 # Date formats people might type in the create/edit forms. We normalise all of
@@ -463,6 +476,123 @@ def _load_equipment() -> dict[str, list[dict]]:
     return by_key
 
 
+# --------------------------------------------------------------------------- #
+# Recurring scheduled work orders
+# --------------------------------------------------------------------------- #
+# Frequency label -> stepping rule. Month-based frequencies advance by calendar
+# months (day-of-month clamped); shorter ones by fixed day counts.
+_FREQUENCY_MONTHS = {
+    "monthly": 1, "quarterly": 3, "semi-annually": 6, "annually": 12,
+}
+_FREQUENCY_DAYS = {"weekly": 7, "bi-weekly": 14}
+
+
+def _parse_mdy(s: str):
+    """Parse a MM/DD/YYYY (optionally with a trailing time) date. None if blank
+    or unrecognised."""
+    s = (s or "").strip().split()[0] if (s or "").strip() else ""
+    if not s:
+        return None
+    for fmt in ("%m/%d/%Y", "%m/%d/%y"):
+        try:
+            return datetime.strptime(s, fmt)
+        except ValueError:
+            continue
+    return None
+
+
+def _add_months(d: datetime, n: int) -> datetime:
+    """Add n calendar months to d, clamping the day to the target month's last
+    day (e.g. Jan 31 + 1 month -> Feb 28/29)."""
+    import calendar
+    m0 = d.month - 1 + n
+    year = d.year + m0 // 12
+    month = m0 % 12 + 1
+    day = min(d.day, calendar.monthrange(year, month)[1])
+    return d.replace(year=year, month=month, day=day)
+
+
+def _add_interval(d: datetime, frequency: str):
+    """Advance a due date by one recurrence interval. None if the frequency is
+    unknown (so we never loop forever on bad data)."""
+    f = (frequency or "").strip().lower()
+    if f in _FREQUENCY_DAYS:
+        return d + timedelta(days=_FREQUENCY_DAYS[f])
+    if f in _FREQUENCY_MONTHS:
+        return _add_months(d, _FREQUENCY_MONTHS[f])
+    return None
+
+
+def _generate_recurring_occurrences() -> int:
+    """Ensure every recurring scheduled-WO series has its due occurrences created
+    through today PLUS the next upcoming one - independent of whether previous
+    occurrences were completed. Returns how many new occurrences were created.
+
+    Purely date-driven: occurrences auto-populate on a fixed cadence from the
+    seed's first due date, so overdue-but-open PMs still spawn the next one."""
+    try:
+        recs = store.list_work_orders()
+    except Exception as e:
+        print(f"[recurring] could not read work orders: {e}", flush=True)
+        return 0
+
+    today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    series: dict[str, list[dict]] = {}
+    for r in recs:
+        if r.get("wo_type") != "scheduled":
+            continue
+        if not (r.get("frequency") or "").strip():
+            continue
+        if r.get("recurrence_stopped"):
+            continue  # series was explicitly stopped - never generate more
+        sid = (r.get("series_id") or r.get("wo_id") or "").strip()
+        if sid:
+            series.setdefault(sid, []).append(r)
+
+    created = 0
+    for sid, occs in series.items():
+        dated = [(o, _parse_mdy(o.get("due_date"))) for o in occs]
+        dated = [(o, d) for o, d in dated if d]
+        if not dated:
+            continue
+        template, max_due = max(dated, key=lambda x: x[1])
+        frequency = (template.get("frequency") or "").strip()
+        # Already have a future occurrence -> series is up to date.
+        if max_due > today:
+            continue
+        cur = max_due
+        guard = 0
+        while cur <= today and guard < 200:
+            nxt = _add_interval(cur, frequency)
+            if nxt is None:
+                break
+            fields = {
+                "equipment_id": template.get("equipment_id", ""),
+                "equipment_eq_id": template.get("equipment_eq_id", ""),
+                "equipment_name": template.get("equipment_name", ""),
+                "department": template.get("department", ""),
+                "department_key": template.get("department_key", ""),
+                "wo_type": "scheduled",
+                "status": "Pending",
+                "audit_item": template.get("audit_item", ""),
+                "due_date": nxt.strftime("%m/%d/%Y"),
+                "frequency": frequency,
+                "series_id": sid,
+            }
+            try:
+                store.add_work_order(fields, author="system (recurring)")
+                created += 1
+            except Exception as e:
+                print(f"[recurring] failed to create occurrence for {sid}: {e}",
+                      flush=True)
+                break
+            cur = nxt
+            guard += 1
+    if created:
+        print(f"[recurring] created {created} scheduled occurrence(s)", flush=True)
+    return created
+
+
 def reload_data() -> datetime:
     """(Re)load every department's work orders + the equipment master into the
     in-memory caches, then atomically swap them in. Safe to call at any time.
@@ -474,6 +604,7 @@ def reload_data() -> datetime:
     global _DEPT_DATA, _WO_INDEX, _EQUIP_BY_KEY, _LAST_RELOAD
 
     _rebuild_departments()  # fold in user-added departments first
+    _generate_recurring_occurrences()  # auto-populate due recurring PM occurrences
 
     dept_data: dict[str, dict[str, list[dict]]] = {}
     for key, cfg in DEPARTMENTS.items():
@@ -522,6 +653,22 @@ def reload_data() -> datetime:
         rec["_att_count"] = att_counts.get(wid, 0) + len(rec.get("attachments") or [])
 
     equip = _load_equipment()
+
+    # Hide soft-deleted (inactive) machines and their work orders. Matching is by
+    # numeric EQ ID within the machine's department, so this works for both
+    # scraped and user-added machines. Restoring simply removes the flag.
+    inactive_machines = store.inactive_machine_map()
+    if inactive_machines:
+        for dk, ids in inactive_machines.items():
+            if dk in equip:
+                equip[dk] = [e for e in equip[dk]
+                             if _num_id(e.get("eq_id")) not in ids]
+            if dk in dept_data:
+                for kind in ("unscheduled", "scheduled"):
+                    dept_data[dk][kind] = [
+                        r for r in dept_data[dk][kind]
+                        if _num_id(r.get("equipment_id")) not in ids]
+
     with _DATA_LOCK:
         _DEPT_DATA = dept_data
         _WO_INDEX = wo_index
@@ -599,6 +746,17 @@ def _machine_groups(dept_key: str) -> dict[str, dict[str, list[dict]]]:
                 continue
             groups.setdefault(eq, {"unscheduled": [], "scheduled": []})[kind].append(r)
     return groups
+
+
+def _has_critical_wo(recs: dict) -> bool:
+    """True if the machine has any pending/open work order with urgency level 1."""
+    for kind in ("unscheduled", "scheduled"):
+        for r in recs.get(kind, []):
+            st = (r.get("status") or "").strip().lower()
+            u = (r.get("urgency") or "").strip().lower()
+            if (not st or "pending" in st or "open" in st or "progress" in st) and u.startswith("1"):
+                return True
+    return False
 
 
 def _machine_name(records: list[dict]) -> str:
@@ -765,10 +923,16 @@ def api_division(div_key="bla"):
         depts.append(stats)
     div_name = DIVISION["name"] if div_key == "bla" else next(
         (d["name"] for d in store.list_divisions() if d["key"] == div_key), div_key.upper())
+    inactive_depts = [
+        {"key": r["item_key"], "label": r.get("name") or r["item_key"]}
+        for r in store.list_inactive("department")
+        if (r.get("division_key") or "bla") == div_key
+    ]
     return jsonify({
         "key": div_key,
         "name": div_name,
         "departments": depts,
+        "inactive_departments": inactive_depts,
         "totals": _stats(all_uns, all_sch),
     })
 
@@ -794,6 +958,7 @@ def api_department(dept_key):
             "name": mc["name"],
             "group": mc["group"],
             "has_guide": mc["has_guide"],
+            "has_critical_wo": _has_critical_wo(mc["recs"]),
         })
         machines.append(stats)
 
@@ -804,6 +969,12 @@ def api_department(dept_key):
     present = {m["group"] for m in machines if m.get("group")}
     groups = [g for g in _group_order(dept_key) if g in present]
 
+    inactive_machines = [
+        {"eq_id": r.get("eq_id"), "name": r.get("name") or f"EQ ID {r.get('eq_id')}"}
+        for r in store.list_inactive("machine")
+        if r.get("dept_key") == dept_key
+    ]
+
     return jsonify({
         "key": dept_key,
         "name": cfg["name"],
@@ -811,6 +982,7 @@ def api_department(dept_key):
         "stats": _stats(data["unscheduled"], data["scheduled"]),
         "machines": machines,
         "groups": groups,
+        "inactive_machines": inactive_machines,
         "unscheduled": _sorted_desc(data["unscheduled"], "date_notified"),
         "scheduled": _sorted_desc(data["scheduled"], "due_date"),
     })
@@ -874,10 +1046,42 @@ def api_machine(dept_key, eq_id):
             "asset_num": (master or {}).get("asset_num", ""),
             "has_guide": os.path.exists(_guide_path(eq_id)),
         },
+        "info": store.get_machine_info(dept_key, eq_id),
         "stats": _stats(uns, sch),
         "unscheduled": uns,
         "scheduled": sch,
     })
+
+
+# --------------------------------------------------------------------------- #
+# Machine information / longevity (Machine Info tab)
+# --------------------------------------------------------------------------- #
+@app.route("/api/departments/<dept_key>/machines/<eq_id>/info", methods=["GET"])
+def api_machine_info(dept_key, eq_id):
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    eq_id = _num_id(eq_id)
+    info = store.get_machine_info(dept_key, eq_id)
+    return jsonify(info if info is not None else {})
+
+
+@app.route("/api/departments/<dept_key>/machines/<eq_id>/info", methods=["PATCH", "POST"])
+def api_update_machine_info(dept_key, eq_id):
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    if not _edit_ok(request):
+        return jsonify({"error": "Edit password required"}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required"}), 400
+    eq_id = _num_id(eq_id)
+    fields = {k: body.get(k) for k in store.MACHINE_INFO_FIELDS if k in body}
+    try:
+        info = store.set_machine_info(dept_key, eq_id, fields, author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    return jsonify(info)
 
 
 # --------------------------------------------------------------------------- #
@@ -887,7 +1091,8 @@ def api_machine(dept_key, eq_id):
 # date_notified and scheduled by due_date (matching the rest of MINT).
 _TREND_METRICS = [
     "material_cost", "downtime_hours", "labor_time",
-    "unscheduled_count", "scheduled_count",
+    "unscheduled_count", "unscheduled_completed_count",
+    "scheduled_count", "scheduled_completed_count",
 ]
 
 
@@ -897,22 +1102,17 @@ def _empty_month(month: int) -> dict:
     return m
 
 
-def _machine_trends(dept_key: str, eq_id: str) -> list[dict]:
-    """Aggregate a machine's work orders into per-year, per-month metrics.
+def _trends_from_sources(sources) -> list[dict]:
+    """Bucket work orders into per-year, per-month metrics.
 
-    Returns a list of {year, months:[12], totals} sorted oldest -> newest,
-    including only years that have at least one work order. Every year lists
-    all 12 months (empty months are zero-filled)."""
-    recs = _machine_groups(dept_key).get(eq_id) or {"unscheduled": [], "scheduled": []}
-
-    # (records, date_field, kind) so we bucket each list by the right date.
-    sources = [
-        (recs["unscheduled"], "date_notified", "unscheduled_count"),
-        (recs["scheduled"], "due_date", "scheduled_count"),
-    ]
-
+    `sources` is an iterable of (records, date_field, count_key,
+    completed_count_key). Every record adds to material/downtime/labor and the
+    count_key; records marked Closed and Completed additionally add to
+    completed_count_key. Returns a list of {year, months:[12], totals} sorted
+    oldest -> newest, including only years that have at least one work order.
+    Every year lists all 12 months (empty months are zero-filled)."""
     years: dict[int, list[dict]] = {}
-    for records, date_field, count_key in sources:
+    for records, date_field, count_key, completed_count_key in sources:
         for r in records:
             dt = ae._parse_date(r.get(date_field))
             if not dt:
@@ -923,6 +1123,8 @@ def _machine_trends(dept_key: str, eq_id: str) -> list[dict]:
             cell["downtime_hours"] += ae._to_float(r.get("downtime_hours"))
             cell["labor_time"] += ae._to_float(r.get("labor_time"))
             cell[count_key] += 1
+            if _is_completed(r.get("status")):
+                cell[completed_count_key] += 1
 
     out = []
     for year in sorted(years):
@@ -934,6 +1136,39 @@ def _machine_trends(dept_key: str, eq_id: str) -> list[dict]:
         totals = {k: round(sum(m[k] for m in months), 2) for k in _TREND_METRICS}
         out.append({"year": year, "months": months, "totals": totals})
     return out
+
+
+def _machine_trends(dept_key: str, eq_id: str) -> list[dict]:
+    """Aggregate a single machine's work orders into per-year, per-month
+    metrics, tracking both all and completed (Closed and Completed) counts."""
+    recs = _machine_groups(dept_key).get(eq_id) or {"unscheduled": [], "scheduled": []}
+    return _trends_from_sources([
+        (recs["unscheduled"], "date_notified", "unscheduled_count", "unscheduled_completed_count"),
+        (recs["scheduled"], "due_date", "scheduled_count", "scheduled_completed_count"),
+    ])
+
+
+def _department_trends(dept_key: str, group: str | None = None) -> list[dict]:
+    """Aggregate a department's work orders into per-year, per-month metrics,
+    tracking both all and completed (Closed and Completed) counts.
+
+    When `group` is given, only work orders whose equipment belongs to that
+    machine group (per the department's group config) are included."""
+    data = _DEPT_DATA.get(dept_key)
+    if data is None:
+        return []
+
+    def keep(r) -> bool:
+        if group is None:
+            return True
+        return _group_for(dept_key, (r.get("equipment_name") or "").strip()) == group
+
+    uns = [r for r in data["unscheduled"] if keep(r)]
+    sch = [r for r in data["scheduled"] if keep(r)]
+    return _trends_from_sources([
+        (uns, "date_notified", "unscheduled_count", "unscheduled_completed_count"),
+        (sch, "due_date", "scheduled_count", "scheduled_completed_count"),
+    ])
 
 
 @app.route("/api/departments/<dept_key>/machines/<eq_id>/trends")
@@ -948,18 +1183,33 @@ def api_machine_trends(dept_key, eq_id):
     })
 
 
+@app.route("/api/departments/<dept_key>/trends")
+def api_department_trends(dept_key):
+    """Department-wide monthly trends. An optional ?group=<name> query param
+    limits the aggregate to work orders whose equipment falls in that machine
+    group (e.g. Toilet Partitions' "Machines")."""
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    group = (request.args.get("group") or "").strip() or None
+    return jsonify({
+        "metrics": _TREND_METRICS,
+        "group": group,
+        "years": _department_trends(dept_key, group),
+    })
+
+
 _MONTH_NAMES = ["", "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"]
 
 
-def _month_records(dept_key: str, eq_id: str, year: int, month: int) -> list[dict]:
-    """The machine's work orders that fall in a given year/month, tagged with
-    their kind. Unscheduled bucket by date_notified, scheduled by due_date."""
-    recs = _machine_groups(dept_key).get(eq_id) or {"unscheduled": [], "scheduled": []}
+def _tag_month_records(unscheduled: list[dict], scheduled: list[dict],
+                       year: int, month: int) -> list[dict]:
+    """Tag work orders that fall in a given year/month by kind. Unscheduled
+    bucket by date_notified, scheduled by due_date."""
     out = []
     for records, date_field, kind in (
-        (recs["unscheduled"], "date_notified", "unscheduled"),
-        (recs["scheduled"], "due_date", "scheduled"),
+        (unscheduled, "date_notified", "unscheduled"),
+        (scheduled, "due_date", "scheduled"),
     ):
         for r in records:
             dt = ae._parse_date(r.get(date_field))
@@ -968,78 +1218,46 @@ def _month_records(dept_key: str, eq_id: str, year: int, month: int) -> list[dic
     return out
 
 
-def _build_month_synopsis_prompt(label, year, month, tagged, totals) -> str:
-    compact = [
-        {
-            "wo_id": t["rec"].get("wo_id"),
-            "type": t["kind"],
-            "date": t["rec"].get(t["date_field"]),
-            "completed": t["rec"].get("completed_datetime"),
-            "urgency": t["rec"].get("urgency"),
-            "status": t["rec"].get("status"),
-            "problem": t["rec"].get("problem"),
-            "material_cost": t["rec"].get("material_cost"),
-            "labor_time": t["rec"].get("labor_time"),
-            "downtime_hours": t["rec"].get("downtime_hours"),
-            "work_performed_by": t["rec"].get("work_performed_by"),
-            "comments": t["rec"].get("comments"),
-        }
-        for t in tagged
-    ]
-    return f"""You are a reliability / maintenance analyst. In a SHORT synopsis,
-explain what drove the maintenance numbers for {label} during {_MONTH_NAMES[month]} {year}.
-
-Focus on the biggest cost and downtime drivers - for example a breakdown that
-required an expensive part, or a repair that took the machine down for a long
-time. Use the 'problem' text for the symptom and the 'comments' text for what was
-actually done / what parts were replaced.
-
-=== MONTH TOTALS ===
-{json.dumps(totals, indent=2)}
-
-=== WORK ORDERS THIS MONTH (JSON) ===
-{json.dumps(compact, indent=2)}
-
-Write concise Markdown with EXACTLY this structure:
-
-1. A 2-3 sentence **summary** of what happened this month and why the stats look
-   the way they do (call out whether it was a quiet month or driven by one/two
-   big events).
-2. A "**Key drivers**" bulleted list. For each notable event give the WO number,
-   the cost and/or downtime, and a one-line plain-English reason
-   (e.g. "WO 19912 - $4,188 spindle bearing replacement after the saw seized").
-
-RULES:
-- Be specific and cite bare WO numbers and dollar/hour figures from the data.
-- Do NOT invent parts, costs, or causes that are not supported by the text.
-- If material cost, downtime, or labor was essentially zero, say the month was
-  routine rather than manufacturing a dramatic cause.
-- Keep it tight - no preamble, headings, or disclaimers beyond what is asked.
-"""
+def _month_records(dept_key: str, eq_id: str, year: int, month: int) -> list[dict]:
+    """A single machine's work orders that fall in a given year/month."""
+    recs = _machine_groups(dept_key).get(eq_id) or {"unscheduled": [], "scheduled": []}
+    return _tag_month_records(recs["unscheduled"], recs["scheduled"], year, month)
 
 
-@app.route("/api/departments/<dept_key>/machines/<eq_id>/month-synopsis")
-def api_month_synopsis(dept_key, eq_id):
-    """LLM synopsis of what drove a specific month's stats for a machine."""
-    if dept_key not in DEPARTMENTS:
-        return jsonify({"error": "department not found"}), 404
-    try:
-        year = int(request.args.get("year", ""))
-        month = int(request.args.get("month", ""))
-    except (TypeError, ValueError):
-        return jsonify({"error": "numeric 'year' and 'month' query params required"}), 400
-    if not (1 <= month <= 12):
-        return jsonify({"error": "month must be 1-12"}), 400
+def _department_month_records(dept_key: str, group: str | None,
+                              year: int, month: int) -> list[dict]:
+    """A department's work orders (optionally limited to one machine group)
+    that fall in a given year/month."""
+    data = _DEPT_DATA.get(dept_key)
+    if data is None:
+        return []
 
-    eq_id = _num_id(eq_id)
-    tagged = _month_records(dept_key, eq_id, year, month)
+    def keep(r) -> bool:
+        if group is None:
+            return True
+        return _group_for(dept_key, (r.get("equipment_name") or "").strip()) == group
 
+    uns = [r for r in data["unscheduled"] if keep(r)]
+    sch = [r for r in data["scheduled"] if keep(r)]
+    return _tag_month_records(uns, sch, year, month)
+
+
+def _month_synopsis_payload(label: str, year: int, month: int,
+                            tagged: list[dict]) -> dict:
+    """Build the month-synopsis JSON payload (totals + work orders + LLM
+    synopsis) shared by the machine and department endpoints."""
     totals = {
         "material_cost": round(sum(ae._to_float(t["rec"].get("material_cost")) for t in tagged), 2),
         "downtime_hours": round(sum(ae._to_float(t["rec"].get("downtime_hours")) for t in tagged), 2),
         "labor_time": round(sum(ae._to_float(t["rec"].get("labor_time")) for t in tagged), 2),
         "unscheduled_count": sum(1 for t in tagged if t["kind"] == "unscheduled"),
+        "unscheduled_completed_count": sum(
+            1 for t in tagged
+            if t["kind"] == "unscheduled" and _is_completed(t["rec"].get("status"))),
         "scheduled_count": sum(1 for t in tagged if t["kind"] == "scheduled"),
+        "scheduled_completed_count": sum(
+            1 for t in tagged
+            if t["kind"] == "scheduled" and _is_completed(t["rec"].get("status"))),
     }
     work_orders = [
         {
@@ -1060,16 +1278,119 @@ def api_month_synopsis(dept_key, eq_id):
 
     if not tagged:
         base["synopsis"] = f"No work orders were recorded for {_MONTH_NAMES[month]} {year}."
-        return jsonify(base)
+        return base
 
+    prompt = _build_month_synopsis_prompt(label, year, month, tagged, totals)
+    base["synopsis"] = ae.analyze(prompt, MODEL)  # may raise SystemExit
+    return base
+
+
+def _build_month_synopsis_prompt(label, year, month, tagged, totals) -> str:
+    compact = [
+        {
+            "wo_id": t["rec"].get("wo_id"),
+            "type": t["kind"],
+            "date": t["rec"].get(t["date_field"]),
+            "completed": t["rec"].get("completed_datetime"),
+            "urgency": t["rec"].get("urgency"),
+            "status": t["rec"].get("status"),
+            "problem": t["rec"].get("problem"),
+            "material_cost": t["rec"].get("material_cost"),
+            "labor_time": t["rec"].get("labor_time"),
+            "downtime_hours": t["rec"].get("downtime_hours"),
+            "work_performed_by": t["rec"].get("work_performed_by"),
+            "comments": t["rec"].get("comments"),
+        }
+        for t in tagged
+    ]
+    return f"""You are a maintenance analyst producing a data readout for
+{label}, {_MONTH_NAMES[month]} {year}. Write like a report, not a story. State
+only numbers and their documented causes.
+
+Use the 'problem' text for the symptom and the 'comments' text for what was done
+/ what parts were replaced.
+
+=== MONTH TOTALS ===
+{json.dumps(totals, indent=2)}
+
+=== WORK ORDERS THIS MONTH (JSON) ===
+{json.dumps(compact, indent=2)}
+
+Write concise Markdown with EXACTLY this structure:
+
+1. A **summary** of 1-2 sentences. It MUST begin with the counts and figures,
+   e.g. "3 unscheduled and 2 scheduled work orders; $70 material cost, 8 h
+   downtime, 4.5 h labor." Then, if warranted, one sentence naming the single
+   biggest driver. Nothing else.
+2. A "**Key drivers**" bulleted list. One bullet per notable work order, each
+   led by the bare WO number, the cost and/or downtime figures, and a short
+   plain reason (e.g. "WO 19912 - $4,188, 6 h: spindle bearing replaced after
+   the saw seized.").
+
+HARD RULES - the report is rejected if any are broken:
+- NEVER characterize the month or the machine. Banned openings and phrases
+  include "it was a ___ month", "mixed month", "modest", "quiet", "busy",
+  "slow", "dramatic", "negligible", "overall", "on the whole".
+- Do NOT mention the machine name in the summary; it is already in the header.
+- The first word of the summary must be a number.
+- Cite bare WO numbers and exact dollar/hour figures from the data only.
+- Do NOT invent parts, costs, or causes not supported by the text.
+- No preamble, no closing remarks, no adjectives beyond what the facts require.
+"""
+
+
+def _parse_year_month(args):
+    """Parse & validate year/month query params. Returns (year, month) or
+    raises ValueError with a message."""
+    try:
+        year = int(args.get("year", ""))
+        month = int(args.get("month", ""))
+    except (TypeError, ValueError):
+        raise ValueError("numeric 'year' and 'month' query params required")
+    if not (1 <= month <= 12):
+        raise ValueError("month must be 1-12")
+    return year, month
+
+
+@app.route("/api/departments/<dept_key>/machines/<eq_id>/month-synopsis")
+def api_month_synopsis(dept_key, eq_id):
+    """LLM synopsis of what drove a specific month's stats for a machine."""
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    try:
+        year, month = _parse_year_month(request.args)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    eq_id = _num_id(eq_id)
+    tagged = _month_records(dept_key, eq_id, year, month)
     recs = _machine_groups(dept_key).get(eq_id) or {"unscheduled": [], "scheduled": []}
     label = f"{_machine_name(recs['unscheduled'] + recs['scheduled'])} ({_eq_label(recs['unscheduled'] + recs['scheduled'], eq_id)})"
-    prompt = _build_month_synopsis_prompt(label, year, month, tagged, totals)
     try:
-        base["synopsis"] = ae.analyze(prompt, MODEL)
+        return jsonify(_month_synopsis_payload(label, year, month, tagged))
     except SystemExit as e:  # analyze() calls sys.exit on failure
         return jsonify({"error": str(e)}), 502
-    return jsonify(base)
+
+
+@app.route("/api/departments/<dept_key>/month-synopsis")
+def api_department_month_synopsis(dept_key):
+    """LLM synopsis of what drove a month's stats across a department (or one
+    machine group via ?group=)."""
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    try:
+        year, month = _parse_year_month(request.args)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    group = (request.args.get("group") or "").strip() or None
+    tagged = _department_month_records(dept_key, group, year, month)
+    scope = group or DEPARTMENTS[dept_key]["name"]
+    label = f"{scope} - {DEPARTMENTS[dept_key]['name']}"
+    try:
+        return jsonify(_month_synopsis_payload(label, year, month, tagged))
+    except SystemExit as e:  # analyze() calls sys.exit on failure
+        return jsonify({"error": str(e)}), 502
 
 
 # --------------------------------------------------------------------------- #
@@ -1171,6 +1492,7 @@ def api_create_workorder():
     else:
         fields["due_date"] = _normalize_date(body.get("due_date") or "")
         fields["audit_item"] = (body.get("audit_item") or "").strip()
+        fields["frequency"] = (body.get("frequency") or "").strip()
 
     try:
         created = store.add_work_order(fields, author=author)
@@ -1194,6 +1516,11 @@ def api_create_workorder():
         rec2["created_by"] = author
         email_result = emailer.notify_new_unscheduled(
             rec2, dept_label=DEPARTMENTS[dept_key]["label"])
+
+    # For a recurring scheduled WO, reload so the auto-generated next occurrence
+    # is immediately visible on the dashboard.
+    if wo_type == "scheduled" and fields.get("frequency"):
+        reload_data()
 
     return jsonify({"ok": True, "wo_id": rec["wo_id"],
                     "work_order": _wo_detail(rec), "email": email_result})
@@ -1221,10 +1548,21 @@ def api_edit_workorder(wo_id):
         if df in editable:
             editable[df] = _normalize_date(editable[df])
 
+    prev_completed = _is_completed(rec.get("status"))
     store.set_override(wo_id, editable, author=author)
     with _DATA_LOCK:
         rec.update(editable)
-    return jsonify({"ok": True, "work_order": _wo_detail(rec)})
+
+    # Fire the "Closed & Completed" email when the status transitions into a
+    # completed state (any WO type). Only on the transition, so re-saving an
+    # already-completed WO doesn't re-notify.
+    email_result = None
+    if _is_completed(rec.get("status")) and not prev_completed:
+        dept_key = rec.get("department_key")
+        dept_label = DEPARTMENTS.get(dept_key, {}).get("label", "") if dept_key else ""
+        email_result = emailer.notify_completed(rec, dept_label=dept_label)
+
+    return jsonify({"ok": True, "work_order": _wo_detail(rec), "email": email_result})
 
 
 @app.route("/api/workorder/<wo_id>", methods=["DELETE"])
@@ -1250,6 +1588,26 @@ def api_delete_workorder(wo_id):
                 if lst:
                     lst[:] = [r for r in lst if str(r.get("wo_id")) != wo_id]
     return jsonify({"ok": True, "deleted": wo_id})
+
+
+@app.route("/api/workorder/<wo_id>/stop-recurrence", methods=["POST"])
+def api_stop_recurrence(wo_id):
+    """Stop a recurring scheduled-WO series so no further occurrences are ever
+    generated. Existing occurrences are kept. Gated by the admin password."""
+    if not _admin_ok(request):
+        return jsonify({"error": "Enter the admin password to stop recurrence."}), 401
+    wo_id = str(wo_id).strip()
+    rec = _WO_INDEX.get(wo_id) or store.get_work_order(wo_id)
+    if rec is None:
+        return jsonify({"error": "work order not found"}), 404
+    if (rec.get("wo_type") != "scheduled") or not (rec.get("frequency") or "").strip():
+        return jsonify({"error": "this work order is not part of a recurring series"}), 400
+    series_id = (rec.get("series_id") or wo_id).strip()
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    flagged = store.stop_recurrence(series_id, author=author)
+    reload_data()  # rebuild caches so the "stopped" state is reflected everywhere
+    return jsonify({"ok": True, "series_id": series_id, "stopped": flagged})
 
 
 @app.route("/api/workorder/<wo_id>/solutions", methods=["POST"])
@@ -1367,6 +1725,101 @@ def api_create_machine():
 
 
 # --------------------------------------------------------------------------- #
+# Deactivate / restore departments & machines (soft delete)
+# --------------------------------------------------------------------------- #
+@app.route("/api/departments/<dept_key>/deactivate", methods=["POST"])
+def api_deactivate_department(dept_key):
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    cfg = DEPARTMENTS.get(dept_key)
+    if not cfg:
+        return jsonify({"error": "department not found"}), 404
+    store.set_inactive(
+        "department", dept_key,
+        division_key=_DEPT_DIVISION.get(dept_key, "bla"),
+        dept_key=dept_key, dept_label=cfg.get("label") or cfg.get("name", ""),
+        name=cfg.get("label") or cfg.get("name", ""), author=author,
+    )
+    reload_data()
+    return jsonify({"ok": True})
+
+
+@app.route("/api/departments/<dept_key>/restore", methods=["POST"])
+def api_restore_department(dept_key):
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    store.restore_inactive("department", dept_key, author=author)
+    reload_data()
+    return jsonify({"ok": True})
+
+
+@app.route("/api/machines/deactivate", methods=["POST"])
+def api_deactivate_machine():
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    dept_key = (body.get("dept_key") or "").strip()
+    eq_id = str(body.get("eq_id") or "").strip()
+    name = (body.get("name") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not dept_key or not eq_id:
+        return jsonify({"error": "dept_key and eq_id are required."}), 400
+    cfg = DEPARTMENTS.get(dept_key)
+    if not cfg:
+        return jsonify({"error": "department not found"}), 404
+    store.set_inactive(
+        "machine", f"{dept_key}:{eq_id}",
+        division_key=_DEPT_DIVISION.get(dept_key, "bla"),
+        dept_key=dept_key, dept_label=cfg.get("label") or cfg.get("name", ""),
+        eq_id=eq_id, name=name or f"EQ ID {eq_id}", author=author,
+    )
+    reload_data()
+    return jsonify({"ok": True})
+
+
+@app.route("/api/machines/restore", methods=["POST"])
+def api_restore_machine():
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    dept_key = (body.get("dept_key") or "").strip()
+    eq_id = str(body.get("eq_id") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not dept_key or not eq_id:
+        return jsonify({"error": "dept_key and eq_id are required."}), 400
+    store.restore_inactive("machine", f"{dept_key}:{eq_id}", author=author)
+    reload_data()
+    return jsonify({"ok": True})
+
+
+@app.route("/api/inactive")
+def api_inactive():
+    """Everything that has been soft-deleted, for the global Inactive/Archive
+    page: deactivated departments and machines, each restorable."""
+    depts = [{
+        "key": r["item_key"],
+        "label": r.get("name") or r["item_key"],
+        "division_key": r.get("division_key") or "bla",
+        "created_at": r.get("created_at"),
+        "created_by": r.get("created_by"),
+    } for r in store.list_inactive("department")]
+    machines = [{
+        "eq_id": r.get("eq_id"),
+        "name": r.get("name") or (f"EQ ID {r.get('eq_id')}"),
+        "dept_key": r.get("dept_key"),
+        "dept_label": r.get("dept_label") or r.get("dept_key"),
+        "division_key": r.get("division_key") or "bla",
+        "created_at": r.get("created_at"),
+        "created_by": r.get("created_by"),
+    } for r in store.list_inactive("machine")]
+    return jsonify({"departments": depts, "machines": machines})
+
+
+# --------------------------------------------------------------------------- #
 # Email notifications (structure; inert until configured + recipients added)
 # --------------------------------------------------------------------------- #
 @app.route("/api/email/status")
@@ -1385,10 +1838,22 @@ def api_email_recipients():
     return jsonify({"recipients": emailer.set_recipients(recips)})
 
 
+@app.route("/api/email/test", methods=["POST"])
+def api_email_test():
+    """Send a sample 'Closed & Completed' email to one address to verify SMTP.
+    Body: {"address": "someone@example.com"}."""
+    body = request.get_json(silent=True) or {}
+    address = (body.get("address") or "").strip()
+    if not address:
+        return jsonify({"error": "'address' is required"}), 400
+    result = emailer.send_test(address)
+    return jsonify({"ok": bool(result.get("sent")), "email": result,
+                    "status": emailer.status()})
+
+
 @app.route("/api/email/weekly-digest", methods=["POST"])
 def api_email_weekly_digest():
-    """Manually trigger the weekly scheduled-maintenance digest. (The scheduled
-    automatic send is wired in _start_scheduler once recipients exist.)"""
+    """Manually trigger the weekly scheduled-maintenance digest."""
     due, overdue = _weekly_digest_buckets()
     result = emailer.send_weekly_digest(due, overdue)
     return jsonify({"ok": True, "due_count": len(due),
@@ -1409,9 +1874,7 @@ def _weekly_digest_buckets():
                 if not d:
                     continue
                 d = d.date()
-                status = (r.get("status") or "").lower()
-                completed = "complete" in status or "closed" in status
-                if completed:
+                if _is_completed(r.get("status")):
                     continue
                 if this_sun <= d < next_sun:
                     due.append(r)
@@ -1496,7 +1959,13 @@ def api_get_guide(dept_key, eq_id):
 
 @app.route("/api/departments/<dept_key>/machines/<eq_id>/guide", methods=["POST"])
 def api_generate_guide(dept_key, eq_id):
-    if not _edit_ok(request):
+    # A full rebuild ("regenerate") is a heavier, riskier action, so it is gated
+    # by the ADMIN password. First-time generation only needs the edit password.
+    regen = str(request.args.get("regenerate") or "").strip() not in ("", "0", "false")
+    if regen:
+        if not _admin_ok(request):
+            return jsonify({"error": "Admin password required to regenerate the checklist."}), 401
+    elif not _edit_ok(request):
         return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
     if dept_key not in DEPARTMENTS:
         return jsonify({"error": "department not found"}), 404
@@ -1549,9 +2018,9 @@ def api_save_guide(dept_key, eq_id):
 def api_update_guide(dept_key, eq_id):
     """MERGE newly reported unscheduled work orders into the existing
     (operator-edited) checklist via the LLM, PRESERVING the human edits. The
-    previous guide is backed up first so the merge is reversible."""
-    if not _edit_ok(request):
-        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+    previous guide is backed up first so the merge is reversible. This is an
+    additions-only merge (it never rewrites existing rows), so it is intentionally
+    NOT password protected."""
     if dept_key not in DEPARTMENTS:
         return jsonify({"error": "department not found"}), 404
     groups = _machine_groups(dept_key)
@@ -1584,6 +2053,8 @@ def api_update_guide(dept_key, eq_id):
 @app.route("/api/departments/<dept_key>/machines/<eq_id>/guide/versions")
 def api_guide_versions(dept_key, eq_id):
     """List every stored version of a machine's checklist, newest first."""
+    if not _admin_ok(request):
+        return jsonify({"error": "Enter the admin password to view version history."}), 401
     versions = ge.list_versions(eq_id)
     current = versions[0]["version_number"] if versions else None
     return jsonify({"eq_id": eq_id, "current_version": current, "versions": versions})
@@ -1592,6 +2063,8 @@ def api_guide_versions(dept_key, eq_id):
 @app.route("/api/departments/<dept_key>/machines/<eq_id>/guide/versions/<int:version_number>")
 def api_guide_version(dept_key, eq_id, version_number):
     """Full content of a single historical version."""
+    if not _admin_ok(request):
+        return jsonify({"error": "Enter the admin password to view version history."}), 401
     v = ge.get_version(eq_id, version_number)
     if v is None:
         return jsonify({"error": "version not found"}), 404
@@ -1700,72 +2173,256 @@ def api_weekly():
 
 
 # --------------------------------------------------------------------------- #
-# Nightly rescrape + regeneration (scheduled in-process via APScheduler)
+# Monthly calendar (whole-month grid, Sunday-aligned)
 # --------------------------------------------------------------------------- #
-_NIGHTLY = {
-    "running": False,
-    "last_run": None,
-    "last_status": None,     # "success" | "error" | "skipped"
-    "last_summary": None,
-    "last_error": None,
-    "progress": None,
-    "history": [],           # recent run summaries
-}
-_NIGHTLY_LOCK = threading.Lock()
+@app.route("/api/monthly")
+def api_monthly():
+    """Scheduled (and unscheduled) work orders for a target month, returned as a
+    flat list tagged with an ISO `date` for the frontend calendar grid. Recurring
+    PM occurrences are PROJECTED forward within the visible grid even when they
+    have not been materialized as records yet (the recurring generator only
+    creates occurrences through the next upcoming one), so the calendar shows
+    every upcoming occurrence in the month. Projected entries have wo_id=None and
+    is_projected=True. The grid is Sunday-aligned and covers whole weeks so the
+    frontend can render a clean month view."""
+    now = datetime.now()
+
+    def _int(name, default):
+        try:
+            return int(request.args.get(name) or default)
+        except (TypeError, ValueError):
+            return default
+
+    year = _int("year", now.year)
+    month = _int("month", now.month)
+    if month < 1 or month > 12:
+        year, month = now.year, now.month
+
+    first = datetime(year, month, 1)
+    next_first = datetime(year + 1, 1, 1) if month == 12 else datetime(year, month + 1, 1)
+    last = next_first - timedelta(days=1)
+    # Sunday index for a date: (weekday()+1)%7 -> Sun=0 .. Sat=6.
+    grid_start = first - timedelta(days=(first.weekday() + 1) % 7)
+    grid_end = last + timedelta(days=(6 - (last.weekday() + 1) % 7))
+    gs, ge_ = grid_start.date(), grid_end.date()
+
+    def _compact(r, date_iso, projected=False):
+        return {
+            "wo_id": None if projected else r.get("wo_id"),
+            "equipment_id": r.get("equipment_id"),
+            "equipment_eq_id": r.get("equipment_eq_id"),
+            "equipment_name": r.get("equipment_name"),
+            "department_key": r.get("department_key"),
+            "wo_type": "scheduled" if projected else r.get("wo_type"),
+            "status": "Pending" if projected else r.get("status"),
+            "urgency": r.get("urgency"),
+            "due_date": r.get("due_date"),
+            "date_notified": r.get("date_notified"),
+            "problem": r.get("problem"),
+            "audit_item": r.get("audit_item"),
+            "frequency": r.get("frequency"),
+            "date": date_iso,
+            "is_projected": projected,
+        }
+
+    work_orders = []
+    with _DATA_LOCK:
+        departments = [{"key": k, "label": c["label"]} for k, c in DEPARTMENTS.items()]
+        for key, cfg in DEPARTMENTS.items():
+            data = _DEPT_DATA.get(key, {"unscheduled": [], "scheduled": []})
+
+            # Unscheduled work: placed by date_notified (only past/current days).
+            for r in data["unscheduled"]:
+                d = ae._parse_date(r.get("date_notified"))
+                if d and gs <= d.date() <= ge_:
+                    work_orders.append(_compact(r, d.strftime("%Y-%m-%d")))
+
+            # Scheduled work: emit real records in-window, then project future
+            # recurring occurrences forward so the whole month is populated.
+            series: dict[str, list[dict]] = {}
+            for r in data["scheduled"]:
+                sid = (r.get("series_id") or r.get("wo_id") or "").strip() or f"_{id(r)}"
+                series.setdefault(sid, []).append(r)
+
+            for sid, occs in series.items():
+                real_dates = set()
+                seed_date = None
+                frequency = ""
+                stopped = False
+                for o in occs:
+                    d = _parse_mdy(o.get("due_date"))
+                    if not d:
+                        continue
+                    if seed_date is None or d < seed_date:
+                        seed_date = d
+                    if (o.get("frequency") or "").strip():
+                        frequency = (o.get("frequency") or "").strip()
+                    if o.get("recurrence_stopped"):
+                        stopped = True
+                    if gs <= d.date() <= ge_:
+                        real_dates.add(d.date())
+                        work_orders.append(_compact(o, d.strftime("%Y-%m-%d")))
+
+                if not frequency or stopped or seed_date is None:
+                    continue  # one-off scheduled WO or stopped series: no projection
+
+                template = max(occs, key=lambda o: (_parse_mdy(o.get("due_date")) or datetime.min))
+                cur = seed_date
+                ff = 0
+                while cur.date() < gs and ff < 100000:  # fast-forward to the window
+                    nxt = _add_interval(cur, frequency)
+                    if nxt is None:
+                        break
+                    cur = nxt
+                    ff += 1
+                cg = 0
+                while cur.date() <= ge_ and cg < 400:
+                    if gs <= cur.date() <= ge_ and cur.date() not in real_dates:
+                        proj = dict(template)
+                        proj["due_date"] = cur.strftime("%m/%d/%Y")
+                        work_orders.append(_compact(proj, cur.strftime("%Y-%m-%d"), projected=True))
+                    nxt = _add_interval(cur, frequency)
+                    if nxt is None:
+                        break
+                    cur = nxt
+                    cg += 1
+
+    calendar_events = store.list_calendar_events(
+        date_from=grid_start.strftime("%Y-%m-%d"),
+        date_to=grid_end.strftime("%Y-%m-%d"),
+    )
+    events = [
+        {
+            "id": e["id"],
+            "date": e["date"],
+            "department_key": e["department_key"] or "",
+            "equipment_id": e["equipment_id"] or "",
+            "title": e["title"],
+            "description": e["description"] or "",
+            "created_by": e["created_by"] or "",
+            "created_at": e["created_at"] or "",
+            "is_event": True,
+        }
+        for e in calendar_events
+    ]
+
+    return jsonify({
+        "year": year,
+        "month": month,
+        "month_label": first.strftime("%B %Y"),
+        "grid_start": grid_start.strftime("%Y-%m-%d"),
+        "grid_end": grid_end.strftime("%Y-%m-%d"),
+        "today": now.strftime("%Y-%m-%d"),
+        "departments": departments,
+        "work_orders": work_orders,
+        "events": events,
+    })
 
 
-def _nightly_progress(msg: str):
-    _NIGHTLY["progress"] = msg
-    print(f"[nightly] {msg}", flush=True)
+# --------------------------------------------------------------------------- #
+# Manual calendar events (non-work-order items)
+# --------------------------------------------------------------------------- #
+@app.route("/api/calendar-events", methods=["GET"])
+def api_list_calendar_events():
+    """List manual calendar events within an optional date range."""
+    dept_key = (request.args.get("dept_key") or "").strip()
+    date_from = (request.args.get("date_from") or "").strip()
+    date_to = (request.args.get("date_to") or "").strip()
+    rows = store.list_calendar_events(
+        department_key=dept_key,
+        date_from=date_from,
+        date_to=date_to,
+    )
+    return jsonify({"events": rows})
 
 
-def _run_nightly(reason: str = "scheduled"):
-    """Execute one nightly cycle. Guarded so only one runs at a time."""
-    if not _NIGHTLY_LOCK.acquire(blocking=False):
-        _nightly_progress("a nightly run is already in progress; skipping")
-        return
-    _NIGHTLY["running"] = True
-    _NIGHTLY["last_error"] = None
-    started = datetime.now()
+@app.route("/api/calendar-events", methods=["POST"])
+def api_create_calendar_event():
+    """Create a manual calendar event. Requires the edit password."""
+    if not _edit_ok(request):
+        return jsonify({"error": "Edit password required"}), 401
+    body = request.get_json(silent=True) or {}
+    author = _author_from(request)
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
     try:
-        import nightly_update
-        summary = nightly_update.run(
-            model=MODEL,
-            progress=_nightly_progress,
-            reload_callback=reload_data,
-        )
-        _NIGHTLY["last_status"] = summary.get("status", "success")
-        _NIGHTLY["last_summary"] = summary
-    except Exception as e:
-        _NIGHTLY["last_status"] = "error"
-        _NIGHTLY["last_error"] = f"{e}\n{traceback.format_exc()}"
-        _nightly_progress(f"ERROR: {e}")
-    finally:
-        _NIGHTLY["last_run"] = started.isoformat(timespec="seconds")
-        _NIGHTLY["running"] = False
-        _NIGHTLY["progress"] = None
-        _NIGHTLY["history"] = ([{
-            "run": _NIGHTLY["last_run"],
-            "status": _NIGHTLY["last_status"],
-            "reason": reason,
-            "summary": _NIGHTLY["last_summary"],
-        }] + _NIGHTLY["history"])[:20]
-        _NIGHTLY_LOCK.release()
+        event = store.add_calendar_event(body, author=author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    return jsonify({"event": event}), 201
 
 
-@app.route("/api/nightly/status")
-def api_nightly_status():
-    return jsonify({k: v for k, v in _NIGHTLY.items()})
+@app.route("/api/calendar-events/<int:event_id>", methods=["DELETE"])
+def api_delete_calendar_event(event_id):
+    """Delete a manual calendar event. Requires the edit password."""
+    if not _edit_ok(request):
+        return jsonify({"error": "Edit password required"}), 401
+    body = request.get_json(silent=True) or {}
+    author = _author_from(request) or (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not store.delete_calendar_event(event_id, author=author):
+        return jsonify({"error": "event not found"}), 404
+    return jsonify({"ok": True})
 
 
-@app.route("/api/nightly/run", methods=["POST"])
-def api_nightly_run():
-    """Manually trigger a nightly cycle (runs in a background thread)."""
-    if _NIGHTLY["running"]:
-        return jsonify({"error": "a nightly run is already in progress"}), 409
-    threading.Thread(target=_run_nightly, kwargs={"reason": "manual"},
-                     daemon=True).start()
-    return jsonify({"started": True})
+def _weekly_digest_scheduler():
+    """Background loop that sends the weekly scheduled-maintenance digest once a
+    week (default Monday 07:00 local time). The digest lists scheduled work due
+    the coming week PLUS any past-due scheduled work still pending.
+
+    Controlled by env vars:
+        WEEKLY_DIGEST_ENABLED  "0" to disable (default on)
+        WEEKLY_DIGEST_DAY      0=Mon .. 6=Sun (default 0)
+        WEEKLY_DIGEST_HOUR     0-23 local hour (default 7)
+
+    Emails are inert unless SMTP is configured + recipients exist, so this is
+    safe to run by default. A tiny state file prevents double-sends across
+    restarts within the same day."""
+    if os.environ.get("WEEKLY_DIGEST_ENABLED", "1").strip() == "0":
+        print("[digest] weekly digest scheduler disabled (WEEKLY_DIGEST_ENABLED=0)")
+        return
+    try:
+        day = int(os.environ.get("WEEKLY_DIGEST_DAY", "0") or 0)
+        hour = int(os.environ.get("WEEKLY_DIGEST_HOUR", "7") or 7)
+    except ValueError:
+        day, hour = 0, 7
+    state_path = os.path.join(emailer.DATA_DIR, "weekly_digest_state.json")
+
+    def _last_sent() -> str:
+        try:
+            with open(state_path, encoding="utf-8") as f:
+                return json.load(f).get("last_sent_date", "")
+        except (OSError, json.JSONDecodeError):
+            return ""
+
+    def _mark(date_str: str):
+        try:
+            with open(state_path, "w", encoding="utf-8") as f:
+                json.dump({"last_sent_date": date_str}, f)
+        except OSError as e:
+            print(f"[digest] could not persist state: {e}")
+
+    print(f"[digest] weekly digest scheduler running (day={day}, hour={hour})")
+    while True:
+        now = datetime.now()
+        today = now.date().isoformat()
+        if now.weekday() == day and now.hour >= hour and _last_sent() != today:
+            try:
+                due, overdue = _weekly_digest_buckets()
+                res = emailer.send_weekly_digest(due, overdue)
+                print(f"[digest] weekly digest fired: due={len(due)} "
+                      f"overdue={len(overdue)} sent={res.get('sent')}")
+            except Exception as e:  # noqa: BLE001 - never kill the loop
+                print(f"[digest] error sending weekly digest: {e}")
+            _mark(today)
+        time.sleep(300)  # check every 5 minutes
+
+
+def _start_weekly_digest():
+    t = threading.Thread(target=_weekly_digest_scheduler, daemon=True,
+                         name="weekly-digest")
+    t.start()
 
 
 def _start_chrome():
@@ -1781,34 +2438,10 @@ def _start_chrome():
         print(f"[chrome] debug Chrome ready on port {port} "
               f"(logged_in={chrome_session.is_logged_in(port)})")
         print("[chrome] If not logged in, sign into the PM site in that Chrome "
-              "window - the session is reused for every nightly scrape.")
+              "window - the session is reused for manual scrapes.")
     except Exception as e:
         print(f"[chrome] could not auto-start Chrome: {e}")
         print("[chrome] Launch it manually with: python chrome_session.py")
-
-
-def _start_scheduler():
-    """Schedule the nightly job in-process. Uses APScheduler if available."""
-    if os.environ.get("NIGHTLY_ENABLED", "1").strip() == "0":
-        print("[nightly] scheduler disabled (NIGHTLY_ENABLED=0)")
-        return
-    hour = int(os.environ.get("NIGHTLY_HOUR", "2"))
-    minute = int(os.environ.get("NIGHTLY_MINUTE", "0"))
-    try:
-        from apscheduler.schedulers.background import BackgroundScheduler
-        from apscheduler.triggers.cron import CronTrigger
-    except ImportError:
-        print("[nightly] APScheduler not installed; run 'pip install -r "
-              "requirements.txt'. Nightly auto-run is OFF (manual trigger still "
-              "works via POST /api/nightly/run).")
-        return
-    sched = BackgroundScheduler(daemon=True)
-    sched.add_job(lambda: _run_nightly("scheduled"),
-                  CronTrigger(hour=hour, minute=minute),
-                  id="nightly_update", replace_existing=True,
-                  misfire_grace_time=3600, coalesce=True)
-    sched.start()
-    print(f"[nightly] scheduled daily at {hour:02d}:{minute:02d} local time")
 
 
 if __name__ == "__main__":
@@ -1823,6 +2456,5 @@ if __name__ == "__main__":
           f"(model: {ae.OLLAMA_MODEL})")
     print("=" * 60)
     _start_chrome()
-    _start_scheduler()
-    # use_reloader=False so APScheduler doesn't start twice under the reloader.
+    _start_weekly_digest()
     app.run(host=host, port=port, threaded=True, debug=False, use_reloader=False)

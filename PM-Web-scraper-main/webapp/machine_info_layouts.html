@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Info - Layout Options</title>
+  <script src="/vendor/tailwind.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #eef2f7; }
+  </style>
+</head>
+<body class="text-slate-800">
+  <div class="max-w-5xl mx-auto px-6 py-8">
+    <h1 class="text-2xl font-extrabold mb-1">Machine Info - Layout Options</h1>
+    <p class="text-slate-500 mb-8">Same sample machine (<b>Saw, Horizontal, Holzma</b>) shown four ways. Pick whichever you like best and tell me the number(s).</p>
+
+    <!-- =============================================================== -->
+    <!-- OPTION 1 - Compact spec-sheet table rows                        -->
+    <!-- =============================================================== -->
+    <section class="mb-12">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-xs font-bold text-white bg-emerald-700 rounded-full px-3 py-1">Option 1</span>
+        <h2 class="text-lg font-extrabold">Compact spec-sheet rows</h2>
+      </div>
+      <p class="text-slate-500 text-sm mb-4">No boxes. Dense "label : value" rows like a datasheet. Values sit on quiet underlines and become editable inline when unlocked.</p>
+
+      <div class="bg-white rounded-2xl border border-emerald-100 shadow-sm p-6">
+        <h3 class="text-sm uppercase tracking-wide text-emerald-600 font-bold mb-4">PM Equipment Summary</h3>
+        <div class="grid md:grid-cols-2 gap-x-10">
+          <div class="divide-y divide-slate-100">
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Make</span><span class="text-sm font-semibold">Holzma</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Serial No.</span><span class="text-sm font-semibold">0240025084</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Function</span><span class="text-sm font-semibold">General</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Original Cost</span><span class="text-sm font-semibold">0.0000</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Warranty End</span><span class="text-sm text-slate-300 italic">N/A</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Amps</span><span class="text-sm font-semibold">48</span></div>
+          </div>
+          <div class="divide-y divide-slate-100">
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Model</span><span class="text-sm font-semibold">HPL400 Profiline</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Asset #</span><span class="text-sm font-semibold">11446</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">P.O. No.</span><span class="text-sm font-semibold">585676</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Purchase Date</span><span class="text-sm font-semibold">08/25/2015</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">Volts</span><span class="text-sm font-semibold">480</span></div>
+            <div class="flex items-center justify-between py-2.5"><span class="text-sm text-slate-500">PH</span><span class="text-sm font-semibold">3</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- OPTION 2 - Grouped cards                                        -->
+    <!-- =============================================================== -->
+    <section class="mb-12">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-xs font-bold text-white bg-emerald-700 rounded-full px-3 py-1">Option 2</span>
+        <h2 class="text-lg font-extrabold">Grouped cards</h2>
+      </div>
+      <p class="text-slate-500 text-sm mb-4">Related fields clustered into titled sub-cards, each with an icon header. Easier to find things; less of a wall of boxes.</p>
+
+      <div class="space-y-4">
+        <div class="bg-white rounded-2xl border border-emerald-100 shadow-sm p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">ID</span>
+            <h3 class="text-sm font-bold text-slate-700">Identification</h3>
+          </div>
+          <div class="grid md:grid-cols-3 gap-3">
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Make</span><input value="Holzma" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Model</span><input value="HPL400 Profiline" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Serial No.</span><input value="0240025084" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Asset #</span><input value="11446" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Function</span><input value="General" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">P.O. No.</span><input value="585676" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-emerald-100 shadow-sm p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">⚡</span>
+            <h3 class="text-sm font-bold text-slate-700">Electrical &amp; Utilities</h3>
+          </div>
+          <div class="grid md:grid-cols-4 gap-3 mb-3">
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Volts</span><input value="480" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Amps</span><input value="48" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">PH</span><input value="3" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Dust Collection</span><input value="1" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 font-semibold">air</span>
+            <span class="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-400">water</span>
+            <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 font-semibold">network</span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-emerald-100 shadow-sm p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center text-xs font-bold">⏱</span>
+            <h3 class="text-sm font-bold text-slate-700">Longevity</h3>
+          </div>
+          <div class="grid md:grid-cols-3 gap-3">
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Year New</span><input value="2015" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Condition</span><input value="Good" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+            <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Est. Replacement Year</span><input value="2025" class="mt-1 w-full px-3 py-1.5 rounded-lg border border-slate-200 text-sm bg-slate-50" readonly></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- OPTION 3 - Read view + Edit mode                                -->
+    <!-- =============================================================== -->
+    <section class="mb-12">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-xs font-bold text-white bg-emerald-700 rounded-full px-3 py-1">Option 3</span>
+        <h2 class="text-lg font-extrabold">Clean read view + Edit button</h2>
+      </div>
+      <p class="text-slate-500 text-sm mb-4">Default is a calm, box-free summary. Hit <b>Edit</b> to flip into fields. This is what you'd normally look at day-to-day.</p>
+
+      <div class="bg-white rounded-2xl border border-emerald-100 shadow-sm p-6">
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="text-sm uppercase tracking-wide text-emerald-600 font-bold">PM Equipment Summary</h3>
+          <button class="text-xs px-4 py-1.5 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800">Edit</button>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-5">
+          <div><div class="text-[11px] uppercase font-semibold text-slate-400">Make</div><div class="text-base font-semibold">Holzma</div></div>
+          <div><div class="text-[11px] uppercase font-semibold text-slate-400">Model</div><div class="text-base font-semibold">HPL400 Profiline</div></div>
+          <div><div class="text-[11px] uppercase font-semibold text-slate-400">Serial No.</div><div class="text-base font-semibold">0240025084</div></div>
+          <div><div class="text-[11px] uppercase font-semibold text-slate-400">Asset #</div><div class="text-base font-semibold">11446</div></div>
+          <div><div class="text-[11px] uppercase font-semibold text-slate-400">Function</div><div class="text-base font-semibold">General</div></div>
+          <div><div class="text-[11px] uppercase font-semibold text-slate-400">P.O. No.</div><div class="text-base font-semibold">585676</div></div>
+          <div><div class="text-[11px] uppercase font-semibold text-slate-400">Purchase Date</div><div class="text-base font-semibold">08/25/2015</div></div>
+          <div><div class="text-[11px] uppercase font-semibold text-slate-400">Volts / Amps / PH</div><div class="text-base font-semibold">480 / 48 / 3</div></div>
+          <div><div class="text-[11px] uppercase font-semibold text-slate-400">Warranty End</div><div class="text-base text-slate-300 italic">N/A</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- OPTION 4 - Single column, sectioned                             -->
+    <!-- =============================================================== -->
+    <section class="mb-12">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-xs font-bold text-white bg-emerald-700 rounded-full px-3 py-1">Option 4</span>
+        <h2 class="text-lg font-extrabold">Single column, roomy sections</h2>
+      </div>
+      <p class="text-slate-500 text-sm mb-4">One narrower column with generous spacing and clear dividers. Calmer and less busy than the 2-column grid.</p>
+
+      <div class="bg-white rounded-2xl border border-emerald-100 shadow-sm p-6 max-w-xl">
+        <h3 class="text-sm uppercase tracking-wide text-emerald-600 font-bold mb-1">Identification</h3>
+        <div class="h-px bg-slate-100 mb-4"></div>
+        <div class="space-y-4 mb-8">
+          <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Make</span><input value="Holzma" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-slate-50" readonly></label>
+          <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Model</span><input value="HPL400 Profiline" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-slate-50" readonly></label>
+          <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Serial No.</span><input value="0240025084" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-slate-50" readonly></label>
+        </div>
+        <h3 class="text-sm uppercase tracking-wide text-emerald-600 font-bold mb-1">Electrical</h3>
+        <div class="h-px bg-slate-100 mb-4"></div>
+        <div class="space-y-4">
+          <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Volts</span><input value="480" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-slate-50" readonly></label>
+          <label class="block"><span class="text-[11px] uppercase font-semibold text-slate-400">Amps</span><input value="48" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-slate-50" readonly></label>
+        </div>
+      </div>
+    </section>
+
+    <div class="text-slate-400 text-sm border-t border-slate-200 pt-4">Mockup preview only. Tell me which option number(s) you like and I'll build it into the real Machine Info tab.</div>
+  </div>
+</body>
+</html>

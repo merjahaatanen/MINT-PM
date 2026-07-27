@@ -225,9 +225,9 @@ Produce the checklist as Markdown using EXACTLY this structure and order:
 
 1. A single H1 title line: "# Operator Troubleshooting Checklist: {label}".
 2. A "## Troubleshooting" section containing ONE Markdown table with EXACTLY
-   these four columns (keep this header row verbatim):
+   these five columns (keep this header row verbatim):
 
-   | Issue | Symptoms | Troubleshooting Steps | When to Call Maintenance |
+   | Issue | Symptoms | Troubleshooting Steps | Avg. Fix Time | When to Call Maintenance |
 
 3. A "## Work Orders & Parts Reference" section containing ONE Markdown table
    with EXACTLY these three columns (keep this header row verbatim):
@@ -238,11 +238,21 @@ CRITICAL FORMATTING RULES for the tables:
 - Group the work orders into common problem categories ("Issues"), MOST FREQUENT
   FIRST. Use the SAME Issue names (identical text) in both tables so they line up.
 - Inside a table cell, put EACH symptom / step / criterion on its own line using
-  a literal "<br>" between items, and start each line with "- " (e.g.
-  "- Machine won't reference<br>- Makes jerking movements"). Do NOT use real line
-  breaks inside a cell - use <br> only, so the Markdown table stays valid.
+  a literal "<br>" between items, and start EVERY line with "- " (e.g.
+  "- Machine won't reference<br>- Makes jerking movements"), even when a cell has
+  only ONE item. Do NOT use real line breaks inside a cell - use <br> only, so the
+  Markdown table stays valid.
+- Do NOT use Markdown bold (**...**) or italics (*...*) anywhere inside table
+  cells. Keep all cell text plain and consistent - no emphasis on individual
+  symptoms, steps, or issues.
 - In the "Troubleshooting Steps" cell, write them as ordered actions the operator
   can safely try, based on fixes that actually worked in the comments.
+- In the "Avg. Fix Time" cell, estimate how long this issue typically takes to
+  resolve by AVERAGING the "labor_time" values (in hours) of ONLY the work orders
+  you grouped into this Issue. Ignore work orders with a blank/zero labor_time
+  when averaging. Round to one decimal and show the sample size, e.g.
+  "~2.5 hrs (4 work orders)". If NONE of the grouped work orders have a
+  labor_time, write "No data" - never invent a number.
 - In "Related Work Order #s", list the bare WO numbers separated by commas
   (e.g. "2321, 3424, 7931"). Add a short parenthetical note only if a WO required
   specialist repair.
@@ -291,13 +301,23 @@ RULES:
   names, symptoms, steps, or work-order numbers. Preserve all current content
   exactly as written.
 - If a new work order fits an EXISTING Issue, append the new symptom/step text to
-  that row and add its WO number to that row's "Related Work Order #s".
+  that row and add its WO number to that row's "Related Work Order #s". When the
+  new work order has a non-zero "labor_time", RECOMPUTE that Issue's "Avg. Fix
+  Time" as the average labor_time (hours) across all work orders now grouped into
+  it, EXCLUDING any with a blank/zero labor_time, rounded to one decimal, e.g.
+  "~2.5 hrs (4 work orders)". A blank/zero labor_time must NOT change the average.
 - If a new work order is a genuinely NEW failure mode not covered by any existing
-  Issue, add a NEW row to BOTH tables using the SAME Issue name in each.
+  Issue, add a NEW row to BOTH tables using the SAME Issue name in each. Fill its
+  "Avg. Fix Time" from that work order's labor_time (hours), or "No data" if its
+  labor_time is blank or zero - never invent a number.
 - If nothing new needs to be added, output the current checklist unchanged.
 - Keep the EXACT same two-table structure and column headers as the current
-  checklist. Inside a table cell, put each item on its own line using a literal
-  "<br>" and start each line with "- ". Never use real line breaks in a cell.
+  checklist (including the "Avg. Fix Time" column if present). Inside a table
+  cell, put each item on its own line using a literal "<br>" and start EVERY line
+  with "- " (even single-item cells). Never use real line breaks in a cell.
+- Do NOT use Markdown bold (**...**) or italics inside table cells; keep cell
+  text plain. If existing rows contain bold, drop the ** markers when you touch
+  them.
 - In "Related Work Order #s", list bare WO numbers separated by commas.
 - In "Parts Often Needed", list parts with part numbers in parentheses when
   present in the data; otherwise write "None operator-replaceable".

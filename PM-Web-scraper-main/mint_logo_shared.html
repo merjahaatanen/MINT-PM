@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MINT Logo - Shared Stroke Options</title>
+<style>
+  :root { --ink:#0f172a; --slate:#475569; --bg:#f8fafc; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI",system-ui,sans-serif; background:var(--bg); color:var(--ink); padding:40px 24px 80px; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  .sub { color:var(--slate); margin:0 0 32px; font-size:15px; max-width:760px; line-height:1.5; }
+  .grid { display:grid; grid-template-columns:1fr; gap:24px; max-width:820px; }
+  .card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:24px 28px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .card h2 { font-size:15px; margin:0 0 4px; }
+  .card p { font-size:13px; color:var(--slate); margin:0 0 18px; line-height:1.5; }
+  .stage { display:flex; align-items:center; gap:32px; flex-wrap:wrap; padding:22px 20px; border-radius:12px; background:linear-gradient(180deg,#f1f5f9,#fff); }
+  .stage.dark { background:#0f172a; margin-top:12px; }
+  .tag { margin-top:12px; font-size:11px; letter-spacing:.18em; color:var(--slate); text-transform:uppercase; }
+</style>
+</head>
+<body>
+  <h1>MINT &mdash; partially layered (shared strokes)</h1>
+  <p class="sub">The letters are written out left-to-right, but neighbours <strong>share a vertical stroke</strong>: the right leg of the <strong>M</strong> is also the <strong>I</strong> and the left leg of the <strong>N</strong>. Shown large so you can see the joins; each also renders on dark.</p>
+
+  <div class="grid">
+
+    <!-- A: Monoline -->
+    <div class="card">
+      <h2>Option A &mdash; Monoline connected</h2>
+      <p>One shared vertical does triple duty (M-right / I / N-left). Thin, even strokes. The single-color version is what most people would use as the wordmark.</p>
+      <div class="stage">
+        <svg width="260" height="90" viewBox="0 0 200 90" fill="none" stroke="#059669" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+          <!-- M -->
+          <path d="M22 74 L22 22 L46 54 L70 22"/>
+          <!-- shared vertical (M-right = I = N-left) -->
+          <path d="M70 22 L70 74"/>
+          <!-- N diagonal + right leg -->
+          <path d="M70 22 L112 74 L112 22"/>
+          <!-- T -->
+          <path d="M132 22 L182 22 M157 22 L157 74"/>
+        </svg>
+      </div>
+      <div class="stage dark">
+        <svg width="200" height="72" viewBox="0 0 200 90" fill="none" stroke="#34d399" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 74 L22 22 L46 54 L70 22"/>
+          <path d="M70 22 L70 74"/>
+          <path d="M70 22 L112 74 L112 22"/>
+          <path d="M132 22 L182 22 M157 22 L157 74"/>
+        </svg>
+      </div>
+      <div class="tag">monoline &middot; one shared vertical</div>
+    </div>
+
+    <!-- B: Two-tone to reveal the sharing -->
+    <div class="card">
+      <h2>Option B &mdash; Two-tone (reveals the trick)</h2>
+      <p>Same geometry, but each letter is tinted differently so the shared vertical (drawn in the darkest shade) visibly belongs to M, I <em>and</em> N at once. Nice for a splash/marketing moment; can collapse to one color for everyday use.</p>
+      <div class="stage">
+        <svg width="260" height="90" viewBox="0 0 200 90" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 74 L22 22 L46 54 L70 22" stroke="#6ee7b7"/>
+          <path d="M70 22 L112 74 L112 22" stroke="#10b981"/>
+          <path d="M132 22 L182 22 M157 22 L157 74" stroke="#047857"/>
+          <!-- shared vertical on top, darkest -->
+          <path d="M70 22 L70 74" stroke="#022c22"/>
+        </svg>
+      </div>
+      <div class="stage dark">
+        <svg width="200" height="72" viewBox="0 0 200 90" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 74 L22 22 L46 54 L70 22" stroke="#6ee7b7"/>
+          <path d="M70 22 L112 74 L112 22" stroke="#10b981"/>
+          <path d="M132 22 L182 22 M157 22 L157 74" stroke="#a7f3d0"/>
+          <path d="M70 22 L70 74" stroke="#fff"/>
+        </svg>
+      </div>
+      <div class="tag">two-tone &middot; highlights shared stroke</div>
+    </div>
+
+    <!-- C: Bold solid -->
+    <div class="card">
+      <h2>Option C &mdash; Bold solid</h2>
+      <p>Heavier weight for presence in the header / favicon. Same shared-vertical construction, thicker strokes and slightly tighter spacing.</p>
+      <div class="stage">
+        <svg width="260" height="90" viewBox="0 0 200 90" fill="none" stroke="#059669" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 72 L24 24 L46 54 L68 24"/>
+          <path d="M68 24 L68 72"/>
+          <path d="M68 24 L108 72 L108 24"/>
+          <path d="M130 24 L178 24 M154 24 L154 72"/>
+        </svg>
+      </div>
+      <div class="stage dark">
+        <svg width="200" height="72" viewBox="0 0 200 90" fill="none" stroke="#34d399" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 72 L24 24 L46 54 L68 24"/>
+          <path d="M68 24 L68 72"/>
+          <path d="M68 24 L108 72 L108 24"/>
+          <path d="M130 24 L178 24 M154 24 L154 72"/>
+        </svg>
+      </div>
+      <div class="tag">bold &middot; header ready</div>
+    </div>
+
+    <!-- D: Extra sharing (N-right = T-stem) -->
+    <div class="card">
+      <h2>Option D &mdash; Maximum overlap</h2>
+      <p>Goes further: N's right leg also becomes the stem of the T (crossbar sits on top). Just two "gaps" total &mdash; the most compact, most layered read of MINT.</p>
+      <div class="stage">
+        <svg width="240" height="90" viewBox="0 0 170 90" fill="none" stroke="#059669" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 74 L22 22 L44 54 L66 22"/>
+          <path d="M66 22 L66 74"/>
+          <path d="M66 22 L108 74 L108 22"/>
+          <!-- T crossbar over N's right leg -->
+          <path d="M86 22 L130 22"/>
+        </svg>
+      </div>
+      <div class="stage dark">
+        <svg width="180" height="72" viewBox="0 0 170 90" fill="none" stroke="#34d399" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 74 L22 22 L44 54 L66 22"/>
+          <path d="M66 22 L66 74"/>
+          <path d="M66 22 L108 74 L108 22"/>
+          <path d="M86 22 L130 22"/>
+        </svg>
+      </div>
+      <div class="tag">compact &middot; two shared strokes</div>
+    </div>
+
+  </div>
+</body>
+</html>

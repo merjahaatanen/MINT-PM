@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MINT Logo - Leaf variants</title>
+<style>
+  :root { --ink:#0f172a; --slate:#475569; --bg:#f8fafc; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Segoe UI",system-ui,sans-serif; background:var(--bg); color:var(--ink); padding:40px 24px 80px; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  .sub { color:var(--slate); margin:0 0 32px; font-size:15px; max-width:780px; line-height:1.5; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:900px; }
+  @media (max-width:760px){ .grid{ grid-template-columns:1fr; } }
+  .card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:24px 28px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .card h2 { font-size:15px; margin:0 0 4px; }
+  .card p { font-size:13px; color:var(--slate); margin:0 0 18px; line-height:1.5; }
+  .stage { display:flex; align-items:center; justify-content:center; padding:18px; border-radius:12px; background:linear-gradient(180deg,#f1f5f9,#fff); }
+  .stage.dark { background:#0f172a; margin-top:12px; }
+  .tag { margin-top:12px; font-size:11px; letter-spacing:.18em; color:var(--slate); text-transform:uppercase; text-align:center; }
+</style>
+</head>
+<body>
+  <h1>MINT &mdash; with a mint leaf</h1>
+  <p class="sub">Uniform-height connected two-tone wordmark, with a leaf worked in a few different ways. Leaf is a simple two-lobe mint sprig with a center vein.</p>
+
+  <div class="grid">
+
+    <!-- A: Sprig on the I -->
+    <div class="card">
+      <h2>Option A &mdash; Sprig on the I</h2>
+      <p>The shared center vertical (the I) grows a small two-leaf sprig out the top &mdash; the join literally &ldquo;sprouts&rdquo;.</p>
+      <div class="stage">
+        <svg width="230" height="120" viewBox="0 0 150 110" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 96 L22 42 L42 66 L62 42" stroke="#6ee7b7"/>
+          <path d="M62 42 L100 96 L100 42" stroke="#10b981"/>
+          <path d="M80 42 L124 42" stroke="#047857"/>
+          <path d="M62 42 L62 96" stroke="#022c22"/>
+          <!-- mint sprig -->
+          <g stroke-linecap="round">
+            <g transform="translate(62 42) rotate(-48) scale(0.8)">
+              <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#34d399" stroke="none"/>
+              <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#047857" stroke-width="1.6"/>
+            </g>
+            <g transform="translate(62 42) rotate(48) scale(0.8)">
+              <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#10b981" stroke="none"/>
+              <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#065f46" stroke-width="1.6"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="stage dark">
+        <svg width="200" height="104" viewBox="0 0 150 110" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 96 L22 42 L42 66 L62 42" stroke="#6ee7b7"/>
+          <path d="M62 42 L100 96 L100 42" stroke="#34d399"/>
+          <path d="M80 42 L124 42" stroke="#a7f3d0"/>
+          <path d="M62 42 L62 96" stroke="#ffffff"/>
+          <g stroke-linecap="round">
+            <g transform="translate(62 42) rotate(-48) scale(0.8)">
+              <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#6ee7b7" stroke="none"/>
+              <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#065f46" stroke-width="1.6"/>
+            </g>
+            <g transform="translate(62 42) rotate(48) scale(0.8)">
+              <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#34d399" stroke="none"/>
+              <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#065f46" stroke-width="1.6"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="tag">sprig &middot; grows from the I</div>
+    </div>
+
+    <!-- B: Single leaf as T crossbar tip -->
+    <div class="card">
+      <h2>Option B &mdash; Leaf on the T</h2>
+      <p>The right end of the T crossbar curls up into a single leaf, like a stem with a fresh tip. Subtle and grown-up.</p>
+      <div class="stage">
+        <svg width="230" height="120" viewBox="0 0 155 110" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 92 L22 38 L42 62 L62 38" stroke="#6ee7b7"/>
+          <path d="M62 38 L100 92 L100 38" stroke="#10b981"/>
+          <path d="M80 38 L120 38" stroke="#047857"/>
+          <path d="M62 38 L62 92" stroke="#022c22"/>
+          <!-- mint leaf on T tip -->
+          <g transform="translate(120 38) rotate(48) scale(0.85)" stroke-linecap="round">
+            <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#10b981" stroke="none"/>
+            <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#065f46" stroke-width="1.6"/>
+          </g>
+        </svg>
+      </div>
+      <div class="stage dark">
+        <svg width="200" height="104" viewBox="0 0 155 110" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 92 L22 38 L42 62 L62 38" stroke="#6ee7b7"/>
+          <path d="M62 38 L100 92 L100 38" stroke="#34d399"/>
+          <path d="M80 38 L120 38" stroke="#a7f3d0"/>
+          <path d="M62 38 L62 92" stroke="#ffffff"/>
+          <g transform="translate(120 38) rotate(48) scale(0.85)" stroke-linecap="round">
+            <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#6ee7b7" stroke="none"/>
+            <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#065f46" stroke-width="1.6"/>
+          </g>
+        </svg>
+      </div>
+      <div class="tag">leaf tip &middot; on the T</div>
+    </div>
+
+    <!-- C: Leaf nestled in the M valley -->
+    <div class="card">
+      <h2>Option C &mdash; Leaf in the M</h2>
+      <p>A leaf tucks into the negative space of the M&rsquo;s valley &mdash; hidden until you look. Keeps the wordmark clean.</p>
+      <div class="stage">
+        <svg width="230" height="120" viewBox="0 0 150 110" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 92 L22 38 L42 62 L62 38" stroke="#6ee7b7"/>
+          <path d="M62 38 L100 92 L100 38" stroke="#10b981"/>
+          <path d="M80 38 L124 38" stroke="#047857"/>
+          <path d="M62 38 L62 92" stroke="#022c22"/>
+          <!-- mint leaf tucked in the M -->
+          <g transform="translate(42 62) scale(0.72)" stroke-linecap="round">
+            <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#34d399" stroke="none"/>
+            <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#047857" stroke-width="1.8"/>
+          </g>
+        </svg>
+      </div>
+      <div class="stage dark">
+        <svg width="200" height="104" viewBox="0 0 150 110" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 92 L22 38 L42 62 L62 38" stroke="#6ee7b7"/>
+          <path d="M62 38 L100 92 L100 38" stroke="#34d399"/>
+          <path d="M80 38 L124 38" stroke="#a7f3d0"/>
+          <path d="M62 38 L62 92" stroke="#ffffff"/>
+          <g transform="translate(42 62) scale(0.72)" stroke-linecap="round">
+            <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#6ee7b7" stroke="none"/>
+            <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#065f46" stroke-width="1.8"/>
+          </g>
+        </svg>
+      </div>
+      <div class="tag">hidden leaf &middot; in the M</div>
+    </div>
+
+    <!-- D: Badge with leaf + monogram -->
+    <div class="card">
+      <h2>Option D &mdash; Leaf badge</h2>
+      <p>App-icon style: the connected mark sits inside a rounded tile, with a leaf sprouting off the I above it. Great as a favicon / avatar.</p>
+      <div class="stage">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+          <rect x="8" y="8" width="104" height="104" rx="26" fill="#ecfdf5"/>
+          <g stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M30 84 L30 52 L44 68 L58 52" stroke="#34d399"/>
+            <path d="M58 52 L86 84 L86 52" stroke="#10b981"/>
+            <path d="M72 52 L100 52" stroke="#047857"/>
+            <path d="M58 52 L58 84" stroke="#022c22"/>
+          </g>
+          <g stroke-linecap="round">
+            <g transform="translate(58 52) rotate(-45) scale(0.5)">
+              <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#34d399" stroke="none"/>
+              <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#047857" stroke-width="2.4"/>
+            </g>
+            <g transform="translate(58 52) rotate(45) scale(0.5)">
+              <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#10b981" stroke="none"/>
+              <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#065f46" stroke-width="2.4"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="stage dark">
+        <svg width="104" height="104" viewBox="0 0 120 120" fill="none">
+          <rect x="8" y="8" width="104" height="104" rx="26" fill="#022c22"/>
+          <g stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M30 84 L30 52 L44 68 L58 52" stroke="#6ee7b7"/>
+            <path d="M58 52 L86 84 L86 52" stroke="#34d399"/>
+            <path d="M72 52 L100 52" stroke="#a7f3d0"/>
+            <path d="M58 52 L58 84" stroke="#ffffff"/>
+          </g>
+          <g stroke-linecap="round">
+            <g transform="translate(58 52) rotate(-45) scale(0.5)">
+              <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#6ee7b7" stroke="none"/>
+              <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#065f46" stroke-width="2.4"/>
+            </g>
+            <g transform="translate(58 52) rotate(45) scale(0.5)">
+              <path d="M0 0 Q5 -2 5 -6 Q9 -9 7 -12 Q9 -15 6 -18 Q7 -21 4 -23 Q3 -26 0 -28 Q-3 -26 -4 -23 Q-7 -21 -6 -18 Q-9 -15 -7 -12 Q-9 -9 -5 -6 Q-5 -2 0 0 Z" fill="#34d399" stroke="none"/>
+              <path d="M0 -3 L0 -25 M0 -9 L4 -13 M0 -9 L-4 -13 M0 -15 L4.5 -19 M0 -15 L-4.5 -19" fill="none" stroke="#065f46" stroke-width="2.4"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="tag">badge &middot; favicon / avatar</div>
+    </div>
+
+  </div>
+</body>
+</html>

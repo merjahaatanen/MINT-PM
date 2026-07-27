@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MINT Logo Options</title>
+<style>
+  :root {
+    --mint-500: #10b981;
+    --mint-600: #059669;
+    --mint-700: #047857;
+    --mint-300: #6ee7b7;
+    --ink: #0f172a;
+    --slate: #475569;
+    --bg: #f8fafc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    padding: 40px 24px 80px;
+  }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  .sub { color: var(--slate); margin: 0 0 32px; font-size: 15px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  }
+  .card h2 { font-size: 15px; margin: 0 0 4px; letter-spacing: .02em; }
+  .card p { font-size: 13px; color: var(--slate); margin: 0 0 18px; line-height: 1.5; }
+  .stage {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 16px;
+    border-radius: 12px;
+    background: linear-gradient(180deg,#f1f5f9,#fff);
+    margin-bottom: 12px;
+  }
+  .stage.dark { background: #0f172a; }
+  .stage.dark .wordmark { color: #fff; }
+  .mark { flex: 0 0 auto; }
+  .wordmark {
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: .06em;
+    color: var(--ink);
+  }
+  .wordmark span { color: var(--mint-600); }
+  .tag { font-size: 11px; letter-spacing: .18em; color: var(--slate); text-transform: uppercase; }
+  .row { display:flex; align-items:center; gap:14px; }
+</style>
+</head>
+<body>
+  <h1>MINT logo concepts</h1>
+  <p class="sub">Each mark is built from a layered <strong>M</strong> + <strong>T</strong> monogram whose strokes also read as <strong>I</strong> and <strong>N</strong>. Tell me the number you like (styling, color, and shape can all be mixed &amp; matched).</p>
+
+  <div class="grid">
+
+    <!-- OPTION 1: Geometric layered MT -->
+    <div class="card">
+      <h2>Option 1 &mdash; Geometric MT</h2>
+      <p>Bold M with a T-bar across the top. Left leg = I, the inner diagonals = N, right leg + top bar = T.</p>
+      <div class="stage">
+        <svg class="mark" width="72" height="72" viewBox="0 0 100 100" fill="none">
+          <rect x="4" y="4" width="92" height="92" rx="22" fill="#ecfdf5"/>
+          <!-- top T bar -->
+          <rect x="20" y="24" width="60" height="11" rx="3" fill="#047857"/>
+          <!-- M legs -->
+          <rect x="24" y="24" width="11" height="52" rx="3" fill="#10b981"/>
+          <rect x="65" y="24" width="11" height="52" rx="3" fill="#10b981"/>
+          <!-- M inner V / N diagonals -->
+          <path d="M35 24 L50 58 L65 24 L65 40 L50 74 L35 40 Z" fill="#059669"/>
+        </svg>
+        <div class="wordmark">MI<span>N</span>T</div>
+      </div>
+      <div class="stage dark">
+        <svg class="mark" width="56" height="56" viewBox="0 0 100 100" fill="none">
+          <rect x="20" y="24" width="60" height="11" rx="3" fill="#6ee7b7"/>
+          <rect x="24" y="24" width="11" height="52" rx="3" fill="#34d399"/>
+          <rect x="65" y="24" width="11" height="52" rx="3" fill="#34d399"/>
+          <path d="M35 24 L50 58 L65 24 L65 40 L50 74 L35 40 Z" fill="#10b981"/>
+        </svg>
+        <div class="wordmark">MINT</div>
+      </div>
+      <div class="tag">geometric &middot; solid</div>
+    </div>
+
+    <!-- OPTION 2: Single-stroke monoline -->
+    <div class="card">
+      <h2>Option 2 &mdash; Monoline overlap</h2>
+      <p>Thin, modern single-weight strokes. The vertical is shared between M, I and T; the T-crossbar sits on top.</p>
+      <div class="stage">
+        <svg class="mark" width="72" height="72" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 76 L22 30 L50 62 L78 30 L78 76" stroke="#10b981" stroke-width="9" fill="none"/>
+          <path d="M28 26 L72 26" stroke="#047857" stroke-width="9"/>
+          <path d="M50 26 L50 62" stroke="#059669" stroke-width="9"/>
+        </svg>
+        <div class="wordmark">MI<span>N</span>T</div>
+      </div>
+      <div class="stage dark">
+        <svg class="mark" width="56" height="56" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 76 L22 30 L50 62 L78 30 L78 76" stroke="#34d399" stroke-width="9" fill="none"/>
+          <path d="M28 26 L72 26" stroke="#6ee7b7" stroke-width="9"/>
+          <path d="M50 26 L50 62" stroke="#a7f3d0" stroke-width="9"/>
+        </svg>
+        <div class="wordmark">MINT</div>
+      </div>
+      <div class="tag">monoline &middot; light</div>
+    </div>
+
+    <!-- OPTION 3: Gradient badge -->
+    <div class="card">
+      <h2>Option 3 &mdash; Gradient badge</h2>
+      <p>Rounded square badge with a mint gradient. Same layered MT built as negative/positive shapes for a soft app-icon feel.</p>
+      <div class="stage">
+        <svg class="mark" width="72" height="72" viewBox="0 0 100 100" fill="none">
+          <defs>
+            <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#34d399"/>
+              <stop offset="1" stop-color="#047857"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="4" width="92" height="92" rx="24" fill="url(#g3)"/>
+          <path d="M24 74 L24 30 L50 60 L76 30 L76 74" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M30 26 L70 26" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <path d="M50 26 L50 60" stroke="#ecfdf5" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <div class="wordmark">MI<span>N</span>T</div>
+      </div>
+      <div class="stage dark">
+        <svg class="mark" width="56" height="56" viewBox="0 0 100 100" fill="none">
+          <rect x="4" y="4" width="92" height="92" rx="24" fill="url(#g3)"/>
+          <path d="M24 74 L24 30 L50 60 L76 30 L76 74" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M30 26 L70 26" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+          <path d="M50 26 L50 60" stroke="#ecfdf5" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <div class="wordmark">MINT</div>
+      </div>
+      <div class="tag">gradient &middot; app icon</div>
+    </div>
+
+    <!-- OPTION 4: Leaf accent -->
+    <div class="card">
+      <h2>Option 4 &mdash; Mint leaf accent</h2>
+      <p>Plays on the word &ldquo;mint&rdquo;: the T-bar becomes a small leaf. Friendly, memorable, still reads M / I / N / T.</p>
+      <div class="stage">
+        <svg class="mark" width="72" height="72" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 78 L22 32 L50 64 L78 32 L78 78" stroke="#059669" stroke-width="10" fill="none"/>
+          <path d="M50 30 L50 64" stroke="#10b981" stroke-width="10"/>
+          <path d="M30 28 L70 28" stroke="#047857" stroke-width="10"/>
+          <path d="M64 16 C74 16 80 22 80 30 C72 30 64 24 64 16 Z" fill="#34d399"/>
+        </svg>
+        <div class="wordmark">MI<span>N</span>T</div>
+      </div>
+      <div class="stage dark">
+        <svg class="mark" width="56" height="56" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 78 L22 32 L50 64 L78 32 L78 78" stroke="#34d399" stroke-width="10" fill="none"/>
+          <path d="M50 30 L50 64" stroke="#6ee7b7" stroke-width="10"/>
+          <path d="M30 28 L70 28" stroke="#a7f3d0" stroke-width="10"/>
+          <path d="M64 16 C74 16 80 22 80 30 C72 30 64 24 64 16 Z" fill="#6ee7b7"/>
+        </svg>
+        <div class="wordmark">MINT</div>
+      </div>
+      <div class="tag">playful &middot; leaf</div>
+    </div>
+
+    <!-- OPTION 5: Stacked layers -->
+    <div class="card">
+      <h2>Option 5 &mdash; Stacked layers</h2>
+      <p>Literally &ldquo;layered&rdquo;: three offset chevrons + a bar, emphasizing the layering idea. Great for a maintenance/asset tool.</p>
+      <div class="stage">
+        <svg class="mark" width="72" height="72" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 40 L50 58 L76 40" stroke="#6ee7b7" stroke-width="8" fill="none"/>
+          <path d="M24 54 L50 72 L76 54" stroke="#10b981" stroke-width="8" fill="none"/>
+          <path d="M24 40 L24 26 L76 26 L76 40" stroke="#047857" stroke-width="8" fill="none"/>
+          <path d="M50 26 L50 44" stroke="#059669" stroke-width="8"/>
+        </svg>
+        <div class="wordmark">MI<span>N</span>T</div>
+      </div>
+      <div class="stage dark">
+        <svg class="mark" width="56" height="56" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 40 L50 58 L76 40" stroke="#6ee7b7" stroke-width="8" fill="none"/>
+          <path d="M24 54 L50 72 L76 54" stroke="#34d399" stroke-width="8" fill="none"/>
+          <path d="M24 40 L24 26 L76 26 L76 40" stroke="#a7f3d0" stroke-width="8" fill="none"/>
+          <path d="M50 26 L50 44" stroke="#d1fae5" stroke-width="8"/>
+        </svg>
+        <div class="wordmark">MINT</div>
+      </div>
+      <div class="tag">layered &middot; technical</div>
+    </div>
+
+    <!-- OPTION 6: Serif classic -->
+    <div class="card">
+      <h2>Option 6 &mdash; Solid slab monogram</h2>
+      <p>Chunky, confident slab shapes with a filled M and a strong T crossbar. Reads well even at favicon size.</p>
+      <div class="stage">
+        <svg class="mark" width="72" height="72" viewBox="0 0 100 100" fill="none">
+          <rect x="6" y="6" width="88" height="88" rx="20" fill="#0f172a"/>
+          <rect x="24" y="30" width="52" height="10" rx="2" fill="#34d399"/>
+          <rect x="26" y="30" width="10" height="44" rx="2" fill="#10b981"/>
+          <rect x="64" y="30" width="10" height="44" rx="2" fill="#10b981"/>
+          <path d="M36 30 L50 54 L64 30 L64 44 L50 70 L36 44 Z" fill="#6ee7b7"/>
+        </svg>
+        <div class="wordmark" style="color:#0f172a">MI<span>N</span>T</div>
+      </div>
+      <div class="stage dark">
+        <svg class="mark" width="56" height="56" viewBox="0 0 100 100" fill="none">
+          <rect x="6" y="6" width="88" height="88" rx="20" fill="#022c22"/>
+          <rect x="24" y="30" width="52" height="10" rx="2" fill="#34d399"/>
+          <rect x="26" y="30" width="10" height="44" rx="2" fill="#10b981"/>
+          <rect x="64" y="30" width="10" height="44" rx="2" fill="#10b981"/>
+          <path d="M36 30 L50 54 L64 30 L64 44 L50 70 L36 44 Z" fill="#6ee7b7"/>
+        </svg>
+        <div class="wordmark">MINT</div>
+      </div>
+      <div class="tag">slab &middot; favicon-ready</div>
+    </div>
+
+  </div>
+</body>
+</html>
