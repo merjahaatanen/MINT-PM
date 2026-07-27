@@ -1,0 +1,13 @@
+============================================================
+BLA Maintenance Dashboard
+  Local:   http://127.0.0.1:5000
+  Network: http://<this-machine-ip>:5000  (reachable on your LAN)
+  Checklist provider: ollama (model: gpt-oss:120b)
+============================================================
+[chrome_session] launching Chrome (profile: C:\Users\merja.haatanen\AppData\Local\Google\Chrome\PM_Debug_Profile) ...
+[chrome_session] Chrome ready on port 49241
+[chrome] debug Chrome ready on port 49241 (logged_in=True)
+[chrome] If not logged in, sign into the PM site in that Chrome window - the session is reused for manual scrapes.
+[digest] weekly digest scheduler running (day=0, hour=7)
+ * Serving Flask app 'server'
+ * Debug mode: off

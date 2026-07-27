@@ -1,0 +1,37 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.25.200.131:5000
+Press CTRL+C to quit
+127.0.0.1 - - [27/Jul/2026 10:34:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:50] "GET /vendor/react.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:35:50] "GET /vendor/react-dom.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:35:50] "GET /vendor/htm.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:35:50] "GET /vendor/tailwind.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:35:50] "GET /vendor/marked.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:35:50] "GET /vendor/jspdf.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:35:50] "GET /api/company HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:53] "GET /api/divisions/bla HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:55] "GET /api/departments/toilet HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:56] "GET /api/departments/toilet/machines/1361 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:57] "GET /api/edit-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:58] "GET /api/departments/toilet/machines/1361/trends HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:59] "GET /api/edit-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:35:59] "GET /api/departments/toilet/machines/1361/trends HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:17] "GET /api/edit-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:17] "GET /api/monthly?year=2026&month=7 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:17] "GET /api/weekly HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:18] "GET /api/edit-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:19] "GET /api/departments/toilet/machines/1361/trends HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:21] "GET /api/edit-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:21] "GET /api/monthly?year=2026&month=7 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:23] "GET /api/edit-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:23] "GET /api/admin-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:23] "GET /api/departments/toilet/machines/1361/guide HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:27] "GET /api/edit-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:28] "GET /api/edit-auth HTTP/1.1" 200 -

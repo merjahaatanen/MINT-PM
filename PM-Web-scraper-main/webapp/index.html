@@ -62,6 +62,18 @@
     const html = htm.bind(React.createElement);
     const API = "";
 
+    window.onerror = function (msg, url, line, col) {
+      const b = document.body || document.documentElement;
+      let el = document.getElementById("__js-error-banner");
+      if (!el) {
+        el = document.createElement("div");
+        el.id = "__js-error-banner";
+        el.style.cssText = "position:fixed;top:0;left:0;right:0;z-index:9999;background:#fee2e2;color:#991b1b;padding:10px 14px;font-family:monospace;font-size:13px;white-space:pre-wrap;border-bottom:2px solid #f87171;";
+        b.appendChild(el);
+      }
+      el.textContent += "JS ERROR: " + msg + " at " + url + ":" + line + (col ? ":" + col : "") + "\n";
+    };
+
     const CALENDAR_EVENT_TITLES = ["Technician visit", "Safety event", "Vendor visit"];
 
     /* ------------------------------------------------------------------ */
@@ -2779,9 +2791,12 @@
         const contacts = [];
         const seen = new Set();
         const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
-        const phoneRe = /(\+?1[-.\s]?)?(?:\(?\d{3}\)?[-.\s\/]?)\d{3}[-.\s\/]\d{4}(?:\s*(?:ext|x|ext\.)\s*\d{1,5})?/gi;
+        // Bounded phone regex. The old pattern used nested optional groups that caused
+        // catastrophic backtracking on some comments and hung the browser tab.
+        const phoneRe = /(?:\+?1[-.\s/]*)?(?:\(\d{3}\)|\d{3})[-.\s/]{0,3}\d{3}[-.\s/]{0,3}\d{4}(?:\s*(?:ext|x|ext\.)\s*\d{1,5})?/gi;
+        const phoneTestRe = /(?:\+?1[-.\s/]*)?(?:\(\d{3}\)|\d{3})[-.\s/]{0,3}\d{3}[-.\s/]{0,3}\d{4}(?:\s*(?:ext|x|ext\.)\s*\d{1,5})?/i;
         const emailRe = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/;
-        const labelRe = /^\s*(p|c|cell|off|office|fax|phone|mobile)\s*[:\-]?\s*/i;
+        const labelRe = /^\s*(p|c|f|cell|off|office|fax|phone|mobile)\s*[:\-]?\s*/i;
 
         const looksLikeName = (s) => {
           const clean = s.replace(/\b(Technical Support|Service Manager|Installation Tech|Installer|East coast tech|CA tech)\b/gi, "").trim();
@@ -2790,28 +2805,27 @@
         const stripTail = (s) => s.replace(labelRe, "").trim().replace(/[:\-|,|]+$/, "").replace(/\s*\([^)]*\)\s*$/, "").trim();
 
         lines.forEach((line, i) => {
-          let m;
-          while ((m = phoneRe.exec(line)) !== null) {
-            const phone = m[0].trim();
-            let idx = line.indexOf(phone, phoneRe.lastIndex - phone.length);
-            if (idx < 0) idx = line.indexOf(phone);
+          const matches = line.match(phoneRe) || [];
+          matches.forEach((phone) => {
+            const idx = line.indexOf(phone);
             let before = stripTail(line.slice(0, idx));
-            let name = before;
-            if (!name || name.split(/\s+/).length > 8) {
-              name = "";
+            let name = "";
+            if (before && before.length > 1 && !phoneTestRe.test(before) && !emailRe.test(before) && before.split(/\s+/).length <= 8) {
+              name = before;
+            } else {
               for (let j = i - 1; j >= Math.max(0, i - 3); j--) {
                 const prev = stripTail(lines[j]);
-                if (phoneRe.test(prev) || emailRe.test(prev) || prev.length > 80) continue;
+                if (phoneTestRe.test(prev) || emailRe.test(prev) || prev.length > 80) continue;
                 if (looksLikeName(prev)) { name = prev; break; }
               }
             }
             const emailMatch = line.match(emailRe);
             const email = emailMatch ? emailMatch[0] : "";
             const key = (name + "|" + phone + "|" + email).toLowerCase();
-            if (seen.has(key)) continue;
+            if (seen.has(key)) return;
             seen.add(key);
             contacts.push({ name: name || phone, phone, email });
-          }
+          });
         });
         return contacts;
       };
@@ -3127,12 +3141,28 @@
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [tab, setTab] = useState("Dashboard");
+      const tabRef = useRef(null);
 
       useEffect(() => {
         setData(null); setTab("Dashboard");
         getJSON("/api/departments/" + deptKey + "/machines/" + eqId)
           .then(setData).catch((e) => setErr(e.message));
       }, [deptKey, eqId]);
+
+      // Fallback native click listener for the tab bar in case React event
+      // delegation is interfered with (e.g. by a script rewriting the DOM).
+      useEffect(() => {
+        const el = tabRef.current;
+        if (!el) return;
+        const onClick = (e) => {
+          const btn = e.target.closest("[data-tab]");
+          if (!btn) return;
+          const t = btn.getAttribute("data-tab");
+          if (t) setTab(t);
+        };
+        el.addEventListener("click", onClick);
+        return () => el.removeEventListener("click", onClick);
+      }, []);
 
       if (err) return html`<div className="text-rose-600">${err}</div>`;
       if (!data) return html`<${Spinner} label="Loading machine…" />`;
@@ -3164,9 +3194,9 @@
             </div>
           </div>
 
-          <div className="flex gap-2 mb-6 bg-white p-1.5 rounded-full shadow-sm border border-emerald-100 w-fit flex-wrap">
+          <div ref=${tabRef} className="flex gap-2 mb-6 bg-white p-1.5 rounded-full shadow-sm border border-emerald-100 w-fit flex-wrap">
             ${tabs.map((t) => html`
-              <button key=${t} onClick=${() => setTab(t)}
+              <button key=${t} data-tab=${t} onClick=${() => setTab(t)}
                 className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
                   (tab === t ? "bg-emerald-700 text-white shadow" : "text-slate-500 hover:bg-emerald-50")}>
                 ${t}
