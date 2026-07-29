@@ -160,6 +160,16 @@ def _init() -> None:
             CREATE INDEX IF NOT EXISTS idx_calendar_events_date ON calendar_events (date);
             CREATE INDEX IF NOT EXISTS idx_calendar_events_dept ON calendar_events (department_key);
 
+            CREATE TABLE IF NOT EXISTS chart_events (
+                id         INTEGER PRIMARY KEY AUTOINCREMENT,
+                date       TEXT NOT NULL,
+                title      TEXT NOT NULL,
+                created_at TEXT NOT NULL,
+                created_by TEXT NOT NULL DEFAULT ''
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_chart_events_date ON chart_events (date);
+
             CREATE INDEX IF NOT EXISTS idx_solutions_wo ON solutions (wo_id);
             CREATE INDEX IF NOT EXISTS idx_attachments_wo ON attachments (wo_id);
             CREATE INDEX IF NOT EXISTS idx_audit_wo ON audit_log (wo_id);
@@ -191,12 +201,56 @@ def _init() -> None:
             );
 
             CREATE INDEX IF NOT EXISTS idx_machine_info_dept ON machine_info (dept_key);
+
+            CREATE TABLE IF NOT EXISTS technicians (
+                name       TEXT PRIMARY KEY COLLATE NOCASE,
+                aliases    TEXT NOT NULL DEFAULT '[]',
+                active     INTEGER NOT NULL DEFAULT 1,
+                created_at TEXT NOT NULL,
+                created_by TEXT NOT NULL DEFAULT ''
+            );
+
+            CREATE TABLE IF NOT EXISTS vendor_contact_types (
+                name       TEXT PRIMARY KEY COLLATE NOCASE,
+                created_at TEXT NOT NULL,
+                created_by TEXT NOT NULL DEFAULT ''
+            );
+
+            CREATE TABLE IF NOT EXISTS vendor_contacts (
+                id               INTEGER PRIMARY KEY AUTOINCREMENT,
+                company          TEXT NOT NULL DEFAULT '',
+                contact          TEXT NOT NULL DEFAULT '',
+                address          TEXT NOT NULL DEFAULT '',
+                phone            TEXT NOT NULL DEFAULT '',
+                cell             TEXT NOT NULL DEFAULT '',
+                fax              TEXT NOT NULL DEFAULT '',
+                email            TEXT NOT NULL DEFAULT '',
+                type             TEXT NOT NULL DEFAULT '',
+                service_contract TEXT NOT NULL DEFAULT '',
+                contract_type    TEXT NOT NULL DEFAULT '',
+                machine_eq       TEXT NOT NULL DEFAULT '[]',
+                source           TEXT NOT NULL DEFAULT '',
+                created_at       TEXT NOT NULL,
+                created_by       TEXT NOT NULL DEFAULT '',
+                updated_at       TEXT NOT NULL,
+                updated_by       TEXT NOT NULL DEFAULT ''
+            );
             """
         )
         # Migration: add summary_json column if it exists from an older schema.
         cols = {r["name"] for r in c.execute("PRAGMA table_info(machine_info)").fetchall()}
         if "summary_json" not in cols:
             c.execute("ALTER TABLE machine_info ADD COLUMN summary_json TEXT NOT NULL DEFAULT ''")
+        type_count = c.execute("SELECT COUNT(*) AS n FROM vendor_contact_types").fetchone()["n"]
+        if not type_count:
+            c.execute(
+                "INSERT INTO vendor_contact_types (name, created_at, created_by) VALUES (?, ?, ?)",
+                ("TPF", _now(), "system"),
+            )
+            c.execute(
+                "INSERT INTO vendor_contact_types (name, created_at, created_by) VALUES (?, ?, ?)",
+                ("Facility", _now(), "system"),
+            )
         # Seed the BLA division so the company layer always has something.
         c.execute(
             "INSERT OR IGNORE INTO divisions (key, name, created_at) VALUES (?, ?, ?)",
@@ -388,6 +442,18 @@ def get_machine_info(dept_key: str, eq_id: str) -> dict | None:
     return dict(row) if row else None
 
 
+def list_machine_info(dept_key: str = "") -> list[dict]:
+    """Return all machine_info rows, optionally filtered to one department."""
+    with _connect() as c:
+        if (dept_key or "").strip():
+            rows = c.execute(
+                "SELECT * FROM machine_info WHERE dept_key = ?", (dept_key.strip(),)
+            ).fetchall()
+        else:
+            rows = c.execute("SELECT * FROM machine_info").fetchall()
+    return [dict(r) for r in rows]
+
+
 def set_machine_info(dept_key: str, eq_id: str, fields: dict,
                      author: str = "") -> dict:
     """Create or update the editable machine information for a single machine.
@@ -427,6 +493,159 @@ def set_machine_info(dept_key: str, eq_id: str, fields: dict,
 
 
 # --------------------------------------------------------------------------- #
+# Vendor & Utilities contacts (BLA vendor list)
+# --------------------------------------------------------------------------- #
+VENDOR_CONTACT_FIELDS = (
+    "company", "contact", "address", "phone", "cell", "fax", "email",
+    "type", "service_contract", "contract_type", "machine_eq", "source",
+)
+
+
+def _vendor_row_to_dict(row) -> dict:
+    d = dict(row)
+    try:
+        eqs = json.loads(d.get("machine_eq") or "[]")
+    except (ValueError, TypeError):
+        eqs = []
+    d["machine_eq"] = [str(e).strip() for e in eqs if str(e).strip()]
+    return d
+
+
+def _clean_vendor_fields(fields: dict) -> dict:
+    """Normalize a vendor-contact payload to the stored columns. machine_eq is
+    accepted as a list (or comma string) and stored as a JSON list of strings."""
+    out = {}
+    for k in VENDOR_CONTACT_FIELDS:
+        if k == "machine_eq":
+            raw = fields.get("machine_eq")
+            if isinstance(raw, str):
+                raw = [p for p in raw.replace(",", " ").split() if p]
+            elif not isinstance(raw, (list, tuple)):
+                raw = []
+            out["machine_eq"] = json.dumps([str(e).strip() for e in raw if str(e).strip()])
+        else:
+            out[k] = str(fields.get(k) or "").strip()
+    return out
+
+
+def list_vendor_contact_types() -> list[str]:
+    with _connect() as c:
+        rows = c.execute("SELECT name FROM vendor_contact_types ORDER BY name COLLATE NOCASE").fetchall()
+    return [r["name"] for r in rows]
+
+
+def add_vendor_contact_type(name: str, author: str = "") -> str:
+    name = (name or "").strip()
+    if not name:
+        raise ValueError("type name is required")
+    with _lock, _connect() as c:
+        c.execute(
+            "INSERT OR IGNORE INTO vendor_contact_types (name, created_at, created_by) VALUES (?, ?, ?)",
+            (name, _now(), author or ""),
+        )
+    _audit("", author, "add_vendor_contact_type", name)
+    return name
+
+
+def delete_vendor_contact_type(name: str, author: str = "") -> None:
+    name = (name or "").strip()
+    if not name:
+        raise ValueError("type name is required")
+    with _lock, _connect() as c:
+        row = c.execute(
+            "SELECT COUNT(*) AS n FROM vendor_contacts WHERE type = ? COLLATE NOCASE", (name,)
+        ).fetchone()
+        if row["n"]:
+            raise ValueError(f"{row['n']} contact(s) still use '{name}'. Reassign them before deleting this type.")
+        cur = c.execute("DELETE FROM vendor_contact_types WHERE name = ? COLLATE NOCASE", (name,))
+        if not cur.rowcount:
+            raise ValueError("type not found")
+    _audit("", author, "delete_vendor_contact_type", name)
+
+
+def list_vendor_contacts() -> list[dict]:
+    with _connect() as c:
+        rows = c.execute(
+            "SELECT * FROM vendor_contacts ORDER BY company COLLATE NOCASE, contact COLLATE NOCASE"
+        ).fetchall()
+    return [_vendor_row_to_dict(r) for r in rows]
+
+
+def get_vendor_contact(vc_id) -> dict | None:
+    with _connect() as c:
+        row = c.execute("SELECT * FROM vendor_contacts WHERE id = ?", (vc_id,)).fetchone()
+    return _vendor_row_to_dict(row) if row else None
+
+
+def add_vendor_contact(fields: dict, author: str = "") -> dict:
+    data = _clean_vendor_fields(fields or {})
+    if not data["company"] and not data["contact"]:
+        raise ValueError("a company or contact name is required")
+    now = _now()
+    cols = list(VENDOR_CONTACT_FIELDS)
+    placeholders = ", ".join("?" for _ in cols)
+    with _lock, _connect() as c:
+        cur = c.execute(
+            f"INSERT INTO vendor_contacts ({', '.join(cols)}, created_at, created_by, updated_at, updated_by) "
+            f"VALUES ({placeholders}, ?, ?, ?, ?)",
+            tuple(data[k] for k in cols) + (now, author or "", now, author or ""),
+        )
+        vc_id = cur.lastrowid
+    _audit("", author, "add_vendor_contact", f"{data['company']} / {data['contact']}")
+    return get_vendor_contact(vc_id)
+
+
+def update_vendor_contact(vc_id, fields: dict, author: str = "") -> dict | None:
+    existing = get_vendor_contact(vc_id)
+    if not existing:
+        return None
+    incoming = fields or {}
+    merged = {}
+    for k in VENDOR_CONTACT_FIELDS:
+        merged[k] = incoming[k] if k in incoming else (
+            existing[k] if k != "machine_eq" else existing["machine_eq"])
+    data = _clean_vendor_fields(merged)
+    with _lock, _connect() as c:
+        c.execute(
+            "UPDATE vendor_contacts SET "
+            + ", ".join(f"{k} = ?" for k in VENDOR_CONTACT_FIELDS)
+            + ", updated_at = ?, updated_by = ? WHERE id = ?",
+            tuple(data[k] for k in VENDOR_CONTACT_FIELDS) + (_now(), author or "", vc_id),
+        )
+    _audit("", author, "edit_vendor_contact", f"#{vc_id} {data['company']}")
+    return get_vendor_contact(vc_id)
+
+
+def delete_vendor_contact(vc_id, author: str = "") -> bool:
+    existing = get_vendor_contact(vc_id)
+    if not existing:
+        return False
+    with _lock, _connect() as c:
+        c.execute("DELETE FROM vendor_contacts WHERE id = ?", (vc_id,))
+    _audit("", author, "delete_vendor_contact", f"#{vc_id} {existing.get('company')}")
+    return True
+
+
+def count_vendor_contacts() -> int:
+    with _connect() as c:
+        return int(c.execute("SELECT COUNT(*) AS n FROM vendor_contacts").fetchone()["n"])
+
+
+def seed_vendor_contacts(rows: list[dict]) -> int:
+    """One-time seed of the vendor list (only runs when the table is empty)."""
+    if count_vendor_contacts() > 0:
+        return 0
+    n = 0
+    for r in rows or []:
+        try:
+            add_vendor_contact(r, author="import")
+            n += 1
+        except ValueError:
+            continue
+    return n
+
+
+# --------------------------------------------------------------------------- #
 # Work orders (created in MINT)
 # --------------------------------------------------------------------------- #
 # Fields carried on a work-order record (mirrors the scraped JSON schema).
@@ -434,8 +653,8 @@ WO_FIELDS = (
     "equipment_id", "equipment_eq_id", "equipment_name", "department",
     "wo_id", "wo_type", "date_notified", "due_date", "urgency", "problem",
     "audit_item", "status", "material_cost", "labor_time", "work_performed_by",
-    "downtime_hours", "completed_datetime", "completion_comments",
-    "frequency", "series_id", "recurrence_stopped",
+    "helpers", "downtime_hours", "completed_datetime", "completion_comments",
+    "frequency", "series_id", "recurrence_stopped", "assigned_to",
 )
 
 
@@ -801,3 +1020,141 @@ def delete_calendar_event(event_id: int, author: str = "") -> bool:
         c.execute("DELETE FROM calendar_events WHERE id = ?", (int(event_id),))
     _audit("", author, "delete_calendar_event", f"{event['date']}: {event['title']}")
     return True
+
+
+# --------------------------------------------------------------------------- #
+# Chart events (global timeline markers drawn as vertical lines on every chart)
+# --------------------------------------------------------------------------- #
+def list_chart_events() -> list[dict]:
+    """Every global chart event (major dated events like 'changed the glue'),
+    oldest first."""
+    with _connect() as c:
+        rows = c.execute(
+            "SELECT id, date, title, created_at, created_by FROM chart_events "
+            "ORDER BY date ASC, id ASC"
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_chart_event(event_id: int) -> dict | None:
+    with _connect() as c:
+        r = c.execute(
+            "SELECT id, date, title, created_at, created_by FROM chart_events WHERE id = ?",
+            (int(event_id),),
+        ).fetchone()
+    return dict(r) if r else None
+
+
+def add_chart_event(event: dict, author: str = "") -> dict:
+    date = (event.get("date") or "").strip()
+    title = (event.get("title") or "").strip()
+    if not date or not title:
+        raise ValueError("event date and title are required")
+    with _lock, _connect() as c:
+        cur = c.execute(
+            "INSERT INTO chart_events (date, title, created_at, created_by) VALUES (?, ?, ?, ?)",
+            (date, title, _now(), author or ""),
+        )
+        new_id = cur.lastrowid
+    _audit("", author, "add_chart_event", f"{date}: {title}")
+    return get_chart_event(new_id)
+
+
+def delete_chart_event(event_id: int, author: str = "") -> bool:
+    event = get_chart_event(event_id)
+    if not event:
+        return False
+    with _lock, _connect() as c:
+        c.execute("DELETE FROM chart_events WHERE id = ?", (int(event_id),))
+    _audit("", author, "delete_chart_event", f"{event['date']}: {event['title']}")
+    return True
+
+
+# --------------------------------------------------------------------------- #
+# Technicians (maintenance workers tracked in team stats)
+# --------------------------------------------------------------------------- #
+def list_technicians(active_only: bool = True) -> list[dict]:
+    query = "SELECT name, aliases, active, created_at, created_by FROM technicians"
+    params = ()
+    if active_only:
+        query += " WHERE active = 1"
+    query += " ORDER BY name COLLATE NOCASE"
+    with _connect() as c:
+        rows = c.execute(query, params).fetchall()
+    out = []
+    for r in rows:
+        data = dict(r)
+        try:
+            data["aliases"] = json.loads(data.get("aliases") or "[]")
+        except (json.JSONDecodeError, TypeError):
+            data["aliases"] = []
+        out.append(data)
+    return out
+
+
+def get_technician(name: str) -> dict | None:
+    name = (name or "").strip()
+    if not name:
+        return None
+    with _connect() as c:
+        r = c.execute(
+            "SELECT name, aliases, active, created_at, created_by FROM technicians "
+            "WHERE name = ? COLLATE NOCASE",
+            (name,),
+        ).fetchone()
+    if r is None:
+        return None
+    data = dict(r)
+    try:
+        data["aliases"] = json.loads(data.get("aliases") or "[]")
+    except (json.JSONDecodeError, TypeError):
+        data["aliases"] = []
+    return data
+
+
+def add_technician(name: str, aliases: list[str] | None = None, author: str = "") -> dict:
+    name = (name or "").strip()
+    if not name:
+        raise ValueError("technician name is required")
+    aliases = sorted({(a or "").strip().lower() for a in (aliases or []) if (a or "").strip()})
+    with _lock, _connect() as c:
+        c.execute(
+            "INSERT OR REPLACE INTO technicians (name, aliases, active, created_at, created_by) "
+            "VALUES (?, ?, 1, ?, ?)",
+            (name, json.dumps(aliases), _now(), author or ""),
+        )
+    _audit("", author, "add_technician", name)
+    return get_technician(name)
+
+
+def delete_technician(name: str, author: str = "") -> bool:
+    name = (name or "").strip()
+    if not name:
+        return False
+    with _lock, _connect() as c:
+        row = c.execute(
+            "DELETE FROM technicians WHERE name = ? COLLATE NOCASE",
+            (name,),
+        ).rowcount
+    if row:
+        _audit("", author, "delete_technician", name)
+        return True
+    return False
+
+
+def seed_technicians() -> None:
+    """Seed the default technicians if the table is empty."""
+    with _connect() as c:
+        count = c.execute("SELECT COUNT(*) AS n FROM technicians").fetchone()["n"]
+    if count:
+        return
+    defaults = [
+        ("Gabriel", ["gabriel", "shinobi", "gabe", "gabriel shinobi", "g shinobi"]),
+        ("Primo", ["primo", "pu", "primo uy"]),
+        ("Max", ["max", "maksim", "maksim bushka"]),
+    ]
+    for name, aliases in defaults:
+        add_technician(name, aliases, author="system")
+
+
+seed_technicians()

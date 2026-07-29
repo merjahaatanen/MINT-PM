@@ -35,3 +35,17 @@ Press CTRL+C to quit
 127.0.0.1 - - [27/Jul/2026 10:36:23] "GET /api/departments/toilet/machines/1361/guide HTTP/1.1" 200 -
 127.0.0.1 - - [27/Jul/2026 10:36:27] "GET /api/edit-auth HTTP/1.1" 200 -
 127.0.0.1 - - [27/Jul/2026 10:36:28] "GET /api/edit-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:56] "GET /vendor/react.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:36:56] "GET /vendor/react-dom.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:36:56] "GET /vendor/htm.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:36:56] "GET /vendor/tailwind.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:36:56] "GET /vendor/marked.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:36:56] "GET /vendor/jspdf.js HTTP/1.1" 304 -
+127.0.0.1 - - [27/Jul/2026 10:36:57] "GET /api/company HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:58] "GET /api/divisions/bla HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:58] "GET /api/departments/toilet HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:36:59] "GET /api/departments/toilet/machines/1361 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:37:00] "GET /api/edit-auth HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:37:00] "GET /api/departments/toilet/machines/1361/trends HTTP/1.1" 200 -
+127.0.0.1 - - [27/Jul/2026 10:37:01] "GET /api/edit-auth HTTP/1.1" 200 -

@@ -155,9 +155,28 @@
       return h;
     }
 
-    const STATUS_OPTIONS = ["Pending", "In Progress", "Closed and Completed", "Cancelled"];
+    const STATUS_OPTIONS = ["Pending", "Assigned", "In Progress", "Closed and Completed", "Cancelled"];
     const CLOSED_STATUS = "Closed and Completed";
     const FREQUENCY_OPTIONS = ["Weekly", "Bi-Weekly", "Monthly", "Quarterly", "Semi-Annually", "Annually"];
+    // Initial technician list; App fetches the live list from /api/technicians.
+    const TECHNICIANS = ["Gabriel", "Primo", "Max"];
+
+    function isTechnician(name) {
+      return TECHNICIANS.some((t) => t.toLowerCase() === (name || "").trim().toLowerCase());
+    }
+
+    // Sean (supervisor) password lives in sessionStorage and is sent on assignment
+    // and team-stats requests.
+    function getSeanPw() { try { return sessionStorage.getItem("mintSeanPw") || ""; } catch (e) { return ""; } }
+    function setSeanPw(v) { try { v ? sessionStorage.setItem("mintSeanPw", v) : sessionStorage.removeItem("mintSeanPw"); } catch (e) {} }
+    function setIsSean(v) { try { v ? sessionStorage.setItem("mintIsSean", "1") : sessionStorage.removeItem("mintIsSean"); } catch (e) {} }
+    function seanHeaders(extra) {
+      const h = Object.assign({}, extra || {});
+      const pw = getSeanPw();
+      if (pw) h["X-Sean-Password"] = pw;
+      return h;
+    }
+    function isSeanMode() { try { return sessionStorage.getItem("mintIsSean") === "1"; } catch (e) { return false; } }
     const URGENCY_OPTIONS = [
       "1. Prod Stopped",
       "2. General Maint - High Priority",
@@ -348,26 +367,408 @@
         </svg>`;
     }
 
-    function Header({ onHome, onOpenInactive }) {
+    function SeanGate({ actionLabel, onUnlock, onCancel }) {
+      const [pw, setPw] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const inputRef = useRef(null);
+      // Opened from the <select> dropdown, which keeps focus on the select, so
+      // autoFocus alone won't grab it. Force focus into the box after mount.
+      useEffect(() => {
+        const t = setTimeout(() => { if (inputRef.current) inputRef.current.focus(); }, 50);
+        return () => clearTimeout(t);
+      }, []);
+      const submit = async () => {
+        const value = (inputRef.current && inputRef.current.value) || pw || "";
+        if (!value) { setErr("Enter the password."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/verify-sean-password", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ password: value }),
+          });
+          const d = await r.json();
+          if (!r.ok || !d.ok) throw new Error(d.error || "Incorrect password");
+          onUnlock(value);
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+      return ReactDOM.createPortal(html`
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+          onClick=${onCancel}>
+          <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-sm p-6"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xl">🔒</span>
+              <h3 className="text-lg font-extrabold text-slate-800">Sean password required</h3>
+            </div>
+            <p className="text-sm text-slate-500 mb-4">Enter the supervisor password to ${actionLabel || "continue"}.</p>
+            <input type="password" autoFocus ref=${inputRef}
+              onInput=${(e) => setPw(e.target.value)}
+              onKeyDown=${(e) => e.key === "Enter" && submit()}
+              className="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+            ${err && html`<div className="text-rose-600 text-sm mb-3">${err}</div>`}
+            <div className="flex gap-2 justify-end">
+              <button onClick=${onCancel} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+              <button onClick=${submit} disabled=${busy}
+                className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+                ${busy ? "Checking…" : "Unlock"}</button>
+            </div>
+          </div>
+        </div>`, document.body);
+    }
+
+    // Monday-start week helpers used by the team-stats weekly schedule.
+    function startOfWeek(d) {
+      const x = new Date(d);
+      const off = (x.getDay() + 6) % 7; // Mon=0 … Sun=6
+      x.setDate(x.getDate() - off); x.setHours(0, 0, 0, 0);
+      return x;
+    }
+    function addDays(d, n) { const x = new Date(d); x.setDate(x.getDate() + n); return x; }
+    function isoToDate(iso) { return iso ? new Date(iso + "T00:00:00") : null; }
+    function weekRangeLabel(start) {
+      const fmt = { month: "short", day: "numeric" };
+      return start.toLocaleDateString(undefined, fmt) + " – " + addDays(start, 6).toLocaleDateString(undefined, fmt);
+    }
+    const isScheduled = (w) => (w.wo_type || "").toLowerCase() === "scheduled";
+
+    // Sean-only dashboard: one tab per technician, each showing a weekly
+    // schedule (last / this / next week) and month-by-month completion trends.
+    function TeamStatsModal({ technicians, onClose, onOpenWo }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [tab, setTab] = useState(technicians[0] || "");
+      useEffect(() => {
+        (async () => {
+          try {
+            const r = await fetch(API + "/api/team-stats", { headers: seanHeaders() });
+            const d = await r.json().catch(() => ({}));
+            if (r.status === 401) { setErr("Sean's password is required."); return; }
+            if (!r.ok) throw new Error(d.error || "HTTP " + r.status);
+            setData(d.techs || []);
+          } catch (e) { setErr(e.message); }
+        })();
+      }, []);
+
+      useEffect(() => {
+        if (technicians.length && !technicians.includes(tab)) setTab(technicians[0]);
+      }, [technicians, tab]);
+
+      const tech = (data || []).find((t) => t.name === tab) || (data || [])[0] || null;
+      const openWo = (id) => { if (onOpenWo && id) { onOpenWo(id); onClose(); } };
+
+      return ReactDOM.createPortal(html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] flex items-start justify-center p-4 overflow-y-auto"
+          onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl my-8 fade-in"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-100">
+              <div className="font-extrabold text-lg text-emerald-800">Team stats</div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xl leading-none">×</button>
+            </div>
+            <div className="px-6 pt-4">
+              <div className="flex gap-2 flex-wrap">
+                ${technicians.map((n) => html`
+                  <button key=${n} onClick=${() => setTab(n)}
+                    className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
+                      (tab === n ? "bg-emerald-700 text-white" : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100")}>
+                    ${n}</button>`)}
+              </div>
+            </div>
+            <div className="p-6">
+              ${err && html`<div className="text-rose-600 mb-4">${err}</div>`}
+              ${!err && data === null && html`<${Spinner} label="Loading stats…" />`}
+              ${tech && html`<${TechStats} tech=${tech} onOpenWo=${openWo} />`}
+            </div>
+          </div>
+        </div>`, document.body);
+    }
+
+    // Sean-only modal to add/remove maintenance technicians.
+    function ManageTechniciansModal({ technicians, setTechnicians, onClose }) {
+      const [name, setName] = useState(getUserName());
+      const [aliases, setAliases] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [deleting, setDeleting] = useState(null);
+
+      const refresh = async () => {
+        try {
+          const d = await getJSON("/api/technicians");
+          if (Array.isArray(d.technicians)) setTechnicians(d.technicians);
+        } catch (e) { setErr(e.message); }
+      };
+
+      const add = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        const tech = aliases.split(",").map((s) => s.trim()).filter(Boolean);
+        if (!tech[0]) { setErr("Technician name is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/technicians", "POST",
+            { author: name.trim(), name: tech[0], aliases: tech.slice(1) },
+            seanHeaders());
+          setAliases("");
+          await refresh();
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      const remove = async (techName) => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!window.confirm(`Delete technician "${techName}"?`)) return;
+        setDeleting(techName); setErr(null);
+        try {
+          await sendJSON("/api/technicians/" + encodeURIComponent(techName), "DELETE",
+            { author: name.trim() }, seanHeaders());
+          await refresh();
+        } catch (e) { setErr(e.message); } finally { setDeleting(null); }
+      };
+
+      return ReactDOM.createPortal(html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] flex items-start justify-center p-4 overflow-y-auto"
+          onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg my-8 fade-in"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-100">
+              <div className="font-extrabold text-lg text-emerald-800">Technicians</div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xl leading-none">×</button>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="text-sm text-slate-500">
+                Maintenance technicians appear in the user dropdown, assignment list, and team stats.
+                Enter aliases (e.g., initials, nicknames) separated by commas.
+              </div>
+              <${NameInput} value=${name} onChange=${setName} />
+              <${TextInput} label="Add technician" required=${true} value=${aliases} onChange=${setAliases}
+                placeholder="Name, alias, alias…" hint="First value is the canonical name; the rest are aliases." />
+              ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+              <button onClick=${add} disabled=${busy}
+                className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+                ${busy ? "Adding…" : "Add technician"}</button>
+
+              <div className="border-t border-slate-100 pt-4">
+                <div className="text-sm font-bold text-slate-700 mb-2">Active technicians</div>
+                <div className="space-y-2">
+                  ${technicians.map((n) => html`
+                    <div key=${n} className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50">
+                      <span className="text-sm font-medium text-slate-700">${n}</span>
+                      <button onClick=${() => remove(n)} disabled=${deleting === n}
+                        className="px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-semibold hover:bg-rose-100 disabled:opacity-60">
+                        ${deleting === n ? "Deleting…" : "Delete"}</button>
+                    </div>`)}
+                  ${technicians.length === 0 && html`<div className="text-sm text-slate-400">No technicians configured.</div>`}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`, document.body);
+    }
+
+    // A single technician's weekly schedule + monthly trends.
+    function TechStats({ tech, onOpenWo }) {
+      const completed = tech.completed || [];
+      const upcoming = tech.upcoming || [];
+      const trends = tech.trends || [];
+
+      const years = trends.map((y) => y.year).sort((a, b) => b - a);
+      const [year, setYear] = useState(years[0] || new Date().getFullYear());
+      const [metrics, setMetrics] = useState(["scheduled_completed_count", "unscheduled_completed_count", "labor_time"]);
+      useEffect(() => { setYear(years[0] || new Date().getFullYear()); }, [tech.name]);
+
+      // Weekly buckets (Mon–Sun): last & this week show completed work; next
+      // week shows upcoming (not-yet-completed) assigned work.
+      const thisStart = startOfWeek(new Date());
+      const weeks = [
+        { key: "last", title: "Last week", start: addDays(thisStart, -7), mode: "completed" },
+        { key: "this", title: "This week", start: thisStart, mode: "completed" },
+        { key: "next", title: "Next week", start: addDays(thisStart, 7), mode: "upcoming" },
+      ];
+      const inWeek = (iso, start) => {
+        const d = isoToDate(iso);
+        return d ? (d >= start && d <= addDays(start, 6)) : false;
+      };
+
+      // Monthly trend series for the selected year (from backend trends).
+      const yearData = trends.find((y) => Number(y.year) === Number(year));
+      const months = yearData && yearData.months
+        ? yearData.months
+        : Array.from({ length: 12 }, (_, i) => ({ month: i + 1, ...Object.fromEntries(TREND_METRICS.map((m) => [m.key, 0])) }));
+      const TECH_METRICS = TREND_METRICS.filter((m) =>
+        ["scheduled_completed_count", "unscheduled_completed_count", "labor_time"].includes(m.key));
+      const toggleMetric = (k) =>
+        setMetrics((s) => s.includes(k) ? s.filter((x) => x !== k) : [...s, k]);
+
+      const woRow = (w, showLabor) => html`
+        <div key=${w.wo_id} onClick=${() => onOpenWo(w.wo_id)}
+          className="px-3 py-2 flex items-start justify-between gap-3 cursor-pointer hover:bg-slate-50 rounded-lg">
+          <div className="min-w-0">
+            <div className="text-sm font-semibold text-emerald-800">WO #${w.wo_id}
+              <span className=${"ml-1 text-[10px] px-1.5 py-0.5 rounded-full align-middle font-semibold " +
+                (isScheduled(w) ? "bg-emerald-100 text-emerald-700" : "bg-rose-100 text-rose-700")}>
+                ${isScheduled(w) ? "Scheduled" : "Unscheduled"}</span>
+              ${w.equipment_name && html`<span className="text-slate-500 font-normal"> · ${w.equipment_name}</span>`}</div>
+            <div className="text-xs text-slate-500 line-clamp-1">${w.problem || "—"}</div>
+          </div>
+          <div className="text-right whitespace-nowrap">
+            <div className="text-xs text-slate-400">${showLabor ? (w.completed_datetime || "") : (w.due_date || "")}</div>
+            ${showLabor && html`<div className="text-xs font-semibold text-slate-600">${hours(w.labor_time)}</div>`}
+          </div>
+        </div>`;
+
+      return html`
+        <div className="space-y-8">
+          <div>
+            <div className="text-sm font-bold text-slate-700 mb-3">Weekly schedule</div>
+            <div className="grid md:grid-cols-3 gap-4">
+              ${weeks.map((wk) => {
+                const items = wk.mode === "completed"
+                  ? completed.filter((w) => inWeek(w.completed_iso, wk.start))
+                  : upcoming.filter((w) => inWeek(w.due_iso, wk.start));
+                const totalLabor = items.reduce((a, w) => a + (Number(w.labor_time) || 0), 0);
+                return html`
+                  <div key=${wk.key} className="rounded-2xl border border-emerald-100 overflow-hidden flex flex-col">
+                    <div className="px-4 py-3 bg-emerald-50/60">
+                      <div className="font-bold text-slate-800">${wk.title}</div>
+                      <div className="text-xs text-slate-500">${weekRangeLabel(wk.start)}</div>
+                      <div className="mt-1 flex items-center gap-3 text-sm">
+                        <span className="text-slate-500">${wk.mode === "completed" ? "Completed" : "Scheduled"}
+                          <span className="font-extrabold text-emerald-700">${num(items.length)}</span></span>
+                        ${wk.mode === "completed" && html`<span className="text-slate-500">Time
+                          <span className="font-extrabold text-emerald-700">${hours(totalLabor)}</span></span>`}
+                      </div>
+                    </div>
+                    <div className="p-2 divide-y divide-slate-50 flex-1">
+                      ${items.length === 0
+                        ? html`<div className="px-3 py-3 text-sm text-slate-400 italic">${wk.mode === "completed" ? "Nothing completed." : "Nothing scheduled."}</div>`
+                        : items.map((w) => woRow(w, wk.mode === "completed"))}
+                    </div>
+                  </div>`;
+              })}
+            </div>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+              <div className="text-sm font-bold text-slate-700">Monthly trends</div>
+              ${years.length > 0 && html`
+                <div className="flex gap-1 flex-wrap">
+                  ${years.map((y) => html`
+                    <button key=${y} onClick=${() => setYear(y)}
+                      className=${"px-3 py-1 rounded-full text-xs font-semibold " +
+                        (Number(year) === y ? "bg-emerald-700 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200")}>
+                      ${y}</button>`)}
+                </div>`}
+            </div>
+            <div className="flex flex-wrap gap-2 mb-3">
+              ${TECH_METRICS.map((m) => html`
+                <button key=${m.key} onClick=${() => toggleMetric(m.key)}
+                  className=${"px-3 py-1.5 rounded-full text-xs font-semibold border transition " +
+                    (metrics.includes(m.key) ? "text-white border-transparent" : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50")}
+                  style=${metrics.includes(m.key) ? { backgroundColor: m.color } : {}}>
+                  ${m.label}</button>`)}
+            </div>
+            ${trends.length === 0
+              ? html`<div className="h-40 flex items-center justify-center text-slate-400 text-sm">No work orders yet.</div>`
+              : html`<${TrendChart} months=${months} selectedKeys=${metrics} year=${Number(year)} />`}
+            ${trends.length > 0 && html`<div className="mt-8">
+              <${MonthTable} months=${months} selected=${TREND_METRICS.map((m) => m.key)} onToggle=${toggleMetric} onMonthClick=${null} />
+            </div>`}
+          </div>
+        </div>`;
+    }
+
+    function Header({ technicians, setTechnicians, onHome, onOpenInactive, onOpenWo }) {
+      const [user, setUser] = useState(getUserName());
+      const [sean, setSean] = useState(isSeanMode());
+      const [showSeanGate, setShowSeanGate] = useState(false);
+      const [showTeamStats, setShowTeamStats] = useState(false);
+      const [showManageTechs, setShowManageTechs] = useState(false);
+      const [showOther, setShowOther] = useState(false);
+      const [otherName, setOtherName] = useState("");
+
+      const setTech = (name) => { setUserName(name); setUser(name); setSean(false); setIsSean(false); setSeanPw(""); };
+      const unlockSean = (pw) => { setUserName("Sean"); setUser("Sean"); setSean(true); setIsSean(true); setSeanPw(pw); setShowSeanGate(false); };
+      const switchUser = () => { setUserName(""); setUser(""); setSean(false); setIsSean(false); setSeanPw(""); };
+      const confirmOther = () => {
+        const n = otherName.trim();
+        if (!n) return;
+        setTech(n); setShowOther(false); setOtherName("");
+      };
+      const onSelectUser = (val) => {
+        if (!val) return;
+        if (val === "sean") { setShowSeanGate(true); }
+        else if (val === "__other") { setShowOther(true); }
+        else { setTech(val); }
+      };
+
       return html`
         <header className="bg-slate-900 text-white shadow-lg">
-          <div className="max-w-6xl mx-auto px-6 py-4 flex items-center gap-4">
+          <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-4 flex-wrap">
             <div onClick=${onHome}
               className=${"flex items-end gap-3 " + (onHome ? "cursor-pointer" : "")}>
               <${MintLogo} className="h-16 w-auto" />
               <div className="text-emerald-100 text-sm font-medium -ml-2">Maintenance Intelligence & Troubleshooting</div>
             </div>
-            ${onOpenInactive && html`
-              <button onClick=${onOpenInactive}
-                className="ml-auto flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20
-                           text-white text-sm font-semibold transition">
-                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
-                     strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 8v13H3V8"/><rect x="1" y="3" width="22" height="5" rx="1"/><path d="M10 12h4"/>
-                </svg>
-                <span>Inactive</span>
-              </button>`}
+            <div className="ml-auto flex items-center gap-2 flex-wrap">
+              ${!user && html`
+                <select value="" onChange=${(e) => onSelectUser(e.target.value)}
+                  className="px-3 py-2 rounded-full bg-white text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                  <option value="">Who are you?</option>
+                  ${technicians.map((n) => html`<option key=${n} value=${n}>${n}</option>`)}
+                  <option value="__other">Someone else…</option>
+                </select>
+                <button onClick=${() => setShowSeanGate(true)}
+                  className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
+                  Sean (supervisor)</button>`}
+              ${user && html`
+                <span className="text-sm font-semibold text-emerald-100">${user}</span>
+                ${sean && html`
+                  <button onClick=${() => setShowTeamStats(true)}
+                    className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
+                    Team stats</button>
+                  <button onClick=${() => setShowManageTechs(true)}
+                    className="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
+                    Technicians</button>`}
+                <button onClick=${switchUser}
+                  className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
+                  Switch user</button>`}
+              ${onOpenInactive && html`
+                <button onClick=${onOpenInactive}
+                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20
+                             text-white text-sm font-semibold transition">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
+                       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 8v13H3V8"/><rect x="1" y="3" width="22" height="5" rx="1"/><path d="M10 12h4"/>
+                  </svg>
+                  <span>Inactive</span>
+                </button>`}
+            </div>
           </div>
+          ${showOther && html`
+            <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+              onClick=${() => setShowOther(false)}>
+              <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-sm p-6"
+                onClick=${(e) => e.stopPropagation()}>
+                <h3 className="text-lg font-extrabold text-slate-800 mb-1">Enter your name</h3>
+                <p className="text-sm text-slate-500 mb-4">Your name is recorded on any changes you make.</p>
+                <input type="text" value=${otherName} autoFocus
+                  onChange=${(e) => setOtherName(e.target.value)}
+                  onKeyDown=${(e) => e.key === "Enter" && confirmOther()}
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+                <div className="flex gap-2 justify-end">
+                  <button onClick=${() => setShowOther(false)} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+                  <button onClick=${confirmOther} disabled=${!otherName.trim()}
+                    className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">Continue</button>
+                </div>
+              </div>
+            </div>`}
+          ${showSeanGate && html`<${SeanGate} actionLabel="open Sean's view"
+            onCancel=${() => setShowSeanGate(false)}
+            onUnlock=${unlockSean} />`}
+          ${showTeamStats && html`<${TeamStatsModal} technicians=${technicians} onClose=${() => setShowTeamStats(false)} onOpenWo=${onOpenWo} />`}
+          ${showManageTechs && html`<${ManageTechniciansModal} technicians=${technicians} setTechnicians=${setTechnicians} onClose=${() => setShowManageTechs(false)} />`}
         </header>`;
     }
 
@@ -422,6 +823,379 @@
                     <div className="text-slate-500 text-xs">Downtime</div></div>
                 </div>
               </button>`)}
+          </div>
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Vendor & Utilities Contacts (BLA division tab)                     */
+    /* ------------------------------------------------------------------ */
+    function ContactLines({ c }) {
+      const line = (label, val) => val
+        ? html`<div className="text-xs text-slate-600"><span className="text-slate-400">${label}</span> ${val}</div>`
+        : null;
+      const emailBits = String(c.email || "").split(/\s+/).filter(Boolean);
+      return html`
+        <div className="space-y-0.5">
+          ${line("P", c.phone)}
+          ${line("C", c.cell)}
+          ${line("F", c.fax)}
+          ${c.secondary && line("Alt", c.secondary)}
+          ${emailBits.map((e) => e.includes("@")
+            ? html`<a key=${e} href=${"mailto:" + e} className="block text-xs text-emerald-700 hover:underline break-all">${e}</a>`
+            : html`<a key=${e} href=${(e.startsWith("http") ? e : "https://" + e)} target="_blank" rel="noopener"
+                     className="block text-xs text-sky-700 hover:underline break-all">${e}</a>`)}
+        </div>`;
+    }
+
+    function vendorTypeBadge(t) {
+      if (!t) return null;
+      const cls = t.toUpperCase() === "TPF"
+        ? "bg-indigo-50 text-indigo-700 border-indigo-100"
+        : "bg-slate-100 text-slate-600 border-slate-200";
+      return html`<span className=${"text-[10px] px-2 py-0.5 rounded-full border font-semibold " + cls}>${t}</span>`;
+    }
+
+    // Add / edit / delete a single vendor contact (password gated on the server).
+    function VendorEditModal({ initial, machines, nameMap, types, onClose, onSaved, onTypesChanged }) {
+      const [form, setForm] = useState(initial);
+      const [author, setAuthor] = useState(getUserName());
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [mq, setMq] = useState("");
+      const [typeOptions, setTypeOptions] = useState(types || []);
+      const [newType, setNewType] = useState("");
+      const isNew = !initial.id;
+
+      const set = (k, v) => setForm((f) => Object.assign({}, f, { [k]: v }));
+      const toggleMachine = (eq) => setForm((f) => {
+        const has = (f.machine_eq || []).includes(eq);
+        return Object.assign({}, f, {
+          machine_eq: has ? f.machine_eq.filter((x) => x !== eq) : [...(f.machine_eq || []), eq],
+        });
+      });
+
+      const isPwErr = (e) => e && e.message && /password|401|locked/i.test(e.message);
+
+      const addType = async () => {
+        const name = newType.trim();
+        if (!name) return;
+        if (!author.trim()) { setErr("Your name is required to add a type."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const saved = await sendJSON("/api/vendor-contact-types", "POST", { name, author: author.trim() }, editHeaders());
+          setTypeOptions((ts) => [...new Set([...ts, saved.name])].sort((a, b) => a.localeCompare(b)));
+          set("type", saved.name); setNewType(""); setUserName(author.trim());
+        } catch (e) {
+          if (isPwErr(e)) setEditPw("");
+          setErr(e.message || "Could not add type.");
+        } finally { setBusy(false); }
+      };
+
+      const deleteType = async () => {
+        const name = (form.type || "").trim();
+        if (!name) { setErr("Select a type to delete."); return; }
+        if (!author.trim()) { setErr("Your name is required to delete a type."); return; }
+        if (!window.confirm(`Delete the '${name}' type? This only works if no contacts use it.`)) return;
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/vendor-contact-types/" + encodeURIComponent(name), "DELETE", { author: author.trim() }, editHeaders());
+          setTypeOptions((ts) => ts.filter((t) => t.toLowerCase() !== name.toLowerCase()));
+          set("type", ""); setUserName(author.trim());
+          if (onTypesChanged) onTypesChanged();
+        } catch (e) {
+          if (isPwErr(e)) setEditPw("");
+          setErr(e.message || "Could not delete type.");
+        } finally { setBusy(false); }
+      };
+
+      const save = async () => {
+        if (!author.trim()) { setErr("Your name is required."); return; }
+        if (!(form.company || "").trim() && !(form.contact || "").trim()) {
+          setErr("Enter a company or contact name."); return;
+        }
+        setBusy(true); setErr(null);
+        try {
+          const payload = Object.assign({}, form, { author: author.trim() });
+          const url = isNew ? "/api/vendor-contacts" : "/api/vendor-contacts/" + initial.id;
+          await sendJSON(url, isNew ? "POST" : "PATCH", payload, editHeaders());
+          setUserName(author.trim());
+          onSaved();
+        } catch (e) {
+          if (isPwErr(e)) { setEditPw(""); setErr("Editing is locked. Close this, click Unlock editing, then try again."); }
+          else setErr(e.message || "Save failed.");
+        } finally { setBusy(false); }
+      };
+
+      const del = async () => {
+        if (!author.trim()) { setErr("Your name is required to delete."); return; }
+        if (!window.confirm("Delete this contact from the vendor list? This also removes it from any assigned machine cards.")) return;
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/vendor-contacts/" + initial.id, "DELETE", { author: author.trim() }, editHeaders());
+          setUserName(author.trim());
+          onSaved();
+        } catch (e) {
+          if (isPwErr(e)) { setEditPw(""); setErr("Editing is locked."); }
+          else setErr(e.message || "Delete failed.");
+        } finally { setBusy(false); }
+      };
+
+      const selected = form.machine_eq || [];
+      const mneedle = mq.trim().toLowerCase();
+      const options = machines.filter((m) => !selected.includes(m.eq_id) &&
+        (!mneedle || (m.name + " " + m.eq_id).toLowerCase().includes(mneedle))).slice(0, 40);
+
+      const inputCls = "w-full px-3 py-2 rounded-lg border border-emerald-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300";
+      const field = (label, key, ph) => html`
+        <div>
+          <label className="block text-xs font-bold text-slate-500 mb-1">${label}</label>
+          <input value=${form[key] || ""} onInput=${(e) => set(key, e.target.value)} placeholder=${ph || ""} className=${inputCls} />
+        </div>`;
+
+      return html`
+        <div className="fixed inset-0 z-50 flex items-start justify-center p-4 overflow-y-auto bg-slate-900/50 backdrop-blur-sm" onClick=${onClose}>
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl my-8 fade-in" onClick=${(e) => e.stopPropagation()}>
+            <div className="px-5 py-3 bg-emerald-700 text-white rounded-t-2xl flex items-center justify-between">
+              <div className="font-bold">${isNew ? "Add Vendor Contact" : "Edit Vendor Contact"}</div>
+              <button onClick=${onClose} className="text-white/80 hover:text-white text-xl leading-none">×</button>
+            </div>
+            <div className="p-5 space-y-4">
+              <div className="grid md:grid-cols-2 gap-3">
+                ${field("Company", "company")}
+                ${field("Contact name", "contact")}
+                ${field("Business phone", "phone")}
+                ${field("Cell / alternate", "cell")}
+                ${field("Fax", "fax")}
+                ${field("Email / website", "email")}
+              </div>
+              ${field("Address", "address")}
+              <div className="grid md:grid-cols-3 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 mb-1">Type</label>
+                  <select value=${form.type || ""} onChange=${(e) => set("type", e.target.value)} className=${inputCls + " bg-white"}>
+                    <option value="">—</option>
+                    ${typeOptions.map((t) => html`<option key=${t} value=${t}>${t}</option>`)}
+                  </select>
+                  <div className="flex gap-1 mt-1">
+                    <input value=${newType} onInput=${(e) => setNewType(e.target.value)} placeholder="Add new type" className="min-w-0 flex-1 px-2 py-1 rounded border border-slate-200 text-xs" />
+                    <button type="button" onClick=${addType} disabled=${busy || !newType.trim()} className="px-2 py-1 rounded bg-indigo-50 text-indigo-700 text-xs font-semibold hover:bg-indigo-100 disabled:opacity-50">Add</button>
+                  </div>
+                  <button type="button" onClick=${deleteType} disabled=${busy || !(form.type || "").trim()} className="mt-1 text-xs text-rose-600 hover:text-rose-800 disabled:opacity-40">Delete selected type</button>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 mb-1">Service contract</label>
+                  <select value=${form.service_contract || ""} onChange=${(e) => set("service_contract", e.target.value)} className=${inputCls + " bg-white"}>
+                    <option value="">—</option><option value="Yes">Yes</option><option value="No">No</option>
+                  </select>
+                </div>
+                ${field("Contract type", "contract_type", "e.g. Annual")}
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-500 mb-1">Assigned machines (Toilet Partitions)</label>
+                <div className="flex flex-wrap gap-1 mb-2">
+                  ${selected.length === 0 && html`<span className="text-xs text-slate-400">None assigned.</span>`}
+                  ${selected.map((eq) => html`
+                    <span key=${eq} className="inline-flex items-center gap-1 text-xs bg-indigo-50 text-indigo-700 border border-indigo-100 rounded-full px-2 py-0.5">
+                      EQ ${eq}${nameMap[eq] ? " · " + nameMap[eq] : ""}
+                      <button onClick=${() => toggleMachine(eq)} className="text-indigo-400 hover:text-indigo-700 leading-none">×</button>
+                    </span>`)}
+                </div>
+                <input value=${mq} onInput=${(e) => setMq(e.target.value)} placeholder="Search machines to assign…" className=${inputCls + " mb-1"} />
+                ${mq.trim() && html`
+                  <div className="max-h-40 overflow-y-auto border border-slate-100 rounded-lg divide-y divide-slate-50">
+                    ${options.map((m) => html`
+                      <button key=${m.eq_id} onClick=${() => toggleMachine(m.eq_id)}
+                        className="w-full text-left px-3 py-1.5 text-xs hover:bg-emerald-50">
+                        <span className="font-semibold text-slate-600">EQ ${m.eq_id}</span> · ${m.name}</button>`)}
+                    ${options.length === 0 && html`<div className="px-3 py-2 text-xs text-slate-400">No machines match.</div>`}
+                  </div>`}
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-500 mb-1">Your name</label>
+                <input value=${author} onInput=${(e) => setAuthor(e.target.value)} className=${inputCls} />
+              </div>
+
+              ${err && html`<div className="bg-rose-50 text-rose-700 rounded-lg px-3 py-2 text-sm">${err}</div>`}
+
+              <div className="flex items-center justify-between pt-1">
+                <div>
+                  ${!isNew && html`<button onClick=${del} disabled=${busy}
+                    className="px-4 py-2 rounded-full text-sm font-semibold text-rose-600 hover:bg-rose-50 disabled:opacity-50">Delete</button>`}
+                </div>
+                <div className="flex gap-2">
+                  <button onClick=${onClose} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+                  <button onClick=${save} disabled=${busy}
+                    className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-50">${busy ? "Saving…" : "Save"}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function MachineContactEditModal({ initial, onClose, onSaved }) {
+      const [form, setForm] = useState(initial);
+      const [author, setAuthor] = useState(getUserName());
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const set = (k, v) => setForm((f) => Object.assign({}, f, { [k]: v }));
+      const inputCls = "w-full px-3 py-2 rounded-lg border border-emerald-200 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300";
+      const field = (label, key) => html`<div><label className="block text-xs font-bold text-slate-500 mb-1">${label}</label><input value=${form[key] || ""} onInput=${(e) => set(key, e.target.value)} className=${inputCls} /></div>`;
+      const save = async () => {
+        if (!author.trim()) { setErr("Your name is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON(`/api/departments/toilet/machines/${form.eq_id}/contacts/${form.contact_index}`,
+            "PATCH", Object.assign({}, form, { author: author.trim() }), editHeaders());
+          setUserName(author.trim()); onSaved();
+        } catch (e) { setEditPw(""); setErr(e.message || "Save failed."); }
+        finally { setBusy(false); }
+      };
+      const del = async () => {
+        if (!author.trim()) { setErr("Your name is required to delete."); return; }
+        if (!window.confirm("Delete this contact from its machine card?")) return;
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON(`/api/departments/toilet/machines/${form.eq_id}/contacts/${form.contact_index}`,
+            "DELETE", { author: author.trim() }, editHeaders());
+          setUserName(author.trim()); onSaved();
+        } catch (e) { setEditPw(""); setErr(e.message || "Delete failed."); }
+        finally { setBusy(false); }
+      };
+      return html`
+        <div className="fixed inset-0 z-50 flex items-start justify-center p-4 overflow-y-auto bg-slate-900/50 backdrop-blur-sm" onClick=${onClose}>
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl my-8 fade-in" onClick=${(e) => e.stopPropagation()}>
+            <div className="px-5 py-3 bg-emerald-700 text-white rounded-t-2xl flex items-center justify-between"><div className="font-bold">Edit Machine Contact</div><button onClick=${onClose} className="text-white/80 hover:text-white text-xl leading-none">×</button></div>
+            <div className="p-5 space-y-4">
+              <div className="text-xs text-indigo-600 font-semibold">EQ ${form.eq_id} · ${form.machine_name}</div>
+              <div className="grid md:grid-cols-2 gap-3">${field("Name", "name")}${field("Role", "role")}${field("Company", "company")}${field("Phone", "phone")}${field("Cell", "cell")}${field("Fax", "fax")}${field("Secondary", "secondary")}${field("Email", "email")}</div>
+              <div><label className="block text-xs font-bold text-slate-500 mb-1">Your name</label><input value=${author} onInput=${(e) => setAuthor(e.target.value)} className=${inputCls} /></div>
+              ${err && html`<div className="bg-rose-50 text-rose-700 rounded-lg px-3 py-2 text-sm">${err}</div>`}
+              <div className="flex items-center justify-between"><button onClick=${del} disabled=${busy} className="px-4 py-2 rounded-full text-sm font-semibold text-rose-600 hover:bg-rose-50 disabled:opacity-50">Delete</button><div className="flex gap-2"><button onClick=${onClose} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button><button onClick=${save} disabled=${busy} className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-50">${busy ? "Saving…" : "Save"}</button></div></div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function VendorContacts() {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [q, setQ] = useState("");
+      const [typeFilter, setTypeFilter] = useState("all");   // all | TPF | Facility
+      const [protectedEdit, setProtectedEdit] = useState(false);
+      const [gateAction, setGateAction] = useState(null);
+      const [editing, setEditing] = useState(null);          // draft vendor being added/edited
+      const [editingMachine, setEditingMachine] = useState(null);
+      const [reloadKey, setReloadKey] = useState(0);
+
+      useEffect(() => {
+        setData(null);
+        getJSON("/api/vendor-contacts").then(setData).catch((e) => setErr(e.message));
+      }, [reloadKey]);
+      useEffect(() => { getJSON("/api/edit-auth").then((d) => setProtectedEdit(!!d.protected)).catch(() => {}); }, []);
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading contacts…" />`;
+
+      const isAuthed = () => !protectedEdit || !!getEditPw();
+      const requireAuth = (action) => { if (isAuthed()) action(); else setGateAction(() => action); };
+      const reload = () => setReloadKey((k) => k + 1);
+
+      const machines = data.machines || [];
+      const nameMap = {};
+      machines.forEach((m) => { nameMap[m.eq_id] = m.name; });
+
+      const needle = q.trim().toLowerCase();
+      const textMatch = (obj) => !needle ||
+        Object.values(obj).some((v) => String(v == null ? "" : (Array.isArray(v) ? v.join(" ") : v)).toLowerCase().includes(needle));
+      const typeMatch = (v) => typeFilter === "all" || (v.type || "").toLowerCase() === typeFilter.toLowerCase();
+      const vendors = (data.vendors || []).filter((v) => typeMatch(v) && textMatch(v));
+      const machineContacts = (data.machine_contacts || []).filter(textMatch);
+
+      const emptyDraft = () => ({ company: "", contact: "", address: "", phone: "", cell: "", fax: "",
+        email: "", type: "TPF", service_contract: "", contract_type: "", machine_eq: [] });
+      const openNew = () => requireAuth(() => setEditing(emptyDraft()));
+      const openEdit = (v) => requireAuth(() => setEditing(Object.assign(emptyDraft(), v, { machine_eq: [...(v.machine_eq || [])] })));
+
+      const knownTypes = [...new Set(data.types || [])].sort((a, b) => a.localeCompare(b));
+      const FILTERS = [{ k: "all", label: "All" }, ...knownTypes.map((t) => ({ k: t, label: t }))];
+
+      return html`
+        <div className="fade-in space-y-6">
+          ${gateAction && html`<${PasswordGate}
+            onCancel=${() => setGateAction(null)}
+            onUnlock=${() => { const a = gateAction; setGateAction(null); if (a) a(); }} />`}
+          ${editing && html`<${VendorEditModal}
+            initial=${editing} machines=${machines} nameMap=${nameMap} types=${data.types || []}
+            onClose=${() => setEditing(null)} onSaved=${() => { setEditing(null); reload(); }} onTypesChanged=${reload} />`}
+          ${editingMachine && html`<${MachineContactEditModal}
+            initial=${editingMachine} onClose=${() => setEditingMachine(null)}
+            onSaved=${() => { setEditingMachine(null); reload(); }} />`}
+
+          <div className="flex justify-end">
+            <button onClick=${openNew}
+              className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 shadow-sm shrink-0">+ Add Contact</button>
+          </div>
+
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="inline-flex rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
+              ${FILTERS.map((f) => html`
+                <button key=${f.k} onClick=${() => setTypeFilter(f.k)}
+                  className=${"px-4 py-1.5 rounded-full transition " +
+                    (typeFilter === f.k ? "bg-emerald-700 text-white shadow-sm" : "text-slate-600 hover:text-emerald-800")}>
+                  ${f.label}</button>`)}
+            </div>
+            <input value=${q} onInput=${(e) => setQ(e.target.value)} placeholder="Search contacts…"
+              className="px-4 py-2 rounded-full border border-slate-200 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-emerald-200" />
+          </div>
+
+          <div>
+            <h3 className="text-sm font-extrabold text-slate-700 mb-3 flex items-center gap-2">
+              Vendor & Utility List <span className="text-xs font-semibold text-slate-400">(${vendors.length})</span></h3>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+              ${vendors.map((v) => html`
+                <div key=${v.id} className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm hover:shadow-md transition flex flex-col">
+                  <div className="flex items-start justify-between gap-2 mb-1">
+                    <div className="font-bold text-slate-800 text-sm leading-tight">${v.company}</div>
+                    <div className="flex items-center gap-1 shrink-0">
+                      ${vendorTypeBadge(v.type)}
+                      ${v.service_contract && v.service_contract.toLowerCase() === "yes"
+                        && html`<span className="text-[10px] px-2 py-0.5 rounded-full border bg-emerald-50 text-emerald-700 border-emerald-100 font-semibold">Contract</span>`}
+                    </div>
+                  </div>
+                  ${v.contact && html`<div className="text-xs text-slate-500 mb-1 whitespace-pre-line">${v.contact}</div>`}
+                  ${v.machine_eq && v.machine_eq.length > 0 && html`
+                    <div className="inline-flex items-center gap-1 text-[10px] font-semibold text-indigo-700 bg-indigo-50 border border-indigo-100 rounded-full px-2 py-0.5 mb-2 w-fit">
+                      ${v.machine_eq.map((e) => html`<span key=${e}>${nameMap[e] || "EQ " + e}</span>`)}
+                    </div>`}
+                  <${ContactLines} c=${v} />
+                  ${v.address && html`<div className="text-[11px] text-slate-400 mt-2 leading-snug whitespace-pre-line">${v.address}</div>`}
+                  ${v.contract_type && html`<div className="text-[10px] text-slate-400 mt-1">${v.contract_type}</div>`}
+                  <button onClick=${() => openEdit(v)}
+                    className="mt-3 self-start text-xs font-semibold text-emerald-700 hover:text-emerald-900">Edit</button>
+                </div>`)}
+              ${vendors.length === 0 && html`<div className="text-sm text-slate-400 col-span-full">No matching vendors.</div>`}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-extrabold text-slate-700 mb-3 flex items-center gap-2">
+              Machine Contacts · Toilet Partitions <span className="text-xs font-semibold text-slate-400">(${machineContacts.length})</span></h3>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+              ${machineContacts.map((c, i) => html`
+                <div key=${i} className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm hover:shadow-md transition">
+                  <div className="text-[10px] font-semibold text-emerald-700 mb-1 uppercase tracking-wide">EQ ${c.eq_id} · ${c.machine_name}</div>
+                  <div className="font-bold text-slate-800 text-sm leading-tight">${c.name || c.company || "(unnamed)"}</div>
+                  ${(c.role || c.company) && html`<div className="text-xs text-slate-500 mb-1">${[c.role, c.company].filter(Boolean).join(" · ")}</div>`}
+                  <${ContactLines} c=${c} />
+                  <button onClick=${() => requireAuth(() => setEditingMachine(Object.assign({}, c)))}
+                    className="mt-3 text-xs font-semibold text-emerald-700 hover:text-emerald-900">Edit</button>
+                </div>`)}
+              ${machineContacts.length === 0 && html`<div className="text-sm text-slate-400 col-span-full">No matching machine contacts.</div>`}
+            </div>
           </div>
         </div>`;
     }
@@ -487,7 +1261,7 @@
             onClose=${() => setCreating(false)} onCreated=${refreshAll} onOpenWo=${onOpenWo} />`}
 
           <div className="flex gap-2 mt-8 mb-6 bg-white p-1.5 rounded-full shadow-sm border border-emerald-100 w-fit flex-wrap">
-            ${DIV_TABS.map((t) => html`
+            ${(divKey === "bla" ? [...DIV_TABS, "Contacts"] : DIV_TABS).map((t) => html`
               <button key=${t} onClick=${() => setTab(t)}
                 className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
                   (tab === t ? "bg-emerald-700 text-white shadow" : "text-slate-500 hover:bg-emerald-50")}>
@@ -496,6 +1270,8 @@
                 ${t === "Scheduled" && html`<span className="ml-1 opacity-70">(${num(totalSch)})</span>`}
               </button>`)}
           </div>
+
+          ${tab === "Contacts" && html`<${VendorContacts} />`}
 
           ${tab === "Weekly Schedule" && html`
             <div className="fade-in">
@@ -911,6 +1687,7 @@
                     <span className="font-bold text-emerald-800">WO #${r.wo_id}</span>
                     ${r.urgency && html`<span className=${"text-xs px-2 py-0.5 rounded-full border " + urgencyColor(r.urgency)}>${r.urgency}</span>`}
                     ${r.status && html`<span className=${"text-xs px-2 py-0.5 rounded-full border " + statusColor(r.status)}>${r.status}</span>`}
+                    ${r.assigned_to && html`<span className="text-xs px-2 py-0.5 rounded-full border bg-indigo-50 text-indigo-600 border-indigo-100">${r.assigned_to}</span>`}
                     ${r.department_label && html`<span className="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100">${r.department_label}</span>`}
                   </div>
                   <div className="text-xs text-slate-400 whitespace-nowrap">${r.date_notified || r.due_date || ""}</div>
@@ -938,8 +1715,16 @@
     }
 
     // Inline editor for a work order's core fields. Requires a name.
-    function WoEditForm({ rec, name, setName, onSaved, onCancel }) {
+    function WoEditForm({ rec, name, setName, technicians, onSaved, onCancel }) {
       const scheduled = rec.wo_type === "scheduled";
+      const completerOptions = [
+        { value: "", label: "Select who completed this…" },
+        ...(technicians || []).map((n) => ({ value: n, label: n })),
+        { value: "__other__", label: "Other" },
+      ];
+      const completerNames = (technicians || []);
+      const initialPerformed = (rec.work_performed_by || "").trim();
+      const knownCompleter = completerNames.includes(initialPerformed);
       const [f, setF] = useState({
         equipment_name: rec.equipment_name || "",
         equipment_eq_id: rec.equipment_eq_id || "",
@@ -949,7 +1734,8 @@
         due_date: rec.due_date || "",
         problem: rec.problem || "",
         audit_item: rec.audit_item || "",
-        work_performed_by: rec.work_performed_by || "",
+        work_performed_by: initialPerformed,
+        helpers: rec.helpers || "",
         labor_time: rec.labor_time || "",
         material_cost: rec.material_cost || "",
         downtime_hours: rec.downtime_hours || "",
@@ -957,6 +1743,8 @@
         completion_comments: rec.completion_comments || "",
         frequency: rec.frequency || "",
       });
+      const [primaryCompleter, setPrimaryCompleter] = useState(knownCompleter ? initialPerformed : "__other__");
+      const [otherName, setOtherName] = useState(knownCompleter ? "" : initialPerformed);
       const set = (k) => (v) => setF((s) => ({ ...s, [k]: v }));
       const [busy, setBusy] = useState(false);
       const [err, setErr] = useState(null);
@@ -993,6 +1781,9 @@
       const save = async () => {
         if (!name.trim()) { setErr("Your name is required."); return; }
         let fields = { ...f };
+        fields.work_performed_by = primaryCompleter === "__other__"
+          ? otherName.trim()
+          : primaryCompleter;
         if (closing) {
           const req = [
             ["work_performed_by", "Work performed by"],
@@ -1038,7 +1829,9 @@
             <div className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-4 space-y-3">
               <div className="text-sm font-bold text-emerald-800">Completion details (required)</div>
               <div className="grid sm:grid-cols-2 gap-3">
-                <${TextInput} label="Work Performed By" required=${true} value=${f.work_performed_by} onChange=${set("work_performed_by")} />
+                <${SelectInput} label="Work Completed By" required=${true} value=${primaryCompleter} onChange=${setPrimaryCompleter} options=${completerOptions} />
+                ${primaryCompleter === "__other__" && html`<${TextInput} label="Other Name" required=${true} value=${otherName} onChange=${setOtherName} placeholder="Who completed this?" />`}
+                <${TextInput} label="Helpers" value=${f.helpers} onChange=${set("helpers")} placeholder="e.g. Gabriel, Max" hint="Comma-separated names of people who helped." />
                 <${TextInput} label="Date Completed" required=${scheduled} value=${f.completed_datetime} onChange=${set("completed_datetime")} placeholder="MM/DD/YYYY" hint=${scheduled ? "" : "Defaults to today if left blank."} />
                 <${TextInput} label="Labor Time (h)" required=${true} value=${f.labor_time} onChange=${set("labor_time")} type="number" />
                 <${TextInput} label="Downtime (h)" required=${true} value=${f.downtime_hours} onChange=${set("downtime_hours")} type="number" />
@@ -1157,6 +1950,59 @@
         </div>`;
     }
 
+    // Assignment control for a work order. Sean can assign to any technician or
+    // unassign; a technician can only take/reassign the WO to themselves.
+    function AssignmentSection({ rec, technicians, onChanged }) {
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [draft, setDraft] = useState(rec.assigned_to || "");
+      const user = getUserName();
+      const sean = isSeanMode();
+      const assigned = rec.assigned_to || "";
+      const canSelfAssign = technicians.some((t) => t.toLowerCase() === (user || "").trim().toLowerCase());
+      const isMine = assigned.toLowerCase() === user.toLowerCase();
+
+      const assign = async (target) => {
+        if (!user.trim()) { setErr("Select your name at the top of the page first."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/workorder/" + rec.wo_id + "/assign", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", ...seanHeaders() },
+            body: JSON.stringify({ author: user.trim(), assigned_to: target }),
+          });
+          const d = await r.json().catch(() => ({}));
+          if (!r.ok) throw new Error(d.error || "Assignment failed");
+          if (onChanged) onChanged(d.work_order);
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      return html`
+        <div className="mt-5 rounded-2xl border border-emerald-100 bg-emerald-50/40 p-4">
+          <div className="text-sm font-bold text-emerald-800 mb-2">Assignment</div>
+          ${err && html`<div className="text-rose-600 text-sm mb-2">${err}</div>`}
+          ${sean
+            ? html`<div className="flex items-end gap-2">
+                <div className="flex-1">
+                  <${SelectInput} label="Assign to" value=${draft} onChange=${setDraft}
+                    options=${technicians.map((n) => ({ value: n, label: n }))}
+                    placeholder="Unassigned" />
+                </div>
+                <button onClick=${() => assign(draft)} disabled=${busy}
+                  className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+                  ${busy ? "Saving…" : "Save"}</button>
+              </div>`
+            : html`
+                ${assigned
+                  ? html`<div className="text-sm text-slate-600">Assigned to <span className="font-semibold text-emerald-800">${assigned}</span></div>`
+                  : html`<div className="text-sm text-slate-500">No one is assigned yet.</div>`}
+                ${canSelfAssign && html`
+                  <button onClick=${() => assign(user)} disabled=${busy || isMine}
+                    className="mt-2 px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+                    ${isMine ? "Assigned to you" : (assigned ? "Reassign to me" : "Take this work order")}</button>`}`}
+        </div>`;
+    }
+
     // Password prompt for admin-gated actions (delete WO / view history).
     // Verifies against the server, then remembers it for the browser session.
     function AdminGate({ actionLabel, onUnlock, onCancel }) {
@@ -1188,7 +2034,7 @@
             </div>
             <p className="text-sm text-slate-500 mb-4">Enter the admin password to ${actionLabel || "continue"}.</p>
             <input type="password" value=${pw} autoFocus
-              onInput=${(e) => setPw(e.target.value)}
+              onChange=${(e) => setPw(e.target.value)}
               onKeyDown=${(e) => { if (e.key === "Enter") submit(); }}
               placeholder="Admin password"
               className=${inputCls} />
@@ -1204,7 +2050,7 @@
         </div>`;
     }
 
-    function WorkOrderModal({ woId, onClose, onOpenWo, onChanged }) {
+    function WorkOrderModal({ woId, technicians, onClose, onOpenWo, onChanged }) {
       const [rec, setRec] = useState(null);
       const [err, setErr] = useState(null);
       const [editing, setEditing] = useState(false);
@@ -1328,6 +2174,7 @@
         if (rec.status === CLOSED_STATUS) {
           add("Completed", rec.completed_datetime);
           add("Work Performed By", rec.work_performed_by);
+          add("Helpers", rec.helpers);
           add("Labor Time", rec.labor_time ? hours(rec.labor_time) : "");
           add("Material Cost", rec.material_cost ? money(rec.material_cost) : "");
           add("Downtime", rec.downtime_hours ? hours(rec.downtime_hours) : "");
@@ -1433,7 +2280,7 @@
               ${err && html`<div className="text-rose-600">${err}</div>`}
               ${!rec && !err && html`<${Spinner} label="Loading work order…" />`}
               ${rec && editing && html`
-                <${WoEditForm} rec=${rec} name=${name} setName=${setName}
+                <${WoEditForm} rec=${rec} name=${name} setName=${setName} technicians=${technicians}
                   onCancel=${() => setEditing(false)}
                   onSaved=${(wo) => { setRec(wo); setEditing(false); if (onChanged) onChanged(); }} />`}
               ${rec && !editing && html`
@@ -1443,6 +2290,7 @@
                   <${Field} label="Department" value=${rec.department} />
                   <${Field} label="Type" value=${rec.wo_type} />
                   <${Field} label="Status" value=${rec.status} />
+                  <${Field} label="Assigned to" value=${rec.assigned_to} />
                   <${Field} label="Urgency" value=${rec.urgency} />
                   <${Field} label="Date Notified" value=${rec.date_notified} />
                   <${Field} label="Due Date" value=${rec.due_date} />
@@ -1450,6 +2298,7 @@
                   ${rec.status === CLOSED_STATUS && html`
                     <${Field} label="Completed" value=${rec.completed_datetime} />
                     <${Field} label="Work Performed By" value=${rec.work_performed_by} />
+                    <${Field} label="Helpers" value=${rec.helpers} />
                     <${Field} label="Labor Time" value=${rec.labor_time ? hours(rec.labor_time) : ""} />
                     <${Field} label="Material Cost" value=${rec.material_cost ? money(rec.material_cost) : ""} />
                     <${Field} label="Downtime" value=${rec.downtime_hours ? hours(rec.downtime_hours) : ""} />`}
@@ -1459,6 +2308,7 @@
                   <${Field} label="Audit Item" value=${rec.audit_item} />
                   ${rec.status === CLOSED_STATUS && html`<${Field} label="Comments" value=${rec.completion_comments} />`}
                 </div>
+                <${AssignmentSection} rec=${rec} technicians=${technicians} onChanged=${(wo) => { if (wo) setRec(wo); refresh(); }} />
                 ${rec.wo_type !== "scheduled" && html`<${SolutionSection} rec=${rec} name=${name} setName=${setName} onChanged=${refresh} />`}
                 <${AttachmentSection} rec=${rec} name=${name} setName=${setName} onChanged=${refresh} />
                 <div className="mt-6 border-t border-slate-100 pt-3">
@@ -1505,8 +2355,8 @@
       const [f, setF] = useState({
         equipment_eq_id: "", equipment_name: "", status: "Pending",
         urgency: "", date_notified: todayStr, due_date: "", problem: "",
-        audit_item: "", work_performed_by: "", labor_time: "",
-        material_cost: "", downtime_hours: "", solution: "", frequency: "",
+        audit_item: "", work_performed_by: "", helpers: "",
+        labor_time: "", material_cost: "", downtime_hours: "", solution: "", frequency: "",
       });
       const set = (k) => (v) => setF((s) => ({ ...s, [k]: v }));
       const [files, setFiles] = useState([]);
@@ -2335,7 +3185,7 @@
     // Multi-line SVG chart. Each selected metric is scaled to its OWN range
     // (0 -> that series' max) so lines with different units can be compared by
     // shape on one plot.
-    function TrendChart({ months, selectedKeys, onPointClick }) {
+    function TrendChart({ months, selectedKeys, onPointClick, events, year }) {
       const W = 680, H = 260, padL = 12, padR = 12, padT = 16, padB = 26;
       const plotW = W - padL - padR, plotH = H - padT - padB;
       const x = (i) => padL + (plotW * i) / 11;
@@ -2370,9 +3220,108 @@
       const xlabels = MONTHS.map((mo, i) => html`<text key=${"x" + i} x=${x(i)} y=${H - 8}
         textAnchor="middle" fill="#94a3b8" style=${{ fontSize: "10px" }}>${mo}</text>`);
 
+      // Global event markers: a dashed vertical line at the event's position in
+      // the year (month + day), labelled with the event title.
+      const evMarkers = (events || []).map((ev, idx) => {
+        const [ey, em, ed] = String(ev.date).split("-").map(Number);
+        if (ey !== year || !em) return null;
+        const dim = new Date(ey, em, 0).getDate() || 30;
+        const frac = Math.max(0, Math.min(11, (em - 1) + ((ed || 1) - 1) / dim));
+        const ex = x(frac);
+        const short = ev.title.length > 24 ? ev.title.slice(0, 23) + "…" : ev.title;
+        const flip = ex > W - 120;  // keep the label on-canvas near the right edge
+        return html`<g key=${"ev" + (ev.id || idx)}>
+          <line x1=${ex} y1=${padT} x2=${ex} y2=${padT + plotH}
+            stroke="#dc2626" strokeWidth="1.5" strokeDasharray="5,3" opacity="0.8" />
+          <text x=${flip ? ex - 4 : ex + 4} y=${padT + 9}
+            textAnchor=${flip ? "end" : "start"} fill="#dc2626"
+            style=${{ fontSize: "9px", fontWeight: 700 }}>
+            <title>${ev.date + " — " + ev.title}</title>${short}</text>
+        </g>`;
+      }).filter(Boolean);
+
       return html`
         <svg viewBox=${"0 0 " + W + " " + H} className="w-full" style=${{ height: "260px" }}>
-          ${grid}${series}${xlabels}
+          ${grid}${series}${evMarkers}${xlabels}
+        </svg>`;
+    }
+
+    // Pareto chart: bars sorted descending by value for a single metric, with
+    // a cumulative-% line (secondary axis) — the classic 80/20 view of which
+    // categories (months, or machines/departments) drive most of the total.
+    function ParetoChart({ items, metric }) {
+      const sorted = [...items]
+        .map((it) => ({ ...it, value: Number(it.value) || 0 }))
+        .sort((a, b) => b.value - a.value);
+      const total = sorted.reduce((a, it) => a + it.value, 0);
+
+      if (!metric || sorted.length === 0 || total <= 0)
+        return html`<div className="h-64 flex items-center justify-center text-slate-400 text-sm text-center px-4">
+          ${metric ? "No data to chart for " + metric.label + "." : "Select a metric below to plot the Pareto chart."}</div>`;
+
+      let running = 0;
+      const rows = sorted.map((it) => {
+        running += it.value;
+        return { ...it, cumPct: (running / total) * 100 };
+      });
+
+      const barW = 64, gap = 18, padL = 100, padR = 52, padT = 16, padB = 118;
+      const plotW = rows.length * (barW + gap) - gap;
+      const W = padL + plotW + padR, H = 360;
+      const plotH = H - padT - padB;
+      const maxVal = Math.max(...rows.map((r) => r.value), 0);
+      const xFor = (i) => padL + i * (barW + gap);
+      const yForVal = (v) => padT + plotH * (1 - (maxVal <= 0 ? 0 : v / maxVal));
+      const yForPct = (p) => padT + plotH * (1 - p / 100);
+
+      const gridLines = [0, 0.25, 0.5, 0.75, 1].map((f, i) => {
+        const gy = padT + plotH * f;
+        return html`<line key=${"g" + i} x1=${padL} y1=${gy} x2=${W - padR} y2=${gy}
+          stroke="#e2e8f0" strokeWidth="1" />`;
+      });
+
+      const eightyLineY = yForPct(80);
+      const bars = rows.map((r, i) => {
+        const by = yForVal(r.value);
+        return html`<g key=${"b" + i}>
+          <rect x=${xFor(i)} y=${by} width=${barW} height=${padT + plotH - by}
+            fill=${metric.color} opacity="0.85" rx="3">
+            <title>${r.label} · ${metric.label}: ${metric.fmt(r.value)} (${r.cumPct.toFixed(1)}% cumulative)</title>
+          </rect>
+          <text x=${xFor(i) + barW / 2} y=${by - 6} textAnchor="middle" fill="#475569"
+            style=${{ fontSize: "10px", fontWeight: 600 }}>${metric.fmt(r.value)}</text>
+        </g>`;
+      });
+
+      const linePts = rows.map((r, i) => (xFor(i) + barW / 2) + "," + yForPct(r.cumPct)).join(" ");
+      const lineDots = rows.map((r, i) => html`<circle key=${"d" + i}
+        cx=${xFor(i) + barW / 2} cy=${yForPct(r.cumPct)} r="3.5" fill="#0f172a">
+        <title>${r.label}: ${r.cumPct.toFixed(1)}% cumulative</title></circle>`);
+
+      const labelY = padT + plotH + 14;
+      const xlabels = rows.map((r, i) => {
+        const cx = xFor(i) + barW / 2;
+        const short = r.label.length > 26 ? r.label.slice(0, 25) + "…" : r.label;
+        return html`<text key=${"x" + i}
+          x=${cx} y=${labelY} textAnchor="end" fill="#64748b"
+          transform=${"rotate(-35 " + cx + " " + labelY + ")"}
+          style=${{ fontSize: "10px" }}><title>${r.label}</title>${short}</text>`;
+      });
+
+      const pctTicks = [0, 20, 40, 60, 80, 100].map((p, i) => html`<text key=${"pt" + i}
+        x=${W - padR + 6} y=${yForPct(p) + 3} fill="#94a3b8" style=${{ fontSize: "9px" }}>${p}%</text>`);
+
+      return html`
+        <svg viewBox=${"0 0 " + W + " " + H} style=${{ height: "360px", minWidth: W + "px", display: "block", marginBottom: "14px" }}>
+          ${gridLines}
+          <line x1=${padL} y1=${eightyLineY} x2=${W - padR} y2=${eightyLineY}
+            stroke="#dc2626" strokeWidth="1" strokeDasharray="4,3" opacity="0.6" />
+          <text x=${padL} y=${eightyLineY - 4} fill="#dc2626" style=${{ fontSize: "9px" }} opacity="0.8">80%</text>
+          ${bars}
+          <polyline points=${linePts} fill="none" stroke="#0f172a" strokeWidth="2" />
+          ${lineDots}
+          ${xlabels}
+          ${pctTicks}
         </svg>`;
     }
 
@@ -2481,10 +3430,130 @@
         </div>`;
     }
 
-    function YearSection({ yr, defaultOpen, deptKey, eqId, group, machineName, onOpenWo }) {
+    // Load the global chart events and expose a reload trigger. Every trend
+    // view uses this so adding/removing an event refreshes all charts at once.
+    function useChartEvents() {
+      const [events, setEvents] = useState([]);
+      const [key, setKey] = useState(0);
+      useEffect(() => {
+        getJSON("/api/chart-events")
+          .then((d) => setEvents(d.events || []))
+          .catch(() => setEvents([]));
+      }, [key]);
+      return [events, () => setKey((k) => k + 1)];
+    }
+
+    // Global chart-event manager: add / delete the dated "major event" markers
+    // that render as vertical lines on every trend chart. Events are global, so
+    // this same list shows up on all charts everywhere.
+    function ChartEventsModal({ events, onChanged, onClose }) {
+      const [name, setName] = useState(getUserName());
+      const [date, setDate] = useState("");
+      const [title, setTitle] = useState("");
+      const [pw, setPw] = useState(getEditPw());
+      const [needPw, setNeedPw] = useState(false);
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+
+      const headers = () => {
+        const h = {}; const p = pw || getEditPw();
+        if (p) h["X-Edit-Password"] = p;
+        return h;
+      };
+      const isPwErr = (e) => (e.message || "").toLowerCase().includes("password");
+
+      const add = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!date) { setErr("Pick a date for the event."); return; }
+        if (!title.trim()) { setErr("Describe what happened."); return; }
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/chart-events", "POST",
+            { date, title: title.trim(), author: name.trim() }, headers());
+          setUserName(name.trim()); if (pw) setEditPw(pw);
+          setDate(""); setTitle(""); setNeedPw(false);
+          onChanged();
+        } catch (e) {
+          if (isPwErr(e)) { setNeedPw(true); setErr("Edit password required."); }
+          else setErr(e.message || "Could not add event.");
+        } finally { setBusy(false); }
+      };
+
+      const del = async (id) => {
+        if (!name.trim()) { setErr("Enter your name first (used for the change log)."); return; }
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/chart-events/" + id, "DELETE", { author: name.trim() }, headers());
+          setUserName(name.trim()); if (pw) setEditPw(pw);
+          onChanged();
+        } catch (e) {
+          if (isPwErr(e)) { setNeedPw(true); setErr("Edit password required."); }
+          else setErr(e.message || "Could not delete event.");
+        } finally { setBusy(false); }
+      };
+
+      const sorted = [...(events || [])].sort((a, b) => (a.date < b.date ? -1 : 1));
+
+      return html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-start justify-center p-4 overflow-y-auto"
+             onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg my-8 fade-in"
+               onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-100">
+              <div className="font-extrabold text-lg text-emerald-800">Chart events</div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xl leading-none">×</button>
+            </div>
+            <div className="p-6 space-y-4">
+              <p className="text-sm text-slate-600">
+                Add a dated event (e.g. “Changed the glue on the glue spreader”). It appears as a
+                vertical line on <span className="font-semibold">every</span> trend chart for that date.
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-3">
+                <${LabeledField} label="Date" required=${true}>
+                  <input type="date" value=${date} onInput=${(e) => setDate(e.target.value)}
+                    className=${inputCls} />
+                </${LabeledField}>
+                <${NameInput} value=${name} onChange=${setName} />
+              </div>
+              <${TextInput} label="Event" required=${true} value=${title} onChange=${setTitle}
+                placeholder="e.g. Changed the glue on the glue spreader" />
+              ${needPw && html`<${TextInput} label="Edit password" type="password" value=${pw}
+                onChange=${setPw} hint="Required to modify data on this install." />`}
+
+              ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+              <div className="flex justify-end">
+                <button onClick=${add} disabled=${busy}
+                  className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60 shadow-sm">
+                  ${busy ? "Saving…" : "Add event"}</button>
+              </div>
+
+              <div className="border-t border-slate-100 pt-3">
+                <div className="text-xs uppercase tracking-wide text-slate-400 font-semibold mb-2">
+                  Existing events (${sorted.length})</div>
+                ${sorted.length === 0
+                  ? html`<div className="text-sm text-slate-400">No events yet.</div>`
+                  : html`<div className="space-y-1.5 max-h-56 overflow-y-auto">
+                      ${sorted.map((ev) => html`
+                        <div key=${ev.id} className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
+                          <span className="text-xs font-mono text-rose-600 whitespace-nowrap">${ev.date}</span>
+                          <span className="text-sm text-slate-700 flex-1 truncate" title=${ev.title}>${ev.title}</span>
+                          <button onClick=${() => del(ev.id)} disabled=${busy} title="Delete event"
+                            className="w-7 h-7 rounded-full text-slate-300 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center text-lg leading-none">×</button>
+                        </div>`)}
+                    </div>`}
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function YearSection({ yr, defaultOpen, deptKey, eqId, group, machineName, machineTotals, events, onEventsChanged, onOpenWo }) {
       const [open, setOpen] = useState(!!defaultOpen);
       const [selected, setSelected] = useState(["material_cost"]);
       const [synMonth, setSynMonth] = useState(null);
+      const [showEvents, setShowEvents] = useState(false);
       const toggle = (k) =>
         setSelected((s) => (s.includes(k) ? s.filter((x) => x !== k) : [...s, k]));
       const woTotal = yr.totals.unscheduled_count + yr.totals.scheduled_count;
@@ -2492,6 +3561,22 @@
       // department/group aggregate when a group is given. Click-through is
       // enabled whenever either is present.
       const synClick = (eqId || group) ? setSynMonth : null;
+
+      // Pareto compares this year's data against a single metric — reuse the
+      // same metric toggles as the line chart above and drive the Pareto off
+      // the first one selected. When `machineTotals` is supplied (department
+      // level) the bars compare machines; otherwise (machine level) they
+      // compare this year's months.
+      const paretoMetric = TREND_METRICS.find((m) => m.key === selected[0]) || null;
+      const paretoItems = machineTotals
+        ? machineTotals.map((mt) => ({
+            label: mt.name,
+            value: paretoMetric ? Number(mt.totals[paretoMetric.key]) || 0 : 0,
+          }))
+        : yr.months.map((mo) => ({
+            label: MONTHS[mo.month - 1],
+            value: paretoMetric ? Number(mo[paretoMetric.key]) || 0 : 0,
+          }));
 
       return html`
         <${React.Fragment}>
@@ -2510,8 +3595,18 @@
           </button>
           ${open && html`
             <div className="px-5 pb-5 pt-1 fade-in">
-              <${TrendChart} months=${yr.months} selectedKeys=${selected} onPointClick=${synClick} />
-              <div className="flex flex-wrap gap-2 mt-3 mb-4">
+              <${TrendChart} months=${yr.months} selectedKeys=${selected} onPointClick=${synClick}
+                events=${events} year=${yr.year} />
+              <div className="flex items-center justify-between flex-wrap gap-2 mt-3 mb-1">
+                <span className="text-xs text-slate-400">
+                  Vertical red lines mark global events. Hover a line for details.
+                </span>
+                <button onClick=${() => setShowEvents(true)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-rose-200 text-rose-600 hover:bg-rose-50 transition">
+                  <span className="text-sm leading-none">＋</span> Event
+                </button>
+              </div>
+              <div className="flex flex-wrap gap-2 mt-2 mb-4">
                 ${TREND_METRICS.map((m) => {
                   const on = selected.includes(m.key);
                   return html`<button key=${m.key} onClick=${() => toggle(m.key)}
@@ -2524,18 +3619,39 @@
                 })}
               </div>
               <${MonthTable} months=${yr.months} selected=${selected} onToggle=${toggle} onMonthClick=${synClick} />
+
+              <div className="mt-8 pt-5 border-t border-slate-100">
+                <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+                  <h4 className="text-sm font-bold text-slate-700">
+                    Pareto${paretoMetric ? " — " + paretoMetric.label : ""}
+                    ${machineTotals ? " (by machine)" : " (by month)"}
+                  </h4>
+                  <p className="text-xs text-slate-400 max-w-md">
+                    Select a metric above to see the Pareto — it shows one metric at a time
+                    (the first one selected). Bars sorted highest → lowest; the line is
+                    cumulative % of the ${yr.year} total.
+                  </p>
+                </div>
+                <div className="overflow-x-auto">
+                  <${ParetoChart} items=${paretoItems} metric=${paretoMetric} />
+                </div>
+              </div>
             </div>`}
         </section>
         ${synMonth && html`<${MonthSynopsisModal}
           deptKey=${deptKey} eqId=${eqId} group=${group} machineName=${machineName}
           year=${yr.year} month=${synMonth}
           onClose=${() => setSynMonth(null)} onOpenWo=${onOpenWo} />`}
+        ${showEvents && html`<${ChartEventsModal} events=${events}
+          onChanged=${() => onEventsChanged && onEventsChanged()}
+          onClose=${() => setShowEvents(false)} />`}
         </${React.Fragment}>`;
     }
 
     function TrendsTab({ deptKey, eqId, machineName, onOpenWo }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
+      const [events, reloadEvents] = useChartEvents();
 
       useEffect(() => {
         setData(null); setErr(null);
@@ -2559,7 +3675,8 @@
             month name below — for an AI synopsis of what drove that month.
           </p>
           ${years.map((yr, i) => html`<${YearSection} key=${yr.year} yr=${yr} defaultOpen=${i === 0}
-            deptKey=${deptKey} eqId=${eqId} machineName=${machineName} onOpenWo=${onOpenWo} />`)}
+            deptKey=${deptKey} eqId=${eqId} machineName=${machineName}
+            events=${events} onEventsChanged=${reloadEvents} onOpenWo=${onOpenWo} />`)}
         </div>`;
     }
 
@@ -2569,11 +3686,22 @@
     function DeptTrendsTab({ deptKey, group, onOpenWo }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
+      const [machinesData, setMachinesData] = useState(null);
+      const [events, reloadEvents] = useChartEvents();
 
       useEffect(() => {
         setData(null); setErr(null);
         getJSON("/api/departments/" + deptKey + "/trends?group=" + encodeURIComponent(group))
           .then(setData).catch((e) => setErr(e.message));
+      }, [deptKey, group]);
+
+      // Per-machine yearly totals, fetched separately, to drive the "compare
+      // machines" Pareto chart in each year section.
+      useEffect(() => {
+        setMachinesData(null);
+        getJSON("/api/departments/" + deptKey + "/machines-trends?group=" + encodeURIComponent(group))
+          .then((d) => setMachinesData(d.machines || []))
+          .catch(() => setMachinesData([]));
       }, [deptKey, group]);
 
       if (err) return html`<div className="text-rose-600">${err}</div>`;
@@ -2582,6 +3710,14 @@
       const years = [...(data.years || [])].sort((a, b) => b.year - a.year);
       if (years.length === 0)
         return html`<div className="text-slate-400 py-8">No dated work orders to chart for ${group}.</div>`;
+
+      // Build {name, totals} for each machine, scoped to a given year, for
+      // the Pareto "compare machines" bars.
+      const machineTotalsForYear = (year) =>
+        (machinesData || []).map((m) => ({
+          name: m.name,
+          totals: (m.years.find((y) => y.year === year) || { totals: {} }).totals,
+        }));
 
       return html`
         <div className="space-y-4">
@@ -2592,7 +3728,9 @@
             month name below — for an AI synopsis of what drove that month.
           </p>
           ${years.map((yr, i) => html`<${YearSection} key=${yr.year} yr=${yr} defaultOpen=${i === 0}
-            deptKey=${deptKey} eqId=${null} group=${group} machineName=${group} onOpenWo=${onOpenWo} />`)}
+            deptKey=${deptKey} eqId=${null} group=${group} machineName=${group}
+            machineTotals=${machineTotalsForYear(yr.year)}
+            events=${events} onEventsChanged=${reloadEvents} onOpenWo=${onOpenWo} />`)}
         </div>`;
     }
 
@@ -2736,11 +3874,7 @@
         { key: "pm_replacement_cost", label: "Replacement Cost" },
         { key: "pm_manufacturer", label: "Manufacturer" },
         { key: "pm_distributor_a", label: "Distributor A" },
-        { key: "pm_distributor_b", label: "Distributor B" },
-        { key: "pm_distributor_c", label: "Distributor C" },
         { key: "pm_service_a", label: "Service A" },
-        { key: "pm_service_b", label: "Service B" },
-        { key: "pm_service_c", label: "Service C" },
       ];
       const SUMMARY_UTIL_KEYS = ["air", "water", "draine", "gas", "battery", "propane", "network"];
       const empty = {
@@ -2754,6 +3888,7 @@
       empty.pm_machine_settings = "";
       empty.pm_utilities = {};
       empty.pm_contacts = [];
+      empty.pm_logins = [];
 
       const [fields, setFields] = useState(empty);
       const [author, setAuthor] = useState(getUserName());
@@ -2761,7 +3896,15 @@
       const [ok, setOk] = useState(false);
       const [err, setErr] = useState(null);
       const [protectedEdit, setProtectedEdit] = useState(false);
+      const [authReady, setAuthReady] = useState(false);
+      const [machineInfoUnlocked, setMachineInfoUnlocked] = useState(false);
       const [gateAction, setGateAction] = useState(null);
+      const [aiBusy, setAiBusy] = useState(false);
+      const [aiErr, setAiErr] = useState(null);
+      const [aiNote, setAiNote] = useState(null);
+      // Original, uncleaned notes text so "Sort with AI" always sees the raw
+      // scraped comment/settings even after the local parser tidies the fields.
+      const rawRef = useRef({ comment: "", machine_settings: "" });
 
       const applySummary = (merged, summaryJson) => {
         try {
@@ -2771,6 +3914,8 @@
               merged.pm_utilities = summary[k] || {};
             } else if (k === "contacts") {
               merged.pm_contacts = Array.isArray(summary[k]) ? summary[k] : [];
+            } else if (k === "logins") {
+              merged.pm_logins = Array.isArray(summary[k]) ? summary[k] : [];
             } else {
               merged["pm_" + k] = summary[k] || "";
             }
@@ -2779,72 +3924,187 @@
         return merged;
       };
 
-      const extractCostFromComment = (text) => {
-        if (!text) return "";
-        const m = text.match(/\$\s*[\d,]+(?:\.\d{2})?/);
-        if (!m) return "";
-        return m[0].replace(/\s+/g, "").replace(/\$/g, "").replace(/,/g, "");
+      // Ensure a value is displayed with a leading $ and thousands separators.
+      const formatMoney = (val) => {
+        if (val === null || val === undefined) return "";
+        let s = String(val).trim();
+        if (!s) return "";
+        const num = s.replace(/[$,\s]/g, "");
+        if (/^\d+(\.\d+)?$/.test(num)) {
+          const parts = num.split(".");
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          return "$" + parts.join(".");
+        }
+        return s.startsWith("$") ? s : "$" + s;
       };
 
-      const extractContactsFromComment = (text) => {
-        if (!text) return [];
-        const contacts = [];
-        const seen = new Set();
-        const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
-        // Bounded phone regex. The old pattern used nested optional groups that caused
-        // catastrophic backtracking on some comments and hung the browser tab.
-        const phoneRe = /(?:\+?1[-.\s/]*)?(?:\(\d{3}\)|\d{3})[-.\s/]{0,3}\d{3}[-.\s/]{0,3}\d{4}(?:\s*(?:ext|x|ext\.)\s*\d{1,5})?/gi;
-        const phoneTestRe = /(?:\+?1[-.\s/]*)?(?:\(\d{3}\)|\d{3})[-.\s/]{0,3}\d{3}[-.\s/]{0,3}\d{4}(?:\s*(?:ext|x|ext\.)\s*\d{1,5})?/i;
-        const emailRe = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/;
-        const labelRe = /^\s*(p|c|f|cell|off|office|fax|phone|mobile)\s*[:\-]?\s*/i;
+      // Parse a free-form PM comment into structured contacts, logins,
+      // installation date and cost, AND return a cleaned comment with all of
+      // those extracted lines removed (so nothing is duplicated across cards).
+      const analyzeComment = (text) => {
+        const result = { contacts: [], logins: [], cost: "", purchaseDate: "", comment: text || "" };
+        if (!text) return result;
+
+        const lines = text.split(/\r?\n/).map((l) => l.trim());
+        const consumed = new Array(lines.length).fill(false);
+
+        const phoneReG = /(?:\+?1[-.\s/]*)?(?:\(\d{3}\)|\d{3})[-.\s/]{0,3}\d{3}[-.\s/]{0,3}\d{4}(?:\s*(?:ext|x|ext\.)\s*\d{1,5})?/gi;
+        const phoneRe1 = /(?:\+?1[-.\s/]*)?(?:\(\d{3}\)|\d{3})[-.\s/]{0,3}\d{3}[-.\s/]{0,3}\d{4}(?:\s*(?:ext|x|ext\.)\s*\d{1,5})?/i;
+        const emailReG = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
+        const emailRe1 = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/;
+        const parenNameRe = /^([A-Z][a-zA-Z\.]+(?:\s+[A-Z][a-zA-Z\.]+){1,5})\s*\(([^)]+)\)\s*$/;
+        const notNameWords = /\b(Technical Support|Service Manager|Installation Tech|Installer|East coast tech|CA tech|Machinery|Inc\.|LLC|Ltd|Corp|Company|Login|Password)\b/gi;
+        const moneyRe = /\$\s*([\d,]+(?:\.\d+)?)/;
 
         const looksLikeName = (s) => {
-          const clean = s.replace(/\b(Technical Support|Service Manager|Installation Tech|Installer|East coast tech|CA tech)\b/gi, "").trim();
+          const clean = s.replace(notNameWords, "").replace(/\s+/g, " ").trim();
+          if (!clean) return false;
           return /^[A-Z][a-zA-Z\.]+(?:\s+[A-Z][a-zA-Z\.]+){1,5}$/.test(clean) && clean.length < 60;
         };
-        const stripTail = (s) => s.replace(labelRe, "").trim().replace(/[:\-|,|]+$/, "").replace(/\s*\([^)]*\)\s*$/, "").trim();
+        const cleanRole = (s) => s.replace(/[|\-]/g, " at ").replace(/\s+/g, " ").trim();
 
+        // 1) Login lines (stored separately, removed from comment).
+        let currentLogin = null;
         lines.forEach((line, i) => {
-          const matches = line.match(phoneRe) || [];
-          matches.forEach((phone) => {
-            const idx = line.indexOf(phone);
-            let before = stripTail(line.slice(0, idx));
-            let name = "";
-            if (before && before.length > 1 && !phoneTestRe.test(before) && !emailRe.test(before) && before.split(/\s+/).length <= 8) {
-              name = before;
-            } else {
-              for (let j = i - 1; j >= Math.max(0, i - 3); j--) {
-                const prev = stripTail(lines[j]);
-                if (phoneTestRe.test(prev) || emailRe.test(prev) || prev.length > 80) continue;
-                if (looksLikeName(prev)) { name = prev; break; }
-              }
+          if (/^Operator Login:/i.test(line)) {
+            currentLogin = { label: "Operator", login: "", password: "" };
+            result.logins.push(currentLogin); consumed[i] = true;
+          } else if (/^Administrator Login:/i.test(line)) {
+            currentLogin = { label: "Administrator", login: "", password: "" };
+            result.logins.push(currentLogin); consumed[i] = true;
+          } else if (/^\s*Login:\s*\S+/i.test(line) || /^\s*Password:\s*\S+/i.test(line)) {
+            if (currentLogin) {
+              const lm = line.match(/Login:\s*(\S+)/i);
+              const pm = line.match(/Password:\s*(\S+)/i);
+              if (lm) currentLogin.login = lm[1];
+              if (pm) currentLogin.password = pm[1];
             }
-            const emailMatch = line.match(emailRe);
-            const email = emailMatch ? emailMatch[0] : "";
-            const key = (name + "|" + phone + "|" + email).toLowerCase();
-            if (seen.has(key)) return;
-            seen.add(key);
-            contacts.push({ name: name || phone, phone, email });
-          });
+            consumed[i] = true;
+          } else {
+            currentLogin = null;
+          }
         });
-        return contacts;
+
+        // 2) Installation date + cost line. The installation date moves to
+        // Purchase Date and the first amount seeds Original Cost, but any other
+        // expenses in the line stay in the Notes comment so nothing is lost.
+        lines.forEach((line, i) => {
+          if (consumed[i]) return;
+          const isInstall = /Installation Date:/i.test(line);
+          const isCost = /cost/i.test(line) && moneyRe.test(line);
+          if (!isInstall && !isCost) return;
+          const dm = line.match(/Installation Date:\s*([A-Za-z]{3,9}\.?\s+\d{1,2},?\s*\d{4})/i);
+          if (dm && !result.purchaseDate) result.purchaseDate = dm[1].trim();
+          const cm = line.match(moneyRe);
+          if (cm && !result.cost) result.cost = "$" + cm[1];
+          // Strip only the "Installation Date: <date>." prefix; keep the rest.
+          const residual = line
+            .replace(/Installation Date:\s*[A-Za-z]{3,9}\.?\s+\d{1,2},?\s*\d{4}\.?\s*/i, "")
+            .trim();
+          if (residual && moneyRe.test(residual)) {
+            lines[i] = residual; // remaining cost breakdown stays in the notes
+          } else {
+            consumed[i] = true;
+          }
+        });
+
+        // 3) Contacts: group consecutive lines starting on a name line.
+        const seen = new Set();
+        let groups = [];
+        let cur = [];
+        const groupHasContact = (g) => g.some((idx) => phoneRe1.test(lines[idx]) || emailRe1.test(lines[idx]));
+        const flush = () => { if (groupHasContact(cur)) groups.push(cur.slice()); cur = []; };
+        lines.forEach((line, i) => {
+          if (consumed[i] || !line) { flush(); return; }
+          const isName = parenNameRe.test(line) || looksLikeName(line);
+          if (isName) { flush(); cur = [i]; } else { cur.push(i); }
+        });
+        flush();
+
+        groups.forEach((group) => {
+          let name = "", role = "", company = "";
+          const phones = [];
+          const emails = [];
+          group.forEach((idx) => {
+            const line = lines[idx];
+            if (phoneRe1.test(line)) {
+              line.split("|").forEach((segment) => {
+                const m = segment.match(phoneReG);
+                if (!m) return;
+                const phone = m[0].trim();
+                const prefix = segment.slice(0, segment.indexOf(phone)).toLowerCase();
+                let label = "phone";
+                if (prefix.includes("cell") || prefix.includes("c ")) label = "cell";
+                else if (prefix.includes("fax") || prefix.includes("f ")) label = "fax";
+                else if (prefix.includes("phone") || prefix.includes("p ")) label = "phone";
+                else if (phones.length > 0) label = "secondary";
+                phones.push({ label, phone });
+              });
+              return;
+            }
+            const em = line.match(emailReG);
+            if (em) { emails.push(...em); return; }
+            const paren = line.match(parenNameRe);
+            if (paren) { name = paren[1].trim(); role = paren[2].trim(); return; }
+            if (looksLikeName(line)) { if (!name) name = line; return; }
+            const cleaned = cleanRole(line);
+            if (cleaned) company = company ? company + " at " + cleaned : cleaned;
+          });
+
+          if (!phones.length && !emails.length) return;
+          const key = (name + "|" + role + "|" + company).toLowerCase();
+          if (seen.has(key)) return;
+          seen.add(key);
+
+          const contact = { name: name || "", role: role || "", company: company || "",
+            phone: "", cell: "", fax: "", secondary: "", email: emails[0] || "" };
+          phones.forEach(({ label, phone }) => {
+            if (label === "phone" && !contact.phone) contact.phone = phone;
+            else if (label === "cell" && !contact.cell) contact.cell = phone;
+            else if (label === "fax" && !contact.fax) contact.fax = phone;
+            else if (label === "secondary" && !contact.secondary) contact.secondary = phone;
+            else if (!contact.secondary) contact.secondary = phone;
+            else contact.phone = contact.phone ? contact.phone + ", " + phone : phone;
+          });
+          result.contacts.push(contact);
+          group.forEach((idx) => { consumed[idx] = true; });
+        });
+
+        // 4) Cleaned comment = whatever is left over.
+        result.comment = lines.filter((l, i) => !consumed[i] && l).join("\n").replace(/\n{3,}/g, "\n\n").trim();
+        return result;
       };
 
       useEffect(() => {
-        getJSON("/api/edit-auth").then((d) => setProtectedEdit(!!d.protected)).catch(() => {});
+        getJSON("/api/edit-auth")
+          .then((d) => setProtectedEdit(!!d.protected))
+          .catch(() => {})
+          .finally(() => setAuthReady(true));
       }, []);
+
+      useEffect(() => { setMachineInfoUnlocked(false); }, [deptKey, eqId]);
 
       useEffect(() => {
         const merged = applySummary(Object.assign({}, empty, info || {}), info && info.summary_json);
         const comment = merged.pm_comment || "";
-        if (!merged.pm_contacts.length) {
-          merged.pm_contacts = extractContactsFromComment(comment);
+        rawRef.current = { comment, machine_settings: merged.pm_machine_settings || "" };
+        const hasStructured = (merged.pm_contacts && merged.pm_contacts.length) ||
+                              (merged.pm_logins && merged.pm_logins.length);
+        if (!hasStructured && comment) {
+          const a = analyzeComment(comment);
+          merged.pm_contacts = a.contacts;
+          merged.pm_logins = a.logins;
+          if (a.cost) {
+            const costVal = String(merged.pm_original_cost || "").replace(/[$,]/g, "");
+            if (!costVal || parseFloat(costVal) === 0) merged.pm_original_cost = a.cost;
+          }
+          if (a.purchaseDate && !merged.pm_purchase_date) merged.pm_purchase_date = a.purchaseDate;
+          merged.pm_comment = a.comment;
         }
-        const costVal = String(merged.pm_original_cost || "").replace(/,/g, "");
-        if ((!costVal || parseFloat(costVal) === 0) && comment) {
-          const extracted = extractCostFromComment(comment);
-          if (extracted) merged.pm_original_cost = extracted;
-        }
+        // Every money amount should show a dollar sign.
+        if (merged.pm_original_cost) merged.pm_original_cost = formatMoney(merged.pm_original_cost);
+        if (merged.pm_replacement_cost) merged.pm_replacement_cost = formatMoney(merged.pm_replacement_cost);
+        if (merged.replacement_cost) merged.replacement_cost = formatMoney(merged.replacement_cost);
         setFields(merged);
         setOk(false);
         setErr(null);
@@ -2869,22 +4129,28 @@
         setOk(false);
       };
       const addContact = () => {
-        setFields((f) => Object.assign({}, f, { pm_contacts: [...f.pm_contacts, { name: "", phone: "", email: "" }] }));
+        setFields((f) => Object.assign({}, f, {
+          pm_contacts: [...f.pm_contacts, { name: "", role: "", company: "", phone: "", cell: "", fax: "", secondary: "", email: "" }]
+        }));
         setOk(false);
       };
-      const removeContact = (idx) => {
+      const doRemoveContact = (idx) => {
         setFields((f) => Object.assign({}, f, { pm_contacts: f.pm_contacts.filter((_, i) => i !== idx) }));
         setOk(false);
       };
-
-      const isAuthed = () => !protectedEdit || !!getEditPw();
-      const locked = !isAuthed();
-      const requireAuth = (action) => {
-        if (isAuthed()) { action(); return; }
-        setGateAction(() => action);
+      // Deleting a contact always requires the shared edit password, even when
+      // the form is already unlocked, by forcing the PasswordGate.
+      const askRemoveContact = (idx) => {
+        if (!window.confirm("Delete this contact? You will need to enter the edit password.")) return;
+        setGateAction(() => () => doRemoveContact(idx));
       };
-      // Open the password gate purely to unlock the form (no follow-up action).
-      const unlock = () => setGateAction(() => () => {});
+
+      const locked = !authReady || (protectedEdit && !machineInfoUnlocked);
+      const requireAuth = (action) => {
+        if (!protectedEdit || machineInfoUnlocked) { action(); return; }
+        setGateAction(() => () => { setMachineInfoUnlocked(true); action(); });
+      };
+      const unlock = () => setGateAction(() => () => setMachineInfoUnlocked(true));
 
       const doSave = async () => {
         if (!author.trim()) { setErr("Your name is required."); return; }
@@ -2892,10 +4158,13 @@
         try {
           const summary = {};
           SUMMARY_FIELDS.forEach((f) => { summary[f.key.replace("pm_", "")] = fields[f.key] || ""; });
+          if (summary.original_cost) summary.original_cost = formatMoney(summary.original_cost);
+          if (summary.replacement_cost) summary.replacement_cost = formatMoney(summary.replacement_cost);
           summary.utilities = fields.pm_utilities || {};
           summary.comment = fields.pm_comment || "";
           summary.machine_settings = fields.pm_machine_settings || "";
           summary.contacts = fields.pm_contacts || [];
+          summary.logins = fields.pm_logins || [];
           const payload = Object.assign({}, fields, {
             summary_json: JSON.stringify(summary),
             author: author.trim(),
@@ -2906,6 +4175,7 @@
           delete payload.pm_machine_settings;
           delete payload.pm_utilities;
           delete payload.pm_contacts;
+          delete payload.pm_logins;
           const saved = await sendJSON(
             `/api/departments/${deptKey}/machines/${eqId}/info`,
             "PATCH",
@@ -2927,6 +4197,52 @@
 
       const save = () => requireAuth(doSave);
 
+      // Ask the LLM (Ollama Cloud) to sort the raw notes into categories.
+      const doSortWithAI = async () => {
+        setAiBusy(true); setAiErr(null); setAiNote(null); setOk(false);
+        try {
+          const raw = rawRef.current || {};
+          const res = await sendJSON(
+            `/api/departments/${deptKey}/machines/${eqId}/parse-notes`,
+            "POST",
+            {
+              comment: raw.comment || fields.pm_comment || "",
+              machine_settings: raw.machine_settings || fields.pm_machine_settings || "",
+            },
+            editHeaders()
+          );
+          setFields((f) => Object.assign({}, f, {
+            pm_contacts: res.contacts || [],
+            pm_logins: res.logins || [],
+            pm_original_cost: res.original_cost ? formatMoney(res.original_cost) : f.pm_original_cost,
+            pm_purchase_date: res.purchase_date || f.pm_purchase_date,
+            pm_comment: res.notes || "",
+            pm_machine_settings: res.machine_settings || "",
+          }));
+          setAiNote(res.source === "pm_original"
+            ? "Sorted from the original PM Equipment Summary data. Review and click Save Machine Info to keep it."
+            : "Sorted from the current notes (no original PM scrape found for this machine). Review and click Save.");
+        } catch (e) {
+          if (e.message && e.message.includes("401")) {
+            setEditPw("");
+            setAiErr("Editing is locked. Enter the shared edit password, then try again.");
+          } else {
+            setAiErr(e.message || "AI sorting failed.");
+          }
+        } finally { setAiBusy(false); }
+      };
+      const sortWithAI = () => requireAuth(doSortWithAI);
+
+      const logins = fields.pm_logins || [];
+      const updateLogin = (idx, key, value) => {
+        setFields((f) => {
+          const arr = [...(f.pm_logins || [])];
+          arr[idx] = Object.assign({}, arr[idx] || {}, { [key]: value });
+          return Object.assign({}, f, { pm_logins: arr });
+        });
+        setOk(false);
+      };
+
       return html`
         <div className="fade-in">
           <div className="mb-4">
@@ -2942,12 +4258,19 @@
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm uppercase tracking-wide text-emerald-600 font-bold">PM Equipment Summary</h3>
               <div className="flex items-center gap-2">
-                ${protectedEdit && html`<span className="text-[11px] px-2 py-0.5 rounded-full border ${isAuthed() ? "bg-emerald-50 text-emerald-700 border-emerald-100" : "bg-slate-100 text-slate-500 border-slate-200"}">${isAuthed() ? "🔓 Editing unlocked" : "🔒 Editing locked"}</span>`}
+                <button onClick=${sortWithAI} disabled=${aiBusy || locked}
+                  title="Use AI to sort the notes into contacts, logins, cost and notes"
+                  className="text-[11px] px-3 py-1 rounded-full bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:opacity-60 flex items-center gap-1">
+                  ${aiBusy ? "Sorting…" : "✨ Sort with AI"}</button>
+                ${protectedEdit && html`<span className="text-[11px] px-2 py-0.5 rounded-full border ${machineInfoUnlocked ? "bg-emerald-50 text-emerald-700 border-emerald-100" : "bg-slate-100 text-slate-500 border-slate-200"}">${machineInfoUnlocked ? "🔓 Editing unlocked" : "🔒 Editing locked"}</span>`}
                 ${locked && html`<button onClick=${unlock}
                   className="text-[11px] px-3 py-1 rounded-full bg-emerald-700 text-white font-semibold hover:bg-emerald-800">
                   Unlock editing</button>`}
               </div>
             </div>
+            ${aiErr && html`<div className="mb-4 bg-rose-50 text-rose-700 rounded-lg px-3 py-2 text-sm">${aiErr}</div>`}
+            ${aiBusy && html`<div className="mb-4 bg-indigo-50 text-indigo-700 rounded-lg px-3 py-2 text-sm">Sorting the notes with AI… this can take a few seconds. Review the results, then click Save.</div>`}
+            ${!aiBusy && aiNote && html`<div className="mb-4 bg-emerald-50 text-emerald-700 rounded-lg px-3 py-2 text-sm">${aiNote}</div>`}
 
             <fieldset disabled=${locked} className="border-0 p-0 m-0 min-w-0 space-y-4">
               <!-- Identification -->
@@ -3012,7 +4335,7 @@
                   <h4 className="text-sm font-bold text-slate-700">Supplier & Service</h4>
                 </div>
                 <div className="grid md:grid-cols-3 gap-3">
-                  ${["pm_manufacturer", "pm_distributor_a", "pm_distributor_b", "pm_distributor_c", "pm_service_a", "pm_service_b", "pm_service_c"].map((k) => {
+                  ${["pm_manufacturer", "pm_distributor_a", "pm_service_a"].map((k) => {
                     const f = SUMMARY_FIELDS.find((x) => x.key === k);
                     return html`<${TextInput} key=${k} label=${f.label} value=${fields[k]} placeholder="N/A"
                       onChange=${(v) => update(k, v)} />`;
@@ -3084,6 +4407,22 @@
                   <${TextArea} label="Machine Settings" value=${fields.pm_machine_settings} placeholder="N/A" rows=${4}
                     onChange=${(v) => update("pm_machine_settings", v)} />
                 </div>
+                ${logins.length > 0 && html`
+                  <div className="mt-4 bg-white rounded-xl border border-slate-200 p-3">
+                    <h5 className="text-xs font-bold uppercase text-slate-500 mb-3">Login Information</h5>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      ${logins.map((l, li) => html`
+                        <div key=${li} className="space-y-2">
+                          <div className="text-sm font-semibold text-slate-700">${l.label}</div>
+                          <div className="grid grid-cols-2 gap-2">
+                            <${TextInput} label="Login" value=${l.login || ""} placeholder="N/A"
+                              onChange=${(v) => updateLogin(li, "login", v)} />
+                            <${TextInput} label="Password" value=${l.password || ""} placeholder="N/A"
+                              onChange=${(v) => updateLogin(li, "password", v)} />
+                          </div>
+                        </div>`)}
+                    </div>
+                  </div>`}
               </div>
 
               <!-- Contacts -->
@@ -3099,26 +4438,53 @@
                   </button>
                 </div>
                 <div className="space-y-3">
-                  ${(fields.pm_contacts || []).map((c, i) => html`
-                    <div key=${i} className="grid md:grid-cols-3 gap-3 items-start p-3 rounded-xl bg-white border border-slate-200">
-                      <${TextInput} label="Name" value=${c.name || ""} placeholder="N/A"
-                        onChange=${(v) => updateContact(i, "name", v)} />
-                      <${TextInput} label="Phone" value=${c.phone || ""} placeholder="N/A"
-                        onChange=${(v) => updateContact(i, "phone", v)} />
-                      <div className="flex items-end gap-2">
-                        <div className="flex-1">
-                          <${TextInput} label="Email" value=${c.email || ""} placeholder="N/A"
-                            onChange=${(v) => updateContact(i, "email", v)} />
-                        </div>
-                        <button type="button" onClick=${() => removeContact(i)}
-                          className="mb-0.5 px-2 py-2 rounded-lg text-rose-600 hover:bg-rose-50 text-sm font-semibold"
+                  ${(fields.pm_contacts || []).map((c, i) => {
+                    const displayName = (c.name || "Unnamed") + (c.role ? " (" + c.role + ")" : "") + (c.company ? " - " + c.company : "");
+                    return html`
+                    <div key=${i} className="p-3 rounded-xl bg-white border border-slate-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="text-sm font-semibold text-slate-800">${displayName}</div>
+                        <button type="button" onClick=${() => askRemoveContact(i)}
+                          className="px-2 py-1 rounded-lg text-rose-600 hover:bg-rose-50 text-sm font-semibold"
                           title="Remove contact">
                           ✕
                         </button>
                       </div>
-                    </div>`)}
+                      <div className="grid md:grid-cols-4 gap-3">
+                        <${TextInput} label="Name" value=${c.name || ""} placeholder="N/A"
+                          onChange=${(v) => updateContact(i, "name", v)} />
+                        <${TextInput} label="Role" value=${c.role || ""} placeholder="N/A"
+                          onChange=${(v) => updateContact(i, "role", v)} />
+                        <${TextInput} label="Company" value=${c.company || ""} placeholder="N/A"
+                          onChange=${(v) => updateContact(i, "company", v)} />
+                        <${TextInput} label="Phone" value=${c.phone || ""} placeholder="N/A"
+                          onChange=${(v) => updateContact(i, "phone", v)} />
+                        <${TextInput} label="Cell" value=${c.cell || ""} placeholder="N/A"
+                          onChange=${(v) => updateContact(i, "cell", v)} />
+                        <${TextInput} label="Fax" value=${c.fax || ""} placeholder="N/A"
+                          onChange=${(v) => updateContact(i, "fax", v)} />
+                        <${TextInput} label="Secondary" value=${c.secondary || ""} placeholder="N/A"
+                          onChange=${(v) => updateContact(i, "secondary", v)} />
+                        <${TextInput} label="Email" value=${c.email || ""} placeholder="N/A"
+                          onChange=${(v) => updateContact(i, "email", v)} />
+                      </div>
+                    </div>`;
+                  })}
                   ${!(fields.pm_contacts || []).length && html`<p className="text-sm text-slate-500">No contacts found. Names and phone numbers are auto-detected from the Comment field when available.</p>`}
                 </div>
+                ${(info && info.assigned_vendors && info.assigned_vendors.length > 0) && html`
+                  <div className="mt-4 pt-3 border-t border-slate-200">
+                    <div className="text-[11px] font-bold text-indigo-600 uppercase tracking-wide mb-2">
+                      Assigned from Vendor list · edit on the BLA “Vendor & Utilities Contacts” tab</div>
+                    <div className="grid md:grid-cols-2 gap-3">
+                      ${info.assigned_vendors.map((v) => html`
+                        <div key=${v.id} className="p-3 rounded-xl bg-indigo-50/40 border border-indigo-100">
+                          <div className="text-sm font-semibold text-slate-800">${v.company || v.contact || "(unnamed)"}</div>
+                          ${v.contact && v.company && html`<div className="text-xs text-slate-500 mb-1 whitespace-pre-line">${v.contact}</div>`}
+                          <${ContactLines} c=${v} />
+                        </div>`)}
+                    </div>
+                  </div>`}
               </div>
 
               <div className="mt-2 border-t border-slate-100 pt-5">
@@ -4290,13 +5656,18 @@
       const [woId, setWoId] = useState(null);
       // Bumped whenever a work order changes, so list views can refetch.
       const [dataVersion, setDataVersion] = useState(0);
+      const [technicians, setTechnicians] = useState(TECHNICIANS);
 
-      // Deep link: /?wo=<id> (used by notification emails' "Link to Item"
-      // button) opens that work order in the modal on load.
       useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const wo = params.get("wo");
         if (wo) setWoId(wo);
+      }, []);
+
+      useEffect(() => {
+        getJSON("/api/technicians")
+          .then((d) => { if (Array.isArray(d.technicians) && d.technicians.length) setTechnicians(d.technicians); })
+          .catch(() => {});
       }, []);
 
       const goCompany = () => setRoute({ view: "company" });
@@ -4312,7 +5683,7 @@
 
       return html`
         <div className="min-h-screen">
-          <${Header} onHome=${goCompany} onOpenInactive=${openInactive} />
+          <${Header} technicians=${technicians} setTechnicians=${setTechnicians} onHome=${goCompany} onOpenInactive=${openInactive} onOpenWo=${setWoId} />
           <main className="max-w-6xl mx-auto px-6 py-8">
             ${route.view === "company" && html`<${CompanyDashboard} onOpenDivision=${openDivision} />`}
             ${route.view === "inactive" && html`<${InactivePage} onCompany=${goCompany} onOpenDept=${openDept} />`}
@@ -4333,7 +5704,7 @@
                 onHome=${goDivision} onCompany=${goCompany}
                 onOpenDept=${openDept} onOpenWo=${setWoId} />`}
           </main>
-          ${woId && html`<${WorkOrderModal} woId=${woId} onClose=${() => setWoId(null)}
+          ${woId && html`<${WorkOrderModal} woId=${woId} technicians=${technicians} onClose=${() => setWoId(null)}
             onOpenWo=${setWoId} onChanged=${() => setDataVersion((v) => v + 1)} />`}
         </div>`;
     }
