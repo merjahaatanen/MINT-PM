@@ -235,6 +235,31 @@ def _init() -> None:
                 updated_at       TEXT NOT NULL,
                 updated_by       TEXT NOT NULL DEFAULT ''
             );
+
+            CREATE TABLE IF NOT EXISTS floorplan_items (
+                id         TEXT PRIMARY KEY,
+                dept_key   TEXT NOT NULL,
+                eq_id      TEXT NOT NULL DEFAULT '',
+                label      TEXT NOT NULL DEFAULT '',
+                x          REAL NOT NULL DEFAULT 0,
+                y          REAL NOT NULL DEFAULT 0,
+                w          REAL NOT NULL DEFAULT 100,
+                h          REAL NOT NULL DEFAULT 60,
+                z          INTEGER NOT NULL DEFAULT 0,
+                updated_at TEXT NOT NULL,
+                updated_by TEXT NOT NULL DEFAULT ''
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_floorplan_dept ON floorplan_items (dept_key);
+
+            CREATE TABLE IF NOT EXISTS machine_nicknames (
+                dept_key   TEXT NOT NULL,
+                eq_id      TEXT NOT NULL,
+                nickname   TEXT NOT NULL DEFAULT '',
+                updated_at TEXT NOT NULL,
+                updated_by TEXT NOT NULL DEFAULT '',
+                PRIMARY KEY (dept_key, eq_id)
+            );
             """
         )
         # Migration: add summary_json column if it exists from an older schema.
@@ -490,6 +515,70 @@ def set_machine_info(dept_key: str, eq_id: str, fields: dict,
         )
     _audit("", author, "edit_machine_info", f"{dept_key}:{eq_id}")
     return get_machine_info(dept_key, eq_id)
+
+
+# --------------------------------------------------------------------------- #
+# Machine nicknames (admin-set display name; PM name is preserved untouched)
+# --------------------------------------------------------------------------- #
+def list_nicknames(dept_key: str = "") -> dict:
+    """Return {eq_id: nickname} for one department, or {dept_key: {eq_id:
+    nickname}} for every department when dept_key is blank."""
+    with _connect() as c:
+        if (dept_key or "").strip():
+            rows = c.execute(
+                "SELECT eq_id, nickname FROM machine_nicknames WHERE dept_key = ?",
+                (dept_key.strip(),),
+            ).fetchall()
+            return {r["eq_id"]: r["nickname"] for r in rows if (r["nickname"] or "").strip()}
+        rows = c.execute("SELECT dept_key, eq_id, nickname FROM machine_nicknames").fetchall()
+        out: dict = {}
+        for r in rows:
+            if (r["nickname"] or "").strip():
+                out.setdefault(r["dept_key"], {})[r["eq_id"]] = r["nickname"]
+        return out
+
+
+def get_nickname(dept_key: str, eq_id: str) -> str:
+    dept_key = (dept_key or "").strip()
+    eq_id = (eq_id or "").strip()
+    if not dept_key or not eq_id:
+        return ""
+    with _connect() as c:
+        row = c.execute(
+            "SELECT nickname FROM machine_nicknames WHERE dept_key = ? AND eq_id = ?",
+            (dept_key, eq_id),
+        ).fetchone()
+    return (row["nickname"] if row else "") or ""
+
+
+def set_nickname(dept_key: str, eq_id: str, nickname: str, author: str = "") -> str:
+    """Set (or clear, when blank) the display nickname for a machine. The PM
+    equipment name is never modified. Returns the stored nickname."""
+    dept_key = (dept_key or "").strip()
+    eq_id = (eq_id or "").strip()
+    nickname = (nickname or "").strip()
+    if not dept_key or not eq_id:
+        raise ValueError("dept_key and eq_id are required")
+    now = _now()
+    with _lock, _connect() as c:
+        if nickname:
+            c.execute(
+                """INSERT INTO machine_nicknames
+                (dept_key, eq_id, nickname, updated_at, updated_by)
+                VALUES (?, ?, ?, ?, ?)
+                ON CONFLICT(dept_key, eq_id) DO UPDATE SET
+                    nickname = excluded.nickname,
+                    updated_at = excluded.updated_at,
+                    updated_by = excluded.updated_by""",
+                (dept_key, eq_id, nickname, now, author or ""),
+            )
+        else:
+            c.execute(
+                "DELETE FROM machine_nicknames WHERE dept_key = ? AND eq_id = ?",
+                (dept_key, eq_id),
+            )
+    _audit("", author, "set_nickname", f"{dept_key}:{eq_id} -> {nickname or '(cleared)'}")
+    return nickname
 
 
 # --------------------------------------------------------------------------- #
@@ -1158,3 +1247,52 @@ def seed_technicians() -> None:
 
 
 seed_technicians()
+
+
+# --------------------------------------------------------------------------- #
+# Floor plan (per-department machine layout)
+# --------------------------------------------------------------------------- #
+# A department's floor plan is a flat list of rectangular items positioned on a
+# fixed logical canvas (see server.py FLOORPLAN_CANVAS). Each item may link to a
+# machine via eq_id (numeric portion) so the UI can show live stats / highlight
+# critical work orders, or be a label-only box (eq_id == "") for aisles, benches
+# and equipment not tracked in MINT. Layout edits are admin-gated in server.py.
+def list_floorplan(dept_key: str) -> list[dict]:
+    dept_key = (dept_key or "").strip()
+    with _connect() as c:
+        rows = c.execute(
+            "SELECT * FROM floorplan_items WHERE dept_key = ? ORDER BY z, id",
+            (dept_key,),
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def save_floorplan(dept_key: str, items: list[dict], author: str = "") -> list[dict]:
+    """Replace the entire floor-plan layout for a department in one atomic swap.
+    `items` is the full desired set; anything not present is removed."""
+    dept_key = (dept_key or "").strip()
+    if not dept_key:
+        raise ValueError("dept_key is required")
+    now = _now()
+    clean: list[tuple] = []
+    for it in items or []:
+        iid = str(it.get("id") or uuid.uuid4().hex)
+        clean.append((
+            iid, dept_key,
+            str(it.get("eq_id") or "").strip(),
+            str(it.get("label") or "").strip(),
+            float(it.get("x") or 0), float(it.get("y") or 0),
+            float(it.get("w") or 100), float(it.get("h") or 60),
+            int(it.get("z") or 0), now, author or "",
+        ))
+    with _lock, _connect() as c:
+        c.execute("DELETE FROM floorplan_items WHERE dept_key = ?", (dept_key,))
+        if clean:
+            c.executemany(
+                "INSERT INTO floorplan_items "
+                "(id, dept_key, eq_id, label, x, y, w, h, z, updated_at, updated_by) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                clean,
+            )
+    _audit("", author, "save_floorplan", f"{dept_key}: {len(clean)} items")
+    return list_floorplan(dept_key)

@@ -5,7 +5,7 @@
     "equipment_name": "Foam Soap Dispensers (at sinks)",
     "department": "Maintenance",
     "wo_id": "19884",
-    "audit_item": "\u2022 Remove Nozzle Tip with mesh screen and run under warm water.\n     \u2022 To remove Nozzle Tip for cleaning, cover the Sensor area with\n        your finger to prevent dispensing of soap. Turn Nozzle to the left to\n        loosen. Rinse Nozzle under hot water to loosen any soap residue and\n        replace. Turn Nozzle to the right to tighten\n\u2022 Place hand under Nozzle Tip to be sure soap is properly dispensed\n\u2022 Gently wipe the dispenser with a cloth moistened with warm water and a diluted\nneutral detergent\n\u2022 Clean area between Lid and Spout to keep Lid swing free of soap residue\n\u2022 Flush the system when minimal amount of soap is left in the bottle\n       \u2022 Open the top-fill door using the BobKey, rotate door clockwise\n       \u2022 Fill the dispenser with warm water.\n       \u2022 Press the Automatic Flush Button located on the bottom housing assembly, just\n          above the Partition Control Knob.\n       \u2022 Once unit is flushed, Press the Automatic Flush Button again to stop dispensing.\n       \u2022 Fill unit with fresh soap.\n\u2022 Place hand under Nozzle Tip to be sure soap is properly dispensed.\n\nI found this information online (Advisory Bulletin). https://www.bobrick.com/wp-content/uploads/TB-99.pdf\n\nNOTES:\nPlease be concerned with the traffic on the sink usage, PM will take about ten to twenty mins for each unit. Depending on the soap amount inside the container.\nIf possible, perform the PM partially to allow the traffic to use the other sink. \nTo save soap, it's best to perform the PM when the soap is at low level. Maybe early morning or late afternoon.",
+    "audit_item": "• Remove Nozzle Tip with mesh screen and run under warm water.\n     • To remove Nozzle Tip for cleaning, cover the Sensor area with\n        your finger to prevent dispensing of soap. Turn Nozzle to the left to\n        loosen. Rinse Nozzle under hot water to loosen any soap residue and\n        replace. Turn Nozzle to the right to tighten\n• Place hand under Nozzle Tip to be sure soap is properly dispensed\n• Gently wipe the dispenser with a cloth moistened with warm water and a diluted\nneutral detergent\n• Clean area between Lid and Spout to keep Lid swing free of soap residue\n• Flush the system when minimal amount of soap is left in the bottle\n       • Open the top-fill door using the BobKey, rotate door clockwise\n       • Fill the dispenser with warm water.\n       • Press the Automatic Flush Button located on the bottom housing assembly, just\n          above the Partition Control Knob.\n       • Once unit is flushed, Press the Automatic Flush Button again to stop dispensing.\n       • Fill unit with fresh soap.\n• Place hand under Nozzle Tip to be sure soap is properly dispensed.\n\nI found this information online (Advisory Bulletin). https://www.bobrick.com/wp-content/uploads/TB-99.pdf\n\nNOTES:\nPlease be concerned with the traffic on the sink usage, PM will take about ten to twenty mins for each unit. Depending on the soap amount inside the container.\nIf possible, perform the PM partially to allow the traffic to use the other sink. \nTo save soap, it's best to perform the PM when the soap is at low level. Maybe early morning or late afternoon.",
     "status": "Closed and Completed",
     "due_date": "6/17/2026",
     "work_performed_by": "Colton, PU",
@@ -8734,7 +8734,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/30/2022",
-    "comments": "Miguel Diaz - 07/01/22  6:55:15 AM:\u00a0Remove metal covers \n*Remove and clean trash collected inside use putty knife and wire brush to remove stuck dirt on the edges, corners and screens .\n*Use broom to pick up any remaining trash on the bottom of the pit .\n*Place everything back",
+    "comments": "Miguel Diaz - 07/01/22  6:55:15 AM: Remove metal covers \n*Remove and clean trash collected inside use putty knife and wire brush to remove stuck dirt on the edges, corners and screens .\n*Use broom to pick up any remaining trash on the bottom of the pit .\n*Place everything back",
     "attachments": []
   },
   {
@@ -8751,7 +8751,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/13/2023",
-    "comments": "Maksim Bushka - 02/13/23  8:43:33 AM:\u00a0Removed covers and clean up.",
+    "comments": "Maksim Bushka - 02/13/23  8:43:33 AM: Removed covers and clean up.",
     "attachments": []
   },
   {
@@ -8768,7 +8768,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/1/2023",
-    "comments": "Maksim Bushka - 06/01/23  9:45:57 AM:\u00a0Cleaned up",
+    "comments": "Maksim Bushka - 06/01/23  9:45:57 AM: Cleaned up",
     "attachments": []
   },
   {
@@ -8904,7 +8904,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/28/2026",
-    "comments": "Maksim Bushka - 03/03/26  2:10:12 PM:\u00a0Scheduled Date: 02-21-2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up",
+    "comments": "Maksim Bushka - 03/03/26  2:10:12 PM: Scheduled Date: 02-21-2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up",
     "attachments": []
   },
   {
@@ -9346,7 +9346,7 @@
     "material_cost": "25.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/20/2023",
-    "comments": "Maksim Bushka - 03/20/23 12:28:16 PM:\u00a0Applied graphite lubricant in all locks.",
+    "comments": "Maksim Bushka - 03/20/23 12:28:16 PM: Applied graphite lubricant in all locks.",
     "attachments": []
   },
   {
@@ -17438,7 +17438,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/31/2022",
-    "comments": "Miguel Diaz - 04/06/22 10:24:43 AM:\u00a0gate is closing properly",
+    "comments": "Miguel Diaz - 04/06/22 10:24:43 AM: gate is closing properly",
     "attachments": []
   },
   {
@@ -17455,7 +17455,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/31/2022",
-    "comments": "Miguel Diaz - 04/06/22 10:23:04 AM:\u00a0CHECKED ALL BUTTON FOR OPERATION",
+    "comments": "Miguel Diaz - 04/06/22 10:23:04 AM: CHECKED ALL BUTTON FOR OPERATION",
     "attachments": []
   },
   {
@@ -17472,7 +17472,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/1/2022",
-    "comments": "Miguel Diaz - 06/01/22  7:51:28 AM:\u00a0 Placed fire system on test and climbed to the roof and replaced the smoke alarm for this elevator .\nOpen dirty smoke alarm and cleaned it for the next swap",
+    "comments": "Miguel Diaz - 06/01/22  7:51:28 AM:  Placed fire system on test and climbed to the roof and replaced the smoke alarm for this elevator .\nOpen dirty smoke alarm and cleaned it for the next swap",
     "attachments": []
   },
   {
@@ -17489,7 +17489,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/13/2023",
-    "comments": "Maksim Bushka - 01/13/23  9:46:19 AM:\u00a0Did PM",
+    "comments": "Maksim Bushka - 01/13/23  9:46:19 AM: Did PM",
     "attachments": []
   },
   {
@@ -17506,7 +17506,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/3/2023",
-    "comments": "Maksim Bushka - 04/03/23  2:24:46 PM:\u00a0Removed the smock detector for elevator # 2 cleaned up.",
+    "comments": "Maksim Bushka - 04/03/23  2:24:46 PM: Removed the smock detector for elevator # 2 cleaned up.",
     "attachments": []
   },
   {
@@ -17523,7 +17523,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/5/2023",
-    "comments": "Maksim Bushka - 07/05/23 10:42:38 AM:\u00a0Dane ok",
+    "comments": "Maksim Bushka - 07/05/23 10:42:38 AM: Dane ok",
     "attachments": []
   },
   {
@@ -17693,7 +17693,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/11/2026",
-    "comments": "Maksim Bushka - 02/20/26  4:50:32 PM:\u00a0Scheduled Date: 02-03-2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Swapped and cleaned",
+    "comments": "Maksim Bushka - 02/20/26  4:50:32 PM: Scheduled Date: 02-03-2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Swapped and cleaned",
     "attachments": []
   },
   {
@@ -17710,7 +17710,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/1/2026",
-    "comments": "Maksim Bushka - 06/04/26  1:03:15 PM:\u00a0Scheduled Date: 05/20/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Swapped and cleaned.",
+    "comments": "Maksim Bushka - 06/04/26  1:03:15 PM: Scheduled Date: 05/20/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Swapped and cleaned.",
     "attachments": []
   },
   {
@@ -17744,7 +17744,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/20/2022",
-    "comments": "Miguel Diaz - 10/21/22 11:04:21 AM:\u00a0done",
+    "comments": "Miguel Diaz - 10/21/22 11:04:21 AM: done",
     "attachments": []
   },
   {
@@ -17761,7 +17761,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/1/2022",
-    "comments": "Miguel Diaz - 11/07/22  7:32:21 AM:\u00a0Found that when moving the battery connector lift turns on .Need to call in Raymond tech to replace the battery wire connectors they are worn out .Aligned cord so that it stays on for now till its fixed .",
+    "comments": "Miguel Diaz - 11/07/22  7:32:21 AM: Found that when moving the battery connector lift turns on .Need to call in Raymond tech to replace the battery wire connectors they are worn out .Aligned cord so that it stays on for now till its fixed .",
     "attachments": []
   },
   {
@@ -17778,7 +17778,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/23/2022",
-    "comments": "Miguel Diaz - 11/23/22  8:31:03 AM:\u00a0this is already part of their list",
+    "comments": "Miguel Diaz - 11/23/22  8:31:03 AM: this is already part of their list",
     "attachments": []
   },
   {
@@ -17795,7 +17795,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/23/2022",
-    "comments": "Miguel Diaz - 11/23/22  8:32:28 AM:\u00a0done",
+    "comments": "Miguel Diaz - 11/23/22  8:32:28 AM: done",
     "attachments": []
   },
   {
@@ -17812,7 +17812,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/29/2022",
-    "comments": "Miguel Diaz - 12/01/22  8:19:34 AM:\u00a0done",
+    "comments": "Miguel Diaz - 12/01/22  8:19:34 AM: done",
     "attachments": []
   },
   {
@@ -17846,7 +17846,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/12/2023",
-    "comments": "Miguel Diaz - 01/12/23  1:14:40 PM:\u00a0checked all found no ponding all connections are in place found none loose or flapping in the wind",
+    "comments": "Miguel Diaz - 01/12/23  1:14:40 PM: checked all found no ponding all connections are in place found none loose or flapping in the wind",
     "attachments": []
   },
   {
@@ -17863,7 +17863,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/14/2023",
-    "comments": "Maksim Bushka - 02/14/23  8:28:25 AM:\u00a0Check up the stations operate and clean up",
+    "comments": "Maksim Bushka - 02/14/23  8:28:25 AM: Check up the stations operate and clean up",
     "attachments": []
   },
   {
@@ -17880,7 +17880,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/15/2023",
-    "comments": "Miguel Diaz - 03/15/23 11:12:47 AM:\u00a0Checked that all solenoid valves are activating all are working properly",
+    "comments": "Miguel Diaz - 03/15/23 11:12:47 AM: Checked that all solenoid valves are activating all are working properly",
     "attachments": []
   },
   {
@@ -17914,7 +17914,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/5/2023",
-    "comments": "Maksim Bushka - 06/05/23 11:14:11 AM:\u00a0Removed graphite's on the emergency exit stairway east side.",
+    "comments": "Maksim Bushka - 06/05/23 11:14:11 AM: Removed graphite's on the emergency exit stairway east side.",
     "attachments": []
   },
   {
@@ -17948,7 +17948,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/7/2023",
-    "comments": "Miguel Diaz - 08/14/23  7:52:43 AM:\u00a0added wd-40",
+    "comments": "Miguel Diaz - 08/14/23  7:52:43 AM: added wd-40",
     "attachments": []
   },
   {
@@ -17999,7 +17999,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/27/2023",
-    "comments": "Maksim Bushka - 11/27/23  8:57:56 AM:\u00a0Replaced the front low wheal on stalker # 19",
+    "comments": "Maksim Bushka - 11/27/23  8:57:56 AM: Replaced the front low wheal on stalker # 19",
     "attachments": []
   },
   {
@@ -18288,7 +18288,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/17/2025",
-    "comments": "Maksim Bushka - 04/23/25  7:17:24 PM:\u00a0Replaced all 3 filters.",
+    "comments": "Maksim Bushka - 04/23/25  7:17:24 PM: Replaced all 3 filters.",
     "attachments": []
   },
   {
@@ -18441,7 +18441,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/15/2026",
-    "comments": "Maksim Bushka - 01/24/26  9:05:54 AM:\u00a0Scheduled Date: 01-16-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cline up all stations",
+    "comments": "Maksim Bushka - 01/24/26  9:05:54 AM: Scheduled Date: 01-16-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cline up all stations",
     "attachments": []
   },
   {
@@ -18458,7 +18458,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/2/2026",
-    "comments": "Maksim Bushka - 03/03/26  2:12:32 PM:\u00a0Scheduled Date: 02-24-2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up and operated",
+    "comments": "Maksim Bushka - 03/03/26  2:12:32 PM: Scheduled Date: 02-24-2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up and operated",
     "attachments": []
   },
   {
@@ -18475,7 +18475,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/6/2026",
-    "comments": "Maksim Bushka - 04/09/26 12:54:34 PM:\u00a0Scheduled Date: 04/03/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Maintenance performed",
+    "comments": "Maksim Bushka - 04/09/26 12:54:34 PM: Scheduled Date: 04/03/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Maintenance performed",
     "attachments": []
   },
   {
@@ -18492,7 +18492,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/7/2026",
-    "comments": "Maksim Bushka - 05/07/26 12:58:55 PM:\u00a0Scheduled Date: 05/09/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and noted the 1 1/2 union is leaking on emergency eye wash and will be fixed on Saturday.",
+    "comments": "Maksim Bushka - 05/07/26 12:58:55 PM: Scheduled Date: 05/09/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and noted the 1 1/2 union is leaking on emergency eye wash and will be fixed on Saturday.",
     "attachments": []
   },
   {
@@ -18526,7 +18526,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/6/2022",
-    "comments": "Miguel Diaz - 04/06/22 10:25:28 AM:\u00a0all air regulator have oil in them and are working properly",
+    "comments": "Miguel Diaz - 04/06/22 10:25:28 AM: all air regulator have oil in them and are working properly",
     "attachments": []
   },
   {
@@ -18543,7 +18543,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/26/2022",
-    "comments": "Miguel Diaz - 11/07/22  7:34:00 AM:\u00a0checked all regulators",
+    "comments": "Miguel Diaz - 11/07/22  7:34:00 AM: checked all regulators",
     "attachments": []
   },
   {
@@ -18560,7 +18560,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/1/2022",
-    "comments": "Miguel Diaz - 12/01/22  8:19:10 AM:\u00a0done",
+    "comments": "Miguel Diaz - 12/01/22  8:19:10 AM: done",
     "attachments": []
   },
   {
@@ -18594,7 +18594,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/6/2023",
-    "comments": "Miguel Diaz - 03/06/23 10:23:20 AM:\u00a0all regulators have oil",
+    "comments": "Miguel Diaz - 03/06/23 10:23:20 AM: all regulators have oil",
     "attachments": []
   },
   {
@@ -18611,7 +18611,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2023",
-    "comments": "Miguel Diaz - 04/17/23  7:01:01 AM:\u00a0checked regulators all are working properly",
+    "comments": "Miguel Diaz - 04/17/23  7:01:01 AM: checked regulators all are working properly",
     "attachments": []
   },
   {
@@ -18645,7 +18645,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/3/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:55:51 AM:\u00a0all regulators have been checked",
+    "comments": "Miguel Diaz - 08/03/23  6:55:51 AM: all regulators have been checked",
     "attachments": []
   },
   {
@@ -18679,7 +18679,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/8/2023",
-    "comments": "Miguel Diaz - 12/08/23  7:44:51 AM:\u00a0lubed rotary valve with air lube",
+    "comments": "Miguel Diaz - 12/08/23  7:44:51 AM: lubed rotary valve with air lube",
     "attachments": []
   },
   {
@@ -18696,7 +18696,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/7/2024",
-    "comments": "Miguel Diaz - 02/08/24  8:48:24 AM:\u00a0all are at good levels",
+    "comments": "Miguel Diaz - 02/08/24  8:48:24 AM: all are at good levels",
     "attachments": []
   },
   {
@@ -18713,7 +18713,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/8/2024",
-    "comments": "Miguel Diaz - 04/08/24 11:48:11 AM:\u00a0Replaced all three bulbs",
+    "comments": "Miguel Diaz - 04/08/24 11:48:11 AM: Replaced all three bulbs",
     "attachments": []
   },
   {
@@ -18730,7 +18730,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/12/2024",
-    "comments": "Miguel Diaz - 06/12/24 10:43:32 AM:\u00a0done checked unit s",
+    "comments": "Miguel Diaz - 06/12/24 10:43:32 AM: done checked unit s",
     "attachments": []
   },
   {
@@ -18747,7 +18747,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/6/2022",
-    "comments": "Miguel Diaz - 04/06/22 10:26:10 AM:\u00a0unit is working properly",
+    "comments": "Miguel Diaz - 04/06/22 10:26:10 AM: unit is working properly",
     "attachments": []
   },
   {
@@ -18764,7 +18764,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/31/2022",
-    "comments": "Miguel Diaz - 05/31/22  8:35:57 AM:\u00a0sprayed all moving areas with wd-40 cannot grease nipples are smalls grease falls out Bart cleaned the box",
+    "comments": "Miguel Diaz - 05/31/22  8:35:57 AM: sprayed all moving areas with wd-40 cannot grease nipples are smalls grease falls out Bart cleaned the box",
     "attachments": []
   },
   {
@@ -18781,7 +18781,7 @@
     "material_cost": "10.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/13/2023",
-    "comments": "Maksim Bushka - 01/13/23  9:41:56 AM:\u00a0Did PM",
+    "comments": "Maksim Bushka - 01/13/23  9:41:56 AM: Did PM",
     "attachments": []
   },
   {
@@ -18798,7 +18798,7 @@
     "material_cost": "10.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/30/2023",
-    "comments": "Maksim Bushka - 03/30/23 11:13:59 AM:\u00a0Greased the gate arms.",
+    "comments": "Maksim Bushka - 03/30/23 11:13:59 AM: Greased the gate arms.",
     "attachments": []
   },
   {
@@ -18815,7 +18815,7 @@
     "material_cost": "10.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/30/2023",
-    "comments": "Maksim Bushka - 03/30/23 11:15:42 AM:\u00a0Greased the gate swing arms.",
+    "comments": "Maksim Bushka - 03/30/23 11:15:42 AM: Greased the gate swing arms.",
     "attachments": []
   },
   {
@@ -18832,7 +18832,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/26/2023",
-    "comments": "Maksim Bushka - 06/26/23  9:58:14 AM:\u00a0Clean up and grease.",
+    "comments": "Maksim Bushka - 06/26/23  9:58:14 AM: Clean up and grease.",
     "attachments": []
   },
   {
@@ -18849,7 +18849,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/26/2023",
-    "comments": "Maksim Bushka - 06/26/23  9:59:17 AM:\u00a0Clean up and grease.",
+    "comments": "Maksim Bushka - 06/26/23  9:59:17 AM: Clean up and grease.",
     "attachments": []
   },
   {
@@ -19172,7 +19172,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/7/2026",
-    "comments": "Maksim Bushka - 01/24/26  8:57:33 AM:\u00a0Scheduled Date: 01-07-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and lubed",
+    "comments": "Maksim Bushka - 01/24/26  8:57:33 AM: Scheduled Date: 01-07-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and lubed",
     "attachments": []
   },
   {
@@ -19189,7 +19189,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/7/2026",
-    "comments": "Maksim Bushka - 01/24/26  8:56:04 AM:\u00a0Scheduled Date: 01-07-2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and lubed",
+    "comments": "Maksim Bushka - 01/24/26  8:56:04 AM: Scheduled Date: 01-07-2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and lubed",
     "attachments": []
   },
   {
@@ -19206,7 +19206,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/16/2026",
-    "comments": "Maksim Bushka - 04/29/26  7:44:58 PM:\u00a0Checked up and lubed",
+    "comments": "Maksim Bushka - 04/29/26  7:44:58 PM: Checked up and lubed",
     "attachments": []
   },
   {
@@ -19223,7 +19223,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/1/2026",
-    "comments": "Maksim Bushka - 05/05/26  2:16:59 PM:\u00a0Scheduled Date: 04/24/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A   Lubed ok",
+    "comments": "Maksim Bushka - 05/05/26  2:16:59 PM: Scheduled Date: 04/24/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A   Lubed ok",
     "attachments": []
   },
   {
@@ -19257,7 +19257,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/6/2022",
-    "comments": "Miguel Diaz - 09/15/22  6:30:05 AM:\u00a0Acco did stop by and added a special oil t the water hot loop line",
+    "comments": "Miguel Diaz - 09/15/22  6:30:05 AM: Acco did stop by and added a special oil t the water hot loop line",
     "attachments": []
   },
   {
@@ -19274,7 +19274,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2023",
-    "comments": "Miguel Diaz - 06/13/23  1:37:09 PM:\u00a0no procedure is in place",
+    "comments": "Miguel Diaz - 06/13/23  1:37:09 PM: no procedure is in place",
     "attachments": []
   },
   {
@@ -19308,7 +19308,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/4/2023",
-    "comments": "Miguel Diaz - 01/09/24  8:32:24 AM:\u00a0gate is closing properly",
+    "comments": "Miguel Diaz - 01/09/24  8:32:24 AM: gate is closing properly",
     "attachments": []
   },
   {
@@ -19325,7 +19325,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/15/2024",
-    "comments": "Miguel Diaz - 07/15/24  8:00:15 AM:\u00a0acco to do this closing reminder",
+    "comments": "Miguel Diaz - 07/15/24  8:00:15 AM: acco to do this closing reminder",
     "attachments": []
   },
   {
@@ -19342,7 +19342,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/28/2025",
-    "comments": "Miguel Diaz - 03/03/25 10:56:36 AM:\u00a0ACCO Came by and did the hot loop treatment they added 1 gallon of juice .",
+    "comments": "Miguel Diaz - 03/03/25 10:56:36 AM: ACCO Came by and did the hot loop treatment they added 1 gallon of juice .",
     "attachments": []
   },
   {
@@ -19359,7 +19359,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/21/2025",
-    "comments": "Sean Jennings - 12/30/25 10:17:34 AM:\u00a0Work completed by Acco on 8/21.",
+    "comments": "Sean Jennings - 12/30/25 10:17:34 AM: Work completed by Acco on 8/21.",
     "attachments": []
   },
   {
@@ -19393,7 +19393,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/22/2022",
-    "comments": "Miguel Diaz - 06/28/22  1:55:53 PM:\u00a0acco just replaced all AC filters on the roof and server room",
+    "comments": "Miguel Diaz - 06/28/22  1:55:53 PM: acco just replaced all AC filters on the roof and server room",
     "attachments": []
   },
   {
@@ -19410,7 +19410,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/6/2023",
-    "comments": "Miguel Diaz - 12/29/22  1:36:27 PM:\u00a0not safe to do so also last time we cleaned them it was worse than before",
+    "comments": "Miguel Diaz - 12/29/22  1:36:27 PM: not safe to do so also last time we cleaned them it was worse than before",
     "attachments": []
   },
   {
@@ -19427,7 +19427,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/22/2023",
-    "comments": "Miguel Diaz - 03/22/23  1:41:20 PM:\u00a0ACCOis scheduled to replace the filters this Friday 3-22-23",
+    "comments": "Miguel Diaz - 03/22/23  1:41:20 PM: ACCOis scheduled to replace the filters this Friday 3-22-23",
     "attachments": []
   },
   {
@@ -19444,7 +19444,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/23/2023",
-    "comments": "Miguel Diaz - 07/29/23  8:56:51 AM:\u00a0REPLACED TRIM CUTTERS BOTH WITH NEW SET",
+    "comments": "Miguel Diaz - 07/29/23  8:56:51 AM: REPLACED TRIM CUTTERS BOTH WITH NEW SET",
     "attachments": []
   },
   {
@@ -19478,7 +19478,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/30/2024",
-    "comments": "Miguel Diaz - 02/06/24 11:18:18 AM:\u00a0not needed at this time",
+    "comments": "Miguel Diaz - 02/06/24 11:18:18 AM: not needed at this time",
     "attachments": []
   },
   {
@@ -19512,7 +19512,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/9/2024",
-    "comments": "Miguel Diaz - 08/28/24  7:31:34 AM:\u00a0Filters have been replaced",
+    "comments": "Miguel Diaz - 08/28/24  7:31:34 AM: Filters have been replaced",
     "attachments": []
   },
   {
@@ -19563,7 +19563,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/5/2025",
-    "comments": "Maksim Bushka - 08/18/25  6:36:40 PM:\u00a0ACCO already replaced the filters",
+    "comments": "Maksim Bushka - 08/18/25  6:36:40 PM: ACCO already replaced the filters",
     "attachments": []
   },
   {
@@ -19580,7 +19580,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/15/2025",
-    "comments": "Sean Jennings - 12/30/25 10:25:08 AM:\u00a0Work started on 12/10 and completed on 12/15.",
+    "comments": "Sean Jennings - 12/30/25 10:25:08 AM: Work started on 12/10 and completed on 12/15.",
     "attachments": []
   },
   {
@@ -19597,7 +19597,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/30/2026",
-    "comments": "Maksim Bushka - 03/31/26  3:53:23 PM:\u00a0Replaced ok",
+    "comments": "Maksim Bushka - 03/31/26  3:53:23 PM: Replaced ok",
     "attachments": []
   },
   {
@@ -19614,7 +19614,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/19/2022",
-    "comments": "Miguel Diaz - 09/07/22  7:12:47 AM:\u00a0used shop vac to clean ac unit coils outside by parking structure",
+    "comments": "Miguel Diaz - 09/07/22  7:12:47 AM: used shop vac to clean ac unit coils outside by parking structure",
     "attachments": []
   },
   {
@@ -19631,7 +19631,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/3/2023",
-    "comments": "Maksim Bushka - 04/03/23 10:15:13 AM:\u00a0Clean up the A/C unit using vacuum and brash.",
+    "comments": "Maksim Bushka - 04/03/23 10:15:13 AM: Clean up the A/C unit using vacuum and brash.",
     "attachments": []
   },
   {
@@ -19869,7 +19869,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/5/2026",
-    "comments": "Maksim Bushka - 01/07/26  6:46:34 PM:\u00a0Scheduled Date: 01-02-2026\nParts Needed: No\nParts Ordered: No\nExpected Delivery Date: N/a\nGeneral Notes: Cleaned up the coil. Checked up the filter OK",
+    "comments": "Maksim Bushka - 01/07/26  6:46:34 PM: Scheduled Date: 01-02-2026\nParts Needed: No\nParts Ordered: No\nExpected Delivery Date: N/a\nGeneral Notes: Cleaned up the coil. Checked up the filter OK",
     "attachments": []
   },
   {
@@ -19886,7 +19886,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/8/2026",
-    "comments": "Maksim Bushka - 01/24/26  8:59:26 AM:\u00a0Scheduled Date: 01-08-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and cleaned the filter and coil",
+    "comments": "Maksim Bushka - 01/24/26  8:59:26 AM: Scheduled Date: 01-08-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and cleaned the filter and coil",
     "attachments": []
   },
   {
@@ -19903,7 +19903,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/16/2026",
-    "comments": "Maksim Bushka - 01/24/26  9:07:19 AM:\u00a0Scheduled Date: 01-16-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up",
+    "comments": "Maksim Bushka - 01/24/26  9:07:19 AM: Scheduled Date: 01-16-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up",
     "attachments": []
   },
   {
@@ -19920,7 +19920,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/29/2026",
-    "comments": "Maksim Bushka - 04/29/26  7:46:24 PM:\u00a0Cleaned up",
+    "comments": "Maksim Bushka - 04/29/26  7:46:24 PM: Cleaned up",
     "attachments": []
   },
   {
@@ -19937,7 +19937,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/10/2026",
-    "comments": "Maksim Bushka - 06/10/26  3:01:54 PM:\u00a0Scheduled Date: 05/24/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up with water ok",
+    "comments": "Maksim Bushka - 06/10/26  3:01:54 PM: Scheduled Date: 05/24/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up with water ok",
     "attachments": []
   },
   {
@@ -19954,7 +19954,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/31/2022",
-    "comments": "Miguel Diaz - 05/31/22  8:37:01 AM:\u00a0Lubed the full chain sprayed all moving areas with wd-40  Bart cleaned the box",
+    "comments": "Miguel Diaz - 05/31/22  8:37:01 AM: Lubed the full chain sprayed all moving areas with wd-40  Bart cleaned the box",
     "attachments": []
   },
   {
@@ -19971,7 +19971,7 @@
     "material_cost": "10.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/13/2023",
-    "comments": "Maksim Bushka - 01/13/23  9:43:14 AM:\u00a0Did PM",
+    "comments": "Maksim Bushka - 01/13/23  9:43:14 AM: Did PM",
     "attachments": []
   },
   {
@@ -19988,7 +19988,7 @@
     "material_cost": "10.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/30/2023",
-    "comments": "Maksim Bushka - 03/31/23  2:57:34 PM:\u00a0Checked and lubed.",
+    "comments": "Maksim Bushka - 03/31/23  2:57:34 PM: Checked and lubed.",
     "attachments": []
   },
   {
@@ -20005,7 +20005,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/26/2023",
-    "comments": "Maksim Bushka - 06/26/23 10:40:41 AM:\u00a0Serviced ok.",
+    "comments": "Maksim Bushka - 06/26/23 10:40:41 AM: Serviced ok.",
     "attachments": []
   },
   {
@@ -20175,7 +20175,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/14/2026",
-    "comments": "Maksim Bushka - 01/24/26  9:03:53 AM:\u00a0Scheduled Date: 01-14-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and lubed",
+    "comments": "Maksim Bushka - 01/24/26  9:03:53 AM: Scheduled Date: 01-14-26\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and lubed",
     "attachments": []
   },
   {
@@ -20192,7 +20192,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/1/2026",
-    "comments": "Maksim Bushka - 05/05/26  2:18:20 PM:\u00a0Scheduled Date: 04/24/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and lubed ok",
+    "comments": "Maksim Bushka - 05/05/26  2:18:20 PM: Scheduled Date: 04/24/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked up and lubed ok",
     "attachments": []
   },
   {
@@ -20209,7 +20209,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/26/2022",
-    "comments": "Miguel Diaz - 09/07/22  7:18:00 AM:\u00a0sprayed all rolling gates with wd-40 on the rollers and checked for any issues it may have found none",
+    "comments": "Miguel Diaz - 09/07/22  7:18:00 AM: sprayed all rolling gates with wd-40 on the rollers and checked for any issues it may have found none",
     "attachments": []
   },
   {
@@ -20226,7 +20226,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/3/2023",
-    "comments": "Maksim Bushka - 04/04/23  9:33:34 AM:\u00a0Cleaned up the tracks and lube.",
+    "comments": "Maksim Bushka - 04/04/23  9:33:34 AM: Cleaned up the tracks and lube.",
     "attachments": []
   },
   {
@@ -20328,7 +20328,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/2/2026",
-    "comments": "Maksim Bushka - 04/09/26  1:03:39 PM:\u00a0Checked and lubed",
+    "comments": "Maksim Bushka - 04/09/26  1:03:39 PM: Checked and lubed",
     "attachments": []
   },
   {
@@ -20362,7 +20362,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/31/2022",
-    "comments": "Miguel Diaz - 05/31/22  8:38:01 AM:\u00a0sprayed all moving areas with wd-40  Bart cleaned the box checked magnet its working",
+    "comments": "Miguel Diaz - 05/31/22  8:38:01 AM: sprayed all moving areas with wd-40  Bart cleaned the box checked magnet its working",
     "attachments": []
   },
   {
@@ -20379,7 +20379,7 @@
     "material_cost": "10.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/13/2023",
-    "comments": "Maksim Bushka - 01/13/23  9:44:20 AM:\u00a0Did PM",
+    "comments": "Maksim Bushka - 01/13/23  9:44:20 AM: Did PM",
     "attachments": []
   },
   {
@@ -20396,7 +20396,7 @@
     "material_cost": "10.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/30/2023",
-    "comments": "Maksim Bushka - 03/31/23  1:46:44 PM:\u00a0Checked up lubed and greased.",
+    "comments": "Maksim Bushka - 03/31/23  1:46:44 PM: Checked up lubed and greased.",
     "attachments": []
   },
   {
@@ -20413,7 +20413,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/26/2023",
-    "comments": "Maksim Bushka - 06/26/23 10:39:44 AM:\u00a0Serviced ok.",
+    "comments": "Maksim Bushka - 06/26/23 10:39:44 AM: Serviced ok.",
     "attachments": []
   },
   {
@@ -20583,7 +20583,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/5/2026",
-    "comments": "Maksim Bushka - 01/07/26  7:01:49 PM:\u00a0Scheduled Date: 01-07-2026\nParts Needed: No\nParts Ordered: No\nExpected Delivery Date: N/A\nGeneral Notes: Greased and lubed moving parts and checked out the belts OK",
+    "comments": "Maksim Bushka - 01/07/26  7:01:49 PM: Scheduled Date: 01-07-2026\nParts Needed: No\nParts Ordered: No\nExpected Delivery Date: N/A\nGeneral Notes: Greased and lubed moving parts and checked out the belts OK",
     "attachments": []
   },
   {
@@ -20600,7 +20600,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/30/2026",
-    "comments": "Maksim Bushka - 04/09/26  1:02:19 PM:\u00a0Scheduled Date: 04/07/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked and lubed",
+    "comments": "Maksim Bushka - 04/09/26  1:02:19 PM: Scheduled Date: 04/07/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Checked and lubed",
     "attachments": []
   },
   {
@@ -20609,7 +20609,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "19885",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Pending",
     "due_date": "6/24/2026",
     "work_performed_by": "",
@@ -20634,7 +20634,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/17/2023",
-    "comments": "Miguel Diaz - 03/17/23 11:27:05 AM:\u00a0no due till 12-7-23",
+    "comments": "Miguel Diaz - 03/17/23 11:27:05 AM: no due till 12-7-23",
     "attachments": []
   },
   {
@@ -20651,7 +20651,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/15/2024",
-    "comments": "Miguel Diaz - 04/02/24  9:36:33 AM:\u00a0this is just a reminder it was done",
+    "comments": "Miguel Diaz - 04/02/24  9:36:33 AM: this is just a reminder it was done",
     "attachments": []
   },
   {
@@ -20668,7 +20668,7 @@
     "material_cost": "400.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/23/2025",
-    "comments": "Miguel Diaz - 01/28/25  7:05:07 AM:\u00a0Yearly Generator service was done",
+    "comments": "Miguel Diaz - 01/28/25  7:05:07 AM: Yearly Generator service was done",
     "attachments": []
   },
   {
@@ -20685,7 +20685,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/10/2025",
-    "comments": "Maksim Bushka - 04/10/25  1:52:58 PM:\u00a0The service was performed",
+    "comments": "Maksim Bushka - 04/10/25  1:52:58 PM: The service was performed",
     "attachments": []
   },
   {
@@ -20694,7 +20694,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "17992",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Closed and Completed",
     "due_date": "12/22/2025",
     "work_performed_by": "Sean Jennings",
@@ -20702,7 +20702,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/22/2025",
-    "comments": "Sean Jennings - 12/22/25  2:55:19 PM:\u00a0Annotated the log.",
+    "comments": "Sean Jennings - 12/22/25  2:55:19 PM: Annotated the log.",
     "attachments": []
   },
   {
@@ -20711,7 +20711,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "18017",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Closed and Completed",
     "due_date": "12/29/2025",
     "work_performed_by": "PU",
@@ -20736,7 +20736,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/5/2026",
-    "comments": "Sean Jennings - 01/09/26 11:26:37 AM:\u00a0Annual service was completed on 1/5/2026. No issues were reported.",
+    "comments": "Sean Jennings - 01/09/26 11:26:37 AM: Annual service was completed on 1/5/2026. No issues were reported.",
     "attachments": []
   },
   {
@@ -20753,7 +20753,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/5/2026",
-    "comments": "Sean Jennings - 05/06/26  8:56:56 AM:\u00a0Yearly PM completed. I also signed a new 3 year PM contract with them",
+    "comments": "Sean Jennings - 05/06/26  8:56:56 AM: Yearly PM completed. I also signed a new 3 year PM contract with them",
     "attachments": []
   },
   {
@@ -20762,7 +20762,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "19152",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Closed and Completed",
     "due_date": "4/27/2026",
     "work_performed_by": "Sean",
@@ -20779,7 +20779,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "18142",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Closed and Completed",
     "due_date": "1/16/2026",
     "work_performed_by": "sean",
@@ -20796,7 +20796,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "18718",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Closed and Completed",
     "due_date": "3/19/2026",
     "work_performed_by": "PU",
@@ -20804,7 +20804,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/23/2026",
-    "comments": "Sean Jennings - 03/27/26 10:25:45 AM:\u00a0Run time was logged.",
+    "comments": "Sean Jennings - 03/27/26 10:25:45 AM: Run time was logged.",
     "attachments": []
   },
   {
@@ -20813,7 +20813,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "18901",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Closed and Completed",
     "due_date": "4/3/2026",
     "work_performed_by": "SJ",
@@ -20830,7 +20830,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "19325",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Closed and Completed",
     "due_date": "5/13/2026",
     "work_performed_by": "SJ",
@@ -20847,7 +20847,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "19723",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Closed and Completed",
     "due_date": "6/12/2026",
     "work_performed_by": "SJ",
@@ -20855,7 +20855,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/8/2026",
-    "comments": "Sean Jennings - 06/08/26  2:43:04 PM:\u00a0Not running due to being down for alternator end repair.",
+    "comments": "Sean Jennings - 06/08/26  2:43:04 PM: Not running due to being down for alternator end repair.",
     "attachments": []
   },
   {
@@ -20864,7 +20864,7 @@
     "equipment_name": "Backup Genset Generator",
     "department": "Maintenance",
     "wo_id": "19741",
-    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n\u2022\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n\u2022\tTake the start time from the previous weeks end time.\n\u2022\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n\u2022\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
+    "audit_item": "To stay in compliance with AQMD, we need to record all run hours in the generator logbook. Since the generator runs every Monday morning at 7am for 15 minutes, we will need to start logging that as maintenance and testing.\n•\tEvery Monday after 7:15 AM make a new log entry in the binder inside the generator.\n•\tTake the start time from the previous weeks end time.\n•\tFill out the rest of the sections that are outlined on the log sheet and make a comment that the reason the generator is running is due to maintenance and testing.\n•\tCheck the fuel level of the generator. If it is below 50% full, schedule for a refuel.\nPlease note that if there is more than a 15-minute discrepancy between last weeks end time and the current weeks end time, that indicates that the generator ran outside its normal weekly run. In that case, please notify your supervisor.",
     "status": "Closed without Action",
     "due_date": "6/15/2026",
     "work_performed_by": "SJ",
@@ -20872,7 +20872,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/15/2026",
-    "comments": "Sean Jennings - 06/17/26 12:20:22 PM:\u00a0Backup generator is still down waiting repair.",
+    "comments": "Sean Jennings - 06/17/26 12:20:22 PM: Backup generator is still down waiting repair.",
     "attachments": []
   },
   {
@@ -20906,7 +20906,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/7/2022",
-    "comments": "Miguel Diaz - 09/07/22  7:13:37 AM:\u00a0used shop vac to clean grills covered in dust /lint",
+    "comments": "Miguel Diaz - 09/07/22  7:13:37 AM: used shop vac to clean grills covered in dust /lint",
     "attachments": []
   },
   {
@@ -20923,7 +20923,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/4/2023",
-    "comments": "Maksim Bushka - 04/04/23 11:02:45 AM:\u00a0Cleaned up and vacuumed the grills.",
+    "comments": "Maksim Bushka - 04/04/23 11:02:45 AM: Cleaned up and vacuumed the grills.",
     "attachments": []
   },
   {
@@ -21059,7 +21059,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/2/2026",
-    "comments": "Maksim Bushka - 03/13/26  2:21:54 PM:\u00a0Scheduled Date: 02/28/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up",
+    "comments": "Maksim Bushka - 03/13/26  2:21:54 PM: Scheduled Date: 02/28/2026\nParts Needed: NO\nParts Ordered: NO\nExpected Delivery Date: N/A\nGeneral Notes: Cleaned up",
     "attachments": []
   },
   {
@@ -21076,7 +21076,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/27/2023",
-    "comments": "Miguel Diaz - 02/27/23  7:47:41 AM:\u00a0acco does this",
+    "comments": "Miguel Diaz - 02/27/23  7:47:41 AM: acco does this",
     "attachments": []
   },
   {
@@ -21093,7 +21093,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/16/2024",
-    "comments": "Miguel Diaz - 02/16/24  9:07:37 AM:\u00a0acco to do this service",
+    "comments": "Miguel Diaz - 02/16/24  9:07:37 AM: acco to do this service",
     "attachments": []
   },
   {

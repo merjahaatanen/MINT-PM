@@ -4614,7 +4614,7 @@
     "work_performed_by": "Mike Bart",
     "downtime_hours": "0.00",
     "completed_datetime": "6/22/2022",
-    "comments": "Miguel Diaz - 06/22/22  1:06:09 PM:\u00a0Pushed corner back in but display would not reset display gave us code F852 FSX 485 ERR .Which means the encoder needs to be reset did procedure and reset door .Door is working properly .",
+    "comments": "Miguel Diaz - 06/22/22  1:06:09 PM: Pushed corner back in but display would not reset display gave us code F852 FSX 485 ERR .Which means the encoder needs to be reset did procedure and reset door .Door is working properly .",
     "attachments": []
   },
   {
@@ -4632,7 +4632,7 @@
     "work_performed_by": "Mike Diaz",
     "downtime_hours": "0.00",
     "completed_datetime": "10/3/2022",
-    "comments": "Miguel Diaz - 10/03/22  7:00:46 AM:\u00a0Troubleshoot and found that the open and close setting limits need to be reset teached the limits door is working again",
+    "comments": "Miguel Diaz - 10/03/22  7:00:46 AM: Troubleshoot and found that the open and close setting limits need to be reset teached the limits door is working again",
     "attachments": []
   },
   {
@@ -4650,7 +4650,7 @@
     "work_performed_by": "Mike D",
     "downtime_hours": "0.00",
     "completed_datetime": "10/24/2022",
-    "comments": "Miguel Diaz - 10/24/22  6:41:44 AM:\u00a0Found that we had a power outage last night that tripped the breaker on panel  H2 28-40-42 .\nReset breaker and  door would still not work found error message 852 which means encoder issue .\nReset encoder settings door is working properly again .",
+    "comments": "Miguel Diaz - 10/24/22  6:41:44 AM: Found that we had a power outage last night that tripped the breaker on panel  H2 28-40-42 .\nReset breaker and  door would still not work found error message 852 which means encoder issue .\nReset encoder settings door is working properly again .",
     "attachments": []
   },
   {
@@ -4668,7 +4668,7 @@
     "work_performed_by": "Mike Diaz",
     "downtime_hours": "0.00",
     "completed_datetime": "10/25/2022",
-    "comments": "Miguel Diaz - 10/25/22  7:24:30 AM:\u00a0Reason for door not operating is because the encoder battery is low and does not keep the set limits in its memory when the power outage happens .Replaced encoder battery and programmed  new limits .",
+    "comments": "Miguel Diaz - 10/25/22  7:24:30 AM: Reason for door not operating is because the encoder battery is low and does not keep the set limits in its memory when the power outage happens .Replaced encoder battery and programmed  new limits .",
     "attachments": []
   },
   {
@@ -4686,7 +4686,7 @@
     "work_performed_by": "Mike",
     "downtime_hours": "0.00",
     "completed_datetime": "1/10/2023",
-    "comments": "Miguel Diaz - 01/10/23 12:12:16 PM:\u00a0Found error 856 communication error checked battery voltage its at 3.1 it should be at 3.6 replaced battery door is working properly again .",
+    "comments": "Miguel Diaz - 01/10/23 12:12:16 PM: Found error 856 communication error checked battery voltage its at 3.1 it should be at 3.6 replaced battery door is working properly again .",
     "attachments": []
   },
   {
@@ -4704,7 +4704,7 @@
     "work_performed_by": "Mike Primo",
     "downtime_hours": "0.00",
     "completed_datetime": "2/6/2024",
-    "comments": "Miguel Diaz - 02/06/24 10:50:06 AM:\u00a0Found resistor broken repaired resistor door is now working properly .",
+    "comments": "Miguel Diaz - 02/06/24 10:50:06 AM: Found resistor broken repaired resistor door is now working properly .",
     "attachments": []
   },
   {
@@ -4722,7 +4722,7 @@
     "work_performed_by": "Barton Lea",
     "downtime_hours": "0.00",
     "completed_datetime": "7/6/2022",
-    "comments": "Barton Lea - 07/06/22  9:18:49 AM:\u00a0Replaced battery",
+    "comments": "Barton Lea - 07/06/22  9:18:49 AM: Replaced battery",
     "attachments": []
   },
   {
@@ -4740,7 +4740,7 @@
     "work_performed_by": "Mike Diaz",
     "downtime_hours": "0.00",
     "completed_datetime": "2/16/2023",
-    "comments": "Miguel Diaz - 02/16/23  1:02:44 PM:\u00a0Re attach pull string\nUsed scissor lift",
+    "comments": "Miguel Diaz - 02/16/23  1:02:44 PM: Re attach pull string\nUsed scissor lift",
     "attachments": []
   },
   {
@@ -4830,7 +4830,7 @@
     "work_performed_by": "Mike Diaz",
     "downtime_hours": "0.00",
     "completed_datetime": "1/4/2023",
-    "comments": "Miguel Diaz - 01/04/23  6:39:29 AM:\u00a0Replaced activation switch for the inside pull string",
+    "comments": "Miguel Diaz - 01/04/23  6:39:29 AM: Replaced activation switch for the inside pull string",
     "attachments": []
   },
   {
@@ -4848,7 +4848,7 @@
     "work_performed_by": "Mike d",
     "downtime_hours": "0.00",
     "completed_datetime": "1/11/2023",
-    "comments": "Miguel Diaz - 01/11/23  6:34:23 AM:\u00a0Found outside pull string box with faulty switch replaced switch door is working properly now .",
+    "comments": "Miguel Diaz - 01/11/23  6:34:23 AM: Found outside pull string box with faulty switch replaced switch door is working properly now .",
     "attachments": []
   },
   {
@@ -4866,7 +4866,7 @@
     "work_performed_by": "Mike D iaz",
     "downtime_hours": "0.00",
     "completed_datetime": "1/13/2023",
-    "comments": "Miguel Diaz - 01/13/23  7:33:04 AM:\u00a0Troubleshoot found outside pull string stuck in the up position keeping the switch closed meaning we have an open signal not letting the roll up door close or open .Removed cover with string lubed internal parts since its exposed to the outside water making  it rust .Also replaced the lock washer and nut with a nylon nut by doing this i can leave the bolt loose making it easier for it to go up and down .",
+    "comments": "Miguel Diaz - 01/13/23  7:33:04 AM: Troubleshoot found outside pull string stuck in the up position keeping the switch closed meaning we have an open signal not letting the roll up door close or open .Removed cover with string lubed internal parts since its exposed to the outside water making  it rust .Also replaced the lock washer and nut with a nylon nut by doing this i can leave the bolt loose making it easier for it to go up and down .",
     "attachments": []
   },
   {
@@ -4884,7 +4884,7 @@
     "work_performed_by": "Max Mike",
     "downtime_hours": "0.00",
     "completed_datetime": "9/7/2023",
-    "comments": "Miguel Diaz - 09/07/23  7:36:42 AM:\u00a0Error on controller is displaying F856 FSX Wireless communication error .\nTroubleshoot found Battery on mobile unit at 3.58 volts when it should be at 3.6 volts anything below will cause an error .\nDoor is working properly again after replacing battery .",
+    "comments": "Miguel Diaz - 09/07/23  7:36:42 AM: Error on controller is displaying F856 FSX Wireless communication error .\nTroubleshoot found Battery on mobile unit at 3.58 volts when it should be at 3.6 volts anything below will cause an error .\nDoor is working properly again after replacing battery .",
     "attachments": []
   },
   {
@@ -4902,7 +4902,7 @@
     "work_performed_by": "Mike d",
     "downtime_hours": "0.00",
     "completed_datetime": "4/5/2024",
-    "comments": "Miguel Diaz - 04/05/24  8:01:34 AM:\u00a0Found door with error code open at mobile .Checked resistor and drained it .Door is now working properly",
+    "comments": "Miguel Diaz - 04/05/24  8:01:34 AM: Found door with error code open at mobile .Checked resistor and drained it .Door is now working properly",
     "attachments": []
   },
   {
@@ -4920,7 +4920,7 @@
     "work_performed_by": "Max Mike",
     "downtime_hours": "0.00",
     "completed_datetime": "8/1/2024",
-    "comments": "Miguel Diaz - 08/01/24  1:53:52 PM:\u00a0Found roll up door was struck hard popping it off the track from both sides.\nManaged to pop back in both sides and run the door .3 wires severed those have been patched up also no one has reported it .",
+    "comments": "Miguel Diaz - 08/01/24  1:53:52 PM: Found roll up door was struck hard popping it off the track from both sides.\nManaged to pop back in both sides and run the door .3 wires severed those have been patched up also no one has reported it .",
     "attachments": []
   },
   {
@@ -4938,7 +4938,7 @@
     "work_performed_by": "PU MB",
     "downtime_hours": "0.00",
     "completed_datetime": "10/6/2023",
-    "comments": "Miguel Diaz - 10/10/23 12:32:39 PM:\u00a0Error Code: F856. Replace battery and door is now working.\nNeed to order more Battery ASAP. \nRe open work order on correct equipment ID.",
+    "comments": "Miguel Diaz - 10/10/23 12:32:39 PM: Error Code: F856. Replace battery and door is now working.\nNeed to order more Battery ASAP. \nRe open work order on correct equipment ID.",
     "attachments": []
   },
   {
@@ -4956,7 +4956,7 @@
     "work_performed_by": "Mike d",
     "downtime_hours": "0.00",
     "completed_datetime": "4/10/2024",
-    "comments": "Miguel Diaz - 04/10/24 11:17:15 AM:\u00a0Found door with alarm open at mobile .Drained resistor and reset board .Door is working properly again .",
+    "comments": "Miguel Diaz - 04/10/24 11:17:15 AM: Found door with alarm open at mobile .Drained resistor and reset board .Door is working properly again .",
     "attachments": []
   },
   {
@@ -4974,7 +4974,7 @@
     "work_performed_by": "Mike d",
     "downtime_hours": "0.00",
     "completed_datetime": "9/4/2024",
-    "comments": "Miguel Diaz - 09/04/24  9:29:54 AM:\u00a0Door lost its stop and open limits yesterday when the power outage happened .Removed encoder and reset both limits door is working properly .",
+    "comments": "Miguel Diaz - 09/04/24  9:29:54 AM: Door lost its stop and open limits yesterday when the power outage happened .Removed encoder and reset both limits door is working properly .",
     "attachments": []
   },
   {
@@ -5010,7 +5010,7 @@
     "work_performed_by": "Chris Acco",
     "downtime_hours": "0.00",
     "completed_datetime": "5/12/2023",
-    "comments": "Miguel Diaz - 05/15/23  7:22:48 AM:\u00a0Had Chris from Acco order us a replacement and a spare its cheaper if they order it .\nStat has since been replaced work order will stay open till final cost  in .",
+    "comments": "Miguel Diaz - 05/15/23  7:22:48 AM: Had Chris from Acco order us a replacement and a spare its cheaper if they order it .\nStat has since been replaced work order will stay open till final cost  in .",
     "attachments": []
   },
   {
@@ -5028,7 +5028,7 @@
     "work_performed_by": "mIKE",
     "downtime_hours": "0.00",
     "completed_datetime": "12/19/2022",
-    "comments": "Miguel Diaz - 12/19/22  7:33:34 AM:\u00a0Found batteries low on heater stat Replaced AA batteries X 2",
+    "comments": "Miguel Diaz - 12/19/22  7:33:34 AM: Found batteries low on heater stat Replaced AA batteries X 2",
     "attachments": []
   },
   {
@@ -5046,7 +5046,7 @@
     "work_performed_by": "Mike Max",
     "downtime_hours": "0.00",
     "completed_datetime": "12/20/2022",
-    "comments": "Miguel Diaz - 12/20/22 12:36:34 PM:\u00a0After troubleshooting we found a bad board purchased replacement board from Engineered parking systems @1661 294-0778 part # 9700-1000 Control board for 301 parking gate operator. Replaced board ,gate arm is working properly again .",
+    "comments": "Miguel Diaz - 12/20/22 12:36:34 PM: After troubleshooting we found a bad board purchased replacement board from Engineered parking systems @1661 294-0778 part # 9700-1000 Control board for 301 parking gate operator. Replaced board ,gate arm is working properly again .",
     "attachments": []
   },
   {

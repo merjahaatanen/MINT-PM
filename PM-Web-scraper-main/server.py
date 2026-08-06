@@ -48,6 +48,7 @@ import mint_email as emailer
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 WEBAPP_DIR = os.path.join(OUTPUT_DIR, "webapp")
 GUIDES_DIR = os.path.join(OUTPUT_DIR, "guides")
+CLOSED_STATUS = "Closed and Completed"
 # Local copies of the scraped PM "Equipment Summary" dashboards, one folder per
 # numeric equipment id. These hold the ORIGINAL, un-edited notes used as the
 # source of truth for AI note sorting.
@@ -822,6 +823,15 @@ def _has_critical_wo(recs: dict) -> bool:
     return False
 
 
+def _all_closed(recs: dict) -> bool:
+    """True if the machine has at least one work order and every work order
+    (scheduled or unscheduled) is marked Closed and Completed."""
+    allr = recs.get("unscheduled", []) + recs.get("scheduled", [])
+    if not allr:
+        return False
+    return all((r.get("status") or "").strip() == CLOSED_STATUS for r in allr)
+
+
 def _machine_name(records: list[dict]) -> str:
     names = [(r.get("equipment_name") or "").strip() for r in records if r.get("equipment_name")]
     if not names:
@@ -840,8 +850,9 @@ def _eq_label(records: list[dict], eq_id: str) -> str:
 def _dept_machines(dept_key: str) -> list[dict]:
     """Authoritative machine list for a department, driven by the equipment
     master. Each machine joins any matching work orders (by numeric EQ ID).
-    Returns dicts of {eq_id, eq_label, name, group, has_guide, recs}."""
+    Returns dicts of {eq_id, eq_label, name, group, has_guide, all_closed, recs}."""
     wo_groups = _machine_groups(dept_key)  # numeric equipment_id -> {unscheduled, scheduled}
+    nicks = store.list_nicknames(dept_key)  # {eq_id: nickname} (admin-set display name)
     out = []
     seen = set()
     for e in _EQUIP_BY_KEY.get(dept_key, []):
@@ -849,14 +860,21 @@ def _dept_machines(dept_key: str) -> list[dict]:
         if not eq_id or eq_id in seen:
             continue
         seen.add(eq_id)
-        name = (e.get("equipment_name") or "").strip() or "Unknown"
+        pm_name = (e.get("equipment_name") or "").strip() or "Unknown"
+        nickname = (nicks.get(eq_id) or "").strip()
+        # The display name shown throughout MINT is the nickname when one is set;
+        # the actual PM name is preserved separately as pm_name.
+        name = nickname or pm_name
         recs = wo_groups.get(eq_id, {"unscheduled": [], "scheduled": []})
         out.append({
             "eq_id": eq_id,
             "eq_label": (e.get("eq_id") or f"EQ ID {eq_id}").strip(),
             "name": name,
-            "group": _group_for(dept_key, name),
+            "pm_name": pm_name,
+            "nickname": nickname,
+            "group": _group_for(dept_key, pm_name),
             "has_guide": os.path.exists(_guide_path(eq_id)),
+            "all_closed": _all_closed(recs),
             "recs": recs,
         })
     return out
@@ -1225,9 +1243,12 @@ def api_department(dept_key):
             "eq_id": mc["eq_id"],
             "eq_label": mc["eq_label"],
             "name": mc["name"],
+            "pm_name": mc["pm_name"],
+            "nickname": mc["nickname"],
             "group": mc["group"],
             "has_guide": mc["has_guide"],
             "has_critical_wo": _has_critical_wo(mc["recs"]),
+            "all_closed": mc["all_closed"],
         })
         machines.append(stats)
 
@@ -1275,6 +1296,149 @@ def api_workorders():
 
 
 # --------------------------------------------------------------------------- #
+# Floor plan (per-department machine layout)
+# --------------------------------------------------------------------------- #
+# Items are positioned on a fixed logical canvas; the frontend scales it to fit
+# the viewport. Editing (move/add/delete) is gated by the ADMIN_PASSWORD.
+FLOORPLAN_CANVAS = {"w": 960, "h": 820}
+
+# Default seed layout for the Toilet Partitions (TPF) floor. Each row is
+# (label, machine_name | None, x, y, w, h). `machine_name` is resolved to a live
+# EQ ID at request time by matching the equipment master; label-only boxes
+# (None) are aisles/benches or equipment not tracked in MINT. This is only used
+# until an admin saves a layout, after which the stored layout takes over.
+_TPF_FLOORPLAN_DEFAULT = [
+    # Full-width divider between the upper machines (Evolve return) and the
+    # lower row (Holz-Her). A thin, label-less, unlinked item renders as a line.
+    ("", None, 0, 430, 960, 3),
+    ("1/2\" Edge Finisher & return", '1/2 " Edge Finisher, Solid, Technolegno/ Universal 280', 225, 15, 110, 175),
+    ("Tenoner & return system", 'Tenoner A 517 Single End', 345, 15, 225, 80),
+    ("LBDM", 'CNC Drilling Machine, Automatic Leveling Bar', 580, 15, 60, 55),
+    ("Gannomat", 'Gannomat Index 330 Trend/PRO (Solid)', 575, 75, 65, 175),
+    ("Holzma", 'Saw, Horizontal, Holzma', 695, 95, 95, 175),
+    ("Rainbow", 'TLF Intellistore (Rainbow Stacking System)- TLF211', 820, 115, 45, 530),
+    ("3/4\" Inserts", None, 345, 190, 210, 65),
+    ("VLM", 'VLM Storage Lift -Small Hardware', 125, 260, 65, 50),
+    ("Anderson", 'Router, CNC, Anderson Stratos/Nest TC+D', 205, 310, 65, 175),
+    ("Evolve station", 'Evolve Double Head Drilling Machine', 695, 285, 95, 45),
+    ("Evolve return system", None, 695, 350, 95, 50),
+    ("Gannomat", 'Drilling Machine CNC, 1040 Laminate', 205, 470, 55, 170),
+    ("Glue spreader", 'O-Sama (Joos) Glue Spreader', 345, 465, 135, 80),
+    ("Heat rollers", 'Pinch Roller (Heated)', 345, 575, 135, 55),
+    ("Edge trimmer & return system", None, 205, 665, 145, 95),
+    ("Edgebander", 'Edgebander Homag 2520 Servo 6 Coil', 520, 460, 55, 170),
+    ("Laminate slitter", 'Laminate Slitter', 610, 520, 55, 45),
+    ("Clamp", None, 520, 635, 75, 40),
+    ("Notching machine", 'Notching machine, 1540 Door', 360, 700, 50, 55),
+    ("Steel core slitter", None, 425, 700, 60, 55),
+    ("Holz-Her", 'Saw,Horizontal, Holz-Her', 695, 460, 95, 175),
+    ("Vertical saw", "Saw, 10' Panel, Laminate Line", 695, 650, 95, 45),
+]
+
+_DEFAULT_FLOORPLANS = {"toilet": _TPF_FLOORPLAN_DEFAULT}
+
+
+def _eqid_by_name(dept_key: str, name: str) -> str:
+    """Resolve a machine display name to its numeric EQ ID for a department,
+    tolerant of quote/spacing differences. Returns '' if no match."""
+    if not name:
+        return ""
+    target = _norm_name(name)
+    for e in _EQUIP_BY_KEY.get(dept_key, []):
+        if _norm_name(e.get("equipment_name")) == target:
+            return _num_id(e.get("eq_id"))
+    return ""
+
+
+def _default_floorplan(dept_key: str) -> list[dict]:
+    rows = _DEFAULT_FLOORPLANS.get(dept_key)
+    if not rows:
+        return []
+    out = []
+    for i, (label, mname, x, y, w, h) in enumerate(rows):
+        out.append({
+            "id": f"seed-{i}",
+            "eq_id": _eqid_by_name(dept_key, mname) if mname else "",
+            "label": label,
+            "x": x, "y": y, "w": w, "h": h, "z": i,
+        })
+    return out
+
+
+def _floorplan_payload(dept_key: str) -> dict:
+    with _DATA_LOCK:
+        stored = store.list_floorplan(dept_key)
+        items = stored if stored else _default_floorplan(dept_key)
+        # Attach live per-machine stats + critical-WO flag for linked items so
+        # the sidebar quick view and red highlight need no extra requests.
+        wo_groups = _machine_groups(dept_key)
+        name_by_eq = {
+            _num_id(e.get("eq_id")): (e.get("equipment_name") or "").strip()
+            for e in _EQUIP_BY_KEY.get(dept_key, [])
+        }
+        enriched = []
+        for it in items:
+            eq = _num_id(it.get("eq_id")) if it.get("eq_id") else ""
+            entry = {
+                "id": it.get("id"),
+                "eq_id": eq,
+                "label": it.get("label") or "",
+                "x": it.get("x"), "y": it.get("y"),
+                "w": it.get("w"), "h": it.get("h"),
+                "z": it.get("z", 0),
+                "machine_name": name_by_eq.get(eq, ""),
+            }
+            if eq:
+                recs = wo_groups.get(eq, {"unscheduled": [], "scheduled": []})
+                st = _stats(recs["unscheduled"], recs["scheduled"])
+                entry["stats"] = {
+                    "unscheduled_count": st["unscheduled_count"],
+                    "scheduled_count": st["scheduled_count"],
+                    "downtime_hours": st["downtime_hours"],
+                    "labor_time": st["labor_time"],
+                    "material_cost": st["material_cost"],
+                }
+                entry["has_critical_wo"] = _has_critical_wo(recs)
+                entry["all_closed"] = _all_closed(recs)
+                entry["has_guide"] = os.path.exists(_guide_path(eq))
+            enriched.append(entry)
+    return {
+        "dept_key": dept_key,
+        "canvas": FLOORPLAN_CANVAS,
+        "items": enriched,
+        "seeded": not bool(stored),
+        "protected": bool(ADMIN_PASSWORD),
+    }
+
+
+@app.route("/api/departments/<dept_key>/floorplan", methods=["GET"])
+def api_floorplan(dept_key):
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    return jsonify(_floorplan_payload(dept_key))
+
+
+@app.route("/api/departments/<dept_key>/floorplan", methods=["POST"])
+def api_save_floorplan(dept_key):
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    if not _admin_ok(request):
+        return jsonify({"error": "Admin password required"}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required"}), 400
+    items = body.get("items")
+    if not isinstance(items, list):
+        return jsonify({"error": "items must be a list"}), 400
+    try:
+        store.save_floorplan(dept_key, items, author)
+    except (ValueError, TypeError) as e:
+        return jsonify({"error": str(e)}), 400
+    return jsonify(_floorplan_payload(dept_key))
+
+
+# --------------------------------------------------------------------------- #
 # Machine
 # --------------------------------------------------------------------------- #
 @app.route("/api/departments/<dept_key>/machines/<eq_id>")
@@ -1295,20 +1459,25 @@ def api_machine(dept_key, eq_id):
     combined = uns + sch
 
     if master is not None:
-        name = (master.get("equipment_name") or "").strip() or "Unknown"
+        pm_name = (master.get("equipment_name") or "").strip() or "Unknown"
         eq_label = (master.get("eq_id") or f"EQ ID {eq_id}").strip()
     else:
-        name = _machine_name(combined)
+        pm_name = _machine_name(combined)
         eq_label = _eq_label(combined, eq_id)
+
+    nickname = store.get_nickname(dept_key, eq_id)
+    name = nickname or pm_name
 
     return jsonify({
         "machine": {
             "eq_id": eq_id,
             "eq_label": eq_label,
             "name": name,
+            "pm_name": pm_name,
+            "nickname": nickname,
             "department": DEPARTMENTS[dept_key]["name"],
             "department_key": dept_key,
-            "group": _group_for(dept_key, name),
+            "group": _group_for(dept_key, pm_name),
             "make": (master or {}).get("make", ""),
             "model": (master or {}).get("model", ""),
             "vendor": (master or {}).get("vendor", ""),
@@ -1355,6 +1524,27 @@ def api_update_machine_info(dept_key, eq_id):
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
     return jsonify(info)
+
+
+# --------------------------------------------------------------------------- #
+# Machine nickname (admin-gated display name; the PM equipment name is kept)
+# --------------------------------------------------------------------------- #
+@app.route("/api/departments/<dept_key>/machines/<eq_id>/nickname", methods=["POST"])
+def api_set_machine_nickname(dept_key, eq_id):
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    if not _admin_ok(request):
+        return jsonify({"error": "Admin password required"}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required"}), 400
+    eq_id = _num_id(eq_id)
+    try:
+        nickname = store.set_nickname(dept_key, eq_id, body.get("nickname") or "", author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    return jsonify({"ok": True, "nickname": nickname})
 
 
 # --------------------------------------------------------------------------- #
@@ -1882,11 +2072,32 @@ def api_department_month_synopsis(dept_key):
 # --------------------------------------------------------------------------- #
 def _attachments_payload(wo_id: str, rec: dict | None = None) -> list[dict]:
     out = []
+    seen_urls = set()
     for a in store.list_attachments(wo_id):
-        out.append({
+        item = {
             "id": a["id"], "filename": a["filename"], "size": a["size"],
             "content_type": a["content_type"], "uploaded_by": a["uploaded_by"],
             "created_at": a["created_at"], "url": f"/api/attachments/{a['id']}",
+        }
+        out.append(item)
+        seen_urls.add(item["url"])
+
+    # Merge legacy/scraped attachment links (e.g. from the PM system) so the
+    # detail view shows them even though they are not files stored in MINT.
+    for a in (rec or {}).get("attachments") or []:
+        if not isinstance(a, dict):
+            continue
+        url = (a.get("url") or a.get("link") or "").strip()
+        name = (a.get("name") or a.get("filename") or "Attachment").strip()
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        out.append({
+            "filename": name,
+            "url": url,
+            "content_type": a.get("content_type") or "",
+            "uploaded_by": a.get("uploaded_by") or "",
+            "size": a.get("size") or 0,
         })
     return out
 
@@ -2121,7 +2332,9 @@ def api_add_solution(wo_id):
 
 @app.route("/api/workorder/<wo_id>/attachments", methods=["GET"])
 def api_list_attachments(wo_id):
-    return jsonify({"attachments": _attachments_payload(str(wo_id).strip())})
+    wo_id = str(wo_id).strip()
+    rec = _WO_INDEX.get(wo_id) or store.get_work_order(wo_id)
+    return jsonify({"attachments": _attachments_payload(wo_id, rec)})
 
 
 @app.route("/api/workorder/<wo_id>/attachments", methods=["POST"])
@@ -2144,7 +2357,7 @@ def api_upload_attachment(wo_id):
     rec = _WO_INDEX.get(wo_id)
     if rec is not None:
         rec["_att_count"] = rec.get("_att_count", 0) + len(saved)
-    return jsonify({"ok": True, "attachments": _attachments_payload(wo_id)})
+    return jsonify({"ok": True, "attachments": _attachments_payload(wo_id, rec)})
 
 
 @app.route("/api/attachments/<int:att_id>")
@@ -2851,15 +3064,21 @@ def _wo_date(rec: dict):
 
 @app.route("/api/weekly")
 def api_weekly():
-    """Per-department scheduled + unscheduled work orders bucketed into last
-    week, this week and next week (Sunday->Sunday). The frontend combines the
-    departments for the overall view. Future weeks naturally contain scheduled
-    work orders only (unscheduled breakdowns are reported as they happen)."""
+    """Per-department scheduled + unscheduled work orders bucketed into three
+    consecutive Sunday->Sunday weeks. By default these are last/this/next week,
+    but `offset` (in whole weeks from the current Sunday) shifts the view so the
+    frontend can page through earlier/upcoming weeks just like the monthly
+    calendar."""
+    try:
+        offset = int((request.args.get("offset") or "0").strip() or "0")
+    except (TypeError, ValueError):
+        offset = 0
     last_sun, this_sun, next_sun, week_after = _week_starts()
+    base = this_sun + timedelta(weeks=offset)
     bounds = {
-        "last": (last_sun, this_sun),
-        "this": (this_sun, next_sun),
-        "next": (next_sun, week_after),
+        "last": (base - timedelta(days=7), base),
+        "this": (base, base + timedelta(days=7)),
+        "next": (base + timedelta(days=7), base + timedelta(days=14)),
     }
     weeks_meta = {
         name: {"start": start.strftime("%Y-%m-%d"),

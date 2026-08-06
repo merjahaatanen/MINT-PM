@@ -138,9 +138,15 @@
       return d;
     }
 
-    // The "your name" value is remembered across actions (localStorage) so
-    // people don't have to retype it every time - but it is always required.
-    function getUserName() { try { return localStorage.getItem("mintUser") || ""; } catch (e) { return ""; } }
+    // Everyone is a "Guest" (no profile) by default and is NEVER forced to type
+    // a name. Signing in as a technician or Sean stores a real name that is then
+    // remembered across actions (localStorage).
+    //   getRawUser()  -> the stored profile only ("" when a guest); the header
+    //                    uses this to know whether someone is signed in.
+    //   getUserName() -> the author recorded on changes, defaulting to "Guest"
+    //                    so no action is ever blocked by a missing name.
+    function getRawUser() { try { return localStorage.getItem("mintUser") || ""; } catch (e) { return ""; } }
+    function getUserName() { return getRawUser() || "Guest"; }
     function setUserName(v) { try { localStorage.setItem("mintUser", v || ""); } catch (e) {} }
 
     // The admin password (gates deleting work orders + viewing version history)
@@ -185,6 +191,18 @@
       "5. Prod Ongoing, Maint Required",
       "6. General Maint",
     ];
+
+    function MintLeaf({ className, title, size }) {
+      // Renders the uploaded mint-leaf artwork saved as webapp/mint-leaf.png.
+      // Size is forced via inline style (fixed px, no flex-shrink) so every
+      // instance renders identically regardless of its container.
+      const px = size || 14;
+      return html`
+        <img src="/mint-leaf.png" alt=${title || "Closed and completed"}
+          title=${title || "Closed and completed"}
+          className=${(className || "") + " inline-block object-contain"}
+          style=${{ width: px + "px", height: px + "px", minWidth: px + "px", minHeight: px + "px", flexShrink: 0 }} />`;
+    }
 
     /* ------------------------------------------------------------------ */
     /* Form building blocks (shared by all create/edit modals)            */
@@ -680,8 +698,11 @@
     }
 
     function Header({ technicians, setTechnicians, onHome, onOpenInactive, onOpenWo }) {
-      const [user, setUser] = useState(getUserName());
+      // `user` is the raw signed-in profile ("" when a guest). Guests are the
+      // default and are never prompted; they can sign in later if they want.
+      const [user, setUser] = useState(getRawUser());
       const [sean, setSean] = useState(isSeanMode());
+      const signedIn = !!user;
       const [showSeanGate, setShowSeanGate] = useState(false);
       const [showTeamStats, setShowTeamStats] = useState(false);
       const [showManageTechs, setShowManageTechs] = useState(false);
@@ -712,17 +733,18 @@
               <div className="text-emerald-100 text-sm font-medium -ml-2">Maintenance Intelligence & Troubleshooting</div>
             </div>
             <div className="ml-auto flex items-center gap-2 flex-wrap">
-              ${!user && html`
+              ${!signedIn && html`
+                <span className="text-sm text-emerald-100/70">Guest</span>
                 <select value="" onChange=${(e) => onSelectUser(e.target.value)}
                   className="px-3 py-2 rounded-full bg-white text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
-                  <option value="">Who are you?</option>
+                  <option value="">Sign in…</option>
                   ${technicians.map((n) => html`<option key=${n} value=${n}>${n}</option>`)}
                   <option value="__other">Someone else…</option>
                 </select>
                 <button onClick=${() => setShowSeanGate(true)}
                   className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
                   Sean (supervisor)</button>`}
-              ${user && html`
+              ${signedIn && html`
                 <span className="text-sm font-semibold text-emerald-100">${user}</span>
                 ${sean && html`
                   <button onClick=${() => setShowTeamStats(true)}
@@ -1390,6 +1412,318 @@
     }
 
     /* ------------------------------------------------------------------ */
+    /* Floor plan                                                         */
+    /* ------------------------------------------------------------------ */
+    // Interactive department floor plan. View mode: click a box/sidebar row to
+    // highlight the machine; "Open" jumps to its full machine page. Edit mode
+    // (admin-gated) lets you drag/resize/add/delete boxes and relink machines,
+    // then Save. Boxes with a pending urgency-1 work order glow red.
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
+    function FloorPlanTab({ deptKey, machines, onOpenMachine }) {
+      const [data, setData] = useState(null);
+      const [items, setItems] = useState([]);
+      const [err, setErr] = useState(null);
+      const [selectedId, setSelectedId] = useState(null);
+      const [editing, setEditing] = useState(false);
+      const [gate, setGate] = useState(false);
+      const [addEq, setAddEq] = useState("");
+      const [author, setAuthor] = useState(getUserName());
+      const [busy, setBusy] = useState(false);
+      const [reloadKey, setReloadKey] = useState(0);
+      const [drag, setDrag] = useState(null);
+      const canvasRef = useRef(null);
+
+      const canvas = (data && data.canvas) || { w: 960, h: 820 };
+
+      useEffect(() => {
+        setData(null); setErr(null); setEditing(false); setSelectedId(null);
+        getJSON("/api/departments/" + deptKey + "/floorplan")
+          .then((d) => { setData(d); setItems(d.items || []); })
+          .catch((e) => setErr(e.message));
+      }, [deptKey, reloadKey]);
+
+      // Drag / resize via window pointer events while a gesture is active.
+      useEffect(() => {
+        if (!drag) return;
+        const move = (e) => {
+          const sx = canvas.w / drag.rw, sy = canvas.h / drag.rh;
+          const dx = (e.clientX - drag.px) * sx, dy = (e.clientY - drag.py) * sy;
+          setItems((list) => list.map((it) => {
+            if (it.id !== drag.id) return it;
+            if (drag.mode === "resize") {
+              return { ...it,
+                w: clamp(drag.ow + dx, 34, canvas.w - it.x),
+                h: clamp(drag.oh + dy, 24, canvas.h - it.y) };
+            }
+            return { ...it,
+              x: clamp(drag.ox + dx, 0, canvas.w - it.w),
+              y: clamp(drag.oy + dy, 0, canvas.h - it.h) };
+          }));
+        };
+        const up = () => setDrag(null);
+        window.addEventListener("pointermove", move);
+        window.addEventListener("pointerup", up);
+        return () => { window.removeEventListener("pointermove", move); window.removeEventListener("pointerup", up); };
+      }, [drag, canvas.w, canvas.h]);
+
+      const startDrag = (e, it, mode) => {
+        if (!editing) return;
+        e.stopPropagation(); e.preventDefault();
+        const rect = canvasRef.current.getBoundingClientRect();
+        setSelectedId(it.id);
+        setDrag({ id: it.id, mode, px: e.clientX, py: e.clientY,
+          ox: it.x, oy: it.y, ow: it.w, oh: it.h, rw: rect.width, rh: rect.height });
+      };
+
+      const updateItem = (id, patch) =>
+        setItems((list) => list.map((it) => (it.id === id ? { ...it, ...patch } : it)));
+
+      const placedEqs = new Set(items.filter((i) => i.eq_id).map((i) => String(i.eq_id)));
+      const available = (machines || []).filter((m) => !placedEqs.has(String(m.eq_id)));
+
+      const addMachineBox = (eqId) => {
+        const m = (machines || []).find((x) => String(x.eq_id) === String(eqId));
+        if (!m) return;
+        const id = "n-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+        setItems((list) => list.concat([{ id, eq_id: String(m.eq_id), label: m.name,
+          x: 20, y: 20, w: 120, h: 70, z: list.length,
+          machine_name: m.name, has_critical_wo: m.has_critical_wo,
+          all_closed: m.all_closed,
+          has_guide: m.has_guide,
+          stats: { unscheduled_count: m.unscheduled_count, scheduled_count: m.scheduled_count,
+            downtime_hours: m.downtime_hours, labor_time: m.labor_time, material_cost: m.material_cost } }]));
+        setSelectedId(id); setAddEq("");
+      };
+
+      const addLabelBox = () => {
+        const id = "n-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+        setItems((list) => list.concat([{ id, eq_id: "", label: "New label",
+          x: 20, y: 20, w: 120, h: 60, z: list.length }]));
+        setSelectedId(id);
+      };
+
+      const deleteSelected = () => {
+        if (!selectedId) return;
+        setItems((list) => list.filter((it) => it.id !== selectedId));
+        setSelectedId(null);
+      };
+
+      const relinkSelected = (eqId) => {
+        const m = (machines || []).find((x) => String(x.eq_id) === String(eqId));
+        updateItem(selectedId, m
+          ? { eq_id: String(m.eq_id), machine_name: m.name, has_critical_wo: m.has_critical_wo,
+              all_closed: m.all_closed,
+              has_guide: m.has_guide,
+              stats: { unscheduled_count: m.unscheduled_count, scheduled_count: m.scheduled_count,
+                downtime_hours: m.downtime_hours, labor_time: m.labor_time, material_cost: m.material_cost } }
+          : { eq_id: "", machine_name: "", has_critical_wo: false, all_closed: false, stats: undefined });
+      };
+
+      const startEditing = () => {
+        if (data && data.protected && !getAdminPw()) { setGate(true); return; }
+        setEditing(true);
+      };
+
+      const cancelEditing = () => { setEditing(false); setSelectedId(null); setReloadKey((k) => k + 1); };
+
+      const save = async () => {
+        if (!author.trim()) { setErr("Your name is required to save the layout."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const payload = { author: author.trim(), items: items.map((it, i) => ({
+            id: String(it.id).startsWith("seed-") ? "" : it.id,
+            eq_id: it.eq_id || "", label: it.label || "",
+            x: it.x, y: it.y, w: it.w, h: it.h, z: i })) };
+          const r = await fetch(API + "/api/departments/" + deptKey + "/floorplan", {
+            method: "POST", headers: adminHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify(payload) });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setAdminPw(""); setBusy(false); setEditing(false); setGate(true); return; }
+          if (!r.ok) throw new Error(d.error || "Save failed");
+          setUserName(author.trim());
+          setData(d); setItems(d.items || []); setEditing(false); setSelectedId(null);
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      if (err && !data) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading floor plan…" />`;
+
+      const linked = items.filter((i) => i.eq_id);
+      const sidebar = linked.slice().sort((a, b) => (a.machine_name || a.label || "").localeCompare(b.machine_name || b.label || ""));
+      const selected = items.find((i) => i.id === selectedId);
+      const pct = (v, total) => (100 * v / total) + "%";
+
+      return html`
+        <div className="fade-in">
+          <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+            <p className="text-slate-500 text-sm">
+              ${linked.length} machines on the plan · click a machine to highlight it, or open its full page.
+              ${data.seeded && !editing ? html` <span className="text-amber-600 font-semibold">Showing the default layout — save any edit to make it permanent.</span>` : ""}
+            </p>
+            <div className="flex items-center gap-2">
+              ${!editing
+                ? html`<button onClick=${startEditing}
+                    className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 shadow-sm flex items-center gap-1.5">
+                    <span>🔒</span> Edit layout</button>`
+                : html`
+                  <button onClick=${cancelEditing}
+                    className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+                  <button onClick=${save} disabled=${busy}
+                    className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+                    ${busy ? "Saving…" : "Save layout"}</button>`}
+            </div>
+          </div>
+
+          ${err && html`<div className="text-rose-600 text-sm mb-3">${err}</div>`}
+
+          ${editing && html`
+            <div className="mb-4 p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-3">
+              <div className="flex flex-wrap items-end gap-3">
+                <div className="flex-1 min-w-[200px]">
+                  <label className="block text-xs font-bold text-slate-500 mb-1">Add a machine to the plan</label>
+                  <select value=${addEq} onChange=${(e) => addMachineBox(e.target.value)} className=${inputCls}>
+                    <option value="">Select a machine…</option>
+                    ${available.map((m) => html`<option key=${m.eq_id} value=${m.eq_id}>${m.name} (${m.eq_label})</option>`)}
+                  </select>
+                </div>
+                <button onClick=${addLabelBox}
+                  className="px-3 py-2 rounded-xl border border-emerald-300 text-emerald-800 text-sm font-semibold hover:bg-emerald-100 whitespace-nowrap">+ Blank label</button>
+                <div className="min-w-[160px]">
+                  <label className="block text-xs font-bold text-slate-500 mb-1">Your name</label>
+                  <input value=${author} onInput=${(e) => setAuthor(e.target.value)} placeholder="Required to save" className=${inputCls} />
+                </div>
+              </div>
+              <div className="text-xs text-slate-500">Drag boxes to move · drag the corner handle to resize · select a box to edit its label, relink its machine, or delete it.</div>
+            </div>`}
+
+          ${editing && selected && html`
+            <div className="mb-4 p-4 rounded-2xl bg-white border border-emerald-200 shadow-sm">
+              <div className="flex items-center justify-between mb-3">
+                <div className="font-bold text-slate-700 text-sm">Selected box</div>
+                <button onClick=${deleteSelected}
+                  className="px-3 py-1.5 rounded-full bg-rose-600 text-white text-xs font-semibold hover:bg-rose-700">Delete box</button>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 mb-1">Label</label>
+                  <input value=${selected.label || ""} onInput=${(e) => updateItem(selected.id, { label: e.target.value })} className=${inputCls} />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 mb-1">Linked machine</label>
+                  <select value=${selected.eq_id || ""} onChange=${(e) => relinkSelected(e.target.value)} className=${inputCls}>
+                    <option value="">— none (label only) —</option>
+                    ${(machines || []).map((m) => html`<option key=${m.eq_id} value=${m.eq_id}>${m.name} (${m.eq_label})</option>`)}
+                  </select>
+                </div>
+              </div>
+            </div>`}
+
+          <div className="flex flex-col lg:flex-row gap-5">
+            <!-- Sidebar: machines on the plan -->
+            <div className="lg:w-72 shrink-0">
+              <div className="text-xs font-bold uppercase tracking-wide text-slate-400 mb-2">Machines on plan (${linked.length})</div>
+              <div className="space-y-2 lg:max-h-[720px] lg:overflow-y-auto pr-1">
+                ${sidebar.length === 0
+                  ? html`<div className="text-slate-400 text-sm">No machines linked yet.</div>`
+                  : sidebar.map((it) => {
+                    const st = it.stats || {};
+                    const sel = it.id === selectedId;
+                    return html`
+                      <div key=${it.id} onClick=${() => setSelectedId(it.id)}
+                        className=${"rounded-xl p-3 border cursor-pointer transition " +
+                          (it.has_critical_wo
+                            ? "bg-rose-50 border-rose-300 " + (sel ? "ring-2 ring-rose-400" : "hover:border-rose-400")
+                            : "bg-white border-emerald-100 " + (sel ? "ring-2 ring-emerald-400 border-emerald-300" : "hover:border-emerald-300"))}>
+                        <div className="flex items-start justify-between gap-2">
+                          <div className=${"font-bold text-sm leading-tight " + (it.has_critical_wo ? "text-rose-700" : "text-slate-800")}>
+                            ${it.machine_name || it.label}
+                          </div>
+                          <button onClick=${(e) => { e.stopPropagation(); onOpenMachine(it.eq_id); }}
+                            title="Open full machine page"
+                            className="text-[11px] font-semibold text-emerald-700 hover:text-emerald-900 whitespace-nowrap">Open →</button>
+                        </div>
+                        ${it.has_critical_wo && html`<div className="text-[10px] font-bold text-rose-600 mt-0.5">● Pending urgency-1 work order</div>`}
+                        ${!it.has_critical_wo && it.all_closed && html`<div className="text-[10px] font-bold text-emerald-600 mt-0.5 flex items-center gap-1"><${MintLeaf} className="w-4 h-4" /> All work orders closed</div>`}
+                        <div className="flex flex-wrap gap-1.5 mt-2 text-[11px]">
+                          <span className="bg-emerald-50 text-emerald-700 rounded px-1.5 py-0.5 font-semibold">${num(st.unscheduled_count)} unsch.</span>
+                          <span className="bg-teal-50 text-teal-700 rounded px-1.5 py-0.5 font-semibold">${num(st.scheduled_count)} sch.</span>
+                          <span className="bg-indigo-50 text-indigo-600 rounded px-1.5 py-0.5 font-semibold" title="Downtime">${hours(st.downtime_hours)}</span>
+                        </div>
+                      </div>`;
+                  })}
+              </div>
+            </div>
+
+            <!-- Canvas -->
+            <div className="flex-1 min-w-0">
+              <div ref=${canvasRef}
+                onClick=${() => { if (!drag) setSelectedId(null); }}
+                className="relative w-full rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden select-none"
+                style=${{ aspectRatio: canvas.w + " / " + canvas.h,
+                  backgroundImage: "linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px)",
+                  backgroundSize: (100 / (canvas.w / 40)) + "% " + (100 / (canvas.h / 40)) + "%" }}>
+                <!-- Divider between the upper machines and the lower row (Holz-Her),
+                     stopping at the Rainbow's left edge on the right. -->
+                <div className="absolute left-0 h-0.5 bg-slate-500 z-0"
+                  style=${{ top: pct(455, canvas.h), width: pct(820, canvas.w) }}></div>
+                ${items.map((it) => {
+                  const sel = it.id === selectedId;
+                  const linkedBox = !!it.eq_id;
+                  const crit = it.has_critical_wo;
+                  const isLine = !linkedBox && !(it.label || "").trim() && it.h <= 8;
+                  const base = isLine
+                    ? "absolute "
+                    : "absolute rounded-md flex items-center justify-center text-center p-1 overflow-hidden text-[11px] leading-tight ";
+                  const look = isLine
+                    ? (sel ? "bg-emerald-600" : "bg-slate-400")
+                    : (sel
+                        ? "bg-emerald-200 border-2 border-emerald-600 text-emerald-900 font-semibold"
+                        : (crit
+                            ? "bg-rose-100 border-2 border-rose-500 text-rose-800 font-semibold"
+                            : (linkedBox
+                                ? "bg-white border border-slate-400 text-slate-700"
+                                : "bg-slate-100 border border-dashed border-slate-300 text-slate-400")));
+                  const ring = (sel && !isLine) ? " ring-2 ring-emerald-500 ring-offset-1 z-20" : "";
+                  return html`
+                    <div key=${it.id}
+                      onPointerDown=${(e) => editing ? startDrag(e, it, "move") : null}
+                      onClick=${(e) => { e.stopPropagation(); setSelectedId(it.id); }}
+                      className=${base + look + ring + (editing ? " cursor-move" : (linkedBox ? " cursor-pointer" : ""))}
+                      style=${{ left: pct(it.x, canvas.w), top: pct(it.y, canvas.h),
+                        width: pct(it.w, canvas.w), height: pct(it.h, canvas.h) }}>
+                      <span className="pointer-events-none">${it.label}</span>
+                      ${linkedBox && !editing && html`
+                        <button onClick=${(e) => { e.stopPropagation(); onOpenMachine(it.eq_id); }}
+                          title="Open machine page"
+                          className="absolute top-0.5 right-0.5 w-5 h-5 rounded bg-emerald-700/90 text-white text-[10px] font-bold flex items-center justify-center hover:bg-emerald-800">↗</button>`}
+                      ${linkedBox && !editing && it.all_closed && html`
+                        <span title="All work orders closed and completed" className="absolute bottom-0.5 left-0.5 text-emerald-600 bg-white/90 rounded-full p-0.5">
+                          <${MintLeaf} size=${14} />
+                        </span>`}
+                      ${editing && html`
+                        <div onPointerDown=${(e) => startDrag(e, it, "resize")}
+                          className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-600 rounded-tl cursor-nwse-resize"></div>`}
+                    </div>`;
+                })}
+              </div>
+              <div className="flex items-center gap-4 mt-3 text-xs text-slate-500 flex-wrap">
+                <span className="flex items-center gap-1.5"><span className="inline-block w-3 h-3 rounded-sm border-2 border-rose-500 bg-rose-100"></span> Pending urgency-1 WO</span>
+                <span className="flex items-center gap-1.5 text-emerald-600"><${MintLeaf} className="w-4 h-4" /> All WOs closed</span>
+                <span className="flex items-center gap-1.5"><span className="inline-block w-3 h-3 rounded-sm border border-slate-400 bg-white"></span> Machine</span>
+                <span className="flex items-center gap-1.5"><span className="inline-block w-3 h-3 rounded-sm border-2 border-emerald-600 bg-emerald-200"></span> Selected</span>
+                <span className="flex items-center gap-1.5"><span className="inline-block w-3 h-3 rounded-sm border border-dashed border-slate-300 bg-slate-100"></span> Label only</span>
+              </div>
+            </div>
+          </div>
+
+          ${gate && html`<${AdminGate} actionLabel="edit the floor plan"
+            onUnlock=${() => { setGate(false); setEditing(true); }}
+            onCancel=${() => setGate(false)} />`}
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
     /* Department dashboard                                               */
     /* ------------------------------------------------------------------ */
     function MachineCard({ m, onOpen, onDeactivate }) {
@@ -1414,6 +1748,7 @@
             ${m.has_guide && html`<span className="text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">Guide</span>`}
           </div>
           <div className="text-xs text-emerald-600 font-mono mt-0.5">${m.eq_label}</div>
+          ${m.nickname && html`<div className="text-[11px] text-slate-400 mt-0.5 truncate" title=${m.pm_name}>PM: ${m.pm_name}</div>`}
           <div className="flex flex-wrap gap-2 mt-4 text-xs">
             <span className="bg-emerald-50 text-emerald-700 rounded-lg px-2 py-1 font-semibold">${num(m.unscheduled_count)} unsch.</span>
             <span className="bg-teal-50 text-teal-700 rounded-lg px-2 py-1 font-semibold">${num(m.scheduled_count)} sch.</span>
@@ -1469,7 +1804,7 @@
       // Toilet Partitions gets a department-wide Trends tab aggregating just its
       // "Machines" group. Other departments keep the standard tab set.
       const deptTabs = deptKey === "toilet"
-        ? ["Machines", "Trends", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"]
+        ? ["Machines", "Floor Plan", "Trends", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"]
         : DEPT_TABS;
 
       return html`
@@ -1525,6 +1860,9 @@
                 subtitle=${data.label + " · scheduled & unscheduled work orders for the month."}
                 deptKey=${deptKey} />
             </div>`}
+
+          ${tab === "Floor Plan" && html`
+            <${FloorPlanTab} deptKey=${deptKey} machines=${data.machines || []} onOpenMachine=${onOpenMachine} />`}
 
           ${tab === "Machines" && html`
             <div className="fade-in">
@@ -2047,6 +2385,67 @@
                 ${busy ? "Checking…" : "Unlock"}</button>
             </div>
           </div>
+        </div>`;
+    }
+
+    // Admin-gated editor for a machine's display nickname. The real PM
+    // equipment name is never changed; the nickname is only what MINT shows.
+    // On a 401 it pops the AdminGate, then retries the save automatically.
+    function NicknameModal({ deptKey, eqId, pmName, nickname, onClose, onSaved }) {
+      const [nick, setNick] = useState(nickname || "");
+      const [author, setAuthor] = useState(getUserName());
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [gate, setGate] = useState(false);
+
+      const save = async () => {
+        if (!author.trim()) { setErr("Your name is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/departments/" + deptKey + "/machines/" + eqId + "/nickname", {
+            method: "POST",
+            headers: adminHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({ nickname: nick.trim(), author: author.trim() }),
+          });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setAdminPw(""); setBusy(false); setGate(true); return; }
+          if (!r.ok) throw new Error(d.error || "Save failed");
+          setUserName(author.trim());
+          onSaved(d.nickname || "");
+          onClose();
+        } catch (e) { setErr(e.message); setBusy(false); }
+      };
+
+      return html`
+        <div className="fixed inset-0 z-[55] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+          onClick=${onClose}>
+          <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-sm p-6"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xl">🏷️</span>
+              <h3 className="text-lg font-extrabold text-slate-800">Machine nickname</h3>
+            </div>
+            <p className="text-sm text-slate-500 mb-1">Shown throughout MINT instead of the PM name.</p>
+            <div className="text-xs text-slate-400 mb-4">PM name: <span className="font-mono text-slate-500">${pmName}</span></div>
+            <label className="block text-xs font-bold text-slate-500 mb-1">Nickname</label>
+            <input value=${nick} autoFocus
+              onInput=${(e) => setNick(e.target.value)}
+              onKeyDown=${(e) => { if (e.key === "Enter") save(); }}
+              placeholder="Leave blank to use the PM name"
+              className=${inputCls} />
+            <div className="mt-3"><${NameInput} value=${author} onChange=${setAuthor} /></div>
+            ${err && html`<div className="text-rose-600 text-sm mt-2">${err}</div>`}
+            <div className="flex gap-2 justify-end mt-4">
+              <button onClick=${onClose}
+                className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+              <button onClick=${save} disabled=${busy}
+                className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+                ${busy ? "Saving…" : "Save"}</button>
+            </div>
+          </div>
+          ${gate && html`<${AdminGate} actionLabel="set the machine nickname"
+            onUnlock=${() => { setGate(false); save(); }}
+            onCancel=${() => setGate(false)} />`}
         </div>`;
     }
 
@@ -4507,6 +4906,7 @@
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [tab, setTab] = useState("Dashboard");
+      const [editingNick, setEditingNick] = useState(false);
       const tabRef = useRef(null);
 
       useEffect(() => {
@@ -4555,10 +4955,21 @@
           ]} />
           <div className="flex items-end justify-between flex-wrap gap-2 mb-5">
             <div>
-              <h1 className="text-2xl font-extrabold text-slate-800">${m.name}</h1>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="text-2xl font-extrabold text-slate-800">${m.name}</h1>
+                <button onClick=${() => setEditingNick(true)}
+                  title="Set a display nickname (password protected)"
+                  className="text-slate-400 hover:text-emerald-700 text-sm font-semibold px-2 py-1 rounded-full hover:bg-emerald-50">
+                  🏷️ ${m.nickname ? "Edit nickname" : "Add nickname"}</button>
+              </div>
               <div className="text-emerald-600 font-mono text-sm">${m.eq_label} · ${m.department}</div>
+              ${m.nickname && html`<div className="text-xs text-slate-400 mt-0.5">PM name: <span className="font-mono">${m.pm_name}</span></div>`}
             </div>
           </div>
+          ${editingNick && html`<${NicknameModal}
+            deptKey=${deptKey} eqId=${eqId} pmName=${m.pm_name} nickname=${m.nickname}
+            onClose=${() => setEditingNick(false)}
+            onSaved=${(nn) => setData((d) => ({ ...d, machine: { ...d.machine, nickname: nn, name: nn || d.machine.pm_name } }))} />`}
 
           <div ref=${tabRef} className="flex gap-2 mb-6 bg-white p-1.5 rounded-full shadow-sm border border-emerald-100 w-fit flex-wrap">
             ${tabs.map((t) => html`
@@ -4672,6 +5083,8 @@
       return b;
     }
 
+    const isClosedCompleted = (r) => (r.status || "").trim() === CLOSED_STATUS;
+
     function WeekWORow({ r, showDept, deptLabels, onOpenWo }) {
       const when = r.wo_type === "scheduled" ? r.due_date : r.date_notified;
       return html`
@@ -4686,6 +5099,7 @@
           <div className="flex items-center gap-2 mt-1 flex-wrap">
             <span className="text-[11px] text-slate-500 truncate max-w-[11rem]">${r.equipment_name || ""}</span>
             ${r.status && html`<span className=${"text-[10px] px-1.5 py-0.5 rounded-full border " + statusColor(r.status)}>${r.status}</span>`}
+            ${isClosedCompleted(r) && html`<span className="text-emerald-600" title="Closed and completed"><${MintLeaf} className="w-4 h-4" /></span>`}
             ${showDept && deptLabels[r.department_key] && html`<span className="text-[10px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100">${deptLabels[r.department_key]}</span>`}
           </div>
         </button>`;
@@ -5053,13 +5467,15 @@
     // Fetches /api/weekly and renders panels for a fixed scope (department or
     // machine). Used embedded inside the department and machine views so the
     // relevant weekly schedule shows up automatically - no manual filtering.
+    // Supports paging through earlier/upcoming weeks like the monthly calendar.
     function EmbeddedWeekly({ predicate, showDept, onOpenWo, title, subtitle }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [typeFilter, setTypeFilter] = useState("all");
+      const [weekOffset, setWeekOffset] = useState(0);
       useEffect(() => {
-        getJSON("/api/weekly").then(setData).catch((e) => setErr(e.message));
-      }, []);
+        getJSON("/api/weekly?offset=" + weekOffset).then(setData).catch((e) => setErr(e.message));
+      }, [weekOffset]);
       if (err) return html`<div className="text-rose-600 text-sm">${err}</div>`;
       if (!data) return html`<${Spinner} label="Loading weekly schedule…" />`;
       const TYPE_TABS = [
@@ -5067,14 +5483,31 @@
         { key: "scheduled", label: "Scheduled" },
         { key: "unscheduled", label: "Unscheduled" },
       ];
+      const weekRangeText = data && data.weeks && data.weeks.this
+        ? new Date(data.weeks.this.start + "T00:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" }) +
+          " – " +
+          new Date(data.weeks.this.end + "T00:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })
+        : "";
       return html`
         <div className="fade-in">
           <div className="flex items-start justify-between flex-wrap gap-3 mb-4">
             <div>
               ${title && html`<h2 className="text-lg font-extrabold text-slate-800">${title}</h2>`}
               ${subtitle && html`<p className="text-slate-500 text-sm">${subtitle}</p>`}
+              ${weekRangeText && html`<p className="text-emerald-700 text-sm font-semibold">${weekRangeText}</p>`}
             </div>
             <div className="flex items-center gap-3 flex-wrap">
+              <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
+                <button onClick=${() => setWeekOffset((o) => o - 1)}
+                  title="Previous weeks"
+                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
+                <button onClick=${() => setWeekOffset(0)}
+                  className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
+                  This week</button>
+                <button onClick=${() => setWeekOffset((o) => o + 1)}
+                  title="Upcoming weeks"
+                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
+              </div>
               <div className="inline-flex rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
                 ${TYPE_TABS.map((t) => html`
                   <button key=${t.key} onClick=${() => setTypeFilter(t.key)}
@@ -5292,9 +5725,12 @@
               (showDept && r.department_key && deptLabels[r.department_key] ? "\n" + deptLabels[r.department_key] : "")}
             className=${"w-full text-left rounded-lg px-1.5 py-1 text-[11px] leading-tight border " + chipColor(r) +
               (r.wo_id ? " hover:shadow-sm cursor-pointer" : " cursor-default")}>
+            <div className="flex items-center gap-1">
+              ${isClosedCompleted(r) && html`<span className="text-emerald-600" title="Closed and completed"><${MintLeaf} className="w-4 h-4" /></span>`}
+              <span className="truncate font-semibold">${r.wo_type === "scheduled" ? (r.audit_item || "PM") : (r.problem || "Issue")}</span>
+            </div>
             ${showDept && r.department_key && html`<div className="truncate opacity-70">${deptLabels[r.department_key]}</div>`}
             ${r.equipment_name && html`<div className="truncate opacity-80">${r.equipment_name}</div>`}
-            <div className="truncate font-semibold">${r.wo_type === "scheduled" ? (r.audit_item || "PM") : (r.problem || "Issue")}</div>
           </button>`;
       };
 
@@ -5412,7 +5848,10 @@
                           onClick=${() => { if (r.wo_id && onOpenWo) { setDayModal(null); onOpenWo(r.wo_id); } }}
                           className=${"w-full text-left rounded-lg px-3 py-2 border " + chipColor(r) +
                             (r.wo_id ? " hover:shadow-sm cursor-pointer" : " cursor-default")}>
-                          <div className="text-xs font-bold">${r.wo_type === "scheduled" ? "Scheduled" : "Unscheduled"}</div>
+                          <div className="flex items-center gap-1.5">
+                            <div className="text-xs font-bold">${r.wo_type === "scheduled" ? "Scheduled" : "Unscheduled"}</div>
+                            ${isClosedCompleted(r) && html`<span className="text-emerald-600" title="Closed and completed"><${MintLeaf} className="w-4 h-4" /></span>`}
+                          </div>
                           ${showDept && r.department_key && html`<div className="text-xs truncate opacity-70">${deptLabels[r.department_key]}</div>`}
                           ${r.equipment_name && html`<div className="text-xs truncate opacity-80">${r.equipment_name}</div>`}
                           <div className="text-sm font-semibold truncate">${r.wo_type === "scheduled" ? (r.audit_item || "PM") : (r.problem || "Issue")}</div>

@@ -1,0 +1,20 @@
+[
+  {
+    "equipment_id": "2101",
+    "equipment_eq_id": "EQ ID 2101",
+    "equipment_name": "Mountz Torque screwdrivers",
+    "department": "Assembly",
+    "wo_id": "16898",
+    "date_notified": "09/02/2025",
+    "urgency": "1. Prod Stopped",
+    "problem": "Torque screwdriver in the Mezz stopped working. Production is stopped.",
+    "status": "Closed and Completed",
+    "material_cost": "0",
+    "labor_time": "0.25",
+    "work_performed_by": "PU",
+    "downtime_hours": "0",
+    "completed_datetime": "09/02/2025 12:00 AM",
+    "comments": "Primo Uy - 09/02/25  2:36:50 PM: Check the fixture and is working. This job is for the 2111/12 rework, depending on the unit has been rework.\nif the unit is having already a correct torque, the belt will not spin anymore. \nNote: Double check and make sure that the valve and nut are not cross threaded. some time it's hard to tell but the gasket will show when it's not seating properly with the valve.\nRework/production continue.",
+    "attachments": []
+  }
+]

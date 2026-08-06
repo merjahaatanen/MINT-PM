@@ -1,0 +1,38 @@
+[
+  {
+    "equipment_id": "1491",
+    "equipment_eq_id": "EQ ID 1491",
+    "equipment_name": "General request",
+    "department": "Quality Assurance",
+    "wo_id": "10217",
+    "date_notified": "",
+    "urgency": "",
+    "problem": "",
+    "status": "",
+    "material_cost": "",
+    "labor_time": "",
+    "work_performed_by": "",
+    "downtime_hours": "",
+    "completed_datetime": "",
+    "comments": "",
+    "attachments": []
+  },
+  {
+    "equipment_id": "1491",
+    "equipment_eq_id": "EQ ID 1491",
+    "equipment_name": "General request",
+    "department": "Quality Assurance",
+    "wo_id": "15358",
+    "date_notified": "",
+    "urgency": "",
+    "problem": "",
+    "status": "",
+    "material_cost": "",
+    "labor_time": "",
+    "work_performed_by": "",
+    "downtime_hours": "",
+    "completed_datetime": "",
+    "comments": "",
+    "attachments": []
+  }
+]

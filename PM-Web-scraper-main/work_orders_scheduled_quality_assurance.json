@@ -30,7 +30,7 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:48:51 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
+    "comments": "Miguel Diaz - 04/15/24  9:48:51 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
     "attachments": []
   },
   {
@@ -3847,7 +3847,7 @@
     "equipment_name": "38030 Cell",
     "department": "Quality Assurance",
     "wo_id": "11199",
-    "audit_item": "1. Calibration sticker on Tester is valid and up to date.\n2. \u201cDummy\u201d test is in place and working properly (should be tested/verified).\n3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.\n4. Procedure for Testing equipment is up to date (may be within the VMP).\n5. Ensure mfg. is recording and logging all information on units tested.\n6. Ensure mfg. is following the Line Reject Procedure.\n   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.\n7. Are there any safety relevant complaints?\n8. Are there any changes in construction or components?\n9. Is the final test performed according to the actual requirements of VDE (PM332e)?\n10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?\n11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",
+    "audit_item": "1. Calibration sticker on Tester is valid and up to date.\n2. “Dummy” test is in place and working properly (should be tested/verified).\n3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.\n4. Procedure for Testing equipment is up to date (may be within the VMP).\n5. Ensure mfg. is recording and logging all information on units tested.\n6. Ensure mfg. is following the Line Reject Procedure.\n   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.\n7. Are there any safety relevant complaints?\n8. Are there any changes in construction or components?\n9. Is the final test performed according to the actual requirements of VDE (PM332e)?\n10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?\n11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",
     "status": "Pending",
     "due_date": "7/15/2024",
     "work_performed_by": "",
@@ -3864,7 +3864,7 @@
     "equipment_name": "38030 Cell",
     "department": "Quality Assurance",
     "wo_id": "720",
-    "audit_item": "1. Calibration sticker on Tester is valid and up to date.\n2. \u201cDummy\u201d test is in place and working properly (should be tested/verified).\n3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.\n4. Procedure for Testing equipment is up to date (may be within the VMP).\n5. Ensure mfg. is recording and logging all information on units tested.\n6. Ensure mfg. is following the Line Reject Procedure.\n   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.\n7. Are there any safety relevant complaints?\n8. Are there any changes in construction or components?\n9. Is the final test performed according to the actual requirements of VDE (PM332e)?\n10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?\n11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",
+    "audit_item": "1. Calibration sticker on Tester is valid and up to date.\n2. “Dummy” test is in place and working properly (should be tested/verified).\n3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.\n4. Procedure for Testing equipment is up to date (may be within the VMP).\n5. Ensure mfg. is recording and logging all information on units tested.\n6. Ensure mfg. is following the Line Reject Procedure.\n   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.\n7. Are there any safety relevant complaints?\n8. Are there any changes in construction or components?\n9. Is the final test performed according to the actual requirements of VDE (PM332e)?\n10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?\n11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",
     "status": "Closed without Action",
     "due_date": "6/18/2022",
     "work_performed_by": "md",
