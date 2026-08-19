@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>MINT API Key Flow</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 24px; background: #fafafa; }
+  h1 { font-size: 18px; }
+  .mermaid { background: white; padding: 16px; border-radius: 8px; }
+</style>
+</head>
+<body>
+<h1>API Key Flow — MINT (Ollama / Gemini)</h1>
+<div class="mermaid">
+flowchart LR
+    subgraph Browser["Browser (webapp/index.html)"]
+        A1["Sort with AI (Machine Info tab)"]
+        A2["Generate / Update Checklist (Guide tab)"]
+    end
+
+    subgraph Flask["server.py (Flask)"]
+        B1["/parse-notes"]
+        B2["/guide (PUT)"]
+        B3["/guide/update (POST)"]
+    end
+
+    subgraph GE["guide_engine.py"]
+        C1["generate_guide()"]
+        C2["update_guide()"]
+    end
+
+    subgraph AE["analyze_equipment.py"]
+        D1["analyze(prompt, model)"]
+        D2{"LLM_PROVIDER env var<br/>default ollama if OLLAMA_API_KEY set<br/>else gemini"}
+        D3["_analyze_ollama()"]
+        D4["_analyze_gemini()"]
+    end
+
+    subgraph Env[".env file (gitignored)"]
+        E1["OLLAMA_API_KEY"]
+        E2["GEMINI_API_KEY / GOOGLE_API_KEY"]
+        E3["OLLAMA_MODEL, OLLAMA_URL"]
+        E4["GEMINI_MODEL"]
+    end
+
+    subgraph PS["PowerShell subprocess (Windows TLS)"]
+        F1["_PS_SCRIPT_OPENAI<br/>Authorization: Bearer $OLLAMA_API_KEY"]
+        F2["_PS_SCRIPT<br/>key as query param"]
+    end
+
+    G1["Ollama Cloud<br/>ollama.com/v1/chat/completions"]
+    G2["Google Gemini<br/>generativelanguage.googleapis.com"]
+
+    A1 -->|POST| B1
+    A2 -->|generate| B2
+    A2 -->|merge new WOs| B3
+    B2 --> C1
+    B3 --> C2
+    B1 --> D1
+    C1 --> D1
+    C2 --> D1
+    D1 --> D2
+    D2 -->|ollama| D3
+    D2 -->|gemini| D4
+    E1 --> D3
+    E3 --> D3
+    E2 --> D4
+    E4 --> D4
+    D3 --> F1 --> G1
+    D4 --> F2 --> G2
+    G1 -->|JSON response| D3
+    G2 -->|JSON response| D4
+    D3 -->|raw text| B1
+    D4 -->|raw text| B1
+</div>
+<script>mermaid.initialize({ startOnLoad: true });</script>
+</body>
+</html>

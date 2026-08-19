@@ -54,19 +54,17 @@ equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,d
 2025,EQ ID 2025,Dock ramps,Shipping,11198,"*Grease all fittings on the dock ramps flap 
 *Pull handle to raise the ramp go to the other side of the ramp and grease all fittings underneath the flap should be 20 grease nipples .
 *Use blue grease",Closed and Completed,4/15/2025,PU,1.00,0.00,0.00,4/15/2025,Primo Uy - 11/18/25  7:24:51 AM: Done,[]
-1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,14291,Replace filters on wall Buy from Grainger part #11C880,Pending,7/8/2025,,0.00,0.00,0.00,,Sean Jennings - 06/05/26 10:23:00 AM: Team please review.,[]
-1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,913,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed and Completed,9/18/2022,Primo,2.50,700.00,0.00,10/1/2022,,[]
 1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,912,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,9/18/2022,,0.00,0.00,0.00,10/1/2022,,[]
-1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,2845,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,4/13/2023,Max,1.00,194.00,0.00,4/1/2023,Miguel Diaz - 04/12/23  7:50:13 AM: done,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,913,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed and Completed,9/18/2022,Primo,2.50,700.00,0.00,10/1/2022,,[]
 1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,2846,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed and Completed,4/13/2023,Max,2.00,781.20,0.00,4/1/2023,Miguel Diaz - 04/12/23  7:51:02 AM: done,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,2845,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,4/13/2023,Max,1.00,194.00,0.00,4/1/2023,Miguel Diaz - 04/12/23  7:50:13 AM: done,[]
 1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,5246,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed without Action,10/12/2023,MD,0.00,0.00,0.00,11/8/2023,Miguel Diaz - 11/08/23 12:48:02 PM: ANOTHER WORK ORDER IS ALREADY OPEN FOR THE SAME THING,[]
 1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,5242,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,10/12/2023,Mike diaz,1.50,260.00,0.00,11/11/2023,Miguel Diaz - 11/13/23  5:50:30 AM: Replaced filters,[]
 1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,7970,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed without Action,5/8/2024,md,0.00,0.00,0.00,5/9/2024,Miguel Diaz - 05/09/24  7:36:29 AM: double work order popped up closing this one,[]
 1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,8011,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,5/13/2024,Mike d,1.60,745.00,0.00,5/11/2024,Miguel Diaz - 05/11/24 10:24:30 AM: Replaced filters,[]
 1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,11606,Filters are located on the west wall in the shipping department to be replaced every 6 months.,Closed without Action,11/9/2024,md,0.00,0.00,0.00,11/27/2024,Miguel Diaz - 12/09/24 12:58:22 PM: double work order,[]
 1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,11636,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,11/11/2024,Max,1.50,714.00,0.00,12/12/2024,Miguel Diaz - 12/09/24  1:19:27 PM: Filters have been ordered,[]
-1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,14292,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
-part # 11C862 .Order from Grainger",Pending,7/8/2025,,0.00,0.00,0.00,,Sean Jennings - 06/05/26 10:23:18 AM: Team please review.,[]
+1527,EQ ID 1527,Merv Filters 13 24 x24 x1,Shipping,14291,Replace filters on wall Buy from Grainger part #11C880,Closed and Completed,7/8/2025,Max,2.00,0.00,0.00,6/6/2026,Sean Jennings - 06/05/26 10:23:00 AM: Team please review.,[]
 1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,914,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
 part # 11C862 .Order from Grainger",Closed and Completed,9/18/2022,Primo,1.00,150.00,0.00,10/1/2022,Miguel Diaz - 10/01/22  9:26:53 AM: Replaced filters,[]
 1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,2847,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
@@ -77,6 +75,8 @@ part # 11C862 .Order from Grainger",Closed and Completed,10/12/2023,Mike diaz,2.
 part # 11C862 .Order from Grainger",Closed and Completed,5/13/2024,Mike d,2.00,160.00,0.00,5/11/2024,Miguel Diaz - 05/11/24 10:24:14 AM: Replaced filters,[]
 1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,11635,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
 part # 11C862 .Order from Grainger",Closed and Completed,11/11/2024,Max,2.00,179.00,0.00,12/12/2024,Miguel Diaz - 12/09/24  1:19:37 PM: Filters have been ordered,[]
+1528,EQ ID 1528,Merv filters 13 12x24x1,Shipping,14292,"Filters are located on the west wall in the shipping department to be replaced every 6 months.
+part # 11C862 .Order from Grainger",Closed and Completed,7/8/2025,Max,2.00,0.00,0.00,6/6/2026,Sean Jennings - 06/05/26 10:23:18 AM: Team please review.,[]
 182,EQ ID 182,Stacker # 10,Shipping,14870,Raymond to perform scheduled maintenance,Pending,4/27/2025,,0.00,0.00,0.00,,,[]
 182,EQ ID 182,Stacker # 10,Shipping,143,Raymond to perform scheduled maintenance,Closed and Completed,5/18/2022,Hovic raymond tech,1.00,98.00,0.00,5/18/2022,"Miguel Diaz - 05/18/22  2:11:56 PM: Tech performed the schedule maintenance .
 Open the attachment to view tech notes if needed",[]

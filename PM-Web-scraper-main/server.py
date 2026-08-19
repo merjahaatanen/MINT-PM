@@ -44,6 +44,7 @@ import analyze_equipment as ae
 import guide_engine as ge
 import mint_store as store
 import mint_email as emailer
+import longevity_parser as lp
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 WEBAPP_DIR = os.path.join(OUTPUT_DIR, "webapp")
@@ -508,6 +509,14 @@ def _normalize_date(s: str) -> str:
     return s
 
 
+def _num(v) -> float:
+    """Parse a string/number to float; blanks or invalid values become 0.0."""
+    try:
+        return float(str(v).strip() or 0)
+    except (TypeError, ValueError):
+        return 0.0
+
+
 def _load_equipment() -> dict[str, list[dict]]:
     path = os.path.join(OUTPUT_DIR, EQUIPMENT_FILE)
     by_key: dict[str, list[dict]] = {k: [] for k in DEPARTMENTS}
@@ -655,6 +664,22 @@ def _generate_recurring_occurrences() -> int:
     return created
 
 
+def _apply_nicknames(dept_data: dict) -> None:
+    """Overlay admin-set nicknames onto every work order's equipment_name so the
+    nickname shows everywhere a record is rendered (lists, modal, weekly/monthly
+    schedules, exports). The original PM name is preserved as pm_equipment_name
+    so nothing is lost and the overlay can be recomputed idempotently."""
+    nick_map = store.list_nicknames("")  # {dept_key: {eq_id: nickname}}
+    for dk, data in dept_data.items():
+        nicks = nick_map.get(dk) or {}
+        for kind in ("unscheduled", "scheduled"):
+            for r in data.get(kind, []):
+                pm = r.get("pm_equipment_name") or r.get("equipment_name") or ""
+                r["pm_equipment_name"] = pm
+                nick = (nicks.get(_num_id(r.get("equipment_id"))) or "").strip()
+                r["equipment_name"] = nick or pm
+
+
 def reload_data() -> datetime:
     """(Re)load every department's work orders + the equipment master into the
     in-memory caches, then atomically swap them in. Safe to call at any time.
@@ -731,6 +756,8 @@ def reload_data() -> datetime:
                     dept_data[dk][kind] = [
                         r for r in dept_data[dk][kind]
                         if _num_id(r.get("equipment_id")) not in ids]
+
+    _apply_nicknames(dept_data)
 
     with _DATA_LOCK:
         _DEPT_DATA = dept_data
@@ -1018,6 +1045,44 @@ def api_division(div_key="bla"):
     })
 
 
+@app.route("/api/divisions/<div_key>/longevity")
+def api_division_longevity(div_key):
+    """Division-wide estimated-replacement-year table from the Excel workbook.
+    User edits are merged in from longevity_edits.json; the original Excel file
+    remains the source of truth for unedited fields."""
+    return jsonify({
+        "division": div_key,
+        "items": lp.by_division(div_key),
+    })
+
+
+@app.route("/api/longevity/<div_key>/<item_num>", methods=["POST"])
+def api_update_longevity(div_key, item_num):
+    """Update editable fields for a single longevity row.
+
+    Body: {"author": ..., "updates": {"asset_num": ..., "estimated_replacement_year": ..., ...}}
+    Persisted edits override Excel values; blank values remove the edit overlay.
+    """
+    if not _edit_ok(request):
+        return jsonify({"error": "Edit password required"}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required"}), 400
+    updates = body.get("updates") or {}
+    if not isinstance(updates, dict):
+        return jsonify({"error": "updates must be an object"}), 400
+    # department/machine disambiguate rows whose Item# collides with another
+    # row's (blank Item# cells fall back to a per-sheet row number that isn't
+    # globally unique) so an edit never lands on the wrong row.
+    department = (body.get("department") or "").strip()
+    machine = (body.get("machine") or "").strip()
+    row = lp.apply_edit(div_key, item_num, updates, department=department, machine=machine)
+    if row is None:
+        return jsonify({"error": "row not found"}), 404
+    return jsonify({"ok": True, "item": row})
+
+
 # --------------------------------------------------------------------------- #
 # Vendor & Utilities contacts (BLA division tab)
 # --------------------------------------------------------------------------- #
@@ -1044,15 +1109,19 @@ _seed_vendor_contacts_if_empty()
 
 
 def _toilet_machine_list() -> list[dict]:
-    """Numeric eq_id + name for every Toilet Partitions machine, for the
-    'assign to machine' picker on the Vendor tab."""
+    """Numeric eq_id + display name (nickname, when set) for every Toilet
+    Partitions machine, for the 'assign to machine' picker and the machine-name
+    chips on the Vendor tab."""
+    nicks = store.list_nicknames("toilet")
     seen, out = set(), []
     for e in _EQUIP_BY_KEY.get("toilet", []):
         eq_id = _num_id(e.get("eq_id"))
         if not eq_id or eq_id in seen:
             continue
         seen.add(eq_id)
-        out.append({"eq_id": eq_id, "name": (e.get("equipment_name") or "").strip() or f"EQ {eq_id}"})
+        pm_name = (e.get("equipment_name") or "").strip()
+        name = (nicks.get(eq_id) or "").strip() or pm_name or f"EQ {eq_id}"
+        out.append({"eq_id": eq_id, "name": name})
     out.sort(key=lambda m: int(m["eq_id"]) if m["eq_id"].isdigit() else 0)
     return out
 
@@ -1071,6 +1140,7 @@ def _vendors_for_machine(eq_id: str) -> list[dict]:
 def _machine_contacts(dept_key: str) -> list[dict]:
     """Every contact card stored on a department's machines, each tagged with
     its machine so they can be listed together on the Vendor & Utilities tab."""
+    nicks = store.list_nicknames(dept_key)
     names = {_num_id(e.get("eq_id")): (e.get("equipment_name") or "").strip()
              for e in _EQUIP_BY_KEY.get(dept_key, [])}
     out = []
@@ -1080,6 +1150,8 @@ def _machine_contacts(dept_key: str) -> list[dict]:
         except ValueError:
             continue
         eq_id = _num_id(m.get("eq_id"))
+        pm_name = names.get(eq_id) or ""
+        machine_name = (nicks.get(eq_id) or "").strip() or pm_name or f"EQ {eq_id}"
         for contact_index, c in enumerate(summary.get("contacts") or []):
             if not isinstance(c, dict):
                 continue
@@ -1091,7 +1163,8 @@ def _machine_contacts(dept_key: str) -> list[dict]:
             out.append({
                 "eq_id": eq_id,
                 "contact_index": contact_index,
-                "machine_name": names.get(eq_id) or f"EQ {eq_id}",
+                "machine_name": machine_name,
+                "pm_equipment_name": pm_name,
                 "name": c.get("name", ""), "role": c.get("role", ""),
                 "company": c.get("company", ""), "phone": c.get("phone", ""),
                 "cell": c.get("cell", ""), "fax": c.get("fax", ""),
@@ -1275,6 +1348,21 @@ def api_department(dept_key):
         "inactive_machines": inactive_machines,
         "unscheduled": _sorted_desc(data["unscheduled"], "date_notified"),
         "scheduled": _sorted_desc(data["scheduled"], "due_date"),
+    })
+
+
+@app.route("/api/departments/<dept_key>/longevity")
+def api_department_longevity(dept_key):
+    """Department-level estimated-replacement-year table from the Excel workbook.
+    Rows are filtered to the requested department; editable details still live on
+    the per-machine Machine Info tab."""
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    division_key = _DEPT_DIVISION.get(dept_key, "bla")
+    return jsonify({
+        "department": dept_key,
+        "division": division_key,
+        "items": lp.by_department(dept_key, division_key),
     })
 
 
@@ -1504,6 +1592,16 @@ def api_machine_info(dept_key, eq_id):
     # they live in the central vendor list (edited on the Vendor & Utilities tab).
     info = dict(info)
     info["assigned_vendors"] = _vendors_for_machine(eq_id)
+    # Overlay the nickname-aware display name so the Machine Info card matches
+    # the rest of the app, and keep the original PM name as pm_equipment_name.
+    if not info.get("equipment_name"):
+        master = next((e for e in _EQUIP_BY_KEY.get(dept_key, []) if _num_id(e.get("eq_id")) == eq_id), None)
+        info["equipment_name"] = (master.get("equipment_name") or "").strip() if master else ""
+    nick = (store.get_nickname(dept_key, eq_id) or "").strip()
+    if info.get("equipment_name"):
+        info["pm_equipment_name"] = info["equipment_name"]
+    if nick:
+        info["equipment_name"] = nick
     return jsonify(info)
 
 
@@ -1544,6 +1642,19 @@ def api_set_machine_nickname(dept_key, eq_id):
         nickname = store.set_nickname(dept_key, eq_id, body.get("nickname") or "", author)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
+    # Update the shared in-memory records so the new display name shows up
+    # everywhere immediately (work orders, weekly/monthly schedules, exports)
+    # without waiting for the next full reload.
+    with _DATA_LOCK:
+        data = _DEPT_DATA.get(dept_key)
+        if data:
+            for kind in ("unscheduled", "scheduled"):
+                for r in data.get(kind, []):
+                    if _num_id(r.get("equipment_id")) != eq_id:
+                        continue
+                    pm = r.get("pm_equipment_name") or r.get("equipment_name") or ""
+                    r["pm_equipment_name"] = pm
+                    r["equipment_name"] = nickname or pm
     return jsonify({"ok": True, "nickname": nickname})
 
 
@@ -1776,7 +1887,8 @@ def _department_trends(dept_key: str, group: str | None = None) -> list[dict]:
     def keep(r) -> bool:
         if group is None:
             return True
-        return _group_for(dept_key, (r.get("equipment_name") or "").strip()) == group
+        pm_name = (r.get("pm_equipment_name") or r.get("equipment_name") or "").strip()
+        return _group_for(dept_key, pm_name) == group
 
     uns = [r for r in data["unscheduled"] if keep(r)]
     sch = [r for r in data["scheduled"] if keep(r)]
@@ -1806,6 +1918,57 @@ def _technician_trends(tech: str) -> list[dict]:
         (uns, "date_notified", "unscheduled_count", "unscheduled_completed_count"),
         (sch, "due_date", "scheduled_count", "scheduled_completed_count"),
     ])
+
+
+def _tech_schedule(tech: str) -> dict:
+    """Build the personal dashboard for one technician: completed WOs credited
+    to them, upcoming assigned WOs, and monthly trends. ISO dates are included
+    so the frontend can bucket entries into weeks reliably."""
+
+    def _iso(v):
+        d = ae._parse_date(v)
+        return d.strftime("%Y-%m-%d") if d else None
+
+    aliases = _TECH_ALIASES.get(tech, {tech.lower()})
+    out = {"name": tech, "completed": [], "upcoming": []}
+    with _DATA_LOCK:
+        for rec in _WO_INDEX.values():
+            done = _is_completed(rec.get("status"))
+            if done:
+                if not _wo_credited_to(rec, tech):
+                    continue
+                out["completed"].append({
+                    "wo_id": rec.get("wo_id"),
+                    "wo_type": rec.get("wo_type"),
+                    "equipment_name": rec.get("equipment_name"),
+                    "department": rec.get("department"),
+                    "problem": rec.get("problem") or rec.get("audit_item"),
+                    "labor_time": _num(rec.get("labor_time")),
+                    "completed_datetime": rec.get("completed_datetime"),
+                    "completed_iso": _iso(rec.get("completed_datetime")),
+                })
+            else:
+                assignee = (rec.get("assigned_to") or "").strip().lower()
+                if assignee not in aliases:
+                    continue
+                due = rec.get("due_date") or rec.get("date_notified")
+                out["upcoming"].append({
+                    "wo_id": rec.get("wo_id"),
+                    "wo_type": rec.get("wo_type"),
+                    "equipment_name": rec.get("equipment_name"),
+                    "department": rec.get("department"),
+                    "problem": rec.get("problem") or rec.get("audit_item"),
+                    "status": rec.get("status"),
+                    "due_date": due,
+                    "due_iso": _iso(due),
+                })
+        out["trends"] = _technician_trends(tech)
+    out["completed"].sort(
+        key=lambda w: ae._parse_date(w.get("completed_datetime")) or datetime.min,
+        reverse=True)
+    out["upcoming"].sort(
+        key=lambda w: ae._parse_date(w.get("due_date")) or datetime.max)
+    return out
 
 
 @app.route("/api/departments/<dept_key>/machines/<eq_id>/trends")
@@ -1909,7 +2072,8 @@ def _department_month_records(dept_key: str, group: str | None,
     def keep(r) -> bool:
         if group is None:
             return True
-        return _group_for(dept_key, (r.get("equipment_name") or "").strip()) == group
+        pm_name = (r.get("pm_equipment_name") or r.get("equipment_name") or "").strip()
+        return _group_for(dept_key, pm_name) == group
 
     uns = [r for r in data["unscheduled"] if keep(r)]
     sch = [r for r in data["scheduled"] if keep(r)]
@@ -2445,7 +2609,7 @@ def _wo_credited_to(rec: dict, tech: str) -> bool:
 @app.route("/api/completed-counts")
 def api_completed_counts():
     """Completed-work-order stats for the three maintenance technicians only
-    (Gabriel, Primo, Max). For each we return the count, the list of completed
+    (Shinobi, Primo, Max). For each we return the count, the list of completed
     work orders and the total labor time. Only Sean can view this dashboard."""
     if not _sean_ok(request):
         return jsonify({"error": "Enter Sean's password to view team completion stats."}), 401
@@ -2494,63 +2658,22 @@ def api_team_stats():
     form so the frontend can bucket them into weeks/months reliably. Sean-only."""
     if not _sean_ok(request):
         return jsonify({"error": "Enter Sean's password to view team stats."}), 401
-
-    def _num(v):
-        try:
-            return float(str(v).strip() or 0)
-        except (TypeError, ValueError):
-            return 0.0
-
-    def _iso(v):
-        d = ae._parse_date(v)
-        return d.strftime("%Y-%m-%d") if d else None
-
     techs = list(_TECH_ALIASES.keys())
-    out = {t: {"name": t, "completed": [], "upcoming": []} for t in techs}
-    with _DATA_LOCK:
-        for rec in _WO_INDEX.values():
-            done = _is_completed(rec.get("status"))
-            if done:
-                for t in techs:
-                    if not _wo_credited_to(rec, t):
-                        continue
-                    out[t]["completed"].append({
-                        "wo_id": rec.get("wo_id"),
-                        "wo_type": rec.get("wo_type"),
-                        "equipment_name": rec.get("equipment_name"),
-                        "department": rec.get("department"),
-                        "problem": rec.get("problem") or rec.get("audit_item"),
-                        "labor_time": _num(rec.get("labor_time")),
-                        "completed_datetime": rec.get("completed_datetime"),
-                        "completed_iso": _iso(rec.get("completed_datetime")),
-                    })
-                    break  # credit each completed WO to a single technician
-            else:
-                assignee = (rec.get("assigned_to") or "").strip().lower()
-                for t in techs:
-                    if assignee not in _TECH_ALIASES.get(t, {t.lower()}):
-                        continue
-                    due = rec.get("due_date") or rec.get("date_notified")
-                    out[t]["upcoming"].append({
-                        "wo_id": rec.get("wo_id"),
-                        "wo_type": rec.get("wo_type"),
-                        "equipment_name": rec.get("equipment_name"),
-                        "department": rec.get("department"),
-                        "problem": rec.get("problem") or rec.get("audit_item"),
-                        "status": rec.get("status"),
-                        "due_date": due,
-                        "due_iso": _iso(due),
-                    })
-                    break
-        for t in techs:
-            out[t]["trends"] = _technician_trends(t)
-    for t in techs:
-        out[t]["completed"].sort(
-            key=lambda w: ae._parse_date(w.get("completed_datetime")) or datetime.min,
-            reverse=True)
-        out[t]["upcoming"].sort(
-            key=lambda w: ae._parse_date(w.get("due_date")) or datetime.max)
-    return jsonify({"techs": [out[t] for t in techs]})
+    return jsonify({"techs": [_tech_schedule(t) for t in techs]})
+
+
+@app.route("/api/my-schedule", methods=["POST"])
+def api_my_schedule():
+    """Personal weekly schedule + trends for the signed-in technician.
+    Requires the technician's name in the request body; only registered
+    technicians may view their own schedule."""
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not _is_technician(author):
+        return jsonify({"error": "Only registered technicians can view a personal schedule."}), 403
+    return jsonify({"tech": _tech_schedule(author)})
 
 
 # --------------------------------------------------------------------------- #
@@ -3062,17 +3185,9 @@ def _wo_date(rec: dict):
     return d.date() if d else None
 
 
-@app.route("/api/weekly")
-def api_weekly():
-    """Per-department scheduled + unscheduled work orders bucketed into three
-    consecutive Sunday->Sunday weeks. By default these are last/this/next week,
-    but `offset` (in whole weeks from the current Sunday) shifts the view so the
-    frontend can page through earlier/upcoming weeks just like the monthly
-    calendar."""
-    try:
-        offset = int((request.args.get("offset") or "0").strip() or "0")
-    except (TypeError, ValueError):
-        offset = 0
+def _weekly_payload(offset: int = 0, predicate=None) -> dict:
+    """Build the standard {weeks, departments} weekly dashboard payload,
+    optionally filtering each work order through `predicate(rec)`."""
     last_sun, this_sun, next_sun, week_after = _week_starts()
     base = this_sun + timedelta(weeks=offset)
     bounds = {
@@ -3101,6 +3216,7 @@ def api_weekly():
             "problem": r.get("problem"),
             "audit_item": r.get("audit_item"),
             "work_performed_by": r.get("work_performed_by"),
+            "assigned_to": r.get("assigned_to"),
         }
 
     with _DATA_LOCK:
@@ -3110,6 +3226,8 @@ def api_weekly():
             dept_buckets = {name: {"scheduled": [], "unscheduled": []} for name in bounds}
             for kind in ("scheduled", "unscheduled"):
                 for r in data[kind]:
+                    if predicate is not None and not predicate(r):
+                        continue
                     d = _wo_date(r)
                     if not d:
                         continue
@@ -3123,7 +3241,68 @@ def api_weekly():
                 "weeks": dept_buckets,
             })
 
-    return jsonify({"weeks": weeks_meta, "departments": departments})
+    return {"weeks": weeks_meta, "departments": departments}
+
+
+@app.route("/api/weekly")
+def api_weekly():
+    """Per-department scheduled + unscheduled work orders bucketed into three
+    consecutive Sunday->Sunday weeks. By default these are last/this/next week,
+    but `offset` (in whole weeks from the current Sunday) shifts the view so the
+    frontend can page through earlier/upcoming weeks just like the monthly
+    calendar."""
+    try:
+        offset = int((request.args.get("offset") or "0").strip() or "0")
+    except (TypeError, ValueError):
+        offset = 0
+    return jsonify(_weekly_payload(offset))
+
+
+def _tech_wo_predicate(rec: dict, tech: str) -> bool:
+    """True if a work order belongs on a technician's personal weekly view:
+    completed WOs credited to the tech, or open WOs assigned to the tech."""
+    aliases = _TECH_ALIASES.get(tech, {tech.lower()})
+    if _is_completed(rec.get("status")):
+        return _wo_credited_to(rec, tech)
+    return (rec.get("assigned_to") or "").strip().lower() in aliases
+
+
+@app.route("/api/my-weekly", methods=["POST"])
+def api_my_weekly():
+    """Weekly dashboard scoped to the signed-in technician. Accepts the tech's
+    name as `author` and an optional `offset` (weeks from the current Sunday)."""
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not _is_technician(author):
+        return jsonify({"error": "Only registered technicians can view a personal schedule."}), 403
+    try:
+        offset = int(str(body.get("offset") or "0").strip() or "0")
+    except (TypeError, ValueError):
+        offset = 0
+    return jsonify(_weekly_payload(offset, lambda r: _tech_wo_predicate(r, author)))
+
+
+@app.route("/api/team-weekly", methods=["GET"])
+def api_team_weekly():
+    """Weekly dashboard for every active technician. Sean-only."""
+    if not _sean_ok(request):
+        return jsonify({"error": "Enter Sean's password to view the team schedule."}), 401
+    try:
+        offset = int(str(request.args.get("offset") or "0").strip() or "0")
+    except (TypeError, ValueError):
+        offset = 0
+    techs = list(_TECH_ALIASES.keys())
+    return jsonify({
+        "techs": [
+            {
+                "name": t,
+                **_weekly_payload(offset, lambda r: _tech_wo_predicate(r, t)),
+            }
+            for t in techs
+        ]
+    })
 
 
 # --------------------------------------------------------------------------- #
@@ -3416,6 +3595,95 @@ def _start_weekly_digest():
     t = threading.Thread(target=_weekly_digest_scheduler, daemon=True,
                          name="weekly-digest")
     t.start()
+
+
+# --------------------------------------------------------------------------- #
+# Spare parts inventory
+# --------------------------------------------------------------------------- #
+@app.route("/api/spare-parts", methods=["GET"])
+def api_spare_parts():
+    """Global spare-parts list, newest first."""
+    return jsonify({"parts": store.list_spare_parts()})
+
+
+@app.route("/api/spare-parts/options", methods=["GET"])
+def api_spare_part_options():
+    """All departments + machines for the 'for what machine' dropdown.
+    Uses _dept_machines so that any admin-set nicknames are the displayed name."""
+    out = []
+    for key, cfg in DEPARTMENTS.items():
+        machines = []
+        for m in _dept_machines(key):
+            eq_id = _num_id(m.get("eq_id"))
+            if not eq_id:
+                continue
+            machines.append({
+                "eq_id": eq_id,
+                "name": m.get("name") or m.get("pm_name") or "",
+                "pm_name": m.get("pm_name") or "",
+                "nickname": m.get("nickname") or "",
+            })
+        if machines:
+            out.append({
+                "dept_key": key,
+                "dept_label": cfg.get("label") or cfg.get("name") or key,
+                "machines": machines,
+            })
+    return jsonify({"departments": out})
+
+
+@app.route("/api/spare-parts", methods=["POST"])
+def api_create_spare_part():
+    if not _admin_ok(request):
+        return jsonify({"error": "Admin password required"}), 401
+    body = request.get_json(silent=True) or {}
+    author = str(body.get("author") or "").strip()
+    try:
+        part = store.add_spare_part(body, author=author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    return jsonify(part), 201
+
+
+@app.route("/api/spare-parts/<part_id>", methods=["GET"])
+def api_get_spare_part(part_id):
+    part = store.get_spare_part(part_id)
+    if not part:
+        return jsonify({"error": "spare part not found"}), 404
+    return jsonify(part)
+
+
+@app.route("/api/spare-parts/<part_id>", methods=["PATCH", "PUT"])
+def api_update_spare_part(part_id):
+    if not _admin_ok(request):
+        return jsonify({"error": "Admin password required"}), 401
+    body = request.get_json(silent=True) or {}
+    author = str(body.get("author") or "").strip()
+    try:
+        part = store.update_spare_part(part_id, body, author=author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    if not part:
+        return jsonify({"error": "spare part not found"}), 404
+    return jsonify(part)
+
+
+@app.route("/api/spare-parts/<part_id>", methods=["DELETE"])
+def api_delete_spare_part(part_id):
+    if not _admin_ok(request):
+        return jsonify({"error": "Admin password required"}), 401
+    body = request.get_json(silent=True) or {}
+    author = str(body.get("author") or "").strip()
+    if not store.delete_spare_part(part_id, author=author):
+        return jsonify({"error": "spare part not found"}), 404
+    return jsonify({"ok": True})
+
+
+@app.route("/api/departments/<dept_key>/machines/<eq_id>/spare-parts", methods=["GET"])
+def api_machine_spare_parts(dept_key, eq_id):
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    return jsonify({"parts": store.list_spare_parts_for_machine(dept_key, eq_id)})
 
 
 def _start_chrome():

@@ -260,6 +260,46 @@ def _init() -> None:
                 updated_by TEXT NOT NULL DEFAULT '',
                 PRIMARY KEY (dept_key, eq_id)
             );
+
+            CREATE TABLE IF NOT EXISTS spare_parts (
+                id              TEXT PRIMARY KEY,
+                description     TEXT NOT NULL,
+                digital_id      TEXT NOT NULL DEFAULT '',
+                picture         TEXT NOT NULL DEFAULT '',
+                machine_dept_key TEXT NOT NULL DEFAULT '',
+                machine_eq_id   TEXT NOT NULL DEFAULT '',
+                machine_name    TEXT NOT NULL DEFAULT '',
+                part_type       TEXT NOT NULL DEFAULT '',
+                location        TEXT NOT NULL DEFAULT '',
+                quantity        INTEGER NOT NULL DEFAULT 0,
+                condition       TEXT NOT NULL DEFAULT '',
+                brand           TEXT NOT NULL DEFAULT '',
+                is_part_of_set  INTEGER NOT NULL DEFAULT 0,
+                set_info        TEXT NOT NULL DEFAULT '',
+                buy_direct      INTEGER NOT NULL DEFAULT 0,
+                where_to_buy    TEXT NOT NULL DEFAULT '',
+                purchase_link   TEXT NOT NULL DEFAULT '',
+                price_new       TEXT NOT NULL DEFAULT '',
+                barcode_qr      TEXT NOT NULL DEFAULT '',
+                created_at      TEXT NOT NULL,
+                created_by      TEXT NOT NULL DEFAULT '',
+                updated_at      TEXT NOT NULL,
+                updated_by      TEXT NOT NULL DEFAULT ''
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_spare_parts_machine ON spare_parts (machine_dept_key, machine_eq_id);
+            CREATE INDEX IF NOT EXISTS idx_spare_parts_type ON spare_parts (part_type);
+
+            CREATE TABLE IF NOT EXISTS spare_part_machines (
+                part_id    TEXT NOT NULL,
+                dept_key   TEXT NOT NULL,
+                eq_id      TEXT NOT NULL,
+                name       TEXT NOT NULL DEFAULT '',
+                PRIMARY KEY (part_id, dept_key, eq_id)
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_spm_part ON spare_part_machines (part_id);
+            CREATE INDEX IF NOT EXISTS idx_spm_machine ON spare_part_machines (dept_key, eq_id);
             """
         )
         # Migration: add summary_json column if it exists from an older schema.
@@ -1238,7 +1278,7 @@ def seed_technicians() -> None:
     if count:
         return
     defaults = [
-        ("Gabriel", ["gabriel", "shinobi", "gabe", "gabriel shinobi", "g shinobi"]),
+        ("Shinobi", ["gabriel", "shinobi", "gabe", "gabriel shinobi", "g shinobi"]),
         ("Primo", ["primo", "pu", "primo uy"]),
         ("Max", ["max", "maksim", "maksim bushka"]),
     ]
@@ -1296,3 +1336,177 @@ def save_floorplan(dept_key: str, items: list[dict], author: str = "") -> list[d
             )
     _audit("", author, "save_floorplan", f"{dept_key}: {len(clean)} items")
     return list_floorplan(dept_key)
+
+
+# --------------------------------------------------------------------------- #
+# Spare parts inventory
+# --------------------------------------------------------------------------- #
+SPARE_PART_FIELDS = (
+    "description", "digital_id", "picture", "part_type", "location",
+    "quantity", "condition", "brand", "is_part_of_set", "set_info",
+    "buy_direct", "where_to_buy", "purchase_link", "price_new", "barcode_qr",
+)
+
+
+def _row_to_spare_part(r: sqlite3.Row) -> dict:
+    d = dict(r)
+    d["quantity"] = int(d.get("quantity") or 0)
+    d["is_part_of_set"] = bool(int(d.get("is_part_of_set") or 0))
+    d["buy_direct"] = bool(int(d.get("buy_direct") or 0))
+    d["machines"] = []
+    return d
+
+
+def _clean_spare_part(fields: dict) -> dict:
+    """Normalize a spare-part payload to the stored columns."""
+    out = {}
+    for k in SPARE_PART_FIELDS:
+        if k == "quantity":
+            try:
+                out[k] = int(fields.get(k) or 0)
+            except (ValueError, TypeError):
+                out[k] = 0
+        elif k in ("is_part_of_set", "buy_direct"):
+            v = fields.get(k)
+            out[k] = 1 if v in (1, "1", True, "true", "yes", "on") else 0
+        else:
+            out[k] = str(fields.get(k) or "").strip()
+    return out
+
+
+def _clean_machines(fields: dict) -> list[dict]:
+    """Normalize the list of machines a spare part applies to."""
+    raw = fields.get("machines") if isinstance(fields.get("machines"), list) else None
+    if raw is None:
+        # Legacy single-machine support
+        dept = str(fields.get("machine_dept_key") or "").strip()
+        eq = str(fields.get("machine_eq_id") or "").strip()
+        name = str(fields.get("machine_name") or "").strip()
+        if dept and eq:
+            return [{"dept_key": dept, "eq_id": eq, "name": name}]
+        return []
+    out = []
+    for m in raw:
+        dept = str(m.get("dept_key") or "").strip()
+        eq = str(m.get("eq_id") or "").strip()
+        if dept and eq:
+            out.append({"dept_key": dept, "eq_id": eq, "name": str(m.get("name") or "").strip()})
+    return out
+
+
+def _attach_machines(c, parts: list[dict]) -> list[dict]:
+    """Populate the machines list for each part."""
+    if not parts:
+        return parts
+    ids = [p["id"] for p in parts]
+    placeholders = ", ".join("?" for _ in ids)
+    rows = c.execute(
+        f"SELECT * FROM spare_part_machines WHERE part_id IN ({placeholders})",
+        ids,
+    ).fetchall()
+    by_id = {p["id"]: p["machines"] for p in parts}
+    for r in rows:
+        by_id[r["part_id"]].append({
+            "dept_key": r["dept_key"],
+            "eq_id": r["eq_id"],
+            "name": r["name"],
+        })
+    return parts
+
+
+def list_spare_parts() -> list[dict]:
+    with _connect() as c:
+        rows = c.execute(
+            f"SELECT * FROM spare_parts ORDER BY updated_at DESC"
+        ).fetchall()
+        parts = [_row_to_spare_part(r) for r in rows]
+        _attach_machines(c, parts)
+    return parts
+
+
+def list_spare_parts_for_machine(dept_key: str, eq_id: str) -> list[dict]:
+    with _connect() as c:
+        rows = c.execute(
+            "SELECT p.* FROM spare_parts p "
+            "JOIN spare_part_machines m ON p.id = m.part_id "
+            "WHERE m.dept_key = ? AND m.eq_id = ? "
+            "ORDER BY p.updated_at DESC",
+            (str(dept_key or ""), str(eq_id or "")),
+        ).fetchall()
+        parts = [_row_to_spare_part(r) for r in rows]
+        _attach_machines(c, parts)
+    return parts
+
+
+def get_spare_part(part_id: str) -> dict | None:
+    part_id = str(part_id or "").strip()
+    if not part_id:
+        return None
+    with _connect() as c:
+        row = c.execute("SELECT * FROM spare_parts WHERE id = ?", (part_id,)).fetchone()
+        if not row:
+            return None
+        part = _row_to_spare_part(row)
+        _attach_machines(c, [part])
+    return part
+
+
+def add_spare_part(fields: dict, author: str = "") -> dict:
+    data = _clean_spare_part(fields or {})
+    if not data["description"]:
+        raise ValueError("part description is required")
+    machines = _clean_machines(fields or {})
+    part_id = str(uuid.uuid4().hex)
+    now = _now()
+    cols = list(SPARE_PART_FIELDS)
+    placeholders = ", ".join("?" for _ in cols)
+    with _lock, _connect() as c:
+        c.execute(
+            f"INSERT INTO spare_parts (id, {', '.join(cols)}, created_at, created_by, updated_at, updated_by) "
+            f"VALUES (?, {placeholders}, ?, ?, ?, ?)",
+            (part_id, *(data[k] for k in cols), now, author or "", now, author or ""),
+        )
+        for m in machines:
+            c.execute(
+                "INSERT INTO spare_part_machines (part_id, dept_key, eq_id, name) VALUES (?, ?, ?, ?)",
+                (part_id, m["dept_key"], m["eq_id"], m["name"]),
+            )
+    _audit("", author, "add_spare_part", f"{part_id}: {data['description']}")
+    return get_spare_part(part_id)
+
+
+def update_spare_part(part_id: str, fields: dict, author: str = "") -> dict | None:
+    existing = get_spare_part(part_id)
+    if not existing:
+        return None
+    incoming = _clean_spare_part(fields or {})
+    merged = {k: incoming[k] if k in fields else existing.get(k, incoming[k]) for k in SPARE_PART_FIELDS}
+    if not merged["description"]:
+        raise ValueError("part description is required")
+    cols = list(SPARE_PART_FIELDS)
+    set_clause = ", ".join(f"{k} = ?" for k in cols)
+    machines = _clean_machines(fields or {})
+    with _lock, _connect() as c:
+        c.execute(
+            f"UPDATE spare_parts SET {set_clause}, updated_at = ?, updated_by = ? WHERE id = ?",
+            (*(merged[k] for k in cols), _now(), author or "", str(part_id)),
+        )
+        c.execute("DELETE FROM spare_part_machines WHERE part_id = ?", (str(part_id),))
+        for m in machines:
+            c.execute(
+                "INSERT INTO spare_part_machines (part_id, dept_key, eq_id, name) VALUES (?, ?, ?, ?)",
+                (str(part_id), m["dept_key"], m["eq_id"], m["name"]),
+            )
+    _audit("", author, "edit_spare_part", f"{part_id}: {merged['description']}")
+    return get_spare_part(part_id)
+
+
+def delete_spare_part(part_id: str, author: str = "") -> bool:
+    existing = get_spare_part(part_id)
+    if not existing:
+        return False
+    with _lock, _connect() as c:
+        c.execute("DELETE FROM spare_part_machines WHERE part_id = ?", (str(part_id),))
+        c.execute("DELETE FROM spare_parts WHERE id = ?", (str(part_id),))
+    _audit("", author, "delete_spare_part", f"{part_id}: {existing['description']}")
+    return True

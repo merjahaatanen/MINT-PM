@@ -58,7 +58,7 @@
   <div id="root"></div>
 
   <script>
-    const { useState, useEffect, useCallback, useRef } = React;
+    const { useState, useEffect, useCallback, useRef, useMemo } = React;
     const html = htm.bind(React.createElement);
     const API = "";
 
@@ -503,6 +503,74 @@
         </div>`, document.body);
     }
 
+    // Sean-only weekly schedule modal: one tab per technician, showing that
+    // technician's assigned/completed/upcoming work orders week by week.
+    function TeamScheduleModal({ technicians, onClose, onOpenWo }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [tab, setTab] = useState(technicians[0] || "");
+      const [weekOffset, setWeekOffset] = useState(0);
+      useEffect(() => {
+        (async () => {
+          try {
+            const r = await fetch(API + "/api/team-weekly?offset=" + weekOffset, { headers: seanHeaders() });
+            const d = await r.json().catch(() => ({}));
+            if (r.status === 401) { setErr("Sean's password is required."); return; }
+            if (!r.ok) throw new Error(d.error || "HTTP " + r.status);
+            setData(d.techs || []);
+            setErr(null);
+          } catch (e) { setErr(e.message); }
+        })();
+      }, [weekOffset]);
+
+      useEffect(() => {
+        if (technicians.length && !technicians.includes(tab)) setTab(technicians[0]);
+      }, [technicians, tab]);
+
+      const tech = (data || []).find((t) => t.name === tab) || (data || [])[0] || null;
+      const openWo = (id) => { if (onOpenWo && id) { onOpenWo(id); onClose(); } };
+
+      return ReactDOM.createPortal(html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] flex items-start justify-center p-4 overflow-y-auto"
+          onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-6xl my-8 fade-in"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-100">
+              <div className="font-extrabold text-lg text-emerald-800">Team schedule</div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xl leading-none">×</button>
+            </div>
+            <div className="px-6 pt-4">
+              <div className="flex items-center gap-3 flex-wrap">
+                <div className="flex gap-2 flex-wrap">
+                  ${technicians.map((n) => html`
+                    <button key=${n} onClick=${() => setTab(n)}
+                      className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
+                        (tab === n ? "bg-emerald-700 text-white" : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100")}>
+                      ${n}</button>`)}
+                </div>
+                <div className="ml-auto inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
+                  <button onClick=${() => setWeekOffset((o) => o - 1)}
+                    title="Previous weeks"
+                    className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
+                  <button onClick=${() => setWeekOffset(0)}
+                    className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
+                    This week</button>
+                  <button onClick=${() => setWeekOffset((o) => o + 1)}
+                    title="Upcoming weeks"
+                    className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
+                </div>
+              </div>
+            </div>
+            <div className="p-6">
+              ${err && html`<div className="text-rose-600 mb-4">${err}</div>`}
+              ${!err && data === null && html`<${Spinner} label="Loading team schedule…" />`}
+              ${tech && html`<${WeeklyBoard} data=${tech} predicate=${() => true} showDept=${true} onOpenWo=${openWo} title=${tech.name + "'s schedule"} scopeLabel=${"Team-Schedule-" + tech.name} />`}
+            </div>
+          </div>
+        </div>`, document.body);
+    }
+
     // Sean-only modal to add/remove maintenance technicians.
     function ManageTechniciansModal({ technicians, setTechnicians, onClose }) {
       const [name, setName] = useState(getUserName());
@@ -697,14 +765,73 @@
         </div>`;
     }
 
-    function Header({ technicians, setTechnicians, onHome, onOpenInactive, onOpenWo }) {
+    // Technician's own weekly schedule page. Shows assigned/completed/upcoming
+    // work orders week by week, with the same week-scrolling as the department
+    // weekly schedule. No trends.
+    function MySchedulePage({ user, onOpenWo, onCompany }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [weekOffset, setWeekOffset] = useState(0);
+      useEffect(() => {
+        if (!user) return;
+        (async () => {
+          try {
+            const r = await fetch(API + "/api/my-weekly", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ author: user, offset: weekOffset }),
+            });
+            const d = await r.json().catch(() => ({}));
+            if (r.status === 403) { setErr("Only registered technicians can view a personal schedule."); return; }
+            if (!r.ok) throw new Error(d.error || "HTTP " + r.status);
+            setData(d);
+            setErr(null);
+          } catch (e) { setErr(e.message); setData(null); }
+        })();
+      }, [user, weekOffset]);
+      const goPrev = () => setWeekOffset((o) => o - 1);
+      const goNext = () => setWeekOffset((o) => o + 1);
+      const goThis = () => setWeekOffset(0);
+
+      return html`
+        <div className="fade-in">
+          <${Breadcrumb} items=${[
+            { label: "Bobrick", onClick: onCompany },
+            { label: "My schedule" },
+          ]} />
+          <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+            <div>
+              <h1 className="text-2xl font-extrabold text-slate-800">My schedule</h1>
+              <p className="text-sm text-slate-500">${user || "Guest"}</p>
+            </div>
+            <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold shadow-sm">
+              <button type="button" onClick=${goPrev}
+                title="Previous weeks"
+                className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
+              <button type="button" onClick=${goThis}
+                className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
+                This week</button>
+              <button type="button" onClick=${goNext}
+                title="Upcoming weeks"
+                className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
+            </div>
+          </div>
+          ${err && html`<div className="text-rose-600 mb-4">${err}</div>`}
+          ${!err && data === null && html`<${Spinner} label="Loading schedule…" />`}
+          ${data && html`<${WeeklyBoard} data=${data} predicate=${() => true} showDept=${true} onOpenWo=${onOpenWo} title="Your weekly schedule" scopeLabel=${"My-Schedule"} />`}
+        </div>`;
+    }
+
+    function Header({ technicians, setTechnicians, onHome, onOpenInactive, onOpenSpareParts, onOpenMySchedule, onOpenWo }) {
       // `user` is the raw signed-in profile ("" when a guest). Guests are the
       // default and are never prompted; they can sign in later if they want.
       const [user, setUser] = useState(getRawUser());
       const [sean, setSean] = useState(isSeanMode());
       const signedIn = !!user;
+      const isTech = signedIn && technicians.some((t) => t.toLowerCase() === (user || "").trim().toLowerCase());
       const [showSeanGate, setShowSeanGate] = useState(false);
       const [showTeamStats, setShowTeamStats] = useState(false);
+      const [showTeamSchedule, setShowTeamSchedule] = useState(false);
       const [showManageTechs, setShowManageTechs] = useState(false);
       const [showOther, setShowOther] = useState(false);
       const [otherName, setOtherName] = useState("");
@@ -746,10 +873,17 @@
                   Sean (supervisor)</button>`}
               ${signedIn && html`
                 <span className="text-sm font-semibold text-emerald-100">${user}</span>
+                ${isTech && html`
+                  <button onClick=${onOpenMySchedule}
+                    className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
+                    My schedule</button>`}
                 ${sean && html`
                   <button onClick=${() => setShowTeamStats(true)}
                     className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
                     Team stats</button>
+                  <button onClick=${() => setShowTeamSchedule(true)}
+                    className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
+                    Team schedule</button>
                   <button onClick=${() => setShowManageTechs(true)}
                     className="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
                     Technicians</button>`}
@@ -765,6 +899,13 @@
                     <path d="M21 8v13H3V8"/><rect x="1" y="3" width="22" height="5" rx="1"/><path d="M10 12h4"/>
                   </svg>
                   <span>Inactive</span>
+                </button>`}
+              ${onOpenSpareParts && html`
+                <button onClick=${onOpenSpareParts}
+                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20
+                             text-white text-sm font-semibold transition">
+                  <span className="text-base leading-none" role="img" aria-label="wrench">🔧</span>
+                  <span>Spare Parts</span>
                 </button>`}
             </div>
           </div>
@@ -790,6 +931,7 @@
             onCancel=${() => setShowSeanGate(false)}
             onUnlock=${unlockSean} />`}
           ${showTeamStats && html`<${TeamStatsModal} technicians=${technicians} onClose=${() => setShowTeamStats(false)} onOpenWo=${onOpenWo} />`}
+          ${showTeamSchedule && html`<${TeamScheduleModal} technicians=${technicians} onClose=${() => setShowTeamSchedule(false)} onOpenWo=${onOpenWo} />`}
           ${showManageTechs && html`<${ManageTechniciansModal} technicians=${technicians} setTechnicians=${setTechnicians} onClose=${() => setShowManageTechs(false)} />`}
         </header>`;
     }
@@ -1223,9 +1365,316 @@
     }
 
     /* ------------------------------------------------------------------ */
+    /* Longevity tab (division + department)                                */
+    /* ------------------------------------------------------------------ */
+    function LongevityTab({ apiUrl, title, hideDepartment, divisionKey }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [q, setQ] = useState("");
+      const [deptFilter, setDeptFilter] = useState("");
+      const [sort, setSort] = useState({ key: "item_num", dir: "asc" });
+      const [expanded, setExpanded] = useState(new Set());
+      const [editing, setEditing] = useState(null);     // { item_num, draft }
+      const [saving, setSaving] = useState(null);
+      const [saveErr, setSaveErr] = useState(null);
+      const [protectedEdit, setProtectedEdit] = useState(false);
+      const [gateAction, setGateAction] = useState(null);
+      const currentYear = new Date().getFullYear();
+
+      const divKey = (divisionKey || "bla").toLowerCase();
+
+      const load = () => {
+        setData(null);
+        setErr(null);
+        setDeptFilter("");
+        setExpanded(new Set());
+        setEditing(null);
+        setSaveErr(null);
+        getJSON(apiUrl).then((d) => setData(d.items || [])).catch((e) => setErr(e.message));
+      };
+
+      useEffect(() => {
+        load();
+        getJSON("/api/edit-auth").then((s) => setProtectedEdit(!!s.protected)).catch(() => setProtectedEdit(false));
+      }, [apiUrl]);
+
+      const isAuthed = () => !protectedEdit || !!getEditPw();
+      const requireAuth = (action) => { if (isAuthed()) action(); else setGateAction(() => action); };
+
+      const departments = useMemo(() => {
+        const set = new Set((data || []).map((r) => r.department).filter(Boolean));
+        return Array.from(set).sort((a, b) => a.localeCompare(b));
+      }, [data]);
+
+      const filtered = (data || []).filter((row) => {
+        const matchesDept = !deptFilter || row.department === deptFilter;
+        if (!matchesDept) return false;
+        if (!q.trim()) return true;
+        const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+        const hay = [
+          row.machine,
+          row.department,
+          row.category,
+          row.asset_num,
+          row.serial_no,
+          row.condition,
+          row.estimated_replacement_year,
+          row.comments,
+        ].join(" ").toLowerCase();
+        return terms.every((t) => hay.includes(t));
+      });
+
+      const sorted = [...filtered].sort((a, b) => {
+        const av = (a[sort.key] || "").toString().toLowerCase();
+        const bv = (b[sort.key] || "").toString().toLowerCase();
+        if (sort.key === "item_num" || sort.key === "year_new" || sort.key === "estimated_replacement_year") {
+          const aRaw = av.replace(/[^0-9.]/g, "");
+          const bRaw = bv.replace(/[^0-9.]/g, "");
+          const aHas = aRaw !== "";
+          const bHas = bRaw !== "";
+          // Rows without a value always sink to the bottom, regardless of direction.
+          if (aHas !== bHas) return aHas ? -1 : 1;
+          const an = parseFloat(aRaw) || 0;
+          const bn = parseFloat(bRaw) || 0;
+          if (an !== bn) return sort.dir === "asc" ? an - bn : bn - an;
+        }
+        if (av < bv) return sort.dir === "asc" ? -1 : 1;
+        if (av > bv) return sort.dir === "asc" ? 1 : -1;
+        return 0;
+      });
+
+      // "red" = past its estimated replacement year, "orange" = due this
+      // year, "yellow" = due in either of the next two years, null = fine.
+      const replacementUrgency = (row) => {
+        const y = parseInt(row.estimated_replacement_year, 10);
+        if (isNaN(y)) return null;
+        if (y < currentYear) return "red";
+        if (y === currentYear) return "orange";
+        if (y <= currentYear + 2) return "yellow";
+        return null;
+      };
+      const URGENCY_ROW_CLASSES = {
+        red: "bg-rose-100 hover:bg-rose-200",
+        orange: "bg-orange-100 hover:bg-orange-200",
+        yellow: "bg-yellow-100 hover:bg-yellow-200",
+      };
+      const URGENCY_DETAIL_CLASSES = {
+        red: "bg-rose-50/60",
+        orange: "bg-orange-50/60",
+        yellow: "bg-yellow-50/60",
+      };
+
+      // item_num alone is NOT reliably unique (blank Item# cells in the
+      // workbook fall back to a per-sheet row number that can collide across
+      // departments), so every piece of row-identity state (expand/collapse,
+      // editing, saving) keys off this composite instead.
+      const rowKey = (row) => (row.department || "") + "|" + (row.machine || "") + "|" + (row.item_num || "");
+
+      const toggleRow = (key) => {
+        setExpanded((prev) => {
+          const next = new Set(prev);
+          if (next.has(key)) next.delete(key);
+          else next.add(key);
+          return next;
+        });
+      };
+
+      const startEdit = (row) => {
+        const draft = {
+          asset_num: row.asset_num || "",
+          year_new: row.year_new || "",
+          condition: row.condition || "",
+          service_status: row.service_status || "",
+          estimated_replacement_year: row.estimated_replacement_year || "",
+          comments: row.comments || "",
+        };
+        setEditing({ key: rowKey(row), item_num: row.item_num, department: row.department, machine: row.machine, draft });
+        setExpanded((prev) => new Set(prev).add(rowKey(row)));
+      };
+
+      const updateDraft = (field, value) => {
+        setEditing((e) => e ? { ...e, draft: { ...e.draft, [field]: value } } : null);
+      };
+
+      const cancelEdit = () => setEditing(null);
+
+      const saveEdit = async () => {
+        if (!editing) return;
+        setSaving(editing.key);
+        setSaveErr(null);
+        try {
+          await sendJSON(`/api/longevity/${divKey}/${editing.item_num}`, "POST", {
+            author: getUserName(),
+            updates: editing.draft,
+            department: editing.department,
+            machine: editing.machine,
+          });
+          setEditing(null);
+          load();
+        } catch (e) {
+          setSaveErr(e.message);
+        } finally {
+          setSaving(null);
+        }
+      };
+
+      const setSortKey = (key) => {
+        setSort((s) => ({ key, dir: s.key === key && s.dir === "asc" ? "desc" : "asc" }));
+      };
+
+      const th = (key, label, width = "") => html`
+        <th key=${key} onClick=${() => setSortKey(key)}
+          className=${"px-2 py-2 text-left text-xs font-semibold text-slate-600 bg-slate-50 border-b border-slate-200 cursor-pointer hover:bg-slate-100 select-none " + width}>
+          ${label} ${sort.key === key && html`<span className="ml-1 text-slate-400">${sort.dir === "asc" ? "▲" : "▼"}</span>`}
+        </th>`;
+
+      const roTd = (value, classes = "") => html`<td className=${"px-2 py-2 text-sm text-slate-700 border-b border-slate-100 align-top " + classes}>${value || "-"}</td>`;
+
+      const editInput = (field, value, placeholder, extraClasses = "") => html`
+        <input type="text" value=${value} placeholder=${placeholder}
+          onInput=${(e) => updateDraft(field, e.target.value)}
+          className=${"w-full px-2 py-1 text-sm border border-slate-300 rounded focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none " + extraClasses}
+          onClick=${(e) => e.stopPropagation()} />`;
+
+      const detail = (label, value) => html`<div className="text-xs"><span className="font-semibold text-slate-500">${label}:</span> <span className="text-slate-700">${value || "-"}</span></div>`;
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading longevity data…" />`;
+
+      return html`
+        <div className="fade-in space-y-4">
+          ${gateAction && html`<${PasswordGate}
+            onCancel=${() => setGateAction(null)}
+            onUnlock=${() => { const a = gateAction; setGateAction(null); if (a) a(); }} />`}
+
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            <div>
+              <h2 className="text-lg font-extrabold text-slate-800">${title}</h2>
+              <p className="text-slate-500 text-sm">Machine condition and estimated replacement year data from the longevity workbook.</p>
+              <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-500">
+                <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-rose-400"></span>Past due</span>
+                <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-orange-400"></span>Due this year</span>
+                <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>Due next 2 years</span>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs text-slate-400">${num(sorted.length)} rows</span>
+              ${!hideDepartment && html`
+                <select value=${deptFilter} onChange=${(e) => setDeptFilter(e.target.value)}
+                  className="px-3 py-1.5 text-sm rounded-full border border-slate-300 bg-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none">
+                  <option value="">All departments</option>
+                  ${departments.map((d) => html`<option key=${d} value=${d}>${d}</option>`)}
+                </select>`}
+              <input type="text" value=${q} onInput=${(e) => setQ(e.target.value)} placeholder="Search machines, assets, years…"
+                className="px-3 py-1.5 text-sm rounded-full border border-slate-300 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none w-full sm:w-64" />
+              <div className="inline-flex items-center rounded-full border border-slate-300 bg-white p-0.5 text-xs font-semibold">
+                <span className="px-2 text-slate-400">Sort</span>
+                ${[
+                  { key: "item_num", label: "Item #" },
+                  { key: "estimated_replacement_year", label: "Est. Replace Year" },
+                  { key: "year_new", label: "Purchase Year" },
+                ].map((opt) => {
+                  const active = sort.key === opt.key;
+                  return html`
+                    <button key=${opt.key} onClick=${() => setSortKey(opt.key)}
+                      className=${"px-2.5 py-1 rounded-full transition " + (active ? "bg-emerald-700 text-white shadow-sm" : "text-slate-600 hover:text-emerald-800")}>
+                      ${opt.label}${active ? (sort.dir === "asc" ? " ▲" : " ▼") : ""}
+                    </button>`;
+                })}
+              </div>
+            </div>
+          </div>
+
+          ${saveErr && html`<div className="text-rose-600 text-sm">${saveErr}</div>`}
+
+          <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr>
+                  ${!hideDepartment && th("department", "Department")}
+                  ${th("machine", "Machine / Equipment")}
+                  ${th("asset_num", "Asset #")}
+                  ${th("estimated_replacement_year", "Est. Replace Year", "w-28")}
+                  ${th("condition", "Condition", "w-28")}
+                  ${th("comments", "Comments")}
+                  <th className="px-2 py-2 text-left text-xs font-semibold text-slate-600 bg-slate-50 border-b border-slate-200 w-20"></th>
+                </tr>
+              </thead>
+              <tbody>
+                ${sorted.map((row) => {
+                  const key = rowKey(row);
+                  const isEditing = editing && editing.key === key;
+                  const urgency = replacementUrgency(row);
+                  return html`
+                    <${React.Fragment} key=${key}>
+                      <tr className=${(urgency ? URGENCY_ROW_CLASSES[urgency] + " " : "hover:bg-slate-50 ") + "cursor-pointer"} onClick=${() => toggleRow(key)}>
+                        ${!hideDepartment && roTd(row.department, "whitespace-nowrap")}
+                        ${roTd(row.machine, "break-words max-w-xs")}
+                        ${isEditing
+                          ? html`<td className="px-2 py-2 text-sm border-b border-slate-100 align-top whitespace-nowrap">${editInput("asset_num", editing.draft.asset_num, "Asset #")}</td>`
+                          : roTd(row.asset_num, "whitespace-nowrap")}
+                        ${isEditing
+                          ? html`<td className="px-2 py-2 text-sm border-b border-slate-100 align-top whitespace-nowrap">${editInput("estimated_replacement_year", editing.draft.estimated_replacement_year, "Year", "w-20")}</td>`
+                          : roTd(row.estimated_replacement_year, "font-semibold text-slate-800 whitespace-nowrap")}
+                        ${isEditing
+                          ? html`<td className="px-2 py-2 text-sm border-b border-slate-100 align-top whitespace-nowrap">${editInput("condition", editing.draft.condition, "Condition", "w-20")}</td>`
+                          : roTd(row.condition, "whitespace-nowrap")}
+                        ${isEditing
+                          ? html`<td className="px-2 py-2 text-sm border-b border-slate-100 align-top">${editInput("comments", editing.draft.comments, "Comments", "max-w-xs")}</td>`
+                          : roTd(row.comments, "break-words max-w-sm text-slate-500")}
+                        <td className="px-2 py-2 text-sm border-b border-slate-100 align-top whitespace-nowrap text-center">
+                          ${isEditing
+                            ? html`
+                              <div className="flex items-center justify-center gap-1">
+                                <button onClick=${(e) => { e.stopPropagation(); saveEdit(); }} disabled=${saving === key}
+                                  className="text-emerald-700 hover:text-emerald-900 disabled:opacity-50 text-xs font-semibold">Save</button>
+                                <span className="text-slate-300">|</span>
+                                <button onClick=${(e) => { e.stopPropagation(); cancelEdit(); }}
+                                  className="text-slate-500 hover:text-slate-700 text-xs font-semibold">Cancel</button>
+                              </div>`
+                            : html`
+                              <button onClick=${(e) => { e.stopPropagation(); requireAuth(() => startEdit(row)); }}
+                                className="text-emerald-700 hover:text-emerald-900 text-xs font-semibold">Edit</button>`}
+                        </td>
+                      </tr>
+                      ${(expanded.has(key) || isEditing) && html`
+                        <tr className=${urgency ? URGENCY_DETAIL_CLASSES[urgency] : "bg-slate-50"}>
+                          <td colspan=${hideDepartment ? 6 : 7} className="px-3 py-3 border-b border-slate-100">
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-2">
+                              ${detail("Item #", row.item_num)}
+                              ${detail("Category", row.category)}
+                              ${detail("Type", row.type)}
+                              ${detail("Location", row.location)}
+                              ${detail("Serial #", row.serial_no)}
+                              ${isEditing
+                                ? html`<div className="text-xs flex items-center gap-1"><span className="font-semibold text-slate-500">Year New:</span> ${editInput("year_new", editing.draft.year_new, "Year")}</div>`
+                                : detail("Year New", row.year_new)}
+                              ${isEditing
+                                ? html`<div className="text-xs flex items-center gap-1"><span className="font-semibold text-slate-500">Service Status:</span> ${editInput("service_status", editing.draft.service_status, "Status")}</div>`
+                                : detail("Service Status", row.service_status)}
+                              ${detail("As Of", row.as_of_year_month)}
+                              ${!hideDepartment && detail("Department", row.department)}
+                              ${detail("Division", row.division)}
+                            </div>
+                            ${row.comments && !isEditing && html`<div className="mt-2 text-sm text-slate-700"><span className="font-semibold text-slate-500">Comments:</span> ${row.comments}</div>`}
+                          </td>
+                        </tr>`}
+                    </${React.Fragment}>`;
+                })}
+                ${sorted.length === 0 && html`
+                  <tr><td colspan=${hideDepartment ? 6 : 7} className="px-3 py-8 text-center text-sm text-slate-400">
+                    No matching rows.
+                  </td></tr>`}
+              </tbody>
+            </table>
+          </div>
+        </div>`;
+    }
+
+    /* ------------------------------------------------------------------ */
     /* Division dashboard                                                 */
     /* ------------------------------------------------------------------ */
-    const DIV_TABS = ["Departments", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"];
+    const DIV_TABS = ["Departments", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"];
 
     function DivisionDashboard({ divisionKey, onHome, onOpenDept, onOpenWo, refreshSignal }) {
       const divKey = divisionKey || "bla";
@@ -1294,6 +1743,11 @@
           </div>
 
           ${tab === "Contacts" && html`<${VendorContacts} />`}
+
+          ${tab === "Longevity" && html`
+            <div className="fade-in">
+              <${LongevityTab} apiUrl=${"/api/divisions/" + divKey + "/longevity"} title="Estimated Replacement Year — ${data.name}" divisionKey=${divKey} />
+            </div>`}
 
           ${tab === "Weekly Schedule" && html`
             <div className="fade-in">
@@ -1433,6 +1887,10 @@
       const [reloadKey, setReloadKey] = useState(0);
       const [drag, setDrag] = useState(null);
       const canvasRef = useRef(null);
+      // True once a drag gesture actually moves a box. Used so the click that
+      // fires after a drag (whose target retargets to the canvas when the box
+      // slides out from under the cursor) doesn't clear the selection.
+      const movedRef = useRef(false);
 
       const canvas = (data && data.canvas) || { w: 960, h: 820 };
 
@@ -1447,6 +1905,7 @@
       useEffect(() => {
         if (!drag) return;
         const move = (e) => {
+          if (e.clientX !== drag.px || e.clientY !== drag.py) movedRef.current = true;
           const sx = canvas.w / drag.rw, sy = canvas.h / drag.rh;
           const dx = (e.clientX - drag.px) * sx, dy = (e.clientY - drag.py) * sy;
           setItems((list) => list.map((it) => {
@@ -1470,6 +1929,7 @@
       const startDrag = (e, it, mode) => {
         if (!editing) return;
         e.stopPropagation(); e.preventDefault();
+        movedRef.current = false;
         const rect = canvasRef.current.getBoundingClientRect();
         setSelectedId(it.id);
         setDrag({ id: it.id, mode, px: e.clientX, py: e.clientY,
@@ -1549,8 +2009,14 @@
       if (err && !data) return html`<div className="text-rose-600">${err}</div>`;
       if (!data) return html`<${Spinner} label="Loading floor plan…" />`;
 
+      // The machines prop carries the nickname-aware display name (nickname or
+      // PM name); the floor-plan payload only has the raw PM name, so resolve the
+      // shown name by EQ ID here.
+      const nameByEq = {};
+      (machines || []).forEach((m) => { nameByEq[String(m.eq_id)] = m.name; });
+      const displayName = (it) => nameByEq[String(it.eq_id)] || it.machine_name || it.label;
       const linked = items.filter((i) => i.eq_id);
-      const sidebar = linked.slice().sort((a, b) => (a.machine_name || a.label || "").localeCompare(b.machine_name || b.label || ""));
+      const sidebar = linked.slice().sort((a, b) => displayName(a).localeCompare(displayName(b)));
       const selected = items.find((i) => i.id === selectedId);
       const pct = (v, total) => (100 * v / total) + "%";
 
@@ -1637,7 +2103,7 @@
                             : "bg-white border-emerald-100 " + (sel ? "ring-2 ring-emerald-400 border-emerald-300" : "hover:border-emerald-300"))}>
                         <div className="flex items-start justify-between gap-2">
                           <div className=${"font-bold text-sm leading-tight " + (it.has_critical_wo ? "text-rose-700" : "text-slate-800")}>
-                            ${it.machine_name || it.label}
+                            ${displayName(it)}
                           </div>
                           <button onClick=${(e) => { e.stopPropagation(); onOpenMachine(it.eq_id); }}
                             title="Open full machine page"
@@ -1658,7 +2124,7 @@
             <!-- Canvas -->
             <div className="flex-1 min-w-0">
               <div ref=${canvasRef}
-                onClick=${() => { if (!drag) setSelectedId(null); }}
+                onClick=${() => { if (movedRef.current) { movedRef.current = false; return; } if (!drag) setSelectedId(null); }}
                 className="relative w-full rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden select-none"
                 style=${{ aspectRatio: canvas.w + " / " + canvas.h,
                   backgroundImage: "linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px)",
@@ -1688,7 +2154,7 @@
                   return html`
                     <div key=${it.id}
                       onPointerDown=${(e) => editing ? startDrag(e, it, "move") : null}
-                      onClick=${(e) => { e.stopPropagation(); setSelectedId(it.id); }}
+                      onClick=${(e) => { e.stopPropagation(); movedRef.current = false; setSelectedId(it.id); }}
                       className=${base + look + ring + (editing ? " cursor-move" : (linkedBox ? " cursor-pointer" : ""))}
                       style=${{ left: pct(it.x, canvas.w), top: pct(it.y, canvas.h),
                         width: pct(it.w, canvas.w), height: pct(it.h, canvas.h) }}>
@@ -1766,7 +2232,7 @@
         </div>`;
     }
 
-    const DEPT_TABS = ["Machines", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"];
+    const DEPT_TABS = ["Machines", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"];
 
     function DepartmentDashboard({ deptKey, divisionKey, divisionLabel, initialTab, onHome, onCompany, onOpenMachine, onOpenWo, refreshSignal }) {
       const [data, setData] = useState(null);
@@ -1804,7 +2270,7 @@
       // Toilet Partitions gets a department-wide Trends tab aggregating just its
       // "Machines" group. Other departments keep the standard tab set.
       const deptTabs = deptKey === "toilet"
-        ? ["Machines", "Floor Plan", "Trends", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"]
+        ? ["Machines", "Floor Plan", "Trends", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"]
         : DEPT_TABS;
 
       return html`
@@ -1839,6 +2305,11 @@
           ${tab === "Trends" && html`
             <div className="fade-in">
               <${DeptTrendsTab} deptKey=${deptKey} group="Machines" onOpenWo=${onOpenWo} />
+            </div>`}
+
+          ${tab === "Longevity" && html`
+            <div className="fade-in">
+              <${LongevityTab} apiUrl=${"/api/departments/" + deptKey + "/longevity"} title="Estimated Replacement Year — ${data.label}" hideDepartment=${true} divisionKey=${divisionKey || "bla"} />
             </div>`}
 
           ${tab === "Weekly Schedule" && html`
@@ -4136,7 +4607,7 @@
     /* ------------------------------------------------------------------ */
     /* Machine view                                                       */
     /* ------------------------------------------------------------------ */
-    const TABS = ["Dashboard", "Machine Info", "Trends", "Weekly", "Monthly Calendar", "Checklist", "Unscheduled", "Scheduled"];
+    const TABS = ["Dashboard", "Machine Info", "Trends", "Weekly", "Monthly Calendar", "Checklist", "Unscheduled", "Scheduled", "Spare Parts"];
 
     // Equipment IDs for which the Trends tab is enabled (the machines the team
     // tracks trends on). All other machines hide the Trends tab.
@@ -5038,6 +5509,11 @@
               <${WorkOrderList} records=${data.scheduled} kind="scheduled" onOpen=${onOpenWo}
                 filters=${["status"]} />
             </div>`}
+
+          ${tab === "Spare Parts" && html`
+            <div className="fade-in">
+              <${MachineSparePartsTab} deptKey=${deptKey} eqId=${eqId} machineName=${m.name} />
+            </div>`}
         </div>`;
     }
 
@@ -5464,20 +5940,12 @@
       doc.save("Monthly-Calendar-" + safe + ".pdf");
     }
 
-    // Fetches /api/weekly and renders panels for a fixed scope (department or
-    // machine). Used embedded inside the department and machine views so the
-    // relevant weekly schedule shows up automatically - no manual filtering.
-    // Supports paging through earlier/upcoming weeks like the monthly calendar.
-    function EmbeddedWeekly({ predicate, showDept, onOpenWo, title, subtitle }) {
-      const [data, setData] = useState(null);
-      const [err, setErr] = useState(null);
+    // Presentational weekly dashboard: type filter, export buttons, and three
+    // week columns. Reused by EmbeddedWeekly, MySchedulePage, and TeamScheduleModal.
+    // NOTE: named WeeklyBoard to avoid clashing with the standalone WeeklyDashboard
+    // page component defined later (function declarations would otherwise collide).
+    function WeeklyBoard({ data, predicate, showDept, onOpenWo, title, subtitle, scopeLabel }) {
       const [typeFilter, setTypeFilter] = useState("all");
-      const [weekOffset, setWeekOffset] = useState(0);
-      useEffect(() => {
-        getJSON("/api/weekly?offset=" + weekOffset).then(setData).catch((e) => setErr(e.message));
-      }, [weekOffset]);
-      if (err) return html`<div className="text-rose-600 text-sm">${err}</div>`;
-      if (!data) return html`<${Spinner} label="Loading weekly schedule…" />`;
       const TYPE_TABS = [
         { key: "all", label: "All" },
         { key: "scheduled", label: "Scheduled" },
@@ -5497,17 +5965,6 @@
               ${weekRangeText && html`<p className="text-emerald-700 text-sm font-semibold">${weekRangeText}</p>`}
             </div>
             <div className="flex items-center gap-3 flex-wrap">
-              <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
-                <button onClick=${() => setWeekOffset((o) => o - 1)}
-                  title="Previous weeks"
-                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
-                <button onClick=${() => setWeekOffset(0)}
-                  className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
-                  This week</button>
-                <button onClick=${() => setWeekOffset((o) => o + 1)}
-                  title="Upcoming weeks"
-                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
-              </div>
               <div className="inline-flex rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
                 ${TYPE_TABS.map((t) => html`
                   <button key=${t.key} onClick=${() => setTypeFilter(t.key)}
@@ -5518,14 +5975,14 @@
                     ${t.label}
                   </button>`)}
               </div>
-              <button onClick=${() => exportWeeklyPdf({ data, predicate, showDept, typeFilter, scopeLabel: title || "Weekly Schedule" })}
+              <button onClick=${() => exportWeeklyPdf({ data, predicate, showDept, typeFilter, scopeLabel: scopeLabel || title || "Weekly Schedule" })}
                 className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 shadow-sm">
                 <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
                      strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>
                 </svg>
                 Export PDF</button>
-              <button onClick=${() => exportWeeklyCsv({ data, predicate, showDept, typeFilter, scopeLabel: title || "Weekly Schedule" })}
+              <button onClick=${() => exportWeeklyCsv({ data, predicate, showDept, typeFilter, scopeLabel: scopeLabel || title || "Weekly Schedule" })}
                 className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-emerald-200 text-emerald-700 text-sm font-semibold hover:bg-emerald-50 shadow-sm">
                 <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
                      strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -5535,6 +5992,38 @@
             </div>
           </div>
           <${WeeklyPanels} data=${data} predicate=${predicate} showDept=${showDept} onOpenWo=${onOpenWo} typeFilter=${typeFilter} />
+        </div>`;
+    }
+
+    // Fetches /api/weekly and renders panels for a fixed scope (department or
+    // machine). Used embedded inside the department and machine views so the
+    // relevant weekly schedule shows up automatically - no manual filtering.
+    // Supports paging through earlier/upcoming weeks like the monthly calendar.
+    function EmbeddedWeekly({ predicate, showDept, onOpenWo, title, subtitle }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [weekOffset, setWeekOffset] = useState(0);
+      useEffect(() => {
+        getJSON("/api/weekly?offset=" + weekOffset).then(setData).catch((e) => setErr(e.message));
+      }, [weekOffset]);
+      if (err) return html`<div className="text-rose-600 text-sm">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading weekly schedule…" />`;
+      return html`
+        <div className="fade-in">
+          <div className="flex items-center gap-3 flex-wrap mb-4">
+            <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
+              <button onClick=${() => setWeekOffset((o) => o - 1)}
+                title="Previous weeks"
+                className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
+              <button onClick=${() => setWeekOffset(0)}
+                className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
+                This week</button>
+              <button onClick=${() => setWeekOffset((o) => o + 1)}
+                title="Upcoming weeks"
+                className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
+            </div>
+          </div>
+          <${WeeklyBoard} data=${data} predicate=${predicate} showDept=${showDept} onOpenWo=${onOpenWo} title=${title} subtitle=${subtitle} scopeLabel=${title || "Weekly Schedule"} />
         </div>`;
     }
 
@@ -6090,6 +6579,348 @@
         </div>`;
     }
 
+    /* ------------------------------------------------------------------ */
+    /* Spare parts inventory                                              */
+    /* ------------------------------------------------------------------ */
+    function SparePartCard({ part, onEdit, onDelete, onAdjustQty }) {
+      return html`
+        <div className="bg-white rounded-2xl border border-emerald-100 p-4 shadow-sm fade-in">
+          <div className="flex gap-4">
+            ${part.picture && html`<div className="shrink-0"><img src=${part.picture} alt=${part.description} className="w-24 h-24 object-cover rounded-xl border border-slate-200" /></div>`}
+            <div className="min-w-0 flex-1">
+              <div className="flex items-start justify-between gap-2">
+                <div>
+                  <div className="font-bold text-slate-800">${part.description}</div>
+                  <div className="text-xs text-slate-500 flex gap-2 flex-wrap mt-0.5">
+                    ${part.digital_id && html`<span className="font-mono">ID: ${part.digital_id}</span>`}
+                    ${part.part_type && html`<span>Type: ${part.part_type}</span>`}
+                  </div>
+                </div>
+                <div className="flex items-center gap-1">
+                  <button onClick=${onEdit} className="px-2 py-1 rounded-full text-emerald-700 hover:bg-emerald-50 text-xs font-semibold">Edit</button>
+                  <button onClick=${onDelete} className="px-2 py-1 rounded-full text-rose-600 hover:bg-rose-50 text-xs font-semibold">Delete</button>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-y-2 gap-x-4 mt-3 text-xs text-slate-600">
+                ${part.machines && part.machines.length > 0 && html`<div className="col-span-2"><span className="text-slate-400">For:</span> ${part.machines.map((m) => m.name || `(${m.dept_key} ${m.eq_id})`).join(", ")}</div>`}
+                ${part.location && html`<div><span className="text-slate-400">Location:</span> ${part.location}</div>`}
+                ${part.condition && html`<div><span className="text-slate-400">Condition:</span> ${part.condition}</div>`}
+                ${part.brand && html`<div><span className="text-slate-400">Brand:</span> ${part.brand}</div>`}
+                ${part.where_to_buy && html`<div className="col-span-2"><span className="text-slate-400">Where to buy:</span> ${part.where_to_buy}</div>`}
+                ${part.purchase_link && html`<div className="col-span-2"><span className="text-slate-400">Purchase link:</span> <a href=${part.purchase_link} target="_blank" rel="noreferrer" className="text-sky-600 underline break-all">${part.purchase_link}</a></div>`}
+                ${part.price_new && html`<div className="col-span-2"><span className="text-slate-400">New price:</span> ${part.price_new}</div>`}
+                ${part.barcode_qr && html`<div className="col-span-2 font-mono break-all"><span className="text-slate-400">Barcode/QR:</span> ${part.barcode_qr}</div>`}
+                ${part.is_part_of_set && html`<div className="col-span-2"><span className="text-slate-400">Set info:</span> ${part.set_info || "Part of a set"}</div>`}
+                ${part.buy_direct && html`<div className="col-span-2 text-emerald-700 font-semibold">Buy direct from manufacturer / vendor</div>`}
+              </div>
+              <div className="mt-3 flex items-center gap-2">
+                <span className="text-xs text-slate-500">Quantity:</span>
+                <button onClick=${() => onAdjustQty(part, Math.max(0, part.quantity - 1))} className="w-6 h-6 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold leading-none">-</button>
+                <span className="text-sm font-bold w-8 text-center">${part.quantity}</span>
+                <button onClick=${() => onAdjustQty(part, part.quantity + 1)} className="w-6 h-6 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold leading-none">+</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function SparePartModal({ part, onClose, onSaved, initialDeptKey, initialEqId, initialMachineName }) {
+      const [options, setOptions] = useState(null);
+      const [author, setAuthor] = useState(getUserName());
+      const [form, setForm] = useState(() => {
+        const f = part ? { ...part } : {};
+        f.machines = f.machines || [];
+        if (initialDeptKey && initialEqId) {
+          const existing = f.machines.some((m) => m.dept_key === initialDeptKey && m.eq_id === initialEqId);
+          if (!existing) {
+            f.machines = f.machines.concat([{ dept_key: initialDeptKey, eq_id: initialEqId, name: initialMachineName || "" }]);
+          }
+        }
+        return f;
+      });
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [gate, setGate] = useState(false);
+      const [machineSearch, setMachineSearch] = useState("");
+
+      useEffect(() => {
+        getJSON("/api/spare-parts/options").then((d) => setOptions(d.departments || [])).catch(() => setOptions([]));
+      }, []);
+
+      const machineOptions = [];
+      (options || []).forEach((d) => {
+        (d.machines || []).forEach((m) => {
+          const display = m.name + (m.nickname ? " (PM: " + m.pm_name + ")" : "");
+          machineOptions.push({
+            value: d.dept_key + ":" + m.eq_id,
+            label: d.dept_label + " — " + display,
+            dept_key: d.dept_key,
+            eq_id: m.eq_id,
+            machine_name: m.name,
+          });
+        });
+      });
+
+      const addMachine = (val) => {
+        if (!val) return;
+        const opt = machineOptions.find((o) => o.value === val);
+        if (!opt) return;
+        setForm((f) => {
+          const machines = f.machines || [];
+          if (machines.some((m) => m.dept_key === opt.dept_key && m.eq_id === opt.eq_id)) return f;
+          return { ...f, machines: machines.concat([{ dept_key: opt.dept_key, eq_id: opt.eq_id, name: opt.machine_name }]) };
+        });
+      };
+
+      const removeMachine = (dept, eq) => {
+        setForm((f) => ({ ...f, machines: (f.machines || []).filter((m) => !(m.dept_key === dept && m.eq_id === eq)) }));
+      };
+
+      const selectedValues = new Set((form.machines || []).map((m) => m.dept_key + ":" + m.eq_id));
+      const needle = machineSearch.toLowerCase().trim();
+      const availableOptions = machineOptions.filter((o) => !selectedValues.has(o.value) && (!needle || o.label.toLowerCase().includes(needle)));
+
+      const setBool = (key, val) => setForm((f) => ({ ...f, [key]: val === true || val === "1" }));
+      const set = (key, val) => setForm((f) => ({ ...f, [key]: val }));
+
+      const handlePicture = (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => setForm((f) => ({ ...f, picture: ev.target.result }));
+        reader.readAsDataURL(file);
+      };
+
+      const save = async () => {
+        if (!author.trim()) { setErr("Your name is required."); return; }
+        if (!(form.description || "").trim()) { setErr("Part description is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const body = {
+            description: (form.description || "").trim(),
+            digital_id: (form.digital_id || "").trim(),
+            picture: form.picture || "",
+            machines: (form.machines || []).map((m) => ({ dept_key: m.dept_key, eq_id: m.eq_id, name: m.name })),
+            part_type: (form.part_type || "").trim(),
+            location: (form.location || "").trim(),
+            quantity: Number(form.quantity || 0),
+            condition: (form.condition || "").trim(),
+            brand: (form.brand || "").trim(),
+            is_part_of_set: form.is_part_of_set ? true : false,
+            set_info: (form.set_info || "").trim(),
+            buy_direct: form.buy_direct ? true : false,
+            where_to_buy: (form.where_to_buy || "").trim(),
+            purchase_link: (form.purchase_link || "").trim(),
+            price_new: (form.price_new || "").trim(),
+            barcode_qr: (form.barcode_qr || "").trim(),
+            author: author.trim(),
+          };
+          const url = part ? "/api/spare-parts/" + part.id : "/api/spare-parts";
+          const method = part ? "PATCH" : "POST";
+          const r = await fetch(API + url, {
+            method,
+            headers: adminHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify(body),
+          });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setAdminPw(""); setBusy(false); setGate(true); return; }
+          if (!r.ok) throw new Error(d.error || ("HTTP " + r.status));
+          setUserName(author.trim());
+          onSaved(d);
+          onClose();
+        } catch (e) { setErr(e.message); setBusy(false); }
+      };
+
+      const selectOptions = [{ value: "", label: "— unlinked —" }].concat(machineOptions);
+
+      return html`
+        <div className="fixed inset-0 z-[55] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+          onClick=${onClose}>
+          <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6"
+            onClick=${(e) => e.stopPropagation()}>
+            <h3 className="text-lg font-extrabold text-slate-800 mb-1">${part ? "Edit spare part" : "Add spare part"}</h3>
+            <p className="text-sm text-slate-500 mb-4">All optional fields can be left blank.</p>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <${TextInput} label="Part description" required=${true} value=${form.description || ""} onChange=${(v) => set("description", v)} />
+              <${TextInput} label="Digital ID" value=${form.digital_id || ""} onChange=${(v) => set("digital_id", v)} />
+              <div className="md:col-span-2">
+                <${LabeledField} label="Picture of part">
+                  <input type="file" accept="image/*" onChange=${handlePicture} className=${inputCls} />
+                  ${form.picture && html`<img src=${form.picture} className="mt-2 h-24 rounded-lg border border-slate-200" />`}
+                </${LabeledField}>
+              </div>
+              <div className="md:col-span-2">
+                <${LabeledField} label="For what machines">
+                  ${!options && html`<div className="text-sm text-slate-400">Loading machines…</div>`}
+                  ${options && html`
+                    <input value=${machineSearch} onInput=${(e) => setMachineSearch(e.target.value)} placeholder="Search machines…" className=${inputCls} />
+                    <select size="6" onChange=${(e) => { addMachine(e.target.value); e.target.value = ""; }} className=${inputCls + " mt-1"}>
+                      <option value="">-- select a machine --</option>
+                      ${availableOptions.map((o) => html`<option key=${o.value} value=${o.value}>${o.label}</option>`)}
+                    </select>
+                    ${(form.machines || []).length > 0 && html`<div className="text-xs text-slate-500 mt-2 mb-1">Selected:</div>`}
+                    <div className="flex flex-wrap gap-2">
+                      ${(form.machines || []).map((m) => html`
+                        <span key=${m.dept_key + ":" + m.eq_id} className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs border border-emerald-100">
+                          ${m.name || (m.dept_key + " " + m.eq_id)}
+                          <button type="button" onClick=${() => removeMachine(m.dept_key, m.eq_id)} className="text-emerald-700 hover:text-rose-600 font-bold leading-none px-1" title="Remove">×</button>
+                        </span>`)}
+                    </div>`}
+                </${LabeledField}>
+              </div>
+              <${TextInput} label="Type" value=${form.part_type || ""} onChange=${(v) => set("part_type", v)} />
+              <${TextInput} label="Location" value=${form.location || ""} onChange=${(v) => set("location", v)} />
+              <${TextInput} label="Quantity" type="number" value=${String(form.quantity || 0)} onChange=${(v) => set("quantity", Number(v) || 0)} />
+              <${TextInput} label="Condition" value=${form.condition || ""} onChange=${(v) => set("condition", v)} />
+              <${TextInput} label="Brand" value=${form.brand || ""} onChange=${(v) => set("brand", v)} />
+              <div className="flex items-center gap-4 md:col-span-2">
+                <label className="flex items-center gap-2 text-sm text-slate-700">
+                  <input type="checkbox" checked=${!!form.is_part_of_set} onChange=${(e) => setBool("is_part_of_set", e.target.checked)} />
+                  Part of a set?
+                </label>
+                ${form.is_part_of_set && html`<div className="flex-1"><${TextInput} label="Set info" value=${form.set_info || ""} onChange=${(v) => set("set_info", v)} /></div>`}
+              </div>
+              <div className="flex items-center gap-4 md:col-span-2">
+                <label className="flex items-center gap-2 text-sm text-slate-700">
+                  <input type="checkbox" checked=${!!form.buy_direct} onChange=${(e) => setBool("buy_direct", e.target.checked)} />
+                  Buy direct from manufacturer / vendor?
+                </label>
+              </div>
+              <${TextInput} label="Where to buy" value=${form.where_to_buy || ""} onChange=${(v) => set("where_to_buy", v)} />
+              <${TextInput} label="Link for purchase" value=${form.purchase_link || ""} onChange=${(v) => set("purchase_link", v)} />
+              <${TextInput} label="Price if buy brand new" value=${form.price_new || ""} onChange=${(v) => set("price_new", v)} />
+              <${TextInput} label="Barcode / QR" value=${form.barcode_qr || ""} onChange=${(v) => set("barcode_qr", v)} />
+            </div>
+
+            <div className="mt-4"><${NameInput} value=${author} onChange=${setAuthor} /></div>
+            ${err && html`<div className="text-rose-600 text-sm mt-3">${err}</div>`}
+            <div className="flex gap-2 justify-end mt-5">
+              <button onClick=${onClose} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+              <button onClick=${save} disabled=${busy} className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">${busy ? "Saving…" : "Save"}</button>
+            </div>
+          </div>
+          ${gate && html`<${AdminGate} actionLabel="save this spare part" onUnlock=${() => { setGate(false); save(); }} onCancel=${() => setGate(false)} />`}
+        </div>`;
+    }
+
+    function SparePartsList({ loadUrl, canAdd, prefillDeptKey, prefillEqId, prefillMachineName }) {
+      const [parts, setParts] = useState([]);
+      const [filtered, setFiltered] = useState([]);
+      const [loading, setLoading] = useState(true);
+      const [err, setErr] = useState(null);
+      const [reloadKey, setReloadKey] = useState(0);
+      const [search, setSearch] = useState("");
+      const [editing, setEditing] = useState(null);
+      const [deleting, setDeleting] = useState(null);
+      const [gateOpen, setGateOpen] = useState(false);
+      const [gateAction, setGateAction] = useState(null);
+
+      useEffect(() => {
+        setLoading(true); setErr(null);
+        getJSON(loadUrl).then((d) => { const list = d.parts || []; setParts(list); setFiltered(list); setLoading(false); })
+          .catch((e) => { setErr(e.message); setLoading(false); });
+      }, [loadUrl, reloadKey]);
+
+      useEffect(() => {
+        const s = search.toLowerCase().trim();
+        if (!s) { setFiltered(parts); return; }
+        setFiltered(parts.filter((p) => ((p.description || "") + " " + (p.digital_id || "") + " " + (p.part_type || "") + " " + (p.location || "") + " " + (p.brand || "") + " " + (p.machine_name || "")).toLowerCase().includes(s)));
+      }, [search, parts]);
+
+      const runWithGate = (fn) => {
+        fn().catch((e) => {
+          if (String(e.message).includes("Admin password required") || String(e.message).includes("HTTP 401")) {
+            setGateAction(() => fn);
+            setGateOpen(true);
+          } else {
+            setErr(e.message);
+          }
+        });
+      };
+
+      const refresh = () => setReloadKey((k) => k + 1);
+
+      const doAdjust = (part, newQty) => {
+        const n = Number(newQty);
+        if (isNaN(n) || n < 0 || n === part.quantity) return;
+        runWithGate(async () => {
+          await sendJSON("/api/spare-parts/" + part.id, "PATCH", { quantity: n, author: getUserName() }, adminHeaders());
+          refresh();
+        });
+      };
+
+      const doDelete = () => {
+        if (!deleting) return;
+        const id = deleting.id;
+        setDeleting(null);
+        runWithGate(async () => {
+          await sendJSON("/api/spare-parts/" + id, "DELETE", { author: getUserName() }, adminHeaders());
+          refresh();
+        });
+      };
+
+      const onSaved = () => { setEditing(null); refresh(); };
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (loading) return html`<${Spinner} label="Loading parts…" />`;
+
+      return html`
+        <div>
+          <div className="flex items-center gap-3 mb-4 flex-wrap">
+            <input value=${search} onInput=${(e) => setSearch(e.target.value)} placeholder="Search parts…" className=${inputCls} />
+            ${canAdd && html`<button onClick=${() => setEditing({})}
+              className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800">+ Add part</button>`}
+          </div>
+          ${filtered.length === 0 && html`<div className="text-slate-400 py-10 text-center">No spare parts found.</div>`}
+          <div className="grid gap-3">
+            ${filtered.map((p) => html`
+              <${SparePartCard} key=${p.id} part=${p}
+                onEdit=${() => setEditing(p)}
+                onDelete=${() => setDeleting(p)}
+                onAdjustQty=${doAdjust} />`)}
+          </div>
+          ${editing && html`<${SparePartModal}
+            part=${editing.id ? editing : null}
+            initialDeptKey=${prefillDeptKey}
+            initialEqId=${prefillEqId}
+            initialMachineName=${prefillMachineName}
+            onClose=${() => setEditing(null)}
+            onSaved=${onSaved} />`}
+          ${deleting && html`<${ConfirmActionModal}
+            title="Delete spare part"
+            danger=${true}
+            confirmLabel="Delete"
+            message=${"Delete “" + (deleting.description || "this part") + "”? This cannot be undone."}
+            onConfirm=${doDelete}
+            onClose=${() => setDeleting(null)} />`}
+          ${gateOpen && html`<${AdminGate} actionLabel="make this change" onUnlock=${() => { setGateOpen(false); if (gateAction) gateAction(); }} onCancel=${() => setGateOpen(false)} />`}
+        </div>`;
+    }
+
+    function SparePartsPage({ onCompany }) {
+      return html`
+        <div className="fade-in">
+          <${Breadcrumb} items=${[{ label: "Bobrick", onClick: onCompany }, { label: "Spare Parts" }]} />
+          <h1 className="text-2xl font-extrabold text-slate-800 mb-1">Spare Parts Inventory</h1>
+          <p className="text-slate-500 mb-6">Track spare part inventory, quantities, locations, and purchase info.</p>
+          <${SparePartsList} loadUrl="/api/spare-parts" canAdd=${true} />
+        </div>`;
+    }
+
+    function MachineSparePartsTab({ deptKey, eqId, machineName }) {
+      const url = "/api/departments/" + deptKey + "/machines/" + eqId + "/spare-parts";
+      return html`
+        <div>
+          <${SparePartsList}
+            loadUrl=${url}
+            canAdd=${true}
+            prefillDeptKey=${deptKey}
+            prefillEqId=${eqId}
+            prefillMachineName=${machineName} />
+        </div>`;
+    }
+
     function App() {
       const [route, setRoute] = useState({ view: "company" });
       const [woId, setWoId] = useState(null);
@@ -6111,21 +6942,25 @@
 
       const goCompany = () => setRoute({ view: "company" });
       const openInactive = () => setRoute({ view: "inactive" });
+      const openSpareParts = () => setRoute({ view: "spare-parts" });
       const openDivision = (divisionKey) => setRoute({ view: "division", divisionKey });
       const goDivision = () => setRoute((r) => ({ view: "division", divisionKey: r.divisionKey || "bla" }));
       const openDept = (deptKey, tab) =>
         setRoute((r) => ({ view: "department", divisionKey: r.divisionKey || "bla", deptKey, tab: tab || "Machines" }));
       const openMachine = (eqId) =>
         setRoute((r) => ({ view: "machine", divisionKey: r.divisionKey || "bla", deptKey: r.deptKey, eqId }));
+      const openMySchedule = () => setRoute({ view: "my-schedule" });
 
       const divLabel = DIV_LABELS[route.divisionKey || "bla"] || (route.divisionKey || "bla").toUpperCase();
 
       return html`
         <div className="min-h-screen">
-          <${Header} technicians=${technicians} setTechnicians=${setTechnicians} onHome=${goCompany} onOpenInactive=${openInactive} onOpenWo=${setWoId} />
+          <${Header} technicians=${technicians} setTechnicians=${setTechnicians} onHome=${goCompany} onOpenInactive=${openInactive} onOpenSpareParts=${openSpareParts} onOpenMySchedule=${openMySchedule} onOpenWo=${setWoId} />
           <main className="max-w-6xl mx-auto px-6 py-8">
             ${route.view === "company" && html`<${CompanyDashboard} onOpenDivision=${openDivision} />`}
             ${route.view === "inactive" && html`<${InactivePage} onCompany=${goCompany} onOpenDept=${openDept} />`}
+            ${route.view === "spare-parts" && html`<${SparePartsPage} onCompany=${goCompany} onOpenMachine=${openMachine} onOpenDept=${openDept} />`}
+            ${route.view === "my-schedule" && html`<${MySchedulePage} user=${getRawUser()} onCompany=${goCompany} onOpenWo=${setWoId} />`}
             ${route.view === "division" && html`
               <${DivisionDashboard} divisionKey=${route.divisionKey || "bla"} onHome=${goCompany}
                 refreshSignal=${dataVersion}

@@ -56,7 +56,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import (
-    TimeoutException, NoSuchElementException, StaleElementReferenceException
+    TimeoutException, NoSuchElementException, StaleElementReferenceException,
+    WebDriverException
 )
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -825,6 +826,104 @@ class WorkOrderScraper:
             print("  [headless] WARNING: redirected to a login page - the copied "
                   "profile's session has expired. Re-run start_chrome_debug.bat, "
                   "log in, then retry with --refresh-profile.")
+
+    # ------------------------------------------------------------------
+    # Network-outage resilience
+    # ------------------------------------------------------------------
+    # If the laptop hops networks / loses Wi-Fi mid-scrape, every remaining
+    # machine would otherwise fail one by one and (in overwrite mode) silently
+    # drop its previous work orders from the fresh file. These helpers wait for
+    # connectivity to return, relaunch the owned headless Chrome if it died,
+    # and retry each machine before giving up on it.
+
+    NETWORK_WAIT_MAX = 900   # seconds to wait for the network to come back
+    NETWORK_POLL     = 15    # seconds between connectivity probes
+
+    def _network_ok(self, timeout: float = 6.0) -> bool:
+        """True if the PM site is reachable at the TCP/HTTP level. Any HTTP
+        response (even 4xx/5xx or a login redirect) counts as 'network up'."""
+        import urllib.request
+        import urllib.error
+        try:
+            urllib.request.urlopen(BASE_URL, timeout=timeout)
+            return True
+        except urllib.error.HTTPError:
+            return True          # server answered -> network is fine
+        except Exception:
+            return False
+
+    def _wait_for_network(self) -> bool:
+        """Block until the PM site is reachable again (up to NETWORK_WAIT_MAX
+        seconds). Returns True once reachable, False if it never came back."""
+        if self._network_ok():
+            return True
+        print(f"  [network] connection lost - waiting up to "
+              f"{self.NETWORK_WAIT_MAX // 60} min for it to return ...")
+        end = time.time() + self.NETWORK_WAIT_MAX
+        while time.time() < end:
+            time.sleep(self.NETWORK_POLL)
+            if self._network_ok():
+                print("  [network] connection restored - resuming scrape.")
+                time.sleep(5)    # give the new network a moment to settle
+                return True
+        print("  [network] connection never returned within the wait window.")
+        return False
+
+    def _driver_alive(self) -> bool:
+        try:
+            _ = self.driver.current_url
+            return True
+        except Exception:
+            return False
+
+    def _recover_driver(self) -> bool:
+        """Relaunch the scraper-owned headless Chrome after a crash. Attached
+        (debug-Chrome) sessions cannot be relaunched from here."""
+        if not self._owns_driver or self.offline:
+            return False
+        print("  [recover] browser session died - relaunching headless Chrome ...")
+        try:
+            self.driver.quit()
+        except Exception:
+            pass
+        try:
+            self.launch_headless()
+            return True
+        except Exception as e:
+            print(f"  [recover] relaunch failed: {e}")
+            return False
+
+    def _scrape_with_retry(self, equipment: dict, kind: str, attempts: int = 3):
+        """Scrape one machine's grid with retries. On persistent failure the
+        machine is flagged failed so _persist PRESERVES its existing records
+        instead of silently dropping them (the old behaviour lost data when
+        the network dropped mid-run)."""
+        eq_key = str(equipment["id"]).strip()
+        if kind == "unscheduled":
+            scrape, dest, failed = (self.scrape_equipment, self.records,
+                                    self.failed_unscheduled_ids)
+        else:
+            scrape, dest, failed = (self.scrape_scheduled, self.scheduled_records,
+                                    self.failed_scheduled_ids)
+        for attempt in range(1, attempts + 1):
+            try:
+                dest.extend(scrape(equipment))
+                return
+            except Exception as e:
+                print(f"  Error ({kind}, attempt {attempt}/{attempts}): "
+                      f"{type(e).__name__}: {e}")
+                if self.offline or attempt == attempts:
+                    break
+                # Wait out a network outage before retrying, then make sure
+                # the browser survived it.
+                if not self._wait_for_network():
+                    break
+                if not self._driver_alive() and not self._recover_driver():
+                    break
+                time.sleep(2 * attempt)
+        failed.add(eq_key)
+        print(f"  [{equipment.get('eq_id', eq_key)}] {kind} scrape failed after "
+              f"retries - prior data will be preserved.")
 
     # ------------------------------------------------------------------
     def get_equipment_list(self) -> List[dict]:
@@ -1787,14 +1886,8 @@ class WorkOrderScraper:
             # returns zero rows this run).
             self.scraped_ids.add(str(equipment["id"]).strip())
             if not self.skip_unscheduled:
-                try:
-                    self.records.extend(self.scrape_equipment(equipment))
-                except Exception as e:
-                    print(f"  Error (unscheduled): {e}")
-            try:
-                self.scheduled_records.extend(self.scrape_scheduled(equipment))
-            except Exception as e:
-                print(f"  Error (scheduled): {e}")
+                self._scrape_with_retry(equipment, "unscheduled")
+            self._scrape_with_retry(equipment, "scheduled")
 
             if idx % SAVE_EVERY == 0:
                 self.save()

@@ -392,10 +392,6 @@ def main():
     chrome = find_chrome()
     os.makedirs(PARALLEL_PROFILES, exist_ok=True)
 
-    # Snapshot current per-department files so a throttled/empty scrape can be
-    # rolled back instead of destroying good data.
-    pre_counts = backup_dept_files(selected)
-
     print("=" * 64)
     print("PARALLEL PM WORK ORDER SCRAPE")
     print("=" * 64)
@@ -416,21 +412,12 @@ def main():
     except Exception as e:
         print(f"  (could not pre-install chromedriver: {e})")
 
-    # Build the work queue: (dept, port, slug). Port index keys off the master
-    # DEPARTMENTS list so a given department always uses the same port.
-    jobs = []
-    for dept in selected:
-        port = BASE_PORT + DEPARTMENTS.index(dept)
-        jobs.append((dept, port, slugify(dept)))
-
     chrome_procs = {}   # slug -> Popen
     scraper_procs = {}  # slug -> (Popen, logfile handle, dept)
-    pending = list(jobs)
-    done = []
 
-    def launch_job(job):
+    def launch_job(job, refresh_profile=False):
         dept, port, slug = job
-        profile = prepare_profile(slug, args.refresh_profiles)
+        profile = prepare_profile(slug, args.refresh_profiles or refresh_profile)
         cmd = [sys.executable, "-u", os.path.join(HERE, "scraper.py"),
                "--department", dept, "--out-suffix", slug]
 
@@ -477,50 +464,90 @@ def main():
                                 stderr=subprocess.STDOUT)
         scraper_procs[slug] = (proc, logf, dept)
 
-    # Launch initial wave
-    while pending and len(scraper_procs) < args.jobs:
-        launch_job(pending.pop(0))
+    # Run in rounds: departments that fail (non-zero exit) OR whose data the
+    # shrink guard rolled back are automatically retried (up to 2 extra
+    # rounds) with a freshly re-copied login profile. Their previous data is
+    # always preserved between rounds by backup/guard + the scraper's own
+    # failed-machine carry-over, so a mid-run network drop can't wipe anything.
+    MAX_ROUNDS = 3               # initial run + up to 2 automatic retries
+    to_run = list(selected)
+    succeeded = []
+    round_no = 0
+    while to_run and round_no < MAX_ROUNDS:
+        round_no += 1
+        retry_round = round_no > 1
+        if retry_round:
+            print(f"\nRETRY {round_no - 1}/{MAX_ROUNDS - 1}: re-running failed "
+                  f"department(s): {', '.join(to_run)} (refreshing profiles)")
+            time.sleep(20)       # let any throttling / session churn settle
 
-    # Supervise: as scrapers finish, close their Chrome and start the next job.
-    while scraper_procs:
-        time.sleep(2)
-        for slug in list(scraper_procs):
-            proc, logf, dept = scraper_procs[slug]
-            if proc.poll() is None:
-                continue
-            # finished
-            rc = proc.returncode
-            logf.close()
-            status = "OK" if rc == 0 else f"FAILED (exit {rc})"
-            print(f"[{slug}] scraper finished: {status}")
-            done.append((slug, dept, rc))
-            del scraper_procs[slug]
-            # close that department's Chrome unless asked to keep open
-            cp = chrome_procs.pop(slug, None)
-            if cp and not args.keep_open:
-                try:
-                    cp.terminate()
-                except Exception:
-                    pass
-            # start next pending job, if any
-            if pending and len(scraper_procs) < args.jobs:
-                launch_job(pending.pop(0))
+        # Snapshot this round's files so a throttled/empty scrape can be
+        # rolled back instead of destroying good data.
+        pre_counts = backup_dept_files(to_run)
 
-    print("\nAll department scrapers finished.")
+        # Build the work queue: (dept, port, slug). Port index keys off the
+        # master DEPARTMENTS list so a department always uses the same port.
+        jobs = [(dept, BASE_PORT + DEPARTMENTS.index(dept), slugify(dept))
+                for dept in to_run]
+        pending = list(jobs)
+        done = []
 
-    # Roll back any department whose data shrank by more than half - the
-    # signature of a throttled/expired session serving empty grids.
-    rolled_back = guard_dept_files(selected, pre_counts)
-    if rolled_back:
-        print(f"  GUARD: restored previous data for {len(rolled_back)} "
-              f"department(s): {', '.join(rolled_back)}")
+        # Launch initial wave
+        while pending and len(scraper_procs) < args.jobs:
+            launch_job(pending.pop(0), retry_round)
 
-    ok = [d for _, d, rc in done if rc == 0]
-    bad = [d for _, d, rc in done if rc != 0]
-    print(f"  Succeeded ({len(ok)}): {', '.join(ok) if ok else '-'}")
-    if bad:
-        print(f"  FAILED ({len(bad)}): {', '.join(bad)}  "
-              "(check logs/parallel_<dept>.log)")
+        # Supervise: as scrapers finish, close their Chrome, start next job.
+        while scraper_procs:
+            time.sleep(2)
+            for slug in list(scraper_procs):
+                proc, logf, dept = scraper_procs[slug]
+                if proc.poll() is None:
+                    continue
+                # finished
+                rc = proc.returncode
+                logf.close()
+                status = "OK" if rc == 0 else f"FAILED (exit {rc})"
+                print(f"[{slug}] scraper finished: {status}")
+                done.append((slug, dept, rc))
+                del scraper_procs[slug]
+                # close that department's Chrome unless asked to keep open
+                cp = chrome_procs.pop(slug, None)
+                if cp and not args.keep_open:
+                    try:
+                        cp.terminate()
+                    except Exception:
+                        pass
+                # start next pending job, if any
+                if pending and len(scraper_procs) < args.jobs:
+                    launch_job(pending.pop(0), retry_round)
+
+        print(f"\nAll department scrapers finished (round {round_no}).")
+
+        # Roll back any department whose data shrank by more than half - the
+        # signature of a throttled/expired session serving empty grids.
+        rolled_back = guard_dept_files(to_run, pre_counts)
+        if rolled_back:
+            print(f"  GUARD: restored previous data for {len(rolled_back)} "
+                  f"department(s): {', '.join(rolled_back)}")
+
+        failed = [d for _, d, rc in done if rc != 0]
+        for slug in rolled_back:
+            dept = next((d for d in DEPARTMENTS if slugify(d) == slug), None)
+            if dept and dept not in failed:
+                failed.append(dept)
+        ok = [d for d in to_run if d not in failed]
+        succeeded.extend(ok)
+        print(f"  Succeeded ({len(ok)}): {', '.join(ok) if ok else '-'}")
+        if failed:
+            print(f"  FAILED ({len(failed)}): {', '.join(failed)}  "
+                  "(check logs/parallel_<dept>.log)")
+        to_run = failed
+
+    if to_run:
+        print(f"\nWARNING: still failing after {MAX_ROUNDS - 1} retries: "
+              f"{', '.join(to_run)}. Their previous data was PRESERVED. "
+              f"Re-run later with: python run_parallel.py --departments "
+              f"\"{','.join(to_run)}\"")
 
     # Fold in equipment-less (orphan) unscheduled WOs BEFORE merging so they
     # land in both the per-department files and the rebuilt master. Only makes

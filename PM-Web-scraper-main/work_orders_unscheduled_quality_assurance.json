@@ -36,21 +36,21 @@
     "attachments": []
   },
   {
-    "equipment_id": "",
-    "equipment_eq_id": "",
-    "equipment_name": "",
+    "equipment_id": "1491",
+    "equipment_eq_id": "EQ ID 1491",
+    "equipment_name": "General request",
     "department": "Quality Assurance",
-    "wo_id": "19938",
-    "date_notified": "06/24/2026",
-    "urgency": "6. General Maint",
-    "problem": "Installation of whiteboard in QA room by soap. I have the hardware needed at my desk, please let me know when you need it.",
-    "status": "Pending",
+    "wo_id": "20287",
+    "date_notified": "08/06/2026",
+    "urgency": "2. General Maint - High Priority",
+    "problem": "The air hose in the Returns Area got stuck and will not retract.",
+    "status": "Closed and Completed",
     "material_cost": "0",
-    "labor_time": "0",
-    "work_performed_by": "",
+    "labor_time": "0.25",
+    "work_performed_by": "PU",
     "downtime_hours": "0",
-    "completed_datetime": "",
-    "comments": "",
+    "completed_datetime": "08/06/2026 12:00 AM",
+    "comments": "Primo Uy - 08/06/26 12:06:38 PM: Done. Reset the reel drum.",
     "attachments": []
   }
 ]
