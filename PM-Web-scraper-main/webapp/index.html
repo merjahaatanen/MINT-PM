@@ -2234,7 +2234,7 @@
 
     const DEPT_TABS = ["Machines", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"];
 
-    function DepartmentDashboard({ deptKey, divisionKey, divisionLabel, initialTab, onHome, onCompany, onOpenMachine, onOpenWo, refreshSignal }) {
+    function DepartmentDashboard({ deptKey, divisionKey, divisionLabel, initialTab, onHome, onCompany, onOpenMachine, onOpenWo, onTabChange, refreshSignal }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [q, setQ] = useState("");
@@ -2293,7 +2293,7 @@
 
           <div className="flex gap-2 mt-8 mb-6 bg-white p-1.5 rounded-full shadow-sm border border-emerald-100 w-fit flex-wrap">
             ${deptTabs.map((t) => html`
-              <button key=${t} onClick=${() => setTab(t)}
+              <button key=${t} onClick=${() => { setTab(t); if (onTabChange) onTabChange(t); }}
                 className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
                   (tab === t ? "bg-emerald-700 text-white shadow" : "text-slate-500 hover:bg-emerald-50")}>
                 ${t}
@@ -6039,7 +6039,7 @@
       const [err, setErr] = useState(null);
       const [year, setYear] = useState(now.getFullYear());
       const [month, setMonth] = useState(now.getMonth() + 1);
-      const [typeFilter, setTypeFilter] = useState("scheduled"); // calendars are PM-focused
+      const [typeFilter, setTypeFilter] = useState("all");
       const [dayModal, setDayModal] = useState(null);
       const [eventForm, setEventForm] = useState(null);
       const [editProtected, setEditProtected] = useState(false);
@@ -6923,6 +6923,9 @@
 
     function App() {
       const [route, setRoute] = useState({ view: "company" });
+      // Navigation history stack powering the "Back" button. Every navigation
+      // pushes the route it left; Back pops it.
+      const [navHist, setNavHist] = useState([]);
       const [woId, setWoId] = useState(null);
       // Bumped whenever a work order changes, so list views can refetch.
       const [dataVersion, setDataVersion] = useState(0);
@@ -6940,16 +6943,31 @@
           .catch(() => {});
       }, []);
 
-      const goCompany = () => setRoute({ view: "company" });
-      const openInactive = () => setRoute({ view: "inactive" });
-      const openSpareParts = () => setRoute({ view: "spare-parts" });
-      const openDivision = (divisionKey) => setRoute({ view: "division", divisionKey });
-      const goDivision = () => setRoute((r) => ({ view: "division", divisionKey: r.divisionKey || "bla" }));
+      // All navigation goes through navigate() so the Back stack stays accurate.
+      const navigate = (next) => {
+        const resolved = typeof next === "function" ? next(route) : next;
+        if (JSON.stringify(resolved) === JSON.stringify(route)) return;
+        setNavHist((h) => [...h.slice(-49), route]);
+        setRoute(resolved);
+      };
+      const goBack = () => {
+        setNavHist((h) => {
+          if (!h.length) return h;
+          setRoute(h[h.length - 1]);
+          return h.slice(0, -1);
+        });
+      };
+
+      const goCompany = () => navigate({ view: "company" });
+      const openInactive = () => navigate({ view: "inactive" });
+      const openSpareParts = () => navigate({ view: "spare-parts" });
+      const openDivision = (divisionKey) => navigate({ view: "division", divisionKey });
+      const goDivision = () => navigate((r) => ({ view: "division", divisionKey: r.divisionKey || "bla" }));
       const openDept = (deptKey, tab) =>
-        setRoute((r) => ({ view: "department", divisionKey: r.divisionKey || "bla", deptKey, tab: tab || "Machines" }));
+        navigate((r) => ({ view: "department", divisionKey: r.divisionKey || "bla", deptKey, tab: tab || "Machines" }));
       const openMachine = (eqId) =>
-        setRoute((r) => ({ view: "machine", divisionKey: r.divisionKey || "bla", deptKey: r.deptKey, eqId }));
-      const openMySchedule = () => setRoute({ view: "my-schedule" });
+        navigate((r) => ({ view: "machine", divisionKey: r.divisionKey || "bla", deptKey: r.deptKey, eqId }));
+      const openMySchedule = () => navigate({ view: "my-schedule" });
 
       const divLabel = DIV_LABELS[route.divisionKey || "bla"] || (route.divisionKey || "bla").toUpperCase();
 
@@ -6957,6 +6975,11 @@
         <div className="min-h-screen">
           <${Header} technicians=${technicians} setTechnicians=${setTechnicians} onHome=${goCompany} onOpenInactive=${openInactive} onOpenSpareParts=${openSpareParts} onOpenMySchedule=${openMySchedule} onOpenWo=${setWoId} />
           <main className="max-w-6xl mx-auto px-6 py-8">
+            ${navHist.length > 0 && html`
+              <button onClick=${goBack}
+                className="mb-4 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-emerald-200 text-emerald-800 text-sm font-semibold shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition">
+                <span aria-hidden="true">←</span> Back
+              </button>`}
             ${route.view === "company" && html`<${CompanyDashboard} onOpenDivision=${openDivision} />`}
             ${route.view === "inactive" && html`<${InactivePage} onCompany=${goCompany} onOpenDept=${openDept} />`}
             ${route.view === "spare-parts" && html`<${SparePartsPage} onCompany=${goCompany} onOpenMachine=${openMachine} onOpenDept=${openDept} />`}
@@ -6971,7 +6994,8 @@
                 initialTab=${route.tab || "Machines"}
                 refreshSignal=${dataVersion}
                 onHome=${goDivision} onCompany=${goCompany}
-                onOpenMachine=${openMachine} onOpenWo=${setWoId} />`}
+                onOpenMachine=${openMachine} onOpenWo=${setWoId}
+                onTabChange=${(t) => setRoute((r) => r.view === "department" ? { ...r, tab: t } : r)} />`}
             ${route.view === "machine" && html`
               <${MachineView} deptKey=${route.deptKey} eqId=${route.eqId}
                 deptLabel=${DEPT_LABELS[route.deptKey]} divisionLabel=${divLabel}
