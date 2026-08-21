@@ -31,6 +31,7 @@ from datetime import datetime
 _HERE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(_HERE, "mint_data")
 ATTACH_DIR = os.path.join(DATA_DIR, "attachments")
+SEED_DIR = os.path.join(_HERE, "seed_data")
 os.makedirs(ATTACH_DIR, exist_ok=True)
 DB_PATH = os.path.join(DATA_DIR, "mint.db")
 
@@ -321,6 +322,81 @@ def _init() -> None:
             "INSERT OR IGNORE INTO divisions (key, name, created_at) VALUES (?, ?, ?)",
             ("bla", "BLA", _now()),
         )
+
+
+def _seed_data() -> None:
+    """One-time import of committed seed data when the local SQLite tables are
+    empty. This keeps the repo self-contained: a fresh clone creates the DB,
+    then immediately restores the shared floor plan and spare-parts inventory."""
+    if not os.path.isdir(SEED_DIR):
+        return
+
+    with _lock, _connect() as c:
+        # Floor plan layout
+        floorplan_count = c.execute("SELECT COUNT(*) FROM floorplan_items").fetchone()[0]
+        if floorplan_count == 0:
+            path = os.path.join(SEED_DIR, "floorplan_items.json")
+            if os.path.exists(path):
+                with open(path, "r", encoding="utf-8") as f:
+                    items = json.load(f)
+                for it in items:
+                    c.execute(
+                        "INSERT INTO floorplan_items (id, dept_key, eq_id, label, x, y, w, h, z, updated_at, updated_by) "
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                        (
+                            str(it.get("id") or uuid.uuid4().hex),
+                            str(it.get("dept_key") or ""),
+                            str(it.get("eq_id") or ""),
+                            str(it.get("label") or ""),
+                            float(it.get("x") or 0),
+                            float(it.get("y") or 0),
+                            float(it.get("w") or 100),
+                            float(it.get("h") or 60),
+                            int(it.get("z") or 0),
+                            str(it.get("updated_at") or _now()),
+                            str(it.get("updated_by") or "seed"),
+                        ),
+                    )
+
+        # Spare parts inventory
+        parts_count = c.execute("SELECT COUNT(*) FROM spare_parts").fetchone()[0]
+        if parts_count == 0:
+            parts_path = os.path.join(SEED_DIR, "spare_parts.json")
+            machines_path = os.path.join(SEED_DIR, "spare_part_machines.json")
+            if os.path.exists(parts_path):
+                with open(parts_path, "r", encoding="utf-8") as f:
+                    parts = json.load(f)
+                cols = list(SPARE_PART_FIELDS) + ["machine_dept_key", "machine_eq_id", "machine_name",
+                                                   "created_at", "created_by", "updated_at", "updated_by"]
+                for p in parts:
+                    values = [
+                        str(p.get("id") or uuid.uuid4().hex),
+                        *[p.get(k, "") for k in SPARE_PART_FIELDS],
+                        str(p.get("machine_dept_key") or ""),
+                        str(p.get("machine_eq_id") or ""),
+                        str(p.get("machine_name") or ""),
+                        str(p.get("created_at") or _now()),
+                        str(p.get("created_by") or "seed"),
+                        str(p.get("updated_at") or _now()),
+                        str(p.get("updated_by") or "seed"),
+                    ]
+                    c.execute(
+                        f"INSERT INTO spare_parts (id, {', '.join(cols)}) VALUES (?, {', '.join('?' * len(cols))})",
+                        values,
+                    )
+                if os.path.exists(machines_path):
+                    with open(machines_path, "r", encoding="utf-8") as f:
+                        machines = json.load(f)
+                    for m in machines:
+                        c.execute(
+                            "INSERT OR IGNORE INTO spare_part_machines (part_id, dept_key, eq_id, name) VALUES (?, ?, ?, ?)",
+                            (
+                                str(m.get("part_id") or ""),
+                                str(m.get("dept_key") or ""),
+                                str(m.get("eq_id") or ""),
+                                str(m.get("name") or ""),
+                            ),
+                        )
 
 
 _init()
@@ -1510,3 +1586,6 @@ def delete_spare_part(part_id: str, author: str = "") -> bool:
         c.execute("DELETE FROM spare_parts WHERE id = ?", (str(part_id),))
     _audit("", author, "delete_spare_part", f"{part_id}: {existing['description']}")
     return True
+
+
+_seed_data()

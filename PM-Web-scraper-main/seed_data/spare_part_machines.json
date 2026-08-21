@@ -1,0 +1,20 @@
+[
+  {
+    "part_id": "76e1604538c348089024273bd33c99ba",
+    "dept_key": "toilet",
+    "eq_id": "151",
+    "name": "3/4\" Edge Finisher"
+  },
+  {
+    "part_id": "886fec1d86ea47269c6973744b639e3e",
+    "dept_key": "toilet",
+    "eq_id": "1724",
+    "name": "Glue Spreader"
+  },
+  {
+    "part_id": "886fec1d86ea47269c6973744b639e3e",
+    "dept_key": "toilet",
+    "eq_id": "59",
+    "name": "Vacuum Lift System (Glue Line )"
+  }
+]
