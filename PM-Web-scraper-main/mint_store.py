@@ -327,11 +327,32 @@ def _init() -> None:
 def _seed_data() -> None:
     """One-time import of committed seed data when the local SQLite tables are
     empty. This keeps the repo self-contained: a fresh clone creates the DB,
-    then immediately restores the shared floor plan and spare-parts inventory."""
+    then immediately restores the shared floor plan, spare-parts inventory,
+    and machine nicknames."""
     if not os.path.isdir(SEED_DIR):
         return
 
     with _lock, _connect() as c:
+        # Machine nicknames
+        nickname_count = c.execute("SELECT COUNT(*) FROM machine_nicknames").fetchone()[0]
+        if nickname_count == 0:
+            path = os.path.join(SEED_DIR, "machine_nicknames.json")
+            if os.path.exists(path):
+                with open(path, "r", encoding="utf-8") as f:
+                    nicks = json.load(f)
+                for n in nicks:
+                    c.execute(
+                        "INSERT OR IGNORE INTO machine_nicknames (dept_key, eq_id, nickname, updated_at, updated_by) "
+                        "VALUES (?, ?, ?, ?, ?)",
+                        (
+                            str(n.get("dept_key") or ""),
+                            str(n.get("eq_id") or ""),
+                            str(n.get("nickname") or ""),
+                            str(n.get("updated_at") or _now()),
+                            str(n.get("updated_by") or "seed"),
+                        ),
+                    )
+
         # Floor plan layout
         floorplan_count = c.execute("SELECT COUNT(*) FROM floorplan_items").fetchone()[0]
         if floorplan_count == 0:

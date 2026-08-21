@@ -1,0 +1,128 @@
+[
+  {
+    "dept_key": "toilet",
+    "eq_id": "105",
+    "nickname": "Gannomat (HPL)",
+    "updated_at": "2026-08-17T14:24:54",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "1335",
+    "nickname": "Edge Trimmer",
+    "updated_at": "2026-08-17T14:23:05",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "135",
+    "nickname": "Holz-Her Saw",
+    "updated_at": "2026-08-17T14:22:08",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "1361",
+    "nickname": "Holzma Saw",
+    "updated_at": "2026-08-17T14:21:39",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "1503",
+    "nickname": "Anderson",
+    "updated_at": "2026-08-17T14:22:19",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "151",
+    "nickname": "3/4\" Edge Finisher",
+    "updated_at": "2026-08-17T14:23:29",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "154",
+    "nickname": "LBDM",
+    "updated_at": "2026-08-17T14:25:26",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "1570",
+    "nickname": "1/2\" Edge Finisher",
+    "updated_at": "2026-08-17T14:23:51",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "1724",
+    "nickname": "Glue Spreader",
+    "updated_at": "2026-08-17T14:24:05",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "1877",
+    "nickname": "Rainbow",
+    "updated_at": "2026-08-17T14:23:38",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "1879",
+    "nickname": "Gannomat (CL)",
+    "updated_at": "2026-08-17T14:24:42",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "1969",
+    "nickname": "Chop Saw",
+    "updated_at": "2026-08-17T15:43:39",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "2063",
+    "nickname": "Tenoner",
+    "updated_at": "2026-08-17T14:22:42",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "5",
+    "nickname": "Vertical Saw",
+    "updated_at": "2026-08-17T14:22:30",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "5273",
+    "nickname": "Edgebander",
+    "updated_at": "2026-08-17T14:24:27",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "5351",
+    "nickname": "VLM",
+    "updated_at": "2026-08-17T14:25:17",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "61",
+    "nickname": "Insert Driver",
+    "updated_at": "2026-08-05T11:09:33",
+    "updated_by": "Merja"
+  },
+  {
+    "dept_key": "toilet",
+    "eq_id": "780",
+    "nickname": "Air Press (Stile Building Cell)",
+    "updated_at": "2026-08-05T13:57:49",
+    "updated_by": "Merja"
+  }
+]
