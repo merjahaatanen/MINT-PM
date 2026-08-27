@@ -6958,6 +6958,7 @@
       const [deleting, setDeleting] = useState(null);
       const [gateOpen, setGateOpen] = useState(false);
       const [gateAction, setGateAction] = useState(null);
+      const [adminProtected, setAdminProtected] = useState(false);
 
       useEffect(() => {
         setLoading(true); setErr(null);
@@ -6969,6 +6970,7 @@
         getJSON("/api/spare-parts/options")
           .then((d) => setDivisions(d.divisions || []))
           .catch(() => setDivisions([]));
+        getJSON("/api/admin-auth").then((d) => setAdminProtected(!!d.protected)).catch(() => {});
       }, []);
 
       useEffect(() => {
@@ -7009,10 +7011,17 @@
         if (!deleting) return;
         const id = deleting.id;
         setDeleting(null);
-        runWithGate(async () => {
+        const run = async () => {
           await sendJSON("/api/spare-parts/" + id, "DELETE", { author: getUserName() }, adminHeaders());
           refresh();
-        });
+        };
+        // Require the admin password up front when one is configured.
+        if (adminProtected && !getAdminPw()) {
+          setGateAction(() => run);
+          setGateOpen(true);
+          return;
+        }
+        runWithGate(run);
       };
 
       const onSaved = () => { setEditing(null); refresh(); };
