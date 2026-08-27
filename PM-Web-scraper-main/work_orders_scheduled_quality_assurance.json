@@ -14,7 +14,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "2082",
@@ -30,8 +31,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:48:51 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:48:51 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2083",
@@ -48,7 +50,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "2083",
@@ -64,8 +67,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:45:27 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:45:27 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1945",
@@ -82,7 +86,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1945",
@@ -98,8 +103,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:45:16 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:45:16 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1529",
@@ -116,7 +122,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1529",
@@ -133,7 +140,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1529",
@@ -149,8 +157,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:48:17 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:48:17 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1529",
@@ -166,8 +175,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:48:24 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:48:24 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1591",
@@ -184,7 +194,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1591",
@@ -200,8 +211,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:48:37 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:48:37 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1592",
@@ -218,7 +230,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1592",
@@ -234,8 +247,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:48:09 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:48:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1628",
@@ -252,7 +266,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1628",
@@ -268,8 +283,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:48:45 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:48:45 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1664",
@@ -286,7 +302,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1664",
@@ -303,7 +320,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/11/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1878",
@@ -320,7 +338,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1878",
@@ -336,8 +355,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:42:13 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:42:13 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "76",
@@ -354,7 +374,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "76",
@@ -371,7 +392,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/12/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "77",
@@ -388,7 +410,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "77",
@@ -405,7 +428,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/12/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "78",
@@ -422,7 +446,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "78",
@@ -439,7 +464,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "78",
@@ -456,7 +482,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/12/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "78",
@@ -472,8 +499,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:40:09 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:40:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "80",
@@ -490,7 +518,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "80",
@@ -507,7 +536,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/12/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "83",
@@ -524,7 +554,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "83",
@@ -541,7 +572,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/12/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "86",
@@ -558,7 +590,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "86",
@@ -574,8 +607,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:37:41 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:37:41 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "87",
@@ -592,7 +626,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "87",
@@ -609,7 +644,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/13/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1212",
@@ -626,7 +662,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1212",
@@ -642,8 +679,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:50:46 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:50:46 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1213",
@@ -660,7 +698,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1213",
@@ -676,8 +715,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:44:40 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:44:40 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1214",
@@ -694,7 +734,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1214",
@@ -710,8 +751,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:47:52 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:47:52 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1215",
@@ -728,7 +770,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1215",
@@ -744,8 +787,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:44:54 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:44:54 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1216",
@@ -762,7 +806,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1216",
@@ -778,8 +823,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:48:00 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:48:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1217",
@@ -796,7 +842,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1217",
@@ -812,8 +859,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:41:20 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:41:20 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1218",
@@ -830,7 +878,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1218",
@@ -847,7 +896,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1218",
@@ -863,8 +913,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:41:30 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:41:30 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1218",
@@ -880,8 +931,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:41:49 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:41:49 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1330",
@@ -898,7 +950,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1330",
@@ -914,8 +967,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:43:53 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:43:53 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1344",
@@ -932,7 +986,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1344",
@@ -949,7 +1004,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "6/6/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1345",
@@ -966,7 +1022,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1345",
@@ -982,8 +1039,9 @@
     "material_cost": "-1.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:45:09 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:45:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1346",
@@ -1000,7 +1058,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1346",
@@ -1016,8 +1075,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:50:57 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:50:57 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1347",
@@ -1034,7 +1094,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1347",
@@ -1050,8 +1111,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:51:06 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:51:06 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1348",
@@ -1068,7 +1130,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1348",
@@ -1084,8 +1147,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:51:11 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:51:11 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1349",
@@ -1102,7 +1166,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1349",
@@ -1118,8 +1183,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:51:20 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:51:20 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1374",
@@ -1136,7 +1202,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/11/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1374",
@@ -1153,7 +1220,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "10/8/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1375",
@@ -1170,7 +1238,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1375",
@@ -1187,7 +1256,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/11/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "807",
@@ -1204,7 +1274,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "807",
@@ -1220,8 +1291,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:37:55 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:37:55 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "808",
@@ -1238,7 +1310,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "808",
@@ -1254,8 +1327,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:44:46 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:44:46 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "821",
@@ -1272,7 +1346,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "821",
@@ -1288,8 +1363,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:45:00 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:45:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "826",
@@ -1306,7 +1382,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "826",
@@ -1322,8 +1399,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:38:01 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:38:01 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "827",
@@ -1340,7 +1418,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "827",
@@ -1356,8 +1435,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:38:07 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:38:07 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "828",
@@ -1374,7 +1454,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "828",
@@ -1390,8 +1471,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:38:14 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:38:14 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "835",
@@ -1408,7 +1490,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "835",
@@ -1424,8 +1507,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:45:33 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:45:33 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "836",
@@ -1442,7 +1526,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "836",
@@ -1458,8 +1543,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:41:37 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:41:37 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "837",
@@ -1476,7 +1562,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "837",
@@ -1492,8 +1579,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:48:59 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:48:59 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "838",
@@ -1510,7 +1598,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "838",
@@ -1526,8 +1615,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:49:05 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:49:05 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "839",
@@ -1544,7 +1634,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "839",
@@ -1560,8 +1651,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:49:12 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:49:12 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "844",
@@ -1578,7 +1670,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "844",
@@ -1594,8 +1687,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:49:20 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:49:20 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1026",
@@ -1612,7 +1706,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1026",
@@ -1628,8 +1723,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:38:24 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:38:24 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1027",
@@ -1646,7 +1742,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1027",
@@ -1662,8 +1759,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:38:31 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:38:31 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1028",
@@ -1680,7 +1778,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1028",
@@ -1696,8 +1795,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:38:42 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:38:42 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1029",
@@ -1714,7 +1814,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1029",
@@ -1731,7 +1832,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/13/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1030",
@@ -1748,7 +1850,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1030",
@@ -1764,8 +1867,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:45:42 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:45:42 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1062",
@@ -1782,7 +1886,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1062",
@@ -1798,8 +1903,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:38:50 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:38:50 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1063",
@@ -1816,7 +1922,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1063",
@@ -1832,8 +1939,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:39:01 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:39:01 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1064",
@@ -1850,7 +1958,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1064",
@@ -1867,7 +1976,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1064",
@@ -1883,8 +1993,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:39:09 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:39:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1064",
@@ -1900,8 +2011,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:39:15 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:39:15 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1065",
@@ -1918,7 +2030,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1065",
@@ -1934,8 +2047,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:45:48 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:45:48 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1066",
@@ -1952,7 +2066,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1066",
@@ -1969,7 +2084,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1066",
@@ -1985,8 +2101,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:41:55 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:41:55 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1066",
@@ -2002,8 +2119,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:42:05 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:42:05 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1075",
@@ -2020,7 +2138,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1075",
@@ -2036,8 +2155,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:45:54 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:45:54 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1089",
@@ -2054,7 +2174,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1089",
@@ -2071,7 +2192,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "7/12/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1090",
@@ -2088,7 +2210,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1090",
@@ -2104,8 +2227,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:42:38 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:42:38 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1091",
@@ -2122,7 +2246,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1091",
@@ -2138,8 +2263,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:46:01 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:46:01 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1092",
@@ -2156,7 +2282,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1092",
@@ -2173,7 +2300,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1092",
@@ -2190,7 +2318,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1092",
@@ -2206,8 +2335,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:42:48 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:42:48 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1092",
@@ -2223,8 +2353,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:42:25 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:42:25 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1092",
@@ -2240,8 +2371,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:42:55 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:42:55 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1093",
@@ -2258,7 +2390,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1093",
@@ -2274,8 +2407,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:39:22 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:39:22 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1094",
@@ -2292,7 +2426,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1094",
@@ -2308,8 +2443,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:39:32 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:39:32 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1116",
@@ -2326,7 +2462,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1116",
@@ -2342,8 +2479,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:39:40 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:39:40 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1117",
@@ -2360,7 +2498,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1117",
@@ -2376,8 +2515,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:39:47 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:39:47 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1118",
@@ -2394,7 +2534,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1118",
@@ -2410,8 +2551,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:42:32 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:42:32 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1119",
@@ -2428,7 +2570,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1119",
@@ -2444,8 +2587,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:46:08 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:46:08 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1120",
@@ -2462,7 +2606,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1120",
@@ -2478,8 +2623,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:43:03 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:43:03 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1126",
@@ -2496,7 +2642,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1126",
@@ -2512,8 +2659,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:46:18 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:46:18 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1128",
@@ -2530,7 +2678,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1128",
@@ -2546,8 +2695,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:49:29 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:49:29 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1130",
@@ -2564,7 +2714,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1130",
@@ -2580,8 +2731,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:49:37 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:49:37 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1131",
@@ -2598,7 +2750,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1131",
@@ -2614,8 +2767,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:49:44 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:49:44 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1132",
@@ -2632,7 +2786,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1132",
@@ -2648,8 +2803,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:49:50 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:49:50 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1133",
@@ -2666,7 +2822,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1133",
@@ -2682,8 +2839,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/16/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:46:30 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:46:30 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1134",
@@ -2700,7 +2858,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1134",
@@ -2716,8 +2875,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:43:16 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:43:16 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1135",
@@ -2734,7 +2894,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1135",
@@ -2750,8 +2911,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:46:38 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:46:38 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1136",
@@ -2768,7 +2930,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1136",
@@ -2784,8 +2947,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:43:27 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:43:27 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1137",
@@ -2802,7 +2966,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1137",
@@ -2818,8 +2983,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:46:45 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:46:45 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1138",
@@ -2836,7 +3002,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1138",
@@ -2852,8 +3019,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:39:54 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:39:54 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1139",
@@ -2870,7 +3038,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1139",
@@ -2886,8 +3055,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:40:00 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:40:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1140",
@@ -2904,7 +3074,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1140",
@@ -2920,8 +3091,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:40:17 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:40:17 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1141",
@@ -2938,7 +3110,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1141",
@@ -2954,8 +3127,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:40:26 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:40:26 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1142",
@@ -2972,7 +3146,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1142",
@@ -2988,8 +3163,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:46:52 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:46:52 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1143",
@@ -3006,7 +3182,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1143",
@@ -3022,8 +3199,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:42:19 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:42:19 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1149",
@@ -3040,7 +3218,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1149",
@@ -3056,8 +3235,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:47:00 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:47:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1150",
@@ -3074,7 +3254,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1150",
@@ -3090,8 +3271,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:43:35 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:43:35 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1151",
@@ -3108,7 +3290,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1151",
@@ -3124,8 +3307,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:49:59 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:49:59 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1152",
@@ -3142,7 +3326,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1152",
@@ -3158,8 +3343,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:50:07 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:50:07 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1153",
@@ -3176,7 +3362,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1153",
@@ -3192,8 +3379,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:50:17 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:50:17 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1154",
@@ -3210,7 +3398,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1154",
@@ -3226,8 +3415,9 @@
     "material_cost": "-1.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:50:25 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:50:25 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1155",
@@ -3244,7 +3434,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1155",
@@ -3260,8 +3451,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:43:41 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:43:41 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1156",
@@ -3278,7 +3470,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1156",
@@ -3294,8 +3487,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:47:09 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:47:09 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1157",
@@ -3312,7 +3506,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1157",
@@ -3328,8 +3523,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:43:47 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:43:47 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1158",
@@ -3346,7 +3542,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1158",
@@ -3362,8 +3559,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:47:20 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:47:20 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1161",
@@ -3380,7 +3578,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1161",
@@ -3396,8 +3595,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:40:35 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:40:35 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1164",
@@ -3414,7 +3614,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1164",
@@ -3430,8 +3631,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:40:48 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:40:48 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1168",
@@ -3448,7 +3650,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1168",
@@ -3464,8 +3667,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:47:27 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:47:27 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1187",
@@ -3482,7 +3686,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1187",
@@ -3498,8 +3703,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:50:37 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:50:37 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1189",
@@ -3516,7 +3722,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1189",
@@ -3532,8 +3739,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:47:32 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:47:32 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1190",
@@ -3550,7 +3758,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1190",
@@ -3566,8 +3775,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:44:03 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:44:03 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1191",
@@ -3584,7 +3794,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1191",
@@ -3600,8 +3811,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:47:40 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:47:40 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1192",
@@ -3618,7 +3830,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1192",
@@ -3634,8 +3847,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:44:18 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:44:18 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1193",
@@ -3652,7 +3866,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1193",
@@ -3668,8 +3883,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:41:00 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:41:00 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1195",
@@ -3686,7 +3902,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1195",
@@ -3702,8 +3919,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:41:06 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:41:06 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1196",
@@ -3720,7 +3938,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1196",
@@ -3736,8 +3955,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:41:12 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:41:12 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1203",
@@ -3754,7 +3974,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1203",
@@ -3770,8 +3991,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:44:24 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:44:24 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1205",
@@ -3788,7 +4010,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1205",
@@ -3804,8 +4027,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:44:32 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:44:32 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1207",
@@ -3822,7 +4046,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1207",
@@ -3838,8 +4063,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:47:46 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:47:46 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1210",
@@ -3847,7 +4073,7 @@
     "equipment_name": "38030 Cell",
     "department": "Quality Assurance",
     "wo_id": "11199",
-    "audit_item": "1. Calibration sticker on Tester is valid and up to date.\n2. \u201cDummy\u201d test is in place and working properly (should be tested/verified).\n3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.\n4. Procedure for Testing equipment is up to date (may be within the VMP).\n5. Ensure mfg. is recording and logging all information on units tested.\n6. Ensure mfg. is following the Line Reject Procedure.\n   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.\n7. Are there any safety relevant complaints?\n8. Are there any changes in construction or components?\n9. Is the final test performed according to the actual requirements of VDE (PM332e)?\n10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?\n11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",
+    "audit_item": "1. Calibration sticker on Tester is valid and up to date.\n2. “Dummy” test is in place and working properly (should be tested/verified).\n3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.\n4. Procedure for Testing equipment is up to date (may be within the VMP).\n5. Ensure mfg. is recording and logging all information on units tested.\n6. Ensure mfg. is following the Line Reject Procedure.\n   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.\n7. Are there any safety relevant complaints?\n8. Are there any changes in construction or components?\n9. Is the final test performed according to the actual requirements of VDE (PM332e)?\n10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?\n11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",
     "status": "Pending",
     "due_date": "7/15/2024",
     "work_performed_by": "",
@@ -3856,7 +4082,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Supervisor"
   },
   {
     "equipment_id": "1210",
@@ -3864,7 +4091,7 @@
     "equipment_name": "38030 Cell",
     "department": "Quality Assurance",
     "wo_id": "720",
-    "audit_item": "1. Calibration sticker on Tester is valid and up to date.\n2. \u201cDummy\u201d test is in place and working properly (should be tested/verified).\n3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.\n4. Procedure for Testing equipment is up to date (may be within the VMP).\n5. Ensure mfg. is recording and logging all information on units tested.\n6. Ensure mfg. is following the Line Reject Procedure.\n   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.\n7. Are there any safety relevant complaints?\n8. Are there any changes in construction or components?\n9. Is the final test performed according to the actual requirements of VDE (PM332e)?\n10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?\n11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",
+    "audit_item": "1. Calibration sticker on Tester is valid and up to date.\n2. “Dummy” test is in place and working properly (should be tested/verified).\n3. VMP (Visual Manufacturing Procedure) is up to date and being used and followed by employees.\n4. Procedure for Testing equipment is up to date (may be within the VMP).\n5. Ensure mfg. is recording and logging all information on units tested.\n6. Ensure mfg. is following the Line Reject Procedure.\n   a. Following SP when they have to reject a dryer or cabinet, etc.  to ensure it is not mixed with good product.\n7. Are there any safety relevant complaints?\n8. Are there any changes in construction or components?\n9. Is the final test performed according to the actual requirements of VDE (PM332e)?\n10. Do workers have readily available up-to-date documents (manufacturing and test instructions and so on)?\n11. Are the personnel carrying out assembly, final tests, and inspection of incoming goods trained?",
     "status": "Closed without Action",
     "due_date": "6/18/2022",
     "work_performed_by": "md",
@@ -3872,7 +4099,8 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:37:33 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:37:33 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   }
 ]

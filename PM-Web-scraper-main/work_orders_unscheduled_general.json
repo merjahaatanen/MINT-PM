@@ -15,7 +15,8 @@
     "downtime_hours": "0",
     "completed_datetime": "",
     "comments": "Gabriel Shinobi - 08/18/26 11:05:46 AM: TV in board room hung, waiting on date for second TV",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -33,7 +34,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/07/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/07/22  3:19:27 PM: Replaced hose reel | Miguel Diaz - 04/06/22  7:39:31 AM: New hose reel has been ordered",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -51,7 +53,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/08/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/08/22 11:28:31 AM: Removed keyboard tray | Miguel Diaz - 04/08/22 11:28:18 AM: Removed keyboard tray",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -69,7 +72,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/25/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/25/22  7:50:31 AM: Managed to repair one of them other is not fix able we will keep it as for spare parts when needed .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -87,7 +91,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/09/2022 12:00 AM",
     "comments": "Miguel Diaz - 05/09/22  9:41:59 AM: Found loose signal water faucet is now working .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -105,7 +110,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/12/2022 12:00 AM",
     "comments": "Primo Uy - 05/12/22 11:47:11 AM: Repaired two cables. Replace two new connectors on each Cable.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -123,7 +129,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/18/2022 12:00 AM",
     "comments": "Miguel Diaz - 05/18/22  9:24:36 AM: Replaced filter .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -141,7 +148,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/13/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/13/22  2:45:31 PM: Replaced tape for two sealers .Operators need to press lightly for bag to seal then let go seems like they over hold it causing excessive heat .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -159,7 +167,8 @@
     "downtime_hours": "0.15",
     "completed_datetime": "06/24/2022 12:00 AM",
     "comments": "Primo Uy - 06/24/22 10:18:29 AM: Done. Replaced the broken pieces.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -177,7 +186,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/27/2022 12:00 AM",
     "comments": "Primo Uy - 06/27/22  8:22:47 AM: Done. Move Two over Head Light Fixture forward to allow more visibility.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -195,7 +205,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/12/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/12/22  7:47:24 AM: Provided two longer hoses as talked",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -213,7 +224,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/05/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/05/22  9:25:28 AM: Done",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -231,7 +243,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/10/2022 12:00 AM",
     "comments": "Primo Uy - 08/10/22  1:52:06 PM: Replace two broken probe. Return to SD for ready to use.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -249,7 +262,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/15/2022 12:00 AM",
     "comments": "Primo Uy - 08/15/22  7:37:51 AM: Open up 4112 Tube Cutter Fixture and clean with vacuum /Air to remove dust powder from cut plastic tubing. Add lubrication on all guide rod and to the cylinder as well. Fixture is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -267,7 +281,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/16/2022 12:00 AM",
     "comments": "Primo Uy - 08/16/22  9:06:41 AM: Done. Made the adjustment. MD show me HOW.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -285,7 +300,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/24/2022 12:00 AM",
     "comments": "Primo Uy - 08/24/22 10:38:56 AM: Replaced new arm rest, lift side.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -303,7 +319,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/26/2022 12:00 AM",
     "comments": "Primo Uy - 08/26/22  7:18:47 AM: Check the machine and found a small piece of tape stuck on the outfeed guide causing it to jam. Clean and remove piece of tape and run the tape. Its working now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -321,7 +338,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/04/2022 12:00 AM",
     "comments": "Primo Uy - 10/04/22  7:41:58 AM: Found the water reservoir and give it to James. Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -339,7 +357,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/07/2022 12:00 AM",
     "comments": "Primo Uy - 10/07/22 11:24:06 AM: Done. The switch was already made. Note: Please don't send the old for recalibration without using the new one fist for testing, just to make sure that the new calibrated hotpot is working properly.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -357,7 +376,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/07/2022 12:00 AM",
     "comments": "Primo Uy - 10/07/22  9:26:41 AM: Lean the inside and remove a lot of junk tape that causes the jam. Return Tape dispenser to the SD. Its working now. Found one more tape dispenser not working and im fixing this one too. Tape. # 6.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -375,7 +395,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/11/2022 12:00 AM",
     "comments": "Primo Uy - 10/14/22  3:09:24 PM: Done. Monitor is now permanently move. | Primo Uy - 10/13/22  1:50:09 PM: Monitor mount/Arms already arrived, and it's been set up on the line, looking for a window to be able to transfer the monitor mount and the arms together tomorrow morning when the line is not so busy. | Primo Uy - 10/11/22 10:31:55 AM: Temporary Move the monitor to be able ME to install the new fixture in 824 Top Assembly while waiting for the new mount. | Primo Uy - 10/11/22  8:03:34 AM: Ordering a new Monitor mount.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -393,7 +414,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/12/2022 12:00 AM",
     "comments": "Primo Uy - 10/12/22  3:13:44 PM: Done. Provided one extra reservoir.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -411,7 +433,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/14/2022 12:00 AM",
     "comments": "Primo Uy - 10/14/22  3:10:21 PM: Already made the adjust. Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -429,7 +452,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/14/2022 12:00 AM",
     "comments": "Primo Uy - 10/14/22  3:11:33 PM: Clear the pieces of paper that causing the jam. Its good now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -447,7 +471,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/18/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/18/22  8:58:52 AM: keyboard tray has been installed along with new monitor front end adjusters.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -465,7 +490,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/27/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/27/22 10:50:53 AM: Done",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -483,7 +509,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/28/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/28/22  7:39:00 AM: Done",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -501,7 +528,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/18/2022 12:00 AM",
     "comments": "Maksim Bushka - 11/18/22  8:42:42 AM: Moved sit stand as requested",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -519,7 +547,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/18/2022 12:00 AM",
     "comments": "Primo Uy - 11/18/22  3:16:06 PM: Done. Cartoner is working  now. | Primo Uy - 11/18/22  3:13:58 PM: Use the graphite powder to lubricate the locking mechanism. Try it and its now smooth opening and locking.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -537,7 +566,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/21/2022 12:00 AM",
     "comments": "Primo Uy - 11/21/22  8:59:45 AM: Done. We Also replaced Rosa E. Chair same issues.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -555,7 +585,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/28/2022 12:00 AM",
     "comments": "Miguel Diaz - 11/28/22  8:39:00 AM: Dishwasher power cord was disconnected from the wall Wednesday .This morning i found it in between a cycle it will keep running if its in a cycle to reset press the stop/start button for 3 seconds this will reset the program machine is working properly",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -573,7 +604,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/15/2022 12:00 AM",
     "comments": "Miguel Diaz - 12/15/22  7:46:55 AM: closing and putting work order under the correct ID .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -591,7 +623,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/17/2022 12:00 AM",
     "comments": "Miguel Diaz - 12/17/22 10:24:12 AM: Hung 2 white boards as requested .\nPrimo helped me put up the boards",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -609,7 +642,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/28/2022 12:00 AM",
     "comments": "Primo Uy - 12/28/22 10:59:29 AM: Done assembled the Cart and send it to Office Services.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -627,7 +661,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/04/2023 12:00 AM",
     "comments": "Primo Uy - 01/04/23 12:20:00 PM: Done. Remove broken wire and re- connect the clamp.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -645,7 +680,8 @@
     "downtime_hours": "1",
     "completed_datetime": "01/10/2023 12:00 AM",
     "comments": "Primo Uy - 01/10/23  1:09:46 PM: Jiego (ME) was able to adjust the Timer accordingly. Line 5 is now working properly. | Primo Uy - 01/10/23 10:32:48 AM: Jiego is working on it now, we need to adjust the timing in the PLC.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -663,7 +699,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/11/2023 12:00 AM",
     "comments": "Primo Uy - 01/11/23  8:25:05 AM: 3 Counter Disconnected. Not sure what's the reason behind it. The counter does not affect the fixture functionality.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -681,7 +718,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/11/2023 12:00 AM",
     "comments": "Primo Uy - 01/11/23  8:42:07 AM: Replaced Ian Chears.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -699,7 +737,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/23/2023 08:00 AM",
     "comments": "Cesar Verduzco - 01/23/23  8:02:04 AM: Fuse popped. Pushed it back in and it started working again.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -717,7 +756,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/25/2023 12:00 AM",
     "comments": "Primo Uy - 01/26/23  7:49:23 AM: Black Tape Dispenser: Clean and removed small pieces of paper inside the dispenser. Advise and show the Leadman not to insert the paper tape too close to the Blade because it drags the paper out of place when it opens up and come down causing the malfunctions. \nGary Tape Dispenser: Clean and removed small pieces of paper inside the dispenser. Clean guide and feeding rollers. also remove scotch tape on the top roller, somebody put it but should not be there.\nAll two Tape dispenser are now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -735,7 +775,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/25/2023 09:00 AM",
     "comments": "Maksim Bushka - 01/25/23 11:36:18 AM: the hose got stock if puled all the way. relies the hose  clamp.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -753,7 +794,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/14/2023 12:00 AM",
     "comments": "Miguel Diaz - 02/14/23  8:05:49 AM: Replaced driver light is back on",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -771,7 +813,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/17/2023 03:00 PM",
     "comments": "Maksim Bushka - 02/17/23  3:17:55 PM: Found the breaker off in panel L3 Breaker # 26",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -789,7 +832,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/27/2023 12:00 AM",
     "comments": "Miguel Diaz - 02/27/23  8:33:25 AM: Closing this for now Light is on and working properly . | Miguel Diaz - 02/23/23 10:40:22 AM: Light is currently on will leave as is for now if we find it blinking we will  replace the driver .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -807,7 +851,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/28/2023 12:00 AM",
     "comments": "Primo Uy - 02/28/23  9:24:51 AM: Done. Replaced broken ABS plastic parts. Return the cabinet fixture to the line 30. Dimension: 1.95\"X0.92\"X3/8\" | Primo Uy - 02/27/23  3:26:48 PM: Need to make the part that was broken. ASAP.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -825,7 +870,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/28/2023 12:00 AM",
     "comments": "Primo Uy - 02/28/23  2:55:38 PM: Replaced mounting screw. Cabinet is now back in the proper location. solid.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -843,7 +889,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/09/2023 12:00 AM",
     "comments": "Primo Uy - 05/09/23  9:55:52 AM: The foot pedal was anchor to the post of the table before with a screw, but Someone pulled the foot pedal without removing the screw first when they change the table for the robotic screwdriver. The foot pedal cover was crack with the screw still attached. Have to fix the cover first and remove the screw. Remount the foot pedal on the floor with an adhesive to secured it in place. Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -861,7 +908,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/19/2023 12:00 AM",
     "comments": "Primo Uy - 05/19/23  8:49:08 AM: The white stopper was loose, retighten and also add Locknut. Two carts are now working properly.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -879,7 +927,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/19/2023 12:00 AM",
     "comments": "Primo Uy - 05/19/23 11:39:10 AM: Done. The 4112 Lid fixture is now permanently mounted on the Tabletop with 4 screws.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -897,7 +946,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/06/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/06/23  8:20:28 AM: Found Nothing wrong with air connector showed lead how to use new type of connector hold and push to connect . | Miguel Diaz - 06/06/23  8:20:21 AM: Found Nothing wrong with air connector showed lead how to use new type of connector hold and push to connect .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -915,7 +965,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/19/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/19/23  7:13:13 AM: Parts  will get ordered it should not be an open unscheduled work order for budget expenses  .\nPrimo is already working on it .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -933,7 +984,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/21/2023 12:00 AM",
     "comments": "Primo Uy - 06/21/23  9:40:23 AM: Done. Replace 4 pieces of electrical straight connectors.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -943,7 +995,7 @@
     "wo_id": "6181",
     "date_notified": "06/22/2023",
     "urgency": "6. General Maint",
-    "problem": "Request to move Jamie Kotin\u2019s sit-stand and key board tray from Jamie\u2019s old desk in International to her new desk location. She is sitting at Shawna\u2019s R. old desk in the Marketing row.",
+    "problem": "Request to move Jamie Kotin’s sit-stand and key board tray from Jamie’s old desk in International to her new desk location. She is sitting at Shawna’s R. old desk in the Marketing row.",
     "status": "Closed and Completed",
     "material_cost": "0",
     "labor_time": "1.5",
@@ -951,7 +1003,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/23/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/23/23 12:29:14 PM: Moved sit stand station as requested .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -969,7 +1022,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/29/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/29/23  7:18:51 AM: Could not find the same bulb replaced all 3 bulbs the other two where going out also .Purchased from amazon \nF13T5CW -T5 21 INCH UNDER THE COUNTER FLUORENCENT BULBS COOL WHITE 41000K 13 WATT .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -987,7 +1041,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/11/2023 12:00 AM",
     "comments": "Primo Uy - 07/11/23  2:41:50 PM: Chair look really Bad. Repair chair and return to Artin. | Primo Uy - 07/11/23 12:23:22 PM: while working on it. | Primo Uy - 07/11/23 12:17:21 PM: Provided Temporary chair while on the broken one.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1005,7 +1060,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/17/2023 12:00 AM",
     "comments": "Miguel Diaz - 07/17/23  1:18:06 PM: This has been resolved in the morning | Miguel Diaz - 07/17/23  7:14:49 AM: Water to the main building was shut down what you hear is air in the water system run the water manually and it should clear out nothing is wrong  with it once you run it once or twice it will be back to normal .Please advise .\nThanks",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1023,7 +1079,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/21/2023 12:00 AM",
     "comments": "Primo Uy - 07/21/23  7:36:02 AM: Replaced a new cylinder. | Miguel Diaz - 07/20/23  9:24:48 AM: Primo is not in today but he will look at the chair when he is back if  he hasn't already .Parts will be ordered if we don't have them in house .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1041,7 +1098,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/21/2023 12:00 AM",
     "comments": "Primo Uy - 07/21/23  7:35:04 AM: Replaced with an old working cylinder (repaired/adjusted). | Miguel Diaz - 07/20/23  9:25:03 AM: Primo is not in today but he will look at the chair when he is back if  he hasn't already .Parts will be ordered if we don't have them in house .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1059,7 +1117,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/21/2023 12:00 AM",
     "comments": "Primo Uy - 07/21/23  7:41:01 AM: Replace the (L) padding..",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1077,7 +1136,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/01/2023 12:00 AM",
     "comments": "Primo Uy - 08/01/23 10:39:02 AM: Replaced 3 batteries. Its working now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1095,7 +1155,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/02/2023 12:00 AM",
     "comments": "Primo Uy - 08/02/23  7:37:37 AM: Replaced new Cylinder.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1113,7 +1174,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/03/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/03/23  9:40:53 AM: Removed old polycom camera covered up the old hardware using the  same fabric in case we want to go back and use the same hardware.Drilled and mounted the new polycom camera as requested and test .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1131,7 +1193,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/23/2023 12:00 AM",
     "comments": "Primo Uy - 08/25/23  9:16:21 AM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1149,7 +1212,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/24/2023 12:00 AM",
     "comments": "Primo Uy - 08/25/23  9:33:41 AM: Done. Replaced new arm padding on the right-side arm rest. | Primo Uy - 07/28/23  8:05:01 AM: We are waiting for the order to arrive for extra padding, we run out.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1167,7 +1231,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/25/2023 12:00 AM",
     "comments": "Primo Uy - 08/25/23  8:16:58 AM: Chair was replaced.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1185,7 +1250,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/27/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/02/23 10:22:40 AM: Assembled and mounted the station as requested .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1212,7 +1278,8 @@
         "name": "My Desk.JPG",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/423?guid=eaa405f7-939b-4d4d-a099-25c96653b3c1"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1230,7 +1297,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/02/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/02/23 10:21:09 AM: Assembled and mounted the station as requested .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1248,7 +1316,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/04/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/04/23  9:45:06 AM: Maintenance came up with the idea to  cut material and mount the ethernet switch on a board then placed it in the general area IT wanted the switch .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1266,7 +1335,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/04/2023 12:00 AM",
     "comments": "Primo Uy - 10/05/23 10:17:26 AM: adjust cylinder, chair is now not sinking anymore.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1284,7 +1354,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/05/2023 12:00 AM",
     "comments": "Primo Uy - 10/05/23  3:20:15 PM: Error Code: F856. Replace battery and door is now working.\nNeed to order more Battery ASAP.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1302,7 +1373,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/09/2023 12:00 AM",
     "comments": "Primo Uy - 10/09/23 10:41:15 AM: Reinstalled the slider unit and replaced the stopper bracket and installed a new lock. Keyboard tray is now safely installed.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1320,7 +1392,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/09/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/09/23 11:28:56 AM: Tighten loose hardware",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1343,7 +1416,8 @@
         "name": "20231018_162928.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/437?guid=3a52bafe-e69b-400d-bcaf-041fd81a8f28"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1361,7 +1435,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/25/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/30/23  7:14:26 AM: Done",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1379,7 +1454,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/26/2023 12:00 AM",
     "comments": "Primo Uy - 10/26/23 12:47:40 PM: Got It. First, we remove the tray and leave the track mounted under the table. Users agree to leave the track. installed under the table for future reference. We installed a keyboard track and a tray to Lupe desk. \nWe also fix Kalina monitor arm and adjust her mounting bracket so she can adjust her monitor closer side by side (no gap). We also adjust Jose monitor stand/post. All good now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1397,7 +1473,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/27/2023 11:00 AM",
     "comments": "Maksim Bushka - 10/27/23 11:07:37 AM: Secured the shelves on the back.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1415,7 +1492,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/31/2023 12:00 AM",
     "comments": "Primo Uy - 10/31/23  2:26:37 PM: Done Both side (2 table/pump). Replace all drainage tubing and re-route to reach the drainage pit. Add cable tie secure the tubing together. Run a test with the Leadman and all water drain without a leak. Good to go.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1433,7 +1511,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/01/2023 12:00 AM",
     "comments": "Primo Uy - 11/01/23 12:50:05 PM: The fixture is made of PVC material, and it has a big piece already missing. Suggest that ME will make a new fixture and it should made of steel material.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1451,7 +1530,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/03/2023 12:00 AM",
     "comments": "Primo Uy - 11/03/23 11:59:53 AM: Done. Repair the tension spring, mounting was missing. Installed a new screw to hold the spring in place. Sealer is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1469,7 +1549,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/07/2023 12:00 AM",
     "comments": "Primo Uy - 11/07/23 12:01:42 PM: Done. I have to remove the cylinder from the chair post. Re-adjust plunger screw height to minimize the contact of the seat release knob/handle. Its working properly now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1487,7 +1568,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/12/2023 12:00 AM",
     "comments": "Primo Uy - 12/12/23  8:25:40 AM: Done. tighten wing nut at the monitor base/post. Adjusted the monitor arms as the new employee wanted.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1505,7 +1587,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/14/2023 12:00 AM",
     "comments": "Miguel Diaz - 12/14/23 12:04:58 PM: Brought  up another crate and helped split up the waste since the one crate was overflowing  this should not be allowed to get to this point  .Brought down both full  crates down to the yard and helped load the e-waste to the van .Batteries was denied i had to placed them in a box we need to purchase E ship boxes from Grainger or Mc master to ship out the old batteries we have a lot of accumulated batteries here on site  in the electrical room and the parking structure room  .Old crate will have to be trashed i replaced the crate with another one .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1523,7 +1606,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/15/2023 12:00 AM",
     "comments": "Primo Uy - 12/15/23  7:10:05 AM: Clean cylinder post and apply oil. The noise is now gone.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1541,7 +1625,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/09/2024 12:00 AM",
     "comments": "Primo Uy - 01/23/24  1:19:32 PM: This work order is now close as Sales personnel dept move was already done. | Primo Uy - 01/09/24 12:39:05 PM: I was told by one of the sales personnel to wait., They are going to move/change the location of people around.\nBarkev will be notify by them.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1559,7 +1644,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/23/2024 12:00 AM",
     "comments": "Primo Uy - 01/23/24  1:24:21 PM: Done. check the cylinder and was working, clean with WD40 and wipe iy rugs. \nReplace another not working chair beside Carol A. | Primo Uy - 01/23/24 10:11:12 AM: Provided a loaner chair while replacing the cylinder.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1577,7 +1663,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/26/2024 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1595,7 +1682,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/30/2024 12:00 AM",
     "comments": "Primo Uy - 01/30/24 11:38:31 AM: Chair was already replaced. Fixed the issue on the other chair for back up.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1613,7 +1701,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/31/2024 12:00 AM",
     "comments": "Primo Uy - 01/31/24 11:23:42 AM: All cabinets were already move, Mike D help to slide two joint cabinet (full) to the location that was assigned for. Please ask Wayne Wayland regarding the blue bench filing cabinet. Chair will be provide as needed, let us know or i bring the chair over now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1631,7 +1720,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/31/2024 12:00 AM",
     "comments": "Primo Uy - 01/31/24 12:00:23 PM: The elevator shaft/cylinder was replaced. Chair is working properly now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1649,7 +1739,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/06/2024 06:00 PM",
     "comments": "Maksim Bushka - 03/06/24  6:59:21 PM: Removed.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1667,7 +1758,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/14/2024 12:00 AM",
     "comments": "Primo Uy - 04/01/24  7:03:58 AM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1685,7 +1777,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/04/2024 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1703,7 +1796,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/23/2024 12:00 AM",
     "comments": "Miguel Diaz - 04/23/24  8:57:55 AM: Replacement  Part # 797ZP3 has been ordered it will get replaced when it arrives tomorrow",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1726,7 +1820,8 @@
         "name": "231223 Sales Samples - Product Photo Checklist.docx",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/567?guid=48ead85c-8385-49aa-ab97-a789602c15a0"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1744,7 +1839,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/08/2024 12:00 AM",
     "comments": "Primo Uy - 05/10/24  8:06:16 AM: Done. Load and unload two pallets of Bobrick sample. (Bob School) to Marriott- Burbank docking stations. \nWe pick up the items after the show the following day and brought it back to BLA mezzanine area for storage.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1762,7 +1858,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/10/2024 12:00 AM",
     "comments": "Primo Uy - 05/10/24  8:27:12 AM: Done. Right hand arm padding was replaced.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1780,7 +1877,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/14/2024 12:00 AM",
     "comments": "Primo Uy - 05/14/24 10:18:05 AM: Done, replace the broken right armchair padding.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1798,7 +1896,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/21/2024 12:00 AM",
     "comments": "Primo Uy - 05/21/24  3:14:40 PM: Done. The tensioner was repaired.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1816,7 +1915,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/23/2024 12:00 AM",
     "comments": "Primo Uy - 05/23/24 12:27:54 PM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1834,7 +1934,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/23/2024 11:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1852,7 +1953,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/12/2024 12:00 AM",
     "comments": "Miguel Diaz - 06/12/24 11:57:43 AM: Adjusted the tension on the keyboard tray .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1870,7 +1972,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/13/2024 12:00 AM",
     "comments": "Primo Uy - 06/13/24  8:53:50 AM: Done, Fixed two and deliver to DS.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1888,7 +1991,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/21/2024 12:00 AM",
     "comments": "Primo Uy - 06/21/24  9:39:31 AM: Done. Repair all 3 hotpot cables. Replaced connectors.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1906,7 +2010,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/28/2024 12:00 AM",
     "comments": "Primo Uy - 07/10/24  8:02:41 AM: Disregard last comment. Wrong work order. | Primo Uy - 07/10/24  7:59:15 AM: The hi pot#1 need to be check since it did not work when we swap it with hipot# 2. We are in luck that the Hipot#2 come back from recalibration yesterday and swap it again with hipot #1. The hipot #2 work right away after the hook up. Line 30 is ready for production. | Primo Uy - 06/28/24  8:34:04 AM: Done. Replaced Alligator Clip. Return to SD Lead.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1924,7 +2029,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/02/2024 12:00 AM",
     "comments": "Primo Uy - 07/08/24 10:32:05 AM: Replaced air hose.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1942,7 +2048,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/03/2024 12:00 AM",
     "comments": "Primo Uy - 07/08/24 10:31:05 AM: Done, we swap the hi pot #2 for recalibrations (QA ) with recalibrated hi pot #1.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1960,7 +2067,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/17/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/17/24 12:11:53 PM: Chair has been repaired and returned.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1978,7 +2086,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/31/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/31/24 12:26:35 PM: Repaired cable",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -1996,7 +2105,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/07/2024 12:00 AM",
     "comments": "Primo Uy - 08/07/24  3:30:03 PM: Done. Replaced new cylinder",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2014,7 +2124,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/16/2024 12:00 AM",
     "comments": "Primo Uy - 08/16/24  8:38:05 AM: Check the ground cable with a tester and found out, no continuity. Loss connection, reclamp the connector tightly and the test it again. Line is using it now. Fixed.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2032,7 +2143,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/01/2024 12:00 AM",
     "comments": "Miguel Diaz - 10/01/24  6:48:39 AM: Found stuck limit switch lift is working",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2050,7 +2162,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/11/2024 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2068,7 +2181,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/17/2024 12:00 AM",
     "comments": "Primo Uy - 10/17/24  9:28:07 AM: Replaced Left side padding.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2086,7 +2200,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/22/2024 01:00 PM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2104,7 +2219,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/23/2024 12:00 AM",
     "comments": "Miguel Diaz - 10/23/24 12:30:15 PM: Done",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2122,7 +2238,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/28/2024 12:00 AM",
     "comments": "Primo Uy - 10/28/24 10:40:52 AM: Clean up the blade assembly and reduce the speed to 80-90 range. around 86, the speed was set 100.\nAlso ask ME to add bracket to hold the end of the funnel to prevent it from wobbling during cutting.\nI agree that ME will order a spare for the blade. Fixture is now cutting smoothly. Show the finish to the leadman.  Also ask the lead, if possible, to hold the end of the funnel when cutting. as of now until the bracket will be made.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2140,7 +2257,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/14/2024 12:00 AM",
     "comments": "Primo Uy - 11/14/24  1:35:26 PM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2158,7 +2276,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/22/2024 12:00 AM",
     "comments": "Primo Uy - 11/25/24 10:12:19 AM: Correction: Swivel | Primo Uy - 11/25/24  9:55:28 AM: The Shivel rod was already installed back and secured. Also Replaced left side padding.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2176,7 +2295,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/10/2024 12:00 AM",
     "comments": "Miguel Diaz - 12/10/24 11:16:37 AM: This has been taken care of .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2194,7 +2314,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/10/2024 12:00 AM",
     "comments": "Miguel Diaz - 12/10/24 11:17:27 AM: Both are working after resetting the controllers #3 and #13",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2212,7 +2333,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/12/2024 12:00 AM",
     "comments": "Primo Uy - 12/12/24  3:13:47 PM: Done. Use the portable air tank to flush out solid inside the drainage pipes. \nNote: show MB how it's done without opening the pipe.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2230,7 +2352,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/23/2025 12:00 AM",
     "comments": "Gabriel Shinobi - 01/23/25  8:37:13 AM: hung up Poly device above screen. Left cables for IT to install",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2248,7 +2371,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/29/2025 12:00 AM",
     "comments": "Primo Uy - 01/29/25  2:01:46 PM: Done. Reconnect loose/broke wire on the rheostats. Itds working now",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2266,7 +2390,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/04/2025 12:00 AM",
     "comments": "Primo Uy - 02/14/25  2:55:09 PM: Done",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2289,7 +2414,8 @@
         "name": "240204 Sales Samples - Product Photo Checklist.docx",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/717?guid=37812e4a-1486-4c4a-b919-291ce07d3a8d"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2307,7 +2433,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/11/2025 12:00 AM",
     "comments": "Primo Uy - 02/11/25  1:01:00 PM: Replaced right hand padding.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2325,7 +2452,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/12/2025 12:00 AM",
     "comments": "Primo Uy - 02/13/25  7:04:33 AM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2343,7 +2471,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/27/2025 12:00 AM",
     "comments": "Primo Uy - 02/27/25  9:19:53 AM: Done. Replace broken lift arm padding.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2361,7 +2490,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/03/2025 12:00 AM",
     "comments": "Primo Uy - 03/03/25  9:52:14 AM: Done. Replaced broken cylinder. Chair is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2379,7 +2509,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/03/2025 12:00 AM",
     "comments": "Miguel Diaz - 03/03/25  9:35:04 AM: Placed table by the marketing area if more is needed please advise",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2397,7 +2528,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/07/2025 06:30 AM",
     "comments": "Gabriel Shinobi - 03/07/25  7:17:20 AM: drain clogged. used compressed air to clear drain. ok to use",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2415,7 +2547,8 @@
     "downtime_hours": "0.2",
     "completed_datetime": "03/07/2025 07:00 AM",
     "comments": "Gabriel Shinobi - 03/07/25  7:21:53 AM: jack piston missing clip, raised piston added clip. working now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2433,7 +2566,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/24/2025 10:30 AM",
     "comments": "Gabriel Shinobi - 03/24/25 10:30:10 AM: checked inside. belt ok still on track. brought down arm. working  ok.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2451,7 +2585,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/26/2025 12:00 AM",
     "comments": "Primo Uy - 03/26/25 12:14:05 PM: Done. Adjusted the Tensioner.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2469,7 +2604,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/26/2025 08:00 AM",
     "comments": "Gabriel Shinobi - 03/28/25  8:04:49 AM: checked base, retighten all screws, working properly",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2487,7 +2623,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/01/2025 12:00 AM",
     "comments": "Primo Uy - 04/01/25  9:07:27 AM: Adjust the tension spring and add force to hold the right position as the host requires.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2505,7 +2642,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/01/2025 12:00 AM",
     "comments": "Primo Uy - 05/07/25 11:54:19 AM: Done",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2523,7 +2661,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/02/2025 02:30 PM",
     "comments": "Gabriel Shinobi - 04/02/25  2:40:36 PM: replaced alligator clip, wrapped with electrical tape as well.  working normally. ok to continue using.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2541,7 +2680,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/28/2025 12:00 AM",
     "comments": "Primo Uy - 05/07/25 11:49:23 AM: Replaced.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2559,7 +2699,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/30/2025 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2577,7 +2718,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/07/2025 12:00 AM",
     "comments": "Primo Uy - 05/07/25  1:52:53 PM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2595,7 +2737,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/12/2025 12:00 AM",
     "comments": "Primo Uy - 05/13/25  8:24:38 AM: Fixed. Replaced broken cylinder. \nAlso, replaced lift hand arm pad on the next stations.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2618,7 +2761,8 @@
         "name": "Panda Visit Items.docx",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/774?guid=2b8b7cdb-9eef-452a-9e8c-5ffba6fc9a53"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2636,7 +2780,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/21/2025 12:00 AM",
     "comments": "Primo Uy - 05/22/25  7:23:11 AM: Done. Put away all Tables. All units used on the event are now re-tape.\nNote: Barkev bring all the display units back to Mezzina himself.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2654,7 +2799,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/06/2025 12:00 AM",
     "comments": "Primo Uy - 06/06/25 11:45:10 AM: Done. Clean cylinder and its going up and down now properly. Re-insert the pivot bar and tighten the setscrew.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2672,7 +2818,8 @@
     "downtime_hours": "0.01",
     "completed_datetime": "06/06/2025 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2690,7 +2837,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/17/2025 12:00 AM",
     "comments": "Primo Uy - 06/17/25  3:23:27 PM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2708,7 +2856,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/27/2025 12:00 AM",
     "comments": "Primo Uy - 06/27/25  9:47:06 AM: Replaced cylinder/post. Cylinder broken/Bushing causing the chair to wobble.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2726,7 +2875,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/14/2025 12:00 AM",
     "comments": "Primo Uy - 08/05/25  2:27:35 PM: No further action needed. | Primo Uy - 07/14/25 11:25:27 AM: T4 back in service. Closing working after we get the cost from Raymond. | Primo Uy - 07/14/25 10:25:29 AM: Reymond onsite and checking the T4.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2744,7 +2894,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/15/2025 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2762,7 +2913,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/17/2025 10:00 AM",
     "comments": "Gabriel Shinobi - 07/25/25  6:03:07 AM: Raymond tech replaced seal on main lift cylinder, unit normal, ok to continue using",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2780,7 +2932,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/22/2025 01:00 PM",
     "comments": "Gabriel Shinobi - 08/19/25  2:05:31 PM: Ice-maker replaced. | Gabriel Shinobi - 07/22/25  2:21:08 PM: Ice-maker disconnected and removed, found inside motor and components in very bad shape. recommend replacing the entire Icemaker unit.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2798,7 +2951,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/05/2025 12:00 AM",
     "comments": "Primo Uy - 08/05/25  2:34:34 PM: Check elevator and no issues found. # 1.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2816,7 +2970,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/06/2025 07:30 AM",
     "comments": "Gabriel Shinobi - 08/13/25  8:58:54 AM: all 11 access points swapped",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2834,7 +2989,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/08/2025 12:00 AM",
     "comments": "Primo Uy - 08/11/25 12:24:31 PM: ME help to figure out the issues. Jiego reset the program in the PLC.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2852,7 +3008,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/08/2025 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2870,7 +3027,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/12/2025 02:00 PM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2888,7 +3046,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/14/2025 12:00 AM",
     "comments": "Primo Uy - 08/14/25 12:18:14 PM: Leadman reset the program, and table tester slider system works.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2906,7 +3065,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/14/2025 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2924,7 +3084,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/26/2025 12:00 AM",
     "comments": "Primo Uy - 08/26/25  3:31:20 PM: Fixed the safety lever.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2942,7 +3103,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/28/2025 12:00 AM",
     "comments": "Primo Uy - 08/28/25  8:53:35 AM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2960,7 +3122,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/02/2025 01:30 PM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2978,7 +3141,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/15/2025 02:30 AM",
     "comments": "Gabriel Shinobi - 09/15/25  2:34:06 PM: replaced arm rest",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -2996,7 +3160,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/17/2025 12:00 AM",
     "comments": "Primo Uy - 09/26/25 10:02:20 AM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3014,7 +3179,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/30/2025 12:00 AM",
     "comments": "Primo Uy - 09/30/25 11:04:13 AM: Done. Replace new air fitting. Air box is now working properly.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3032,7 +3198,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/01/2025 12:00 PM",
     "comments": "Maksim Bushka - 10/01/25 12:10:02 PM: I checked up the faucet is working fine. (Probably the sensor was dirty).",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3050,7 +3217,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/14/2025 09:30 AM",
     "comments": "Gabriel Shinobi - 10/15/25 10:03:47 AM: moved samples, opened crate from BMC with final sample",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3068,7 +3236,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/14/2025 09:35 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3086,7 +3255,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/15/2025 12:30 PM",
     "comments": "Maksim Bushka - 10/15/25 12:06:05 PM: Fixed the door.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3104,7 +3274,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/27/2025 12:00 AM",
     "comments": "Primo Uy - 10/27/25 11:50:29 AM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3122,7 +3293,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/28/2025 12:00 AM",
     "comments": "Primo Uy - 10/28/25  1:19:55 PM: Done. Provided the correct keys.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3140,7 +3312,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/05/2025 12:00 AM",
     "comments": "Primo Uy - 11/05/25  1:39:53 PM: The support rod come loose, reinsert and tighten the setscrew.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3158,7 +3331,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/05/2025 12:00 AM",
     "comments": "Primo Uy - 11/05/25  1:38:31 PM: Done. Support rod come loose. Reinsert and the setscrew.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3176,7 +3350,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/07/2025 12:00 AM",
     "comments": "Primo Uy - 11/07/25  3:35:23 PM: Replaced the lock and provided the keys. Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3194,7 +3369,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/07/2025 12:00 AM",
     "comments": "Primo Uy - 11/07/25  3:32:41 PM: Dalia mentions it's OK. No need to adjust anything.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3212,7 +3388,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/10/2025 12:00 AM",
     "comments": "Primo Uy - 11/10/25  7:54:45 AM: Done. The keys are under the keyboard.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3230,7 +3407,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/10/2025 12:00 AM",
     "comments": "Primo Uy - 11/10/25  9:03:24 AM: Done. Adjust the pivot point tension to be able to set the elevation and the angle desire for the user.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3248,7 +3426,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/01/2025 12:00 AM",
     "comments": "Primo Uy - 12/01/25  1:18:10 PM: Done. Replaced L arm padding. | Primo Uy - 11/18/25  7:29:47 AM: Run out of spares. Ordering new Padding.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3266,7 +3445,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/10/2025 12:00 AM",
     "comments": "Primo Uy - 12/10/25 10:01:52 AM: Set screw come loose. Push the pipot rod back in place and tighten the setscrew. Chair is now stable and save to use.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3284,7 +3464,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/10/2025 12:00 AM",
     "comments": "Primo Uy - 12/10/25  2:59:16 PM: Done, Replaced the chair with a good cushion pad.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3302,7 +3483,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/16/2025 05:00 PM",
     "comments": "Maksim Bushka - 12/16/25  4:55:51 PM: Removed the paper and cleaned the track.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3320,7 +3502,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/08/2026 12:00 AM",
     "comments": "Primo Uy - 01/08/26  3:23:55 PM: Done. Remove the keyboard tray.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3338,7 +3521,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/10/2026 12:00 AM",
     "comments": "Primo Uy - 01/10/26  9:35:47 AM: Adjust the backrest tensioner, lower it down to have more comfortable postures. and owner can adjust the seat pad accordingly to his comfort.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3356,7 +3540,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/10/2026 12:00 AM",
     "comments": "Primo Uy - 01/10/26  9:16:45 AM: Done. Replaced a new right arm pad.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3374,7 +3559,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/13/2026 12:00 AM",
     "comments": "Primo Uy - 01/13/26 10:11:16 AM: Done. Adjust the tensioner accordingly.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3392,7 +3578,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/26/2026 11:00 AM",
     "comments": "Gabriel Shinobi - 01/26/26 11:42:52 AM: replaced bulb will order replacement bulbs",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3410,7 +3597,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/11/2026 09:30 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3428,7 +3616,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/09/2026 10:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3446,7 +3635,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/09/2026 07:00 PM",
     "comments": "Maksim Bushka - 03/09/26  7:31:03 PM: Installed the keyboard",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3464,7 +3654,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/10/2026 12:00 AM",
     "comments": "Primo Uy - 03/10/26  2:06:15 PM: Done. Transfer and install the f4112 Valve assembly funnel counter. Need to modify the funnel bracket post to let the blue bin go IN & OUT with no issues.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3482,7 +3673,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/25/2026 07:00 PM",
     "comments": "Maksim Bushka - 03/25/26  7:06:38 PM: Cleaned up the vents on second floor. | Sean Jennings - 03/25/26  7:55:19 AM: Hello Deja. I am sorry to hear your allergies are acting up. Rest assured though because our HVAC units use Merv 13 filters that capture 90% of all airborne particles. All of the air that enters this building through our HVAC ducting passes through these filters, which we replace on a quarterly basis. I do see some dust build up on one of the vents so I will have my team wipe that down. Thank you!",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3500,7 +3692,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/08/2026 12:00 AM",
     "comments": "Sean Jennings - 04/08/26  7:36:43 AM: We passed along this request to office services. We rent these coffee makers and office services handles that coordination",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3518,7 +3711,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/21/2026 12:00 AM",
     "comments": "Gabriel Shinobi - 04/21/26  2:12:11 PM: Employee has been assisted will close",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3536,7 +3730,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/24/2026 12:00 AM",
     "comments": "Primo Uy - 04/09/26  1:09:55 PM: Replaced.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3554,7 +3749,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/28/2026 12:30 PM",
     "comments": "Maksim Bushka - 04/28/26 12:29:19 PM: Checked out and seems ok.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3572,7 +3768,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/05/2026 08:40 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3590,7 +3787,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/07/2026 12:00 AM",
     "comments": "Primo Uy - 05/07/26 12:31:47 PM: Down. Bring the E=Bin down to the scrap yard area. Will bring it back when its empty.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3608,7 +3806,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/18/2026 12:00 AM",
     "comments": "Gabriel Shinobi - 05/21/26  2:45:38 PM: Mic pods installed, inside scheduler added to wall",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3626,7 +3825,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/18/2026 12:00 AM",
     "comments": "Primo Uy - 05/18/26 10:11:41 AM: The Barrel come off. Use the key to put it back and lock it in place.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3644,7 +3844,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/20/2026 12:00 AM",
     "comments": "Primo Uy - 05/20/26 10:15:45 AM: Done. The hot pot # 2 was already replaced for re-calibration. The newly calibrated hot pot #1 was installed.\nLine is ready for production.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3662,7 +3863,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/22/2026 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3680,7 +3882,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/22/2026 01:30 PM",
     "comments": "Gabriel Shinobi - 05/22/26  1:21:49 PM: replaced upper monitor arm assembly, monitors adjusted",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3698,7 +3901,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/26/2026 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3716,7 +3920,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/28/2026 04:30 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3734,7 +3939,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/01/2026 12:00 AM",
     "comments": "Primo Uy - 06/01/26  3:06:12 PM: Done. Fix the keyboard.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3752,7 +3958,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/04/2026 12:00 AM",
     "comments": "Primo Uy - 06/04/26 12:46:39 PM: Replaced the slider locking bracket and the locking pin(2 pcs).",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3770,7 +3977,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/10/2026 12:00 AM",
     "comments": "Primo Uy - 06/10/26  3:11:09 PM: Talk to Mark regarding 5050 tester moving to Mezzanine. I already Unhook all the electric power cord and disconnect water supply. 5050 Tester is ready to be move anytime.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3788,7 +3996,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/11/2026 06:30 AM",
     "comments": "Gabriel Shinobi - 06/12/26  6:49:18 AM: installed keyboard tray",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3806,7 +4015,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/11/2026 09:30 AM",
     "comments": "Gabriel Shinobi - 06/11/26 10:28:08 AM: left arm rest swapped",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3824,7 +4034,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/12/2026 12:00 AM",
     "comments": "Gabriel Shinobi - 06/15/26  9:26:01 AM: screws came out, replaced with thicker screw, ok to use",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3842,7 +4053,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/15/2026 12:00 AM",
     "comments": "Primo Uy - 06/15/26  1:59:55 PM: Relaced Chair with our back up.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3860,7 +4072,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/24/2026 12:00 AM",
     "comments": "Primo Uy - 06/24/26  2:44:23 PM: Both monitor are have power and turn ON.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3878,7 +4091,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/24/2026 07:00 PM",
     "comments": "Maksim Bushka - 06/24/26  7:36:04 PM: Cleaned up",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3896,7 +4110,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/25/2026 12:00 AM",
     "comments": "Primo Uy - 08/03/26 11:51:53 AM: Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3914,7 +4129,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/01/2026 07:30 PM",
     "comments": "Maksim Bushka - 07/01/26  7:53:14 PM: Removed the arms",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3932,7 +4148,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/08/2026 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3950,7 +4167,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/27/2026 12:00 AM",
     "comments": "Primo Uy - 07/27/26 11:58:43 AM: All chairs was repair or replaced. For Ming chair, The rocker rod come out from on of the pivot bracket. Re-installed back and tighten the set screw/lock.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "744",
@@ -3968,7 +4186,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/07/2026 12:00 AM",
     "comments": "William Butenschoen - 08/05/26  8:10:41 AM: ok to defer",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "",
@@ -3986,7 +4205,8 @@
     "downtime_hours": "0",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Maintenance"
   },
   {
     "equipment_id": "",
@@ -4004,6 +4224,7 @@
     "downtime_hours": "0",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Maintenance"
   }
 ]

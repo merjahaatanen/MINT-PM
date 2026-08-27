@@ -1,6 +1,6 @@
-equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
-1796,EQ ID 1796,"8"" Digimatic Caliper, A 18018637, MS, Victor",Machine Shop,975,Check accuracy and general condition,Pending,3/18/2023,,0.00,0.00,0.00,,,[]
-19,EQ ID 19,Mill,Machine Shop,2592,Check oil and lubricate (weekly),Closed and Completed,10/20/2022,mike,0.00,0.00,0.00,2/20/2023,"Miguel Diaz - 02/20/23  9:09:23 AM: Did maintenance below 
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,status,material_cost,labor_time,work_performed_by,assigned_to,downtime_hours,completed_datetime,comments,attachments,audit_item,due_date
+1796,EQ ID 1796,"8"" Digimatic Caliper, A 18018637, MS, Victor",Machine Shop,975,Pending,0.00,0.00,,QA Technician,0.00,,,[],Check accuracy and general condition,3/18/2023
+19,EQ ID 19,Mill,Machine Shop,2592,Closed and Completed,0.00,0.00,mike,,0.00,2/20/2023,"Miguel Diaz - 02/20/23  9:09:23 AM: Did maintenance below 
 1)Check all safety devices.
 2)Inspect drive belts, replace if cracking.
 3)Top off cylinder oil if necessary.
@@ -12,32 +12,32 @@ equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,d
 9)Check for air leaks.
 10)Place a test piece in the machine and notch the door *Check to
  see that the door does not move forward or side to side adjust clamps if needed or replace drills 
-11)Replaced both drill 49/64 and 3/8  drills.",[]
-19,EQ ID 19,Mill,Machine Shop,17,"(1) Check motor;
+11)Replaced both drill 49/64 and 3/8  drills.",[],Check oil and lubricate (weekly),10/20/2022
+19,EQ ID 19,Mill,Machine Shop,17,Closed and Completed,0.00,0.00,md,,0.00,3/10/2023,,[],"(1) Check motor;
 (2) Check bearings;
 (3) Check belts;
-(4) Check brake",Closed and Completed,3/18/2023,md,0.00,0.00,0.00,3/10/2023,,[]
-19,EQ ID 19,Mill,Machine Shop,4910,"(1) Check motor;
+(4) Check brake",3/18/2023
+19,EQ ID 19,Mill,Machine Shop,4910,Closed and Completed,0.00,0.20,md,,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:23:07 AM: Replaced both drills,[],"(1) Check motor;
 (2) Check bearings;
 (3) Check belts;
-(4) Check brake",Closed and Completed,3/20/2024,md,0.20,0.00,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:23:07 AM: Replaced both drills,[]
-19,EQ ID 19,Mill,Machine Shop,11179,"(1) Check motor;
+(4) Check brake",3/20/2024
+19,EQ ID 19,Mill,Machine Shop,11179,Closed and Completed,0.00,0.50,PU,,0.00,10/17/2025,Primo Uy - 10/17/25  7:24:41 AM: Done,[],"(1) Check motor;
 (2) Check bearings;
 (3) Check belts;
-(4) Check brake",Closed and Completed,4/13/2025,PU,0.50,0.00,0.00,10/17/2025,Primo Uy - 10/17/25  7:24:41 AM: Done,[]
-20,EQ ID 20,Mill,Machine Shop,18,"(1) Check motor;
+(4) Check brake",4/13/2025
+20,EQ ID 20,Mill,Machine Shop,18,Closed and Completed,0.00,0.00,md,,0.00,3/10/2023,,[],"(1) Check motor;
 (2) Check bearings;
 (3) Check belts;
-(4) Check brake",Closed and Completed,3/18/2023,md,0.00,0.00,0.00,3/10/2023,,[]
-20,EQ ID 20,Mill,Machine Shop,4911,"(1) Check motor;
+(4) Check brake",3/18/2023
+20,EQ ID 20,Mill,Machine Shop,4911,Closed and Completed,0.00,0.20,md,,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:23:22 AM: Replaced both drills,[],"(1) Check motor;
 (2) Check bearings;
 (3) Check belts;
-(4) Check brake",Closed and Completed,3/20/2024,md,0.20,0.00,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:23:22 AM: Replaced both drills,[]
-20,EQ ID 20,Mill,Machine Shop,11180,"(1) Check motor;
+(4) Check brake",3/20/2024
+20,EQ ID 20,Mill,Machine Shop,11180,Closed without Action,0.00,0.00,PU,,0.00,10/17/2025,Primo Uy - 10/17/25  7:25:34 AM: Obsolate,[],"(1) Check motor;
 (2) Check bearings;
 (3) Check belts;
-(4) Check brake",Closed without Action,4/13/2025,PU,0.00,0.00,0.00,10/17/2025,Primo Uy - 10/17/25  7:25:34 AM: Obsolate,[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,2593,Check oil and lubricate (weekly),Closed and Completed,10/20/2022,mike,0.00,0.00,0.00,2/20/2023,"Miguel Diaz - 02/20/23  9:09:34 AM: Did maintenance below 
+(4) Check brake",4/13/2025
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,2593,Closed and Completed,0.00,0.00,mike,,0.00,2/20/2023,"Miguel Diaz - 02/20/23  9:09:34 AM: Did maintenance below 
 1)Check all safety devices.
 2)Inspect drive belts, replace if cracking.
 3)Top off cylinder oil if necessary.
@@ -49,9 +49,9 @@ equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,d
 9)Check for air leaks.
 10)Place a test piece in the machine and notch the door *Check to
  see that the door does not move forward or side to side adjust clamps if needed or replace drills 
-11)Replaced both drill 49/64 and 3/8  drills.",[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,19,"Check motor, bearings, belts, brakes",Closed and Completed,3/18/2023,md,0.20,0.00,0.00,3/10/2023,,[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,4475,Check oil and lubricate (weekly),Closed and Completed,4/20/2023,md,0.00,0.00,0.00,5/12/2023,"Miguel Diaz - 05/12/23 11:31:58 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches
+11)Replaced both drill 49/64 and 3/8  drills.",[],Check oil and lubricate (weekly),10/20/2022
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,19,Closed and Completed,0.00,0.20,md,,0.00,3/10/2023,,[],"Check motor, bearings, belts, brakes",3/18/2023
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,4475,Closed and Completed,0.00,0.00,md,,0.00,5/12/2023,"Miguel Diaz - 05/12/23 11:31:58 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches
 *Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander
 *Check tape on edge bander return system transition .
 *Check Pop up table stopper to have rubber in front of it 
@@ -64,15 +64,15 @@ equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,d
 *Check pop up table stile staging area replace rubber if needed .
 *Check 1540 door notcher to have rounded edges and rubber on table top 
 *Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray 
-*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,5661,Check oil and lubricate (weekly),Closed and Completed,7/12/2023,md,0.10,0.00,0.00,9/20/2023,Miguel Diaz - 09/20/23  7:32:59 AM: Replaced drill,[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,7295,Check oil and lubricate (weekly),Closed and Completed,11/20/2023,md,0.00,0.00,0.00,1/18/2024,Miguel Diaz - 01/17/24 11:21:04 AM: done,[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,4917,"Check motor, bearings, belts, brakes",Closed and Completed,3/20/2024,md,0.20,0.00,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:22:22 AM: Replaced both drills,[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,10013,Check oil and lubricate (weekly),Closed and Completed,3/17/2024,md,0.00,0.00,0.00,5/9/2024,,[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,11593,Check oil and lubricate (weekly),Closed and Completed,7/9/2024,.,0.20,0.00,0.00,8/14/2024,Miguel Diaz - 08/14/24  9:18:58 AM: Check oil and lubricate (weekly),[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,12762,Check oil and lubricate (weekly),Closed and Completed,10/14/2024,G Shinobi,0.20,0.00,0.00,3/12/2025,,[]
-21,EQ ID 21,"Lathe, Hardinge",Machine Shop,11176,"Check motor, bearings, belts, brakes",Closed without Action,4/13/2025,PU,0.00,0.00,0.00,10/17/2025,Primo Uy - 10/17/25  7:21:19 AM: Ship To other bobrock division,[]
-22,EQ ID 22,Lathe,Machine Shop,2594,Check oil and lubricate (weekly),Closed and Completed,10/20/2022,mike,0.00,0.00,0.00,2/20/2023,"Miguel Diaz - 02/20/23  9:09:43 AM: Did maintenance below 
+*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",[],Check oil and lubricate (weekly),4/20/2023
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,5661,Closed and Completed,0.00,0.10,md,,0.00,9/20/2023,Miguel Diaz - 09/20/23  7:32:59 AM: Replaced drill,[],Check oil and lubricate (weekly),7/12/2023
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,7295,Closed and Completed,0.00,0.00,md,,0.00,1/18/2024,Miguel Diaz - 01/17/24 11:21:04 AM: done,[],Check oil and lubricate (weekly),11/20/2023
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,4917,Closed and Completed,0.00,0.20,md,,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:22:22 AM: Replaced both drills,[],"Check motor, bearings, belts, brakes",3/20/2024
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,10013,Closed and Completed,0.00,0.00,md,,0.00,5/9/2024,,[],Check oil and lubricate (weekly),3/17/2024
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,11593,Closed and Completed,0.00,0.20,.,,0.00,8/14/2024,Miguel Diaz - 08/14/24  9:18:58 AM: Check oil and lubricate (weekly),[],Check oil and lubricate (weekly),7/9/2024
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,12762,Closed and Completed,0.00,0.20,G Shinobi,,0.00,3/12/2025,,[],Check oil and lubricate (weekly),10/14/2024
+21,EQ ID 21,"Lathe, Hardinge",Machine Shop,11176,Closed without Action,0.00,0.00,PU,,0.00,10/17/2025,Primo Uy - 10/17/25  7:21:19 AM: Ship To other bobrock division,[],"Check motor, bearings, belts, brakes",4/13/2025
+22,EQ ID 22,Lathe,Machine Shop,2594,Closed and Completed,0.00,0.00,mike,,0.00,2/20/2023,"Miguel Diaz - 02/20/23  9:09:43 AM: Did maintenance below 
 1)Check all safety devices.
 2)Inspect drive belts, replace if cracking.
 3)Top off cylinder oil if necessary.
@@ -84,16 +84,16 @@ equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,d
 9)Check for air leaks.
 10)Place a test piece in the machine and notch the door *Check to
  see that the door does not move forward or side to side adjust clamps if needed or replace drills 
-11)Replaced both drill 49/64 and 3/8  drills.",[]
-22,EQ ID 22,Lathe,Machine Shop,4476,Check oil and lubricate (weekly),Closed and Completed,2/27/2023,Mike,0.00,0.00,0.00,2/20/2023,Miguel Diaz - 02/20/23  9:11:19 AM: Removed and cleaned filter checked hardware for loose,[]
-22,EQ ID 22,Lathe,Machine Shop,4480,Check oil and lubricate (weekly),Closed and Completed,2/27/2023,md,0.20,0.00,0.00,3/10/2023,,[]
-22,EQ ID 22,Lathe,Machine Shop,20,"Check motor, bearings, belts, brakes",Closed without Action,3/18/2023,md,0.00,0.00,0.00,3/10/2023,,[]
-22,EQ ID 22,Lathe,Machine Shop,4909,Check oil and lubricate (weekly),Closed and Completed,3/27/2023,md,0.20,0.00,0.00,3/20/2023,,[]
-22,EQ ID 22,Lathe,Machine Shop,4919,Check oil and lubricate (weekly),Closed and Completed,3/27/2023,md,0.10,0.00,0.00,3/20/2023,,[]
-22,EQ ID 22,Lathe,Machine Shop,4920,Check oil and lubricate (weekly),Closed and Completed,3/27/2023,md,0.00,0.00,0.00,3/20/2023,,[]
-22,EQ ID 22,Lathe,Machine Shop,4921,Check oil and lubricate (weekly),Closed without Action,3/27/2023,md,0.00,0.00,0.00,3/20/2023,,[]
-22,EQ ID 22,Lathe,Machine Shop,4922,Check oil and lubricate (weekly),Closed and Completed,3/27/2023,,0.00,0.00,0.00,4/12/2023,,[]
-22,EQ ID 22,Lathe,Machine Shop,5235,Check oil and lubricate (weekly),Closed and Completed,4/19/2023,md,0.00,0.00,0.00,5/12/2023,"Miguel Diaz - 05/12/23 11:31:49 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches
+11)Replaced both drill 49/64 and 3/8  drills.",[],Check oil and lubricate (weekly),10/20/2022
+22,EQ ID 22,Lathe,Machine Shop,4476,Closed and Completed,0.00,0.00,Mike,,0.00,2/20/2023,Miguel Diaz - 02/20/23  9:11:19 AM: Removed and cleaned filter checked hardware for loose,[],Check oil and lubricate (weekly),2/27/2023
+22,EQ ID 22,Lathe,Machine Shop,4480,Closed and Completed,0.00,0.20,md,,0.00,3/10/2023,,[],Check oil and lubricate (weekly),2/27/2023
+22,EQ ID 22,Lathe,Machine Shop,20,Closed without Action,0.00,0.00,md,,0.00,3/10/2023,,[],"Check motor, bearings, belts, brakes",3/18/2023
+22,EQ ID 22,Lathe,Machine Shop,4909,Closed and Completed,0.00,0.20,md,,0.00,3/20/2023,,[],Check oil and lubricate (weekly),3/27/2023
+22,EQ ID 22,Lathe,Machine Shop,4919,Closed and Completed,0.00,0.10,md,,0.00,3/20/2023,,[],Check oil and lubricate (weekly),3/27/2023
+22,EQ ID 22,Lathe,Machine Shop,4920,Closed and Completed,0.00,0.00,md,,0.00,3/20/2023,,[],Check oil and lubricate (weekly),3/27/2023
+22,EQ ID 22,Lathe,Machine Shop,4921,Closed without Action,0.00,0.00,md,,0.00,3/20/2023,,[],Check oil and lubricate (weekly),3/27/2023
+22,EQ ID 22,Lathe,Machine Shop,4922,Closed and Completed,0.00,0.00,,,0.00,4/12/2023,,[],Check oil and lubricate (weekly),3/27/2023
+22,EQ ID 22,Lathe,Machine Shop,5235,Closed and Completed,0.00,0.00,md,,0.00,5/12/2023,"Miguel Diaz - 05/12/23 11:31:49 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches
 *Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander
 *Check tape on edge bander return system transition .
 *Check Pop up table stopper to have rubber in front of it 
@@ -106,8 +106,8 @@ equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,d
 *Check pop up table stile staging area replace rubber if needed .
 *Check 1540 door notcher to have rounded edges and rubber on table top 
 *Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray 
-*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",[]
-22,EQ ID 22,Lathe,Machine Shop,5660,Check oil and lubricate (weekly),Closed and Completed,5/19/2023,md,0.00,0.00,0.00,5/12/2023,"Miguel Diaz - 05/12/23 11:32:18 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches
+*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",[],Check oil and lubricate (weekly),4/19/2023
+22,EQ ID 22,Lathe,Machine Shop,5660,Closed and Completed,0.00,0.00,md,,0.00,5/12/2023,"Miguel Diaz - 05/12/23 11:32:18 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches
 *Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander
 *Check tape on edge bander return system transition .
 *Check Pop up table stopper to have rubber in front of it 
@@ -120,22 +120,22 @@ equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,d
 *Check pop up table stile staging area replace rubber if needed .
 *Check 1540 door notcher to have rounded edges and rubber on table top 
 *Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray 
-*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",[]
-22,EQ ID 22,Lathe,Machine Shop,5663,Check oil and lubricate (weekly),Closed and Completed,5/19/2023,md,0.00,0.00,0.00,7/5/2023,Miguel Diaz - 07/05/23  7:44:33 AM: just done,[]
-22,EQ ID 22,Lathe,Machine Shop,6296,Check oil and lubricate (weekly),Closed and Completed,7/12/2023,md,0.00,0.00,0.00,9/20/2023,Miguel Diaz - 09/20/23  7:33:09 AM: Replaced drill,[]
-22,EQ ID 22,Lathe,Machine Shop,7296,Check oil and lubricate (weekly),Closed and Completed,9/27/2023,md,0.20,0.00,0.00,9/27/2023,,[]
-22,EQ ID 22,Lathe,Machine Shop,7368,Check oil and lubricate (weekly),Closed and Completed,10/5/2023,md,0.20,0.00,0.00,1/18/2024,Miguel Diaz - 01/17/24 11:20:41 AM: done,[]
-22,EQ ID 22,Lathe,Machine Shop,4916,"Check motor, bearings, belts, brakes",Closed and Completed,3/20/2024,md,0.20,0.00,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:22:36 AM: Replaced both drills,[]
-22,EQ ID 22,Lathe,Machine Shop,10011,Check oil and lubricate (weekly),Closed and Completed,1/24/2024,md,0.00,0.00,0.00,5/9/2024,,[]
-22,EQ ID 22,Lathe,Machine Shop,11594,Check oil and lubricate (weekly),Closed and Completed,5/16/2024,md,0.00,0.00,0.00,5/9/2024,,[]
-22,EQ ID 22,Lathe,Machine Shop,11596,Check oil and lubricate (weekly),Closed and Completed,5/16/2024,md,0.00,0.00,0.00,5/9/2024,,[]
-22,EQ ID 22,Lathe,Machine Shop,11597,Check oil and lubricate (weekly),Closed and Completed,5/16/2024,.,0.10,0.00,0.00,8/14/2024,Miguel Diaz - 08/14/24  9:17:48 AM: Check oil and lubricate (weekly),[]
-22,EQ ID 22,Lathe,Machine Shop,12760,Check oil and lubricate (weekly),Closed and Completed,8/21/2024,.,0.20,0.00,0.00,8/14/2024,Miguel Diaz - 08/14/24  9:19:13 AM: Check oil and lubricate (weekly),[]
-22,EQ ID 22,Lathe,Machine Shop,12763,Check oil and lubricate (weekly),Closed and Completed,8/21/2024,G Shinobi,0.20,0.00,0.00,3/12/2025,,[]
-22,EQ ID 22,Lathe,Machine Shop,15040,Check oil and lubricate (weekly),Closed and Completed,3/19/2025,PU,0.20,0.00,0.00,3/19/2025,Primo Uy - 10/17/25  7:19:24 AM: Done,[]
-22,EQ ID 22,Lathe,Machine Shop,11177,"Check motor, bearings, belts, brakes",Closed and Completed,4/13/2025,PU,0.00,0.00,0.00,10/17/2025,Primo Uy - 10/17/25  7:22:09 AM: Ship to other Bobrick Division,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,15039,lubricate (weekly),Pending,4/12/2025,,0.00,0.00,0.00,,,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,2605,lubricate (weekly),Closed and Completed,11/13/2022,mike,0.00,0.00,0.00,2/20/2023,"Miguel Diaz - 02/20/23  9:09:57 AM: Did maintenance below 
+*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",[],Check oil and lubricate (weekly),5/19/2023
+22,EQ ID 22,Lathe,Machine Shop,5663,Closed and Completed,0.00,0.00,md,,0.00,7/5/2023,Miguel Diaz - 07/05/23  7:44:33 AM: just done,[],Check oil and lubricate (weekly),5/19/2023
+22,EQ ID 22,Lathe,Machine Shop,6296,Closed and Completed,0.00,0.00,md,,0.00,9/20/2023,Miguel Diaz - 09/20/23  7:33:09 AM: Replaced drill,[],Check oil and lubricate (weekly),7/12/2023
+22,EQ ID 22,Lathe,Machine Shop,7296,Closed and Completed,0.00,0.20,md,,0.00,9/27/2023,,[],Check oil and lubricate (weekly),9/27/2023
+22,EQ ID 22,Lathe,Machine Shop,7368,Closed and Completed,0.00,0.20,md,,0.00,1/18/2024,Miguel Diaz - 01/17/24 11:20:41 AM: done,[],Check oil and lubricate (weekly),10/5/2023
+22,EQ ID 22,Lathe,Machine Shop,4916,Closed and Completed,0.00,0.20,md,,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:22:36 AM: Replaced both drills,[],"Check motor, bearings, belts, brakes",3/20/2024
+22,EQ ID 22,Lathe,Machine Shop,10011,Closed and Completed,0.00,0.00,md,,0.00,5/9/2024,,[],Check oil and lubricate (weekly),1/24/2024
+22,EQ ID 22,Lathe,Machine Shop,11594,Closed and Completed,0.00,0.00,md,,0.00,5/9/2024,,[],Check oil and lubricate (weekly),5/16/2024
+22,EQ ID 22,Lathe,Machine Shop,11596,Closed and Completed,0.00,0.00,md,,0.00,5/9/2024,,[],Check oil and lubricate (weekly),5/16/2024
+22,EQ ID 22,Lathe,Machine Shop,11597,Closed and Completed,0.00,0.10,.,,0.00,8/14/2024,Miguel Diaz - 08/14/24  9:17:48 AM: Check oil and lubricate (weekly),[],Check oil and lubricate (weekly),5/16/2024
+22,EQ ID 22,Lathe,Machine Shop,12760,Closed and Completed,0.00,0.20,.,,0.00,8/14/2024,Miguel Diaz - 08/14/24  9:19:13 AM: Check oil and lubricate (weekly),[],Check oil and lubricate (weekly),8/21/2024
+22,EQ ID 22,Lathe,Machine Shop,12763,Closed and Completed,0.00,0.20,G Shinobi,,0.00,3/12/2025,,[],Check oil and lubricate (weekly),8/21/2024
+22,EQ ID 22,Lathe,Machine Shop,15040,Closed and Completed,0.00,0.20,PU,,0.00,3/19/2025,Primo Uy - 10/17/25  7:19:24 AM: Done,[],Check oil and lubricate (weekly),3/19/2025
+22,EQ ID 22,Lathe,Machine Shop,11177,Closed and Completed,0.00,0.00,PU,,0.00,10/17/2025,Primo Uy - 10/17/25  7:22:09 AM: Ship to other Bobrick Division,[],"Check motor, bearings, belts, brakes",4/13/2025
+45,EQ ID 45,Surface Grinder,Machine Shop,15039,Pending,0.00,0.00,,Operator,0.00,,,[],lubricate (weekly),4/12/2025
+45,EQ ID 45,Surface Grinder,Machine Shop,2605,Closed and Completed,0.00,0.00,mike,,0.00,2/20/2023,"Miguel Diaz - 02/20/23  9:09:57 AM: Did maintenance below 
 1)Check all safety devices.
 2)Inspect drive belts, replace if cracking.
 3)Top off cylinder oil if necessary.
@@ -147,10 +147,10 @@ equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,d
 9)Check for air leaks.
 10)Place a test piece in the machine and notch the door *Check to
  see that the door does not move forward or side to side adjust clamps if needed or replace drills 
-11)Replaced both drill 49/64 and 3/8  drills.",[]
-45,EQ ID 45,Surface Grinder,Machine Shop,31,Check motor (yearly),Closed and Completed,3/18/2023,md,0.00,0.00,0.00,3/10/2023,,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,4477,lubricate (weekly),Closed and Completed,3/20/2023,md,0.00,0.00,0.00,3/20/2023,,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,4918,lubricate (weekly),Closed and Completed,4/20/2023,md,0.00,0.00,0.00,5/12/2023,"Miguel Diaz - 05/12/23 11:32:08 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches
+11)Replaced both drill 49/64 and 3/8  drills.",[],lubricate (weekly),11/13/2022
+45,EQ ID 45,Surface Grinder,Machine Shop,31,Closed and Completed,0.00,0.00,md,,0.00,3/10/2023,,[],Check motor (yearly),3/18/2023
+45,EQ ID 45,Surface Grinder,Machine Shop,4477,Closed and Completed,0.00,0.00,md,,0.00,3/20/2023,,[],lubricate (weekly),3/20/2023
+45,EQ ID 45,Surface Grinder,Machine Shop,4918,Closed and Completed,0.00,0.00,md,,0.00,5/12/2023,"Miguel Diaz - 05/12/23 11:32:08 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches
 *Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander
 *Check tape on edge bander return system transition .
 *Check Pop up table stopper to have rubber in front of it 
@@ -163,26 +163,26 @@ equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,d
 *Check pop up table stile staging area replace rubber if needed .
 *Check 1540 door notcher to have rounded edges and rubber on table top 
 *Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray 
-*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",[]
-45,EQ ID 45,Surface Grinder,Machine Shop,5662,lubricate (weekly),Closed without Action,6/12/2023,dd,0.00,0.00,0.00,7/5/2023,Miguel Diaz - 07/05/23  7:44:43 AM: just done,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,6297,lubricate (weekly),Closed and Completed,8/5/2023,md,0.00,0.00,0.00,9/20/2023,Miguel Diaz - 09/20/23  7:33:34 AM: Replaced drill,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,7297,lubricate (weekly),Closed and Completed,10/20/2023,md,0.20,0.00,0.00,1/18/2024,Miguel Diaz - 01/17/24 11:20:56 AM: done,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,4915,Check motor (yearly),Closed and Completed,3/20/2024,md,0.20,0.00,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:22:49 AM: Replaced both drills,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,10012,lubricate (weekly),Closed and Completed,2/17/2024,md,0.00,0.00,0.00,5/9/2024,,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,11595,lubricate (weekly),Closed and Completed,6/9/2024,.,0.30,0.00,0.00,8/14/2024,Miguel Diaz - 08/14/24  9:18:43 AM: Check oil and lubricate (weekly),[]
-45,EQ ID 45,Surface Grinder,Machine Shop,12761,lubricate (weekly),Closed and Completed,9/14/2024,G Shijnobi,0.20,0.00,0.00,3/12/2025,,[]
-45,EQ ID 45,Surface Grinder,Machine Shop,11178,Check motor (yearly),Closed and Completed,4/13/2025,PU,0.20,0.00,0.00,10/17/2025,Primo Uy - 10/17/25  7:23:40 AM: Done,[]
-46,EQ ID 46,Vert. Band Saw,Machine Shop,32,"Check bearings, belts, motor",Closed and Completed,3/18/2023,md,0.20,0.00,0.00,3/10/2023,,[]
-46,EQ ID 46,Vert. Band Saw,Machine Shop,4914,"Check bearings, belts, motor",Closed and Completed,3/20/2024,md,0.30,0.00,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:23:33 AM: Replaced both drills,[]
-46,EQ ID 46,Vert. Band Saw,Machine Shop,11181,"Check bearings, belts, motor",Closed and Completed,4/13/2025,PU,0.20,0.00,0.00,10/16/2025,Primo Uy - 10/17/25  7:26:18 AM: Done,[]
-49,EQ ID 49,Acu-rite lll,Machine Shop,33,Check alignment (yearly),Closed without Action,3/18/2023,md,0.00,0.00,0.00,3/10/2023,,[]
-49,EQ ID 49,Acu-rite lll,Machine Shop,4913,Check alignment (yearly),Closed and Completed,3/20/2024,md,0.00,0.00,0.00,7/20/2024,Miguel Diaz - 07/20/24 12:19:41 PM: we do not do this we dont have a means of tieing off safely,[]
-49,EQ ID 49,Acu-rite lll,Machine Shop,12466,Check alignment (yearly),Closed without Action,7/20/2025,PU,0.00,0.00,0.00,10/16/2025,,[]
-50,EQ ID 50,Acu-rite,Machine Shop,34,Check alignment (yearly),Closed without Action,3/18/2023,md,0.00,0.00,0.00,3/10/2023,,[]
-50,EQ ID 50,Acu-rite,Machine Shop,4912,Check alignment (yearly),Closed and Completed,3/20/2024,md,0.00,0.00,0.00,7/20/2024,Miguel Diaz - 07/20/24 12:19:50 PM: we do not do this we dont have a means of tieing off safely,[]
-50,EQ ID 50,Acu-rite,Machine Shop,12467,Check alignment (yearly),Closed and Completed,7/20/2025,PU,0.00,0.00,0.00,10/16/2025,Primo Uy - 10/17/25  7:28:33 AM: Done,[]
-109,EQ ID 109,Outside Micrometer,Machine Shop,96,Calibrate,Pending,3/18/2023,,0.00,0.00,0.00,,,[]
-1022,EQ ID 1022,Mitutoyo Vertical Caliper,Machine Shop,622,"Calibrate the caliper yearly
-Note: Cornerstone Metrology Service has been certifying it along with the High Precision Stone Table past couple of years)",Pending,3/18/2023,,0.00,0.00,0.00,,,[]
-1023,EQ ID 1023,High Precesion Stone Table,Machine Shop,623,"Certify the table according to Machine Shop specifications
-Note: Cornerstone Metrology Service has been certifying past couple of years)",Pending,3/18/2023,,0.00,0.00,0.00,,,[]
+*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",[],lubricate (weekly),4/20/2023
+45,EQ ID 45,Surface Grinder,Machine Shop,5662,Closed without Action,0.00,0.00,dd,,0.00,7/5/2023,Miguel Diaz - 07/05/23  7:44:43 AM: just done,[],lubricate (weekly),6/12/2023
+45,EQ ID 45,Surface Grinder,Machine Shop,6297,Closed and Completed,0.00,0.00,md,,0.00,9/20/2023,Miguel Diaz - 09/20/23  7:33:34 AM: Replaced drill,[],lubricate (weekly),8/5/2023
+45,EQ ID 45,Surface Grinder,Machine Shop,7297,Closed and Completed,0.00,0.20,md,,0.00,1/18/2024,Miguel Diaz - 01/17/24 11:20:56 AM: done,[],lubricate (weekly),10/20/2023
+45,EQ ID 45,Surface Grinder,Machine Shop,4915,Closed and Completed,0.00,0.20,md,,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:22:49 AM: Replaced both drills,[],Check motor (yearly),3/20/2024
+45,EQ ID 45,Surface Grinder,Machine Shop,10012,Closed and Completed,0.00,0.00,md,,0.00,5/9/2024,,[],lubricate (weekly),2/17/2024
+45,EQ ID 45,Surface Grinder,Machine Shop,11595,Closed and Completed,0.00,0.30,.,,0.00,8/14/2024,Miguel Diaz - 08/14/24  9:18:43 AM: Check oil and lubricate (weekly),[],lubricate (weekly),6/9/2024
+45,EQ ID 45,Surface Grinder,Machine Shop,12761,Closed and Completed,0.00,0.20,G Shijnobi,,0.00,3/12/2025,,[],lubricate (weekly),9/14/2024
+45,EQ ID 45,Surface Grinder,Machine Shop,11178,Closed and Completed,0.00,0.20,PU,,0.00,10/17/2025,Primo Uy - 10/17/25  7:23:40 AM: Done,[],Check motor (yearly),4/13/2025
+46,EQ ID 46,Vert. Band Saw,Machine Shop,32,Closed and Completed,0.00,0.20,md,,0.00,3/10/2023,,[],"Check bearings, belts, motor",3/18/2023
+46,EQ ID 46,Vert. Band Saw,Machine Shop,4914,Closed and Completed,0.00,0.30,md,,0.00,4/13/2024,Miguel Diaz - 04/13/24 10:23:33 AM: Replaced both drills,[],"Check bearings, belts, motor",3/20/2024
+46,EQ ID 46,Vert. Band Saw,Machine Shop,11181,Closed and Completed,0.00,0.20,PU,,0.00,10/16/2025,Primo Uy - 10/17/25  7:26:18 AM: Done,[],"Check bearings, belts, motor",4/13/2025
+49,EQ ID 49,Acu-rite lll,Machine Shop,33,Closed without Action,0.00,0.00,md,,0.00,3/10/2023,,[],Check alignment (yearly),3/18/2023
+49,EQ ID 49,Acu-rite lll,Machine Shop,4913,Closed and Completed,0.00,0.00,md,,0.00,7/20/2024,Miguel Diaz - 07/20/24 12:19:41 PM: we do not do this we dont have a means of tieing off safely,[],Check alignment (yearly),3/20/2024
+49,EQ ID 49,Acu-rite lll,Machine Shop,12466,Closed without Action,0.00,0.00,PU,,0.00,10/16/2025,,[],Check alignment (yearly),7/20/2025
+50,EQ ID 50,Acu-rite,Machine Shop,34,Closed without Action,0.00,0.00,md,,0.00,3/10/2023,,[],Check alignment (yearly),3/18/2023
+50,EQ ID 50,Acu-rite,Machine Shop,4912,Closed and Completed,0.00,0.00,md,,0.00,7/20/2024,Miguel Diaz - 07/20/24 12:19:50 PM: we do not do this we dont have a means of tieing off safely,[],Check alignment (yearly),3/20/2024
+50,EQ ID 50,Acu-rite,Machine Shop,12467,Closed and Completed,0.00,0.00,PU,,0.00,10/16/2025,Primo Uy - 10/17/25  7:28:33 AM: Done,[],Check alignment (yearly),7/20/2025
+109,EQ ID 109,Outside Micrometer,Machine Shop,96,Pending,0.00,0.00,,QA Technician,0.00,,,[],Calibrate,3/18/2023
+1022,EQ ID 1022,Mitutoyo Vertical Caliper,Machine Shop,622,Pending,0.00,0.00,,Outside Service,0.00,,,[],"Calibrate the caliper yearly
+Note: Cornerstone Metrology Service has been certifying it along with the High Precision Stone Table past couple of years)",3/18/2023
+1023,EQ ID 1023,High Precesion Stone Table,Machine Shop,623,Pending,0.00,0.00,,Outside Service,0.00,,,[],"Certify the table according to Machine Shop specifications
+Note: Cornerstone Metrology Service has been certifying past couple of years)",3/18/2023

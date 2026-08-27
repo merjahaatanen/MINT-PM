@@ -13,8 +13,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "",
-    "comments": "Sean Jennings - 06/05/26 10:21:36 AM:\u00a0Team please review.",
-    "attachments": []
+    "comments": "Sean Jennings - 06/05/26 10:21:36 AM: Team please review.",
+    "attachments": [],
+    "assigned_to": "Maintenance Mechanic"
   },
   {
     "equipment_id": "1211",
@@ -30,8 +31,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/18/2022",
-    "comments": "Miguel Diaz - 04/19/22  7:11:17 AM:\u00a0Lubed rollers",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/19/22  7:11:17 AM: Lubed rollers",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -47,8 +49,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/9/2022",
-    "comments": "Miguel Diaz - 12/09/22 12:06:50 PM:\u00a0lubed rollers",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/22 12:06:50 PM: lubed rollers",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -65,7 +68,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "2/6/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -81,8 +85,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/17/2023",
-    "comments": "Miguel Diaz - 03/20/23 12:58:07 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 03/20/23 12:58:07 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -98,8 +103,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/12/2023",
-    "comments": "Miguel Diaz - 05/12/23 11:32:40 AM:\u00a0Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/12/23 11:32:40 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -115,8 +121,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/5/2023",
-    "comments": "Miguel Diaz - 07/05/23  7:45:23 AM:\u00a0lubed rollers",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/05/23  7:45:23 AM: lubed rollers",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -132,8 +139,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/3/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:48:53 AM:\u00a0lubed rollers",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/03/23  6:48:53 AM: lubed rollers",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -149,8 +157,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/11/2023",
-    "comments": "Miguel Diaz - 09/11/23  8:32:55 AM:\u00a0gate closing properly",
-    "attachments": []
+    "comments": "Miguel Diaz - 09/11/23  8:32:55 AM: gate closing properly",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -166,8 +175,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/8/2023",
-    "comments": "Miguel Diaz - 11/08/23 12:57:07 PM:\u00a0lubed chain and rollers",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/08/23 12:57:07 PM: lubed chain and rollers",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -183,8 +193,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/2/2023",
-    "comments": "Miguel Diaz - 12/02/23  8:03:33 AM:\u00a0done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/02/23  8:03:33 AM: done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -200,8 +211,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/6/2024",
-    "comments": "Miguel Diaz - 01/09/24  8:36:09 AM:\u00a0Lubed rollers",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/09/24  8:36:09 AM: Lubed rollers",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -217,8 +229,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/16/2024",
-    "comments": "Miguel Diaz - 02/16/24  9:10:26 AM:\u00a0Lube rollers and chain",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/16/24  9:10:26 AM: Lube rollers and chain",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -234,8 +247,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/8/2024",
-    "comments": "Miguel Diaz - 04/08/24 11:54:06 AM:\u00a0cost is in",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/08/24 11:54:06 AM: cost is in",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -251,8 +265,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/9/2024",
-    "comments": "Miguel Diaz - 05/09/24  7:35:44 AM:\u00a0lubed rollers",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/09/24  7:35:44 AM: lubed rollers",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -268,8 +283,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/6/2024",
-    "comments": "Miguel Diaz - 06/06/24 11:05:44 AM:\u00a0lubed all moving parts",
-    "attachments": []
+    "comments": "Miguel Diaz - 06/06/24 11:05:44 AM: lubed all moving parts",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -285,8 +301,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/5/2024",
-    "comments": "Miguel Diaz - 07/15/24  7:59:26 AM:\u00a0lubed rollers top and bottom with WD-40",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/15/24  7:59:26 AM: lubed rollers top and bottom with WD-40",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -302,8 +319,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/10/2024",
-    "comments": "Miguel Diaz - 09/10/24  9:07:11 AM:\u00a0lubed rollers",
-    "attachments": []
+    "comments": "Miguel Diaz - 09/10/24  9:07:11 AM: lubed rollers",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -319,8 +337,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/11/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:57:04 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:57:04 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -336,8 +355,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/12/2024",
-    "comments": "Miguel Diaz - 01/08/25  9:19:22 AM:\u00a0lubed all moving parts",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/08/25  9:19:22 AM: lubed all moving parts",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -353,8 +373,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/7/2025",
-    "comments": "Miguel Diaz - 02/27/25 10:56:59 AM:\u00a0Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/27/25 10:56:59 AM: Lube rollers and chain if needed to prevent or remove the squeek the wheels make when dry .",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -370,8 +391,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/27/2025",
-    "comments": "Primo Uy - 11/18/25  7:23:24 AM:\u00a0Done. No lubrication needed for now",
-    "attachments": []
+    "comments": "Primo Uy - 11/18/25  7:23:24 AM: Done. No lubrication needed for now",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -388,7 +410,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1925",
@@ -404,8 +427,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/26/2022",
-    "comments": "Miguel Diaz - 04/27/22  7:54:28 AM:\u00a0Tech performed scheduled maint on 4-26-22",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/27/22  7:54:28 AM: Tech performed scheduled maint on 4-26-22",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -422,7 +446,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "2/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -438,8 +463,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/25/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:50:54 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/03/23  6:50:54 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -455,8 +481,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/10/2023",
-    "comments": "Miguel Diaz - 11/27/23 10:23:13 AM:\u00a0Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/27/23 10:23:13 AM: Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -472,8 +499,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/30/2024",
-    "comments": "Miguel Diaz - 02/16/24  9:11:08 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/16/24  9:11:08 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -489,8 +517,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/22/2024",
-    "comments": "Miguel Diaz - 04/09/24  9:32:53 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/09/24  9:32:53 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -506,8 +535,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/27/2024",
-    "comments": "Miguel Diaz - 06/06/24 11:05:13 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 06/06/24 11:05:13 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -523,8 +553,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/24/2024",
-    "comments": "Miguel Diaz - 07/20/24 12:21:58 PM:\u00a0Raymond tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/20/24 12:21:58 PM: Raymond tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -540,8 +571,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/20/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:55:44 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:55:44 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -557,8 +589,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/11/2025",
-    "comments": "Miguel Diaz - 02/27/25 11:11:00 AM:\u00a0Raymond tech performed scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/27/25 11:11:00 AM: Raymond tech performed scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2025",
@@ -574,8 +607,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/18/2023",
-    "comments": "Miguel Diaz - 03/20/23 12:58:37 PM:\u00a0greased available ramps",
-    "attachments": []
+    "comments": "Miguel Diaz - 03/20/23 12:58:37 PM: greased available ramps",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2025",
@@ -591,8 +625,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/11/2024",
-    "comments": "Miguel Diaz - 04/15/24  9:37:18 AM:\u00a0they greased three docks as the trucks are gone they will get to the others when time permits",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/15/24  9:37:18 AM: they greased three docks as the trucks are gone they will get to the others when time permits",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2025",
@@ -608,8 +643,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/15/2025",
-    "comments": "Primo Uy - 11/18/25  7:24:51 AM:\u00a0Done",
-    "attachments": []
+    "comments": "Primo Uy - 11/18/25  7:24:51 AM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -626,7 +662,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "10/1/2022",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -643,7 +680,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "10/1/2022",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -659,8 +697,9 @@
     "material_cost": "781.20",
     "downtime_hours": "0.00",
     "completed_datetime": "4/1/2023",
-    "comments": "Miguel Diaz - 04/12/23  7:51:02 AM:\u00a0done",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/12/23  7:51:02 AM: done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -676,8 +715,9 @@
     "material_cost": "194.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/1/2023",
-    "comments": "Miguel Diaz - 04/12/23  7:50:13 AM:\u00a0done",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/12/23  7:50:13 AM: done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -693,8 +733,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/8/2023",
-    "comments": "Miguel Diaz - 11/08/23 12:48:02 PM:\u00a0ANOTHER WORK ORDER IS ALREADY OPEN FOR THE SAME THING",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/08/23 12:48:02 PM: ANOTHER WORK ORDER IS ALREADY OPEN FOR THE SAME THING",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -710,8 +751,9 @@
     "material_cost": "260.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/11/2023",
-    "comments": "Miguel Diaz - 11/13/23  5:50:30 AM:\u00a0Replaced filters",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/13/23  5:50:30 AM: Replaced filters",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -727,8 +769,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/9/2024",
-    "comments": "Miguel Diaz - 05/09/24  7:36:29 AM:\u00a0double work order popped up closing this one",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/09/24  7:36:29 AM: double work order popped up closing this one",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -744,8 +787,9 @@
     "material_cost": "745.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/11/2024",
-    "comments": "Miguel Diaz - 05/11/24 10:24:30 AM:\u00a0Replaced filters",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/11/24 10:24:30 AM: Replaced filters",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -761,8 +805,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/27/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:58:22 PM:\u00a0double work order",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:58:22 PM: double work order",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -778,8 +823,9 @@
     "material_cost": "714.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/12/2024",
-    "comments": "Miguel Diaz - 12/09/24  1:19:27 PM:\u00a0Filters have been ordered",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24  1:19:27 PM: Filters have been ordered",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1527",
@@ -795,8 +841,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/6/2026",
-    "comments": "Sean Jennings - 06/05/26 10:23:00 AM:\u00a0Team please review.",
-    "attachments": []
+    "comments": "Sean Jennings - 06/05/26 10:23:00 AM: Team please review.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1528",
@@ -812,8 +859,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/1/2022",
-    "comments": "Miguel Diaz - 10/01/22  9:26:53 AM:\u00a0Replaced filters",
-    "attachments": []
+    "comments": "Miguel Diaz - 10/01/22  9:26:53 AM: Replaced filters",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1528",
@@ -829,8 +877,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/12/2023",
-    "comments": "Miguel Diaz - 04/12/23  7:50:36 AM:\u00a0double work order closing",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/12/23  7:50:36 AM: double work order closing",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1528",
@@ -846,8 +895,9 @@
     "material_cost": "400.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/11/2023",
-    "comments": "Miguel Diaz - 11/13/23  5:51:35 AM:\u00a0Replaced filters",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/13/23  5:51:35 AM: Replaced filters",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1528",
@@ -863,8 +913,9 @@
     "material_cost": "160.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/11/2024",
-    "comments": "Miguel Diaz - 05/11/24 10:24:14 AM:\u00a0Replaced filters",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/11/24 10:24:14 AM: Replaced filters",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1528",
@@ -880,8 +931,9 @@
     "material_cost": "179.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/12/2024",
-    "comments": "Miguel Diaz - 12/09/24  1:19:37 PM:\u00a0Filters have been ordered",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24  1:19:37 PM: Filters have been ordered",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1528",
@@ -897,8 +949,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/6/2026",
-    "comments": "Sean Jennings - 06/05/26 10:23:18 AM:\u00a0Team please review.",
-    "attachments": []
+    "comments": "Sean Jennings - 06/05/26 10:23:18 AM: Team please review.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -915,7 +968,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -931,8 +985,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/18/2022",
-    "comments": "Miguel Diaz - 05/18/22  2:11:56 PM:\u00a0Tech performed the schedule maintenance .\nOpen the attachment to view tech notes if needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/18/22  2:11:56 PM: Tech performed the schedule maintenance .\nOpen the attachment to view tech notes if needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -949,7 +1004,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "2/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -965,8 +1021,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:51:28 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/03/23  6:51:28 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -982,8 +1039,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/18/2023",
-    "comments": "Miguel Diaz - 09/25/23  7:53:09 AM:\u00a0Tech performed scheduled maintenance .Open attachment to view work order if needed .",
-    "attachments": []
+    "comments": "Miguel Diaz - 09/25/23  7:53:09 AM: Tech performed scheduled maintenance .Open attachment to view work order if needed .",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -999,8 +1057,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/22/2023",
-    "comments": "Miguel Diaz - 11/27/23 10:32:54 AM:\u00a0Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/27/23 10:32:54 AM: Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1016,8 +1075,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/31/2024",
-    "comments": "Miguel Diaz - 02/08/24  9:01:10 AM:\u00a0Tech  performed the scheduled maintenance open the attachment to view tech notes if needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/08/24  9:01:10 AM: Tech  performed the scheduled maintenance open the attachment to view tech notes if needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1033,8 +1093,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/22/2024",
-    "comments": "Miguel Diaz - 04/09/24  9:32:20 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/09/24  9:32:20 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1051,7 +1112,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "5/27/2024",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1067,8 +1129,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/11/2024",
-    "comments": "Miguel Diaz - 07/20/24 12:20:53 PM:\u00a0Raymond tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/20/24 12:20:53 PM: Raymond tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1084,8 +1147,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/20/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:53:45 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:53:45 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1101,8 +1165,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/11/2025",
-    "comments": "Miguel Diaz - 02/27/25 11:10:36 AM:\u00a0Raymond tech performed scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/27/25 11:10:36 AM: Raymond tech performed scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1119,7 +1184,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1135,8 +1201,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/18/2022",
-    "comments": "Miguel Diaz - 05/18/22  2:09:52 PM:\u00a0Tech performed the schedule maintenance .\nOpen the attachment to view tech notes if needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/18/22  2:09:52 PM: Tech performed the schedule maintenance .\nOpen the attachment to view tech notes if needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1152,8 +1219,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "12/9/2022",
-    "comments": "Miguel Diaz - 12/09/22 12:07:12 PM:\u00a0lubed rollers",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/22 12:07:12 PM: lubed rollers",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1170,7 +1238,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "2/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1187,7 +1256,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "2/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1203,8 +1273,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:51:51 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/03/23  6:51:51 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1220,8 +1291,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:53:07 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/03/23  6:53:07 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1237,8 +1309,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/18/2023",
-    "comments": "Miguel Diaz - 09/25/23  7:55:04 AM:\u00a0Tech performed scheduled maintenance .Open attachment to view work order if needed .",
-    "attachments": []
+    "comments": "Miguel Diaz - 09/25/23  7:55:04 AM: Tech performed scheduled maintenance .Open attachment to view work order if needed .",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1254,8 +1327,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/18/2023",
-    "comments": "Miguel Diaz - 09/25/23  7:53:44 AM:\u00a0Tech performed scheduled maintenance .Open attachment to view work order if needed .",
-    "attachments": []
+    "comments": "Miguel Diaz - 09/25/23  7:53:44 AM: Tech performed scheduled maintenance .Open attachment to view work order if needed .",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1271,8 +1345,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/20/2023",
-    "comments": "Miguel Diaz - 11/27/23 10:33:40 AM:\u00a0Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/27/23 10:33:40 AM: Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1288,8 +1363,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/27/2023",
-    "comments": "Miguel Diaz - 11/27/23 10:27:56 AM:\u00a0closing double work order is showing on the pm list",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/27/23 10:27:56 AM: closing double work order is showing on the pm list",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1305,8 +1381,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/17/2024",
-    "comments": "Miguel Diaz - 01/17/24  1:49:53 PM:\u00a0closing double work order pop up",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/17/24  1:49:53 PM: closing double work order pop up",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1322,8 +1399,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/29/2024",
-    "comments": "Miguel Diaz - 02/08/24  9:04:59 AM:\u00a0Tech  performed the scheduled maintenance open the attachment to view tech notes if needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/08/24  9:04:59 AM: Tech  performed the scheduled maintenance open the attachment to view tech notes if needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1339,8 +1417,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/1/2024",
-    "comments": "Miguel Diaz - 04/08/24 11:51:19 AM:\u00a01) Lubricate Slide,\n2) Check alignment of the side and back rails.\n3) Check sensors for proper read.\n4) Vac. out electrical cabinets.\n5) Check dust collection hose for proper operation.\n6) Inspect and clean fan filters.",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/08/24 11:51:19 AM: 1) Lubricate Slide,\n2) Check alignment of the side and back rails.\n3) Check sensors for proper read.\n4) Vac. out electrical cabinets.\n5) Check dust collection hose for proper operation.\n6) Inspect and clean fan filters.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1356,8 +1435,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/9/2024",
-    "comments": "Miguel Diaz - 04/09/24  9:31:56 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/09/24  9:31:56 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1373,8 +1453,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/27/2024",
-    "comments": "Miguel Diaz - 06/06/24 11:04:27 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 06/06/24 11:04:27 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1390,8 +1471,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/27/2024",
-    "comments": "Miguel Diaz - 06/06/24 11:04:06 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 06/06/24 11:04:06 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1407,8 +1489,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/11/2024",
-    "comments": "Miguel Diaz - 07/20/24 12:21:14 PM:\u00a0Raymond tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/20/24 12:21:14 PM: Raymond tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1424,8 +1507,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/20/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:55:23 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:55:23 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -1441,8 +1525,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/11/2025",
-    "comments": "Miguel Diaz - 02/27/25 11:09:49 AM:\u00a0Raymond tech performed scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/27/25 11:09:49 AM: Raymond tech performed scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1459,7 +1544,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1475,8 +1561,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "",
-    "comments": "Sean Jennings - 06/05/26 10:24:19 AM:\u00a0Team please review.",
-    "attachments": []
+    "comments": "Sean Jennings - 06/05/26 10:24:19 AM: Team please review.",
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "32",
@@ -1492,8 +1579,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/23/2022",
-    "comments": "Miguel Diaz - 05/23/22  1:31:45 PM:\u00a0Raymond tech performed the scheduled maintenance .\nOpen attachment to view tech notes if needed .",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/23/22  1:31:45 PM: Raymond tech performed the scheduled maintenance .\nOpen attachment to view tech notes if needed .",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1510,7 +1598,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "2/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1526,8 +1615,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:52:28 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/03/23  6:52:28 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1543,8 +1633,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/18/2023",
-    "comments": "Miguel Diaz - 09/25/23  7:54:25 AM:\u00a0Tech performed scheduled maintenance .Open attachment to view work order if needed .",
-    "attachments": []
+    "comments": "Miguel Diaz - 09/25/23  7:54:25 AM: Tech performed scheduled maintenance .Open attachment to view work order if needed .",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1560,8 +1651,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/10/2023",
-    "comments": "Miguel Diaz - 11/27/23 10:27:15 AM:\u00a0Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/27/23 10:27:15 AM: Raymond tech performed the scheduled maintenance Open attachment to view tech notes if needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1577,8 +1669,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/27/2023",
-    "comments": "Miguel Diaz - 11/27/23 10:28:27 AM:\u00a0closing double work order showing on the pm list",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/27/23 10:28:27 AM: closing double work order showing on the pm list",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1594,8 +1687,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/11/2024",
-    "comments": "Miguel Diaz - 01/17/24  1:50:37 PM:\u00a0Raymond tech performed the scheduled maintenance open attachment to view tech notes if needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/17/24  1:50:37 PM: Raymond tech performed the scheduled maintenance open attachment to view tech notes if needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1611,8 +1705,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/9/2024",
-    "comments": "Miguel Diaz - 04/09/24  9:31:32 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/09/24  9:31:32 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1628,8 +1723,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/27/2024",
-    "comments": "Miguel Diaz - 06/06/24 11:04:44 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 06/06/24 11:04:44 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1645,8 +1741,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/11/2024",
-    "comments": "Miguel Diaz - 07/20/24 12:21:33 PM:\u00a0Raymond tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/20/24 12:21:33 PM: Raymond tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1662,8 +1759,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/20/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:55:33 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:55:33 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1679,8 +1777,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/27/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:57:42 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:57:42 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -1696,8 +1795,9 @@
     "material_cost": "98.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/11/2025",
-    "comments": "Miguel Diaz - 02/27/25 11:10:14 AM:\u00a0Raymond tech performed scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/27/25 11:10:14 AM: Raymond tech performed scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1713,8 +1813,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "",
-    "comments": "Sean Jennings - 06/05/26 10:22:18 AM:\u00a0Team please review.",
-    "attachments": []
+    "comments": "Sean Jennings - 06/05/26 10:22:18 AM: Team please review.",
+    "attachments": [],
+    "assigned_to": "Technician"
   },
   {
     "equipment_id": "1167",
@@ -1731,7 +1832,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1167",
@@ -1747,8 +1849,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/1/2022",
-    "comments": "Miguel Diaz - 04/27/22  7:59:49 AM:\u00a0Tech was here a few weeks ago and performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/27/22  7:59:49 AM: Tech was here a few weeks ago and performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1764,8 +1867,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/28/2022",
-    "comments": "Miguel Diaz - 12/06/22  1:32:06 PM:\u00a0Checked function of cylinders and valves also check if damaged or leaks \n*Checked hoses and hose joints for leaks or damage \n*Cleaned or replace filter inserts if needed \n*Checked Operating pressure \n*Checked Limit switch for proper function \n*Cleaned light barriers with rag no solvents\n*Cleaned all sensors free of dust \n*Checked Vacuum and compressed air for supply and leaks \n*Checked seals for damage replace if necessary \n*Checked tooth belts for damage replace if worn \n*Check power cable chain for damage \n*Check guide rails Clean with cloth inspect for damage \n*Greased all ball rail guides lubricate with syringe until lubricant escapes .(Part#4-017-08-0073\n*Greased central lubrication of guide carriage use grease gun \n*Remove and clean filters from control use compressed air \n*Check both L brackets in the middle to be leveled if they are bent upwards level back down \n*Checked all blue collar bushings spray them with Teflon spray make sure all support arms are in place and retaining clips are in place .",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/06/22  1:32:06 PM: Checked function of cylinders and valves also check if damaged or leaks \n*Checked hoses and hose joints for leaks or damage \n*Cleaned or replace filter inserts if needed \n*Checked Operating pressure \n*Checked Limit switch for proper function \n*Cleaned light barriers with rag no solvents\n*Cleaned all sensors free of dust \n*Checked Vacuum and compressed air for supply and leaks \n*Checked seals for damage replace if necessary \n*Checked tooth belts for damage replace if worn \n*Check power cable chain for damage \n*Check guide rails Clean with cloth inspect for damage \n*Greased all ball rail guides lubricate with syringe until lubricant escapes .(Part#4-017-08-0073\n*Greased central lubrication of guide carriage use grease gun \n*Remove and clean filters from control use compressed air \n*Check both L brackets in the middle to be leveled if they are bent upwards level back down \n*Checked all blue collar bushings spray them with Teflon spray make sure all support arms are in place and retaining clips are in place .",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1782,7 +1886,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "1/23/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1798,8 +1903,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/3/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:53:47 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/03/23  6:53:47 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1815,8 +1921,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/12/2023",
-    "comments": "Miguel Diaz - 04/12/23  7:48:31 AM:\u00a0battery is new",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/12/23  7:48:31 AM: battery is new",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1832,8 +1939,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/8/2023",
-    "comments": "Miguel Diaz - 11/08/23 12:42:06 PM:\u00a0checked cutters they are clean will check if they need to be replaced",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/08/23 12:42:06 PM: checked cutters they are clean will check if they need to be replaced",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1849,8 +1957,9 @@
     "material_cost": "140.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/8/2024",
-    "comments": "Miguel Diaz - 01/09/24  8:34:42 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/09/24  8:34:42 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1866,8 +1975,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/8/2024",
-    "comments": "Miguel Diaz - 04/08/24 11:54:52 AM:\u00a0SCMH to perform Scheduled - PM Service -Planned Maintenance. ----",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/08/24 11:54:52 AM: SCMH to perform Scheduled - PM Service -Planned Maintenance. ----",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1883,8 +1993,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/9/2024",
-    "comments": "Miguel Diaz - 05/09/24  7:33:50 AM:\u00a0Harness is new  because the battery is new this is not needed at this time",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/09/24  7:33:50 AM: Harness is new  because the battery is new this is not needed at this time",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1901,7 +2012,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "5/27/2024",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1917,8 +2029,9 @@
     "material_cost": "140.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/29/2024",
-    "comments": "Miguel Diaz - 08/06/24  1:31:47 PM:\u00a0Equipment depot tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/06/24  1:31:47 PM: Equipment depot tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1934,8 +2047,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/4/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:56:03 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:56:03 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -1951,8 +2065,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/17/2025",
-    "comments": "Miguel Diaz - 02/27/25 11:11:33 AM:\u00a0tech performed scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/27/25 11:11:33 AM: tech performed scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -1969,7 +2084,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1169",
@@ -1985,8 +2101,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "",
-    "comments": "Sean Jennings - 06/05/26 10:22:31 AM:\u00a0Team please review.",
-    "attachments": []
+    "comments": "Sean Jennings - 06/05/26 10:22:31 AM: Team please review.",
+    "attachments": [],
+    "assigned_to": "Technician"
   },
   {
     "equipment_id": "1169",
@@ -2002,8 +2119,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/1/2022",
-    "comments": "Miguel Diaz - 04/27/22  8:00:17 AM:\u00a0Tech was here a few weeks ago and performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/27/22  8:00:17 AM: Tech was here a few weeks ago and performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2019,8 +2137,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/28/2022",
-    "comments": "Miguel Diaz - 12/06/22  1:32:37 PM:\u00a0Checked function of cylinders and valves also check if damaged or leaks \n*Checked hoses and hose joints for leaks or damage \n*Cleaned or replace filter inserts if needed \n*Checked Operating pressure \n*Checked Limit switch for proper function \n*Cleaned light barriers with rag no solvents\n*Cleaned all sensors free of dust \n*Checked Vacuum and compressed air for supply and leaks \n*Checked seals for damage replace if necessary \n*Checked tooth belts for damage replace if worn \n*Check power cable chain for damage \n*Check guide rails Clean with cloth inspect for damage \n*Greased all ball rail guides lubricate with syringe until lubricant escapes .(Part#4-017-08-0073\n*Greased central lubrication of guide carriage use grease gun \n*Remove and clean filters from control use compressed air \n*Check both L brackets in the middle to be leveled if they are bent upwards level back down \n*Checked all blue collar bushings spray them with Teflon spray make sure all support arms are in place and retaining clips are in place .",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/06/22  1:32:37 PM: Checked function of cylinders and valves also check if damaged or leaks \n*Checked hoses and hose joints for leaks or damage \n*Cleaned or replace filter inserts if needed \n*Checked Operating pressure \n*Checked Limit switch for proper function \n*Cleaned light barriers with rag no solvents\n*Cleaned all sensors free of dust \n*Checked Vacuum and compressed air for supply and leaks \n*Checked seals for damage replace if necessary \n*Checked tooth belts for damage replace if worn \n*Check power cable chain for damage \n*Check guide rails Clean with cloth inspect for damage \n*Greased all ball rail guides lubricate with syringe until lubricant escapes .(Part#4-017-08-0073\n*Greased central lubrication of guide carriage use grease gun \n*Remove and clean filters from control use compressed air \n*Check both L brackets in the middle to be leveled if they are bent upwards level back down \n*Checked all blue collar bushings spray them with Teflon spray make sure all support arms are in place and retaining clips are in place .",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2037,7 +2156,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "1/23/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2053,8 +2173,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/1/2023",
-    "comments": "Miguel Diaz - 04/12/23  7:49:10 AM:\u00a0done",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/12/23  7:49:10 AM: done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2070,8 +2191,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/3/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:54:39 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/03/23  6:54:39 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2087,8 +2209,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/8/2023",
-    "comments": "Miguel Diaz - 11/08/23 12:42:41 PM:\u00a0checked cutters they are clean will check if they need to be replaced",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/08/23 12:42:41 PM: checked cutters they are clean will check if they need to be replaced",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2104,8 +2227,9 @@
     "material_cost": "140.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/8/2024",
-    "comments": "Miguel Diaz - 01/09/24  8:35:13 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/09/24  8:35:13 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2121,8 +2245,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/8/2024",
-    "comments": "Miguel Diaz - 04/08/24 11:55:17 AM:\u00a0SCMH to perform Scheduled - PM Service -Planned Maintenance. ----",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/08/24 11:55:17 AM: SCMH to perform Scheduled - PM Service -Planned Maintenance. ----",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2138,8 +2263,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/9/2024",
-    "comments": "Miguel Diaz - 05/09/24  7:34:21 AM:\u00a0new battery harshness is still new service is not needed at this time",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/09/24  7:34:21 AM: new battery harshness is still new service is not needed at this time",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2155,8 +2281,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/27/2024",
-    "comments": "Miguel Diaz - 06/06/24 11:03:24 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 06/06/24 11:03:24 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2172,8 +2299,9 @@
     "material_cost": "140.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/29/2024",
-    "comments": "Miguel Diaz - 08/06/24  1:32:22 PM:\u00a0Equipment depot tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/06/24  1:32:22 PM: Equipment depot tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2189,8 +2317,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/4/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:56:26 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:56:26 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -2206,8 +2335,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/17/2025",
-    "comments": "Miguel Diaz - 02/27/25 11:12:05 AM:\u00a0 tech performed scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/27/25 11:12:05 AM:  tech performed scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2224,7 +2354,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1170",
@@ -2240,8 +2371,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "",
-    "comments": "Sean Jennings - 06/05/26 10:22:40 AM:\u00a0Team please review.",
-    "attachments": []
+    "comments": "Sean Jennings - 06/05/26 10:22:40 AM: Team please review.",
+    "attachments": [],
+    "assigned_to": "Technician"
   },
   {
     "equipment_id": "1170",
@@ -2257,8 +2389,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/1/2022",
-    "comments": "Miguel Diaz - 04/27/22  8:00:39 AM:\u00a0Tech was here a few weeks ago and performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/27/22  8:00:39 AM: Tech was here a few weeks ago and performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2274,8 +2407,9 @@
     "material_cost": "160.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/28/2022",
-    "comments": "Miguel Diaz - 12/06/22  1:33:08 PM:\u00a0Checked function of cylinders and valves also check if damaged or leaks \n*Checked hoses and hose joints for leaks or damage \n*Cleaned or replace filter inserts if needed \n*Checked Operating pressure \n*Checked Limit switch for proper function \n*Cleaned light barriers with rag no solvents\n*Cleaned all sensors free of dust \n*Checked Vacuum and compressed air for supply and leaks \n*Checked seals for damage replace if necessary \n*Checked tooth belts for damage replace if worn \n*Check power cable chain for damage \n*Check guide rails Clean with cloth inspect for damage \n*Greased all ball rail guides lubricate with syringe until lubricant escapes .(Part#4-017-08-0073\n*Greased central lubrication of guide carriage use grease gun \n*Remove and clean filters from control use compressed air \n*Check both L brackets in the middle to be leveled if they are bent upwards level back down \n*Checked all blue collar bushings spray them with Teflon spray make sure all support arms are in place and retaining clips are in place .",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/06/22  1:33:08 PM: Checked function of cylinders and valves also check if damaged or leaks \n*Checked hoses and hose joints for leaks or damage \n*Cleaned or replace filter inserts if needed \n*Checked Operating pressure \n*Checked Limit switch for proper function \n*Cleaned light barriers with rag no solvents\n*Cleaned all sensors free of dust \n*Checked Vacuum and compressed air for supply and leaks \n*Checked seals for damage replace if necessary \n*Checked tooth belts for damage replace if worn \n*Check power cable chain for damage \n*Check guide rails Clean with cloth inspect for damage \n*Greased all ball rail guides lubricate with syringe until lubricant escapes .(Part#4-017-08-0073\n*Greased central lubrication of guide carriage use grease gun \n*Remove and clean filters from control use compressed air \n*Check both L brackets in the middle to be leveled if they are bent upwards level back down \n*Checked all blue collar bushings spray them with Teflon spray make sure all support arms are in place and retaining clips are in place .",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2292,7 +2426,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "1/23/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2308,8 +2443,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/3/2023",
-    "comments": "Miguel Diaz - 08/03/23  6:54:16 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/03/23  6:54:16 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2325,8 +2461,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/12/2023",
-    "comments": "Miguel Diaz - 04/12/23  7:48:50 AM:\u00a0battery is new not needed",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/12/23  7:48:50 AM: battery is new not needed",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2342,8 +2479,9 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/8/2023",
-    "comments": "Miguel Diaz - 11/08/23 12:42:24 PM:\u00a0checked cutters they are clean will check if they need to be replaced",
-    "attachments": []
+    "comments": "Miguel Diaz - 11/08/23 12:42:24 PM: checked cutters they are clean will check if they need to be replaced",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2359,8 +2497,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/8/2024",
-    "comments": "Miguel Diaz - 01/09/24  8:35:45 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/09/24  8:35:45 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2376,8 +2515,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/8/2024",
-    "comments": "Miguel Diaz - 04/08/24 11:55:40 AM:\u00a0SCMH to perform Scheduled - PM Service -Planned Maintenance. ----",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/08/24 11:55:40 AM: SCMH to perform Scheduled - PM Service -Planned Maintenance. ----",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2393,8 +2533,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/4/2024",
-    "comments": "Miguel Diaz - 05/09/24  7:35:19 AM:\u00a0Cleaned hardness removed and placed in bucket of hot water",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/09/24  7:35:19 AM: Cleaned hardness removed and placed in bucket of hot water",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2410,8 +2551,9 @@
     "material_cost": "140.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/27/2024",
-    "comments": "Miguel Diaz - 06/06/24 11:03:45 AM:\u00a0Tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 06/06/24 11:03:45 AM: Tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2427,8 +2569,9 @@
     "material_cost": "140.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/29/2024",
-    "comments": "Miguel Diaz - 08/06/24  1:32:49 PM:\u00a0Equipment depot tech performed the scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/06/24  1:32:49 PM: Equipment depot tech performed the scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2444,8 +2587,9 @@
     "material_cost": "120.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/4/2024",
-    "comments": "Miguel Diaz - 12/09/24 12:56:50 PM:\u00a0Done",
-    "attachments": []
+    "comments": "Miguel Diaz - 12/09/24 12:56:50 PM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -2461,7 +2605,8 @@
     "material_cost": "150.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/17/2025",
-    "comments": "Miguel Diaz - 02/27/25 11:12:38 AM:\u00a0Raymond tech performed scheduled maintenance",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/27/25 11:12:38 AM: Raymond tech performed scheduled maintenance",
+    "attachments": [],
+    "assigned_to": ""
   }
 ]

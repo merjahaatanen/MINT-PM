@@ -15,7 +15,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/25/2026 12:00 AM",
     "comments": "Primo Uy - 06/25/26 12:05:29 PM: Reset CB and we will leave the two MW run as is and see if it trip again.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5390",
@@ -33,7 +34,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/10/2026 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5390",
@@ -51,7 +53,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/18/2026 12:00 AM",
     "comments": "Primo Uy - 06/18/26 11:37:13 AM: Done. Replaced L hand arm padding.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "36",
@@ -69,7 +72,8 @@
     "downtime_hours": "0.1",
     "completed_datetime": "04/08/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/08/22  2:15:16 PM: Shut off main air compressor and turned on the back up .\nSuggest now that its hot we need to turn on the Fan so it can help cool off the air compressor on hot sunny days like today .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "36",
@@ -92,7 +96,8 @@
         "name": "Air compressor 75 hp PO REC LA00041681.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/110?guid=e17e3213-ad42-4155-8ea2-6909b46b7b36"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "36",
@@ -110,7 +115,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/13/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/13/23  9:31:36 AM: Found oil filter leaking immediately turned compressor off and checked why its leaking I found the filter loose tighten filter by hand then used a belt to turn it over tight .The oil leaked down to a pan that Bart had added years ago the pan is full of oil .Also the oil level is at the low mark but on the green .I will bring this up to the tech when he is here this Monday 1-23-23 @ 8am .\nMax and I have  removed the oil from the pan . | Miguel Diaz - 01/13/23  9:18:44 AM: Found oil filter leaking immediately turned compressor off and checked why its leaking I found the filter loose tighten filter by hand then used a belt to turn it over tight  .The oil leaked down to a pan that Bart had added years ago the pan is full of oil .Also the oil level is at the  low mark but on the green .I will bring this up to the tech when he is here this Monday 1-23-23 @ 8am .We will remove the oil from the pan .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "36",
@@ -133,7 +139,8 @@
         "name": "Main air compressor change seperator repairs quote 12-28-22.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/187?guid=ff5fda27-26e5-4067-8219-caa36b825653"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "36",
@@ -151,7 +158,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 09/17/24  8:33:12 AM: Maint fixed the issues in house but wanted a second opinion",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "36",
@@ -169,7 +177,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/01/2025 01:30 PM",
     "comments": "Maksim Bushka - 04/01/25  1:28:23 PM: Added 1.5-gallon oil",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "36",
@@ -187,7 +196,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/07/2025 02:30 AM",
     "comments": "Gabriel Shinobi - 04/08/25  1:16:10 PM: Ingersoll Rand tech performed major service. Completed.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "36",
@@ -226,7 +236,8 @@
         "name": "25.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/788?guid=a5e73efa-bd68-4a38-b9ea-6b143e933d12"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5377",
@@ -244,7 +255,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/18/2026 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5240",
@@ -262,7 +274,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/21/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/21/23 11:04:16 AM: Gardner helped us find the valve for the 2 nd floor patio which is the first box closest to the smoking benches he advised the solenoid was open he manually close the valve opened it then adjusted the solenoid and the water stopped leaking .Basically it was out of adjustment .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5239",
@@ -280,7 +293,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/19/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/20/23 11:53:54 AM: Cost is in to close out this work order | Miguel Diaz - 09/20/23  9:48:13 AM: Acco came by yesterday and replaced the ball valve and fittings .Valve is back open and water is flowing to the VAV work order will stay open till final cost is in .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5239",
@@ -298,7 +312,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/02/2024 12:00 AM",
     "comments": "Miguel Diaz - 09/17/24  8:30:31 AM: New battery has been put in the lift comes with 5 year Warranty .\nModel 24-85n-19 Make IBE S/N 5519 | Miguel Diaz - 05/08/24  6:05:43 AM: Acco tech was here yesterday and found that a union was loose .When he closed the valve manually it started leaking .After tightening the union the leak stopped .Next time if we have a leaking VAV we need to close the valve watch where the leak is coming from And tighten the hardware before calling ACCO .Work order will stay open till final cost is in . | Miguel Diaz - 05/04/24  7:20:38 AM: A bucket and signs have been placed under the drip Acco will be here Tuesday to look at it .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5212",
@@ -316,7 +331,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/12/2023 12:00 AM",
     "comments": "Miguel Diaz - 05/12/23 11:25:21 AM: Final cost is in . | Miguel Diaz - 04/06/23  7:38:35 AM: Looked into this issue found exhaust fan #6 not working smoothly almost as if the bearings at worn out we add grease and its still the same .\nCalled in ACCO for service tech Chris advised he needs to replace several parts Motor was replaced along with the shaft , bearings and springs .Unit is running smoothly now work order will stay open till final cost is in .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5185",
@@ -343,7 +359,8 @@
         "name": "rear yard 1.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/163?guid=cb4f4627-da0a-4fd7-bcfb-1e82a330c514"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5185",
@@ -458,7 +475,8 @@
         "name": "re23.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/338?guid=837c44df-598d-4f18-9a15-c6936e613d42"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5185",
@@ -476,7 +494,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/22/2024 12:00 AM",
     "comments": "Miguel Diaz - 11/22/24  1:44:19 PM: Used pressure washer to clean outside by the shipping exit  also the rain water sample location SP1",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -494,7 +513,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/18/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/18/22 10:17:08 AM: Found  one controller box full with water removed water with cup and found it off turned controller  on for station 2 and found 5 leaks all over fixed all leaks by placing couplings .Watered station 2 for 30 minutes .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -512,7 +532,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/23/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/23/22  1:45:34 PM: Troubleshoot  for several days off and on and found the remote control valve was leaking water from the housing gasket .Tighten all hardware leak stopped .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -530,7 +551,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/29/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/29/22  8:29:19 AM: Found nozzle to this bubbler defective .Gardner's have closed this nozzle because too much water comes out this one nozzle replaced it and closed it off and directed any water to the palm tree .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -548,7 +570,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/30/2022 12:00 AM",
     "comments": "Miguel Diaz - 09/30/22 11:11:46 AM: Troubleshoot and tested all solenoids valves MV has a short and the rest 1-12 are all ok .Ordered replacement solenoids assembly from rainbird.com Part # SOLASSG4 (236239) and replace it full system is back ON.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -566,7 +589,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/11/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/11/23  9:17:11 AM: Found station 5 solenoid and replaced it with part # SOLASSG4 /Rain bird .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -584,7 +608,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/11/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/11/23  9:20:50 AM: Replaced ET WATER Controller modem .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -602,7 +627,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/25/2023 12:00 AM",
     "comments": "Miguel Diaz - 07/25/23 12:56:16 PM: Purchased a few 6 '' fixed sprinkler heads @Homedepot  Maxed replaced one station/Bubbler on station 4  and repaired two leaks on station 15 close the hart truck entrance .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -625,7 +651,8 @@
         "name": "landscape valve replacement 11-21-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/468?guid=a4124e6b-dccd-422e-8292-f2bb2aa8985b"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -643,7 +670,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/22/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/22/24  8:54:43 AM: Troubleshoot and found that the irrigation valve had a loose anti siphon screw after tightening it up the water stopped coming out the bubblers.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -661,7 +689,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/13/2024 12:00 AM",
     "comments": "Primo Uy - 08/13/24  2:09:43 PM: We replaced the sprinkler head, No more leak.\nNote: Need to dig out some earth to check the pipe. | Miguel Diaz - 08/13/24 11:49:59 AM: Tighten all hardware nuts on the bubblers and will check again tomorrow ,But the bubbler across has a broken pipe Max is working on it today . | Miguel Diaz - 08/13/24  9:55:03 AM: Location is on the same side the smoking area is. I found 3 boxes full of water removed water then turned on stations 5 then 6 and no water leaks will troubleshoot more when time permits .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5165",
@@ -679,7 +708,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/25/2025 12:00 AM",
     "comments": "Miguel Diaz - 02/25/25  1:18:24 PM: Turned on valve and did a 5 min cycle for all stations .Found two areas leaking out the sprinkler head replaced sprinkler heads .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2133",
@@ -702,7 +732,8 @@
         "name": "Fire alarm panel low fuel alarm  5-31-23.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/284?guid=34e573f3-d563-4373-9271-773633a2b3da"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2133",
@@ -720,7 +751,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/15/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/15/23 10:06:54 AM: When i came in i knew this alone does not fix the issue the smoke detector still has to get cleaned .I do know we just had the elevator in the parking garage worked on when they replaced the governor rope so that is what tripped the smoke alarm the dust from the workers got the smoke detector dirty therefore  tripping the alarm .I replaced the smoke detector this morning along with resetting the elevator from the first floor using the keys from the room next to the fire alarm panel .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2133",
@@ -743,7 +775,8 @@
         "name": "Fire riser model replacement  2023 invoice _Los_Angeles_Detection_Systems_Inc.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/450?guid=cede0d4f-0bc0-4a22-8b92-d36cd8d8aa73"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2133",
@@ -761,7 +794,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/23/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/23/23  9:16:51 AM: When i saw the message i called the center station and placed zone 11 on test till i can troubleshoot the next day  .Today I was I able to locate the alarm in front of the elevator door  by removing the smoke alarm and having max at the fire alarm panel and having him watch what  alarm pops up  when i remove it if its the same message zone or not since it was what we been getting then that's the one that needs cleaning or replacement .Removed smoke alarm and cleaned it .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2133",
@@ -779,7 +813,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/28/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/29/23  7:34:01 AM: Replaced QTY 2 MODEL PS-127F1 \nReplaced QTY 4 MODEL PS-12180F2",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2133",
@@ -810,7 +845,8 @@
         "name": "sk3.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/426?guid=0393e1bd-d296-4f76-8f35-f0ba2cd0a5ff"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2133",
@@ -828,7 +864,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/07/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/07/24  7:58:46 AM: This was one hour before my shift had to open the building and deactivate the security alarm on both floors before looking at the fire alarm .Fire alarm panel advised smoke (photo) duct 1-1 .I Silenced it and reset the alarm I then called the alarm company to advise that the alarm was a false alarm and to notify the fire department not to come out .Placed fire alarm on test then Located AC 1-1 smoke sensor removed  it and cleaned it internally .Cleared  test system back to normal .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2136",
@@ -846,7 +883,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/14/2022 12:00 AM",
     "comments": "Miguel Diaz - 09/14/22  7:32:37 AM: After troubleshooting today i found 2 wires have been cut this could not have happened accidently it looks more like intentional .Either way i found the problem kart is working again .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1926",
@@ -864,7 +902,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/27/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/27/22  8:21:05 AM: Replaced both door weatherstrip ,hollow bulb insert 8 ft l part 52WZ67",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1926",
@@ -882,7 +921,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/30/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/30/24  8:58:17 AM: Ordered part from Access hardware the part is from CRL Laurence model ESK2SDBS .Its been replaced  .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1943",
@@ -900,7 +940,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/03/2024 02:00 PM",
     "comments": "Maksim Bushka - 01/03/24  3:10:38 PM: Replaced the orange belt and glued.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1976",
@@ -918,7 +959,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/16/2022 12:00 PM",
     "comments": "Nicholas Martinez - 06/16/22 12:26:30 PM: Screws that held toilet seat in place corroded and broke apart. Replaced old parts with new parts.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1976",
@@ -936,7 +978,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/22/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/22/22  9:33:03 AM: Replaced O-ring and aligned hardware unit stops leaking",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1976",
@@ -959,7 +1002,8 @@
         "name": "toilet flush wave.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/572?guid=3766a821-4c82-4d21-9e48-e7ce36d38585"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "7",
@@ -982,7 +1026,8 @@
         "name": "toyota.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/97?guid=33b6a56c-3d2e-44c1-b6c0-fc3d65b7b001"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "11",
@@ -1000,7 +1045,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/29/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/29/22 11:48:30 AM: Troubleshoot unit found motor for the pump with the issue removed motor from the unit disassemble and found both bearings in bad shape with bearings gone .Replaced bearings and re-assemble .Units is back up and running .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1452",
@@ -1018,7 +1064,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/02/2022 11:00 AM",
     "comments": "Nicholas Martinez - 08/02/22 11:59:43 AM: All fire extinguisher tags numbered and updated.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1882",
@@ -1036,7 +1083,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/08/2026 12:00 PM",
     "comments": "Maksim Bushka - 04/08/26 12:23:13 PM: Reseat the button on solenoid box under the sink.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1515",
@@ -1054,7 +1102,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/22/2022 11:30 AM",
     "comments": "Nicholas Martinez - 08/23/22  4:43:09 PM: Taken cared of.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1515",
@@ -1072,7 +1121,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/31/2022 09:30 AM",
     "comments": "Nicholas Martinez - 09/01/22 11:22:08 AM: I put air in the tire and did an inspection, but found no nails or any signs of a puncture on the tire. we'll have to keep an eye on the back passenger tire to determine if there's a faulty sensor or unknown issue causing this as this is the 2nd time the same tire needed to be air filled in a short amount of time.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1515",
@@ -1090,7 +1140,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/20/2022 12:00 AM",
     "comments": "Primo Uy - 09/20/22  8:34:59 AM: Use a portable compressor to increase the air tire pressure from 14 to 27 psi. Done.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1515",
@@ -1108,7 +1159,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/21/2022 12:00 AM",
     "comments": "Primo Uy - 09/21/22  8:30:41 AM: Start the car. Set up air to 31 PSI and the warning come off.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1515",
@@ -1126,7 +1178,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/31/2023 12:00 AM",
     "comments": "Primo Uy - 08/31/23  9:51:12 AM: We add air and find out that the rim was badly bend where the tire stem located. This is where the leak coming from. Need to change replace the rim asap.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1523",
@@ -1144,7 +1197,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/28/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/29/23  7:38:08 AM: Flow switch was replaced yesterday",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1594",
@@ -1162,7 +1216,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/23/2024 01:30 PM",
     "comments": "Maksim Bushka - 04/23/24  1:37:23 PM: Replaced all 3 filters under the sink. | Miguel Diaz - 04/22/24  1:47:14 PM: Found first filter leaking water a new set of filters(3) have been ordered from Grainger they are arriving tomorrow .\nOrdered QTY 2 Part #31XC11 \nOrdered QTY 1 Part# 5WFG2",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1607",
@@ -1180,7 +1235,8 @@
     "downtime_hours": "18",
     "completed_datetime": "04/08/2022 08:00 AM",
     "comments": "Miguel Diaz - 04/06/22  7:25:48 AM: Ordered replacement gear for the machine Bart is working on it now .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1607",
@@ -1198,7 +1254,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/09/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/09/22  1:37:49 PM: Blow out fan and cooling fins from the unit .Its getting more dust than usual due to the open door .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1607",
@@ -1216,7 +1273,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/01/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/01/24  9:16:33 AM: Ordered and Replaced both .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1607",
@@ -1234,7 +1292,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/10/2025 12:00 AM",
     "comments": "Primo Uy - 07/11/25  2:17:42 PM: Done. Unclogged the Drainage on the tray. Water is now draining properly.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1608",
@@ -1252,7 +1311,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/13/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/13/22 11:27:23 AM: Un-clogged drain and wiped pan free of floaters .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1608",
@@ -1275,7 +1335,8 @@
         "name": "ice machine dump solenoid 9-17-22.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/109?guid=fc936a23-4bba-4b32-a1ee-8a399e895c62"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1608",
@@ -1293,7 +1354,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/26/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/26/23 11:43:32 AM: Tilted the ice machine by 1/8  to get the water from the ice shute to drain out the back from inside ice bucket per tech support .\nNo dripping water .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1608",
@@ -1311,7 +1373,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/28/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/28/23  8:31:28 AM: NEW gear box and motor has been replaced  ,Drip pan and water sensor .\nIce machine has been placed back in the lunch room and is working properly . | Miguel Diaz - 09/15/23 11:38:01 AM: Checked the ice machine found it  louder than usual found noise coming from the motor replaced the motor noise was still present .Ordered replacement gear reducer and motor part # A33220-021 115v from parts town part will arrive weds 9-20-23 .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1609",
@@ -1329,7 +1392,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/16/2023 08:00 AM",
     "comments": "Maksim Bushka - 03/16/23  9:10:41 AM: Adjusted the water feeling valve.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1609",
@@ -1347,7 +1411,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/31/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/31/24  8:15:34 AM: Ordered and replaced both drain and cover .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1609",
@@ -1365,7 +1430,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/10/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/12/24  8:12:21 AM: Did an internal parts cleaning using Scotsman scale remover over the weekend this should help .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1609",
@@ -1383,7 +1449,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/09/2026 12:00 AM",
     "comments": "Gabriel Shinobi - 04/15/26  2:54:50 PM: icemaker working normally, tech cleaned condenser lines | Sean Jennings - 04/08/26  7:34:11 AM: This is still under warranty so we called an authorized technician to troubleshoot.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1609",
@@ -1401,7 +1468,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/03/2026 09:00 AM",
     "comments": "Gabriel Shinobi - 06/04/26  7:10:12 AM: speed sensor swapped, currently working normally | Sean Jennings - 05/07/26  7:11:37 AM: Tech came out and needed to order parts. Pending parts arriving",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1609",
@@ -1419,7 +1487,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/03/2026 09:30 AM",
     "comments": "Sean Jennings - 07/27/26 11:56:45 AM: Sent a video of the icing over to the tech on 7/24/2026. | Sean Jennings - 06/22/26  9:13:14 AM: Waiting for tech to receive a new run capacitor | Gabriel Shinobi - 06/04/26  7:10:54 AM: speed sensor swapped, currently working normally | Sean Jennings - 05/13/26  8:59:52 AM: Hello Colin. We are actively working on fixing this icemaker. It most recently went down on May 4th and we had a technician out of May 6th. This icemaker is still under warranty so the tech ordered new parts, which came in on May 8th. The tech replaced the parts but the issue remained. More parts were ordered and we are now waiting on those to arrive. Thank you",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Maintenance"
   },
   {
     "equipment_id": "1609",
@@ -1437,7 +1506,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/03/2026 09:30 AM",
     "comments": "Gabriel Shinobi - 06/04/26  7:11:21 AM: speed sensor swapped, currently working normally | Sean Jennings - 05/18/26 10:32:10 AM: They will be here today (5/18) to take a look at it | Sean Jennings - 05/18/26 10:13:11 AM: Called Vantage Air to come back out. (818) 885-1800",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1615",
@@ -1455,7 +1525,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/19/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/16/24  6:40:49 AM: Cost is in to close out work order | Miguel Diaz - 07/23/24  8:54:08 AM: Anderson Plumbing was brought in for service they were able to un-clogg the urinal .\nWork order will stay open till final cost is in . | Miguel Diaz - 07/19/24 11:18:55 AM: Joseph removed the cartridge and the water was still high after using the plunger it does not go down i tried doing the same i also used a snake but it does not go in past the cartridge housing .Anderson plumbing has been called in for service they will be here today between 1-4 pm",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1618",
@@ -1473,7 +1544,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/19/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/19/22  8:20:31 AM: Removed and replaced storm drain boom with outdoor sorbent for storm water management  3 x 96 long from Mc master part # 3358N13 Need qty  1",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1619",
@@ -1491,7 +1563,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/19/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/19/22  8:19:59 AM: Removed and replaced storm drain boom with outdoor sorbent for storm water management  3 x 96 long from Mc master part # 3358N13 Need qty  2",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1620",
@@ -1509,7 +1582,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/19/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/19/22  8:19:25 AM: Removed and replaced storm drain boom with outdoor sorbent for storm water management  3 x 96 long from Mc master part # 3358N13 Need qty  2",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1698",
@@ -1527,7 +1601,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/04/2022 08:30 AM",
     "comments": "Barton Lea - 05/04/22  9:13:01 AM: Replaced lite with LED kit.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1699",
@@ -1550,7 +1625,8 @@
         "name": "Driver man door lights.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/66?guid=05e25101-1b8f-4af9-91ff-14e14c2e5c82"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1701",
@@ -1568,7 +1644,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/14/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/14/22  1:50:20 PM: Troubleshoot and found bad driver.\nReplaced core and coil ballast kit part#71A5792-001D\n1-250W M138/153 METAL HALIDE",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1701",
@@ -1586,7 +1663,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/04/2024 12:00 AM",
     "comments": "Miguel Diaz - 03/05/24 11:56:23 AM: Replaced bulb",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1802",
@@ -1604,7 +1682,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/26/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/26/22  3:17:16 PM: No cost was provided from the vendor guess we did not get charged | Miguel Diaz - 04/06/22  7:35:56 AM: Tech came in and are now fixing the  8 panels they found 2 cracked and are replacing them they are using through bolts with nuts instead of screws .All have been repaired work order will stay open till final cost is in .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1802",
@@ -1622,7 +1701,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/29/2025 12:00 AM",
     "comments": "Primo Uy - 08/29/25  8:27:04 AM: Follow the standard reset, turn off AC/DC switch. Wait 5-10 min and turn the power back on. DC/AC. Wait for while the solar panel resetting. Error should clear up. Reset was successful. Solar panel system is back online.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1802",
@@ -1640,7 +1720,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/04/2025 12:00 AM",
     "comments": "Primo Uy - 09/04/25  8:41:09 AM: I have to reset the solar power system. Turn Off the AC first then the DC second. Turn back the DC fist and then the AC after 20 mins. Let the system reload (green light should be flashing) and while system it does the recycling step. wait another 5 mins. the red light should disappear, and green light stay solid, display should have at least 29KW in display. Reset was successful.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1658,7 +1739,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/09/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/09/22  1:40:02 PM: Assembled stand up tray and place in the office as requested .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1676,7 +1758,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/19/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/19/22  2:41:57 PM: Fountain was starving for water making a bang noise when it couldn't keep up valve was almost closed adjusted valve machine is working properly .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1694,7 +1777,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/30/2022 12:00 AM",
     "comments": "Miguel Diaz - 05/02/22  8:23:35 AM: Each LED Light needed a driver replaced .\nReplaced 3 drivers all lights are back up . | Miguel Diaz - 04/28/22 11:18:51 AM: Lights are LED's we have had this issue before drivers need to get replaced when no one is here Preferably on a Saturday .Working this Saturday to replace the 3 drivers .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1712,7 +1796,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/30/2022 12:00 AM",
     "comments": "Miguel Diaz - 05/02/22  8:25:17 AM: Replaced bulb and nothing replaced driver this morning light is back ON",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1730,7 +1815,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/03/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/03/22  9:03:04 AM: Replaced dome \nPart # 60008489   \n  36\" HALF DOME SAFETY/SECURITY MIRRORS",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1748,7 +1834,8 @@
     "downtime_hours": "20",
     "completed_datetime": "06/27/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/27/22 12:33:26 PM: Removed graffiti using pressure washer and Bobrick graffiti remover with out the graffiti remover it wouldn't have came off .We are all out of graffiti remover .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1766,7 +1853,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/11/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/11/22  9:37:19 AM: Controller display says Fault flow rate underflow walked the grounds and found 2 areas from the irrigation lined ripped for station 1 which was making the system go into fault repaired both by adding barbed couplings currently controller is going though all stations watering all green space .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1784,7 +1872,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/22/2022 12:00 AM",
     "comments": "Primo Uy - 07/22/22  1:09:16 PM: Replace the switch for the second time. Its working now. | Miguel Diaz - 07/20/22 11:56:24 AM: Replacement switches has been ordered as of yesterday",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1802,7 +1891,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/01/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/01/22 10:30:38 AM: Replaced ripped hoses",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1820,7 +1910,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/04/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/04/22  9:57:47 AM: Replaced water filter",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1838,7 +1929,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/05/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/05/22  1:28:12 PM: Ordered 3 bollards from U line part # H-9231Y.\nBollards arrived today we cut them to size and replace them outside .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1856,7 +1948,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/22/2022 12:00 AM",
     "comments": "Miguel Diaz - 09/22/22  9:41:20 AM: Repaired pipe removed bad section and  added a new piece of pipe and soldered it .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1874,7 +1967,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/15/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/15/22 12:28:17 PM: Aligned both shades cannot fix the wrinkle in them",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1892,7 +1986,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/10/2022 12:00 AM",
     "comments": "Miguel Diaz - 11/10/22  9:22:46 AM: Mounted whiteboard on the wall .Primo helped with putting it on the hangers .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1910,7 +2005,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/14/2022 12:00 AM",
     "comments": "Maksim Bushka - 11/14/22 12:47:16 PM: Clean up the camera and use silicone",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1928,7 +2024,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/14/2022 12:00 AM",
     "comments": "Maksim Bushka - 11/14/22 12:53:42 PM: Put back the cover and use silicone",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1946,7 +2043,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/14/2022 12:00 AM",
     "comments": "Maksim Bushka - 11/14/22  1:01:10 PM: Removed the light cover ,clean the light fixture inside. Replaced 2 missing screws and tighten up the cover",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1964,7 +2062,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/19/2022 12:00 AM",
     "comments": "Miguel Diaz - 11/19/22  2:41:02 PM: Removed electrical cables from old oven breakers for wires  2, 4, 6, 8  ,20 from panel L4B.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -1982,7 +2081,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/19/2022 12:00 AM",
     "comments": "Miguel Diaz - 11/19/22  2:43:58 PM: Removed and Replaced all TPF floor tape and added tape to shipping department working area .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2000,7 +2100,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/19/2022 12:00 AM",
     "comments": "Miguel Diaz - 12/19/22  7:29:20 AM: Replaced bulbs",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2018,7 +2119,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/04/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/04/23  9:57:52 AM: Disassemble and assemble handle fixed stuck latch",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2036,7 +2138,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/05/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/05/23 11:48:36 AM: Found loose bolt sticking out someone force it shut twisting the pin making it not close properly .\nPartitions is using an obsolete parts we don't have any in stock .Grab a spare from test lab they advised they don't have spares to give .Restroom does have at least 10 if needed in the future",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2054,7 +2157,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/06/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/06/23  7:11:08 AM: Troubleshoot checked each connection one by one till i  found one side of the loop disconnected that one line feeds 6 tables .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2072,7 +2176,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/12/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/12/23 11:28:39 AM: Closing this work order since we have another open work order for all the leaks we had . | Miguel Diaz - 01/05/23  7:58:45 AM: Looks like a hole was poked to let the water out .Max and Primo picked up the water this morning and placed an out of order sign on the door .\nWill follow up when the rain stops .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2090,7 +2195,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/18/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/18/23  9:40:35 AM: Re-Mount Exit light back on 4 s box used washer to keep it in place .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2108,7 +2214,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/20/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/20/23 11:29:16 AM: Drilled and mounted the brackets to put up the white board in the office as requested .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2126,7 +2233,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/24/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/24/23  8:49:27 AM: Troubleshoot found irrigation box full of water which means the water is running non-stop  due to a solenoid stuck Open .Replaced solenoid assembly part # SOLASSG4 .Leak stopped",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2169,7 +2277,8 @@
         "name": "AAA roof repairs on 1-31-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/221?guid=81a626bc-ebec-437e-aa2a-f1a519227cbf"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2187,7 +2296,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/08/2023 12:00 AM",
     "comments": "Miguel Diaz - 02/08/23  7:39:37 AM: Replaced bulb yesterday and nothing this morning i replaced the driver light is back on .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2205,7 +2315,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/08/2023 12:00 AM",
     "comments": "Miguel Diaz - 02/08/23  1:20:25 PM: Replaced the right side spring door is now closing properly with no visible gaps but it may need elbow grease to close it  till its find its way  . | Miguel Diaz - 02/03/23 12:29:20 PM: Found the roof hatch brackets that hold the door bent this has happened before several times .This door must be closed slowly if forced this happens .Made new brackets for the door other parts are on order .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2232,7 +2343,8 @@
         "name": "Damaged 2'' conduit quote.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/236?guid=aa1a1140-3afe-4f46-b373-995cdb7cb14d"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2250,7 +2362,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/04/2023 12:00 AM",
     "comments": "Miguel Diaz - 03/04/23  8:38:30 AM: Settings 1 up 2-9 Down | Miguel Diaz - 03/04/23  8:37:24 AM: Read over the manual and found how to activate both lights also when walking in the lights turn on by itself .Please note if they are manually turned off the feature of automatic stops working until the lights are turned back on and you let it  time out  after 20 minutes .Adjusted both single restrooms and the executive kitchen .\nSettings are \n1  2  3  4  5  6  7  8  9\n??????????????????",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2268,7 +2381,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 03/10/23 10:34:58 AM: Replaced two LED lights model Fortimo LED DLM 1100 10W/830 UL GEN 4 .\nAlso adjusted the dip switch so that only one light turns on and not two when you walk in .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2286,7 +2400,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 03/10/23 10:37:55 AM: Replaced two drivers model X1025C100C036DNNM1 Phillips advanced",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2313,7 +2428,8 @@
         "name": "Engineering broken glass  quote 2-9-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/241?guid=e41f114e-6e6a-4456-8c6f-31414d19cf45"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2331,7 +2447,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/18/2023 12:00 AM",
     "comments": "Miguel Diaz - 03/18/23 10:33:48 AM: Cleaned window ledges and windows",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2349,7 +2466,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/21/2023 12:00 AM",
     "comments": "Miguel Diaz - 03/21/23 12:31:59 PM: Found AC door wide open and swinging left and right .Found handle disassembled .Assembled handle and closed door .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2367,7 +2485,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/30/2023 12:00 AM",
     "comments": "Miguel Diaz - 03/30/23  1:09:33 PM: Removed microwave removed cover troubleshoot found one of the door switches not working replaced NO switch .\nMicrowave is now working properly .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2385,7 +2504,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/05/2023 12:00 AM",
     "comments": "Miguel Diaz - 05/05/23 10:43:01 AM: installed as requested",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2408,7 +2528,8 @@
         "name": "BCRD-BCRDE-DCRD - Centrifugal Downblast Roof Exhausters - Catalog 4050.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/277?guid=6e0ef33e-4ace-4ef4-9127-3b9942acc28b"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2426,7 +2547,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/12/2023 12:00 AM",
     "comments": "Miguel Diaz - 05/12/23 11:26:20 AM: Final cost is in . | Miguel Diaz - 03/09/23  1:29:58 PM: AAA Roofers are off the roof they advised they found punctures in the areas we have leaks .Work order will stay open till final cost is in . | Miguel Diaz - 03/09/23  8:38:53 AM: AAA will be here today to repair the leaks . | Miguel Diaz - 02/27/23  7:40:28 AM: Emailed AAA Roofing to stop by and find  and repair the 3 leaks we have in the following areas .\n*Outside of board room leaking from same skylight area this is the same leak they tried patching twice already .\n*Above Yadiras desk .\n*Outside small conference room walkway .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2444,7 +2566,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/19/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/19/23  1:30:37 PM: Found material cut down to size purchased  holder pins and installed shelves in the cabinets located in the training room storage room .\nWipe dirty finger marks on doors.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2462,7 +2585,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/22/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/22/23 12:54:33 PM: Assembled and installed keyboard tray as requested",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2480,7 +2604,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/26/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/26/23  7:59:06 AM: Installed white board as requested",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2498,7 +2623,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/27/2023 12:00 AM",
     "comments": "Miguel Diaz - 07/27/23 10:21:50 AM: Secured camera with new hardware",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2516,7 +2642,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/21/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/21/23 10:18:15 AM: Replaced 3 light bulbs",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2534,7 +2661,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/29/2023 12:00 AM",
     "comments": "Primo Uy - 08/29/23  7:27:46 AM: Done. Re-insert the rocker/recliner bolt back into place. Chair is now working properly.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2552,7 +2680,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/15/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/21/23  8:50:36 AM: Aug 10, 2023 VAV #2-36B serving conference room reported being stuck in heating and at 90 degrees. Troubleshoot VAV zone, found the hot water valve\nhas failed and is stuck open. Got approved from Wayne to replace it. Will order parts and return onsite to perform repair.\nAug 23, 2023 Picked up parts for repairs.\nSep 15, 2023 Removed and replaced valve and actuator. Wired actuator and tested operation.\nSep 15, 2023 Second tech assisted Josh with hot water valve change out. Completed three-way valve change out on VAV #2-36. Tested and verified VAV\nzone and hot water valve operations.\nCost is in to close out this work order",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2570,7 +2699,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/20/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/20/23  9:09:33 AM: Tried fixing the existing flush unit with no luck had to replace the full unit with a new one part # 10673-SV-CP .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2588,7 +2718,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/27/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/02/23 10:23:46 AM: Assembled and mounted the station as requested .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2606,7 +2737,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/08/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/09/23  6:34:04 AM: Disconnected cat 6 and reconnect resetting power to clock .Time clock is now working again properly",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2624,7 +2756,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/10/23 11:07:54 AM: Assembled and installed keyboard tray as requested in the office .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2642,7 +2775,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/13/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/13/23 12:32:42 PM: Cleaned one mixing valve and replaced one aerator on the other both are working properly.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2660,7 +2794,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/14/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/14/23  7:17:14 AM: Replaced light bulb",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2678,7 +2813,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/17/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/17/23  6:51:16 AM: Done",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2696,7 +2832,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/15/2023 12:00 AM",
     "comments": "Miguel Diaz - 12/15/23  8:18:43 AM: Added 4 signs  as requested",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2714,7 +2851,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 01/11/24  8:06:00 AM: Brown out was enough to shut machines off and and disrupt production for 15 minutes",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2732,7 +2870,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/17/2024 12:00 AM",
     "comments": "Miguel Diaz - 01/17/24  9:49:47 AM: Max replaced the driver but open another did not see this one work order closing this work order | Miguel Diaz - 01/10/24  8:35:50 AM: Replaced bulb but it did not work Driver needs to be replaced .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2750,7 +2889,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/22/2024 04:00 PM",
     "comments": "Maksim Bushka - 01/22/24  4:12:41 PM: Cline up and removed the jammed paper. The shredder is working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2768,7 +2908,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/01/2024 12:00 AM",
     "comments": "Miguel Diaz - 02/01/24 10:58:23 AM: Found loose hardware added lock washers to hardware",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2795,7 +2936,8 @@
         "name": "chair1.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/519?guid=80e6b8c7-cc91-41d2-9695-850fd38e7690"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2813,7 +2955,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/20/2024 12:00 AM",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2831,7 +2974,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/23/2024 12:00 AM",
     "comments": "Miguel Diaz - 02/27/24  8:02:43 AM: Closing this work order .Work order should have been opened under the units id and not general request | Primo Uy - 02/23/24  9:16:48 AM: The technician report was the wheel magnet and wheel cover must be replace. He already orders the parts, overnight. ETA will be next week, Tuesday. Technician said we can still use the VNA 21 AS IS for now but i suggest not to, just to prevent any unsafe situation and creating more damage to the VNA.\nNote: Error Code: E0701 & E0126. | Primo Uy - 02/23/24  7:54:15 AM: Technician is here and its checking VNA#21 now. | Miguel Diaz - 02/22/24  1:35:37 PM: Called equipment depot for a service call they will be here tomorrow .E1123 should be a micro switch in the wheel or braking system .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2854,7 +2998,8 @@
         "name": "Roofing invoice with pictures 3-1-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/549?guid=790195e4-67b8-4b8c-9318-e9bec6667abf"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2872,7 +3017,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/05/2024 12:00 AM",
     "comments": "Miguel Diaz - 03/05/24  9:36:51 AM: Removed and  cut 12 x 12 square in the middle and mounted glass door window with frame for both locations .\nWindows were purchased from MC master-carr Part# 3903A14.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2890,7 +3036,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/13/2024 12:00 AM",
     "comments": "Miguel Diaz - 04/10/24  9:50:36 AM: Wayne said to close with out cost | Miguel Diaz - 04/09/24  1:01:45 PM: Work order will stay open till final cost is in . | Maksim Bushka - 04/09/24 12:58:47 PM: Replaced the main electric motor | Miguel Diaz - 01/10/24  8:28:22 AM: Issue came back with this door so we had to call western again a tech came in yesterday and found that the power supply board needed to be replaced he replaced two boards more info to follow when they invoice us .Front lobby door is now working properly .Work order will stay open till final cost is in . | Miguel Diaz - 12/15/23 10:58:51 AM: Tech from western security all access was able to fix the door by changing the relay and re-programming the blade .The door is now working properly again .Work order will stay open till final cost is in . | Miguel Diaz - 12/15/23  6:48:05 AM: Troubleshoot with Jesse the tech this morning and disconnected the battery negative cable and unplugged all power supplies X3 that did not fix the problem that should have reset the system .Jesse advised the card reader could have been stuck in software mode .\nWestern security all access is sending a tech to look at this door an another this morning .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2908,7 +3055,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/08/2024 12:00 AM",
     "comments": "Miguel Diaz - 04/08/24 11:33:04 AM: Unit has been replaced shut valve off when we turned  it back on the water stopped running .System had to have air in it . | Miguel Diaz - 04/05/24 12:20:44 PM: Replaced wave flush unit and spud gasket unit continues to have running water .\nPlaced a call to Anderson plumbing they will be here Monday morning between 9 am -11 am",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2926,7 +3074,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/08/2024 12:00 AM",
     "comments": "Miguel Diaz - 04/08/24 11:46:07 AM: Replaced all three bulbs",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2944,7 +3093,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/22/2024 12:00 AM",
     "comments": "Miguel Diaz - 04/22/24  9:02:11 AM: Replaced toilet seat hardware broke on one end .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2962,7 +3112,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/01/2024 10:30 AM",
     "comments": "Maksim Bushka - 05/01/24 10:46:52 AM: Replaced the exit light.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -2985,7 +3136,8 @@
         "name": "carpet stained.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/591?guid=4badcd79-3430-4013-b748-933204deaf24"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3003,7 +3155,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/22/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/22/24  8:57:28 AM: Moved tray as requested .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3021,7 +3174,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/29/2024 12:00 AM",
     "comments": "Primo Uy - 07/29/24  9:15:52 AM: MD and I verify each sink, i did the 1st floor while MD did the 2nd floor, on the 1st floor the sink closer to the woman bathroom was dripping water from the countertop. I check all the connector and all pipeline under and found no leak.  I notice that the water on the faucet was not open properly, low stream and when it stops, a stream of water will trickle to the base of the faucet and then creating a puddle of water and drip to the countertop down to the floor. I adjust the water flow to where it will not trickle down but stop/shut off properly when it turns off. No more water on the floor.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3039,7 +3193,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/31/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/31/24  8:54:03 AM: Adjusted the vent as requested .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3057,7 +3212,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/01/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/30/24  6:29:47 AM: Gardner advised they  found a 2 '' valve broken .Valve was replaced  fixing the issue.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3075,7 +3231,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/02/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/02/24 10:53:31 AM: Replaced faucet model 8878 chrome",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3093,7 +3250,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/16/2024 12:00 AM",
     "comments": "Miguel Diaz - 09/09/24 11:47:36 AM: Repair was done replaced connector | Miguel Diaz - 08/14/24  9:06:30 AM: Primo and I removed the accumulation of rocks and sand to be able to visually see the valves and pipe after turning on the Main you can see the valve leaking from the coupler to the valve .Carlos has been called in for repairs this should be covered under warranty .He advised he will come fix it sometime this week he is in Bakersfield doing landscaping but he will try and get the gardeners to fix it who are local . | Miguel Diaz - 08/14/24  8:01:31 AM: Max and Primo looked at it yesterday but needed a pump to get the water out .I advised we have one in the cabinet .They will investigate today .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3111,7 +3269,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/22/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/22/24 12:45:24 PM: Replaced filter",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3129,7 +3288,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/23/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/30/24  6:34:54 AM: Shut off main line to the irrigation system and contacted the Gardner to come out and replace the 1 ''  valve .Gardner replaced the 1'' valve system is back on .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3147,7 +3307,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/04/2024 12:00 AM",
     "comments": "Miguel Diaz - 09/04/24  9:42:11 AM: Picked up all seat covers that are on the property ,side walk and street .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3170,7 +3331,8 @@
         "name": "2nd floor lobby door repair 9-11-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/625?guid=7f1667a4-add3-4dc1-b737-38504636ad06"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3188,7 +3350,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/24/2024 12:00 AM",
     "comments": "Miguel Diaz - 10/24/24 10:20:11 AM: Added stand up  keyboard tray as requested",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3206,7 +3369,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 11/11/24  9:54:19 AM: Repaired easel",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3224,7 +3388,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/12/2024 12:00 AM",
     "comments": "Miguel Diaz - 12/12/24 10:48:16 AM: Called waste management and requested a 40 yard bin it arrived yesterday .Grabbed all scrap material  from different locations outside and Loaded all scrap  material that could fit .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3242,7 +3407,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/10/2025 12:00 AM",
     "comments": "Miguel Diaz - 01/10/25  1:28:49 PM: Tightened door cover and replaced vacuum breaker and gasket on the flush valve .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3260,7 +3426,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/16/2025 12:00 AM",
     "comments": "Miguel Diaz - 01/16/25  1:18:34 PM: Double entry for same issue closing work order",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3278,7 +3445,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/07/2025 12:00 AM",
     "comments": "Miguel Diaz - 02/13/25  8:29:42 AM: replaced three drivers | Miguel Diaz - 01/29/25  7:09:40 AM: Replaced 3 bulbs found another three not working after replacing the bulb .Max will work on replacing the drivers .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3301,7 +3469,8 @@
         "name": "ROOF LEAK INVOICE WITH PICS 2-17-25.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/727?guid=7d856055-7271-4088-b58a-ae7d8800a1ba"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3319,7 +3488,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/14/2025 12:00 AM",
     "comments": "Miguel Diaz - 02/14/25  6:42:46 AM: Troubleshoot and found tripped breaker  in the Red back up lighting system for relays 1-2 .Lights are back ON . | Miguel Diaz - 02/13/25  8:32:15 AM: Troubleshooting with Watt stopper .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3337,7 +3507,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/17/2025 12:00 AM",
     "comments": "Miguel Diaz - 03/17/25  9:09:47 AM: Troubleshoot replaced driver for LED light from the roof side .Boom is not long enough to reach it .\nPart replaced Thomas research products  50W Constant -Current Dimmable LED Driver .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3355,7 +3526,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/06/2025 12:00 AM",
     "comments": "Primo Uy - 05/06/25 10:32:29 AM: Dirty sensor, wipe with wet paper towel to remove dirt. Its working properly now. Test all faucet and all are good.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3373,7 +3545,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/19/2025 12:00 AM",
     "comments": "Primo Uy - 06/19/25 10:22:42 AM: Done. Remove jammed paper inside the drum cutter. Shredder is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3391,7 +3564,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/24/2025 12:00 AM",
     "comments": "Primo Uy - 06/24/25 12:46:12 PM: It's a removable barrel key for extra security. I put it back in place. You need the key to put it back.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3409,7 +3583,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/09/2025 12:00 AM",
     "comments": "Primo Uy - 07/09/25 12:09:50 PM: Done. installed Two Locking pin that was missing. Keyboard tray is now secured.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3427,7 +3602,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/20/2025 02:30 PM",
     "comments": "Maksim Bushka - 11/20/25  2:57:04 PM: Switched the keyboard trays.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3445,7 +3621,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/09/2026 07:00 PM",
     "comments": "Maksim Bushka - 03/09/26  7:31:54 PM: Installed keyboard",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "743",
@@ -3463,7 +3640,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/01/2026 07:00 PM",
     "comments": "Maksim Bushka - 07/01/26  7:55:00 PM: Switched the stand up desc",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1465",
@@ -3481,7 +3659,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/16/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/19/23 11:15:31 AM: Closing work order we are under contract no cost for fixing this button issues . | Miguel Diaz - 01/16/23  6:50:30 AM: Kone tech came out this past Friday and advised he made repairs all is in working order .Work order will stay open till final cost is in . | Miguel Diaz - 01/13/23  9:09:41 AM: I Placed a call to Kone elevators and added us on the service list they will send a tech out to look at our elevator in the parking structure .No date or time was given for them to show up .Elevator is still operational and has the issue intermittently.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1465",
@@ -3499,7 +3678,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/10/23 12:47:55 PM: Cable was replaced yesterday city inspector stopped by today and signed off on the work permit has been signed elevator has been returned for service | Miguel Diaz - 08/09/23  9:54:54 AM: Kone elevators was called and scheduled to be here today they are here now working and replacing the cable elevator will be down today and tomorrow till the inspector comes by in the morning and signs off on the permit .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1465",
@@ -3517,7 +3697,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/26/2025 12:00 AM",
     "comments": "Miguel Diaz - 02/26/25  8:04:53 AM: Remove cover and tighten nut for push button .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1466",
@@ -3535,7 +3716,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 03/11/24 11:46:26 AM: After resetting it Saturday the unit started working Monday . | Miguel Diaz - 03/09/24  6:47:17 AM: Tried resetting both units and they would not reset we  found the seismic controller with the flashing light to replace the batteries .Replaced batteries and elevator 2 did reset but elevator 1 is not still says out of service .I have placed a call with Kone elevators they will be here Monday .Ref# 1610-4156",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1467",
@@ -3553,7 +3735,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/17/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/17/23 12:45:17 PM: Tech showed up and found the pulley with rope cable broke all parts have been replaced elevator is back in service . | Miguel Diaz - 08/17/23 10:08:32 AM: Elevator would not reset Kone elevators has been called in for service .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1467",
@@ -3571,7 +3754,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/10/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/10/24  1:46:12 PM: Closing work order No cost its under the service  contract | Miguel Diaz - 05/06/24  1:59:11 PM: Kone tech showed up and repaired the elevator cable .Work order will stay open till final cost is in . | Miguel Diaz - 05/06/24 12:22:59 PM: Placed a second call to Kone elevators .I was just advised they are reaching out to the tech who was given the work order for an update . | Miguel Diaz - 05/06/24  8:58:09 AM: Tech has not shown up i called Kone elevators for an ETA they advised they will call me back when they have that information . | Miguel Diaz - 05/04/24  7:22:12 AM: Kone elevator company  will be here Monday to look at the unit",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1475",
@@ -3589,7 +3773,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/16/2022 12:00 AM",
     "comments": "Miguel Diaz - 11/16/22  1:26:00 PM: After looking at the web controller i found  that AC 2-1 is not cooling properly .We found a blown  6 amp fuse  .Fuse has been replaced ac unit is working with no errors for alarms .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1475",
@@ -3607,7 +3792,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/14/2022 12:00 AM",
     "comments": "Miguel Diaz - 12/14/22 11:37:29 AM: Cost is in . | Miguel Diaz - 11/18/22  7:13:47 AM: Acco was here yesterday and replaced 2 contact relays .He also found a wire that was shorting out on the pipe that goes to the compressor .lastly he added Freon to one of the compressor ckt.Work order will stay open till final cost is in .Follow up quote will be provided for additional work that is needed . | Miguel Diaz - 11/16/22  1:36:20 PM: Placed a call to Acco Chris will stop by tomorrow morning to look at the unit .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1475",
@@ -3630,7 +3816,8 @@
         "name": "AC 2-1 Circuit 2 low of refrigerant repairs 1-7-2023.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/240?guid=aaaa5538-258c-4fff-b49d-b0d4c0f4f6e4"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1475",
@@ -3653,7 +3840,8 @@
         "name": "AC 2-2 Ckt -2 Compressor Replacement Rev 031324.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/554?guid=e5745871-0144-4120-898d-aa9deb069bc5"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1475",
@@ -3676,7 +3864,8 @@
         "name": "AC #2-1 CFM Replacement 082824.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/623?guid=d15f9754-9c05-49e5-a42b-fe1987c61f90"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1475",
@@ -3694,7 +3883,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/23/2025 12:00 AM",
     "comments": "Miguel Diaz - 01/23/25 11:02:37 AM: Acco tech showed up and found a blown 6 amp fuse .He replaced the fuse alarm is now gone circuit 2 is back up  . | Miguel Diaz - 01/23/25  6:57:52 AM: Acco techs came in yesterday to repair the unit they advised the unit got two sensors replaced and was charged back up .Found unit with alarm still showing circuit 2 tripped advised them of my findings. They will be returning for more troubleshooting today . | Miguel Diaz - 11/20/24  1:22:09 PM: Acco tech Josh advised he found a high pressure switch bad .Part will be ordered .Unit is still working with ckt1 .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1475",
@@ -3712,7 +3902,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/26/2025 12:00 AM",
     "comments": "Miguel Diaz - 02/26/25  9:28:52 AM: Acco tech showed up this morning and replaced two contactors for stage 2 compressors they advised unit turned on for stage 2 .Equipment alert is gone on the web control .Closing work order . | Miguel Diaz - 01/31/25  6:11:09 AM: Allan stopped by yesterday and troubleshooted a bit he advised they need to come back out and look over the wires something is causing this tripp error fuse was not Popped .No date was given . | Miguel Diaz - 01/29/25  1:39:27 PM: Acco is aware and will be coming out to troubleshoot .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1476",
@@ -3735,7 +3926,8 @@
         "name": "AC #2-2 Leak Check and Repair 1 Circuit 050923.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/278?guid=a45f73be-860e-47a0-9a3c-99ea085c0303"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1476",
@@ -3753,7 +3945,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/05/2024 12:00 AM",
     "comments": "Miguel Diaz - 02/05/24  1:51:58 PM: Max Found the unit with no power at the breaker on the roof reset breaker on the first floor .AC is back on .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1476",
@@ -3771,7 +3964,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/07/2024 12:00 AM",
     "comments": "Miguel Diaz - 03/25/24 12:55:12 PM: Tech troubleshoot the issue and found both compressor on 2B need to be replaced closing this work order another is open for the same thing | Miguel Diaz - 03/14/24  8:36:25 AM: Chris from acco advised he found one bad compressor and that both need to be replaced since they are in tandem .Po being approved and acco will order the parts . | Miguel Diaz - 03/01/24  6:37:33 AM: Advised Acco lead of the issue  they will send someone to look at it .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1476",
@@ -3794,7 +3988,8 @@
         "name": "AC 2-2 Ckt -2 Compressor Replacement Rev 031324.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/561?guid=c416390c-926c-4423-869e-fdd4bcda2fac"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1476",
@@ -3812,7 +4007,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/09/2024 12:00 AM",
     "comments": "Miguel Diaz - 05/10/24  8:07:57 AM: Acco was onsite yesterday they advised Trane gave them the wrong Contactor when they were here a month ago replacing tandem compressors .This is why the fuse would  pop .After replacing the contactor with the correct one the alarm message is gone .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1476",
@@ -3830,7 +4026,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/22/2024 12:00 AM",
     "comments": "Miguel Diaz - 05/22/24 12:43:43 PM: wrong machine | Miguel Diaz - 05/22/24 12:37:40 PM: Acco will open up a service call ticket to come out and check the damaged part and order a replacement .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1478",
@@ -3853,7 +4050,8 @@
         "name": "VAV box # 2-37 Repair  in hr department.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/63?guid=c5e79303-cb96-4f43-ac18-921d8499524f"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1478",
@@ -3871,7 +4069,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/20/23  1:01:15 PM: Cost is in | Miguel Diaz - 09/19/23  9:04:04 AM: Valve was replaced last week work order will stay open till final cost is in . | Miguel Diaz - 08/10/23  1:11:20 PM: Chris was here today and checked the VAV 2-36  and found the controller to be good he did find the valve and actuator needs to be replaced they both come as a kit he gave us an ETA of next Friday  8-18-23 or sooner . | Miguel Diaz - 08/09/23  1:30:59 PM: Troubleshoot found VAV 2-36 controller unresponsive and stuck at the minimum position called Chris from ACCO he advised to power down the controller and shut one side of the water OFF  until he can stop by tomorrow to check it out .Chris will stop by tomorrow to look at VAV 2-36 located in HR Office.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1478",
@@ -3889,7 +4088,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/25/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/25/23  7:31:34 AM: Turned power off and and reset unit is back on .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1478",
@@ -3912,7 +4112,8 @@
         "name": "AC 2-4 REPAIR 9-14-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/409?guid=c2fdab0b-0752-4bc3-96e8-fdee3a78d44b"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1480",
@@ -3943,7 +4144,8 @@
         "name": "M-1 repair 5-10-22.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/30?guid=76bc6ec7-3842-4c03-862e-1ccd126cd247"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1480",
@@ -3961,7 +4163,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/02/2022 12:00 AM",
     "comments": "Miguel Diaz - 09/02/22  8:59:20 AM: Troubleshoot found overload for evaporator fan tripped found setting to be @ 10 when name plate says FLA 12.6 Max which should be set at 13 if it trips again the setting will be moved .\nAC is back ON.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1480",
@@ -3984,7 +4187,8 @@
         "name": "AC M-1 loud noises invoice 4-1-2023.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/261?guid=59b54179-10ac-421d-99b7-ee1ed76f08fc"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1480",
@@ -4002,7 +4206,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/17/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/17/23  8:52:07 AM: Troubleshoot replaced a few hoses 1/4 that controls the supply fan they were loose with condensation this will give this error .AC unit is back on and running with out issues.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1480",
@@ -4020,7 +4225,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/28/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/28/23  7:49:35 AM: Closing work order for now they have other open work orders to look at this unit is working at the moment | Miguel Diaz - 08/22/23  8:32:56 AM: AC is back on leaving work order open for AC tech to look into  this is a re-occurring issue | Miguel Diaz - 08/22/23  7:42:04 AM: Chris will be here tomorrow morning | Miguel Diaz - 08/22/23  7:32:34 AM: Called Acco dispatch to put us in for service no ETA was given",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1480",
@@ -4038,7 +4244,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/19/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/19/23  1:11:08 PM: Troubleshoot shut power off at disconnect disconnect hoses at pressure switch and reconnect AC unit is back on .\nAlarm is gone  ACCO is aware of the re-occuring issue and will schedule a part replacement .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1480",
@@ -4061,7 +4268,8 @@
         "name": "M-1 & 1-2 issues invoice for 1-30-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/533?guid=f7425da9-5e13-4aeb-ae9e-725c0f01ab10"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1481",
@@ -4079,7 +4287,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/27/2023 12:00 AM",
     "comments": "Miguel Diaz - 04/08/24 11:34:30 AM: Cost is in | Miguel Diaz - 01/29/24  7:23:53 AM: AC is back up and running on remaining fan motors tech is out purchasing the fan motor . | Miguel Diaz - 12/18/23 10:56:25 AM: Acco Tech will be here tomorrow morning to replace the fan current switch . | Miguel Diaz - 11/27/23 12:04:27 PM: Acco tech came in today and replaced the condenser fan motor AC unit is back up and running with all 4 fan motors .Work order will stay open till final cost is in . | Miguel Diaz - 11/21/23 10:58:04 AM: Acco tech returned today and replaced the blown fuse and removed the  wiring for the one bad motor AC is back up and running .Tech will return sometime next week when they receive the new motor . | Miguel Diaz - 11/20/23  2:01:03 PM: Acco tech Chris showed up this afternoon after troubleshooting he advised he found a 30 amp fuse blown and a bad condenser fan motor.He will get the parts needed to get the AC back up and running .No ETA was given . | Miguel Diaz - 11/17/23 11:35:58 AM: Troubleshoot found all fuses  good checked fan proving switch found water in the lines after cleaning them the ac would still not come back on line .Acco has been called in for service  waiting for the call back to see when they will be making  it out .Provided  tpf office with a floor fan for now .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1481",
@@ -4102,7 +4311,8 @@
         "name": "AC 1-1 economizer board replacement  8-16-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/624?guid=62ca879c-923a-4ee2-be32-3829587a3a06"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1482",
@@ -4120,7 +4330,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/03/23 10:58:09 AM: Chris came in and checked the unit he advised the proving switch was the issue he called trane they advised for him to adjust the sensitivity and lower it so it closes after 40 seconds and  stops giving us this error he advised for us to let him know if it happens he has a work around he came up with that trane approved if this adjustment does not fix the issue .AC is back up and working properly .\nWork order will stay open till final cost is in . | Miguel Diaz - 10/03/23  5:38:46 AM: Reached out to Chris from ACCO waiting for his response .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1482",
@@ -4138,7 +4349,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/28/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/28/23 11:11:07 AM: Closing work order if it happens again we will call Acco to troubleshoot and see the issue he advised for us not to fix the issue . | Miguel Diaz - 08/28/23  8:19:41 AM: Max was able to get the ac unit back on we will leave it open for the AC tech to look at since the alarm is still showing =\nUnit relay Output relay alarm . | Miguel Diaz - 08/28/23  7:47:17 AM: Max is going up on the roof now to check it out ACCO is aware called Chris but he is not responding i reached out to his other co worker Josh waiting for his response .They are swamped is  what i was told last week .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1482",
@@ -4156,7 +4368,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/14/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/14/23 11:01:34 AM: Shut power off then back on unit is running .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1482",
@@ -4174,7 +4387,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/25/2024 12:00 AM",
     "comments": "Miguel Diaz - 01/25/24  1:57:14 PM: Tech found fan motor shorted he is checking availability and pricing. | Miguel Diaz - 12/29/23  9:57:51 AM: ACCO Tech return yesterday and installed a switch for the fan motor Unit is back on line .Work order will stay open till final cost is in . | Miguel Diaz - 12/06/23  8:20:59 AM: Acco tech advised that Trane confirmed he can use a current transformer to prove the fan motor instead of the pressure switch .He will make this change when he is back from vacation on 12-18-23.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1482",
@@ -4197,7 +4411,8 @@
         "name": "M-1 & 1-2 issues invoice for 1-30-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/532?guid=07b3c803-27e1-468c-9a7e-f167fc91a905"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1482",
@@ -4215,7 +4430,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 09/12/24  7:02:16 AM: wrong machine no work done on this work order | Miguel Diaz - 05/22/24 12:45:25 PM: Acco will open up a service call ticket to come out and troubleshoot the economizer .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1482",
@@ -4238,7 +4454,8 @@
         "name": "AC 1-2 Heat Alarm 1-29-25.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/740?guid=b18af288-f973-4fa0-8448-eeb49b0a4dea"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1483",
@@ -4256,7 +4473,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/21/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/21/23  1:15:14 PM: Max found a bad fuse replaced 30 amp fuse ac is back up and running . | Miguel Diaz - 08/21/23 12:30:17 PM: The AC unit is off checking on it now\nAlrms are  supply fan fail input micro block error output  micro block error",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1483",
@@ -4279,7 +4497,8 @@
         "name": "AC 1-3 REPAIR 8-24-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/410?guid=3cdbcda6-59d9-4772-b2b4-fc785cb40e97"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1483",
@@ -4297,7 +4516,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/01/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/01/24 11:53:59 AM: Cost is in | Miguel Diaz - 07/01/24 12:58:31 PM: Acco tech came out and found the fan proving switch was clogged with green gunk keeping the blower from turning on .The unit is back on Acco will Replace  the switch to electrical in the near future .Work order will stay open till final cost is in . | Miguel Diaz - 07/01/24  8:59:42 AM: Checked AC 1-3 on the roof and found no issues with any fuses I did find a tripped overload after resetting the AC turned on and ramped up to 50 hertz then came back down to 0 .Acco has been called in for service they are trying to get someone to come out today .Provided assembly with a huge floor fan to keep air circulating also opened the roll up doors .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1483",
@@ -4320,7 +4540,8 @@
         "name": "AC 1-3 FAN REPAIR 6-14-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/592?guid=b293a846-e9db-4b57-bfb6-3e078bda6e30"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1483",
@@ -4338,7 +4559,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/09/2024 12:00 AM",
     "comments": "Miguel Diaz - 09/09/24  8:35:14 AM: Found fan belt off and ripped .Replaced belt .Ac is back up",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1484",
@@ -4356,7 +4578,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/02/2022 12:00 AM",
     "comments": "Miguel Diaz - 09/02/22  9:03:23 AM: Troubleshoot and found overload setting at 10 when nameplate says max is FLA 12.6 Acco tech advised to change setting to 13 .\nUnit is back up and running .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1484",
@@ -4374,7 +4597,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/14/2022 12:00 AM",
     "comments": "Miguel Diaz - 12/14/22 11:37:56 AM: Cost is in | Miguel Diaz - 09/01/22  1:30:30 PM: Checked house power we have 480 across 3 phases checked all fuses all are good reset a blower by pass unit is back on .Chris advised he will stop by to adjust the setting since that is what he replaced a few days ago .Work order still open till final cost is in . | Miguel Diaz - 09/01/22 11:59:45 AM: Found AC 1-4 OFF again same message supply fan fail going up to see what alarm its giving and relate that to the AC tech Chris from Acco . | Miguel Diaz - 08/29/22  1:06:36 PM: AC is back on starter/contactor has been replaced .Work order will stay open till final cost is in . | Miguel Diaz - 08/26/22  9:56:54 AM: Troubleshoot on roof checked all fuses all checked out good found message on Trane controller advising Alarm W phase loss {A32}.\nAlso checked fan for movement so motor is not stuck and belt is on .Chris from Acco will stop by Monday morning .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1360",
@@ -4397,7 +4621,8 @@
         "name": "Water pump seal leaking invoice 3-28-22.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/119?guid=b2cc782a-b90c-4504-aedd-de48ff6e0450"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1360",
@@ -4415,7 +4640,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/08/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/09/23 12:32:32 PM: Removed and cleaned air filter and reset the unit found \nBoiler  working this morning closing work order.\n Chris from Acco will keep the work order open on his side if needed next week if not it will be deleted .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1360",
@@ -4442,7 +4668,8 @@
         "name": "Boiler repair 6-16-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/313?guid=e128e16a-1428-480a-8181-a86aee40e96e"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1360",
@@ -4465,7 +4692,8 @@
         "name": "Boiler issue 1-30-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/531?guid=743f5d40-28f3-45a3-a108-feb785c68ef2"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1360",
@@ -4483,7 +4711,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/27/2024 12:00 AM",
     "comments": "Miguel Diaz - 09/30/24 12:24:10 PM: Acco ordered and replaced panel",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1376",
@@ -4501,7 +4730,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/17/2025 01:00 PM",
     "comments": "Maksim Bushka - 03/17/25  1:36:52 PM: Replaced 15 filters on 5 A/C units | Miguel Diaz - 02/28/25 11:03:26 AM: Max found the local Trane parts supplier from Glendale they advised they are not open to the public but for filters they will sell it to us .I ordered 15  filters part # FLR09410 they can be picked up on Tuesday but i would call before going .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1384",
@@ -4519,7 +4749,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/26/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/26/22  8:56:34 AM: Primo cleaned the unit with Clorox and water all wet smell is gone .\nAdding a pm for this unit to be checked .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1384",
@@ -4537,7 +4768,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/24/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/18/23  1:42:35 PM: Closing work order cost included in another work order all together . | Miguel Diaz - 08/24/23  6:48:00 AM: Acco tech Chris found the condenser unit full of years  dust but inside it only he used a water hose to wash it out ,We do have a pm to vacuum it but seems like that was not enough .I will add to wash the condenser once a year with water by us .Unit is working properly work order will stay open till final cost is in . | Miguel Diaz - 08/22/23  7:41:48 AM: Chris will be here tomorrow morning | Miguel Diaz - 08/22/23  7:35:24 AM: Called Acco dispatch to put us in for service no ETA was given",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1388",
@@ -4555,7 +4787,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/22/2023 12:00 AM",
     "comments": "Miguel Diaz - 05/22/23 12:17:31 PM: Removed the cover and un raveled the chain from the motor waited till later till we had time to get back to it we replace the chain link and adjusted the chain and adjusted the stop points .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1389",
@@ -4586,7 +4819,8 @@
         "name": "R3.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/52?guid=ce62c425-772d-49a3-b489-2d84f9c2818b"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1393",
@@ -4633,7 +4867,8 @@
         "name": "Collicutt call in service 8-3-22.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/90?guid=43ef37e2-f85a-4ab0-895b-15c87bbf1695"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1393",
@@ -4651,7 +4886,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/18/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/19/22 10:19:40 AM: Purchased another receptacle from all phase electric  and replaced it .This one is Extra heavy duty straight blade receptacle .\nModel HBL53611 \nNEMA 5-20R \n2- POLE  \n3-WIRE GROUNDING \n20A 125 V | Miguel Diaz - 08/18/22 10:23:29 AM: Replaced badly burnt receptacle with commercial 125 volt receptacle.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1393",
@@ -4669,7 +4905,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/07/2022 12:00 AM",
     "comments": "Miguel Diaz - 12/07/22 11:27:24 AM: Scheduled pm service tech showed up toady and did the yearly service",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1393",
@@ -4692,7 +4929,8 @@
         "name": "Collicutt 6 months check up CES_Invoice Invoice 78306 6-20-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/302?guid=f14b9ca2-522c-4942-8f1b-b45eafef4a65"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1393",
@@ -4710,7 +4948,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/19/2024 12:00 AM",
     "comments": "Miguel Diaz - 01/19/24 10:06:13 AM: Collicutt tech arrived this morning to perform the scheduled maintenance on our Generator .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1393",
@@ -4728,7 +4967,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/22/2025 12:00 AM",
     "comments": "Miguel Diaz - 01/22/25  9:24:29 AM: Cost is in to close out work order | Miguel Diaz - 01/13/25  7:14:02 AM: Called the company Amber resources @   (818) 786-8180 Ext. 7105 |   (562) 896-3489 ASolis@dionandsons.com www.dionandsons.com \nand spoke to the dispatcher Alondra Solis and scheduled  fuel top off .They came by and filled up 87 gallons of red dye fuel .Work order will stay open till final cost is in .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1393",
@@ -4755,7 +4995,8 @@
         "name": "ATS1.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/972?guid=589b8b8c-4ddc-4932-b72f-ea2491d74ce8"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1393",
@@ -4773,7 +5014,8 @@
     "downtime_hours": "4",
     "completed_datetime": "07/06/2026 12:00 AM",
     "comments": "Sean Jennings - 07/27/26 11:56:03 AM: Completed and tested on 7/6/2026 | Sean Jennings - 06/30/26 12:34:30 PM: Alternator end will be ready for install on 7/1/2026. It is a short week so the install and testing is scheduled for 7/6/2026, which will take two days. | Sean Jennings - 06/05/26  7:48:06 AM: A tech from Collicutt was already scheduled to come out and repair the ATS1 so the timing to get someone out was minimal. Upon arrival, the tech opened up the alternator end and noticed the damage that was causing the error. The obvious issues were the excitor rotor, photo board and plastic cover. To be able to access whether there were issues to the main stator and rotor, the alternator end needed to be removed and transported to a third part company. We had to call in for a backup generator to maintain our emergency power capability. Back up was installed and the alternator end was removed. We received a proposal for a new and re-conditioned alternator end. I am waiting on a quote for a whole new generator.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1400",
@@ -4791,7 +5033,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/15/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/21/24  1:21:39 PM: Found it broken its been dropped .I repaired it using spare parts from an  old magnet  . | Miguel Diaz - 08/01/24 11:53:31 AM: Cost is in | Miguel Diaz - 04/15/24  1:42:39 PM: Exhaust fan was replaced this past Friday note fan is both restrooms on the first floor .Work order will stay open till final cost is in . | Miguel Diaz - 04/09/24 12:58:20 PM: Acco tech was onsite this morning and found the motor not working .He has ordered the motor when it comes in sometime tomorrow they will come in to replace it tomorrow or at the latest Thursday . | Miguel Diaz - 04/08/24  1:00:27 PM: Logic shows the EF Failed nothing is obvious on the roof when looking at  the unit Acco will be here tomorrow morning.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1402",
@@ -4809,7 +5052,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/05/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/05/23  8:46:38 AM: Ordered replacement cover and placed it on this morning used self tap screws",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1405",
@@ -4827,7 +5071,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/12/2023 12:00 AM",
     "comments": "Miguel Diaz - 05/15/23  7:22:48 AM: Had Chris from Acco order us a replacement and a spare its cheaper if they order it .\nStat has since been replaced work order will stay open till final cost  in .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1406",
@@ -4845,7 +5090,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/19/2022 12:00 AM",
     "comments": "Miguel Diaz - 12/19/22  7:33:34 AM: Found batteries low on heater stat Replaced AA batteries X 2",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1437",
@@ -4863,7 +5109,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/22/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/22/22  1:06:09 PM: Pushed corner back in but display would not reset display gave us code F852 FSX 485 ERR .Which means the encoder needs to be reset did procedure and reset door .Door is working properly .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1437",
@@ -4881,7 +5128,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/03/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/03/22  7:00:46 AM: Troubleshoot and found that the open and close setting limits need to be reset teached the limits door is working again",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1437",
@@ -4899,7 +5147,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/24/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/24/22  6:41:44 AM: Found that we had a power outage last night that tripped the breaker on panel  H2 28-40-42 .\nReset breaker and  door would still not work found error message 852 which means encoder issue .\nReset encoder settings door is working properly again .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1437",
@@ -4917,7 +5166,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/25/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/25/22  7:24:30 AM: Reason for door not operating is because the encoder battery is low and does not keep the set limits in its memory when the power outage happens .Replaced encoder battery and programmed  new limits .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1437",
@@ -4935,7 +5185,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/10/23 12:12:16 PM: Found error 856 communication error checked battery voltage its at 3.1 it should be at 3.6 replaced battery door is working properly again .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1437",
@@ -4953,7 +5204,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/06/2024 12:00 AM",
     "comments": "Miguel Diaz - 02/06/24 10:50:06 AM: Found resistor broken repaired resistor door is now working properly . | Miguel Diaz - 02/06/24 10:49:21 AM: Displays says open at mobil",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1438",
@@ -4971,7 +5223,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/06/2023 12:00 AM",
     "comments": "Miguel Diaz - 10/10/23 12:32:39 PM: Error Code: F856. Replace battery and door is now working.\nNeed to order more Battery ASAP. \nRe open work order on correct equipment ID.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1438",
@@ -4989,7 +5242,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/10/2024 12:00 AM",
     "comments": "Miguel Diaz - 04/10/24 11:17:15 AM: Found door with alarm open at mobile .Drained resistor and reset board .Door is working properly again .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1438",
@@ -5007,7 +5261,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/04/2024 12:00 AM",
     "comments": "Miguel Diaz - 09/04/24  9:29:54 AM: Door lost its stop and open limits yesterday when the power outage happened .Removed encoder and reset both limits door is working properly .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1439",
@@ -5025,7 +5280,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/06/2022 08:30 AM",
     "comments": "Barton Lea - 07/06/22  9:18:49 AM: Replaced battery",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1439",
@@ -5043,7 +5299,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/16/2023 12:00 AM",
     "comments": "Miguel Diaz - 02/16/23  1:02:44 PM: Re attach pull string\nUsed scissor lift",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1439",
@@ -5061,7 +5318,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/19/2024 12:00 AM",
     "comments": "Miguel Diaz - 01/19/24 11:44:54 AM: Discharged resistor by disconnecting it  Door is working properly now .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1439",
@@ -5079,7 +5337,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/13/2024 12:00 AM",
     "comments": "Miguel Diaz - 06/13/24 11:34:08 AM: Found error  code 861 which said internal fault .\nChecked mobile unit and disconnected it and connect back in. Unit is now working properly could be loose connection .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1439",
@@ -5097,7 +5356,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 12/11/24  6:55:58 AM: When this error pops up the resistor needs to be drained  .Error is gone and reset .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1439",
@@ -5115,7 +5375,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/19/2025 12:00 AM",
     "comments": "Miguel Diaz - 05/19/25  9:33:12 AM: Controller is showing open at mobile .Drained resistor in the air valve .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1440",
@@ -5133,7 +5394,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/04/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/04/23  6:39:29 AM: Replaced activation switch for the inside pull string",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1440",
@@ -5151,7 +5413,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/11/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/11/23  6:34:23 AM: Found outside pull string box with faulty switch replaced switch door is working properly now .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1440",
@@ -5169,7 +5432,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/13/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/13/23  7:33:04 AM: Troubleshoot found outside pull string stuck in the up position keeping the switch closed meaning we have an open signal not letting the roll up door close or open .Removed cover with string lubed internal parts since its exposed to the outside water making  it rust .Also replaced the lock washer and nut with a nylon nut by doing this i can leave the bolt loose making it easier for it to go up and down .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1440",
@@ -5187,7 +5451,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/07/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/07/23  7:36:42 AM: Error on controller is displaying F856 FSX Wireless communication error .\nTroubleshoot found Battery on mobile unit at 3.58 volts when it should be at 3.6 volts anything below will cause an error .\nDoor is working properly again after replacing battery .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1440",
@@ -5205,7 +5470,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/05/2024 12:00 AM",
     "comments": "Miguel Diaz - 04/05/24  8:01:34 AM: Found door with error code open at mobile .Checked resistor and drained it .Door is now working properly",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1440",
@@ -5223,7 +5489,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/01/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/01/24  1:53:52 PM: Found roll up door was struck hard popping it off the track from both sides.\nManaged to pop back in both sides and run the door .3 wires severed those have been patched up also no one has reported it .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1441",
@@ -5241,7 +5508,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/20/2022 12:00 AM",
     "comments": "Miguel Diaz - 12/20/22 12:36:34 PM: After troubleshooting we found a bad board purchased replacement board from Engineered parking systems @1661 294-0778 part # 9700-1000 Control board for 301 parking gate operator. Replaced board ,gate arm is working properly again . | Miguel Diaz - 12/15/22  7:54:21 AM: Found motor over load tripped this morning .After reset the arm is having issues going up and stops .Removed belt and run in the up direction motor stops which means motor needs to be replaced ..Trying to find replacement also waiting for call back from the company that builds this they are located in Valencia CA .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1444",
@@ -5259,7 +5527,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/08/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/08/23 12:33:36 PM: We had a spare semaphore arm from the last incident Max painted and we replaced it .\nSemaphore arm is back in service",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "754",
@@ -5282,7 +5551,8 @@
         "name": "Air compressor 54 hp troubleshoot cost 8-31-22.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/105?guid=ce986c72-788a-4ac0-a4a6-228733f64938"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1197",
@@ -5305,7 +5575,8 @@
         "name": "genie.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/427?guid=1a0c9a95-fac6-426c-b97b-4d76bb817775"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1197",
@@ -5332,7 +5603,8 @@
         "name": "Boom cost 4-3-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/564?guid=6869466d-0d6f-49dd-8b61-f4e092bd5dc4"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1197",
@@ -5350,7 +5622,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/05/2025 12:00 AM",
     "comments": "Primo Uy - 08/05/25  2:36:56 PM: Use as is until the battery dies. | Miguel Diaz - 03/05/25  8:35:05 AM: Troubleshoot with Raymond tech he advised the  left side if facing  the boom from the rear  .Batteries need to be replaced they are not holding charge .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "",
@@ -5373,6 +5646,7 @@
         "name": "Image - 2026-08-17T094701.129.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/1045?guid=da3ac2d9-c5b1-4d4b-a791-2bbfab9fb615"
       }
-    ]
+    ],
+    "assigned_to": ""
   }
 ]

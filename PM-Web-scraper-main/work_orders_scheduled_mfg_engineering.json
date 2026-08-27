@@ -14,7 +14,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Technician"
   },
   {
     "equipment_id": "120",
@@ -31,7 +32,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Technician"
   },
   {
     "equipment_id": "120",
@@ -48,7 +50,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Technician"
   },
   {
     "equipment_id": "120",
@@ -65,7 +68,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Technician"
   },
   {
     "equipment_id": "120",
@@ -82,7 +86,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Technician"
   },
   {
     "equipment_id": "120",
@@ -99,7 +104,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "120",
@@ -116,7 +122,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "4/19/2022",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -132,8 +139,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/7/2022",
-    "comments": "Primo Uy - 09/07/22  1:49:35 PM:\u00a0Done. Machine was out source.  ME already assigned a point man in APT to perform the PM for the 2111/12",
-    "attachments": []
+    "comments": "Primo Uy - 09/07/22  1:49:35 PM: Done. Machine was out source.  ME already assigned a point man in APT to perform the PM for the 2111/12",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -149,8 +157,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/21/2022",
-    "comments": "Primo Uy - 11/21/22  7:58:49 AM:\u00a0Done",
-    "attachments": []
+    "comments": "Primo Uy - 11/21/22  7:58:49 AM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -166,8 +175,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "11/28/2022",
-    "comments": "Primo Uy - 11/28/22 10:28:53 AM:\u00a0ME is taking over Task. Machine is over APT.",
-    "attachments": []
+    "comments": "Primo Uy - 11/28/22 10:28:53 AM: ME is taking over Task. Machine is over APT.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -183,8 +193,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/18/2024",
-    "comments": "Primo Uy - 08/05/24 10:18:02 AM:\u00a0Notify ME.",
-    "attachments": []
+    "comments": "Primo Uy - 08/05/24 10:18:02 AM: Notify ME.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -200,8 +211,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/21/2024",
-    "comments": "Primo Uy - 08/05/24 10:17:04 AM:\u00a0Notify ME.",
-    "attachments": []
+    "comments": "Primo Uy - 08/05/24 10:17:04 AM: Notify ME.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -217,8 +229,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "6/18/2024",
-    "comments": "Primo Uy - 08/05/24 10:19:52 AM:\u00a0Notified ME",
-    "attachments": []
+    "comments": "Primo Uy - 08/05/24 10:19:52 AM: Notified ME",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -235,7 +248,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/12/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -252,7 +266,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/12/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -269,7 +284,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/12/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "120",
@@ -286,7 +302,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/12/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "137",
@@ -303,7 +320,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Supervisor"
   },
   {
     "equipment_id": "137",
@@ -320,7 +338,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/12/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "66",
@@ -337,7 +356,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Lead"
   },
   {
     "equipment_id": "66",
@@ -354,7 +374,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "4/20/2022",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "66",
@@ -371,7 +392,8 @@
     "downtime_hours": "0.05",
     "completed_datetime": "9/11/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "66",
@@ -388,6 +410,7 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/12/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   }
 ]

@@ -15,7 +15,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/05/2022 12:00 AM",
     "comments": "Miguel Diaz - 05/05/22  1:43:23 PM: Found film assist sensor moved and not reading the metal roller in place adjusted sensor height and replaced missing nut .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -33,7 +34,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/14/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/14/22  1:41:21 PM: Found emergency switch disconnected from the inside  along with a hot wire .\nPlease advise all new operators not to rotate the emergency switch to stop press in and to release 1/4 turn releases it this was turned over several times",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -51,7 +53,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/14/2022 12:00 AM",
     "comments": "Primo Uy - 07/15/22 12:34:24 PM: Have UWO made yesterday and was already fixed or closed. Shrink Wrap is working fine.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -69,7 +72,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/05/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/05/22  1:05:55 PM: Replaced belt",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -87,7 +91,8 @@
     "downtime_hours": "0.5",
     "completed_datetime": "01/27/2023 12:00 AM",
     "comments": "Primo Uy - 01/27/23  7:41:21 AM: Error: Film Break.\nAfter basic trouble shooting, found out sensor on the film loader was loose and out of range/no signal when the film is feed to the carouse the machine will not run. Clean sensor and adjust to align the range of the senso and the door closer. reinstall the lock nut. Its working now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -114,7 +119,8 @@
         "name": "MicrosoftTeams-image (8).png",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/266?guid=664cbfda-b600-4f1f-92e2-849ecd1f8981"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -132,7 +138,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/11/2023 12:00 AM",
     "comments": "Miguel Diaz - 05/11/23 12:49:43 PM: Re aligned machine is was off by 1'' re-anchored machine to floor .Added extra anchors so it don't move easily .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -150,7 +157,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/29/2023 01:30 PM",
     "comments": "Maksim Bushka - 08/29/23  1:35:49 PM: Replaced the gripping tape in the shrink wrap machine.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -168,7 +176,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/30/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/30/23  7:36:21 AM: Found loose hardware holding the sensor for height control .Tighten hardware .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -186,7 +195,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/20/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/20/23  1:58:32 PM: Found bottom sprocket loose guy key had fallen out .Found guide key re-insert and tighten sprocket .\nMachine is working properly .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -204,7 +214,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/09/2024 12:00 AM",
     "comments": "Miguel Diaz - 04/09/24  7:52:28 AM: Moved shrink wrap table back over towards the ramp closing the gap .Extracted the broken bolt drilled and tap to a bigger size bolt .Table is secured again .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -222,7 +233,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/18/2025 12:00 AM",
     "comments": "Miguel Diaz - 03/18/25 11:41:55 AM: Replaced motor brushes machine is working with out issues . | Miguel Diaz - 03/17/25  1:25:13 PM: Troubleshoot checked belt tension removed turn table plate  .Vacuumed underneath found excessive plastic film wrapped around the middle turn table bearing, lubed all parts .Turn table still struggling to turn on its own when hitting jog  looked at the turn table motor  brushes Found them less than 1/2 Manual says it should be at least 1 '' .\nOrdered replacement brushes part # 31007441 payed for next day air .Delivery tomorrow or weds at the latest .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -240,7 +252,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/15/2026 12:00 AM",
     "comments": "Gabriel Shinobi - 06/15/26  9:24:30 AM: closing work order as another is currently open",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1211",
@@ -258,7 +271,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/25/2026 12:00 AM",
     "comments": "Gabriel Shinobi - 07/01/26  7:13:28 AM: vendor inspected, found one brush upside down, connectors on the drive loose, machine working properly | Gabriel Shinobi - 06/24/26  7:01:46 AM: Tech called, waiting on schedule for tech visit. will advice | Maksim Bushka - 05/18/26 12:52:15 PM: Checked out sometimes get stuck probably we need to replace the belt i will check it after 6 pm",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5338",
@@ -281,7 +295,8 @@
         "name": "r24 stacker.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/798?guid=558ef67c-495e-4a72-8e9a-946b08b645db"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5076",
@@ -304,7 +319,8 @@
         "name": "Lantech race kit for international quote.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/23?guid=ed641647-c3f5-4ba0-98fe-4065eb98f826"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5076",
@@ -322,7 +338,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/03/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/03/22  7:04:10 AM: Troubleshoot and found the film roll sensor was stuck made adjustments machine is working again sensor should be activated when the film is tugged from  the pallet that's when it activates the sensor to rotate",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5076",
@@ -340,7 +357,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/07/2024 12:00 AM",
     "comments": "Miguel Diaz - 10/07/24  8:55:07 AM: Main board has 8 led bulbs the first two should be on top is for the machine to go up and second is for the machine to go down the second was off .Found top limit switch on the inside of the belt when it should be on the outside .Machine is working properly again .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5076",
@@ -358,7 +376,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 10/11/24  7:48:43 AM: Adjusted the top limit switch",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "5076",
@@ -376,7 +395,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/17/2024 12:00 AM",
     "comments": "Miguel Diaz - 10/17/24  7:29:50 AM: Ordered and replaced belt Part # 30171323 Belt flat Mil Nylon -6/6 3 x 318 for FDS section Q mast .\nMachine is up and running . | Miguel Diaz - 10/11/24  1:13:55 PM: Roll carriage lift belt ripped its not a regular belt its cloth material  .Called Lantech and ordered part # 30000947 .Will arrive next week .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -394,7 +414,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/12/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/12/23  1:29:28 PM: Light i ordered did not show up i had to re-order another one after market .\nStrobe light has been replaced Part # 00591-08355-81 | Miguel Diaz - 08/14/23  8:29:58 AM: Ordered a replaced light with cage from Raymond Model 6465-RAY .Replacement cost $311 plus shipping .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -412,7 +433,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/03/2025 10:30 AM",
     "comments": "Gabriel Shinobi - 11/03/25 10:42:03 AM: tested stacker no issues at this time.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -430,7 +452,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/04/2025 02:00 PM",
     "comments": "Gabriel Shinobi - 11/04/25  2:40:05 PM: hanging wire is the static ground discharge, meant to be hanging and contacting the ground. water is ok currently working ok",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -448,7 +471,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/04/2025 02:00 PM",
     "comments": "Gabriel Shinobi - 11/04/25  2:43:32 PM: stacker working normally, hanging wire is a static ground meant to make contact with ground.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1925",
@@ -466,7 +490,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/26/2025 12:00 AM",
     "comments": "Primo Uy - 12/01/25  1:21:48 PM: Reymond on site to check the Stacker and found nothing wrong.  Drive himself around the Factory floor. | Primo Uy - 11/26/25 10:07:37 AM: Leave a voice mail message to Hovic - Raymond Tech. to come today.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2025",
@@ -484,7 +509,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/01/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/01/22  1:44:41 PM: Greased dock 4 and 5 with grease and wd-40 . | Miguel Diaz - 04/27/22  9:41:14 AM: Joe advised dock #4 needs service .Truck  trailer is always parked there so i cannot service it until no trailer is blocking the dock ramp .Please advise when ramp is open to service .Thanks | Miguel Diaz - 04/27/22  8:34:08 AM: I have greased the dock ramps that are not covered by a trailer please advise what ramp are you having issues with .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2025",
@@ -502,7 +528,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/09/2022 12:00 AM",
     "comments": "Miguel Diaz - 11/09/22  1:18:44 PM: Took advantage that the door on bay 6 was open and greased the ramp fittings  but i found a handle/bolt stuck  not letting it catch the lip when going down  .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2025",
@@ -520,7 +547,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/12/2022 01:30 AM",
     "comments": "Maksim Bushka - 12/12/22 11:39:23 AM: Clean up under ramp lubricate all moving parts",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2025",
@@ -538,7 +566,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/06/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/06/23  7:52:02 AM: This was reported to Maintenance yesterday after i left .\nStraighten brush flap  and screwed back on ramp",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2025",
@@ -556,7 +585,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/25/2023 11:30 AM",
     "comments": "Maksim Bushka - 04/25/23 11:43:23 AM: One of operating chains got stuck.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "2025",
@@ -579,7 +609,8 @@
         "name": "Dock  9 lift repair 9-30-24 I-R106487.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/627?guid=4217c295-2c90-4acc-8187-4f8dfdd3699b"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -597,7 +628,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/18/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/18/22 12:12:40 PM: Replaced front wheel Please advise operators not to drive over any piece of wood or trash that can cause flat spots .Suggest sweeping often .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -615,7 +647,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/22/2022 12:00 AM",
     "comments": "Miguel Diaz - 04/25/22  5:22:31 AM: Vendor found corrosion build up underneath battery pushing up half. the cells up .Replaced one dead cell equalaize entire battery | Miguel Diaz - 04/07/22  2:43:13 PM: Industrial battery stopped by to pick up our battery they also dropped off a loaner till they fix ours .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -633,7 +666,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/06/2022 12:00 AM",
     "comments": "Miguel Diaz - 09/06/22  9:51:43 AM: Replaced red connector",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -660,7 +694,8 @@
         "name": "R9 final cost for seals and main hose replace 1-5-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/188?guid=05219910-2ff1-40a3-adf4-e4e7b3213a8d"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -687,7 +722,8 @@
         "name": "R9 BRAKE MASTER LEAKING OIL 11-13-23 REPAIRS.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/482?guid=461e970e-ee2e-4896-ad4b-aa3d5748d1d9"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -710,7 +746,8 @@
         "name": "R9 brake assermbly replacement 5-15-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/571?guid=f8b42205-6840-4e52-9cf4-13363bd483cd"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -728,7 +765,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/07/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/30/24  6:23:11 AM: Tech replaced drive tire and adjusted caster assembly",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -751,7 +789,8 @@
         "name": "R9 drive tire replacement 8-12-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/616?guid=f57c5bba-b9ae-4e17-adf7-801b0d0a7d2a"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -769,7 +808,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/14/2024 12:00 AM",
     "comments": "Miguel Diaz - 11/14/24  8:50:59 AM: Please add additional comments if needed to the open pending work order for the same issue .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -787,7 +827,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/19/2024 12:00 AM",
     "comments": "Miguel Diaz - 11/19/24  1:41:05 PM: New battery came in unit is back in service Please note unit is leaking from lift seals again . | Miguel Diaz - 11/18/24 10:41:44 AM: Vendor advised new battery will be here Wednesday . | Miguel Diaz - 11/18/24  8:14:58 AM: Working on getting another loaner battery in old will need to be replaced . | Miguel Diaz - 11/14/24  8:53:30 AM: Shipping advised the loaner battery is also not working this morning after checking for voltage after a full charge battery has 23 volts which it should have 24 v Confirmed with Raymond tech he advised loaner is no good .Called vendor they are checking for another loaner but  they advised that our original battery is 8 to 9 years old and will need to be replaced waiting for quote . | Primo Uy - 11/13/24  2:19:12 PM: 11.13.24 Update: Battery was pick up and install a battery loaner from battery engineering. | Miguel Diaz - 11/12/24 11:19:19 AM: Battery failed this morning ,Industrial battery engineering is looking to see if they have a loaner  they will be picking up the battery for inspection .If battery cannot be repaired a new one will need to be purchased .PM  site is fairly new and i do not have any past information on when the battery was last replaced .All that info stayed with the old pm site . | Miguel Diaz - 11/11/24  9:53:16 AM: Battery tested good it has 24 volts each cell tested good for 2 volts except for one at 1.8 Raymond tech advised that should not cause issues .\nSuggest unit get used again from a full charge the operator advised it went down from 40 % one day .As for the front load wheels its riding wobbly because it has several flat spots that happens when operators are not paying attention to the floor you cannot drive over wood chips or anything that would cause  the wheel to  stop rotating and drag causing a flat spot .We will replace the wheels and give unit back .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -810,7 +851,8 @@
         "name": "R9 Repair quote  123-165-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/701?guid=e0e9be82-95b0-4138-a35b-79c7f35e951f"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -833,7 +875,8 @@
         "name": "R9 broken handle 2-19-25.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/728?guid=31cd74a7-fb0c-4c1b-be1b-95cf4fc04b60"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -851,7 +894,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/06/2025 09:05 AM",
     "comments": "Ubaldo De La Rosa - 10/06/25  9:42:22 AM: mopped and dried area",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -869,7 +913,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/07/2025 11:30 AM",
     "comments": "Gabriel Shinobi - 10/08/25  8:35:58 AM: Raymond tech replaced leaking hose, will close once we have final part price | Gabriel Shinobi - 10/06/25 10:38:58 AM: cleaned up leak, temp patch added to the leak area, Raymond tech contacted",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -887,7 +932,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/09/2025 12:00 AM",
     "comments": "Primo Uy - 12/12/25  9:51:36 AM: Done Found a Hydraulic cylinder was leaking. Raymond tech replaced a new hydraulic cylinder. No more leak.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -905,7 +951,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/12/2026 12:00 AM",
     "comments": "Primo Uy - 01/26/26  1:13:57 PM: Leak is gone. The Raymond Tech come last 1.12.26 to check again. | Primo Uy - 12/30/25  9:28:33 AM: Check all line myself, notice one hydraulic line is wet.  Wipe it out and put a marking to verify late.\nSo far its a slow leak and still need to resolve. Keeping an eye and check back later.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "180",
@@ -923,7 +970,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/02/2026 12:00 AM",
     "comments": "Primo Uy - 06/17/26 12:41:30 PM: Cleaned the area.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -941,7 +989,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/22/2022 12:00 AM",
     "comments": "Barton Lea - 04/22/22  8:30:54 AM: unit running",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -959,7 +1008,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/02/2022 12:00 AM",
     "comments": "Miguel Diaz - 05/02/22  8:14:04 AM: Unit is on the floor with out issues currently tpf is using it because they use it less than shipping would use therefore less issues with it . | Miguel Diaz - 04/26/22  7:07:24 AM: Raymond tech showed up for maintenance on another unit this morning he advised he cannot attempt to fix anything on R10 with out the unit being faulty currently its working with out issues he advised when its acts up to remove the side cover under the potentiometer and get the fault code that will help them out on how to attempt to fix this re-occurring issue .Unit is old and cannot take the beating it gets on a 8 hour shift suggest it get swapped with another unit from TPF R19 . | Miguel Diaz - 04/25/22 11:25:04 AM: Found stacker unresponsive till it moved .Drove it  to maintenance rear area checked  pedal reservoir for fluid \nfound it at half way added fluid unit still unresponsive when the foot pedal is pressed unit turns ON but  does not move forward or reverse .Raymond tech is scheduled to come out Tuesday morning at 5 :30 am .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -977,7 +1027,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/05/2022 12:00 AM",
     "comments": "Miguel Diaz - 05/05/22  7:07:40 AM: Lift did not go up or down yesterday because it had a dead battery. After charging lift up and down works ..Everyone who drives a lift must be aware of the battery levels and are charge when needed . | Miguel Diaz - 05/04/22  3:26:13 PM: Found battery completely dead .\nUp and down will not work on a dead battery i placed the battery to charge and doing  an Equalize .Will check in the morning .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -995,7 +1046,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/05/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/26/23  7:59:08 AM: another work order is already open | Miguel Diaz - 01/06/23 12:04:45 PM: Raymond tech returned with the welded foot pedal that was broken from yesterday .Lift is back in service .\nWork order will stay open till final cost is in . | Miguel Diaz - 01/05/23 11:23:03 AM: Raymond tech  confirmed my findings with  floor pedal it is broken we don't have the means to fix anything here with welding .He will return tomorrow with the foot pedal straight and welded . | Miguel Diaz - 01/05/23  7:52:17 AM: Foot pedal is flat lined looks like the welds are broken on the pedal tried to take the air out of the pedal with no luck .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1013,7 +1065,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/26/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/26/23  7:57:47 AM: another work order is already open | Miguel Diaz - 01/06/23  1:55:41 PM: Will reach out to battery engineering to evaluate the battery operators advising its still not holding charge but half a day only and needs to be plugged in . | Miguel Diaz - 01/05/23  9:34:53 AM: Did equalize to even out the cells battery bars are up will monitor for further evaluation if needed . | Primo Uy - 12/30/22 11:01:49 AM: Stacker #10 is now Plug In. We hit equalize button on the charger. Will check again if it the battery will take a Charge in about an Hour.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1031,7 +1084,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/30/2023 12:00 AM",
     "comments": "Miguel Diaz - 03/30/23  2:05:40 PM: Battery has been replaced unit is back in shipping | Miguel Diaz - 03/28/23 11:28:06 AM: Vendor called advising battery is ready and will be brought over today or tomorrow . | Miguel Diaz - 03/08/23 11:44:15 AM: Battery should  be here by end of March . | Miguel Diaz - 02/01/23  1:26:06 PM: Received a call from IBE they advised the battery is 9 years old and is no-good .\nWaiting for the quote in order to fill out a PO Rec to order a new one .\nLead time for a new battery from when the receive the PO Rec # is  4 weeks | Miguel Diaz - 01/26/23  7:55:15 AM: IBE picked up the battery this morning for an evaluation Driver mentioned the battery serial numbers shows its 8 years old .Will wait for confirmation before filling out a po rec . | Miguel Diaz - 01/24/23  1:50:18 PM: Joe advised the battery is still having giving  issues .Called IBE they advised they will be here tomorrow morning to pick up the battery for an evaluation .Side note they  don't have a loaner to bring us currently . | Miguel Diaz - 01/19/23  9:42:40 AM: IBE will pick up the battery tomorrow for an evaluation if its not fixable we will need to buy a new battery the last one cost us $5,919.11.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1048,13 +1102,14 @@
     "work_performed_by": "Raymond tech",
     "downtime_hours": "0",
     "completed_datetime": "05/04/2023 12:00 AM",
-    "comments": "Miguel Diaz - 07/07/23  9:59:03 AM: Cost is in to close out work order .Open attachment to view tech notes if needed | Miguel Diaz - 05/09/23 11:48:16 AM: Raymond tech returned today and replaced the forward and reverse tip kit .Stacker has been given back to Shipping for use .Work order will stay open till final cos is in . | Miguel Diaz - 05/05/23  7:52:12 AM: Disregard unit will stay in the back of maintenance till the part arrives next week .It h=just failed right now (Spring assembly for contactor failed  ) . | Miguel Diaz - 05/05/23  7:46:29 AM: Raymond tech arrived this morning and found the unit with the issues we described .\nHe advised the unit is fixed and no longer stalls  and can go back to the floor additional parts are on order he will replace that next week when they arrive . | Miguel Diaz - 05/04/23  9:05:34 AM: Removing the lift from the floor it\u2019s not moving  forward and it did fail on stopping on me just now when \nGoing in reverse it kept going .Calling tech for repair.",
+    "comments": "Miguel Diaz - 07/07/23  9:59:03 AM: Cost is in to close out work order .Open attachment to view tech notes if needed | Miguel Diaz - 05/09/23 11:48:16 AM: Raymond tech returned today and replaced the forward and reverse tip kit .Stacker has been given back to Shipping for use .Work order will stay open till final cos is in . | Miguel Diaz - 05/05/23  7:52:12 AM: Disregard unit will stay in the back of maintenance till the part arrives next week .It h=just failed right now (Spring assembly for contactor failed  ) . | Miguel Diaz - 05/05/23  7:46:29 AM: Raymond tech arrived this morning and found the unit with the issues we described .\nHe advised the unit is fixed and no longer stalls  and can go back to the floor additional parts are on order he will replace that next week when they arrive . | Miguel Diaz - 05/04/23  9:05:34 AM: Removing the lift from the floor it’s not moving  forward and it did fail on stopping on me just now when \nGoing in reverse it kept going .Calling tech for repair.",
     "attachments": [
       {
         "name": "r10 repairs tip kit 5-4-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/314?guid=899d08c3-8780-41fa-8f9e-8c01020dbaf3"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1077,7 +1132,8 @@
         "name": "r10 handle replacement 6-9-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/292?guid=5d2cd3f0-0680-4879-be83-3daede248a1a"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1095,7 +1151,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/03/2024 12:00 AM",
     "comments": "Miguel Diaz - 01/03/24  7:23:39 AM: This seems to be tied together with yesterdays lift steering stopped working .\nFound steering chain popped off adjusted chain steering is working again .\nHovic will be replacing the handle knob when he returns for others works orders.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1118,7 +1175,8 @@
         "name": "r10 broken chain link steering.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/489?guid=92333681-cd19-436d-9440-b0eef8d762c0"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1141,7 +1199,8 @@
         "name": "r10 cover repair 1-30-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/516?guid=7466e44d-dc06-40e4-833f-6396c10f35a1"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1159,7 +1218,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/06/2024 12:00 AM",
     "comments": "Miguel Diaz - 05/06/24  8:59:43 AM: Unit has intermittent issue its working now",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1177,7 +1237,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/28/2026 08:00 AM",
     "comments": "Gabriel Shinobi - 02/28/26  7:02:58 AM: closing, other work order already open",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1195,7 +1256,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/09/2026 01:00 PM",
     "comments": "Gabriel Shinobi - 03/09/26  1:31:46 PM: Raymond West tech replaced switch and oil change, Stacker working normally | Primo Uy - 03/04/26  9:34:26 AM: Update: I ask Raymond Tech and mentioned about the parts he order have not arrive yet. | Gabriel Shinobi - 02/25/26  8:06:42 AM: Raymond Tech to finish repaid 2/25/26",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "182",
@@ -1222,7 +1284,8 @@
         "name": "R10 rubber mat1.png",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/997?guid=edcb8946-12bf-4cc7-9687-f0516e603da0"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1240,7 +1303,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/01/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/01/22 10:42:56 AM: Found loose hardware",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1258,7 +1322,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/14/2022 12:00 AM",
     "comments": "Primo Uy - 06/14/22  2:39:55 PM: Done. Clear the shelve and adjust height to allow the PC Monitor to swing inside.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1276,7 +1341,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/18/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/20/22  7:27:17 AM: Removed all spiders and webs from the high bay windows along with the from skylights over the tables by the doc doors .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1294,7 +1360,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/21/2022 12:00 AM",
     "comments": "Primo Uy - 07/21/22 10:23:11 AM: Replace a shoulder bolt for the wheels. Push cart is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1312,7 +1379,8 @@
     "downtime_hours": "0.25",
     "completed_datetime": "07/21/2022 12:00 AM",
     "comments": "Primo Uy - 07/21/22 10:30:12 AM: Clear out jam staple wire. Staple gun is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1330,7 +1398,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/22/2022 12:00 AM",
     "comments": "Primo Uy - 07/22/22  7:27:06 AM: Missing lock ring on the piston. Replace a new lock ring, align spring and piston head to be able to insert the lock ring. Pallet jack is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1348,7 +1417,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/25/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/25/22 11:09:42 AM: Jose from ME had a machine shop make us a new ones with a shorter handles they arrived late  Friday .\nPrimo and I replaced all of them.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1366,7 +1436,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/27/2022 12:00 AM",
     "comments": "Primo Uy - 07/27/22  8:42:28 AM: QR Sticker was already attached. A total of 40 pcs. (each Handle).",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1389,7 +1460,8 @@
         "name": "Shipping yellow rack cover.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/84?guid=7c4a3cf2-1e8a-433b-8789-e34ceb95e6cb"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1407,7 +1479,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/10/2022 12:00 AM",
     "comments": "Primo Uy - 08/10/22  1:19:28 PM: Use the scissor lift to reach the toggle switch and re-attach the toggle string. Its working now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1425,7 +1498,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/15/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/15/22 10:45:02 AM: Used lift with chain to pull rail foot back in the pocket .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1443,7 +1517,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/19/2022 12:00 AM",
     "comments": "Primo Uy - 08/19/22  9:10:12 AM: Safety Lever got jam, released safety lever and clean with air hose. Stapler is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1466,7 +1541,8 @@
         "name": "MicrosoftTeams-image.png",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/113?guid=20cbf7e3-7b34-47ce-bf13-f0140bfdaa4f"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1484,7 +1560,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/13/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/13/22  6:38:16 AM: Primo replaced the alarm batteries and it still did not work .\nI found the controller with a stuck button replaced controller and coded it alarm is working again .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1502,7 +1579,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/24/2022 12:00 AM",
     "comments": "Primo Uy - 10/24/22 12:45:19 PM: Done. Tape dispenser is now working properly",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1520,7 +1598,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/19/2022 12:00 AM",
     "comments": "Miguel Diaz - 11/19/22 10:36:13 AM: Used Swiffer duster to wipe walls free of dust .Used vacuum to pick up all accumulated dust from the partions, walls, baseboards, copiers, chairs keyboard trays, cabinets ,table tops .\nWiped all desk ,cabinets ,walls copiers ,drawers  with magic eraser free of smudges and ink .Lastly vacuum room .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1538,7 +1617,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/14/2022 12:00 AM",
     "comments": "Primo Uy - 12/14/22  8:02:25 AM: Done. Replaced new retaining ring.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1561,7 +1641,8 @@
         "name": "20230127_130356.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/204?guid=e8e8cd8a-969f-4653-b068-e4bccc1f048d"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1584,7 +1665,8 @@
         "name": "20230206_110649.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/218?guid=95146f9d-48eb-435a-a9b1-0e66732e503c"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1602,7 +1684,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/20/2023 12:00 AM",
     "comments": "Primo Uy - 02/20/23  9:24:11 AM: Dome Assemble two carts. Delivered to Shipping.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1620,7 +1703,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/06/2023 12:00 AM",
     "comments": "Miguel Diaz - 03/06/23 10:22:23 AM: Covered exposed wires and placed heat shrink tubing over the taped section .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1638,7 +1722,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/10/2023 12:00 AM",
     "comments": "Primo Uy - 03/10/23 10:40:23 AM: Done. Remove Wheel and straighten the two Wheel Bracket, Reinstalled wheel.  Its working now.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1661,7 +1746,8 @@
         "name": "MicrosoftTeams-image (1).png",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/243?guid=f7411e39-103b-43a7-9598-d1d429c9be5a"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1684,7 +1770,8 @@
         "name": "shipping window covered.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/250?guid=b1516a9e-b6bd-4ba2-bc4d-f6249af60af5"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1707,7 +1794,8 @@
         "name": "MicrosoftTeams-image (5).png",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/251?guid=efa8e468-4634-4b60-840d-9c4099f7faf3"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1725,7 +1813,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/11/2023 10:00 AM",
     "comments": "Maksim Bushka - 04/11/23  1:29:13 PM: Fixed the post replaced angle connection.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1743,7 +1832,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/13/2023 12:00 AM",
     "comments": "Miguel Diaz - 05/15/23  7:09:37 AM: Found batteries need to be replaced x 6 each unit  looked for the model number on the shade found the manual online and found how to replace the batteries .Had Max replaced the batteries over the weekend .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1761,7 +1851,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/09/2023 12:00 AM",
     "comments": "Miguel Diaz - 06/09/23  1:56:32 PM: Tighten loose hardware",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1779,7 +1870,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/11/2023 12:00 AM",
     "comments": "Miguel Diaz - 07/12/23 10:58:34 AM: Ordered and installed both units .also both have been numbered as requested",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1797,7 +1889,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/24/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/24/23 12:09:12 PM: Done",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1832,7 +1925,8 @@
         "name": "ship3.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/398?guid=95ddcd0a-bcbb-4e26-815c-22b42a3b5fac"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1850,7 +1944,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/10/23 11:09:45 AM: Found tripped breaker on panel LE breaker 11 rest breaker power is back on .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1877,7 +1972,8 @@
         "name": "bay2..jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/500?guid=22daad0a-21b8-4941-9efe-4cad8b486bb6"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1895,7 +1991,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 05/11/24 10:22:12 AM: Vacuumed south wall windows",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1913,7 +2010,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/21/2024 12:00 AM",
     "comments": "Miguel Diaz - 05/21/24  7:57:55 AM: Replaced 3 C batteries",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1931,7 +2029,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/28/2024 12:00 AM",
     "comments": "Primo Uy - 05/28/24 10:04:03 AM: Done. Replaced new Bulb.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1949,7 +2048,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/12/2024 12:00 AM",
     "comments": "Primo Uy - 06/12/24  1:42:38 PM: Have to open up the staple gun and found one wire for the PCB was broken (disconnected). Re solder the wire to the board and the stapler is now working. Return to Shipping.\nIt also happens that we have an old one that was not use anymore but save for parts. I have one working but as a spare but need a new body case.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1959,7 +2059,7 @@
     "wo_id": "12141",
     "date_notified": "06/18/2024",
     "urgency": "2. General Maint - High Priority",
-    "problem": "Could you please investigate an automatic Tape Machine Dispenser?\n\nDispenser is stuck, does not supply any tape. Machine is in Verne\u2019s working station. FedEx area.",
+    "problem": "Could you please investigate an automatic Tape Machine Dispenser?\n\nDispenser is stuck, does not supply any tape. Machine is in Verne’s working station. FedEx area.",
     "status": "Closed and Completed",
     "material_cost": "0",
     "labor_time": "0.25",
@@ -1967,7 +2067,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/18/2024 12:00 AM",
     "comments": "Primo Uy - 06/18/24  9:44:08 AM: Feed roller got stuck. Run the dispenser without the tape to release the upper feed roller. Tape dispenser is now working. Notice that the heater was also turn off, it should be ON to make the adhesive more fluid.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -1985,7 +2086,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/22/2024 12:00 AM",
     "comments": "Primo Uy - 08/28/24  1:05:52 PM: Pallet Jack Caddy was already installed on the 14-pallet jack. We have 4 pieces extra. of the Caddy and was save in the shipping storage room in Al office. | Primo Uy - 08/22/24  9:28:15 AM: Installed caddy to one of the pallet jacks for evaluation in the shipping department. \nAlready Notify the supervisor. We will continue the installation when the evaluation is positive, or the department will say go ahead.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2003,7 +2105,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/02/2024 12:00 AM",
     "comments": "Miguel Diaz - 10/02/24  1:18:42 PM: Replaced missing or damaged footings from two ladder stools . | Miguel Diaz - 10/01/24 10:56:48 AM: Ordering a set of 4 from Grainger.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2021,7 +2124,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/07/2024 12:00 AM",
     "comments": "Miguel Diaz - 10/07/24  8:52:35 AM: closing this to enter work on on equipment id",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2039,7 +2143,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/22/2024 12:00 AM",
     "comments": "Primo Uy - 10/28/24 10:42:00 AM: Done. Made a new top. 2 pieces.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2057,7 +2162,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/28/2024 12:00 AM",
     "comments": "Primo Uy - 10/28/24 10:12:24 AM: Done. R. arm padding replaced.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2084,7 +2190,8 @@
         "name": "J20  Fire extinguisher.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/708?guid=71fbb173-ff54-4d84-9a3c-1d97aec41961"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2102,7 +2209,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/28/2025 12:00 AM",
     "comments": "Miguel Diaz - 01/28/25 10:29:08 AM: Repaired door adjusted the arm so it activates properly .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2120,7 +2228,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/07/2025 12:00 AM",
     "comments": "Primo Uy - 03/07/25 10:48:23 AM: Done..",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2138,7 +2247,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/01/2025 12:00 AM",
     "comments": "Primo Uy - 04/01/25  8:46:32 AM: Removed half of the staple wire clip from the magazine, it overlaps each other and hard to extract them manually.\nHave to use a hammer and a screwdriver to drive them out. Staple gun is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2161,7 +2271,8 @@
         "name": "Image (44).jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/853?guid=bf26a669-39fe-4124-b4ce-8d93b1e0ad5d"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2179,7 +2290,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/28/2025 12:00 AM",
     "comments": "Primo Uy - 10/28/25  1:18:30 PM: Done. Remove all dirt and grimes on the opening (out feed slider guide.). Add lubricant. Tape dispenser is now working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2197,7 +2309,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/13/2026 12:00 AM",
     "comments": "Primo Uy - 01/13/26  2:19:43 PM: Done. Repair the track.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2215,7 +2328,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/27/2026 12:00 AM",
     "comments": "Primo Uy - 01/27/26 10:27:05 AM: Done. Straighten the Lock and tighten the rail.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2238,7 +2352,8 @@
         "name": "Image (80).jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/936?guid=36332197-36d8-497d-baec-2cf419f4cab6"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2265,7 +2380,8 @@
         "name": "forklift grease.png",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/949?guid=f8cd4e27-731e-4b56-a057-9ca631821f53"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1490",
@@ -2283,7 +2399,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/10/2026 09:00 AM",
     "comments": "Gabriel Shinobi - 06/10/26  2:35:21 PM: assembled pallet jack with scale",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -2301,7 +2418,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/11/2022 12:00 AM",
     "comments": "Miguel Diaz - 11/15/22  9:16:14 AM: Raymond tech was here for routine maintenance and he fixed the faulty power issues for T1 .He found bad wire connectors for both .Lift is good to go work order will stay open till final cost is in . | Miguel Diaz - 11/07/22  7:31:15 AM: Found that when moving the battery connector lift turns on .Need to call in Raymond tech to replace the battery wire connectors they are worn out .Aligned cord so that it stays on for now till its fixed .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -2319,7 +2437,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/08/2023 12:00 AM",
     "comments": "Miguel Diaz - 02/08/23  8:11:00 AM: Maksim replaced the right side front light that was broken . | Miguel Diaz - 02/03/23 11:18:55 AM: Toyota only offers a replacement lamp P/N 56510-12241-71.\nPart has been ordered . | Miguel Diaz - 02/02/23 10:08:01 AM: Called Equipment depot and  ordered the wheels once in they will provide a date to come by and replace them .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -2337,7 +2456,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/02/2023 12:00 AM",
     "comments": "Miguel Diaz - 03/02/23 12:14:17 PM: Found both tires with sides falling apart this happens when going into the trailers and when backing up the tires hit the ramp .Ordered replacement tires with Equipment depot today both tires were replaced .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -2355,7 +2475,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/15/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/21/23  8:54:37 AM: Replaced the horn with another one we had as a spare",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -2378,7 +2499,8 @@
         "name": "t1battery quote 2-14-24.PDF",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/535?guid=b4fa109b-35a8-4cfb-a598-cebe32ada6d6"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -2396,7 +2518,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/10/2024 12:00 AM",
     "comments": "Primo Uy - 07/11/24  9:21:54 AM: Update: Forgot adding that when we reinstalled the light and turn ON, it did not light up. Have to tell Mike this morning and he double check. He found out that the PCB has a burn circuit. Mike replaces the whole assembly. Now the light is working as it should be. | Primo Uy - 07/11/24  8:11:37 AM: Bring the TI inside and we repaired the light on T1 forklift. Return forklift to Shipping.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "30",
@@ -2414,7 +2537,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/05/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/05/24 10:23:18 AM: Repaired seat belt with another one we had for parts lift is working .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2432,7 +2556,8 @@
     "downtime_hours": "0",
     "completed_datetime": "06/16/2022 12:00 AM",
     "comments": "Miguel Diaz - 06/16/22  2:58:49 PM: Found air in the brake line bleed the line and added brake fluid to the reservoir .Stacker is moving again",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2450,7 +2575,8 @@
     "downtime_hours": "0.5",
     "completed_datetime": "06/29/2022 12:00 AM",
     "comments": "Primo Uy - 06/29/22  9:37:44 AM: Pedal does not activate the stacker solenoid (piston). Pressure loose on the break cylinder, remove break fluid cover and perform break fluid bleeding to remove air inside the cylinder. Add break fluid and return cover. Mike Diaz show me all the step and diagnostic procedure. Stacker is now back in service.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2473,7 +2599,8 @@
         "name": "r18 no travel repair 7-4-22.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/71?guid=b3de1cfb-f6d7-446e-96f5-e369e52463e7"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2491,7 +2618,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/11/2022 12:00 AM",
     "comments": "Miguel Diaz - 08/11/22  6:34:15 AM: Found air in the system bleed air out and refilled with brake fluid ,\nStacker is working properly",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2514,7 +2642,8 @@
         "name": "r189822.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/106?guid=7fe95830-45b8-4c7d-a5b3-8fffb34c98db"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2532,7 +2661,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/05/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/05/23  9:30:14 AM: New battery has been replaced part # 12-125N-15 Industrial battery .Lift is back on the floor | Miguel Diaz - 12/28/22  7:07:04 AM: Found battery dead this morning  our old pm system has all the old data that was saved i cannot check when the last time the battery was replaced but i will reach out for a quote as soon as they open at 8 am . | Miguel Diaz - 12/27/22 10:32:54 AM: Raymond tech found that the battery is not getting equalized it should be  at least once a week  the button needs to be pressed in order for it to equalize .He did advise that the battery may need to be replaced soon .We are equalizing it now and will go from there .Work order will stay open for us to continue to monitor it . | Miguel Diaz - 12/27/22  6:33:35 AM: Battery is at 23.3 Volts this morning it does not move contactors are not engaging  .\nHovic from Raymond will be here shortly to troubleshoot .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2550,7 +2680,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 02/10/23  8:23:15 AM: Troubleshoot this morning found broken wire down the line .Removed center cover all cables  go to a terminal block that is where it was broken  . Repaired broken wire horn is working properly again . | Miguel Diaz - 02/09/23  1:43:21 PM: Troubleshoot horn and it has power also push button has power but no horn .\nRaymond tech will be here in the morning .Also found loose foot padding Re -glued foot pad .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2573,7 +2704,8 @@
         "name": "r18 drive tire replacement 3-15-23.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/244?guid=f7819ad1-ba0b-4371-8a99-b82a6389b96a"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2591,7 +2723,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/25/2023 12:00 AM",
     "comments": "Miguel Diaz - 04/20/23 11:59:12 AM: Checked stacker did find oil underneath looks' like its from the main cylinder will have Raymond tech look  at it and provide a quote for repairs when he is here for maintenance .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2609,7 +2742,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/05/2023 12:00 AM",
     "comments": "Miguel Diaz - 09/05/23  7:51:37 AM: Operator advised this is an on and off all old unit have this re occurring issue will keep an eye on it if it becomes an issues where its leaving oil as its being used or leaving oil while driving then the unit will be removed from the floor closing work order . | Miguel Diaz - 08/26/23 10:19:01 AM: Raymond tech still having issues with his superiors with giving us a quote i ask him every time i see him",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2636,7 +2770,8 @@
         "name": "r18 tilt tubing crack 1-15-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/502?guid=6fc7163b-0b7b-4adb-9049-777f85cb5ec8"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2654,7 +2789,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/27/2024 12:00 AM",
     "comments": "Miguel Diaz - 03/28/24  8:45:54 AM: Closing work order One battery cell was replaced battery should be covered under warranty its only been 14 months since the purchase on 1-5-23 | Primo Uy - 03/27/24  2:20:21 PM: FYI. The Battery just arrived and installed. Stacker is now working. | Miguel Diaz - 03/26/24  1:49:24 PM: Battery was just picked up vendor advised they will bring it back this week repaired. | Miguel Diaz - 03/25/24 11:59:22 AM: Troubleshoot and Found the battery with one bad cell Advised the vendor to pick up the battery waiting for the response and pick up date .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2672,7 +2808,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/07/2024 12:00 AM",
     "comments": "Miguel Diaz - 08/30/24  6:24:51 AM: Tech advised he CONTINUOUSLY TESTED UNIT AND WAS\nABLE TO GET UNIT TO DUPLICATE SYMPTOM.TROUBLESHOT UNIT AND NOTICED\nDIRECTIONAL CONTACTOR IS BINDING.DISASSEMBLED THE CONTACTOR\nASSEMBLY,REMOVED DUST AND DEBRIS FROM THE PLUNGER..CLEANED\nCONTACTOR TIPS,REASSEMBLED THE CONTACTOR ASSEMBLY AND TESTED\nUNIT.UNIT TEST GOOD. | Miguel Diaz - 08/08/24  7:48:22 AM: I looked at the unit and verified that the foot pedal is activating .I think its the contactors for forward and reverse .Raymond tech was here for another ticket and I asked him to give it a once over he advised he found something with the contactors and made the adjustment .\nWork order will stay open till final cost is in .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2690,7 +2827,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 12/11/24 10:45:27 AM: Lift is no longer leaking more than usual reported by operator .\nI did not find any visible leaks but did find accumulation oil all over the frame wiped all excess oil from stacker | Miguel Diaz - 12/09/24 11:45:25 AM: Unit can be used if it drips during use then it cannot . | Miguel Diaz - 12/06/24  6:37:33 AM: Wiped all excess fluid from the frame body on the bottom  looks like the center cylinder may be leaking .This is not new the lift was taken to the shop not long ago  but the cost was too much to repair . Raymond tech did fix some of the leaks but it now has gotten worse .Will wait for Raymond tech to advise .This unit may need to be scrapped .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2713,7 +2851,8 @@
         "name": "R18 Switch keylock 12-18-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/705?guid=ed5ae41a-86f0-4107-b9bb-f8570ecbef5f"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2740,7 +2879,8 @@
         "name": "18 forklift.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/797?guid=bc1e99a5-fa61-41c5-a034-29458b9eb959"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "32",
@@ -2758,7 +2898,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/31/2025 12:00 AM",
     "comments": "Wayne Wayland - 10/31/25  3:11:15 PM: Forklift was scrapped. | Gabriel Shinobi - 05/07/25  9:25:07 AM: was advised by Raymond West tech. steering shaft in bad condition will need replacing, parts might be discontinued | Gabriel Shinobi - 05/05/25  2:48:06 PM: submitted ticket with Raymond West to have tech come out and take a look at stacker",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2781,7 +2922,8 @@
         "name": "Jung 20 battery post repair 4-13-22.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/7?guid=5b068123-3e97-4624-a1e8-3a49988ce82f"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2799,7 +2941,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/07/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/07/22  9:29:41 AM: Tested both  battery packs both are good and tested @ 12 volts .Removed camera and found 2 broken wires .\nAdded a new cable hardness to the camera soldered them inside the camera instead of outside .Camera is now working properly .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2822,7 +2965,8 @@
         "name": "jung 20 repairs quote drive tire 6-22-22.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/70?guid=6780a4be-cff8-4c87-b8ac-5d0da564da42"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2845,7 +2989,8 @@
         "name": "J20 horn replacement 7-26-22.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/86?guid=12d21228-8454-427f-8475-be69f27b2df9"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2863,7 +3008,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/03/2022 12:00 AM",
     "comments": "Miguel Diaz - 10/03/22  8:57:26 AM: Found cables ripped re -wired the cables camera is back up .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2881,7 +3027,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/16/2023 12:00 AM",
     "comments": "Miguel Diaz - 01/16/23 11:54:51 AM: Ordered replacement battery 11-10-22 it just arrived today .LA00043652\nreplaced battery with new one from IBEI Part # 24-125N-11",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2899,7 +3046,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/10/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/10/23  1:08:04 PM: Found rubber piece from the wheel hitting the metal housing removed chuck that was sticking out causing the issue tire is still not an issue for replacement .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2917,7 +3065,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/28/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/28/23  2:01:08 PM: Found Fork camera mounted with a broken bolt removed broken bolt and found the wires also broken .Repairs wires and remounted everything back .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2935,7 +3084,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/07/2023 12:00 AM",
     "comments": "Miguel Diaz - 11/07/23  1:57:31 PM: Maintenance had to replace damaged wires inside and outside the camera along with removing the broken mount screws inside the fork that broke inside .\nCamera is back on the unit and working properly . for camera set up 1.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2953,7 +3103,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/05/2023 12:00 AM",
     "comments": "Miguel Diaz - 12/05/23  9:52:20 AM: IBE vendor returned with our battery they replaced cell #18 .Unit Battery is back to 100 % shop tested .No cost Battery is still covered under warranty . | Miguel Diaz - 12/04/23  1:43:15 PM: Vendor picked up the battery to replace the battery cell at their shop they should be bringing it back sometime tomorrow . | Miguel Diaz - 11/30/23 10:58:36 AM: Lead just advised the unit just lost battery voltage again .I called the battery company and the owner helped me troubleshoot over the phone I checked each cell and found one bad cell with 0 voltage .He advised he will start making the one cell at his shop when he has it ready he will let me know then he will come and pick up the battery and replace the cell at his shop and return the battery the next day this way we are not down with out the lift for \n more than a day .Please continue to charge the lift as needed till we can replace the cell . | Miguel Diaz - 11/28/23  1:53:55 PM: Found that the charger is not working in equalize mode because it was disconnected from the inside .Connected the ribbon and asked the operator to run the equalize function tonight this should equalize all battery cells eliminating this problem .Operators need to equalize all batteries every Friday's to  maintain battery longevity.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2971,7 +3122,8 @@
     "downtime_hours": "0",
     "completed_datetime": "12/11/2023 09:00 AM",
     "comments": "Maksim Bushka - 12/11/23  9:12:48 AM: removed the broken screw and replaced",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -2989,7 +3141,8 @@
     "downtime_hours": "0",
     "completed_datetime": "01/12/2024 12:00 AM",
     "comments": "Miguel Diaz - 01/18/24  6:57:02 AM: Replaced seatbelt OEM part | Miguel Diaz - 01/09/24 11:52:05 AM: An order has been placed for a seatbelt with Equipment depot .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -3007,7 +3160,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/03/2024 12:00 AM",
     "comments": "Miguel Diaz - 09/03/24 11:12:14 AM: Camera is working again .When needed you must click on the remote for button 1 and camera will pop back up .It times out after a while . | Miguel Diaz - 08/27/24  9:14:40 AM: Working on it troubleshoot yesterday and could not find the issue all wires are good .We will keep looking if we cannot repair a new one will need to be purchased .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -3025,7 +3179,8 @@
     "downtime_hours": "0",
     "completed_datetime": "04/23/2025 12:00 AM",
     "comments": "Gabriel Shinobi - 05/20/25  1:19:50 PM: Tech picked up battery today around 10am. should return around the same time tomorrow. | Gabriel Shinobi - 05/08/25  6:57:30 AM: Tech came to check, found one cell bad, will need to return to take cell to fix. should finish within a day, waiting on Al and Wayne to let me know what day is best to shut down lift and have tech replace bad cell. waiting on quote from tech as well. | Primo Uy - 04/23/25  1:03:42 PM: We will try to contact the Jungheinnrich tech to come in and check the battery.\nOperator mentioned that the machine with a full charge will last up to 2 days only compare to a 5 days per charge before.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -3043,7 +3198,8 @@
     "downtime_hours": "0",
     "completed_datetime": "10/27/2025 07:00 PM",
     "comments": "Gabriel Shinobi - 04/30/26  8:24:55 AM: Camera to be replaced on monday by Raymond Tech. | Gabriel Shinobi - 11/12/25  8:35:00 AM: removed camera, will be ordering replacement camera. | Maksim Bushka - 10/27/25  6:50:52 PM: Checked up and tighten the mounting scrolls. checked up wiring still not working.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1167",
@@ -3061,7 +3217,8 @@
     "downtime_hours": "0",
     "completed_datetime": "11/10/2025 07:00 AM",
     "comments": "Gabriel Shinobi - 11/12/25  8:35:41 AM: no leak found, will close work order",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3079,7 +3236,8 @@
     "downtime_hours": "0",
     "completed_datetime": "",
     "comments": "Gabriel Shinobi - 08/13/26  7:58:24 AM: Tech, ordered part, waiting on tech to return",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Maintenance"
   },
   {
     "equipment_id": "1169",
@@ -3102,7 +3260,8 @@
         "name": "Jung 22 repairs 6-23-22 invoice.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/62?guid=7b3a06d2-a253-46b1-a9b6-37860f63bde4"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3120,7 +3279,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/22/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/22/22  9:54:05 AM: Found this issue weeks ago just received the part Yesterday  .Gas spring has been replaced .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3138,7 +3298,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/25/2022 12:00 AM",
     "comments": "Miguel Diaz - 07/25/22  8:10:03 AM: Lift has been repaired  on either side of the battery it has two metal holders they need to be down all the way if not the light will not turn ON and stay in turtle mode made adjustment unit is working properly in Rabbit mode .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3165,7 +3326,8 @@
         "name": "Jung 22 battery quote 7-19-22 2.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/77?guid=21b32e4d-94b2-4068-857a-44b7b9ab5aba"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3192,7 +3354,8 @@
         "name": "jung 22 broke glass 2.jpg",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/172?guid=1a0ef758-edf0-4151-ac49-85b5dc38c7b0"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3210,7 +3373,8 @@
     "downtime_hours": "0",
     "completed_datetime": "08/22/2023 12:00 AM",
     "comments": "Miguel Diaz - 08/23/23  6:28:13 AM: This request was fixed yesterday pin that holds all three arms together wiggled loose making them independent .Re-insert the pin and replaced the missing e-clip .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3228,7 +3392,8 @@
     "downtime_hours": "0",
     "completed_datetime": "09/08/2023 12:30 PM",
     "comments": "Miguel Diaz - 09/11/23  9:15:02 AM: Found horn not working replaced horn with spare we had in house .\nUnit horn is working | Maksim Bushka - 09/08/23 12:45:44 PM: Open the back cover and checked up probably need to order new horn.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3246,7 +3411,8 @@
     "downtime_hours": "32",
     "completed_datetime": "10/28/2024 12:00 AM",
     "comments": "Miguel Diaz - 10/28/24 10:59:59 AM: Cost is in .Closing work order . | Miguel Diaz - 10/24/24 11:34:26 AM: Cable track has been replaced .I requested that the tech leave the un broken parts behind so in the future we can try and repair it ourselves if needed .Unit is back  online work order will stay open till final cost is in . | Miguel Diaz - 10/17/24  7:31:09 AM: Tech showed up yesterday and doubled check what parts needs to be ordered after telling them not to show up unless they have the part.I was advised part has been ordered no ETA given . | Miguel Diaz - 10/15/24 12:14:24 PM: Cable track broke and fork got stuck .Reached out to Equipment Depot dispatch and advised what part needs to be ordered .When received they will come out and replace the track .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3264,7 +3430,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/16/2026 08:00 AM",
     "comments": "Gabriel Shinobi - 02/16/26  8:01:31 AM: closing as there is another work order open for this issue",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1169",
@@ -3282,7 +3449,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/27/2026 10:00 AM",
     "comments": "Gabriel Shinobi - 02/28/26  7:03:55 AM: Tech repaired horn, working normally",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3300,7 +3468,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/18/2022 12:00 AM",
     "comments": "Miguel Diaz - 05/18/22  7:46:13 AM: Found broken bolt that holds the cylinder and gate arm from slamming down .Replaced broken bolt and Replaced the missing E-clip that holds the top arm together .Right side gate arm is working properly .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3323,7 +3492,8 @@
         "name": "Jung 21 seal replace invoice 9-15-22.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/111?guid=42f8188c-2852-4ead-88c2-504f9b5f4862"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3358,7 +3528,8 @@
         "name": "Jung 21 repair code E1123 2-22-24.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/550?guid=c7ded675-0cd2-4f30-ae1a-b413a6299eb1"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3376,7 +3547,8 @@
     "downtime_hours": "0",
     "completed_datetime": "03/11/2024 12:00 AM",
     "comments": "Miguel Diaz - 03/11/24 11:42:55 AM: Found missing hardware replaced missing hardware door is working properly",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3394,7 +3566,8 @@
     "downtime_hours": "0",
     "completed_datetime": "05/30/2024 12:00 AM",
     "comments": "Miguel Diaz - 05/30/24 10:17:05 AM: Top arm has the pin missing and is disconnected from the other two replaced pin arm is working properly .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3412,7 +3585,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/10/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/10/24 12:49:44 PM: Cost is in . | Miguel Diaz - 06/17/24  8:44:22 AM: Tech had to pick up the cable track at UPS because of a shipping mix up he showed up and replaced the Cable track and made sure all is working properly .Unit is back up and running .Work order will stay open till final cost is in . | Miguel Diaz - 06/11/24  6:12:56 AM: Equipment depot tech stopped by yesterday and advised the cable track needs to be replaced the full track it should arrive today if not today then Thursday he advised . | Miguel Diaz - 06/10/24 10:43:59 AM: Leadsman pointed out that the fork apparatus has its hose track broken .Found several broken and the sensor bent downward .I was able to remove all broken links .Equipment depot has been called in for service .\nThey will be here today by noon .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3430,7 +3604,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/24/2024 12:00 AM",
     "comments": "Miguel Diaz - 07/24/24 10:09:33 AM: Battery returned just now and is back on the Jungheinrich #21.Warranty 5 years | Miguel Diaz - 07/15/24 11:19:14 AM: Battery was picked up this morning .\nThey advised a two week turnaround to bring it back . | Miguel Diaz - 07/01/24  9:17:15 AM: Industrial battery advised they just completed the cells Shipping requested the battery be picked up on Mon 7-15-24 .Note the unit J21  will be down the full week in order for them to remove the old cells and place the new cells in the battery case . | Miguel Diaz - 05/04/24  7:26:28 AM: New Industrial battery has been purchased  Part # 40-125N-11 .The vendor will have to use the case on the battery this will put the unit down for 5 days .\nThe original lead time was 15 days but they will make the battery cells when that is done they will come pick up the battery gut it and assemble the new battery .",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3453,7 +3628,8 @@
         "name": "Jung 21 repair cost for code E1123 on 2-17-25.pdf",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/732?guid=ba5c0952-519c-46f8-b624-fffaf0141d6a"
       }
-    ]
+    ],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3471,7 +3647,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/24/2025 12:00 AM",
     "comments": "Primo Uy - 08/11/25 12:27:17 PM: Done. Windshield  replaced. | Primo Uy - 08/05/25  2:21:41 PM: 8/05/25 Update: Equipment Depot Tech will be here tomorrow (ETA) to install the windshield. | Primo Uy - 07/25/25  2:13:10 PM: Equipment depot just calls back. New Schedule for the Tech to come over will be on Monday Morning, 7/28/25. | Primo Uy - 07/25/25  1:04:00 PM: Update: 7/25/25\nTech call in sick but i ask the Equipment depot if they can still have someone to come in this afternoon. .\nThey said they will call back and let us know. | Primo Uy - 07/24/25  3:05:06 PM: Service tech will be here tomorrow morning to check the Forklift.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3489,7 +3666,8 @@
     "downtime_hours": "0",
     "completed_datetime": "07/24/2025 12:00 AM",
     "comments": "Primo Uy - 07/24/25  3:01:38 PM: An earlier same request was already taking care off. Tech will be here to replace the windshield.",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "1170",
@@ -3507,7 +3685,8 @@
     "downtime_hours": "0",
     "completed_datetime": "02/20/2026 12:00 AM",
     "comments": "Primo Uy - 02/20/26 12:24:18 PM: Industrial Battery delivered the battery and help the tech to installed. High reach, Jungheneinrich  is now working after test run and was accepted as received in good conditioned (battery). | Gabriel Shinobi - 02/05/26  1:10:07 PM: battery picked up, techs to replace two bad cells | Gabriel Shinobi - 02/02/26 11:26:49 AM: Per Battery techs, they will pick it up today for service | Gabriel Shinobi - 01/20/26  7:13:34 AM: Per tech cell 1 and 16 bad, he is checking and waiting to see if they are still under warranty. waiting on tech to update | Gabriel Shinobi - 01/15/26  7:01:01 AM: waiting on tech report, possibly bad battery. | Gabriel Shinobi - 01/13/26  4:21:11 PM: reached out to tech service, should be in 1/14/26",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "",
@@ -3525,7 +3704,8 @@
     "downtime_hours": "0",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Maintenance"
   },
   {
     "equipment_id": "",
@@ -3543,7 +3723,8 @@
     "downtime_hours": "0",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Maintenance"
   },
   {
     "equipment_id": "",
@@ -3570,7 +3751,8 @@
         "name": "ramp up.png",
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/900?guid=4cfa956c-1025-4c92-9045-568f725d8f70"
       }
-    ]
+    ],
+    "assigned_to": "Maintenance"
   },
   {
     "equipment_id": "",
@@ -3588,6 +3770,7 @@
     "downtime_hours": "0",
     "completed_datetime": "",
     "comments": "Sean Jennings - 06/09/26  9:39:23 AM: Gabe, can you please take a look at this while you are doing the IT equipment swap? You will already be up there and all I want to confirm is if we can bypass the motion sensor on the lights in these bays | Sean Jennings - 02/17/26 10:46:12 AM: Please check to see if there is a toggle switch on the motion sensor for these lights. If there is a toggle switch, turn it off so that the lights are always on. All of the bays have the same lighting so it might be worth checking one of the other bays to see how they stay on all of the time. Bays 5 and 6 are also on motion sensor so if you can figure it out, do the same thing for these bays too. Thank you!",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Maintenance"
   }
 ]

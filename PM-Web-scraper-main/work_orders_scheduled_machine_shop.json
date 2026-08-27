@@ -14,7 +14,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "19",
@@ -30,8 +31,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/20/2023",
-    "comments": "Miguel Diaz - 02/20/23  9:09:23 AM:\u00a0Did maintenance below \n1)Check all safety devices.\n2)Inspect drive belts, replace if cracking.\n3)Top off cylinder oil if necessary.\n4)Tighten pulleys and pillow blocks.\n5)Lightly oil cylinder shafts.\n6)Check cutting surfaces and back plates for wear.\n7)Check saw blades for glue buildup and wear.\n8)Check oilers for drills and add oil when needed.\n9)Check for air leaks.\n10)Place a test piece in the machine and notch the door *Check to\n see that the door does not move forward or side to side adjust clamps if needed or replace drills \n11)Replaced both drill 49/64 and 3/8  drills.",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/20/23  9:09:23 AM: Did maintenance below \n1)Check all safety devices.\n2)Inspect drive belts, replace if cracking.\n3)Top off cylinder oil if necessary.\n4)Tighten pulleys and pillow blocks.\n5)Lightly oil cylinder shafts.\n6)Check cutting surfaces and back plates for wear.\n7)Check saw blades for glue buildup and wear.\n8)Check oilers for drills and add oil when needed.\n9)Check for air leaks.\n10)Place a test piece in the machine and notch the door *Check to\n see that the door does not move forward or side to side adjust clamps if needed or replace drills \n11)Replaced both drill 49/64 and 3/8  drills.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "19",
@@ -48,7 +50,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "19",
@@ -64,8 +67,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2024",
-    "comments": "Miguel Diaz - 04/13/24 10:23:07 AM:\u00a0Replaced both drills",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/13/24 10:23:07 AM: Replaced both drills",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "19",
@@ -81,8 +85,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/17/2025",
-    "comments": "Primo Uy - 10/17/25  7:24:41 AM:\u00a0Done",
-    "attachments": []
+    "comments": "Primo Uy - 10/17/25  7:24:41 AM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "20",
@@ -99,7 +104,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "20",
@@ -115,8 +121,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2024",
-    "comments": "Miguel Diaz - 04/13/24 10:23:22 AM:\u00a0Replaced both drills",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/13/24 10:23:22 AM: Replaced both drills",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "20",
@@ -132,8 +139,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/17/2025",
-    "comments": "Primo Uy - 10/17/25  7:25:34 AM:\u00a0Obsolate",
-    "attachments": []
+    "comments": "Primo Uy - 10/17/25  7:25:34 AM: Obsolate",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -149,8 +157,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/20/2023",
-    "comments": "Miguel Diaz - 02/20/23  9:09:34 AM:\u00a0Did maintenance below \n1)Check all safety devices.\n2)Inspect drive belts, replace if cracking.\n3)Top off cylinder oil if necessary.\n4)Tighten pulleys and pillow blocks.\n5)Lightly oil cylinder shafts.\n6)Check cutting surfaces and back plates for wear.\n7)Check saw blades for glue buildup and wear.\n8)Check oilers for drills and add oil when needed.\n9)Check for air leaks.\n10)Place a test piece in the machine and notch the door *Check to\n see that the door does not move forward or side to side adjust clamps if needed or replace drills \n11)Replaced both drill 49/64 and 3/8  drills.",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/20/23  9:09:34 AM: Did maintenance below \n1)Check all safety devices.\n2)Inspect drive belts, replace if cracking.\n3)Top off cylinder oil if necessary.\n4)Tighten pulleys and pillow blocks.\n5)Lightly oil cylinder shafts.\n6)Check cutting surfaces and back plates for wear.\n7)Check saw blades for glue buildup and wear.\n8)Check oilers for drills and add oil when needed.\n9)Check for air leaks.\n10)Place a test piece in the machine and notch the door *Check to\n see that the door does not move forward or side to side adjust clamps if needed or replace drills \n11)Replaced both drill 49/64 and 3/8  drills.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -167,7 +176,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -183,8 +193,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/12/2023",
-    "comments": "Miguel Diaz - 05/12/23 11:31:58 AM:\u00a0Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/12/23 11:31:58 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -200,8 +211,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/20/2023",
-    "comments": "Miguel Diaz - 09/20/23  7:32:59 AM:\u00a0Replaced drill",
-    "attachments": []
+    "comments": "Miguel Diaz - 09/20/23  7:32:59 AM: Replaced drill",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -217,8 +229,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/18/2024",
-    "comments": "Miguel Diaz - 01/17/24 11:21:04 AM:\u00a0done",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/17/24 11:21:04 AM: done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -234,8 +247,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2024",
-    "comments": "Miguel Diaz - 04/13/24 10:22:22 AM:\u00a0Replaced both drills",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/13/24 10:22:22 AM: Replaced both drills",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -252,7 +266,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "5/9/2024",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -268,8 +283,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/14/2024",
-    "comments": "Miguel Diaz - 08/14/24  9:18:58 AM:\u00a0Check oil and lubricate (weekly)",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/14/24  9:18:58 AM: Check oil and lubricate (weekly)",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -286,7 +302,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/12/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "21",
@@ -302,8 +319,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/17/2025",
-    "comments": "Primo Uy - 10/17/25  7:21:19 AM:\u00a0Ship To other bobrock division",
-    "attachments": []
+    "comments": "Primo Uy - 10/17/25  7:21:19 AM: Ship To other bobrock division",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -319,8 +337,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/20/2023",
-    "comments": "Miguel Diaz - 02/20/23  9:09:43 AM:\u00a0Did maintenance below \n1)Check all safety devices.\n2)Inspect drive belts, replace if cracking.\n3)Top off cylinder oil if necessary.\n4)Tighten pulleys and pillow blocks.\n5)Lightly oil cylinder shafts.\n6)Check cutting surfaces and back plates for wear.\n7)Check saw blades for glue buildup and wear.\n8)Check oilers for drills and add oil when needed.\n9)Check for air leaks.\n10)Place a test piece in the machine and notch the door *Check to\n see that the door does not move forward or side to side adjust clamps if needed or replace drills \n11)Replaced both drill 49/64 and 3/8  drills.",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/20/23  9:09:43 AM: Did maintenance below \n1)Check all safety devices.\n2)Inspect drive belts, replace if cracking.\n3)Top off cylinder oil if necessary.\n4)Tighten pulleys and pillow blocks.\n5)Lightly oil cylinder shafts.\n6)Check cutting surfaces and back plates for wear.\n7)Check saw blades for glue buildup and wear.\n8)Check oilers for drills and add oil when needed.\n9)Check for air leaks.\n10)Place a test piece in the machine and notch the door *Check to\n see that the door does not move forward or side to side adjust clamps if needed or replace drills \n11)Replaced both drill 49/64 and 3/8  drills.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -336,8 +355,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/20/2023",
-    "comments": "Miguel Diaz - 02/20/23  9:11:19 AM:\u00a0Removed and cleaned filter checked hardware for loose",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/20/23  9:11:19 AM: Removed and cleaned filter checked hardware for loose",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -354,7 +374,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -371,7 +392,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -388,7 +410,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/20/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -405,7 +428,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/20/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -422,7 +446,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/20/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -439,7 +464,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/20/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -456,7 +482,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "4/12/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -472,8 +499,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/12/2023",
-    "comments": "Miguel Diaz - 05/12/23 11:31:49 AM:\u00a0Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/12/23 11:31:49 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -489,8 +517,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/12/2023",
-    "comments": "Miguel Diaz - 05/12/23 11:32:18 AM:\u00a0Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/12/23 11:32:18 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -506,8 +535,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/5/2023",
-    "comments": "Miguel Diaz - 07/05/23  7:44:33 AM:\u00a0just done",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/05/23  7:44:33 AM: just done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -523,8 +553,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/20/2023",
-    "comments": "Miguel Diaz - 09/20/23  7:33:09 AM:\u00a0Replaced drill",
-    "attachments": []
+    "comments": "Miguel Diaz - 09/20/23  7:33:09 AM: Replaced drill",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -541,7 +572,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "9/27/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -557,8 +589,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/18/2024",
-    "comments": "Miguel Diaz - 01/17/24 11:20:41 AM:\u00a0done",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/17/24 11:20:41 AM: done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -574,8 +607,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2024",
-    "comments": "Miguel Diaz - 04/13/24 10:22:36 AM:\u00a0Replaced both drills",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/13/24 10:22:36 AM: Replaced both drills",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -592,7 +626,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "5/9/2024",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -609,7 +644,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "5/9/2024",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -626,7 +662,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "5/9/2024",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -642,8 +679,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/14/2024",
-    "comments": "Miguel Diaz - 08/14/24  9:17:48 AM:\u00a0Check oil and lubricate (weekly)",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/14/24  9:17:48 AM: Check oil and lubricate (weekly)",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -659,8 +697,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/14/2024",
-    "comments": "Miguel Diaz - 08/14/24  9:19:13 AM:\u00a0Check oil and lubricate (weekly)",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/14/24  9:19:13 AM: Check oil and lubricate (weekly)",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -677,7 +716,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/12/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -693,8 +733,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "3/19/2025",
-    "comments": "Primo Uy - 10/17/25  7:19:24 AM:\u00a0Done",
-    "attachments": []
+    "comments": "Primo Uy - 10/17/25  7:19:24 AM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "22",
@@ -710,8 +751,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/17/2025",
-    "comments": "Primo Uy - 10/17/25  7:22:09 AM:\u00a0Ship to other Bobrick Division",
-    "attachments": []
+    "comments": "Primo Uy - 10/17/25  7:22:09 AM: Ship to other Bobrick Division",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -728,7 +770,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Operator"
   },
   {
     "equipment_id": "45",
@@ -744,8 +787,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "2/20/2023",
-    "comments": "Miguel Diaz - 02/20/23  9:09:57 AM:\u00a0Did maintenance below \n1)Check all safety devices.\n2)Inspect drive belts, replace if cracking.\n3)Top off cylinder oil if necessary.\n4)Tighten pulleys and pillow blocks.\n5)Lightly oil cylinder shafts.\n6)Check cutting surfaces and back plates for wear.\n7)Check saw blades for glue buildup and wear.\n8)Check oilers for drills and add oil when needed.\n9)Check for air leaks.\n10)Place a test piece in the machine and notch the door *Check to\n see that the door does not move forward or side to side adjust clamps if needed or replace drills \n11)Replaced both drill 49/64 and 3/8  drills.",
-    "attachments": []
+    "comments": "Miguel Diaz - 02/20/23  9:09:57 AM: Did maintenance below \n1)Check all safety devices.\n2)Inspect drive belts, replace if cracking.\n3)Top off cylinder oil if necessary.\n4)Tighten pulleys and pillow blocks.\n5)Lightly oil cylinder shafts.\n6)Check cutting surfaces and back plates for wear.\n7)Check saw blades for glue buildup and wear.\n8)Check oilers for drills and add oil when needed.\n9)Check for air leaks.\n10)Place a test piece in the machine and notch the door *Check to\n see that the door does not move forward or side to side adjust clamps if needed or replace drills \n11)Replaced both drill 49/64 and 3/8  drills.",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -762,7 +806,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -779,7 +824,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/20/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -795,8 +841,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "5/12/2023",
-    "comments": "Miguel Diaz - 05/12/23 11:32:08 AM:\u00a0Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
-    "attachments": []
+    "comments": "Miguel Diaz - 05/12/23 11:32:08 AM: Inspect the Laminate process/machinery from saw all the way to finish good for chips, dents, and scratches\n*Check that no machine covers are sticking up that could be in the way of the passing parts on the  edge bander\n*Check tape on edge bander return system transition .\n*Check Pop up table stopper to have rubber in front of it \n*Check tape on end cover of the return system \n*Check for Glue spreader infeed table stile supports rounded edges \n*Check rubber on Yellow L brackets .\n*Check Edge trimmer electrical board to be covered with Rubber \n*Check tape on return system transition \n*Check wheels stopper to have rubber in the front \n*Check pop up table stile staging area replace rubber if needed .\n*Check 1540 door notcher to have rounded edges and rubber on table top \n*Check stile clamp to have rounded edges and not sharp also blow down table top ,wipe and spray with silicone spray \n*Check Gannomatt machine it should  not have  hardware sticking up past the table top blow down table top  and wipe and spray with silicone spray ..",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -812,8 +859,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/5/2023",
-    "comments": "Miguel Diaz - 07/05/23  7:44:43 AM:\u00a0just done",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/05/23  7:44:43 AM: just done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -829,8 +877,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "9/20/2023",
-    "comments": "Miguel Diaz - 09/20/23  7:33:34 AM:\u00a0Replaced drill",
-    "attachments": []
+    "comments": "Miguel Diaz - 09/20/23  7:33:34 AM: Replaced drill",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -846,8 +895,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "1/18/2024",
-    "comments": "Miguel Diaz - 01/17/24 11:20:56 AM:\u00a0done",
-    "attachments": []
+    "comments": "Miguel Diaz - 01/17/24 11:20:56 AM: done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -863,8 +913,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2024",
-    "comments": "Miguel Diaz - 04/13/24 10:22:49 AM:\u00a0Replaced both drills",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/13/24 10:22:49 AM: Replaced both drills",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -881,7 +932,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "5/9/2024",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -897,8 +949,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "8/14/2024",
-    "comments": "Miguel Diaz - 08/14/24  9:18:43 AM:\u00a0Check oil and lubricate (weekly)",
-    "attachments": []
+    "comments": "Miguel Diaz - 08/14/24  9:18:43 AM: Check oil and lubricate (weekly)",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -915,7 +968,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/12/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "45",
@@ -931,8 +985,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/17/2025",
-    "comments": "Primo Uy - 10/17/25  7:23:40 AM:\u00a0Done",
-    "attachments": []
+    "comments": "Primo Uy - 10/17/25  7:23:40 AM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "46",
@@ -949,7 +1004,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "46",
@@ -965,8 +1021,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "4/13/2024",
-    "comments": "Miguel Diaz - 04/13/24 10:23:33 AM:\u00a0Replaced both drills",
-    "attachments": []
+    "comments": "Miguel Diaz - 04/13/24 10:23:33 AM: Replaced both drills",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "46",
@@ -982,8 +1039,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/16/2025",
-    "comments": "Primo Uy - 10/17/25  7:26:18 AM:\u00a0Done",
-    "attachments": []
+    "comments": "Primo Uy - 10/17/25  7:26:18 AM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "49",
@@ -1000,7 +1058,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "49",
@@ -1016,8 +1075,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/20/2024",
-    "comments": "Miguel Diaz - 07/20/24 12:19:41 PM:\u00a0we do not do this we dont have a means of tieing off safely",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/20/24 12:19:41 PM: we do not do this we dont have a means of tieing off safely",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "49",
@@ -1034,7 +1094,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "10/16/2025",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "50",
@@ -1051,7 +1112,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "3/10/2023",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "50",
@@ -1067,8 +1129,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "7/20/2024",
-    "comments": "Miguel Diaz - 07/20/24 12:19:50 PM:\u00a0we do not do this we dont have a means of tieing off safely",
-    "attachments": []
+    "comments": "Miguel Diaz - 07/20/24 12:19:50 PM: we do not do this we dont have a means of tieing off safely",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "50",
@@ -1084,8 +1147,9 @@
     "material_cost": "0.00",
     "downtime_hours": "0.00",
     "completed_datetime": "10/16/2025",
-    "comments": "Primo Uy - 10/17/25  7:28:33 AM:\u00a0Done",
-    "attachments": []
+    "comments": "Primo Uy - 10/17/25  7:28:33 AM: Done",
+    "attachments": [],
+    "assigned_to": ""
   },
   {
     "equipment_id": "109",
@@ -1102,7 +1166,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "QA Technician"
   },
   {
     "equipment_id": "1022",
@@ -1119,7 +1184,8 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   },
   {
     "equipment_id": "1023",
@@ -1136,6 +1202,7 @@
     "downtime_hours": "0.00",
     "completed_datetime": "",
     "comments": "",
-    "attachments": []
+    "attachments": [],
+    "assigned_to": "Outside Service"
   }
 ]
