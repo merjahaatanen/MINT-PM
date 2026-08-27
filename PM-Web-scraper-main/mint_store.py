@@ -267,6 +267,7 @@ def _init() -> None:
                 description     TEXT NOT NULL,
                 digital_id      TEXT NOT NULL DEFAULT '',
                 picture         TEXT NOT NULL DEFAULT '',
+                division_key    TEXT NOT NULL DEFAULT 'bla',
                 machine_dept_key TEXT NOT NULL DEFAULT '',
                 machine_eq_id   TEXT NOT NULL DEFAULT '',
                 machine_name    TEXT NOT NULL DEFAULT '',
@@ -307,6 +308,10 @@ def _init() -> None:
         cols = {r["name"] for r in c.execute("PRAGMA table_info(machine_info)").fetchall()}
         if "summary_json" not in cols:
             c.execute("ALTER TABLE machine_info ADD COLUMN summary_json TEXT NOT NULL DEFAULT ''")
+        # Migration: add division_key to spare_parts if it exists from an older schema.
+        spare_cols = {r["name"] for r in c.execute("PRAGMA table_info(spare_parts)").fetchall()}
+        if "division_key" not in spare_cols:
+            c.execute("ALTER TABLE spare_parts ADD COLUMN division_key TEXT NOT NULL DEFAULT 'bla'")
         type_count = c.execute("SELECT COUNT(*) AS n FROM vendor_contact_types").fetchone()["n"]
         if not type_count:
             c.execute(
@@ -1439,18 +1444,24 @@ def save_floorplan(dept_key: str, items: list[dict], author: str = "") -> list[d
 # Spare parts inventory
 # --------------------------------------------------------------------------- #
 SPARE_PART_FIELDS = (
-    "description", "digital_id", "picture", "part_type", "location",
+    "description", "digital_id", "picture", "division_key", "part_type", "location",
     "quantity", "condition", "brand", "is_part_of_set", "set_info",
     "buy_direct", "where_to_buy", "purchase_link", "price_new", "barcode_qr",
 )
 
 
-def _row_to_spare_part(r: sqlite3.Row) -> dict:
+def _division_names(c) -> dict:
+    return {row["key"]: row["name"] for row in c.execute("SELECT key, name FROM divisions").fetchall()}
+
+
+def _row_to_spare_part(r: sqlite3.Row, div_names: dict | None = None) -> dict:
     d = dict(r)
     d["quantity"] = int(d.get("quantity") or 0)
     d["is_part_of_set"] = bool(int(d.get("is_part_of_set") or 0))
     d["buy_direct"] = bool(int(d.get("buy_direct") or 0))
     d["machines"] = []
+    key = d.get("division_key") or "bla"
+    d["division_label"] = (div_names or {}).get(key, key)
     return d
 
 
@@ -1466,6 +1477,9 @@ def _clean_spare_part(fields: dict) -> dict:
         elif k in ("is_part_of_set", "buy_direct"):
             v = fields.get(k)
             out[k] = 1 if v in (1, "1", True, "true", "yes", "on") else 0
+        elif k == "division_key":
+            v = str(fields.get(k) or "").strip()
+            out[k] = v if v else "bla"
         else:
             out[k] = str(fields.get(k) or "").strip()
     return out
@@ -1513,16 +1527,18 @@ def _attach_machines(c, parts: list[dict]) -> list[dict]:
 
 def list_spare_parts() -> list[dict]:
     with _connect() as c:
+        div_names = _division_names(c)
         rows = c.execute(
             f"SELECT * FROM spare_parts ORDER BY updated_at DESC"
         ).fetchall()
-        parts = [_row_to_spare_part(r) for r in rows]
+        parts = [_row_to_spare_part(r, div_names) for r in rows]
         _attach_machines(c, parts)
     return parts
 
 
 def list_spare_parts_for_machine(dept_key: str, eq_id: str) -> list[dict]:
     with _connect() as c:
+        div_names = _division_names(c)
         rows = c.execute(
             "SELECT p.* FROM spare_parts p "
             "JOIN spare_part_machines m ON p.id = m.part_id "
@@ -1530,7 +1546,7 @@ def list_spare_parts_for_machine(dept_key: str, eq_id: str) -> list[dict]:
             "ORDER BY p.updated_at DESC",
             (str(dept_key or ""), str(eq_id or "")),
         ).fetchall()
-        parts = [_row_to_spare_part(r) for r in rows]
+        parts = [_row_to_spare_part(r, div_names) for r in rows]
         _attach_machines(c, parts)
     return parts
 
@@ -1540,10 +1556,11 @@ def get_spare_part(part_id: str) -> dict | None:
     if not part_id:
         return None
     with _connect() as c:
+        div_names = _division_names(c)
         row = c.execute("SELECT * FROM spare_parts WHERE id = ?", (part_id,)).fetchone()
         if not row:
             return None
-        part = _row_to_spare_part(row)
+        part = _row_to_spare_part(row, div_names)
         _attach_machines(c, [part])
     return part
 

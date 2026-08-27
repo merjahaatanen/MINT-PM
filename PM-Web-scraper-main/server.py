@@ -3730,8 +3730,9 @@ def api_spare_parts():
 
 @app.route("/api/spare-parts/options", methods=["GET"])
 def api_spare_part_options():
-    """All departments + machines for the 'for what machine' dropdown.
-    Uses _dept_machines so that any admin-set nicknames are the displayed name."""
+    """All departments + machines for the 'for what machine' dropdown, plus
+    divisions for the division filter/selector. Uses _dept_machines so that any
+    admin-set nicknames are the displayed name."""
     out = []
     for key, cfg in DEPARTMENTS.items():
         machines = []
@@ -3749,9 +3750,13 @@ def api_spare_part_options():
             out.append({
                 "dept_key": key,
                 "dept_label": cfg.get("label") or cfg.get("name") or key,
+                "division_key": _DEPT_DIVISION.get(key) or "bla",
                 "machines": machines,
             })
-    return jsonify({"departments": out})
+    divisions = [{"key": d["key"], "name": d["name"]} for d in store.list_divisions()]
+    if not any(d["key"] == "bla" for d in divisions):
+        divisions.insert(0, {"key": "bla", "name": DIVISION["name"]})
+    return jsonify({"departments": out, "divisions": divisions})
 
 
 @app.route("/api/spare-parts", methods=["POST"])

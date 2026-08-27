@@ -6721,6 +6721,7 @@
                   <div className="text-xs text-slate-500 flex gap-2 flex-wrap mt-0.5">
                     ${part.digital_id && html`<span className="font-mono">ID: ${part.digital_id}</span>`}
                     ${part.part_type && html`<span>Type: ${part.part_type}</span>`}
+                    ${part.division_label && html`<span className="text-emerald-700 font-semibold">${part.division_label}</span>`}
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -6753,6 +6754,7 @@
 
     function SparePartModal({ part, onClose, onSaved, initialDeptKey, initialEqId, initialMachineName }) {
       const [options, setOptions] = useState(null);
+      const [divisions, setDivisions] = useState([]);
       const [author, setAuthor] = useState(getUserName());
       const [form, setForm] = useState(() => {
         const f = part ? { ...part } : {};
@@ -6771,8 +6773,17 @@
       const [machineSearch, setMachineSearch] = useState("");
 
       useEffect(() => {
-        getJSON("/api/spare-parts/options").then((d) => setOptions(d.departments || [])).catch(() => setOptions([]));
+        getJSON("/api/spare-parts/options")
+          .then((d) => { setOptions(d.departments || []); setDivisions(d.divisions || []); })
+          .catch(() => { setOptions([]); setDivisions([]); });
       }, []);
+
+      // Default the division to the initial machine's department division when adding a new part.
+      useEffect(() => {
+        if (part || !initialDeptKey || !options || (form.division_key || "").trim()) return;
+        const dept = options.find((d) => d.dept_key === initialDeptKey);
+        if (dept && dept.division_key) setForm((f) => ({ ...f, division_key: dept.division_key }));
+      }, [part, initialDeptKey, options, form.division_key]);
 
       const machineOptions = [];
       (options || []).forEach((d) => {
@@ -6827,6 +6838,7 @@
             description: (form.description || "").trim(),
             digital_id: (form.digital_id || "").trim(),
             picture: form.picture || "",
+            division_key: (form.division_key || "").trim(),
             machines: (form.machines || []).map((m) => ({ dept_key: m.dept_key, eq_id: m.eq_id, name: m.name })),
             part_type: (form.part_type || "").trim(),
             location: (form.location || "").trim(),
@@ -6871,6 +6883,8 @@
             <div className="grid md:grid-cols-2 gap-4">
               <${TextInput} label="Part description" required=${true} value=${form.description || ""} onChange=${(v) => set("description", v)} />
               <${TextInput} label="Digital ID" value=${form.digital_id || ""} onChange=${(v) => set("digital_id", v)} />
+              <${SelectInput} label="Division" value=${form.division_key || ""} placeholder="Select division…" onChange=${(v) => set("division_key", v)}
+                options=${divisions.map((d) => ({ value: d.key, label: d.name }))} />
               <div className="md:col-span-2">
                 <${LabeledField} label="Picture of part">
                   <input type="file" accept="image/*" onChange=${handlePicture} className=${inputCls} />
@@ -6938,6 +6952,8 @@
       const [err, setErr] = useState(null);
       const [reloadKey, setReloadKey] = useState(0);
       const [search, setSearch] = useState("");
+      const [divisionFilter, setDivisionFilter] = useState("");
+      const [divisions, setDivisions] = useState([]);
       const [editing, setEditing] = useState(null);
       const [deleting, setDeleting] = useState(null);
       const [gateOpen, setGateOpen] = useState(false);
@@ -6950,10 +6966,22 @@
       }, [loadUrl, reloadKey]);
 
       useEffect(() => {
+        getJSON("/api/spare-parts/options")
+          .then((d) => setDivisions(d.divisions || []))
+          .catch(() => setDivisions([]));
+      }, []);
+
+      useEffect(() => {
         const s = search.toLowerCase().trim();
-        if (!s) { setFiltered(parts); return; }
-        setFiltered(parts.filter((p) => ((p.description || "") + " " + (p.digital_id || "") + " " + (p.part_type || "") + " " + (p.location || "") + " " + (p.brand || "") + " " + (p.machine_name || "")).toLowerCase().includes(s)));
-      }, [search, parts]);
+        let list = parts;
+        if (divisionFilter) {
+          list = list.filter((p) => (p.division_key || "bla") === divisionFilter);
+        }
+        if (s) {
+          list = list.filter((p) => ((p.description || "") + " " + (p.digital_id || "") + " " + (p.part_type || "") + " " + (p.location || "") + " " + (p.brand || "") + " " + (p.machine_name || "")).toLowerCase().includes(s));
+        }
+        setFiltered(list);
+      }, [search, divisionFilter, parts, divisions]);
 
       const runWithGate = (fn) => {
         fn().catch((e) => {
@@ -6996,6 +7024,10 @@
         <div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <input value=${search} onInput=${(e) => setSearch(e.target.value)} placeholder="Search parts…" className=${inputCls} />
+            <select value=${divisionFilter} onChange=${(e) => setDivisionFilter(e.target.value)} className=${inputCls + " w-auto"}>
+              <option value="">All divisions</option>
+              ${divisions.map((d) => html`<option key=${d.key} value=${d.key}>${d.name}</option>`)}
+            </select>
             ${canAdd && html`<button onClick=${() => setEditing({})}
               className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800">+ Add part</button>`}
           </div>
