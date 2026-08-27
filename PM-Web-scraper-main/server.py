@@ -34,7 +34,7 @@ import time
 from collections import Counter
 from datetime import datetime, timedelta
 
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, make_response, request, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
 
@@ -46,6 +46,7 @@ import mint_store as store
 import mint_email as emailer
 import longevity_parser as lp
 import nightly_update
+from scraper import ScheduledWorkOrder, WorkOrderDetail
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 WEBAPP_DIR = os.path.join(OUTPUT_DIR, "webapp")
@@ -1584,6 +1585,65 @@ def api_machine(dept_key, eq_id):
         "unscheduled": uns,
         "scheduled": sch,
     })
+
+
+@app.route("/api/departments/<dept_key>/machines/<eq_id>/export/<kind>")
+def api_machine_export(dept_key, eq_id, kind):
+    """Download the unscheduled or scheduled work orders for one machine as
+    CSV (default) or JSON.  kind must be 'unscheduled' or 'scheduled'."""
+    if kind not in ("unscheduled", "scheduled"):
+        return jsonify({"error": "kind must be 'unscheduled' or 'scheduled'"}), 400
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+
+    eq_id = _num_id(eq_id)
+    recs = _machine_groups(dept_key).get(eq_id, {}).get(kind, [])
+    if not recs:
+        return jsonify({"error": f"no {kind} work orders for this machine"}), 404
+
+    fmt = (request.args.get("format") or "csv").lower()
+    machine_name = (_machine_name(recs) or f"EQ_{eq_id}").replace(" ", "_")
+    safe_name = re.sub(r"[^\w\-]+", "_", machine_name).strip("_") or f"EQ_{eq_id}"
+    filename_base = f"{dept_key}_{safe_name}_{kind}"
+
+    if fmt == "json":
+        response = make_response(json.dumps({kind: recs}, indent=2, default=str))
+        response.headers.set("Content-Type", "application/json")
+        response.headers.set(
+            "Content-Disposition", f'attachment; filename="{filename_base}.json"'
+        )
+        return response
+
+    if fmt != "csv":
+        return jsonify({"error": "format must be 'csv' or 'json'"}), 400
+
+    import csv
+    import io
+
+    dataclass_type = WorkOrderDetail if kind == "unscheduled" else ScheduledWorkOrder
+    base_fields = list(dataclass_type.__dataclass_fields__)
+    extra_keys = set()
+    for r in recs:
+        extra_keys.update(r.keys())
+    extra_keys -= set(base_fields)
+    fieldnames = base_fields + sorted(extra_keys)
+
+    output = io.StringIO()
+    writer = csv.DictWriter(output, fieldnames=fieldnames, extrasaction="ignore")
+    writer.writeheader()
+    for r in recs:
+        writer.writerow({
+            k: (json.dumps(r.get(k)) if isinstance(r.get(k), (list, dict))
+                else (r.get(k) if r.get(k) is not None else ""))
+            for k in fieldnames
+        })
+
+    response = make_response(output.getvalue())
+    response.headers.set("Content-Type", "text/csv")
+    response.headers.set(
+        "Content-Disposition", f'attachment; filename="{filename_base}.csv"'
+    )
+    return response
 
 
 # --------------------------------------------------------------------------- #
