@@ -288,6 +288,7 @@ class WorkOrderDetail:
     material_cost:      str
     labor_time:         str
     work_performed_by:  str
+    assigned_to:        str
     downtime_hours:     str
     completed_datetime: str
 
@@ -317,6 +318,7 @@ class ScheduledWorkOrder:
     status:             str
     due_date:           str
     work_performed_by:  str
+    assigned_to:        str
     labor_time:         str
     material_cost:      str
     downtime_hours:     str
@@ -476,6 +478,13 @@ def _scrape_wo_tab(driver) -> dict:
     # Work Performed By - a plain textbox input
     work_performed_by = _safe_text(driver, "#tbWorkPerformedByWO", "value")
 
+    # Owner / assigned-to from the dropdown (only present on existing WOs)
+    assigned_to = _safe_text(
+        driver, "span.k-dropdown[aria-owns='ddlOwnerWO2_listbox'] .k-input"
+    )
+    if not assigned_to or assigned_to.lower().startswith("select an"):
+        assigned_to = ""
+
     # Downtime Hours
     downtime = _safe_text(driver, "#tbDowntimeHours", "aria-valuenow")
 
@@ -490,6 +499,7 @@ def _scrape_wo_tab(driver) -> dict:
         "material_cost":      material_cost,
         "labor_time":         labor_time,
         "work_performed_by":  work_performed_by,
+        "assigned_to":        assigned_to,
         "downtime_hours":     downtime,
         "completed_datetime": completed,
     }
@@ -669,6 +679,10 @@ def scrape_swo_dialog(driver, wo_id: str, require_visible: bool = True) -> dict:
     data["due_date"] = (
         _safe_text(driver, "#lblDueDtSWO")
         or _safe_text(driver, "#lblDueDtSWO", "textContent")
+    )
+    data["assigned_to"] = (
+        _safe_text(driver, "#lblSkillsSWO")
+        or _safe_text(driver, "#lblSkillsSWO", "textContent")
     )
 
     data["comments"] = _scrape_comment_tab(driver)
@@ -1213,6 +1227,7 @@ class WorkOrderScraper:
                     material_cost     = dialog_data.get("material_cost", "") or grid_matl,
                     labor_time        = dialog_data.get("labor_time", "") or grid_labor,
                     work_performed_by = dialog_data.get("work_performed_by", "") or grid_wpb,
+                    assigned_to       = dialog_data.get("assigned_to", ""),
                     downtime_hours    = dialog_data.get("downtime_hours", "") or grid_down,
                     completed_datetime= dialog_data.get("completed_datetime", "") or grid_comp,
                     comments          = dialog_data.get("comments", "") or grid_comment,
@@ -1373,6 +1388,7 @@ class WorkOrderScraper:
                     downtime_hours    = grid_down or dialog_data.get("downtime_hours", ""),
                     completed_datetime= grid_comp or dialog_data.get("completed_datetime", ""),
                     comments          = dialog_data.get("comments", "") or grid_comment,
+                    assigned_to       = dialog_data.get("assigned_to", "") or dialog_data.get("Owner", ""),
                     attachments       = dialog_data.get("attachments") or [],
                 )
                 records.append(record)
@@ -1479,6 +1495,7 @@ class WorkOrderScraper:
                 material_cost     = dialog_data.get("material_cost", "") or _num(r.get("MaterialCost")),
                 labor_time        = dialog_data.get("labor_time", "") or _num(r.get("LaborTime")),
                 work_performed_by = dialog_data.get("work_performed_by", "") or (r.get("WorkPerformedBy") or ""),
+                assigned_to       = dialog_data.get("assigned_to", "") or dialog_data.get("Owner", ""),
                 downtime_hours    = dialog_data.get("downtime_hours", "") or _num(r.get("DownTime")),
                 completed_datetime= dialog_data.get("completed_datetime", "") or (r.get("CompletedDateTime") or ""),
                 comments          = dialog_data.get("comments", "") or _strip_html(r.get("Comment") or ""),
@@ -1516,7 +1533,7 @@ class WorkOrderScraper:
                 m = re.search(r"\((\d+)", link.get_attribute("onclick") or "")
                 wo_id = m.group(1) if m else ""
             except (NoSuchElementException, StaleElementReferenceException):
-                pass
+                wo_id = ""
             out.append((wo_id, row.find_elements(By.TAG_NAME, "td")))
         return out
 
@@ -1565,6 +1582,7 @@ class WorkOrderScraper:
                 material_cost     = dialog_data.get("material_cost", "") or g["matl"],
                 labor_time        = dialog_data.get("labor_time", "") or g["labor"],
                 work_performed_by = dialog_data.get("work_performed_by", "") or g["wpb"],
+                assigned_to       = dialog_data.get("assigned_to", "") or dialog_data.get("Owner", ""),
                 downtime_hours    = dialog_data.get("downtime_hours", "") or g["down"],
                 completed_datetime= dialog_data.get("completed_datetime", "") or g["comp"],
                 comments          = dialog_data.get("comments", "") or g["comment"],
@@ -1621,6 +1639,7 @@ class WorkOrderScraper:
                 downtime_hours    = g["down"] or dialog_data.get("downtime_hours", ""),
                 completed_datetime= g["comp"] or dialog_data.get("completed_datetime", ""),
                 comments          = dialog_data.get("comments", "") or g["comment"],
+                assigned_to       = dialog_data.get("assigned_to", "") or dialog_data.get("Owner", ""),
                 attachments       = dialog_data.get("attachments") or [],
             ))
 
@@ -1657,6 +1676,7 @@ class WorkOrderScraper:
                 material_cost     = dialog_data.get("material_cost", ""),
                 labor_time        = dialog_data.get("labor_time", ""),
                 work_performed_by = dialog_data.get("work_performed_by", ""),
+                assigned_to       = dialog_data.get("assigned_to", ""),
                 downtime_hours    = dialog_data.get("downtime_hours", ""),
                 completed_datetime= dialog_data.get("completed_datetime", ""),
                 comments          = dialog_data.get("comments", ""),

@@ -45,6 +45,7 @@ import guide_engine as ge
 import mint_store as store
 import mint_email as emailer
 import longevity_parser as lp
+import nightly_update
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 WEBAPP_DIR = os.path.join(OUTPUT_DIR, "webapp")
@@ -160,6 +161,12 @@ def _is_technician(name: str) -> bool:
 os.makedirs(GUIDES_DIR, exist_ok=True)
 
 app = Flask(__name__, static_folder=WEBAPP_DIR, static_url_path="")
+
+# Nightly scheduler state (one thread, started on server launch)
+_NIGHTLY_THREAD = None
+_NIGHTLY_STOP_EVENT = None
+_NIGHTLY_LAST_STATUS = {"last_run": None, "last_summary": None, "running": False}
+
 CORS(app)
 
 # --------------------------------------------------------------------------- #
@@ -3598,6 +3605,61 @@ def _start_weekly_digest():
 
 
 # --------------------------------------------------------------------------- #
+# Nightly full rescrape scheduler
+# --------------------------------------------------------------------------- #
+def _nightly_scheduler(stop_event: threading.Event):
+    """Daemon thread that runs nightly_update.run() once per day at the
+    configured local time (default 02:00)."""
+    if os.environ.get("NIGHTLY_ENABLED", "1").strip() == "0":
+        print("[nightly] scheduler disabled (NIGHTLY_ENABLED=0)")
+        return
+    try:
+        hour = int(os.environ.get("NIGHTLY_HOUR", "2") or 2)
+        minute = int(os.environ.get("NIGHTLY_MINUTE", "0") or 0)
+    except ValueError:
+        hour, minute = 2, 0
+    print(f"[nightly] scheduler running (daily at {hour:02d}:{minute:02d} local time)")
+
+    while not stop_event.is_set():
+        now = datetime.now()
+        target = now.replace(hour=hour, minute=minute, second=0, microsecond=0)
+        if target <= now:
+            target += timedelta(days=1)
+        wait_seconds = (target - now).total_seconds()
+
+        if stop_event.wait(timeout=wait_seconds):
+            break
+
+        _NIGHTLY_LAST_STATUS["running"] = True
+        print(f"[nightly] starting scheduled cycle at {datetime.now().isoformat()}")
+        try:
+            summary = nightly_update.run(reload_callback=reload_data)
+            _NIGHTLY_LAST_STATUS["last_run"] = datetime.now().isoformat()
+            _NIGHTLY_LAST_STATUS["last_summary"] = summary
+            print(f"[nightly] scheduled cycle finished: {summary.get('status')}")
+        except Exception as e:  # noqa: BLE001 - never kill the loop
+            print(f"[nightly] scheduled cycle failed: {e}")
+            _NIGHTLY_LAST_STATUS["last_run"] = datetime.now().isoformat()
+            _NIGHTLY_LAST_STATUS["last_summary"] = {"status": "failed", "error": str(e)}
+        finally:
+            _NIGHTLY_LAST_STATUS["running"] = False
+
+
+def _start_nightly():
+    global _NIGHTLY_THREAD, _NIGHTLY_STOP_EVENT
+    if _NIGHTLY_THREAD is not None and _NIGHTLY_THREAD.is_alive():
+        return
+    _NIGHTLY_STOP_EVENT = threading.Event()
+    _NIGHTLY_THREAD = threading.Thread(
+        target=_nightly_scheduler,
+        args=(_NIGHTLY_STOP_EVENT,),
+        daemon=True,
+        name="nightly",
+    )
+    _NIGHTLY_THREAD.start()
+
+
+# --------------------------------------------------------------------------- #
 # Spare parts inventory
 # --------------------------------------------------------------------------- #
 @app.route("/api/spare-parts", methods=["GET"])
@@ -3686,6 +3748,41 @@ def api_machine_spare_parts(dept_key, eq_id):
     return jsonify({"parts": store.list_spare_parts_for_machine(dept_key, eq_id)})
 
 
+# --------------------------------------------------------------------------- #
+# Nightly scrape status / manual trigger
+# --------------------------------------------------------------------------- #
+@app.route("/api/nightly/status", methods=["GET"])
+def api_nightly_status():
+    """Return the last nightly run summary and whether a run is in progress."""
+    payload = dict(_NIGHTLY_LAST_STATUS)
+    payload["scheduled"] = os.environ.get("NIGHTLY_ENABLED", "1").strip() != "0"
+    return jsonify(payload)
+
+
+@app.route("/api/nightly/run", methods=["POST"])
+def api_nightly_run():
+    """Trigger a nightly cycle in a background thread."""
+    def _run():
+        _NIGHTLY_LAST_STATUS["running"] = True
+        print(f"[nightly] manual run started at {datetime.now().isoformat()}")
+        try:
+            summary = nightly_update.run(reload_callback=reload_data)
+            _NIGHTLY_LAST_STATUS["last_run"] = datetime.now().isoformat()
+            _NIGHTLY_LAST_STATUS["last_summary"] = summary
+            print(f"[nightly] manual run finished: {summary.get('status')}")
+        except Exception as e:  # noqa: BLE001
+            print(f"[nightly] manual run failed: {e}")
+            _NIGHTLY_LAST_STATUS["last_run"] = datetime.now().isoformat()
+            _NIGHTLY_LAST_STATUS["last_summary"] = {"status": "failed", "error": str(e)}
+        finally:
+            _NIGHTLY_LAST_STATUS["running"] = False
+
+    if _NIGHTLY_LAST_STATUS.get("running"):
+        return jsonify({"status": "already_running"}), 409
+    threading.Thread(target=_run, daemon=True, name="nightly-manual").start()
+    return jsonify({"status": "started"})
+
+
 def _start_chrome():
     """Spin up the logged-in debug Chrome on startup and capture its port so the
     nightly scrape can attach to it. Best-effort: the server still runs if this
@@ -3717,5 +3814,6 @@ if __name__ == "__main__":
           f"(model: {ae.OLLAMA_MODEL})")
     print("=" * 60)
     _start_chrome()
+    _start_nightly()
     _start_weekly_digest()
     app.run(host=host, port=port, threaded=True, debug=False, use_reloader=False)

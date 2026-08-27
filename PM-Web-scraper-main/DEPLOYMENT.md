@@ -30,7 +30,41 @@ OLLAMA_API_KEY=...
 
 ---
 
-## 2. Chrome login session (required for scraping)
+## 2. Copy the write-store database to the VM
+
+The `mint_data/` folder is **git-ignored** because it contains the live SQLite
+write store (`mint.db`) plus attachments and email state. `mint.db` holds all
+user-created/edited data:
+
+- Machine Info / longevity records
+- Inactive (soft-deleted) departments and machines
+- Manual work orders
+- Work-order field overrides and solutions
+- Vendor contacts
+- Floor-plan layouts, machine nicknames, spare-parts inventory
+- Calendar events and chart markers
+
+A fresh clone or pull creates an empty `mint.db` automatically, so **after the
+initial deployment you must copy your existing `mint_data/` from the source
+machine to the VM**. The simplest way on a LAN share or OneDrive is:
+
+```powershell
+# Run from the source machine (adjust the VM path)
+robocopy "C:\Users\<you>\Desktop\MINT+PM\PM-Web-scraper-main\mint_data" \
+         "\\<vm-name>\C$\Users\<vm-user>\Desktop\MINT+PM\PM-Web-scraper-main\mint_data" \
+         /E /COPY:DAT
+```
+
+Or copy the folder manually and paste it into `PM-Web-scraper-main\` on the VM
+before starting the server. If you ever re-image the VM, repeat this step.
+
+> **Note:** If Machine Info shows `N/A` for every field and the Inactive tab is
+> empty on the VM, the `mint_data\mint.db` file is almost certainly missing or
+> stale.
+
+---
+
+## 3. Chrome login session (required for scraping)
 
 The nightly scrape drives ONE Chrome window that is logged into the PM site.
 The remote-debugging **port is auto-detected** (it may differ per machine), so
@@ -54,7 +88,7 @@ overwrites good data with a failed login) and reports it in the status.
 
 ---
 
-## 3. Run the server (always-on)
+## 4. Run the server (always-on)
 
 ```powershell
 python server.py
@@ -76,7 +110,7 @@ both the web server and the nightly scheduler - keep it alive.)
 
 ---
 
-## 4. LAN access (same Wi-Fi)
+## 5. LAN access (same Wi-Fi)
 
 The server binds to `0.0.0.0` by default, so it is reachable at
 `http://<VM-IP>:5000`. Open the firewall port once (Admin PowerShell):
@@ -90,7 +124,7 @@ opens `http://<that-ip>:5000`.
 
 ---
 
-## 5. Nightly update behavior
+## 6. Nightly update behavior
 
 Configurable via `.env`:
 
@@ -129,7 +163,7 @@ python nightly_update.py
 
 ---
 
-## 6. Manual-edit preservation (how it works)
+## 7. Manual-edit preservation (how it works)
 
 When someone edits a checklist in the UI and saves:
 
@@ -143,7 +177,7 @@ When someone edits a checklist in the UI and saves:
 
 ---
 
-## 7. IMPORTANT: rotate leaked API keys
+## 8. IMPORTANT: rotate leaked API keys
 
 The earlier `git push` committed `.env` with real keys, and it is in the repo's
 git history (public). **Rotate both keys now:**
