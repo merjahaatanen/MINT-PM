@@ -5505,16 +5505,27 @@
                   <h2 className="text-lg font-extrabold text-slate-800">Unscheduled Work Orders</h2>
                   <p className="text-slate-500 text-sm">${m.name} · ${data.unscheduled.length} records</p>
                 </div>
-                <a href="/api/departments/${deptKey}/machines/${eqId}/export/unscheduled"
-                   download
-                   title="Download this machine's unscheduled work orders as CSV"
-                   className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-emerald-200 text-emerald-700 text-sm font-semibold hover:bg-emerald-50 shadow-sm">
-                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
-                       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M7 11l5 5 5-5"/><path d="M12 4v12"/>
-                  </svg>
-                  Export CSV
-                </a>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <button onClick=${() => exportMachineWoPdf({ records: data.unscheduled, kind: "unscheduled", machineName: m.name, eqLabel: m.eq_label, deptLabel: m.department })}
+                    title="Download this machine's unscheduled work orders as PDF"
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 shadow-sm">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
+                         strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>
+                    </svg>
+                    Export PDF
+                  </button>
+                  <a href="/api/departments/${deptKey}/machines/${eqId}/export/unscheduled"
+                     download
+                     title="Download this machine's unscheduled work orders as CSV"
+                     className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-emerald-200 text-emerald-700 text-sm font-semibold hover:bg-emerald-50 shadow-sm">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
+                         strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M7 11l5 5 5-5"/><path d="M12 4v12"/>
+                    </svg>
+                    Export CSV
+                  </a>
+                </div>
               </div>
               <${WorkOrderList} records=${data.unscheduled} kind="unscheduled" onOpen=${onOpenWo}
                 filters=${["urgency", "status"]} />
@@ -5527,16 +5538,27 @@
                   <h2 className="text-lg font-extrabold text-slate-800">Scheduled Work Orders</h2>
                   <p className="text-slate-500 text-sm">${m.name} · ${data.scheduled.length} records</p>
                 </div>
-                <a href="/api/departments/${deptKey}/machines/${eqId}/export/scheduled"
-                   download
-                   title="Download this machine's scheduled work orders as CSV"
-                   className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-emerald-200 text-emerald-700 text-sm font-semibold hover:bg-emerald-50 shadow-sm">
-                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
-                       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M7 11l5 5 5-5"/><path d="M12 4v12"/>
-                  </svg>
-                  Export CSV
-                </a>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <button onClick=${() => exportMachineWoPdf({ records: data.scheduled, kind: "scheduled", machineName: m.name, eqLabel: m.eq_label, deptLabel: m.department })}
+                    title="Download this machine's scheduled work orders as PDF"
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 shadow-sm">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
+                         strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>
+                    </svg>
+                    Export PDF
+                  </button>
+                  <a href="/api/departments/${deptKey}/machines/${eqId}/export/scheduled"
+                     download
+                     title="Download this machine's scheduled work orders as CSV"
+                     className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-emerald-200 text-emerald-700 text-sm font-semibold hover:bg-emerald-50 shadow-sm">
+                    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
+                         strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/><path d="M7 11l5 5 5-5"/><path d="M12 4v12"/>
+                    </svg>
+                    Export CSV
+                  </a>
+                </div>
               </div>
               <${WorkOrderList} records=${data.scheduled} kind="scheduled" onOpen=${onOpenWo}
                 filters=${["status"]} />
@@ -5970,6 +5992,79 @@
 
       const safe = (scopeLabel || "All").replace(/[^a-z0-9]+/gi, "_").replace(/^_|_$/g, "");
       doc.save("Monthly-Calendar-" + safe + ".pdf");
+    }
+
+    // Build a PDF of a machine's unscheduled or scheduled work order list.
+    function exportMachineWoPdf({ records, kind, machineName, eqLabel, deptLabel }) {
+      const JsPDF = window.jspdf && window.jspdf.jsPDF;
+      if (!JsPDF) { alert("PDF library failed to load. Refresh the page and try again."); return; }
+      const doc = new JsPDF({ unit: "pt", format: "letter" });
+      const MARGIN = 40;
+      const pageW = doc.internal.pageSize.getWidth();
+      const pageH = doc.internal.pageSize.getHeight();
+      const contentW = pageW - MARGIN * 2;
+      let y = MARGIN;
+      const ensure = (n) => { if (y + n > pageH - MARGIN) { doc.addPage(); y = MARGIN; } };
+
+      // Header
+      doc.setFillColor(4, 120, 87); doc.rect(0, 0, pageW, 6, "F");
+      doc.setFont("helvetica", "bold"); doc.setFontSize(20); doc.setTextColor(4, 120, 87);
+      doc.text("Bobrick", MARGIN, y + 10);
+      doc.setFont("helvetica", "normal"); doc.setFontSize(11); doc.setTextColor(100, 116, 139);
+      doc.text("Machine Work Orders", MARGIN, y + 26);
+      doc.setFont("helvetica", "bold"); doc.setFontSize(11); doc.setTextColor(30, 41, 59);
+      const scope = (machineName || "Machine") + (eqLabel ? " (" + eqLabel + ")" : "");
+      doc.text(scope, pageW - MARGIN, y + 12, { align: "right" });
+      doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(148, 163, 184);
+      doc.text(deptLabel + " · " + (kind === "scheduled" ? "Scheduled" : "Unscheduled") + " · Exported " + new Date().toLocaleString(), pageW - MARGIN, y + 26, { align: "right" });
+      y += 42;
+      doc.setDrawColor(4, 120, 87); doc.setLineWidth(1.5);
+      doc.line(MARGIN, y, pageW - MARGIN, y); y += 18;
+
+      if (!records || records.length === 0) {
+        ensure(16);
+        doc.setFont("helvetica", "italic"); doc.setFontSize(10); doc.setTextColor(148, 163, 184);
+        doc.text("No work orders to export.", MARGIN, y); y += 16;
+      }
+
+      records.forEach((r) => {
+        ensure(70);
+        const date = kind === "scheduled" ? (r.due_date || "") : (r.date_notified || "");
+        const desc = kind === "scheduled" ? (r.audit_item || "") : (r.problem || "");
+        const extra = kind === "scheduled" ? (r.frequency || "") : (r.urgency || "");
+
+        doc.setFont("helvetica", "bold"); doc.setFontSize(11); doc.setTextColor(4, 120, 87);
+        doc.text("WO #" + (r.wo_id || ""), MARGIN, y); y += 14;
+
+        doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(30, 41, 59);
+        const metaBits = [];
+        if (date) metaBits.push(date);
+        if (r.status) metaBits.push(r.status);
+        if (extra) metaBits.push(extra);
+        if (metaBits.length) {
+          doc.text(metaBits.join("   ·   "), MARGIN, y); y += 12;
+        }
+
+        if (desc) {
+          const split = doc.splitTextToSize("Details: " + String(desc), contentW);
+          doc.text(split, MARGIN, y); y += split.length * 11 + 4;
+        }
+
+        const stats = [];
+        if (r.labor_time) stats.push("Labor: " + hours(r.labor_time));
+        if (r.material_cost) stats.push("Material: " + money(r.material_cost));
+        if (r.downtime_hours) stats.push("Downtime: " + hours(r.downtime_hours));
+        if (stats.length) {
+          doc.setFont("helvetica", "normal"); doc.setFontSize(9); doc.setTextColor(100, 116, 139);
+          doc.text(stats.join("   ·   "), MARGIN, y); y += 12;
+        }
+
+        doc.setDrawColor(226, 232, 240); doc.setLineWidth(0.5);
+        doc.line(MARGIN, y, pageW - MARGIN, y); y += 10;
+      });
+
+      const safeName = (machineName || "Machine").replace(/[^a-z0-9]+/gi, "_").replace(/^_|_$/g, "").slice(0, 30);
+      doc.save(safeName + "-" + kind + "-WorkOrders.pdf");
     }
 
     // Presentational weekly dashboard: type filter, export buttons, and three
