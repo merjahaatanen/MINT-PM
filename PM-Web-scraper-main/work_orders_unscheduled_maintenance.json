@@ -1488,7 +1488,8 @@
     "completed_datetime": "06/03/2026 09:30 AM",
     "comments": "Sean Jennings - 07/27/26 11:56:45 AM: Sent a video of the icing over to the tech on 7/24/2026. | Sean Jennings - 06/22/26  9:13:14 AM: Waiting for tech to receive a new run capacitor | Gabriel Shinobi - 06/04/26  7:10:54 AM: speed sensor swapped, currently working normally | Sean Jennings - 05/13/26  8:59:52 AM: Hello Colin. We are actively working on fixing this icemaker. It most recently went down on May 4th and we had a technician out of May 6th. This icemaker is still under warranty so the tech ordered new parts, which came in on May 8th. The tech replaced the parts but the issue remained. More parts were ordered and we are now waiting on those to arrive. Thank you",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "1609",

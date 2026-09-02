@@ -1,0 +1,33 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,15818,Clean vacuum filters/Replace as needed,Pending,5/26/2025,,Operator,0.00,0.00,0.00,,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,15795,Grease vacuum pump motors with Amblygon grease per mfg. rec.,Pending,11/19/2025,,Operator,0.00,0.00,0.00,,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,670,Grease vacuum pump motors with Amblygon grease per mfg. rec.,Closed and Completed,9/18/2022,Shower Seats,Operator,0.00,0.00,0.00,11/1/2022,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,669,Clean vacuum filters/Replace as needed,Closed and Completed,3/25/2022,Jake,Operator,0.00,0.00,0.00,11/29/2022,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,3353,Clean vacuum filters/Replace as needed,Closed and Completed,12/6/2022,Ned W,Operator,0.50,0.00,0.00,1/30/2023,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,6065,Clean vacuum filters/Replace as needed,Closed and Completed,6/22/2023,Jake D,Operator,0.00,0.00,0.00,3/13/2023,Jake Demers - 06/15/23  9:36:24 AM: Discontinued,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,3361,Grease vacuum pump motors with Amblygon grease per mfg. rec.,Closed and Completed,5/29/2023,Jake D,Operator,1.00,0.00,0.00,6/12/2023,Jake Demers - 06/15/23  9:35:36 AM: Discontinued,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,4190,Clean vacuum filters/Replace as needed,Closed and Completed,2/7/2023,Operator,Operator,0.50,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:33:28 AM: Discontinued,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,6073,Clean vacuum filters/Replace as needed,Closed and Completed,6/22/2023,kjnbkj,Operator,0.00,0.00,0.00,10/2/2024,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,6071,Grease vacuum pump motors with Amblygon grease per mfg. rec.,Closed without Action,12/15/2023,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:52:28 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,10715,"Clean Vacuum plumbing located in/under router table.
+      - Lock Out Machine
+      - Renove main arie house from Router Table/Bed.
+      -  Open and inspect all vacuum ports on top of Table/Bed
+      - Use air hose to blow air into each port (one by one) to make sure clean of debris)",Closed without Action,6/22/2024,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:19:43 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,13250,Clean vacuum filters/Replace as needed,Closed without Action,10/9/2024,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:20:12 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+290,EQ ID 290,SS Polishing Lathe,Shower Seats,15783,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Pending,6/19/2025,,Operator,0.00,0.00,0.00,,,[]
+290,EQ ID 290,SS Polishing Lathe,Shower Seats,183,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed and Completed,4/18/2022,Jake D,Operator,0.00,0.00,0.00,6/15/2023,,[]
+290,EQ ID 290,SS Polishing Lathe,Shower Seats,6046,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed without Action,7/15/2023,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:47:41 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,15820,Grease Motor: 1-2 pumps with motor grease.,Pending,11/19/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,968,Grease Motor: 1-2 pumps with motor grease.,Closed and Completed,9/18/2022,Jake D,Maintenance Mechanic,0.00,0.00,0.00,11/18/2022,,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,3257,Grease Motor: 1-2 pumps with motor grease.,Closed and Completed,5/15/2023,Jake D,Maintenance Mechanic,0.00,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:34:55 AM: Discontinued,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,6069,Grease Motor: 1-2 pumps with motor grease.,Closed without Action,12/15/2023,Jake D,Maintenance Mechanic,0.00,0.00,0.00,1/1/2024,,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,9688,Grease Motor: 1-2 pumps with motor grease.,Closed and Completed,7/12/2024,kw,Maintenance Mechanic,0.00,0.00,0.00,10/2/2024,,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,13251,Grease Motor: 1-2 pumps with motor grease.,Closed without Action,4/2/2025,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:21:22 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+340,EQ ID 340,MotoMan Square Stock Drill,Shower Seats,204,Inspect and change if needed the filters on the Robotic Controller,Closed and Completed,3/25/2022,Jake,Operator,0.00,0.00,0.00,11/29/2022,,[]
+340,EQ ID 340,MotoMan Square Stock Drill,Shower Seats,4139,Clean drill coolant container and add 3 gallons each of Koolmist @ proper dilution.,Closed and Completed,2/2/2023,Jeff O,Operator,0.00,0.00,0.00,1/25/2023,,[]

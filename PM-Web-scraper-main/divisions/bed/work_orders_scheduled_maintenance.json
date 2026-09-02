@@ -1,0 +1,20 @@
+[
+  {
+    "equipment_id": "1416",
+    "equipment_eq_id": "EQ ID 1416",
+    "equipment_name": "2013 Chevrolet Silverado",
+    "department": "Maintenance",
+    "wo_id": "10732",
+    "audit_item": "Annual Inspection",
+    "status": "Pending",
+    "due_date": "7/1/2025",
+    "work_performed_by": "",
+    "assigned_to": "Outside Service",
+    "labor_time": "0.00",
+    "material_cost": "0.00",
+    "downtime_hours": "0.00",
+    "completed_datetime": "",
+    "comments": "",
+    "attachments": []
+  }
+]

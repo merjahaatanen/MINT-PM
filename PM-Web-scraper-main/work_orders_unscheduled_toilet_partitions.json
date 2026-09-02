@@ -8840,7 +8840,8 @@
     "completed_datetime": "",
     "comments": "",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "5",
@@ -11554,7 +11555,8 @@
     "completed_datetime": "",
     "comments": "Gabriel Shinobi - 05/01/26  7:44:43 AM: Per M/E Eric, QA request has been submitted to inspect the jig, as well is currently investigating the issue",
     "attachments": [],
-    "assigned_to": "M/E"
+    "assigned_to": "",
+    "owner": "M/E"
   },
   {
     "equipment_id": "1656",
@@ -11573,7 +11575,8 @@
     "completed_datetime": "",
     "comments": "",
     "attachments": [],
-    "assigned_to": "M/E"
+    "assigned_to": "",
+    "owner": "M/E"
   },
   {
     "equipment_id": "1656",
@@ -15503,7 +15506,8 @@
     "completed_datetime": "",
     "comments": "",
     "attachments": [],
-    "assigned_to": "M/E"
+    "assigned_to": "",
+    "owner": "M/E"
   },
   {
     "equipment_id": "105",
@@ -20545,7 +20549,8 @@
     "completed_datetime": "",
     "comments": "Gabriel Shinobi - 05/01/26  8:14:00 AM: sent back, drivers had the incorrect heads on them waiting for drivers to be received | Gabriel Shinobi - 02/24/26  9:36:00 AM: replacement drivers ordered, will replace once in. 4-6 week lead time",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "1159",
@@ -20690,7 +20695,8 @@
     "completed_datetime": "",
     "comments": "",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "",

@@ -1,0 +1,90 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+5197,EQ ID 5197,Floor Drain Tanks,Facilites,4150,Empty floor drain tanks,Closed without Action,7/27/2023,NA,Outside Service,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:50:34 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+758,EQ ID 758,Emergency Generator,Facilites,15803,"Test Generator under load, check oil, radiator fluid and room condition.",Pending,6/19/2025,,Supervisor,0.00,0.00,0.00,,,[]
+758,EQ ID 758,Emergency Generator,Facilites,15826,"Test Generator under load, check oil, radiator fluid and room condition.",Pending,6/19/2025,,Supervisor,0.00,0.00,0.00,,,[]
+758,EQ ID 758,Emergency Generator,Facilites,506,"Test Generator under load, check oil, radiator fluid and room condition.",Closed and Completed,4/18/2022,Matt Miller,Supervisor,0.25,0.00,0.00,8/1/2022,,[]
+758,EQ ID 758,Emergency Generator,Facilites,2735,"Test Generator under load, check oil, radiator fluid and room condition.",Closed and Completed,11/13/2022,Matt,Supervisor,0.00,0.00,0.00,11/1/2022,,[]
+758,EQ ID 758,Emergency Generator,Facilites,3359,"Test Generator under load, check oil, radiator fluid and room condition.",Closed and Completed,12/29/2022,MM,Supervisor,0.00,0.00,0.00,1/2/2023,,[]
+758,EQ ID 758,Emergency Generator,Facilites,4152,"Test Generator under load, check oil, radiator fluid and room condition.",Closed and Completed,2/27/2023,Matt M,Supervisor,0.00,0.00,0.00,6/1/2023,Jake Demers - 06/15/23  9:26:45 AM: Discontinued,[]
+758,EQ ID 758,Emergency Generator,Facilites,6052,"Test Generator under load, check oil, radiator fluid and room condition.",Closed and Completed,7/15/2023,Jake D,Supervisor,0.00,0.00,0.00,1/1/2024,,[]
+758,EQ ID 758,Emergency Generator,Facilites,9684,"Test Generator under load, check oil, radiator fluid and room condition.",Closed without Action,2/12/2024,NA,Supervisor,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:59:41 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+766,EQ ID 766,Overhead Fire Doors,Facilites,15817,Drop test doors,Pending,5/19/2026,,Outside Service,0.00,0.00,0.00,,,[]
+766,EQ ID 766,Overhead Fire Doors,Facilites,509,Drop test doors,Closed and Completed,3/18/2023,Outside contractor,Outside Service,0.00,0.00,0.00,3/17/2023,Jake Demers - 06/15/23  9:36:03 AM: Discontinued,[]
+766,EQ ID 766,Overhead Fire Doors,Facilites,6072,Drop test doors,Closed without Action,6/15/2024,NA,Outside Service,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:19:14 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,15808,Grease Motor ( 3 pumps),Pending,9/19/2025,,Operator,0.00,0.00,0.00,,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,15801,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Pending,6/19/2025,,Operator,0.00,0.00,0.00,,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,184,Grease Motor ( 3 pumps),Closed and Completed,7/18/2022,Jake D,Operator,0.00,0.00,0.00,6/15/2023,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,185,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed and Completed,4/18/2022,Jake D,Operator,0.25,0.00,0.00,6/15/2023,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,6047,Grease Motor ( 3 pumps),Closed and Completed,10/15/2023,Jake D,Operator,0.00,0.00,0.00,1/1/2024,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,6045,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed and Completed,7/15/2023,Jake D,Operator,0.00,0.00,0.00,1/2/2024,Jake Demers - 01/12/24  3:41:44 AM: Discontinued,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,9694,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed without Action,2/12/2024,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:56:42 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,9687,Grease Motor ( 3 pumps),Closed without Action,5/12/2024,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:13:21 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+5216,EQ ID 5216,Argon Bulk tank O2 sensor,Grab Bars,5903,,Closed without Action,6/6/2024,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:15:59 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+1416,EQ ID 1416,2013 Chevrolet Silverado,Maintenance,10732,Annual Inspection,Pending,7/1/2025,,Outside Service,0.00,0.00,0.00,,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,15818,Clean vacuum filters/Replace as needed,Pending,5/26/2025,,Operator,0.00,0.00,0.00,,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,15795,Grease vacuum pump motors with Amblygon grease per mfg. rec.,Pending,11/19/2025,,Operator,0.00,0.00,0.00,,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,670,Grease vacuum pump motors with Amblygon grease per mfg. rec.,Closed and Completed,9/18/2022,Shower Seats,Operator,0.00,0.00,0.00,11/1/2022,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,669,Clean vacuum filters/Replace as needed,Closed and Completed,3/25/2022,Jake,Operator,0.00,0.00,0.00,11/29/2022,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,3353,Clean vacuum filters/Replace as needed,Closed and Completed,12/6/2022,Ned W,Operator,0.50,0.00,0.00,1/30/2023,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,6065,Clean vacuum filters/Replace as needed,Closed and Completed,6/22/2023,Jake D,Operator,0.00,0.00,0.00,3/13/2023,Jake Demers - 06/15/23  9:36:24 AM: Discontinued,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,3361,Grease vacuum pump motors with Amblygon grease per mfg. rec.,Closed and Completed,5/29/2023,Jake D,Operator,1.00,0.00,0.00,6/12/2023,Jake Demers - 06/15/23  9:35:36 AM: Discontinued,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,4190,Clean vacuum filters/Replace as needed,Closed and Completed,2/7/2023,Operator,Operator,0.50,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:33:28 AM: Discontinued,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,6073,Clean vacuum filters/Replace as needed,Closed and Completed,6/22/2023,kjnbkj,Operator,0.00,0.00,0.00,10/2/2024,,[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,6071,Grease vacuum pump motors with Amblygon grease per mfg. rec.,Closed without Action,12/15/2023,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:52:28 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,10715,"Clean Vacuum plumbing located in/under router table.
+      - Lock Out Machine
+      - Renove main arie house from Router Table/Bed.
+      -  Open and inspect all vacuum ports on top of Table/Bed
+      - Use air hose to blow air into each port (one by one) to make sure clean of debris)",Closed without Action,6/22/2024,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:19:43 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+1125,EQ ID 1125,"Router, Anderson Stratos Pro 5' by 17'",Shower Seats,13250,Clean vacuum filters/Replace as needed,Closed without Action,10/9/2024,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:20:12 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+290,EQ ID 290,SS Polishing Lathe,Shower Seats,15783,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Pending,6/19/2025,,Operator,0.00,0.00,0.00,,,[]
+290,EQ ID 290,SS Polishing Lathe,Shower Seats,183,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed and Completed,4/18/2022,Jake D,Operator,0.00,0.00,0.00,6/15/2023,,[]
+290,EQ ID 290,SS Polishing Lathe,Shower Seats,6046,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed without Action,7/15/2023,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:47:41 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,15820,Grease Motor: 1-2 pumps with motor grease.,Pending,11/19/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,968,Grease Motor: 1-2 pumps with motor grease.,Closed and Completed,9/18/2022,Jake D,Maintenance Mechanic,0.00,0.00,0.00,11/18/2022,,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,3257,Grease Motor: 1-2 pumps with motor grease.,Closed and Completed,5/15/2023,Jake D,Maintenance Mechanic,0.00,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:34:55 AM: Discontinued,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,6069,Grease Motor: 1-2 pumps with motor grease.,Closed without Action,12/15/2023,Jake D,Maintenance Mechanic,0.00,0.00,0.00,1/1/2024,,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,9688,Grease Motor: 1-2 pumps with motor grease.,Closed and Completed,7/12/2024,kw,Maintenance Mechanic,0.00,0.00,0.00,10/2/2024,,[]
+1763,EQ ID 1763,Wet Dust Collector,Shower Seats,13251,Grease Motor: 1-2 pumps with motor grease.,Closed without Action,4/2/2025,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:21:22 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+340,EQ ID 340,MotoMan Square Stock Drill,Shower Seats,204,Inspect and change if needed the filters on the Robotic Controller,Closed and Completed,3/25/2022,Jake,Operator,0.00,0.00,0.00,11/29/2022,,[]
+340,EQ ID 340,MotoMan Square Stock Drill,Shower Seats,4139,Clean drill coolant container and add 3 gallons each of Koolmist @ proper dilution.,Closed and Completed,2/2/2023,Jeff O,Operator,0.00,0.00,0.00,1/25/2023,,[]
+5366,EQ ID 5366,1080 HOMAG Horizontal Panel Saw,Toilet Partitions,16031,"Saw data back up onto external hard drive. 
+
+-Reason: Redundancy in the event of a system malfunction, to have a saved file of the software and data the saw is operating with, to fall back on. 
+
+This can be done in the background while saw is running, during normal operation.",Pending,6/12/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+5366,EQ ID 5366,1080 HOMAG Horizontal Panel Saw,Toilet Partitions,15952,"Saw data back up onto external hard drive. 
+
+-Reason: Redundancy in the event of a system malfunction, to have a saved file of the software and data the saw is operating with, to fall back on. 
+
+This can be done in the background while saw is running, during normal operation.",Closed and Completed,6/9/2025,Nicholas Angelo Jr.,Maintenance Mechanic,0.00,0.00,0.00,6/9/2025,"Nicholas Angelo, Jr - 06/09/25  4:12:57 PM: Back has been completed. | Nicholas Angelo, Jr - 06/09/25  4:12:15 PM: Back has been completed. | Nicholas Angelo, Jr - 06/04/25  5:24:35 AM: -Reason: Redundancy in the event of a system malfunction, to have a saved file of the software and data the saw is operating with, to fall back on. 
+
+This can be done in the background while saw is running, during normal operation.",[]
+327,EQ ID 327,Vertical Panel Saw,Toilet Partitions,15814,Change hydraulic oil and filter,Pending,5/19/2026,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+327,EQ ID 327,Vertical Panel Saw,Toilet Partitions,202,Change hydraulic oil and filter,Closed and Completed,3/18/2023,Jake D,Maintenance Mechanic,0.00,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:31:05 AM: .,[]
+327,EQ ID 327,Vertical Panel Saw,Toilet Partitions,6062,Change hydraulic oil and filter,Closed without Action,6/15/2024,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:17:36 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+315,EQ ID 315,1080 CNC Drill (Gannomat),Toilet Partitions,15784,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Pending,6/19/2025,,QA Technician,0.00,0.00,0.00,,,[]
+315,EQ ID 315,1080 CNC Drill (Gannomat),Toilet Partitions,201,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Closed and Completed,4/18/2022,Steve T,QA Technician,0.25,0.00,0.00,1/30/2023,,[]
+315,EQ ID 315,1080 CNC Drill (Gannomat),Toilet Partitions,4188,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Closed and Completed,2/28/2023,Operator,QA Technician,0.00,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:27:41 AM: Discontinued,[]
+315,EQ ID 315,1080 CNC Drill (Gannomat),Toilet Partitions,6054,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Closed without Action,7/15/2023,NA,QA Technician,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:48:41 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,15819,Grease bearings/high temp grease,Pending,6/19/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,505,Grease bearings/high temp grease,Closed and Completed,4/18/2022,Jake D,Maintenance Mechanic,0.25,0.00,0.00,8/25/2022,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,2734,Grease bearings/high temp grease,Closed and Completed,11/13/2022,Jake D,Maintenance Mechanic,0.00,0.00,0.00,4/4/2023,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,5908,Grease bearings/high temp grease,Closed and Completed,7/6/2023,Jake D,Maintenance Mechanic,0.25,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:33:51 AM: Discontinued,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,6066,Grease bearings/high temp grease,Closed and Completed,7/15/2023,Jake D,Maintenance Mechanic,0.00,0.00,0.00,1/12/2024,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,9690,Grease bearings/high temp grease,Closed and Completed,2/12/2024,kw,Maintenance Mechanic,0.00,0.00,0.00,10/2/2024,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,13252,Grease bearings/high temp grease,Closed without Action,11/2/2024,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:20:47 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]

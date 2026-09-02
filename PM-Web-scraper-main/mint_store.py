@@ -23,6 +23,7 @@ audit_log row so changes are always attributable.
 
 import json
 import os
+import re
 import sqlite3
 import threading
 import uuid
@@ -211,6 +212,14 @@ def _init() -> None:
                 created_by TEXT NOT NULL DEFAULT ''
             );
 
+            CREATE TABLE IF NOT EXISTS roles (
+                name       TEXT PRIMARY KEY COLLATE NOCASE,
+                aliases    TEXT NOT NULL DEFAULT '[]',
+                active     INTEGER NOT NULL DEFAULT 1,
+                created_at TEXT NOT NULL,
+                created_by TEXT NOT NULL DEFAULT ''
+            );
+
             CREATE TABLE IF NOT EXISTS vendor_contact_types (
                 name       TEXT PRIMARY KEY COLLATE NOCASE,
                 created_at TEXT NOT NULL,
@@ -302,6 +311,15 @@ def _init() -> None:
 
             CREATE INDEX IF NOT EXISTS idx_spm_part ON spare_part_machines (part_id);
             CREATE INDEX IF NOT EXISTS idx_spm_machine ON spare_part_machines (dept_key, eq_id);
+
+            CREATE TABLE IF NOT EXISTS view_profiles (
+                key        TEXT PRIMARY KEY,
+                label      TEXT NOT NULL,
+                features   TEXT NOT NULL DEFAULT '[]',
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL,
+                updated_by TEXT NOT NULL DEFAULT ''
+            );
             """
         )
         # Migration: add summary_json column if it exists from an older schema.
@@ -312,6 +330,10 @@ def _init() -> None:
         spare_cols = {r["name"] for r in c.execute("PRAGMA table_info(spare_parts)").fetchall()}
         if "division_key" not in spare_cols:
             c.execute("ALTER TABLE spare_parts ADD COLUMN division_key TEXT NOT NULL DEFAULT 'bla'")
+        # Migration: add view_key to roles (which saved view profile a role sees).
+        role_cols = {r["name"] for r in c.execute("PRAGMA table_info(roles)").fetchall()}
+        if "view_key" not in role_cols:
+            c.execute("ALTER TABLE roles ADD COLUMN view_key TEXT NOT NULL DEFAULT ''")
         type_count = c.execute("SELECT COUNT(*) AS n FROM vendor_contact_types").fetchone()["n"]
         if not type_count:
             c.execute(
@@ -885,7 +907,7 @@ WO_FIELDS = (
     "wo_id", "wo_type", "date_notified", "due_date", "urgency", "problem",
     "audit_item", "status", "material_cost", "labor_time", "work_performed_by",
     "helpers", "downtime_hours", "completed_datetime", "completion_comments",
-    "frequency", "series_id", "recurrence_stopped", "assigned_to",
+    "frequency", "series_id", "recurrence_stopped", "assigned_to", "owner",
 )
 
 
@@ -1389,6 +1411,227 @@ def seed_technicians() -> None:
 
 
 seed_technicians()
+
+
+def _ensure_technician(name: str, aliases: list[str]) -> None:
+    """Add a technician if one by this name doesn't already exist. Used to
+    backfill new default technicians without clobbering existing entries
+    (unlike seed_technicians(), which only ever runs once on an empty table)."""
+    if get_technician(name) is None:
+        add_technician(name, aliases, author="system")
+
+
+# "Maintenance" and "Maintenance Mechanic" are scraped assigned-to/skill
+# values that both map to the in-house maintenance team, so they're merged
+# into a single technician (sign in + My Schedule + self-assign) rather than
+# tracked as separate identities or roles.
+_ensure_technician("Maintenance", ["maintenance", "maintenance mechanic"])
+
+
+# --------------------------------------------------------------------------- #
+# Roles (shared assigned-to identities, e.g. "QA Technician", "Mechanic")
+# --------------------------------------------------------------------------- #
+# Distinct from technicians: a role is a shared identity multiple people can
+# sign in as to see/complete work orders assigned to that skill/team, without
+# implying a specific tracked individual (no per-person team stats).
+def list_roles(active_only: bool = True) -> list[dict]:
+    query = "SELECT name, aliases, view_key, active, created_at, created_by FROM roles"
+    params = ()
+    if active_only:
+        query += " WHERE active = 1"
+    query += " ORDER BY name COLLATE NOCASE"
+    with _connect() as c:
+        rows = c.execute(query, params).fetchall()
+    out = []
+    for r in rows:
+        data = dict(r)
+        try:
+            data["aliases"] = json.loads(data.get("aliases") or "[]")
+        except (json.JSONDecodeError, TypeError):
+            data["aliases"] = []
+        out.append(data)
+    return out
+
+
+def get_role(name: str) -> dict | None:
+    name = (name or "").strip()
+    if not name:
+        return None
+    with _connect() as c:
+        r = c.execute(
+            "SELECT name, aliases, view_key, active, created_at, created_by FROM roles "
+            "WHERE name = ? COLLATE NOCASE",
+            (name,),
+        ).fetchone()
+    if r is None:
+        return None
+    data = dict(r)
+    try:
+        data["aliases"] = json.loads(data.get("aliases") or "[]")
+    except (json.JSONDecodeError, TypeError):
+        data["aliases"] = []
+    return data
+
+
+def add_role(name: str, aliases: list[str] | None = None, view_key: str | None = None, author: str = "") -> dict:
+    name = (name or "").strip()
+    if not name:
+        raise ValueError("role name is required")
+    aliases = sorted({(a or "").strip().lower() for a in (aliases or []) if (a or "").strip()})
+    existing = get_role(name)
+    if view_key is None:
+        view_key = existing["view_key"] if existing else ""
+    with _lock, _connect() as c:
+        c.execute(
+            "INSERT OR REPLACE INTO roles (name, aliases, view_key, active, created_at, created_by) "
+            "VALUES (?, ?, ?, 1, ?, ?)",
+            (name, json.dumps(aliases), view_key,
+             existing["created_at"] if existing else _now(),
+             existing["created_by"] if existing else (author or "")),
+        )
+    _audit("", author, "add_role", name)
+    return get_role(name)
+
+
+def set_role_view(name: str, view_key: str, author: str = "") -> dict | None:
+    """Assign a saved view profile (by key, or '' for full access) to a role."""
+    name = (name or "").strip()
+    if not name:
+        return None
+    with _lock, _connect() as c:
+        cur = c.execute(
+            "UPDATE roles SET view_key = ? WHERE name = ? COLLATE NOCASE",
+            ((view_key or "").strip(), name),
+        )
+        if not cur.rowcount:
+            return None
+    _audit("", author, "set_role_view", f"{name} -> {view_key or '(full)'}")
+    return get_role(name)
+
+
+def delete_role(name: str, author: str = "") -> bool:
+    name = (name or "").strip()
+    if not name:
+        return False
+    with _lock, _connect() as c:
+        row = c.execute(
+            "DELETE FROM roles WHERE name = ? COLLATE NOCASE",
+            (name,),
+        ).rowcount
+    if row:
+        _audit("", author, "delete_role", name)
+        return True
+    return False
+
+
+def seed_roles() -> None:
+    """Seed the default roles if the table is empty."""
+    with _connect() as c:
+        count = c.execute("SELECT COUNT(*) AS n FROM roles").fetchone()["n"]
+    if count:
+        return
+    defaults = [
+        ("QA Technician", ["qa technician"]),
+        ("Outside Service", ["outside service"]),
+        ("Technician", ["technician"]),
+        ("Supervisor", ["supervisor"]),
+        ("Mechanic", ["mechanic"]),
+        ("Lead", ["lead"]),
+        ("Operator", ["operator"]),
+        ("Sr. Mechanic", ["sr. mechanic", "sr mechanic", "senior mechanic"]),
+        ("M/E", ["m/e", "me"]),
+        ("Material Handler", ["material handler"]),
+    ]
+    for name, aliases in defaults:
+        add_role(name, aliases, author="system")
+
+
+seed_roles()
+
+
+# --------------------------------------------------------------------------- #
+# View profiles ("MINT master" configurable role views, e.g. Operator)
+# --------------------------------------------------------------------------- #
+# A view profile is a named, checkable subset of app features. Anyone can
+# switch their session to "view as" a saved profile (see server.py
+# api_view_profiles*); creating/editing/deleting profiles is master-gated.
+def _slugify(label: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", (label or "").strip().lower()).strip("-")
+    return slug or uuid.uuid4().hex[:8]
+
+
+def list_view_profiles() -> list[dict]:
+    with _connect() as c:
+        rows = c.execute(
+            "SELECT key, label, features, created_at, updated_at, updated_by "
+            "FROM view_profiles ORDER BY label COLLATE NOCASE"
+        ).fetchall()
+    out = []
+    for r in rows:
+        data = dict(r)
+        try:
+            data["features"] = json.loads(data.get("features") or "[]")
+        except (json.JSONDecodeError, TypeError):
+            data["features"] = []
+        out.append(data)
+    return out
+
+
+def get_view_profile(key: str) -> dict | None:
+    key = (key or "").strip()
+    if not key:
+        return None
+    with _connect() as c:
+        r = c.execute(
+            "SELECT key, label, features, created_at, updated_at, updated_by "
+            "FROM view_profiles WHERE key = ?",
+            (key,),
+        ).fetchone()
+    if r is None:
+        return None
+    data = dict(r)
+    try:
+        data["features"] = json.loads(data.get("features") or "[]")
+    except (json.JSONDecodeError, TypeError):
+        data["features"] = []
+    return data
+
+
+def save_view_profile(label: str, features: list[str], author: str = "", key: str = "") -> dict:
+    """Create (key blank) or update (key given) a view profile."""
+    label = (label or "").strip()
+    if not label:
+        raise ValueError("label is required")
+    features = sorted({(f or "").strip() for f in (features or []) if (f or "").strip()})
+    key = (key or "").strip() or _slugify(label)
+    now = _now()
+    with _lock, _connect() as c:
+        existing = c.execute("SELECT key FROM view_profiles WHERE key = ?", (key,)).fetchone()
+        if existing:
+            c.execute(
+                "UPDATE view_profiles SET label = ?, features = ?, updated_at = ?, updated_by = ? WHERE key = ?",
+                (label, json.dumps(features), now, author or "", key),
+            )
+        else:
+            c.execute(
+                "INSERT INTO view_profiles (key, label, features, created_at, updated_at, updated_by) "
+                "VALUES (?, ?, ?, ?, ?, ?)",
+                (key, label, json.dumps(features), now, now, author or ""),
+            )
+    _audit("", author, "save_view_profile", key)
+    return get_view_profile(key)
+
+
+def delete_view_profile(key: str, author: str = "") -> bool:
+    key = (key or "").strip()
+    if not key:
+        return False
+    with _lock, _connect() as c:
+        row = c.execute("DELETE FROM view_profiles WHERE key = ?", (key,)).rowcount
+    if row:
+        _audit("", author, "delete_view_profile", key)
+        return True
+    return False
 
 
 # --------------------------------------------------------------------------- #

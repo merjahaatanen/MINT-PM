@@ -1,0 +1,13 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,15808,Grease Motor ( 3 pumps),Pending,9/19/2025,,Operator,0.00,0.00,0.00,,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,15801,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Pending,6/19/2025,,Operator,0.00,0.00,0.00,,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,184,Grease Motor ( 3 pumps),Closed and Completed,7/18/2022,Jake D,Operator,0.00,0.00,0.00,6/15/2023,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,185,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed and Completed,4/18/2022,Jake D,Operator,0.25,0.00,0.00,6/15/2023,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,6047,Grease Motor ( 3 pumps),Closed and Completed,10/15/2023,Jake D,Operator,0.00,0.00,0.00,1/1/2024,,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,6045,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed and Completed,7/15/2023,Jake D,Operator,0.00,0.00,0.00,1/2/2024,Jake Demers - 01/12/24  3:41:44 AM: Discontinued,[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,9694,Clean inside of machine/blow out motor/inspect belts/grease shaft bearings,Closed without Action,2/12/2024,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:56:42 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+291,EQ ID 291,Line 4 Polishing Lathe,Grab Bars,9687,Grease Motor ( 3 pumps),Closed without Action,5/12/2024,NA,Operator,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:13:21 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+5216,EQ ID 5216,Argon Bulk tank O2 sensor,Grab Bars,5903,,Closed without Action,6/6/2024,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:15:59 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]

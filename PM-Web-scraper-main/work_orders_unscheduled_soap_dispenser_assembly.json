@@ -10861,7 +10861,8 @@
     "completed_datetime": "10/09/2025 12:00 AM",
     "comments": "Primo Uy - 10/21/25  3:08:53 PM: Red (Fail) light is working but Green is still not working, it stays on (lights), it looks like its stack. I need ME to take a look at it; it could be the PLC program need to be updated or check. | Primo Uy - 10/16/25  7:16:24 AM: illuminating light assembly socket was broken. Looking for a replacement.",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "100",

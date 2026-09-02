@@ -8,13 +8,17 @@ Reads the two saved PM "All Open Work Orders" tab HTML files:
   - "PM open unscheduled HTML"  -> extracts the "Owner" column
   - "PM Open Scheduled HTML"    -> extracts the "Assigned To (Skill)" column
 
-Maps each work order ID to its scraped owner/skill value and writes an
-`assigned_to` field into the existing per-department work_orders_*.json
-(and corresponding .csv) files.
+Owner and Assigned To (Skill) are different concepts: Owner is who reported/
+owns an unscheduled ticket, while Assigned To (Skill) is who/what team is
+actually meant to complete a scheduled PM. They're written to two separate
+fields so only real assignments (`assigned_to`) drive "My Schedule" \u2014
+`owner` is informational only and maps each work order ID to its scraped
+owner (unscheduled) or skill (scheduled) value, writing into the existing
+per-department work_orders_*.json (and corresponding .csv) files.
 
-The server already expects an `assigned_to` field on work order records, so
-after this runs a simple /api/reload (or server restart) will surface the
-values in MINT.
+The server already expects `assigned_to`/`owner` fields on work order
+records, so after this runs a simple /api/reload (or server restart) will
+surface the values in MINT.
 """
 
 import csv
@@ -110,7 +114,7 @@ def _csv_path(dept_key: str, kind: str) -> Path:
     return HERE / f"work_orders_{kind}_{dept_key}.csv"
 
 
-def _update_json(path: Path, assignments: dict[str, str]) -> int:
+def _update_json(path: Path, assignments: dict[str, str], field: str) -> int:
     if not path.exists():
         return 0
     with open(path, encoding="utf-8") as f:
@@ -120,14 +124,14 @@ def _update_json(path: Path, assignments: dict[str, str]) -> int:
         wo_id = str(r.get("wo_id") or "").strip()
         # Ensure the key always exists so downstream CSV generation has a
         # consistent schema across all rows.
-        old_val = r.get("assigned_to", "")
+        old_val = r.get(field, "")
         new_val = assignments.get(wo_id, old_val)
         if old_val != new_val:
-            r["assigned_to"] = new_val
+            r[field] = new_val
             changed += 1
-        elif "assigned_to" not in r:
-            r["assigned_to"] = ""
-    if changed or any("assigned_to" not in r for r in rows):
+        elif field not in r:
+            r[field] = ""
+    if changed or any(field not in r for r in rows):
         with open(path, "w", encoding="utf-8") as f:
             json.dump(rows, f, ensure_ascii=False, indent=2)
     return changed
@@ -135,7 +139,7 @@ def _update_json(path: Path, assignments: dict[str, str]) -> int:
 
 def _regen_csv(json_path: Path, csv_path: Path) -> bool:
     """Rewrite the CSV from the JSON using the historical column order plus
-    the `assigned_to` field inserted right after `work_performed_by`."""
+    the `owner`/`assigned_to` fields inserted right after `work_performed_by`."""
     if not json_path.exists():
         return False
     with open(json_path, encoding="utf-8") as f:
@@ -143,11 +147,12 @@ def _regen_csv(json_path: Path, csv_path: Path) -> bool:
     if not rows:
         return False
 
-    # Preserve the legacy column order and inject assigned_to in a sensible spot.
+    # Preserve the legacy column order and inject owner/assigned_to in a
+    # sensible spot.
     base_order = [
         "equipment_id", "equipment_eq_id", "equipment_name", "department",
         "wo_id", "date_notified", "urgency", "problem", "status",
-        "material_cost", "labor_time", "work_performed_by", "assigned_to",
+        "material_cost", "labor_time", "work_performed_by", "owner", "assigned_to",
         "downtime_hours", "completed_datetime", "comments", "attachments",
     ]
     # If the JSON has audit_item (scheduled records) it goes before status.
@@ -194,17 +199,23 @@ def main():
             schassigned[dept_key][wo_id] = skill
 
     total_changed = 0
-    for dept_key in DEPT_KEY_BY_NAME.values():
-        for kind, source in (("unscheduled", unassigned), ("scheduled", schassigned)):
+    # Unscheduled records get `owner` (informational only, does not drive My
+    # Schedule); scheduled records get `assigned_to` (the real skill/team
+    # assignment that My Schedule matches against).
+    for kind, source, field in (
+        ("unscheduled", unassigned, "owner"),
+        ("scheduled", schassigned, "assigned_to"),
+    ):
+        for dept_key in DEPT_KEY_BY_NAME.values():
             jpath = _json_path(dept_key, kind)
             cpath = _csv_path(dept_key, kind)
-            changed = _update_json(jpath, source.get(dept_key, {}))
+            changed = _update_json(jpath, source.get(dept_key, {}), field)
             if changed:
                 _regen_csv(jpath, cpath)
                 print(f"[{kind}] {dept_key}: updated {changed} records -> {jpath.name}")
                 total_changed += changed
 
-    print(f"\nTotal records enriched with assigned_to: {total_changed}")
+    print(f"\nTotal records enriched: {total_changed}")
     print("Run /api/reload in MINT (or restart the server) to load the new values.")
 
 

@@ -1,0 +1,162 @@
+eq_id,dept,dept_num,equipment_name,asset_num,make,model,vendor,wo_qty,modified
+EQ ID 5382,Grab Bars,1145,Stand Up Toyota Forklift,,Toyota,RF1-SD1X35,Thompson and Johnson,0,6/1/2026 4:54 AM
+EQ ID 5383,Tube Mill,1180,Auto Peener,,Guyson,Custom,Guyson Corporation,1,4/6/2026 9:51 AM
+EQ ID 5381,Grab Bars,1145,Amada Punch Press Un-coiler / Straightener Feeder,,Amada,LCC03KR3,Jake/Matt,0,3/26/2026 5:05 AM
+EQ ID 5374,Grab Bars,1145,Amada Punch Press,,Amada,SDEW2025I3,Jake/Matt,0,12/8/2025 6:39 AM
+EQ ID 5371,Maintenance,2110,SkyJack Scissor Lift,,SKYJACK,SJIII 3219,Thompson and Johnson,0,9/22/2025 9:43 AM
+EQ ID 5305,Toilet Partitions,1170,Edge Bander,3137,HOMAG,EDGETEQ S-500,Stiles Machinery,0,9/3/2025 3:46 PM
+EQ ID 5353,Toilet Partitions,1170,Tenoner,,Voorwood,A517Z(H),Jake/Matt,0,9/3/2025 3:42 PM
+EQ ID 1764,Grab Bars,1145,Tumbler,11561,"Hammond Roto Finish, Fortune Metal Finishing",HR-17 SPIRATRON Straight Wall,,0,9/3/2025 3:37 PM
+EQ ID 1566,Toilet Partitions,1170,1040 Holzma Horizontal Panel Saw,11492,Holzma,Profi HPL400/38/16,Stiles Machinery,0,9/3/2025 3:29 PM
+EQ ID 5346,Toilet Partitions,1170,Black Bros Glue Spreader,3172,Black Bros,22D-1175 T&B SPR NL 74,Jake/Matt,0,9/3/2025 3:25 PM
+EQ ID 1756,Grab Bars,1145,Line 4 Coping Machine/Bader,11532 & 11533,Advance Control System/Stephen Bader CO.INC,Stephan Bader,,0,8/27/2025 2:34 PM
+EQ ID 1364,Toilet Partitions,1170,Transfer Conveyor Hot Press,11363,Roach,?,,0,6/30/2025 7:44 PM
+EQ ID 283,Shower Seats,1140,Abrasive Blast Cabinet 36x24,22625,Econoline,WD-40X38,,0,6/30/2025 7:43 PM
+EQ ID 5312,Grab Bars,1145,"12""x 24"" Lathe (Grab Bars)",5312,Grizzly Industrial,G4002,Jake/Matt,0,6/30/2025 7:14 PM
+EQ ID 1125,Shower Seats,1140,"Router, Anderson Stratos Pro 5' by 17'",10259,Anderson,Statos Pro,Anderson America,2,6/25/2025 8:40 PM
+EQ ID 5307,Grab Bars,1145,Line 1 Bender - Transfluid,11519,Transfluid,DB 650 ST-SPS,Transfluid - Advanced Fabrication,0,6/16/2025 6:16 PM
+EQ ID 1981,Grab Bars,1145,Line 3 Bender - Transfluid,11649,Transfluid,DB 650 ST-SPS,Transfluid - Advanced Fabrication,0,5/29/2025 12:29 PM
+EQ ID 5022,Grab Bars,1145,Line 2 Bender - Transfluid,11649,Transfluid,DB-6-50ST-SPS,Transfluid - Advanced Fabrication,0,5/29/2025 12:22 PM
+EQ ID 5366,Toilet Partitions,1170,1080 HOMAG Horizontal Panel Saw,,HOMAG,SAWTEQ S-410,Stiles Machinery,1,5/27/2025 5:30 AM
+EQ ID 5367,Tube Mill,1180,Finishing System,,Midwest,,Jake/Matt,0,5/14/2025 3:32 AM
+EQ ID 5361,Shower Seats,1140,S.S. Transfluid Bender,,Transfluid,DB 642-CNC-VE,Transfluid - Advanced Fabrication,0,3/4/2025 4:25 AM
+EQ ID 5360,Toilet Partitions,1170,Voorwood Finisher,,Voorwood,A517Z(H),Jake/Matt,0,3/4/2025 4:08 AM
+EQ ID 5295,Tube Mill,1180,Bossi Seam Grinder,,Bossi,STP 3000 / 150 / 170 COAX,Jake/Matt,0,10/23/2024 6:14 AM
+EQ ID 5345,Toilet Partitions,1170,1080 Stile Foot Drilling Machine,,Challenge Automation,Challenge Automation,Jake/Matt,0,8/27/2024 12:13 PM
+EQ ID 5332,Quality Assurance,27,Gapless Lip Thickness Gauge,,BLA,Gapless lip,Jake/Matt,0,6/7/2024 11:14 AM
+EQ ID 5331,Quality Assurance,27,2080G 12FC,,BLA,2080G,Jake/Matt,0,6/7/2024 11:12 AM
+EQ ID 5330,Quality Assurance,27,1080G 12 FC ( Gapless Curvature Gauge ),,BLA,1080G,Jake/Matt,0,6/7/2024 11:09 AM
+EQ ID 5329,Quality Assurance,27,2080G 9FC ( Gapless Curvature Gauge ),,BLA,2080G,Jake/Matt,0,6/7/2024 11:04 AM
+EQ ID 5323,Quality Assurance,27,Gapless Router Gauge,,BLA,TPF Router,Jake/Matt,0,5/7/2024 9:35 AM
+EQ ID 5322,Quality Assurance,27,Grab Bar Gauge Block,,BED,Wall Clearance,Jake/Matt,0,5/7/2024 9:20 AM
+EQ ID 5317,Tube Mill,1180,Robot - Tubing Stacker,,Yaskawa Electric Corp,XRC-2001 YASNAC,Jake/Matt,0,3/28/2024 9:18 PM
+EQ ID 5316,Tube Mill,1180,Duo-Cut Head #2,,Hill Engineering - Formtek,,Jake/Matt,0,3/28/2024 7:54 PM
+EQ ID 5315,Tube Mill,1180,Duo-Cut Head #1,,Hill Engineering - Formtek,,Jake/Matt,0,3/28/2024 7:26 PM
+EQ ID 5314,Tube Mill,1180,Un-coiler,,Formek,,Jake/Matt,0,3/28/2024 7:11 PM
+EQ ID 5313,Shower Seats,1140,SS KMT Saw (517s),,KMT,C3705A-V,Jake/Matt,0,3/28/2024 2:22 PM
+EQ ID 290,Shower Seats,1140,SS Polishing Lathe,4086,Square Deal,EVS-7,Jake/Matt,1,3/28/2024 2:06 PM
+EQ ID 5311,Grab Bars,1145,Toyota Walkie Stacker Forklift (Grab Bars),,Toyota,6BWS15,Thompson and Johnson,0,3/28/2024 2:00 PM
+EQ ID 5287,Tube Mill,1180,Toyota Forklift (Tube Mill),,Toyota,7FBJ35,Thompson and Johnson,0,3/28/2024 1:34 PM
+EQ ID 5310,Facilites,4304,Water Heater (Grab Bars),,Ariston,ARIEC 115C3W165,Jake/Matt,0,3/27/2024 9:16 PM
+EQ ID 291,Grab Bars,1145,Line 4 Polishing Lathe,5896,Square Deal,EVS-7,Jake/Matt,2,3/27/2024 9:11 PM
+EQ ID 5026,Grab Bars,1145,Line 4 Trim Saw - Eisele,,Eisele,VMS 11-S-PV,Jake/Matt,0,3/27/2024 8:55 PM
+EQ ID 5309,Grab Bars,1145,Line 1 Robotic Flange Welder - Lincoln Electric,,Lincoln Electric,System 5,Jake/Matt,0,3/27/2024 8:52 PM
+EQ ID 1985,Grab Bars,1145,Line 2 Robotic Flange Welder - Lincoln Electric,3049,Lincoln Electric Company,System 5,Jake/Matt,0,3/27/2024 8:49 PM
+EQ ID 1765,Grab Bars,1145,Line 5 Robotic Flange Welder - Lincoln Electric,11615,Lincoln Electric Company,System 5,Jake/Matt,0,3/27/2024 8:49 PM
+EQ ID 1638,Grab Bars,1145,Line 3.5 Robotic Flange Welder - Lincoln Electric,,Lincoln,System 5,Jake/Matt,0,3/27/2024 8:47 PM
+EQ ID 5308,Grab Bars,1145,Line 1 Rotary Trim Saw - Transfluid,11520,Transfluid,SRM 1565-E,Transfluid - Advanced Fabrication,0,3/27/2024 8:46 PM
+EQ ID 1922,Grab Bars,1145,Line 2 Rotary Trim Saw -Transfluid,11632,Transfluid,SRM 1564-E,Transfluid - Advanced Fabrication,0,3/27/2024 8:44 PM
+EQ ID 331,Grab Bars,1145,Line 3 Trim Saw - KMT,,KMT,C370SA-V,Jake/Matt,0,3/27/2024 8:44 PM
+EQ ID 2134,Grab Bars,1145,Line 3.5 Rotary Trim Saw - Transfluid,,Transfluid,SRM 1565-E,Transfluid - Advanced Fabrication,0,3/27/2024 8:43 PM
+EQ ID 1982,Grab Bars,1145,Line 3.5 Bender - Transfluid,11673,Transfluid,DB 6-50 ST-SPS,Transfluid - Advanced Fabrication,0,3/27/2024 8:26 PM
+EQ ID 5030,Tube Mill,1180,Eisele Cut Saw (For Specials and 3588-33),,Eisele,N/A,Jake/Matt,0,3/27/2024 8:12 PM
+EQ ID 327,Toilet Partitions,1170,Vertical Panel Saw,,A&S,7X7,Jake/Matt,1,3/27/2024 8:06 PM
+EQ ID 5306,Toilet Partitions,1170,Pinch Roller Entry Conveyor,3137,Thomas Conveyor,ATF 80X90,Jake/Matt,0,3/27/2024 6:33 PM
+EQ ID 1761,Toilet Partitions,1170,Return System - Edge Bander,11521,Thomas Conveyor,70x136,Jake/Matt,0,3/27/2024 3:56 PM
+EQ ID 1760,Toilet Partitions,1170,"Return System - 3/4"" 1080 Finishing",,Thomas Conveyor,60x108,Jake/Matt,0,3/27/2024 3:54 PM
+EQ ID 313,Toilet Partitions,1170,"Return System - 1/2"" 1080 Finishing",11546,Thomas Conveyor,70x164,Jake/Matt,0,3/27/2024 3:53 PM
+EQ ID 5304,Toilet Partitions,1170,Return System - 1040 Finishing,11616,Thomas Conveyor,70x134,Jake/Matt,0,3/27/2024 3:47 PM
+EQ ID 5303,Toilet Partitions,1170,Anver Lift,,Gorbel,Anver Lift,Jake/Matt,0,3/27/2024 3:30 PM
+EQ ID 2009,Toilet Partitions,1170,"Tecnolegno 3/4"" Edge Finishing Machine",11663,Tecnolegno,Universal 280SX,Jake/Matt,0,3/27/2024 3:15 PM
+EQ ID 314,Toilet Partitions,1170,"Tecnolegno 1/2"" Edge Finishing Machine",11300,Tecnolegno,Universal,Jake/Matt,0,3/27/2024 3:13 PM
+EQ ID 315,Toilet Partitions,1170,1080 CNC Drill (Gannomat),,Gannomat,815.828,Jake/Matt,2,3/27/2024 3:10 PM
+EQ ID 5034,Toilet Partitions,1170,1040 CNC Drill (Gannomat),10860,Gannomat,Type-470,Jake/Matt,0,3/27/2024 2:57 PM
+EQ ID 1589,Toilet Partitions,1170,Anderson Router,,Anderson,Stratos/Pro-E,Anderson America,0,3/27/2024 2:42 PM
+EQ ID 5302,Toilet Partitions,1170,Toyota Forklift (TPF),,Toyota,8FBCU30,Thompson and Johnson,0,3/27/2024 2:33 PM
+EQ ID 5301,Maintenance,2110,General Maintenance (NEW MAINT. ADDITION),,,,Jake/Matt,0,3/27/2024 2:11 PM
+EQ ID 1416,Maintenance,2110,2013 Chevrolet Silverado,11369,Chevrolet,Silverado,Jake/Matt,2,3/27/2024 2:08 PM
+EQ ID 1763,Shower Seats,1140,Wet Dust Collector,11552,Midwest Automation,,Jake/Matt,1,3/27/2024 1:32 PM
+EQ ID 296,Shower Seats,1140,Coping Machine,10888,Bader,1004A,Jake/Matt,0,3/27/2024 1:25 PM
+EQ ID 1421,Shower Seats,1140,Anver Lift,,Gorbel,Anver Lift,Jake/Matt,0,3/27/2024 12:52 PM
+EQ ID 341,Shower Seats,1140,Robotic Welder,,Contour Arc,Robotic Welder,Jake/Matt,0,3/27/2024 12:50 PM
+EQ ID 5300,Shower Seats,1140,Lincoln Welder,,Lincoln,Robotic Welder,Jake/Matt,0,3/27/2024 12:42 PM
+EQ ID 5299,Tube Mill,1180,Hawker LifePlus MOD3 Battery Charger,,Hawker,LPM3-48C-120Y,Thompson and Johnson,0,3/22/2024 10:27 AM
+EQ ID 5298,Tube Mill,1180,Hawker LifePlus 2000 Battery Charger,,Hawker,6L50095,Thompson and Johnson,0,3/22/2024 9:52 AM
+EQ ID 336,Maintenance,2110,Bridgeport Milling Machine,,Bridgeport,Series 1,Jake/Matt,0,3/22/2024 8:47 AM
+EQ ID 5297,Maintenance,2110,Clark Scissor Lift,10152,Clark,CSL20N,Thompson and Johnson,0,3/22/2024 7:49 AM
+EQ ID 1758,Maintenance,2110,Floor Scrubber,11577,Advance Advenger,Advance Advenger 2800ST,Thompson and Johnson,0,3/22/2024 7:33 AM
+EQ ID 5296,Shower Seats,1140,Enco Drilling Machine,20975,Enco,1051300,Jake/Matt,0,3/22/2024 4:09 AM
+EQ ID 5294,Tube Mill,1180,Burr-master,,Kent Corp,BM2-100,Jake/Matt,0,3/20/2024 11:01 AM
+EQ ID 5293,Tube Mill,1180,Dust Collector,,Midwest,DC-5500 SS,Jake/Matt,0,3/20/2024 10:59 AM
+EQ ID 5292,Tube Mill,1180,Duo-Cut Hydraulic Pump,,Continental Hydraulics,1019189,Jake/Matt,0,3/20/2024 10:57 AM
+EQ ID 5291,Tube Mill,1180,Deep Bed Filter (Main Coolant Tank),,Industrial Filters Co.,DB-75,Jake/Matt,0,3/20/2024 10:21 AM
+EQ ID 5290,Tube Mill,1180,Laser Cooling A/C Unit,,IPG,LC170.01-A.3.5/6,Jake/Matt,0,3/20/2024 9:58 AM
+EQ ID 5289,Tube Mill,1180,Ytterbium Laser System,,IPG,YLS-5000-S1T,Jake/Matt,0,3/20/2024 9:56 AM
+EQ ID 5288,Tube Mill,1180,Shearwelder,,Guild International,VE-10,Jake/Matt,0,3/20/2024 9:52 AM
+EQ ID 5031,Tube Mill,1180,Coil Tilter,11469,N/A,N/A,Jake/Matt,0,3/15/2024 11:27 AM
+EQ ID 5286,Shipping,7905,Raymond Electric Pallet Jack,10159,Raymond,112TM-FRE60L,Thompson and Johnson,0,3/15/2024 11:15 AM
+EQ ID 5285,Shipping,7905,Toyota Forklift,,Toyota,7FBEHU18,Thompson and Johnson,0,3/15/2024 9:29 AM
+EQ ID 5284,Shipping,7905,Toyota Forklift,,Toyota,8FBE18U,Thompson and Johnson,0,3/15/2024 9:25 AM
+EQ ID 5283,Shipping,7905,Toyota Forklift,,Toyota,8FBE18U,Thompson and Johnson,0,3/15/2024 9:24 AM
+EQ ID 5282,Shipping,7905,Toyota Forklift,,Toyota,8FBE18U,Thompson and Johnson,0,3/15/2024 9:15 AM
+EQ ID 5281,Shipping,7905,Hawker Lifeplus Battery Charger,,Hawker,LPM3-48C-120Y,Thompson and Johnson,0,3/15/2024 8:51 AM
+EQ ID 5280,Shipping,7905,Exide System 1000 Battery Charger,,Exide,G1-12-450,Thompson and Johnson,0,3/15/2024 8:49 AM
+EQ ID 5277,Shipping,7905,Hawker LifePlus Battery Charger,,Hawker,LPM3-48C-180Y,Thompson and Johnson,0,3/15/2024 8:43 AM
+EQ ID 5279,Shipping,7905,Hawker Lifeguard Battery Charger,,Hawker,LG18-1050F3B,Thompson and Johnson,0,3/15/2024 8:42 AM
+EQ ID 5278,Shipping,7905,Hertner Battery Charger,22461,Hertner,3TN18-600,Thompson and Johnson,0,3/15/2024 7:42 AM
+EQ ID 5275,Shipping,7905,Jungheinrich Forklift #1,3100,Jungheinrich,EFX413,Thompson and Johnson,0,3/15/2024 6:56 AM
+EQ ID 5276,Shipping,7905,Jungheinrich Forklift #2,3101,Jungheinrich,EFX413,Thompson and Johnson,0,3/15/2024 6:56 AM
+EQ ID 5274,Shipping,7905,Lantech Stretch Wrap Machine,3150,Lantech,Q300XT,Jake/Matt,0,3/15/2024 6:37 AM
+EQ ID 1793,Shipping,7905,Platform Stretch Wrapper,11339,ArPac Group,Pro-Series Low Profile,Jake/Matt,0,3/15/2024 6:19 AM
+EQ ID 5270,Facilites,4304,100HP VSD Air Compressor,3148,Ingersol Rand,RS75-A,Air Compressor Engineering,0,2/9/2024 6:37 AM
+EQ ID 5001,Facilites,4304,125hp VSD Air Compressor,,Ingersol Rand,R90N-A,Air Compressor Engineering,0,2/9/2024 6:28 AM
+EQ ID 5025,Grab Bars,1145,Line 3 Flange Pounder,,Pounder,Pounder,Jake/Matt,0,1/12/2024 3:45 AM
+EQ ID 5262,Quality Assurance,27,Digimatic Caliper,,Mitutoyo,"CD-6""ASX",Jake/Matt,0,1/9/2024 11:24 AM
+EQ ID 5216,Grab Bars,1145,Argon Bulk tank O2 sensor,,Macurco,OX-6,AIRGAS,0,6/6/2023 9:20 AM
+EQ ID 5206,Toilet Partitions,1170,General Maintenance ( TOILET PARTITIONS ),,0,0,Jake/Matt,0,2/9/2023 3:02 AM
+EQ ID 5207,Tube Mill,1180,General Maintenance ( TUBE MILL ),,0,0,Jake/Matt,0,2/9/2023 3:01 AM
+EQ ID 752,Facilites,4304,General Maintenance ( MISC. ),,0,0,Jake/Matt,0,2/9/2023 2:58 AM
+EQ ID 751,Shipping,7905,General Maintenance ( SHIPPING ),,0,0,Jake/Matt,0,2/9/2023 2:57 AM
+EQ ID 5205,Shower Seats,1140,General Maintenance ( SHOWER SEATS ),,0,0,Jake/Matt,0,2/9/2023 2:56 AM
+EQ ID 5204,Grab Bars,1145,General Maintenance ( GRAB BARS ),,0,0,Jake/Matt,0,2/9/2023 2:55 AM
+EQ ID 5203,Facilites,4304,General Maintenance ( OFFICE ),,0,0,Jake/Matt,0,2/9/2023 2:54 AM
+EQ ID 5020,Facilites,4304,Manufacturing Mens Room,,0,0,Jake/Matt,0,2/9/2023 2:50 AM
+EQ ID 5019,Facilites,4304,Manufacturing Womens Room,,0,0,Jake/Matt,0,2/9/2023 2:49 AM
+EQ ID 1639,Maintenance,2110,Boom Lift,,Genie,Z-30/20N,Thompson and Johnson,0,1/31/2023 8:58 AM
+EQ ID 5199,Grab Bars,1145,Line 1+3.5 Shrink Tech Systems,,STS,STS-1712/PB,Shrink Tech System,0,1/27/2023 7:37 AM
+EQ ID 5198,Grab Bars,1145,Line 2+3 Shrink Tech Systems,,STS,STS-1712/6 PB,Shrink Tech System,0,1/27/2023 7:34 AM
+EQ ID 5197,Facilites,4304,Floor Drain Tanks,,TBD,TBD,Drain Care,0,1/27/2023 4:21 AM
+EQ ID 5194,Facilites,4304,Grinder pump 1 + 2,,TBD,TBD,Siewert Equipment,0,1/27/2023 4:14 AM
+EQ ID 2036,Toilet Partitions,1170,Hot Pinch rollers,11613,Black Bros,Panel Express,,0,4/2/2022 10:16 AM
+EQ ID 2115,Grab Bars,1145,Line 4 Intermediate Post Machine (ACA),,,,,0,4/2/2022 10:16 AM
+EQ ID 5027,Grab Bars,1145,Line 4 Manual Welder (Miller),,,,,0,4/2/2022 10:16 AM
+EQ ID 5028,Grab Bars,1145,Grab Bar Post Finishing Machine (Intec),,,,,0,4/2/2022 10:16 AM
+EQ ID 1759,Toilet Partitions,1170,Plant Wide Dust Collector with Ducting,11556,"Donaldson, AB Flowtech, VBI LLC",,,0,4/2/2022 10:16 AM
+EQ ID 1762,Shower Seats,1140,Robotic Finishing System,16115,Pinnacle Technologies,Intec,,0,4/2/2022 10:16 AM
+EQ ID 1781,Toilet Partitions,1170,Spark Detector Dust Collection,,Hansentek,AN104,,0,4/2/2022 10:16 AM
+EQ ID 2008,Grab Bars,1145,Line 5 Automated Grab Bar Cell - Bend Trim,11647,Transfluid,Bend - Trim,,1,4/2/2022 10:16 AM
+EQ ID 5002,Facilites,4304,Compressed Air Dryer #2,,,,,0,4/2/2022 10:16 AM
+EQ ID 5003,Facilites,4304,Heater - Cambridge Addition,,,,,0,4/2/2022 10:16 AM
+EQ ID 5004,Facilites,4304,Heater - Cambridge Factory,,,,,0,4/2/2022 10:16 AM
+EQ ID 5005,Facilites,4304,Heater - Cambridge Shipping,,,,,0,4/2/2022 10:16 AM
+EQ ID 5006,Facilites,4304,Overhead Door/Leveler - Bay 1,,,,,0,4/2/2022 10:16 AM
+EQ ID 5007,Facilites,4304,Overhead Door/Leveler - Bay 2,,,,,0,4/2/2022 10:16 AM
+EQ ID 5008,Facilites,4304,Overhead Door/Leveler - Bay 3,,,,,0,4/2/2022 10:16 AM
+EQ ID 5009,Facilites,4304,Overhead Door/Leveler - Bay 4,,,,,0,4/2/2022 10:16 AM
+EQ ID 5010,Facilites,4304,Overhead Door/Leveler - Bay 5,,,,,0,4/2/2022 10:16 AM
+EQ ID 5011,Facilites,4304,Overhead Door/Leveler - Bay 6,,,,,0,4/2/2022 10:16 AM
+EQ ID 5012,Facilites,4304,Large Overhead Door/Leveler - Bay 7,,,,,0,4/2/2022 10:16 AM
+EQ ID 5013,Facilites,4304,Overhead Door/Leveler - Bay 8,,,,,0,4/2/2022 10:16 AM
+EQ ID 5014,Facilites,4304,Overhead Door/Leveler - Bay 9,,,,,0,4/2/2022 10:16 AM
+EQ ID 5015,Facilites,4304,Large Overhead Door/Leveler - Bay 10,,,,,0,4/2/2022 10:16 AM
+EQ ID 5016,Facilites,4304,Front Office Area,,,,,0,4/2/2022 10:16 AM
+EQ ID 5017,Facilites,4304,Front Office Womens Room,,,,,0,4/2/2022 10:16 AM
+EQ ID 5018,Facilites,4304,Front Office Mens Room,,,,,0,4/2/2022 10:16 AM
+EQ ID 342,Shower Seats,1140,Spot Welder,,Spotwelding Consultants Inc.,AR-450,,0,4/2/2022 10:16 AM
+EQ ID 735,Toilet Partitions,1170,1040 Finishing Machine,,Tecnolegno,Universal 300,,0,4/2/2022 10:16 AM
+EQ ID 757,Toilet Partitions,1170,Dust Collector,,IAC,120BHI-A3-81:60S,,1,4/2/2022 10:16 AM
+EQ ID 758,Facilites,4304,Emergency Generator,,Onan,,,2,4/2/2022 10:16 AM
+EQ ID 759,Facilites,4304,Compressed Air Dryer #1,,Ingersoll-Rand,NVC-500A400,,0,4/2/2022 10:16 AM
+EQ ID 766,Facilites,4304,Overhead Fire Doors,,,,,1,4/2/2022 10:16 AM
+EQ ID 1567,Shower Seats,1140,Welding Power Pack,,Miller,210,,0,4/2/2022 10:16 AM
+EQ ID 1419,Facilites,4304,Air Conditoning Units,,Goodman,GSX1360 5 ton,,0,4/2/2022 10:16 AM
+EQ ID 1420,Facilites,4304,Sprinkler Systems,,,,,0,4/2/2022 10:16 AM
+EQ ID 337,Shower Seats,1140,Drill Press- for drilling rings and pivot tube,,,,,0,4/2/2022 10:16 AM
+EQ ID 340,Shower Seats,1140,MotoMan Square Stock Drill,11354,MotoMan,UP50,,0,4/2/2022 10:16 AM
+EQ ID 299,Grab Bars,1145,Line 4 Auto Flange Welder (Contour Arc),,Contour Arc,M-4304,,0,4/2/2022 10:16 AM
+EQ ID 128,Toilet Partitions,1170,Scissor Lift,11257,Bishamon,,,0,4/2/2022 10:16 AM
+EQ ID 316,Toilet Partitions,1170,Single Spindle Shaper,10790,Pertici,6800,,0,4/2/2022 10:16 AM
+EQ ID 318,Toilet Partitions,1170,Laminate Slitter,10248,Mar-Bel,MLS12,,0,4/2/2022 10:16 AM
+EQ ID 324,Toilet Partitions,1170,1540 Notching Machine,,P&R Tool,Custom Built,,0,4/2/2022 10:16 AM
+EQ ID 292,Shower Seats,1140,Punch Press (CEC Metal Muncher),0631,CEC Metal Muncher,GB50,,0,4/2/2022 10:16 AM
+EQ ID 284,Shower Seats,1140,Anver Lift,,Anver,VT200-2.5-D9,,0,4/2/2022 10:16 AM

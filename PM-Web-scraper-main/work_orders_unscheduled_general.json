@@ -4206,7 +4206,8 @@
     "completed_datetime": "",
     "comments": "",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "",
@@ -4225,6 +4226,7 @@
     "completed_datetime": "",
     "comments": "",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   }
 ]

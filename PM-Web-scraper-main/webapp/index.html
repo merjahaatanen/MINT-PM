@@ -183,6 +183,47 @@
       return h;
     }
     function isSeanMode() { try { return sessionStorage.getItem("mintIsSean") === "1"; } catch (e) { return false; } }
+
+    // MINT master password (session only) gates creating/editing/deleting view
+    // profiles. Separate from Sean's password.
+    function getMasterPw() { try { return sessionStorage.getItem("mintMasterPw") || ""; } catch (e) { return ""; } }
+    function setMasterPw(v) { try { v ? sessionStorage.setItem("mintMasterPw", v) : sessionStorage.removeItem("mintMasterPw"); } catch (e) {} }
+    function masterHeaders(extra) {
+      const h = Object.assign({}, extra || {});
+      const pw = getMasterPw();
+      if (pw) h["X-Master-Password"] = pw;
+      return h;
+    }
+
+    // The active "view as" selection (a view profile key, or "" for the full,
+    // unrestricted MINT experience). Anyone can pick a saved view; only the
+    // MINT master can define what a view contains.
+    function getViewKey() { try { return localStorage.getItem("mintView") || ""; } catch (e) { return ""; } }
+    function setViewKey(v) { try { v ? localStorage.setItem("mintView", v) : localStorage.removeItem("mintView"); } catch (e) {} }
+
+    // Canonical list of checkable app features a view profile can allow.
+    // Anything not in a profile's feature list is hidden while that view is
+    // active. `Machines` (the base landing tab) is always shown.
+    const VIEW_FEATURES = [
+      { id: "dashboard", label: "Dashboard (quick stats)" },
+      { id: "work_orders", label: "Work Orders (Unscheduled / Scheduled)" },
+      { id: "trends", label: "Trends" },
+      { id: "longevity", label: "Longevity" },
+      { id: "weekly_schedule", label: "Weekly Schedule" },
+      { id: "monthly_calendar", label: "Monthly Calendar" },
+      { id: "floor_plan", label: "Floor Plan" },
+      { id: "machine_info", label: "Machine Info" },
+      { id: "checklist", label: "Checklist" },
+      { id: "spare_parts", label: "Spare Parts" },
+      { id: "inactive", label: "Inactive items" },
+    ];
+
+    // Returns true if `featureId` should be shown given the currently active
+    // view profile. `null`/no active view = full access (default MINT).
+    function featureAllowed(activeProfile, featureId) {
+      if (!activeProfile) return true;
+      return (activeProfile.features || []).includes(featureId);
+    }
     const URGENCY_OPTIONS = [
       "1. Prod Stopped",
       "2. General Maint - High Priority",
@@ -435,6 +476,163 @@
         </div>`, document.body);
     }
 
+    function MasterGate({ actionLabel, onUnlock, onCancel }) {
+      const [pw, setPw] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const inputRef = useRef(null);
+      useEffect(() => {
+        const t = setTimeout(() => { if (inputRef.current) inputRef.current.focus(); }, 50);
+        return () => clearTimeout(t);
+      }, []);
+      const submit = async () => {
+        const value = (inputRef.current && inputRef.current.value) || pw || "";
+        if (!value) { setErr("Enter the password."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/verify-master-password", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ password: value }),
+          });
+          const d = await r.json();
+          if (!r.ok || !d.ok) throw new Error(d.error || "Incorrect password");
+          onUnlock(value);
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+      return ReactDOM.createPortal(html`
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+          onClick=${onCancel}>
+          <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-sm p-6"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xl">🔒</span>
+              <h3 className="text-lg font-extrabold text-slate-800">MINT master password required</h3>
+            </div>
+            <p className="text-sm text-slate-500 mb-4">Enter the MINT master password to ${actionLabel || "continue"}.</p>
+            <input type="password" autoFocus ref=${inputRef}
+              onInput=${(e) => setPw(e.target.value)}
+              onKeyDown=${(e) => e.key === "Enter" && submit()}
+              className="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+            ${err && html`<div className="text-rose-600 text-sm mb-3">${err}</div>`}
+            <div className="flex gap-2 justify-end">
+              <button onClick=${onCancel} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+              <button onClick=${submit} disabled=${busy}
+                className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+                ${busy ? "Checking…" : "Unlock"}</button>
+            </div>
+          </div>
+        </div>`, document.body);
+    }
+
+    // MINT master modal: create/edit/delete named view profiles, each a
+    // checkable subset of VIEW_FEATURES (e.g. "Operator" -> Work Orders only).
+    function ManageViewsModal({ profiles, onClose, onChanged }) {
+      const [author, setAuthor] = useState(getUserName());
+      const [editing, setEditing] = useState(null); // profile being edited, or {} for new
+      const [label, setLabel] = useState("");
+      const [features, setFeatures] = useState([]);
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [deleting, setDeleting] = useState(null);
+
+      const startNew = () => { setEditing({}); setLabel(""); setFeatures([]); setErr(null); };
+      const startEdit = (p) => { setEditing(p); setLabel(p.label); setFeatures(p.features || []); setErr(null); };
+      const cancelEdit = () => { setEditing(null); setErr(null); };
+      const toggleFeature = (id) =>
+        setFeatures((f) => f.includes(id) ? f.filter((x) => x !== id) : [...f, id]);
+
+      const save = async () => {
+        if (!author.trim()) { setErr("Your name is required."); return; }
+        if (!label.trim()) { setErr("View name is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/view-profiles", "POST",
+            { author: author.trim(), label: label.trim(), features, key: editing && editing.key ? editing.key : "" },
+            masterHeaders());
+          setEditing(null);
+          onChanged();
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      const doDelete = async (p) => {
+        if (!author.trim()) { setErr("Your name is required."); return; }
+        if (!window.confirm(`Delete view "${p.label}"?`)) return;
+        setDeleting(p.key); setErr(null);
+        try {
+          await sendJSON("/api/view-profiles/" + encodeURIComponent(p.key), "DELETE",
+            { author: author.trim() }, masterHeaders());
+          onChanged();
+        } catch (e) { setErr(e.message); } finally { setDeleting(null); }
+      };
+
+      return ReactDOM.createPortal(html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] flex items-start justify-center p-4 overflow-y-auto"
+          onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl my-8 fade-in"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-100">
+              <div className="font-extrabold text-lg text-emerald-800">Manage views</div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xl leading-none">×</button>
+            </div>
+            <div className="p-6">
+              <${NameInput} value=${author} onChange=${setAuthor} />
+              ${err && html`<div className="text-rose-600 text-sm mt-3">${err}</div>`}
+
+              ${!editing && html`
+                <div className="mt-5">
+                  <button onClick=${startNew}
+                    className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 shadow-sm mb-4">
+                    + New view</button>
+                  <div className="space-y-2">
+                    ${profiles.length === 0 && html`<div className="text-slate-400 text-sm">No views yet.</div>`}
+                    ${profiles.map((p) => html`
+                      <div key=${p.key} className="flex items-center justify-between gap-3 bg-emerald-50/60 rounded-xl px-4 py-3">
+                        <div>
+                          <div className="font-semibold text-slate-800">${p.label}</div>
+                          <div className="text-xs text-slate-500">${(p.features || []).length} feature(s) enabled</div>
+                        </div>
+                        <div className="flex gap-2">
+                          <button onClick=${() => startEdit(p)}
+                            className="px-3 py-1.5 rounded-full bg-white border border-emerald-200 text-emerald-700 text-sm font-semibold hover:bg-emerald-50">
+                            Edit</button>
+                          <button onClick=${() => doDelete(p)} disabled=${deleting === p.key}
+                            className="px-3 py-1.5 rounded-full bg-white border border-rose-200 text-rose-600 text-sm font-semibold hover:bg-rose-50 disabled:opacity-60">
+                            ${deleting === p.key ? "Deleting…" : "Delete"}</button>
+                        </div>
+                      </div>`)}
+                  </div>
+                </div>`}
+
+              ${editing && html`
+                <div className="mt-5">
+                  <label className="block text-sm font-semibold text-slate-600 mb-1">View name</label>
+                  <input value=${label} onInput=${(e) => setLabel(e.target.value)}
+                    placeholder="e.g. Operator"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+                  <div className="text-sm font-semibold text-slate-600 mb-2">Visible features</div>
+                  <div className="grid sm:grid-cols-2 gap-2 mb-5">
+                    ${VIEW_FEATURES.map((f) => html`
+                      <label key=${f.id} className="flex items-center gap-2 bg-slate-50 rounded-lg px-3 py-2 text-sm cursor-pointer">
+                        <input type="checkbox" checked=${features.includes(f.id)}
+                          onChange=${() => toggleFeature(f.id)} />
+                        ${f.label}
+                      </label>`)}
+                  </div>
+                  <div className="flex justify-end gap-2">
+                    <button onClick=${cancelEdit}
+                      className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">
+                      Cancel</button>
+                    <button onClick=${save} disabled=${busy}
+                      className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60 shadow-sm">
+                      ${busy ? "Saving…" : "Save view"}</button>
+                  </div>
+                </div>`}
+            </div>
+          </div>
+        </div>`, document.body);
+    }
+
     // Monday-start week helpers used by the team-stats weekly schedule.
     function startOfWeek(d) {
       const x = new Date(d);
@@ -652,6 +850,90 @@
         </div>`, document.body);
     }
 
+    // Sean-only modal to add/remove shared "role" identities (e.g. QA
+    // Technician, Mechanic) \u2014 a role is a shared assigned-to sign-in anyone
+    // on that team can use for My Schedule, distinct from individual technicians.
+    function ManageRolesModal({ roles, setRoles, onClose }) {
+      const [name, setName] = useState(getUserName());
+      const [aliases, setAliases] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [deleting, setDeleting] = useState(null);
+
+      const refresh = async () => {
+        try {
+          const d = await getJSON("/api/roles");
+          if (Array.isArray(d.roles)) setRoles(d.roles);
+        } catch (e) { setErr(e.message); }
+      };
+
+      const add = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        const role = aliases.split(",").map((s) => s.trim()).filter(Boolean);
+        if (!role[0]) { setErr("Role name is required."); return; }
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/roles", "POST",
+            { author: name.trim(), name: role[0], aliases: role.slice(1) },
+            seanHeaders());
+          setAliases("");
+          await refresh();
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      const remove = async (roleName) => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!window.confirm(`Delete role "${roleName}"?`)) return;
+        setDeleting(roleName); setErr(null);
+        try {
+          await sendJSON("/api/roles/" + encodeURIComponent(roleName), "DELETE",
+            { author: name.trim() }, seanHeaders());
+          await refresh();
+        } catch (e) { setErr(e.message); } finally { setDeleting(null); }
+      };
+
+      return ReactDOM.createPortal(html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] flex items-start justify-center p-4 overflow-y-auto"
+          onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg my-8 fade-in"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-100">
+              <div className="font-extrabold text-lg text-emerald-800">Roles</div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xl leading-none">×</button>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="text-sm text-slate-500">
+                Roles are shared sign-ins (e.g. "QA Technician", "Mechanic") anyone on that team can use to view
+                and complete work orders assigned to that skill via My Schedule. Enter aliases (alternate spellings)
+                separated by commas.
+              </div>
+              <${NameInput} value=${name} onChange=${setName} />
+              <${TextInput} label="Add role" required=${true} value=${aliases} onChange=${setAliases}
+                placeholder="Role, alias, alias…" hint="First value is the canonical name; the rest are aliases." />
+              ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+              <button onClick=${add} disabled=${busy}
+                className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+                ${busy ? "Adding…" : "Add role"}</button>
+
+              <div className="border-t border-slate-100 pt-4">
+                <div className="text-sm font-bold text-slate-700 mb-2">Active roles</div>
+                <div className="space-y-2">
+                  ${roles.map((n) => html`
+                    <div key=${n} className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50">
+                      <span className="text-sm font-medium text-slate-700">${n}</span>
+                      <button onClick=${() => remove(n)} disabled=${deleting === n}
+                        className="px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-semibold hover:bg-rose-100 disabled:opacity-60">
+                        ${deleting === n ? "Deleting…" : "Delete"}</button>
+                    </div>`)}
+                  ${roles.length === 0 && html`<div className="text-sm text-slate-400">No roles configured.</div>`}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`, document.body);
+    }
+
     // A single technician's weekly schedule + monthly trends.
     function TechStats({ tech, onOpenWo }) {
       const completed = tech.completed || [];
@@ -782,7 +1064,7 @@
               body: JSON.stringify({ author: user, offset: weekOffset }),
             });
             const d = await r.json().catch(() => ({}));
-            if (r.status === 403) { setErr("Only registered technicians can view a personal schedule."); return; }
+            if (r.status === 403) { setErr("Only registered technicians or roles can view a personal schedule."); return; }
             if (!r.ok) throw new Error(d.error || "HTTP " + r.status);
             setData(d);
             setErr(null);
@@ -822,19 +1104,27 @@
         </div>`;
     }
 
-    function Header({ technicians, setTechnicians, onHome, onOpenInactive, onOpenSpareParts, onOpenMySchedule, onOpenWo }) {
+    function Header({ technicians, setTechnicians, roles, setRoles, onHome, onOpenInactive, onOpenSpareParts, onOpenMySchedule, onOpenWo,
+                      viewProfiles, activeProfile, viewKey, onChangeView, onViewProfilesChanged, hideUserControls,
+                      activeRole, onSwitchRole, divisionKey }) {
       // `user` is the raw signed-in profile ("" when a guest). Guests are the
       // default and are never prompted; they can sign in later if they want.
       const [user, setUser] = useState(getRawUser());
       const [sean, setSean] = useState(isSeanMode());
       const signedIn = !!user;
-      const isTech = signedIn && technicians.some((t) => t.toLowerCase() === (user || "").trim().toLowerCase());
+      const userL = (user || "").trim().toLowerCase();
+      const isTech = signedIn && technicians.some((t) => t.toLowerCase() === userL);
+      const isRole = signedIn && (roles || []).some((r) => r.toLowerCase() === userL);
+      const isAssignable = isTech || isRole;
       const [showSeanGate, setShowSeanGate] = useState(false);
       const [showTeamStats, setShowTeamStats] = useState(false);
       const [showTeamSchedule, setShowTeamSchedule] = useState(false);
       const [showManageTechs, setShowManageTechs] = useState(false);
+      const [showManageRoles, setShowManageRoles] = useState(false);
       const [showOther, setShowOther] = useState(false);
       const [otherName, setOtherName] = useState("");
+      const showInactive = onOpenInactive && featureAllowed(activeProfile, "inactive");
+      const showSpareParts = onOpenSpareParts && featureAllowed(activeProfile, "spare_parts");
 
       const setTech = (name) => { setUserName(name); setUser(name); setSean(false); setIsSean(false); setSeanPw(""); };
       const unlockSean = (pw) => { setUserName("Sean"); setUser("Sean"); setSean(true); setIsSean(true); setSeanPw(pw); setShowSeanGate(false); };
@@ -860,7 +1150,15 @@
               <div className="text-emerald-100 text-sm font-medium -ml-2">Maintenance Intelligence & Troubleshooting</div>
             </div>
             <div className="ml-auto flex items-center gap-2 flex-wrap">
-              ${!signedIn && html`
+              ${!!activeRole && html`
+                <span className="text-sm font-semibold text-emerald-100">Viewing as: ${activeRole}</span>
+                <button onClick=${onOpenMySchedule}
+                  className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
+                  My schedule</button>
+                <button onClick=${onSwitchRole}
+                  className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
+                  Switch role</button>`}
+              ${!hideUserControls && !signedIn && html`
                 <span className="text-sm text-emerald-100/70">Guest</span>
                 <select value="" onChange=${(e) => onSelectUser(e.target.value)}
                   className="px-3 py-2 rounded-full bg-white text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
@@ -871,9 +1169,9 @@
                 <button onClick=${() => setShowSeanGate(true)}
                   className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
                   Sean (supervisor)</button>`}
-              ${signedIn && html`
+              ${!hideUserControls && signedIn && html`
                 <span className="text-sm font-semibold text-emerald-100">${user}</span>
-                ${isTech && html`
+                ${isAssignable && html`
                   <button onClick=${onOpenMySchedule}
                     className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
                     My schedule</button>`}
@@ -886,12 +1184,15 @@
                     Team schedule</button>
                   <button onClick=${() => setShowManageTechs(true)}
                     className="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
-                    Technicians</button>`}
+                    Technicians</button>
+                  <button onClick=${() => setShowManageRoles(true)}
+                    className="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
+                    Roles</button>`}
                 <button onClick=${switchUser}
                   className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
                   Switch user</button>`}
-              ${onOpenInactive && html`
-                <button onClick=${onOpenInactive}
+              ${showInactive && html`
+                <button onClick=${() => onOpenInactive(divisionKey)}
                   className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20
                              text-white text-sm font-semibold transition">
                   <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
@@ -900,8 +1201,8 @@
                   </svg>
                   <span>Inactive</span>
                 </button>`}
-              ${onOpenSpareParts && html`
-                <button onClick=${onOpenSpareParts}
+              ${showSpareParts && html`
+                <button onClick=${() => onOpenSpareParts(divisionKey)}
                   className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20
                              text-white text-sm font-semibold transition">
                   <span className="text-base leading-none" role="img" aria-label="wrench">🔧</span>
@@ -933,13 +1234,227 @@
           ${showTeamStats && html`<${TeamStatsModal} technicians=${technicians} onClose=${() => setShowTeamStats(false)} onOpenWo=${onOpenWo} />`}
           ${showTeamSchedule && html`<${TeamScheduleModal} technicians=${technicians} onClose=${() => setShowTeamSchedule(false)} onOpenWo=${onOpenWo} />`}
           ${showManageTechs && html`<${ManageTechniciansModal} technicians=${technicians} setTechnicians=${setTechnicians} onClose=${() => setShowManageTechs(false)} />`}
+          ${showManageRoles && html`<${ManageRolesModal} roles=${roles} setRoles=${setRoles} onClose=${() => setShowManageRoles(false)} />`}
         </header>`;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Landing flow                                                        */
+    /* ------------------------------------------------------------------ */
+    function LandingPage({ roles, onSelectView, onSelectRole, onSelectMint }) {
+      return html`
+        <div className="fade-in max-w-3xl mx-auto py-12 text-center">
+          <div className="mb-10">
+            <h1 className="text-3xl font-extrabold text-slate-800 mb-3">Who are you?</h1>
+            <p className="text-slate-500">Select the view you want to use for this session.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <button onClick=${() => onSelectView("")}
+              className="text-left bg-white rounded-2xl p-6 shadow-sm border border-emerald-100
+                         hover:shadow-lg hover:border-emerald-300 transition group">
+              <div className="text-xl font-extrabold text-slate-800 group-hover:text-emerald-800">Maintenance</div>
+              <div className="text-sm text-slate-500 mt-1">Full maintenance access. Sean sign-in and technician schedules are available.</div>
+            </button>
+            ${roles.map((r) => html`
+              <button key=${r} onClick=${() => onSelectRole(r)}
+                className="text-left bg-white rounded-2xl p-6 shadow-sm border border-emerald-100
+                           hover:shadow-lg hover:border-emerald-300 transition group">
+                <div className="text-xl font-extrabold text-slate-800 group-hover:text-emerald-800">${r}</div>
+                <div className="text-sm text-slate-500 mt-1">Their assigned view, plus their weekly schedule filtered by division.</div>
+              </button>`)}
+            <button onClick=${onSelectMint}
+              className="text-left bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-800
+                         hover:shadow-lg hover:border-slate-700 transition group">
+              <div className="text-xl font-extrabold text-white">Mint</div>
+              <div className="text-sm text-slate-300 mt-1">Admin: assign which view each role sees. Password protected.</div>
+            </button>
+          </div>
+        </div>`;
+    }
+
+    function DivisionPicker({ onSelectDiv, onBack }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+
+      useEffect(() => {
+        getJSON("/api/company").then(setData).catch((e) => setErr(e.message));
+      }, []);
+
+      if (err) return html`<div className="text-rose-600">${err}</div>`;
+      if (!data) return html`<${Spinner} label="Loading divisions…" />`;
+
+      return html`
+        <div className="fade-in max-w-4xl mx-auto py-10">
+          <button onClick=${onBack}
+            className="mb-6 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-emerald-200
+                       text-emerald-800 text-sm font-semibold shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition">
+            <span aria-hidden="true">←</span> Back
+          </button>
+          <div className="mb-8">
+            <h1 className="text-3xl font-extrabold text-slate-800 mb-2">What division do you want to view?</h1>
+            <p className="text-slate-500">Choose a division to open its dashboard.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            ${data.divisions.map((d) => html`
+              <button key=${d.key} onClick=${() => onSelectDiv(d)}
+                className="text-left bg-white rounded-2xl p-5 shadow-sm border border-emerald-100
+                           hover:shadow-lg hover:border-emerald-300 transition group">
+                <div className="text-lg font-extrabold text-slate-800 group-hover:text-emerald-800">${d.name}</div>
+                <div className="text-sm text-slate-500 mt-1">${d.department_count} departments · ${d.machine_count} machines</div>
+              </button>`)}
+          </div>
+        </div>`;
+    }
+
+    function RoleSchedulePage({ role, onCompany, onOpenWo }) {
+      const [data, setData] = useState(null);
+      const [err, setErr] = useState(null);
+      const [weekOffset, setWeekOffset] = useState(0);
+      const [divisions, setDivisions] = useState([]);
+      const [divisionKey, setDivisionKey] = useState("");
+
+      useEffect(() => {
+        getJSON("/api/company").then((d) => setDivisions(d.divisions || [])).catch(() => {});
+      }, []);
+
+      useEffect(() => {
+        if (!role) return;
+        (async () => {
+          try {
+            const r = await fetch(API + "/api/my-weekly", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ author: role, offset: weekOffset, division_key: divisionKey }),
+            });
+            const d = await r.json().catch(() => ({}));
+            if (r.status === 403) { setErr("Only registered roles can view this schedule."); return; }
+            if (!r.ok) throw new Error(d.error || "HTTP " + r.status);
+            setData(d);
+            setErr(null);
+          } catch (e) { setErr(e.message); setData(null); }
+        })();
+      }, [role, weekOffset, divisionKey]);
+
+      const goPrev = () => setWeekOffset((o) => o - 1);
+      const goNext = () => setWeekOffset((o) => o + 1);
+      const goThis = () => setWeekOffset(0);
+
+      return html`
+        <div className="fade-in">
+          <${Breadcrumb} items=${[
+            { label: "Bobrick", onClick: onCompany },
+            { label: role + " schedule" },
+          ]} />
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-5">
+            <div>
+              <h1 className="text-2xl font-extrabold text-slate-800">${role} schedule</h1>
+              <p className="text-sm text-slate-500">Work orders assigned to this role, filtered by division.</p>
+            </div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <select value=${divisionKey} onChange=${(e) => setDivisionKey(e.target.value)}
+                className="px-3 py-2 rounded-full border border-emerald-200 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                <option value="">All divisions</option>
+                ${divisions.map((d) => html`<option key=${d.key} value=${d.key}>${d.name}</option>`)}
+              </select>
+              <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold shadow-sm">
+                <button type="button" onClick=${goPrev}
+                  title="Previous weeks"
+                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
+                <button type="button" onClick=${goThis}
+                  className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
+                  This week</button>
+                <button type="button" onClick=${goNext}
+                  title="Upcoming weeks"
+                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
+              </div>
+            </div>
+          </div>
+          ${err && html`<div className="text-rose-600 mb-4">${err}</div>`}
+          ${!err && data === null && html`<${Spinner} label="Loading schedule…" />`}
+          ${data && html`<${WeeklyBoard} data=${data} predicate=${() => true} showDept=${true} onOpenWo=${onOpenWo} title="${role} weekly schedule" scopeLabel=${"Role-Schedule"} />`}
+        </div>`;
+    }
+
+    // "Mint" admin page: assign a saved view profile to each role, so that
+    // when someone signs in as that role from the landing page they see the
+    // dashboards/features scoped to that view (plus their own schedule).
+    // Master-gated, reached only via the "Mint" option on the landing page —
+    // never from the top header.
+    function ManageRoleViewsPage({ roles, roleViews, viewProfiles, onBack, onChanged }) {
+      const [showGate, setShowGate] = useState(!getMasterPw());
+      const [busyRole, setBusyRole] = useState(null);
+      const [err, setErr] = useState(null);
+      const author = getUserName();
+
+      // A role with no assigned profile has unrestricted (full) access, so
+      // every checkbox starts checked; unchecking one creates/updates a
+      // per-role profile (key auto-slugified from the role name) with the
+      // remaining features and assigns it to that role.
+      const featuresFor = (role) => {
+        const key = roleViews[role];
+        if (!key) return VIEW_FEATURES.map((f) => f.id);
+        const profile = viewProfiles.find((p) => p.key === key);
+        return profile ? profile.features : [];
+      };
+
+      const toggle = async (role, featureId) => {
+        setBusyRole(role); setErr(null);
+        try {
+          const current = featuresFor(role);
+          const next = current.includes(featureId)
+            ? current.filter((f) => f !== featureId)
+            : [...current, featureId];
+          const saved = await sendJSON("/api/view-profiles", "POST",
+            { author, label: role, features: next }, masterHeaders());
+          const key = saved.profile.key;
+          if (roleViews[role] !== key) {
+            await sendJSON("/api/roles/" + encodeURIComponent(role) + "/view", "POST",
+              { author, view_key: key }, masterHeaders());
+          }
+          onChanged();
+        } catch (e) { setErr(e.message); } finally { setBusyRole(null); }
+      };
+
+      return html`
+        <div className="fade-in max-w-3xl mx-auto py-10">
+          <button onClick=${onBack}
+            className="mb-6 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-emerald-200
+                       text-emerald-800 text-sm font-semibold shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition">
+            <span aria-hidden="true">←</span> Back
+          </button>
+          <div className="mb-8">
+            <h1 className="text-3xl font-extrabold text-slate-800 mb-2">Mint: assign role views</h1>
+            <p className="text-slate-500">Check which features each role can see when they sign in from the landing page.</p>
+          </div>
+          ${err && html`<div className="text-rose-600 mb-4">${err}</div>`}
+          <div className="space-y-4">
+            ${roles.map((r) => {
+              const features = featuresFor(r);
+              return html`
+                <div key=${r} className="bg-white rounded-xl border border-emerald-100 p-4 shadow-sm">
+                  <div className="font-semibold text-slate-800 mb-3">${r}</div>
+                  <div className="grid sm:grid-cols-2 gap-2">
+                    ${VIEW_FEATURES.map((f) => html`
+                      <label key=${f.id}
+                        className="flex items-center gap-2 bg-slate-50 rounded-lg px-3 py-2 text-sm cursor-pointer">
+                        <input type="checkbox" checked=${features.includes(f.id)} disabled=${busyRole === r}
+                          onChange=${() => toggle(r, f.id)} />
+                        <span>${f.label}</span>
+                      </label>`)}
+                  </div>
+                </div>`;
+            })}
+          </div>
+          ${showGate && html`<${MasterGate} actionLabel="manage role views"
+            onCancel=${onBack}
+            onUnlock=${(pw) => { setMasterPw(pw); setShowGate(false); }} />`}
+        </div>`;
     }
 
     /* ------------------------------------------------------------------ */
     /* Company dashboard (top layer)                                       */
     /* ------------------------------------------------------------------ */
-    function CompanyDashboard({ onOpenDivision }) {
+    function CompanyDashboard({ onOpenDivision, viewProfile }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
 
@@ -954,7 +1469,7 @@
         <div className="fade-in">
           <h1 className="text-2xl font-extrabold text-slate-800 mb-1">${data.name}</h1>
           <p className="text-slate-500 mb-5">Company-wide maintenance overview across all divisions.</p>
-          <${KpiRow} stats=${data.totals} />
+          ${featureAllowed(viewProfile, "dashboard") && html`<${KpiRow} stats=${data.totals} />`}
 
           <h2 className="text-lg font-extrabold text-slate-700 mt-8 mb-4">Divisions</h2>
           <div className="grid md:grid-cols-2 gap-5">
@@ -969,23 +1484,24 @@
                   </div>
                   <span className="text-emerald-500 text-2xl group-hover:translate-x-1 transition">→</span>
                 </div>
-                <div className="grid grid-cols-2 gap-2 mt-5 text-sm">
-                  <div className="bg-emerald-50 rounded-xl px-3 py-2">
-                    <div className="text-emerald-700 font-semibold">${num(d.unscheduled_count)}</div>
-                    <div className="text-slate-500 text-xs">Unscheduled</div></div>
-                  <div className="bg-teal-50 rounded-xl px-3 py-2">
-                    <div className="text-teal-700 font-semibold">${num(d.scheduled_count)}</div>
-                    <div className="text-slate-500 text-xs">Scheduled</div></div>
-                  <div className="bg-cyan-50 rounded-xl px-3 py-2">
-                    <div className="text-cyan-700 font-semibold">${hours(d.labor_time)}</div>
-                    <div className="text-slate-500 text-xs">Labor</div></div>
-                  <div className="bg-sky-50 rounded-xl px-3 py-2">
-                    <div className="text-sky-700 font-semibold">${money(d.material_cost)}</div>
-                    <div className="text-slate-500 text-xs">Material</div></div>
-                  <div className="bg-indigo-50 rounded-xl px-3 py-2 col-span-2">
-                    <div className="text-indigo-600 font-semibold">${hours(d.downtime_hours)}</div>
-                    <div className="text-slate-500 text-xs">Downtime</div></div>
-                </div>
+                ${featureAllowed(viewProfile, "dashboard") && html`
+                  <div className="grid grid-cols-2 gap-2 mt-5 text-sm">
+                    <div className="bg-emerald-50 rounded-xl px-3 py-2">
+                      <div className="text-emerald-700 font-semibold">${num(d.unscheduled_count)}</div>
+                      <div className="text-slate-500 text-xs">Unscheduled</div></div>
+                    <div className="bg-teal-50 rounded-xl px-3 py-2">
+                      <div className="text-teal-700 font-semibold">${num(d.scheduled_count)}</div>
+                      <div className="text-slate-500 text-xs">Scheduled</div></div>
+                    <div className="bg-cyan-50 rounded-xl px-3 py-2">
+                      <div className="text-cyan-700 font-semibold">${hours(d.labor_time)}</div>
+                      <div className="text-slate-500 text-xs">Labor</div></div>
+                    <div className="bg-sky-50 rounded-xl px-3 py-2">
+                      <div className="text-sky-700 font-semibold">${money(d.material_cost)}</div>
+                      <div className="text-slate-500 text-xs">Material</div></div>
+                    <div className="bg-indigo-50 rounded-xl px-3 py-2 col-span-2">
+                      <div className="text-indigo-600 font-semibold">${hours(d.downtime_hours)}</div>
+                      <div className="text-slate-500 text-xs">Downtime</div></div>
+                  </div>`}
               </button>`)}
           </div>
         </div>`;
@@ -1674,9 +2190,9 @@
     /* ------------------------------------------------------------------ */
     /* Division dashboard                                                 */
     /* ------------------------------------------------------------------ */
-    const DIV_TABS = ["Departments", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"];
+    const DIV_TABS = ["Departments", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled", "Spare Parts"];
 
-    function DivisionDashboard({ divisionKey, onHome, onOpenDept, onOpenWo, refreshSignal }) {
+    function DivisionDashboard({ divisionKey, onHome, onOpenDept, onOpenWo, refreshSignal, viewProfile }) {
       const divKey = divisionKey || "bla";
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
@@ -1713,6 +2229,8 @@
 
       const totalUns = data.departments.reduce((a, d) => a + (d.unscheduled_count || 0), 0);
       const totalSch = data.departments.reduce((a, d) => a + (d.scheduled_count || 0), 0);
+      const divTabs = visibleTabs(divKey === "bla" ? [...DIV_TABS, "Contacts"] : DIV_TABS, viewProfile);
+      const activeTab = divTabs.includes(tab) ? tab : divTabs[0];
 
       return html`
         <div className="fade-in">
@@ -1727,29 +2245,34 @@
               + New Work Order</button>
           </div>
           <p className="text-slate-500 mb-5">Combined quick view across all departments.</p>
-          <${KpiRow} stats=${data.totals} />
+          ${featureAllowed(viewProfile, "dashboard") && html`<${KpiRow} stats=${data.totals} />`}
           ${creating && html`<${CreateWorkOrderModal} divisionKey=${divKey}
             onClose=${() => setCreating(false)} onCreated=${refreshAll} onOpenWo=${onOpenWo} />`}
 
           <div className="flex gap-2 mt-8 mb-6 bg-white p-1.5 rounded-full shadow-sm border border-emerald-100 w-fit flex-wrap">
-            ${(divKey === "bla" ? [...DIV_TABS, "Contacts"] : DIV_TABS).map((t) => html`
+            ${divTabs.map((t) => html`
               <button key=${t} onClick=${() => setTab(t)}
                 className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
-                  (tab === t ? "bg-emerald-700 text-white shadow" : "text-slate-500 hover:bg-emerald-50")}>
+                  (activeTab === t ? "bg-emerald-700 text-white shadow" : "text-slate-500 hover:bg-emerald-50")}>
                 ${t}
                 ${t === "Unscheduled" && html`<span className="ml-1 opacity-70">(${num(totalUns)})</span>`}
                 ${t === "Scheduled" && html`<span className="ml-1 opacity-70">(${num(totalSch)})</span>`}
               </button>`)}
           </div>
 
-          ${tab === "Contacts" && html`<${VendorContacts} />`}
+          ${activeTab === "Contacts" && html`<${VendorContacts} />`}
 
-          ${tab === "Longevity" && html`
+          ${activeTab === "Spare Parts" && html`
+            <div className="fade-in">
+              <${SparePartsList} loadUrl="/api/spare-parts" canAdd=${true} lockDivisionKey=${divKey} />
+            </div>`}
+
+          ${activeTab === "Longevity" && html`
             <div className="fade-in">
               <${LongevityTab} apiUrl=${"/api/divisions/" + divKey + "/longevity"} title="Estimated Replacement Year — ${data.name}" divisionKey=${divKey} />
             </div>`}
 
-          ${tab === "Weekly Schedule" && html`
+          ${activeTab === "Weekly Schedule" && html`
             <div className="fade-in">
               <${EmbeddedWeekly}
                 predicate=${() => true}
@@ -1758,7 +2281,7 @@
                 subtitle="All departments · scheduled & unscheduled work orders by week (Sunday → Sunday)." />
             </div>`}
 
-          ${tab === "Monthly Calendar" && html`
+          ${activeTab === "Monthly Calendar" && html`
             <div className="fade-in">
               <${EmbeddedMonthly}
                 predicate=${() => true}
@@ -1768,19 +2291,19 @@
                 subtitle="All departments · scheduled & unscheduled work orders for the month." />
             </div>`}
 
-          ${(tab === "Unscheduled" || tab === "Scheduled") && html`
+          ${(activeTab === "Unscheduled" || activeTab === "Scheduled") && html`
             <div className="fade-in">
               ${woErr
                 ? html`<div className="text-rose-600">${woErr}</div>`
                 : !woData
                   ? html`<${Spinner} label="Loading all work orders…" />`
                   : html`<${WorkOrderList}
-                      records=${tab === "Unscheduled" ? woData.unscheduled : woData.scheduled}
-                      kind=${tab.toLowerCase()} onOpen=${onOpenWo}
-                      filters=${tab === "Unscheduled" ? ["department", "urgency", "status"] : ["department", "status"]} />`}
+                      records=${activeTab === "Unscheduled" ? woData.unscheduled : woData.scheduled}
+                      kind=${activeTab.toLowerCase()} onOpen=${onOpenWo}
+                      filters=${activeTab === "Unscheduled" ? ["department", "urgency", "status"] : ["department", "status"]} />`}
             </div>`}
 
-          ${tab === "Departments" && html`
+          ${activeTab === "Departments" && html`
           <div className="fade-in">
           <div className="grid md:grid-cols-2 gap-5">
             ${data.departments.map((d) => html`
@@ -1799,23 +2322,24 @@
                   </div>
                   <span className="text-emerald-500 text-2xl group-hover:translate-x-1 transition">→</span>
                 </div>
-                <div className="grid grid-cols-2 gap-2 mt-5 text-sm">
-                  <div className="bg-emerald-50 rounded-xl px-3 py-2">
-                    <div className="text-emerald-700 font-semibold">${num(d.unscheduled_count)}</div>
-                    <div className="text-slate-500 text-xs">Unscheduled</div></div>
-                  <div className="bg-teal-50 rounded-xl px-3 py-2">
-                    <div className="text-teal-700 font-semibold">${num(d.scheduled_count)}</div>
-                    <div className="text-slate-500 text-xs">Scheduled</div></div>
-                  <div className="bg-cyan-50 rounded-xl px-3 py-2">
-                    <div className="text-cyan-700 font-semibold">${hours(d.labor_time)}</div>
-                    <div className="text-slate-500 text-xs">Labor</div></div>
-                  <div className="bg-sky-50 rounded-xl px-3 py-2">
-                    <div className="text-sky-700 font-semibold">${money(d.material_cost)}</div>
-                    <div className="text-slate-500 text-xs">Material</div></div>
-                  <div className="bg-indigo-50 rounded-xl px-3 py-2 col-span-2">
-                    <div className="text-indigo-600 font-semibold">${hours(d.downtime_hours)}</div>
-                    <div className="text-slate-500 text-xs">Downtime</div></div>
-                </div>
+                ${featureAllowed(viewProfile, "dashboard") && html`
+                  <div className="grid grid-cols-2 gap-2 mt-5 text-sm">
+                    <div className="bg-emerald-50 rounded-xl px-3 py-2">
+                      <div className="text-emerald-700 font-semibold">${num(d.unscheduled_count)}</div>
+                      <div className="text-slate-500 text-xs">Unscheduled</div></div>
+                    <div className="bg-teal-50 rounded-xl px-3 py-2">
+                      <div className="text-teal-700 font-semibold">${num(d.scheduled_count)}</div>
+                      <div className="text-slate-500 text-xs">Scheduled</div></div>
+                    <div className="bg-cyan-50 rounded-xl px-3 py-2">
+                      <div className="text-cyan-700 font-semibold">${hours(d.labor_time)}</div>
+                      <div className="text-slate-500 text-xs">Labor</div></div>
+                    <div className="bg-sky-50 rounded-xl px-3 py-2">
+                      <div className="text-sky-700 font-semibold">${money(d.material_cost)}</div>
+                      <div className="text-slate-500 text-xs">Material</div></div>
+                    <div className="bg-indigo-50 rounded-xl px-3 py-2 col-span-2">
+                      <div className="text-indigo-600 font-semibold">${hours(d.downtime_hours)}</div>
+                      <div className="text-slate-500 text-xs">Downtime</div></div>
+                  </div>`}
                 <div className="mt-4 flex justify-end">
                   <button onClick=${(e) => { e.stopPropagation(); onOpenDept(d.key, "Monthly Calendar"); }}
                     className="text-xs font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-emerald-50 transition">
@@ -2192,7 +2716,7 @@
     /* ------------------------------------------------------------------ */
     /* Department dashboard                                               */
     /* ------------------------------------------------------------------ */
-    function MachineCard({ m, onOpen, onDeactivate }) {
+    function MachineCard({ m, onOpen, onDeactivate, showStats }) {
       return html`
         <div key=${m.eq_id} onClick=${() => onOpen(m.eq_id)}
           className=${"relative text-left bg-white rounded-2xl p-5 shadow-sm transition group cursor-pointer " +
@@ -2215,26 +2739,47 @@
           </div>
           <div className="text-xs text-emerald-600 font-mono mt-0.5">${m.eq_label}</div>
           ${m.nickname && html`<div className="text-[11px] text-slate-400 mt-0.5 truncate" title=${m.pm_name}>PM: ${m.pm_name}</div>`}
-          <div className="flex flex-wrap gap-2 mt-4 text-xs">
-            <span className="bg-emerald-50 text-emerald-700 rounded-lg px-2 py-1 font-semibold">${num(m.unscheduled_count)} unsch.</span>
-            <span className="bg-teal-50 text-teal-700 rounded-lg px-2 py-1 font-semibold">${num(m.scheduled_count)} sch.</span>
-            <span className="bg-indigo-50 text-indigo-600 rounded-lg px-2 py-1 font-semibold" title="Downtime">${hours(m.downtime_hours)} down</span>
-            <span className="bg-cyan-50 text-cyan-700 rounded-lg px-2 py-1 font-semibold" title="Labor time">${hours(m.labor_time)} labor</span>
-            <span className="bg-sky-50 text-sky-700 rounded-lg px-2 py-1 font-semibold" title="Material cost">${money(m.material_cost)}</span>
-          </div>
+          ${showStats && html`
+            <div className="flex flex-wrap gap-2 mt-4 text-xs">
+              <span className="bg-emerald-50 text-emerald-700 rounded-lg px-2 py-1 font-semibold">${num(m.unscheduled_count)} unsch.</span>
+              <span className="bg-teal-50 text-teal-700 rounded-lg px-2 py-1 font-semibold">${num(m.scheduled_count)} sch.</span>
+              <span className="bg-indigo-50 text-indigo-600 rounded-lg px-2 py-1 font-semibold" title="Downtime">${hours(m.downtime_hours)} down</span>
+              <span className="bg-cyan-50 text-cyan-700 rounded-lg px-2 py-1 font-semibold" title="Labor time">${hours(m.labor_time)} labor</span>
+              <span className="bg-sky-50 text-sky-700 rounded-lg px-2 py-1 font-semibold" title="Material cost">${money(m.material_cost)}</span>
+            </div>`}
         </div>`;
     }
 
-    function MachineGrid({ machines, onOpenMachine, onDeactivate }) {
+    function MachineGrid({ machines, onOpenMachine, onDeactivate, showStats }) {
       return html`
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          ${machines.map((m) => html`<${MachineCard} key=${m.eq_id} m=${m} onOpen=${onOpenMachine} onDeactivate=${onDeactivate} />`)}
+          ${machines.map((m) => html`<${MachineCard} key=${m.eq_id} m=${m} onOpen=${onOpenMachine} onDeactivate=${onDeactivate} showStats=${showStats} />`)}
         </div>`;
     }
 
     const DEPT_TABS = ["Machines", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"];
 
-    function DepartmentDashboard({ deptKey, divisionKey, divisionLabel, initialTab, onHome, onCompany, onOpenMachine, onOpenWo, onTabChange, refreshSignal }) {
+    // Maps a department/machine tab label to the VIEW_FEATURES id that
+    // controls its visibility under a restricted "view as" profile. Tabs not
+    // listed here (e.g. "Machines") are always shown.
+    const TAB_FEATURE = {
+      "Dashboard": "dashboard",
+      "Trends": "trends",
+      "Longevity": "longevity",
+      "Weekly Schedule": "weekly_schedule",
+      "Weekly": "weekly_schedule",
+      "Monthly Calendar": "monthly_calendar",
+      "Floor Plan": "floor_plan",
+      "Machine Info": "machine_info",
+      "Checklist": "checklist",
+      "Unscheduled": "work_orders",
+      "Scheduled": "work_orders",
+      "Spare Parts": "spare_parts",
+    };
+    const visibleTabs = (tabs, viewProfile) =>
+      tabs.filter((t) => !TAB_FEATURE[t] || featureAllowed(viewProfile, TAB_FEATURE[t]));
+
+    function DepartmentDashboard({ deptKey, divisionKey, divisionLabel, initialTab, onHome, onCompany, onOpenMachine, onOpenWo, onTabChange, refreshSignal, viewProfile }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [q, setQ] = useState("");
@@ -2269,9 +2814,10 @@
       const groups = data.groups || [];
       // Toilet Partitions gets a department-wide Trends tab aggregating just its
       // "Machines" group. Other departments keep the standard tab set.
-      const deptTabs = deptKey === "toilet"
+      const deptTabs = visibleTabs(deptKey === "toilet"
         ? ["Machines", "Floor Plan", "Trends", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"]
-        : DEPT_TABS;
+        : DEPT_TABS, viewProfile);
+      const activeTab = deptTabs.includes(tab) ? tab : deptTabs[0];
 
       return html`
         <div className="fade-in">
@@ -2287,7 +2833,7 @@
               + New Work Order</button>
           </div>
           <p className="text-slate-500 mb-5">${data.machines.length} machines · department quick view.</p>
-          <${KpiRow} stats=${data.stats} />
+          ${featureAllowed(viewProfile, "dashboard") && html`<${KpiRow} stats=${data.stats} />`}
           ${creating && html`<${CreateWorkOrderModal} divisionKey=${divisionKey || "bla"} presetDeptKey=${deptKey}
             onClose=${() => setCreating(false)} onCreated=${() => setReloadKey((k) => k + 1)} onOpenWo=${onOpenWo} />`}
 
@@ -2295,24 +2841,24 @@
             ${deptTabs.map((t) => html`
               <button key=${t} onClick=${() => { setTab(t); if (onTabChange) onTabChange(t); }}
                 className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
-                  (tab === t ? "bg-emerald-700 text-white shadow" : "text-slate-500 hover:bg-emerald-50")}>
+                  (activeTab === t ? "bg-emerald-700 text-white shadow" : "text-slate-500 hover:bg-emerald-50")}>
                 ${t}
                 ${t === "Unscheduled" && html`<span className="ml-1 opacity-70">(${data.stats.unscheduled_count})</span>`}
                 ${t === "Scheduled" && html`<span className="ml-1 opacity-70">(${data.stats.scheduled_count})</span>`}
               </button>`)}
           </div>
 
-          ${tab === "Trends" && html`
+          ${activeTab === "Trends" && html`
             <div className="fade-in">
               <${DeptTrendsTab} deptKey=${deptKey} group="Machines" onOpenWo=${onOpenWo} />
             </div>`}
 
-          ${tab === "Longevity" && html`
+          ${activeTab === "Longevity" && html`
             <div className="fade-in">
               <${LongevityTab} apiUrl=${"/api/departments/" + deptKey + "/longevity"} title="Estimated Replacement Year — ${data.label}" hideDepartment=${true} divisionKey=${divisionKey || "bla"} />
             </div>`}
 
-          ${tab === "Weekly Schedule" && html`
+          ${activeTab === "Weekly Schedule" && html`
             <div className="fade-in">
               <${EmbeddedWeekly}
                 predicate=${(r) => r.department_key === deptKey}
@@ -2321,7 +2867,7 @@
                 subtitle=${data.label + " · scheduled & unscheduled work orders by week (Sunday → Sunday)."} />
             </div>`}
 
-          ${tab === "Monthly Calendar" && html`
+          ${activeTab === "Monthly Calendar" && html`
             <div className="fade-in">
               <${EmbeddedMonthly}
                 predicate=${(r) => r.department_key === deptKey}
@@ -2332,10 +2878,10 @@
                 deptKey=${deptKey} />
             </div>`}
 
-          ${tab === "Floor Plan" && html`
+          ${activeTab === "Floor Plan" && html`
             <${FloorPlanTab} deptKey=${deptKey} machines=${data.machines || []} onOpenMachine=${onOpenMachine} />`}
 
-          ${tab === "Machines" && html`
+          ${activeTab === "Machines" && html`
             <div className="fade-in">
               <div className="flex items-center justify-end mb-3 gap-3 flex-wrap">
                 <input value=${q} onInput=${(e) => setQ(e.target.value)}
@@ -2344,7 +2890,7 @@
                              focus:outline-none focus:ring-2 focus:ring-emerald-300" />
               </div>
               ${groups.length === 0
-                ? html`<${MachineGrid} machines=${machines} onOpenMachine=${onOpenMachine} onDeactivate=${setDeactivating} />`
+                ? html`<${MachineGrid} machines=${machines} onOpenMachine=${onOpenMachine} onDeactivate=${setDeactivating} showStats=${featureAllowed(viewProfile, "dashboard")} />`
                 : html`
                   <div className="space-y-8">
                     ${groups.map((g) => {
@@ -2357,7 +2903,7 @@
                             <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 rounded-full px-2.5 py-0.5">${inGroup.length}</span>
                             <div className="flex-1 h-px bg-emerald-100"></div>
                           </div>
-                          <${MachineGrid} machines=${inGroup} onOpenMachine=${onOpenMachine} onDeactivate=${setDeactivating} />
+                          <${MachineGrid} machines=${inGroup} onOpenMachine=${onOpenMachine} onDeactivate=${setDeactivating} showStats=${featureAllowed(viewProfile, "dashboard")} />
                         </section>`;
                     })}
                   </div>`}
@@ -2385,13 +2931,13 @@
                 </div>`}
             </div>`}
 
-          ${tab === "Unscheduled" && html`
+          ${activeTab === "Unscheduled" && html`
             <div className="fade-in">
               <${WorkOrderList} records=${data.unscheduled} kind="unscheduled" onOpen=${onOpenWo}
                 filters=${["machine", "urgency", "status"]} />
             </div>`}
 
-          ${tab === "Scheduled" && html`
+          ${activeTab === "Scheduled" && html`
             <div className="fade-in">
               <${WorkOrderList} records=${data.scheduled} kind="scheduled" onOpen=${onOpenWo}
                 filters=${["machine", "status"]} />
@@ -2497,6 +3043,7 @@
                     ${r.urgency && html`<span className=${"text-xs px-2 py-0.5 rounded-full border " + urgencyColor(r.urgency)}>${r.urgency}</span>`}
                     ${r.status && html`<span className=${"text-xs px-2 py-0.5 rounded-full border " + statusColor(r.status)}>${r.status}</span>`}
                     ${r.assigned_to && html`<span className="text-xs px-2 py-0.5 rounded-full border bg-indigo-50 text-indigo-600 border-indigo-100">${r.assigned_to}</span>`}
+                    ${r.owner && html`<span className="text-xs px-2 py-0.5 rounded-full border bg-slate-50 text-slate-500 border-slate-200" title="Owner (reported by)">${r.owner}</span>`}
                     ${r.department_label && html`<span className="text-xs px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100">${r.department_label}</span>`}
                   </div>
                   <div className="text-xs text-slate-400 whitespace-nowrap">${r.date_notified || r.due_date || ""}</div>
@@ -3161,6 +3708,7 @@
                   <${Field} label="Type" value=${rec.wo_type} />
                   <${Field} label="Status" value=${rec.status} />
                   <${Field} label="Assigned to" value=${rec.assigned_to} />
+                  <${Field} label="Owner" value=${rec.owner} />
                   <${Field} label="Urgency" value=${rec.urgency} />
                   <${Field} label="Date Notified" value=${rec.date_notified} />
                   <${Field} label="Due Date" value=${rec.due_date} />
@@ -5373,7 +5921,7 @@
         </div>`;
     }
 
-    function MachineView({ deptKey, eqId, deptLabel, divisionLabel, onHome, onCompany, onOpenDept, onOpenWo }) {
+    function MachineView({ deptKey, eqId, deptLabel, divisionLabel, onHome, onCompany, onOpenDept, onOpenWo, viewProfile }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [tab, setTab] = useState("Dashboard");
@@ -5414,7 +5962,8 @@
       // "Machines" group of Toilet Partitions.
       const trendsEnabled = TRENDS_EQ_IDS.has(String(eqId)) ||
         (m.department_key === "toilet" && m.group === "Machines");
-      const tabs = TABS.filter((t) => t !== "Trends" || trendsEnabled);
+      const tabs = visibleTabs(TABS.filter((t) => t !== "Trends" || trendsEnabled), viewProfile);
+      const activeTab = tabs.includes(tab) ? tab : tabs[0];
 
       return html`
         <div className="fade-in">
@@ -5446,14 +5995,14 @@
             ${tabs.map((t) => html`
               <button key=${t} data-tab=${t} onClick=${() => setTab(t)}
                 className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
-                  (tab === t ? "bg-emerald-700 text-white shadow" : "text-slate-500 hover:bg-emerald-50")}>
+                  (activeTab === t ? "bg-emerald-700 text-white shadow" : "text-slate-500 hover:bg-emerald-50")}>
                 ${t}
                 ${t === "Unscheduled" && html`<span className="ml-1 opacity-70">(${data.stats.unscheduled_count})</span>`}
                 ${t === "Scheduled" && html`<span className="ml-1 opacity-70">(${data.stats.scheduled_count})</span>`}
               </button>`)}
           </div>
 
-          ${tab === "Dashboard" && html`
+          ${activeTab === "Dashboard" && html`
             <div className="fade-in">
               <${KpiRow} stats=${data.stats} />
               <p className="text-slate-400 text-sm mt-4">
@@ -5461,17 +6010,17 @@
               </p>
             </div>`}
 
-          ${tab === "Machine Info" && html`
+          ${activeTab === "Machine Info" && html`
             <div className="fade-in">
               <${MachineInfoTab} info=${data.info} deptKey=${deptKey} eqId=${eqId} machineName=${m.name} />
             </div>`}
 
-          ${tab === "Trends" && html`
+          ${activeTab === "Trends" && html`
             <div className="fade-in">
               <${TrendsTab} deptKey=${deptKey} eqId=${eqId} machineName=${m.name} onOpenWo=${onOpenWo} />
             </div>`}
 
-          ${tab === "Weekly" && html`
+          ${activeTab === "Weekly" && html`
             <div className="fade-in">
               <${EmbeddedWeekly}
                 predicate=${(r) => String(r.equipment_id) === String(eqId)}
@@ -5481,7 +6030,7 @@
             </div>`}
 
 
-          ${tab === "Monthly Calendar" && html`
+          ${activeTab === "Monthly Calendar" && html`
             <div className="fade-in">
               <${EmbeddedMonthly}
                 predicate=${(r) => String(r.equipment_id) === String(eqId)}
@@ -5493,12 +6042,12 @@
                 eqId=${eqId} />
             </div>`}
 
-          ${tab === "Checklist" && html`
+          ${activeTab === "Checklist" && html`
             <div className="fade-in">
               <${ChecklistTab} deptKey=${deptKey} eqId=${eqId} woIds=${woIds} onOpenWo=${onOpenWo} />
             </div>`}
 
-          ${tab === "Unscheduled" && html`
+          ${activeTab === "Unscheduled" && html`
             <div className="fade-in">
               <div className="flex items-start justify-between flex-wrap gap-3 mb-4">
                 <div>
@@ -5531,7 +6080,7 @@
                 filters=${["urgency", "status"]} />
             </div>`}
 
-          ${tab === "Scheduled" && html`
+          ${activeTab === "Scheduled" && html`
             <div className="fade-in">
               <div className="flex items-start justify-between flex-wrap gap-3 mb-4">
                 <div>
@@ -5564,7 +6113,7 @@
                 filters=${["status"]} />
             </div>`}
 
-          ${tab === "Spare Parts" && html`
+          ${activeTab === "Spare Parts" && html`
             <div className="fade-in">
               <${MachineSparePartsTab} deptKey=${deptKey} eqId=${eqId} machineName=${m.name} />
             </div>`}
@@ -6628,7 +7177,7 @@
     /* ------------------------------------------------------------------ */
     /* Inactive / Archive page (global)                                    */
     /* ------------------------------------------------------------------ */
-    function InactivePage({ onCompany, onOpenDept }) {
+    function InactivePage({ onCompany, onOpenDept, divisionKey }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [reloadKey, setReloadKey] = useState(0);
@@ -6644,17 +7193,17 @@
       if (err) return html`<div className="text-rose-600">${err}</div>`;
       if (!data) return html`<${Spinner} label="Loading inactive items…" />`;
 
-      const depts = data.departments || [];
-      const machines = data.machines || [];
+      const depts = (data.departments || []).filter((d) => !divisionKey || d.division_key === divisionKey);
+      const machines = (data.machines || []).filter((m) => !divisionKey || m.division_key === divisionKey);
       const empty = depts.length === 0 && machines.length === 0;
 
       return html`
         <div className="fade-in">
           <${Breadcrumb} items=${[
             { label: "Bobrick", onClick: onCompany },
-            { label: "Inactive" },
+            { label: divisionKey ? "Inactive — " + divisionKey.toUpperCase() : "Inactive" },
           ]} />
-          <h1 className="text-2xl font-extrabold text-slate-800 mb-1">Inactive / Archive</h1>
+          <h1 className="text-2xl font-extrabold text-slate-800 mb-1">Inactive / Archive${divisionKey ? " — " + divisionKey.toUpperCase() : ""}</h1>
           <p className="text-slate-500 mb-6">Deactivated departments and machines. Restore any item to bring it — and its work orders — back everywhere.</p>
 
           ${empty && html`<div className="text-slate-400 py-10 text-center">Nothing is inactive. Deactivated departments and machines will show up here.</div>`}
@@ -6945,20 +7494,22 @@
         </div>`;
     }
 
-    function SparePartsList({ loadUrl, canAdd, prefillDeptKey, prefillEqId, prefillMachineName }) {
+    function SparePartsList({ loadUrl, canAdd, prefillDeptKey, prefillEqId, prefillMachineName, lockDivisionKey }) {
       const [parts, setParts] = useState([]);
       const [filtered, setFiltered] = useState([]);
       const [loading, setLoading] = useState(true);
       const [err, setErr] = useState(null);
       const [reloadKey, setReloadKey] = useState(0);
       const [search, setSearch] = useState("");
-      const [divisionFilter, setDivisionFilter] = useState("");
+      const [divisionFilter, setDivisionFilter] = useState(lockDivisionKey || "");
       const [divisions, setDivisions] = useState([]);
       const [editing, setEditing] = useState(null);
       const [deleting, setDeleting] = useState(null);
       const [gateOpen, setGateOpen] = useState(false);
       const [gateAction, setGateAction] = useState(null);
       const [adminProtected, setAdminProtected] = useState(false);
+
+      useEffect(() => { setDivisionFilter(lockDivisionKey || ""); }, [lockDivisionKey]);
 
       useEffect(() => {
         setLoading(true); setErr(null);
@@ -7033,10 +7584,11 @@
         <div>
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <input value=${search} onInput=${(e) => setSearch(e.target.value)} placeholder="Search parts…" className=${inputCls} />
-            <select value=${divisionFilter} onChange=${(e) => setDivisionFilter(e.target.value)} className=${inputCls + " w-auto"}>
-              <option value="">All divisions</option>
-              ${divisions.map((d) => html`<option key=${d.key} value=${d.key}>${d.name}</option>`)}
-            </select>
+            ${!lockDivisionKey && html`
+              <select value=${divisionFilter} onChange=${(e) => setDivisionFilter(e.target.value)} className=${inputCls + " w-auto"}>
+                <option value="">All divisions</option>
+                ${divisions.map((d) => html`<option key=${d.key} value=${d.key}>${d.name}</option>`)}
+              </select>`}
             ${canAdd && html`<button onClick=${() => setEditing({})}
               className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800">+ Add part</button>`}
           </div>
@@ -7066,13 +7618,13 @@
         </div>`;
     }
 
-    function SparePartsPage({ onCompany }) {
+    function SparePartsPage({ onCompany, lockDivisionKey }) {
       return html`
         <div className="fade-in">
           <${Breadcrumb} items=${[{ label: "Bobrick", onClick: onCompany }, { label: "Spare Parts" }]} />
-          <h1 className="text-2xl font-extrabold text-slate-800 mb-1">Spare Parts Inventory</h1>
+          <h1 className="text-2xl font-extrabold text-slate-800 mb-1">Spare Parts Inventory${lockDivisionKey ? " — " + lockDivisionKey.toUpperCase() : ""}</h1>
           <p className="text-slate-500 mb-6">Track spare part inventory, quantities, locations, and purchase info.</p>
-          <${SparePartsList} loadUrl="/api/spare-parts" canAdd=${true} />
+          <${SparePartsList} loadUrl="/api/spare-parts" canAdd=${true} lockDivisionKey=${lockDivisionKey} />
         </div>`;
     }
 
@@ -7089,8 +7641,16 @@
         </div>`;
     }
 
+    // Routes that belong to the "Maintenance" flow (as opposed to the landing
+    // screens or a role's own schedule view) where sign-in/Sean controls make
+    // sense to show in the header.
+    const MAINTENANCE_VIEWS = new Set([
+      "company", "division", "department", "machine",
+      "inactive", "spare-parts", "my-schedule",
+    ]);
+
     function App() {
-      const [route, setRoute] = useState({ view: "company" });
+      const [route, setRoute] = useState({ view: "landing" });
       // Navigation history stack powering the "Back" button. Every navigation
       // pushes the route it left; Back pops it.
       const [navHist, setNavHist] = useState([]);
@@ -7098,6 +7658,28 @@
       // Bumped whenever a work order changes, so list views can refetch.
       const [dataVersion, setDataVersion] = useState(0);
       const [technicians, setTechnicians] = useState(TECHNICIANS);
+      const [roles, setRoles] = useState([]);
+      // Which saved view (by key) is assigned to each role, e.g. { "Lead": "operator" }.
+      // Set by the "Mint" admin page; applied automatically when a role is selected
+      // from the landing page.
+      const [roleViews, setRoleViews] = useState({});
+      // Non-empty while browsing as a selected role (rather than the full
+      // Maintenance flow) — hides sign-in/Sean controls in the header.
+      const [activeRole, setActiveRole] = useState("");
+      // "View as" support: a saved, checkable subset of features (e.g.
+      // "Operator") anyone can switch their session to from the header.
+      const [viewProfiles, setViewProfiles] = useState([]);
+      const [viewKey, setViewKeyState] = useState(getViewKey());
+      const activeProfile = viewProfiles.find((p) => p.key === viewKey) || null;
+      const changeView = (key) => { setViewKey(key); setViewKeyState(key); };
+      const refreshViewProfiles = () =>
+        getJSON("/api/view-profiles").then((d) => setViewProfiles(d.profiles || [])).catch(() => {});
+      const refreshRoleViews = () =>
+        getJSON("/api/roles/views").then((d) => {
+          const map = {};
+          (d.roles || []).forEach((r) => { map[r.name] = r.view_key || ""; });
+          setRoleViews(map);
+        }).catch(() => {});
 
       useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -7110,6 +7692,15 @@
           .then((d) => { if (Array.isArray(d.technicians) && d.technicians.length) setTechnicians(d.technicians); })
           .catch(() => {});
       }, []);
+
+      useEffect(() => {
+        getJSON("/api/roles")
+          .then((d) => { if (Array.isArray(d.roles)) setRoles(d.roles); })
+          .catch(() => {});
+      }, []);
+
+      useEffect(() => { refreshViewProfiles(); }, []);
+      useEffect(() => { refreshRoleViews(); }, []);
 
       // All navigation goes through navigate() so the Back stack stays accurate.
       const navigate = (next) => {
@@ -7126,9 +7717,10 @@
         });
       };
 
+      const goLanding = () => { setActiveRole(""); changeView(""); navigate({ view: "landing" }); };
       const goCompany = () => navigate({ view: "company" });
-      const openInactive = () => navigate({ view: "inactive" });
-      const openSpareParts = () => navigate({ view: "spare-parts" });
+      const openInactive = (divisionKey) => navigate({ view: "inactive", divisionKey: divisionKey || "" });
+      const openSpareParts = (divisionKey) => navigate({ view: "spare-parts", divisionKey: divisionKey || "" });
       const openDivision = (divisionKey) => navigate({ view: "division", divisionKey });
       const goDivision = () => navigate((r) => ({ view: "division", divisionKey: r.divisionKey || "bla" }));
       const openDept = (deptKey, tab) =>
@@ -7136,26 +7728,53 @@
       const openMachine = (eqId) =>
         navigate((r) => ({ view: "machine", divisionKey: r.divisionKey || "bla", deptKey: r.deptKey, eqId }));
       const openMySchedule = () => navigate({ view: "my-schedule" });
+      const selectView = (key) => { setActiveRole(""); changeView(key); navigate({ view: "divisions" }); };
+      const selectDivision = (div) => navigate({ view: "division", divisionKey: div.key || "bla" });
+      // Selecting a role applies its assigned view profile (set via the "Mint"
+      // admin page) and drops into the normal division-browsing flow, scoped to
+      // whatever features that view allows. "My schedule" (in the header) still
+      // gives the role their own weekly schedule, filterable by division.
+      const selectRole = (role) => { setActiveRole(role); changeView(roleViews[role] || ""); navigate({ view: "divisions" }); };
+      const selectMint = () => navigate({ view: "manage-role-views" });
 
       const divLabel = DIV_LABELS[route.divisionKey || "bla"] || (route.divisionKey || "bla").toUpperCase();
+      const headerHome = route.view === "landing" || route.view === "divisions" || route.view === "manage-role-views" ? goLanding : goCompany;
+      // Sean/technician sign-in only makes sense for BLA (the only division
+      // with technicians/roles); hide it while browsing any other division.
+      const isOtherDivision = ["division", "department", "machine"].includes(route.view)
+        && route.divisionKey && route.divisionKey !== "bla";
+      // Division context for the header's Inactive/Spare Parts buttons: scoped
+      // to the division being browsed, or blank (all divisions) elsewhere
+      // (e.g. the company overview).
+      const headerDivisionKey = ["division", "department", "machine"].includes(route.view)
+        ? (route.divisionKey || "bla") : "";
 
       return html`
         <div className="min-h-screen">
-          <${Header} technicians=${technicians} setTechnicians=${setTechnicians} onHome=${goCompany} onOpenInactive=${openInactive} onOpenSpareParts=${openSpareParts} onOpenMySchedule=${openMySchedule} onOpenWo=${setWoId} />
+          <${Header} technicians=${technicians} setTechnicians=${setTechnicians} roles=${roles} setRoles=${setRoles} onHome=${headerHome} onOpenInactive=${openInactive} onOpenSpareParts=${openSpareParts} onOpenMySchedule=${openMySchedule} onOpenWo=${setWoId}
+            viewProfiles=${viewProfiles} activeProfile=${activeProfile} viewKey=${viewKey} onChangeView=${changeView} onViewProfilesChanged=${refreshViewProfiles}
+            hideUserControls=${!!activeRole || !MAINTENANCE_VIEWS.has(route.view) || isOtherDivision}
+            activeRole=${activeRole} onSwitchRole=${goLanding} divisionKey=${headerDivisionKey} />
           <main className="max-w-6xl mx-auto px-6 py-8">
             ${navHist.length > 0 && html`
               <button onClick=${goBack}
                 className="mb-4 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-emerald-200 text-emerald-800 text-sm font-semibold shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition">
                 <span aria-hidden="true">←</span> Back
               </button>`}
-            ${route.view === "company" && html`<${CompanyDashboard} onOpenDivision=${openDivision} />`}
-            ${route.view === "inactive" && html`<${InactivePage} onCompany=${goCompany} onOpenDept=${openDept} />`}
-            ${route.view === "spare-parts" && html`<${SparePartsPage} onCompany=${goCompany} onOpenMachine=${openMachine} onOpenDept=${openDept} />`}
-            ${route.view === "my-schedule" && html`<${MySchedulePage} user=${getRawUser()} onCompany=${goCompany} onOpenWo=${setWoId} />`}
+            ${route.view === "landing" && html`<${LandingPage} roles=${roles} onSelectView=${selectView} onSelectRole=${selectRole} onSelectMint=${selectMint} />`}
+            ${route.view === "divisions" && html`<${DivisionPicker} onSelectDiv=${selectDivision} onBack=${goLanding} />`}
+            ${route.view === "manage-role-views" && html`<${ManageRoleViewsPage} roles=${roles} roleViews=${roleViews} viewProfiles=${viewProfiles} onBack=${goLanding}
+                onChanged=${() => { refreshViewProfiles(); refreshRoleViews(); }} />`}
+            ${route.view === "company" && html`<${CompanyDashboard} onOpenDivision=${openDivision} viewProfile=${activeProfile} />`}
+            ${route.view === "inactive" && html`<${InactivePage} onCompany=${goCompany} onOpenDept=${openDept} divisionKey=${route.divisionKey} />`}
+            ${route.view === "spare-parts" && html`<${SparePartsPage} onCompany=${goCompany} onOpenMachine=${openMachine} onOpenDept=${openDept} lockDivisionKey=${route.divisionKey} />`}
+            ${route.view === "my-schedule" && (activeRole
+              ? html`<${RoleSchedulePage} role=${activeRole} onCompany=${goCompany} onOpenWo=${setWoId} />`
+              : html`<${MySchedulePage} user=${getRawUser()} onCompany=${goCompany} onOpenWo=${setWoId} />`)}
             ${route.view === "division" && html`
               <${DivisionDashboard} divisionKey=${route.divisionKey || "bla"} onHome=${goCompany}
                 refreshSignal=${dataVersion}
-                onOpenDept=${openDept} onOpenWo=${setWoId} />`}
+                onOpenDept=${openDept} onOpenWo=${setWoId} viewProfile=${activeProfile} />`}
             ${route.view === "department" && html`
               <${DepartmentDashboard} deptKey=${route.deptKey}
                 divisionKey=${route.divisionKey || "bla"} divisionLabel=${divLabel}
@@ -7163,12 +7782,14 @@
                 refreshSignal=${dataVersion}
                 onHome=${goDivision} onCompany=${goCompany}
                 onOpenMachine=${openMachine} onOpenWo=${setWoId}
-                onTabChange=${(t) => setRoute((r) => r.view === "department" ? { ...r, tab: t } : r)} />`}
+                onTabChange=${(t) => setRoute((r) => r.view === "department" ? { ...r, tab: t } : r)}
+                viewProfile=${activeProfile} />`}
             ${route.view === "machine" && html`
               <${MachineView} deptKey=${route.deptKey} eqId=${route.eqId}
                 deptLabel=${DEPT_LABELS[route.deptKey]} divisionLabel=${divLabel}
                 onHome=${goDivision} onCompany=${goCompany}
-                onOpenDept=${openDept} onOpenWo=${setWoId} />`}
+                onOpenDept=${openDept} onOpenWo=${setWoId}
+                viewProfile=${activeProfile} />`}
           </main>
           ${woId && html`<${WorkOrderModal} woId=${woId} technicians=${technicians} onClose=${() => setWoId(null)}
             onOpenWo=${setWoId} onChanged=${() => setDataVersion((v) => v + 1)} />`}

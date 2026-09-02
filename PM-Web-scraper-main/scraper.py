@@ -61,6 +61,8 @@ from selenium.common.exceptions import (
 )
 from webdriver_manager.chrome import ChromeDriverManager
 
+import parse_html as ph
+
 # Make console output UTF-8 safe (equipment names / problems may contain
 # characters the default Windows cp1252 console cannot encode).
 try:
@@ -750,6 +752,161 @@ class WorkOrderScraper:
         # parallel instances never write the same file. A merge step combines
         # them afterwards (see run_parallel.py).
         self.out_suffix = ""
+        # Division slug (e.g. "bed"). When set, ALL output files, the captured
+        # pages folder and the equipment_data.csv fallback are read/written
+        # under divisions/<slug>/ instead of the repo root, so scraping a new
+        # division never overwrites BLA's data (which stays at the root). Empty
+        # => the original root behaviour (BLA).
+        self.division = ""
+        self.out_dir = OUTPUT_DIR
+        # When True, only build this division's equipment_data.csv/.json from
+        # the live Equipment All grid and exit (no work-order scraping). Used by
+        # run_parallel.py to bootstrap a division before the per-department runs.
+        self.equipment_list_only = False
+
+    # ------------------------------------------------------------------
+    def set_division(self, key: str) -> None:
+        """Redirect every output/capture path into divisions/<key>/ so this
+        division's data is fully isolated from BLA (kept at the repo root)."""
+        slug = re.sub(r"[^a-z0-9]+", "_", (key or "").strip().lower()).strip("_")
+        if not slug:
+            return
+        self.division = slug
+        self.out_dir = os.path.join(OUTPUT_DIR, "divisions", slug)
+        self.pages_dir = os.path.join(self.out_dir, "pages")
+        os.makedirs(self.out_dir, exist_ok=True)
+        os.makedirs(self.pages_dir, exist_ok=True)
+        print(f"[division] output isolated under: {self.out_dir}")
+
+    # ------------------------------------------------------------------
+    def _select_division_in_ui(self, wait_secs: int = 6) -> str:
+        """Select this division in the site's #ddlDivision dropdown and wait for
+        the equipment grid to reload. A fresh (headless) session always starts on
+        BLA, so relying on a previously-chosen division does NOT work - we must
+        set it explicitly. Returns a short status string for logging.
+
+        The dropdown is a Kendo UI dropdownlist (id=ddlDivision) whose values are
+        the division codes (BLA, BED, BMC, BWEC, KKP, BGD, CIT). Setting its value
+        and firing 'change' triggers the grid's datasource to re-read for that
+        division. Falls back to a plain <select> change if Kendo isn't found."""
+        if not self.division:
+            return "no-division"
+        value = self.division.upper()
+        js = r"""
+        var val = arguments[0];
+        var el = document.getElementById('ddlDivision');
+        if (!el) return 'no-ddl';
+        try {
+          if (window.jQuery) {
+            var dd = jQuery('#ddlDivision').data('kendoDropDownList');
+            if (dd) { dd.value(val); dd.trigger('change'); return 'kendo'; }
+          }
+        } catch (e) { return 'err:' + e; }
+        el.value = val;
+        el.dispatchEvent(new Event('change', {bubbles:true}));
+        return 'plain';
+        """
+        try:
+            status = self.driver.execute_script(js, value)
+        except WebDriverException as e:
+            status = f"exec-error:{e}"
+        print(f"  [division] set #ddlDivision -> {value} ({status})")
+        # Give the Kendo grid time to tear down + re-read for the new division.
+        time.sleep(3)
+        try:
+            WebDriverWait(self.driver, wait_secs).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "a.id-links"))
+            )
+        except TimeoutException:
+            pass
+        time.sleep(1)
+        return status
+
+    # ------------------------------------------------------------------
+    def build_equipment_data(self) -> list:
+        """Parse the Equipment All grid and write equipment_data.csv/.json into
+        self.out_dir (the division folder), so run_parallel.py can derive the
+        department list and the per-department runs can filter by department.
+        Returns the parsed EquipmentRecord list."""
+        html = ""
+        if self.offline:
+            p = os.path.join(self.pages_dir, "equipment_all.html")
+            if os.path.exists(p):
+                with open(p, encoding="utf-8") as f:
+                    html = f.read()
+            else:
+                print(f"  [equipment-list] no captured page at {p}")
+        else:
+            if "EquipmentAll" not in (self.driver.current_url or ""):
+                print("Navigating to Equipment All ...")
+                self.driver.get(EQUIP_ALL)
+                time.sleep(3)
+            try:
+                WebDriverWait(self.driver, 20).until(
+                    EC.presence_of_element_located((By.CSS_SELECTOR, "a.id-links"))
+                )
+            except TimeoutException:
+                print("  [equipment-list] grid did not load in time.")
+            # A fresh session defaults to BLA - explicitly pick this division and
+            # let the grid re-read before we scrape it.
+            self._select_division_in_ui()
+            html = self.driver.page_source
+            if self.capture_html:
+                _snapshot_full_page(
+                    self.driver, os.path.join(self.pages_dir, "equipment_all.html")
+                )
+
+        records = ph.parse_equipment_html_string(html) if html else []
+        csv_path = os.path.join(self.out_dir, "equipment_data.csv")
+        json_path = os.path.join(self.out_dir, "equipment_data.json")
+        ph.save_equipment_data(records, csv_path, json_path)
+        depts = sorted({(r.dept or "").strip() for r in records if (r.dept or "").strip()})
+        print(f"[equipment-list] wrote {len(records)} equipment records "
+              f"({len(depts)} departments) -> {csv_path}")
+        if depts:
+            print(f"[equipment-list] departments: {', '.join(depts)}")
+        self._warn_if_matches_bla(records)
+        return records
+
+    def _warn_if_matches_bla(self, records: list) -> None:
+        """Guard against the division dropdown NOT carrying into the scrape
+        session (which would silently re-scrape BLA). If most of this division's
+        equipment IDs match BLA's root equipment_data.json, warn loudly."""
+        if not self.division or self.division == "bla":
+            return
+        bla_path = os.path.join(OUTPUT_DIR, "equipment_data.json")
+        if not os.path.exists(bla_path):
+            return
+        try:
+            with open(bla_path, encoding="utf-8") as f:
+                bla = json.load(f)
+        except (OSError, ValueError):
+            return
+
+        def _nums(recs) -> set:
+            out = set()
+            for r in recs:
+                v = r.eq_id if hasattr(r, "eq_id") else (r.get("eq_id") if isinstance(r, dict) else "")
+                m = re.search(r"\d+", v or "")
+                if m:
+                    out.add(m.group())
+            return out
+
+        new_ids = _nums(records)
+        old_ids = _nums(bla)
+        if not new_ids:
+            return
+        overlap = len(new_ids & old_ids) / len(new_ids)
+        if overlap > 0.8:
+            bar = "=" * 64
+            print(bar)
+            print(f"  WARNING: {overlap:.0%} of division '{self.division}' equipment "
+                  f"IDs match BLA.")
+            print("  The division dropdown selection likely did NOT carry into the")
+            print("  scrape session - you may be re-scraping BLA. Fix: switch the")
+            print("  dropdown to the target division in the debug Chrome, then")
+            print("  re-run run_parallel.py with --refresh-profiles.")
+            print(bar)
 
     # ------------------------------------------------------------------
     # Capture-path helpers
@@ -1007,7 +1164,7 @@ class WorkOrderScraper:
         If `department` is given, only rows whose `dept` column matches
         (case-insensitive) are returned.
         """
-        path = os.path.join(OUTPUT_DIR, "equipment_data.csv")
+        path = os.path.join(self.out_dir, "equipment_data.csv")
         ids = []
         dept_filter = department.strip().lower() if department else None
         if os.path.exists(path):
@@ -1438,7 +1595,10 @@ class WorkOrderScraper:
         except TimeoutException:
             print("  [orphans] WorkOrderUnshdAll grid never appeared - skipping")
             return []
-        # Let the Kendo dataSource finish its initial read.
+        # This division-wide list also scopes to the selected division; ensure it
+        # reads the target division instead of the default BLA.
+        self._select_division_in_ui()
+        # Let the Kendo dataSource finish its (possibly re-)read.
         time.sleep(3)
         for _ in range(20):
             rows = self.driver.execute_script(self._WOU_ALL_ROWS_JS) or []
@@ -1695,8 +1855,8 @@ class WorkOrderScraper:
         zero), even in overwrite mode, so a transient load failure can't wipe a
         machine's data.
         """
-        csv_path  = os.path.join(OUTPUT_DIR, csv_name)
-        json_path = os.path.join(OUTPUT_DIR, json_name)
+        csv_path  = os.path.join(self.out_dir, csv_name)
+        json_path = os.path.join(self.out_dir, json_name)
         failed_ids = {str(i).strip() for i in (failed_ids or set())}
 
         fields = [f for f in dataclass_type.__dataclass_fields__]
@@ -1791,7 +1951,7 @@ class WorkOrderScraper:
 
         # Every existing per-department file, plus any new department slug.
         dept_slugs = set(new_by_slug)
-        for p in glob.glob(os.path.join(OUTPUT_DIR, "work_orders_unscheduled_*.json")):
+        for p in glob.glob(os.path.join(self.out_dir, "work_orders_unscheduled_*.json")):
             dept_slugs.add(os.path.basename(p)[len("work_orders_unscheduled_"):-len(".json")])
 
         def _merge(json_path: str, add_rows: list) -> tuple:
@@ -1818,14 +1978,14 @@ class WorkOrderScraper:
 
         for slug in sorted(dept_slugs):
             add = new_by_slug.get(slug, [])
-            path = os.path.join(OUTPUT_DIR, f"work_orders_unscheduled_{slug}.json")
+            path = os.path.join(self.out_dir, f"work_orders_unscheduled_{slug}.json")
             if not add and not os.path.exists(path):
                 continue
             n_add, n_total = _merge(path, add)
             if n_add:
                 print(f"  [orphans] {slug}: +{n_add} (now {n_total})")
 
-        _merge(os.path.join(OUTPUT_DIR, "work_orders_unscheduled.json"),
+        _merge(os.path.join(self.out_dir, "work_orders_unscheduled.json"),
                [asdict(r) for r in records])
         print(f"  [orphans] master updated (+{len(records)})")
 
@@ -1847,6 +2007,16 @@ class WorkOrderScraper:
             self.launch_headless()
         else:
             self.attach()
+
+        # Bootstrap step: only build this division's equipment_data.csv/.json
+        # from the Equipment All grid, then exit. run_parallel.py runs this
+        # first so it can derive the department list before the per-department
+        # scrapes.
+        if self.equipment_list_only:
+            self.build_equipment_data()
+            print("\nDone (equipment-list only).")
+            self._quit_owned_driver()
+            return
 
         # Orphan (equipment-less) unscheduled WOs are division-wide, not tied to
         # any equipment, so they are scraped in one pass instead of the machine
@@ -1963,6 +2133,18 @@ def main():
                    help="Write results to work_orders_<kind>_<suffix>.json/.csv "
                         "instead of the master files, so parallel instances "
                         "don't clobber each other. Disables merging.")
+    p.add_argument("--division", type=str, default=None,
+                   help="Scrape a NON-BLA division. All output files, captured "
+                        "pages and the equipment_data.csv fallback are written "
+                        "under divisions/<slug>/ so BLA's data (at the repo "
+                        "root) is never overwritten. Switch the site's division "
+                        "dropdown to this division in Chrome BEFORE running. "
+                        "Example: --division bed")
+    p.add_argument("--equipment-list-only", action="store_true",
+                   help="Only build equipment_data.csv/.json (the machine list "
+                        "+ department column) from the Equipment All grid, then "
+                        "exit. No work orders are scraped. run_parallel.py runs "
+                        "this first to discover a division's departments.")
     p.add_argument("--headless", action="store_true",
                    help="LIVE scrape in a scraper-owned headless Chrome started "
                         "from a logged-in profile copy (no start_chrome_debug.bat "
@@ -2003,6 +2185,9 @@ def main():
     scraper.refresh_profile = args.refresh_profile
     scraper.capture_html = not args.no_capture_html
     scraper.debugger = f"127.0.0.1:{args.port}"
+    if args.division:
+        scraper.set_division(args.division)
+    scraper.equipment_list_only = args.equipment_list_only
     if args.out_suffix:
         scraper.out_suffix = args.out_suffix
     if args.pages_dir:

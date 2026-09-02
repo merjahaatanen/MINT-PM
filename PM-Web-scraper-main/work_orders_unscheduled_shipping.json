@@ -3237,7 +3237,8 @@
     "completed_datetime": "",
     "comments": "Gabriel Shinobi - 08/13/26  7:58:24 AM: Tech, ordered part, waiting on tech to return",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "1169",
@@ -3705,7 +3706,8 @@
     "completed_datetime": "",
     "comments": "",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "",
@@ -3724,7 +3726,8 @@
     "completed_datetime": "",
     "comments": "",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "",
@@ -3752,7 +3755,8 @@
         "url": "https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/900?guid=4cfa956c-1025-4c92-9045-568f725d8f70"
       }
     ],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   },
   {
     "equipment_id": "",
@@ -3771,6 +3775,7 @@
     "completed_datetime": "",
     "comments": "Sean Jennings - 06/09/26  9:39:23 AM: Gabe, can you please take a look at this while you are doing the IT equipment swap? You will already be up there and all I want to confirm is if we can bypass the motion sensor on the lights in these bays | Sean Jennings - 02/17/26 10:46:12 AM: Please check to see if there is a toggle switch on the motion sensor for these lights. If there is a toggle switch, turn it off so that the lights are always on. All of the bays have the same lighting so it might be worth checking one of the other bays to see how they stay on all of the time. Bays 5 and 6 are also on motion sensor so if you can figure it out, do the same thing for these bays too. Thank you!",
     "attachments": [],
-    "assigned_to": "Maintenance"
+    "assigned_to": "",
+    "owner": "Maintenance"
   }
 ]

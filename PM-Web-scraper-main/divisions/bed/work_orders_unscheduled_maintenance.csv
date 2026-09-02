@@ -1,0 +1,4 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,date_notified,urgency,problem,status,material_cost,labor_time,work_performed_by,assigned_to,downtime_hours,completed_datetime,comments,attachments
+5301,EQ ID 5301,General Maintenance (NEW MAINT. ADDITION),Maintenance,12703,08/08/2024,6. General Maint,Filter on the water fountain in the office is orange.,Closed and Completed,0,0.15,KW,Maintenance,0,08/08/2024 12:30 PM,,[]
+,,,Maintenance,20313,08/10/2026,6. General Maint,Paint all departments yellow walkway lines now the punch is installed. Some areas have some areas have old lines intersecting with new walkways.,Pending,0,0,,Supervisor,0,,"Michael Nygard - 08/11/26  2:58:03 AM: Recommend waiting to paint the lines until after the new Grab Bar Automation System is installed.
+This may cause them to change unexpectedly.",[]

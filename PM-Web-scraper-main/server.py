@@ -126,6 +126,26 @@ def _sean_ok(req) -> bool:
     return supplied == SEAN_PASSWORD
 
 
+# "MINT master" password that gates creating/editing/deleting view profiles
+# (checkable feature sets, e.g. an "Operator" view that hides Trends but shows
+# Work Orders). Anyone may switch their own session to a saved view; only the
+# master can define what those views contain. Override with MASTER_PASSWORD in
+# the environment; otherwise falls back to this default so it is ALWAYS
+# password-protected.
+MASTER_PASSWORD = os.environ.get("MASTER_PASSWORD", "").strip() or "mintmaster"
+
+
+def _master_ok(req) -> bool:
+    """True if the request may manage view profiles."""
+    if not MASTER_PASSWORD:
+        return True
+    supplied = (req.headers.get("X-Master-Password") or "").strip()
+    if not supplied:
+        body = req.get_json(silent=True) or {}
+        supplied = (body.get("password") or "").strip()
+    return supplied == MASTER_PASSWORD
+
+
 # Maintenance technicians who can take (self-assign) work orders.
 # Loaded dynamically from the store by _load_technicians(); seeded with the
 # original three on first run.
@@ -157,6 +177,56 @@ _load_technicians()
 
 def _is_technician(name: str) -> bool:
     return (name or "").strip().lower() in _TECHNICIANS
+
+
+# Shared "assigned to" role identities (e.g. "QA Technician", "Mechanic") that
+# multiple people can sign in as to see/complete work assigned to that skill.
+# Distinct from technicians: no per-person team stats, just My Schedule access
+# and self-assignment matching the role's own name.
+_ROLES: set[str] = set()
+_ROLE_ALIASES: dict[str, set[str]] = {}
+
+
+def _load_roles() -> None:
+    """Reload the in-memory role sets from the store."""
+    global _ROLES, _ROLE_ALIASES
+    _ROLES = set()
+    _ROLE_ALIASES = {}
+    for r in store.list_roles(active_only=True):
+        name = (r.get("name") or "").strip()
+        if not name:
+            continue
+        name_l = name.lower()
+        _ROLES.add(name_l)
+        aliases = {name_l}
+        for a in r.get("aliases") or []:
+            a = (a or "").strip().lower()
+            if a:
+                aliases.add(a)
+        _ROLE_ALIASES[name] = aliases
+
+
+_load_roles()
+
+
+def _is_role(name: str) -> bool:
+    return (name or "").strip().lower() in _ROLES
+
+
+def _is_assignable(name: str) -> bool:
+    """True if `name` is a registered technician or role \u2014 i.e. someone who
+    can view My Schedule and self-assign matching work orders."""
+    return _is_technician(name) or _is_role(name)
+
+
+def _aliases_for(name: str) -> set[str]:
+    """Alias set to match a work order's `assigned_to` against, for either a
+    technician or a role identity. Falls back to the bare lowercased name."""
+    if name in _TECH_ALIASES:
+        return _TECH_ALIASES[name]
+    if name in _ROLE_ALIASES:
+        return _ROLE_ALIASES[name]
+    return {(name or "").strip().lower()}
 
 
 os.makedirs(GUIDES_DIR, exist_ok=True)
@@ -249,11 +319,45 @@ _STATIC_DEPARTMENTS = {
     },
 }
 
+# Non-BLA divisions scraped so far (see run_parallel.py --division). Each is
+# stored under divisions/<slug>/ so it never touches BLA's root-level files.
+# Department keys are prefixed with the division slug because department
+# names (Maintenance, Shipping, ...) repeat across divisions.
+_SCRAPED_DIVISIONS = [
+    {"key": "bla", "name": DIVISION["name"], "dir": OUTPUT_DIR},
+    {"key": "bed", "name": "BED",
+     "dir": os.path.join(OUTPUT_DIR, "divisions", "bed")},
+]
+
+_BED_DIR = os.path.join(OUTPUT_DIR, "divisions", "bed")
+_BED_DEPARTMENTS = {
+    f"bed_{slug}": {
+        "key": f"bed_{slug}",
+        "name": name,
+        "label": name,
+        "dir": _BED_DIR,
+        "unscheduled": f"work_orders_unscheduled_{slug}.json",
+        "scheduled": f"work_orders_scheduled_{slug}.json",
+    }
+    for slug, name in [
+        ("facilites", "Facilites"),
+        ("grab_bars", "Grab Bars"),
+        ("maintenance", "Maintenance"),
+        ("quality_assurance", "Quality Assurance"),
+        ("shipping", "Shipping"),
+        ("shower_seats", "Shower Seats"),
+        ("toilet_partitions", "Toilet Partitions"),
+        ("tube_mill", "Tube Mill"),
+    ]
+}
+_STATIC_DEPARTMENTS.update(_BED_DEPARTMENTS)
+
 # Live department map (static + user-added). Rebuilt by reload_data(). Every
-# scraped department maps to the BLA division; _DEPT_DIVISION tracks each
+# scraped department maps to its division; _DEPT_DIVISION tracks each
 # department's division so the company layer can group them.
 DEPARTMENTS = dict(_STATIC_DEPARTMENTS)
 _DEPT_DIVISION = {k: "bla" for k in _STATIC_DEPARTMENTS}
+_DEPT_DIVISION.update({k: "bed" for k in _BED_DEPARTMENTS})
 
 
 def _rebuild_departments() -> None:
@@ -263,6 +367,7 @@ def _rebuild_departments() -> None:
     global DEPARTMENTS, _DEPT_DIVISION
     merged = dict(_STATIC_DEPARTMENTS)
     div = {k: "bla" for k in _STATIC_DEPARTMENTS}
+    div.update({k: "bed" for k in _BED_DEPARTMENTS})
     for d in store.list_departments():
         key = d["key"]
         merged[key] = {
@@ -444,10 +549,10 @@ def _group_order(dept_key: str) -> list:
     return cfg[0] + [OTHER_GROUP]
 
 
-def _load(filename: str) -> list[dict]:
+def _load(filename: str, base_dir: str = OUTPUT_DIR) -> list[dict]:
     if not filename:
         return []
-    path = os.path.join(OUTPUT_DIR, filename)
+    path = os.path.join(base_dir, filename)
     if not os.path.exists(path):
         return []
     return ae.load_work_orders(path)
@@ -526,12 +631,19 @@ def _num(v) -> float:
 
 
 def _load_equipment() -> dict[str, list[dict]]:
-    path = os.path.join(OUTPUT_DIR, EQUIPMENT_FILE)
     by_key: dict[str, list[dict]] = {k: [] for k in DEPARTMENTS}
-    if os.path.exists(path):
+    # Load each division's own equipment_data.json, mapping department NAME ->
+    # key only among that division's departments (names like "Maintenance" or
+    # "Shipping" repeat across divisions, so this must stay scoped per-division
+    # instead of one flat name->key map).
+    for div in _SCRAPED_DIVISIONS:
+        path = os.path.join(div["dir"], EQUIPMENT_FILE)
+        if not os.path.exists(path):
+            continue
         with open(path, encoding="utf-8") as f:
             records = json.load(f)
-        name_to_key = {cfg["name"]: key for key, cfg in DEPARTMENTS.items()}
+        name_to_key = {cfg["name"]: key for key, cfg in DEPARTMENTS.items()
+                       if _DEPT_DIVISION.get(key) == div["key"]}
         for e in records:
             key = name_to_key.get((e.get("dept") or "").strip())
             if key is None:
@@ -704,8 +816,9 @@ def reload_data() -> datetime:
 
     dept_data: dict[str, dict[str, list[dict]]] = {}
     for key, cfg in DEPARTMENTS.items():
-        uns = _load(cfg.get("unscheduled"))
-        sch = _load(cfg.get("scheduled"))
+        base_dir = cfg.get("dir", OUTPUT_DIR)
+        uns = _load(cfg.get("unscheduled"), base_dir)
+        sch = _load(cfg.get("scheduled"), base_dir)
         for r in uns:
             r["wo_type"] = "unscheduled"
             r["department_key"] = key
@@ -820,6 +933,7 @@ def _compact_wo(r: dict) -> dict:
         "wo_type": r.get("wo_type"),
         "is_manual": bool(r.get("is_manual")),
         "assigned_to": r.get("assigned_to"),
+        "owner": r.get("owner"),
         "attachment_count": r.get("_att_count", len(r.get("attachments") or [])),
         "solution_count": r.get("_sol_count", 0),
     }
@@ -988,8 +1102,11 @@ def api_company():
     divisions = []
     all_uns: list[dict] = []
     all_sch: list[dict] = []
-    seen = {"bla"}
-    div_defs = {"bla": DIVISION["name"]}
+    seen = set()
+    div_defs = {}
+    for d in _SCRAPED_DIVISIONS:
+        div_defs[d["key"]] = d["name"]
+        seen.add(d["key"])
     for d in store.list_divisions():
         div_defs[d["key"]] = d["name"]
         seen.add(d["key"])
@@ -1037,8 +1154,11 @@ def api_division(div_key="bla"):
             "is_manual": bool(cfg.get("manual")),
         })
         depts.append(stats)
-    div_name = DIVISION["name"] if div_key == "bla" else next(
-        (d["name"] for d in store.list_divisions() if d["key"] == div_key), div_key.upper())
+    div_name = next(
+        (d["name"] for d in _SCRAPED_DIVISIONS if d["key"] == div_key),
+        None) or next(
+        (d["name"] for d in store.list_divisions() if d["key"] == div_key),
+        div_key.upper())
     inactive_depts = [
         {"key": r["item_key"], "label": r.get("name") or r["item_key"]}
         for r in store.list_inactive("department")
@@ -1308,6 +1428,23 @@ def api_update_listed_machine_contact(dept_key, eq_id, contact_index):
 # --------------------------------------------------------------------------- #
 # Department
 # --------------------------------------------------------------------------- #
+@app.route("/api/departments")
+def api_departments():
+    """Return a flat list of every visible department with its division."""
+    items = []
+    with _DATA_LOCK:
+        for key, cfg in DEPARTMENTS.items():
+            items.append({
+                "key": key,
+                "name": cfg.get("name") or cfg.get("label") or key,
+                "label": cfg.get("label") or cfg.get("name") or key,
+                "division_key": _DEPT_DIVISION.get(key, "bla"),
+                "machine_count": len(_EQUIP_BY_KEY.get(key, [])),
+            })
+    items.sort(key=lambda d: d["label"].lower())
+    return jsonify({"departments": items})
+
+
 @app.route("/api/departments/<dept_key>")
 def api_department(dept_key):
     cfg = DEPARTMENTS.get(dept_key)
@@ -1969,7 +2106,7 @@ def _technician_trends(tech: str) -> list[dict]:
     """Per-technician monthly trends. All WOs assigned to the tech count toward
     the 'All' columns; completed WOs credited to the tech (via assigned_to or
     work_performed_by aliases) count toward the 'Completed' columns."""
-    aliases = _TECH_ALIASES.get(tech, {tech.lower()})
+    aliases = _aliases_for(tech)
 
     def belongs(r: dict) -> bool:
         assigned = (r.get("assigned_to") or "").strip().lower()
@@ -1996,7 +2133,7 @@ def _tech_schedule(tech: str) -> dict:
         d = ae._parse_date(v)
         return d.strftime("%Y-%m-%d") if d else None
 
-    aliases = _TECH_ALIASES.get(tech, {tech.lower()})
+    aliases = _aliases_for(tech)
     out = {"name": tech, "completed": [], "upcoming": []}
     with _DATA_LOCK:
         for rec in _WO_INDEX.values():
@@ -2626,8 +2763,8 @@ def api_assign_workorder(wo_id):
 
     sean = _sean_ok(request)
     if not sean:
-        if not _is_technician(author):
-            return jsonify({"error": "Only Sean or a technician can assign work orders."}), 403
+        if not _is_assignable(author):
+            return jsonify({"error": "Only Sean, a technician, or a role can assign work orders."}), 403
         if not assigned_to:
             return jsonify({"error": "Only Sean can unassign a work order."}), 403
         if assigned_to.lower() != author.lower():
@@ -2654,7 +2791,7 @@ def _wo_credited_to(rec: dict, tech: str) -> bool:
     'work performed by' and 'helpers' fields so historical/scraped completions
     and helper credits still count. Technician aliases (e.g. Gabriel -> shinobi,
     Primo -> pu) are normalized."""
-    aliases = _TECH_ALIASES.get(tech, {tech.lower()})
+    aliases = _aliases_for(tech)
     assigned = (rec.get("assigned_to") or "").strip().lower()
     if assigned and assigned in aliases:
         return True
@@ -2738,8 +2875,8 @@ def api_my_schedule():
     author = (body.get("author") or "").strip()
     if not author:
         return jsonify({"error": "Your name is required."}), 400
-    if not _is_technician(author):
-        return jsonify({"error": "Only registered technicians can view a personal schedule."}), 403
+    if not _is_assignable(author):
+        return jsonify({"error": "Only registered technicians or roles can view a personal schedule."}), 403
     return jsonify({"tech": _tech_schedule(author)})
 
 
@@ -2789,6 +2926,147 @@ def api_delete_technician(name):
     if not store.delete_technician(name, author=author):
         return jsonify({"error": "Technician not found."}), 404
     _load_technicians()  # refresh in-memory sets immediately
+    return jsonify({"ok": True})
+
+
+# --------------------------------------------------------------------------- #
+# Role management (Sean-only)
+# --------------------------------------------------------------------------- #
+# A role (e.g. "QA Technician", "Mechanic") is a shared assigned-to identity
+# multiple people can sign in as to see/complete their team's work via My
+# Schedule, without being tracked individually like a technician.
+@app.route("/api/roles", methods=["GET"])
+def api_list_roles():
+    """List all active roles (names only; aliases are Sean-only)."""
+    names = [r["name"] for r in store.list_roles(active_only=True)]
+    return jsonify({"roles": names})
+
+
+@app.route("/api/roles/views", methods=["GET"])
+def api_list_role_views():
+    """Public list of {name, view_key} for every active role, so the landing
+    page can apply each role's assigned view profile without exposing aliases."""
+    items = [{"name": r["name"], "view_key": r.get("view_key") or ""} for r in store.list_roles(active_only=True)]
+    return jsonify({"roles": items})
+
+
+@app.route("/api/roles/<name>/view", methods=["POST"])
+def api_set_role_view(name):
+    """Assign a saved view profile to a role (master-gated, via the 'Mint' admin page)."""
+    if not _master_ok(request):
+        return jsonify({"error": "Enter the MINT master password to manage role views."}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    view_key = (body.get("view_key") or "").strip()
+    if view_key and not store.get_view_profile(view_key):
+        return jsonify({"error": "Unknown view profile."}), 400
+    role = store.set_role_view(name, view_key, author=author)
+    if not role:
+        return jsonify({"error": "Role not found."}), 404
+    return jsonify({"ok": True, "role": role})
+
+
+@app.route("/api/roles", methods=["POST"])
+def api_add_role():
+    """Add a new role with aliases."""
+    if not _sean_ok(request):
+        return jsonify({"error": "Enter Sean's password to manage roles."}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    name = (body.get("name") or "").strip()
+    aliases = body.get("aliases") or []
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not name:
+        return jsonify({"error": "Role name is required."}), 400
+    if not isinstance(aliases, list):
+        return jsonify({"error": "aliases must be a list."}), 400
+    aliases = [str(a).strip() for a in aliases if str(a).strip()]
+    try:
+        role = store.add_role(name, aliases=aliases, author=author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    _load_roles()  # refresh in-memory sets immediately
+    return jsonify({"ok": True, "role": role})
+
+
+@app.route("/api/roles/<name>", methods=["DELETE"])
+def api_delete_role(name):
+    """Delete a role."""
+    if not _sean_ok(request):
+        return jsonify({"error": "Enter Sean's password to manage roles."}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not store.delete_role(name, author=author):
+        return jsonify({"error": "Role not found."}), 404
+    _load_roles()  # refresh in-memory sets immediately
+    return jsonify({"ok": True})
+
+
+# --------------------------------------------------------------------------- #
+# View profiles ("MINT master" configurable role views, e.g. Operator)
+# --------------------------------------------------------------------------- #
+@app.route("/api/master-auth")
+def api_master_auth_status():
+    """Tell the frontend whether managing view profiles is password-protected."""
+    return jsonify({"protected": bool(MASTER_PASSWORD)})
+
+
+@app.route("/api/verify-master-password", methods=["POST"])
+def api_verify_master_password():
+    """Validate the MINT master password (used to 'unlock' view-profile management)."""
+    if not MASTER_PASSWORD:
+        return jsonify({"ok": True, "protected": False})
+    body = request.get_json(silent=True) or {}
+    supplied = (body.get("password") or "").strip()
+    if supplied == MASTER_PASSWORD:
+        return jsonify({"ok": True})
+    return jsonify({"ok": False, "error": "Incorrect password"}), 401
+
+
+@app.route("/api/view-profiles", methods=["GET"])
+def api_list_view_profiles():
+    """List all saved view profiles. Open to everyone so anyone can switch
+    their session to 'view as' one of them."""
+    return jsonify({"profiles": store.list_view_profiles()})
+
+
+@app.route("/api/view-profiles", methods=["POST"])
+def api_save_view_profile():
+    """Create or update a view profile (master-gated)."""
+    if not _master_ok(request):
+        return jsonify({"error": "Enter the MINT master password to manage views."}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    label = (body.get("label") or "").strip()
+    features = body.get("features") or []
+    key = (body.get("key") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not label:
+        return jsonify({"error": "View name is required."}), 400
+    if not isinstance(features, list):
+        return jsonify({"error": "features must be a list."}), 400
+    try:
+        profile = store.save_view_profile(label, features, author=author, key=key)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    return jsonify({"ok": True, "profile": profile})
+
+
+@app.route("/api/view-profiles/<key>", methods=["DELETE"])
+def api_delete_view_profile(key):
+    """Delete a view profile (master-gated)."""
+    if not _master_ok(request):
+        return jsonify({"error": "Enter the MINT master password to manage views."}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not store.delete_view_profile(key, author=author):
+        return jsonify({"error": "View profile not found."}), 404
     return jsonify({"ok": True})
 
 
@@ -3284,6 +3562,7 @@ def _weekly_payload(offset: int = 0, predicate=None) -> dict:
             "audit_item": r.get("audit_item"),
             "work_performed_by": r.get("work_performed_by"),
             "assigned_to": r.get("assigned_to"),
+            "owner": r.get("owner"),
         }
 
     with _DATA_LOCK:
@@ -3328,7 +3607,7 @@ def api_weekly():
 def _tech_wo_predicate(rec: dict, tech: str) -> bool:
     """True if a work order belongs on a technician's personal weekly view:
     completed WOs credited to the tech, or open WOs assigned to the tech."""
-    aliases = _TECH_ALIASES.get(tech, {tech.lower()})
+    aliases = _aliases_for(tech)
     if _is_completed(rec.get("status")):
         return _wo_credited_to(rec, tech)
     return (rec.get("assigned_to") or "").strip().lower() in aliases
@@ -3336,19 +3615,29 @@ def _tech_wo_predicate(rec: dict, tech: str) -> bool:
 
 @app.route("/api/my-weekly", methods=["POST"])
 def api_my_weekly():
-    """Weekly dashboard scoped to the signed-in technician. Accepts the tech's
-    name as `author` and an optional `offset` (weeks from the current Sunday)."""
+    """Weekly dashboard scoped to the signed-in technician or role. Accepts the
+    name as `author`, an optional `offset` (weeks from the current Sunday), and
+    an optional `division_key` to restrict the schedule to one division."""
     body = request.get_json(silent=True) or {}
     author = (body.get("author") or "").strip()
     if not author:
         return jsonify({"error": "Your name is required."}), 400
-    if not _is_technician(author):
-        return jsonify({"error": "Only registered technicians can view a personal schedule."}), 403
+    if not _is_assignable(author):
+        return jsonify({"error": "Only registered technicians or roles can view a personal schedule."}), 403
     try:
         offset = int(str(body.get("offset") or "0").strip() or "0")
     except (TypeError, ValueError):
         offset = 0
-    return jsonify(_weekly_payload(offset, lambda r: _tech_wo_predicate(r, author)))
+    division_key = (body.get("division_key") or "").strip()
+
+    def predicate(r: dict) -> bool:
+        if not _tech_wo_predicate(r, author):
+            return False
+        if division_key and _DEPT_DIVISION.get(r.get("department_key")) != division_key:
+            return False
+        return True
+
+    return jsonify(_weekly_payload(offset, predicate))
 
 
 @app.route("/api/team-weekly", methods=["GET"])
@@ -3753,9 +4042,12 @@ def api_spare_part_options():
                 "division_key": _DEPT_DIVISION.get(key) or "bla",
                 "machines": machines,
             })
-    divisions = [{"key": d["key"], "name": d["name"]} for d in store.list_divisions()]
-    if not any(d["key"] == "bla" for d in divisions):
-        divisions.insert(0, {"key": "bla", "name": DIVISION["name"]})
+    divisions = [{"key": d["key"], "name": d["name"]} for d in _SCRAPED_DIVISIONS]
+    seen_keys = {d["key"] for d in divisions}
+    for d in store.list_divisions():
+        if d["key"] not in seen_keys:
+            divisions.append({"key": d["key"], "name": d["name"]})
+            seen_keys.add(d["key"])
     return jsonify({"departments": out, "divisions": divisions})
 
 

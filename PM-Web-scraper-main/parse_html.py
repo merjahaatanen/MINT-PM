@@ -40,7 +40,12 @@ class EquipmentHTMLParser:
             html_content = f.read()
         
         print(f"HTML file size: {len(html_content):,} characters")
-        
+        self.records = self._parse_string(html_content)
+        print(f"Successfully parsed {len(self.records)} records")
+        return self.records
+
+    def _parse_string(self, html_content: str) -> List[EquipmentRecord]:
+        """Extract equipment records from an in-memory HTML string."""
         # Find the gridEquipment div
         # The table rows are in the tbody section
         records = []
@@ -80,8 +85,6 @@ class EquipmentHTMLParser:
             print("Trying alternative parsing method...")
             records = self._parse_alternative(html_content)
         
-        self.records = records
-        print(f"Successfully parsed {len(records)} records")
         return records
     
     def _clean_cell(self, cell_content: str) -> str:
@@ -172,6 +175,35 @@ class EquipmentHTMLParser:
             json.dump([asdict(r) for r in self.records], f, indent=2)
         
         print(f"Saved {len(self.records)} records to {filename}")
+
+
+def parse_equipment_html_string(html_content: str) -> List[EquipmentRecord]:
+    """Parse the Equipment All grid straight from an HTML string (e.g. a live
+    page's driver.page_source), returning the same EquipmentRecord list that the
+    file-based parser produces. Used to build a division's equipment_data.* on
+    the fly during a scrape."""
+    parser = EquipmentHTMLParser.__new__(EquipmentHTMLParser)
+    parser.html_file_path = "<string>"
+    parser.records = []
+    records = parser._parse_string(html_content)
+    parser.records = records
+    return records
+
+
+def save_equipment_data(records: List["EquipmentRecord"], csv_path: str,
+                        json_path: str) -> None:
+    """Write equipment records to both equipment_data.csv and .json at the given
+    paths (used by the scraper to materialise a division's equipment master)."""
+    import os
+    fieldnames = list(EquipmentRecord.__dataclass_fields__)
+    os.makedirs(os.path.dirname(csv_path) or ".", exist_ok=True)
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for r in records:
+            writer.writerow(asdict(r))
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump([asdict(r) for r in records], f, indent=2)
 
 
 def main():

@@ -53,8 +53,11 @@ import scraper as S  # reuse dataclasses + persist logic for the merge step
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# The 9 real departments (the "All Departments" option is intentionally excluded).
-DEPARTMENTS = [
+# BLA's 9 real departments (the "All Departments" option is intentionally
+# excluded). This is the default department list for BLA. For any OTHER division
+# the list is discovered at runtime from that division's equipment_data.csv (see
+# discover_departments), because each division has its own set of departments.
+BLA_DEPARTMENTS = [
     "Maintenance",
     "Quality Assurance",
     "Soap Dispenser Assembly",
@@ -65,6 +68,12 @@ DEPARTMENTS = [
     "General",
     "Assembly",
 ]
+
+# Mutable globals reconfigured by main() when --division is passed. Defaults keep
+# BLA's original behaviour (data at the repo root) completely unchanged.
+DEPARTMENTS = list(BLA_DEPARTMENTS)
+DIVISION = ""            # slug, e.g. "bed"; "" => BLA (root)
+OUT_DIR = HERE           # where per-department + master files live for this run
 
 BASE_PORT = 9222
 LOCALAPPDATA = os.environ.get("LOCALAPPDATA", os.path.expanduser("~"))
@@ -105,8 +114,26 @@ def _rec_count(path: str) -> int:
 
 
 def _dept_paths(slug: str) -> list:
-    return [os.path.join(HERE, f"work_orders_{kind}_{slug}.{ext}")
+    return [os.path.join(OUT_DIR, f"work_orders_{kind}_{slug}.{ext}")
             for kind in ("unscheduled", "scheduled") for ext in ("json", "csv")]
+
+
+def discover_departments(out_dir: str) -> list:
+    """Read the division's equipment_data.csv and return its unique, non-blank
+    department names (sorted). This replaces the hardcoded BLA list for any
+    non-BLA division, since each division has its own departments."""
+    import csv
+    path = os.path.join(out_dir, "equipment_data.csv")
+    depts = []
+    seen = set()
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                d = (row.get("dept") or "").strip()
+                if d and d.lower() not in seen:
+                    seen.add(d.lower())
+                    depts.append(d)
+    return sorted(depts)
 
 
 def backup_dept_files(selected: list) -> dict:
@@ -131,8 +158,8 @@ def guard_dept_files(selected: list, pre_counts: dict, progress=print) -> list:
     rolled_back = []
     for dept in selected:
         slug = slugify(dept)
-        for jp in (os.path.join(HERE, f"work_orders_unscheduled_{slug}.json"),
-                   os.path.join(HERE, f"work_orders_scheduled_{slug}.json")):
+        for jp in (os.path.join(OUT_DIR, f"work_orders_unscheduled_{slug}.json"),
+                   os.path.join(OUT_DIR, f"work_orders_scheduled_{slug}.json")):
             old = pre_counts.get(jp, 0)
             new = _rec_count(jp)
             if old >= 20 and new < 0.5 * old:
@@ -255,6 +282,8 @@ def run_orphan_step(chrome: str, args) -> None:
     profile = prepare_profile(slug, args.refresh_profiles)
     cmd = [sys.executable, "-u", os.path.join(HERE, "scraper.py"),
            "--unscheduled-all"]
+    if DIVISION:
+        cmd += ["--division", DIVISION]
     cp = None
     if args.headful:
         for attempt in (1, 2):
@@ -292,6 +321,56 @@ def run_orphan_step(chrome: str, args) -> None:
             pass
 
 
+def build_equipment_list_step(chrome, args) -> int:
+    """Build the division's equipment_data.csv/.json from the Equipment All grid
+    BEFORE the per-department scrapes, so we can discover its departments and the
+    per-department runs can filter by department. Returns the scraper exit code
+    (0 on success). Only used for non-BLA divisions (BLA already has its master
+    equipment_data.* at the repo root)."""
+    slug = "equipment"
+    port = BASE_PORT + 50                     # well past the department range
+    print("\n" + "=" * 64)
+    print(f"Building equipment list for division '{DIVISION}' ...")
+    print("=" * 64)
+    profile = prepare_profile(slug, args.refresh_profiles)
+    cmd = [sys.executable, "-u", os.path.join(HERE, "scraper.py"),
+           "--division", DIVISION, "--equipment-list-only"]
+    cp = None
+    if args.headful:
+        for attempt in (1, 2):
+            print(f"[equipment] launching Chrome on port {port} (try {attempt}) ...")
+            cp = launch_chrome(chrome, port, profile, headless=False)
+            if wait_ready(port, timeout=45):
+                break
+            try:
+                cp.terminate()
+            except Exception:
+                pass
+            time.sleep(2)
+        else:
+            print("[equipment] WARNING: Chrome never became ready.")
+            return 1
+        cmd += ["--port", str(port)]
+    else:
+        cmd += ["--headless", "--profile", profile]
+
+    logf = open(os.path.join(LOG_DIR, "parallel_equipment.log"), "w", encoding="utf-8")
+    print(f"[equipment] starting scraper "
+          f"({'headful/attach' if args.headful else 'headless/owned'}; "
+          f"log: {os.path.relpath(LOG_DIR, HERE)}/parallel_equipment.log)")
+    proc = subprocess.Popen(cmd, cwd=HERE, stdout=logf, stderr=subprocess.STDOUT)
+    proc.wait()
+    logf.close()
+    print(f"[equipment] finished: "
+          f"{'OK' if proc.returncode == 0 else f'FAILED (exit {proc.returncode})'}")
+    if cp and not args.keep_open:
+        try:
+            cp.terminate()
+        except Exception:
+            pass
+    return proc.returncode
+
+
 def merge(skip_unscheduled: bool):
     """Concatenate every per-department file into the master files."""
     print("\n" + "=" * 64)
@@ -306,7 +385,7 @@ def merge(skip_unscheduled: bool):
     for base, dataclass_type in kinds:
         rows = []
         for dept in DEPARTMENTS:
-            part = os.path.join(HERE, f"{base}_{slugify(dept)}.json")
+            part = os.path.join(OUT_DIR, f"{base}_{slugify(dept)}.json")
             if os.path.exists(part):
                 try:
                     with open(part, encoding="utf-8") as f:
@@ -324,8 +403,8 @@ def merge(skip_unscheduled: bool):
         rows = deduped
 
         fields = list(dataclass_type.__dataclass_fields__)
-        json_path = os.path.join(HERE, f"{base}.json")
-        csv_path = os.path.join(HERE, f"{base}.csv")
+        json_path = os.path.join(OUT_DIR, f"{base}.json")
+        csv_path = os.path.join(OUT_DIR, f"{base}.csv")
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump(rows, f, indent=2)
         with open(csv_path, "w", newline="", encoding="utf-8") as f:
@@ -368,10 +447,61 @@ def main():
                          "the login profile to already be authenticated.")
     ap.add_argument("--departments", type=str, default=None,
                     help="Comma-separated subset of departments to scrape "
-                         "(default: all 9). Useful for re-running ones that "
+                         "(default: all). Useful for re-running ones that "
                          "failed. Names must match exactly, e.g. "
                          "\"Machine Shop,Assembly\".")
+    ap.add_argument("--division", type=str, default=None,
+                    help="Scrape a NON-BLA division (bed, bmc, bwec, kkp, bgd, "
+                         "cit). Its data is written under divisions/<slug>/ so "
+                         "BLA (at the repo root) is untouched. Switch the site's "
+                         "division dropdown to this division in the debug Chrome "
+                         "FIRST, and use --refresh-profiles so the copied login "
+                         "profiles pick up that selection. Departments are "
+                         "auto-discovered from the division's equipment list.")
+    ap.add_argument("--rebuild-equipment", action="store_true",
+                    help="Force a rebuild of the division's equipment_data.* "
+                         "(machine list) even if it already exists.")
     args = ap.parse_args()
+
+    global DEPARTMENTS, DIVISION, OUT_DIR, PARALLEL_PROFILES, LOG_DIR
+    if args.division:
+        DIVISION = re.sub(r"[^a-z0-9]+", "_", args.division.strip().lower()).strip("_")
+        OUT_DIR = os.path.join(HERE, "divisions", DIVISION)
+        PARALLEL_PROFILES = os.path.join(PARALLEL_PROFILES, DIVISION)
+        LOG_DIR = os.path.join(LOG_DIR, DIVISION)
+        os.makedirs(OUT_DIR, exist_ok=True)
+
+    os.makedirs(LOG_DIR, exist_ok=True)
+
+    if args.merge_only:
+        if DIVISION:
+            DEPARTMENTS = discover_departments(OUT_DIR) or DEPARTMENTS
+        merge(args.scheduled_only)
+        return
+
+    ensure_base_profile()
+    chrome = find_chrome()
+    os.makedirs(PARALLEL_PROFILES, exist_ok=True)
+
+    # For a non-BLA division, build its equipment list first (machine list +
+    # department column), then discover its departments from it. BLA keeps its
+    # hardcoded department list and its master equipment_data.* at the repo root.
+    if DIVISION:
+        eq_csv = os.path.join(OUT_DIR, "equipment_data.csv")
+        if args.rebuild_equipment or not os.path.exists(eq_csv):
+            rc = build_equipment_list_step(chrome, args)
+            if rc != 0 or not os.path.exists(eq_csv):
+                sys.exit(f"ERROR: could not build equipment list for division "
+                         f"'{DIVISION}'. Check "
+                         f"{os.path.relpath(LOG_DIR, HERE)}/parallel_equipment.log")
+        discovered = discover_departments(OUT_DIR)
+        if not discovered:
+            sys.exit(f"ERROR: no departments found in {eq_csv}. The division's "
+                     "equipment list is empty - check the dropdown selection in "
+                     "the debug Chrome (and re-run with --refresh-profiles).")
+        DEPARTMENTS = discovered
+        print(f"[division] '{DIVISION}': discovered {len(DEPARTMENTS)} "
+              f"department(s): {', '.join(DEPARTMENTS)}")
 
     selected = DEPARTMENTS
     if args.departments:
@@ -382,19 +512,11 @@ def main():
                      f"Valid: {DEPARTMENTS}")
         selected = wanted
 
-    os.makedirs(LOG_DIR, exist_ok=True)
-
-    if args.merge_only:
-        merge(args.scheduled_only)
-        return
-
-    ensure_base_profile()
-    chrome = find_chrome()
-    os.makedirs(PARALLEL_PROFILES, exist_ok=True)
-
     print("=" * 64)
     print("PARALLEL PM WORK ORDER SCRAPE")
     print("=" * 64)
+    print(f"Division    : {DIVISION.upper() if DIVISION else 'BLA (root)'}")
+    print(f"Output dir  : {OUT_DIR}")
     print(f"Departments : {len(selected)}  ({', '.join(selected)})")
     print(f"Max parallel: {args.jobs}")
     print(f"Browser     : {'HEADFUL (visible windows)' if args.headful else 'headless'}")
@@ -420,6 +542,8 @@ def main():
         profile = prepare_profile(slug, args.refresh_profiles or refresh_profile)
         cmd = [sys.executable, "-u", os.path.join(HERE, "scraper.py"),
                "--department", dept, "--out-suffix", slug]
+        if DIVISION:
+            cmd += ["--division", DIVISION]
 
         if args.headful:
             # Legacy path: WE launch a visible Chrome and the scraper attaches to

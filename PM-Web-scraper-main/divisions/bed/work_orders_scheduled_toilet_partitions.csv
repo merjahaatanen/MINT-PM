@@ -1,0 +1,30 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+5366,EQ ID 5366,1080 HOMAG Horizontal Panel Saw,Toilet Partitions,16031,"Saw data back up onto external hard drive. 
+
+-Reason: Redundancy in the event of a system malfunction, to have a saved file of the software and data the saw is operating with, to fall back on. 
+
+This can be done in the background while saw is running, during normal operation.",Pending,6/12/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+5366,EQ ID 5366,1080 HOMAG Horizontal Panel Saw,Toilet Partitions,15952,"Saw data back up onto external hard drive. 
+
+-Reason: Redundancy in the event of a system malfunction, to have a saved file of the software and data the saw is operating with, to fall back on. 
+
+This can be done in the background while saw is running, during normal operation.",Closed and Completed,6/9/2025,Nicholas Angelo Jr.,Maintenance Mechanic,0.00,0.00,0.00,6/9/2025,"Nicholas Angelo, Jr - 06/09/25  4:12:57 PM: Back has been completed. | Nicholas Angelo, Jr - 06/09/25  4:12:15 PM: Back has been completed. | Nicholas Angelo, Jr - 06/04/25  5:24:35 AM: -Reason: Redundancy in the event of a system malfunction, to have a saved file of the software and data the saw is operating with, to fall back on. 
+
+This can be done in the background while saw is running, during normal operation.",[]
+327,EQ ID 327,Vertical Panel Saw,Toilet Partitions,15814,Change hydraulic oil and filter,Pending,5/19/2026,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+327,EQ ID 327,Vertical Panel Saw,Toilet Partitions,202,Change hydraulic oil and filter,Closed and Completed,3/18/2023,Jake D,Maintenance Mechanic,0.00,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:31:05 AM: .,[]
+327,EQ ID 327,Vertical Panel Saw,Toilet Partitions,6062,Change hydraulic oil and filter,Closed without Action,6/15/2024,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:17:36 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+315,EQ ID 315,1080 CNC Drill (Gannomat),Toilet Partitions,15784,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Pending,6/19/2025,,QA Technician,0.00,0.00,0.00,,,[]
+315,EQ ID 315,1080 CNC Drill (Gannomat),Toilet Partitions,201,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Closed and Completed,4/18/2022,Steve T,QA Technician,0.25,0.00,0.00,1/30/2023,,[]
+315,EQ ID 315,1080 CNC Drill (Gannomat),Toilet Partitions,4188,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Closed and Completed,2/28/2023,Operator,QA Technician,0.00,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:27:41 AM: Discontinued,[]
+315,EQ ID 315,1080 CNC Drill (Gannomat),Toilet Partitions,6054,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Closed without Action,7/15/2023,NA,QA Technician,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  7:48:41 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,15819,Grease bearings/high temp grease,Pending,6/19/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,505,Grease bearings/high temp grease,Closed and Completed,4/18/2022,Jake D,Maintenance Mechanic,0.25,0.00,0.00,8/25/2022,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,2734,Grease bearings/high temp grease,Closed and Completed,11/13/2022,Jake D,Maintenance Mechanic,0.00,0.00,0.00,4/4/2023,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,5908,Grease bearings/high temp grease,Closed and Completed,7/6/2023,Jake D,Maintenance Mechanic,0.25,0.00,0.00,6/15/2023,Jake Demers - 06/15/23  9:33:51 AM: Discontinued,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,6066,Grease bearings/high temp grease,Closed and Completed,7/15/2023,Jake D,Maintenance Mechanic,0.00,0.00,0.00,1/12/2024,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,9690,Grease bearings/high temp grease,Closed and Completed,2/12/2024,kw,Maintenance Mechanic,0.00,0.00,0.00,10/2/2024,,[]
+757,EQ ID 757,Dust Collector,Toilet Partitions,13252,Grease bearings/high temp grease,Closed without Action,11/2/2024,NA,Maintenance Mechanic,0.00,0.00,0.00,5/19/2025,"Nicholas Angelo, Jr - 05/19/25  8:20:47 AM: Closing to have WO repopulate with up to date schedule. No comments, assumed work has been performed and not documented or has been neglected. Will confirm with those assigned the WO. Check Past Due PM Maintenance Log for details.
+-NAJ",[]
