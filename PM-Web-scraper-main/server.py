@@ -1304,13 +1304,19 @@ def _machine_contacts(dept_key: str) -> list[dict]:
 
 @app.route("/api/vendor-contacts")
 def api_vendor_contacts():
-    """Vendor & Utilities Contacts tab: the editable vendor list (DB), every
-    contact card that lives on a Toilet Partitions machine, and the machine
-    list used by the 'assign to machine' picker."""
+    """Vendor & Utilities Contacts tab: the editable vendor list (DB, filtered
+    by division when a division_key query param is given), every contact card
+    that lives on a Toilet Partitions machine (BLA-only), and the machine list
+    used by the 'assign to machine' picker."""
+    division_key = (request.args.get("division_key") or "").strip().lower()
+    vendors = store.list_vendor_contacts()
+    if division_key:
+        vendors = [v for v in vendors if (v.get("division_key") or "bla") == division_key]
+    show_toilet = not division_key or division_key == "bla"
     return jsonify({
-        "vendors": store.list_vendor_contacts(),
-        "machine_contacts": _machine_contacts("toilet"),
-        "machines": _toilet_machine_list(),
+        "vendors": vendors,
+        "machine_contacts": _machine_contacts("toilet") if show_toilet else [],
+        "machines": _toilet_machine_list() if show_toilet else [],
         "types": store.list_vendor_contact_types(),
         "editable": True,
         "protected": bool(EDIT_PASSWORD),
@@ -2544,6 +2550,8 @@ def api_create_workorder():
         "downtime_hours": str(body.get("downtime_hours") or "0"),
         "work_performed_by": (body.get("work_performed_by") or "").strip(),
         "completed_datetime": _normalize_date(body.get("completed_datetime") or ""),
+        "owner": (body.get("owner") or "").strip(),
+        "assigned_to": (body.get("assigned_to") or "").strip(),
     }
     if wo_type == "unscheduled":
         # Default the notified date to today so the new WO sorts to the top

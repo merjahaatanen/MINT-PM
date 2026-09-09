@@ -240,6 +240,7 @@ def _init() -> None:
                 contract_type    TEXT NOT NULL DEFAULT '',
                 machine_eq       TEXT NOT NULL DEFAULT '[]',
                 source           TEXT NOT NULL DEFAULT '',
+                division_key     TEXT NOT NULL DEFAULT 'bla',
                 created_at       TEXT NOT NULL,
                 created_by       TEXT NOT NULL DEFAULT '',
                 updated_at       TEXT NOT NULL,
@@ -334,6 +335,10 @@ def _init() -> None:
         role_cols = {r["name"] for r in c.execute("PRAGMA table_info(roles)").fetchall()}
         if "view_key" not in role_cols:
             c.execute("ALTER TABLE roles ADD COLUMN view_key TEXT NOT NULL DEFAULT ''")
+        # Migration: add division_key to vendor_contacts if it exists from an older schema.
+        vendor_cols = {r["name"] for r in c.execute("PRAGMA table_info(vendor_contacts)").fetchall()}
+        if "division_key" not in vendor_cols:
+            c.execute("ALTER TABLE vendor_contacts ADD COLUMN division_key TEXT NOT NULL DEFAULT 'bla'")
         type_count = c.execute("SELECT COUNT(*) AS n FROM vendor_contact_types").fetchone()["n"]
         if not type_count:
             c.execute(
@@ -751,6 +756,7 @@ def set_nickname(dept_key: str, eq_id: str, nickname: str, author: str = "") -> 
 VENDOR_CONTACT_FIELDS = (
     "company", "contact", "address", "phone", "cell", "fax", "email",
     "type", "service_contract", "contract_type", "machine_eq", "source",
+    "division_key",
 )
 
 
@@ -776,6 +782,8 @@ def _clean_vendor_fields(fields: dict) -> dict:
             elif not isinstance(raw, (list, tuple)):
                 raw = []
             out["machine_eq"] = json.dumps([str(e).strip() for e in raw if str(e).strip()])
+        elif k == "division_key":
+            out["division_key"] = (str(fields.get("division_key") or "").strip().lower() or "bla")
         else:
             out[k] = str(fields.get(k) or "").strip()
     return out

@@ -1050,10 +1050,14 @@
     // Technician's own weekly schedule page. Shows assigned/completed/upcoming
     // work orders week by week, with the same week-scrolling as the department
     // weekly schedule. No trends.
-    function MySchedulePage({ user, onOpenWo, onCompany }) {
+    function MySchedulePage({ user, onOpenWo, onCompany, defaultDivisionKey }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [weekOffset, setWeekOffset] = useState(0);
+      const [divisions, setDivisions] = useState([]);
+      const [divisionKey, setDivisionKey] = useState(defaultDivisionKey || "");
+      useEffect(() => { getJSON("/api/company").then((d) => setDivisions(d.divisions || [])).catch(() => {}); }, []);
+      useEffect(() => { setDivisionKey(defaultDivisionKey || ""); }, [defaultDivisionKey]);
       useEffect(() => {
         if (!user) return;
         (async () => {
@@ -1061,7 +1065,7 @@
             const r = await fetch(API + "/api/my-weekly", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ author: user, offset: weekOffset }),
+              body: JSON.stringify({ author: user, offset: weekOffset, division_key: divisionKey }),
             });
             const d = await r.json().catch(() => ({}));
             if (r.status === 403) { setErr("Only registered technicians or roles can view a personal schedule."); return; }
@@ -1070,7 +1074,7 @@
             setErr(null);
           } catch (e) { setErr(e.message); setData(null); }
         })();
-      }, [user, weekOffset]);
+      }, [user, weekOffset, divisionKey]);
       const goPrev = () => setWeekOffset((o) => o - 1);
       const goNext = () => setWeekOffset((o) => o + 1);
       const goThis = () => setWeekOffset(0);
@@ -1081,21 +1085,28 @@
             { label: "Bobrick", onClick: onCompany },
             { label: "My schedule" },
           ]} />
-          <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-5">
             <div>
               <h1 className="text-2xl font-extrabold text-slate-800">My schedule</h1>
               <p className="text-sm text-slate-500">${user || "Guest"}</p>
             </div>
-            <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold shadow-sm">
-              <button type="button" onClick=${goPrev}
-                title="Previous weeks"
-                className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
-              <button type="button" onClick=${goThis}
-                className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
-                This week</button>
-              <button type="button" onClick=${goNext}
-                title="Upcoming weeks"
-                className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
+            <div className="flex items-center gap-2 flex-wrap">
+              <select value=${divisionKey} onChange=${(e) => setDivisionKey(e.target.value)}
+                className="px-3 py-2 rounded-full border border-emerald-200 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                <option value="">All divisions</option>
+                ${divisions.map((d) => html`<option key=${d.key} value=${d.key}>${d.name}</option>`)}
+              </select>
+              <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold shadow-sm">
+                <button type="button" onClick=${goPrev}
+                  title="Previous weeks"
+                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
+                <button type="button" onClick=${goThis}
+                  className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
+                  This week</button>
+                <button type="button" onClick=${goNext}
+                  title="Upcoming weeks"
+                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
+              </div>
             </div>
           </div>
           ${err && html`<div className="text-rose-600 mb-4">${err}</div>`}
@@ -1242,6 +1253,11 @@
     /* Landing flow                                                        */
     /* ------------------------------------------------------------------ */
     function LandingPage({ roles, onSelectView, onSelectRole, onSelectMint }) {
+      const [showGate, setShowGate] = useState(false);
+      const openMint = () => {
+        if (getMasterPw()) { onSelectMint(); }
+        else { setShowGate(true); }
+      };
       return html`
         <div className="fade-in max-w-3xl mx-auto py-12 text-center">
           <div className="mb-10">
@@ -1262,13 +1278,16 @@
                 <div className="text-xl font-extrabold text-slate-800 group-hover:text-emerald-800">${r}</div>
                 <div className="text-sm text-slate-500 mt-1">Their assigned view, plus their weekly schedule filtered by division.</div>
               </button>`)}
-            <button onClick=${onSelectMint}
+            <button onClick=${openMint}
               className="text-left bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-800
                          hover:shadow-lg hover:border-slate-700 transition group">
               <div className="text-xl font-extrabold text-white">Mint</div>
               <div className="text-sm text-slate-300 mt-1">Admin: assign which view each role sees. Password protected.</div>
             </button>
           </div>
+          ${showGate && html`<${MasterGate} actionLabel="enter the MINT admin"
+            onCancel=${() => setShowGate(false)}
+            onUnlock=${(pw) => { setMasterPw(pw); setShowGate(false); onSelectMint(); }} />`}
         </div>`;
     }
 
@@ -1306,16 +1325,17 @@
         </div>`;
     }
 
-    function RoleSchedulePage({ role, onCompany, onOpenWo }) {
+    function RoleSchedulePage({ role, onCompany, onOpenWo, defaultDivisionKey }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [weekOffset, setWeekOffset] = useState(0);
       const [divisions, setDivisions] = useState([]);
-      const [divisionKey, setDivisionKey] = useState("");
+      const [divisionKey, setDivisionKey] = useState(defaultDivisionKey || "");
 
       useEffect(() => {
         getJSON("/api/company").then((d) => setDivisions(d.divisions || [])).catch(() => {});
       }, []);
+      useEffect(() => { setDivisionKey(defaultDivisionKey || ""); }, [defaultDivisionKey]);
 
       useEffect(() => {
         if (!role) return;
@@ -1760,7 +1780,7 @@
         </div>`;
     }
 
-    function VendorContacts() {
+    function VendorContacts({ divisionKey }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [q, setQ] = useState("");
@@ -1773,8 +1793,9 @@
 
       useEffect(() => {
         setData(null);
-        getJSON("/api/vendor-contacts").then(setData).catch((e) => setErr(e.message));
-      }, [reloadKey]);
+        const qs = divisionKey ? ("?division_key=" + encodeURIComponent(divisionKey)) : "";
+        getJSON("/api/vendor-contacts" + qs).then(setData).catch((e) => setErr(e.message));
+      }, [reloadKey, divisionKey]);
       useEffect(() => { getJSON("/api/edit-auth").then((d) => setProtectedEdit(!!d.protected)).catch(() => {}); }, []);
 
       if (err) return html`<div className="text-rose-600">${err}</div>`;
@@ -1796,7 +1817,8 @@
       const machineContacts = (data.machine_contacts || []).filter(textMatch);
 
       const emptyDraft = () => ({ company: "", contact: "", address: "", phone: "", cell: "", fax: "",
-        email: "", type: "TPF", service_contract: "", contract_type: "", machine_eq: [] });
+        email: "", type: "TPF", service_contract: "", contract_type: "", machine_eq: [],
+        division_key: divisionKey || "bla" });
       const openNew = () => requireAuth(() => setEditing(emptyDraft()));
       const openEdit = (v) => requireAuth(() => setEditing(Object.assign(emptyDraft(), v, { machine_eq: [...(v.machine_eq || [])] })));
 
@@ -1861,6 +1883,7 @@
             </div>
           </div>
 
+          ${machines.length > 0 && html`
           <div>
             <h3 className="text-sm font-extrabold text-slate-700 mb-3 flex items-center gap-2">
               Machine Contacts · Toilet Partitions <span className="text-xs font-semibold text-slate-400">(${machineContacts.length})</span></h3>
@@ -1876,7 +1899,7 @@
                 </div>`)}
               ${machineContacts.length === 0 && html`<div className="text-sm text-slate-400 col-span-full">No matching machine contacts.</div>`}
             </div>
-          </div>
+          </div>`}
         </div>`;
     }
 
@@ -2229,7 +2252,7 @@
 
       const totalUns = data.departments.reduce((a, d) => a + (d.unscheduled_count || 0), 0);
       const totalSch = data.departments.reduce((a, d) => a + (d.scheduled_count || 0), 0);
-      const divTabs = visibleTabs(divKey === "bla" ? [...DIV_TABS, "Contacts"] : DIV_TABS, viewProfile);
+      const divTabs = visibleTabs([...DIV_TABS, "Contacts"], viewProfile);
       const activeTab = divTabs.includes(tab) ? tab : divTabs[0];
 
       return html`
@@ -2260,7 +2283,7 @@
               </button>`)}
           </div>
 
-          ${activeTab === "Contacts" && html`<${VendorContacts} />`}
+          ${activeTab === "Contacts" && html`<${VendorContacts} divisionKey=${divKey} />`}
 
           ${activeTab === "Spare Parts" && html`
             <div className="fade-in">
@@ -3770,22 +3793,31 @@
         const d = new Date();
         return (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
       })();
+      const [technicians, setTechnicians] = useState([]);
+      const [roles, setRoles] = useState([]);
       const [f, setF] = useState({
         equipment_eq_id: "", equipment_name: "", status: "Pending",
         urgency: "", date_notified: todayStr, due_date: "", problem: "",
         audit_item: "", work_performed_by: "", helpers: "",
         labor_time: "", material_cost: "", downtime_hours: "", solution: "", frequency: "",
+        owner: getRawUser() || "", assigned_to: "",
       });
       const set = (k) => (v) => setF((s) => ({ ...s, [k]: v }));
       const [files, setFiles] = useState([]);
       const [busy, setBusy] = useState(false);
       const [err, setErr] = useState(null);
       const [adding, setAdding] = useState(null); // null | "machine" | "dept"
+      const assignableOptions = useMemo(() => [
+        ...technicians.map((t) => ({ value: t, label: t })),
+        ...roles.map((r) => ({ value: r, label: "Role: " + r })),
+      ], [technicians, roles]);
 
       useEffect(() => {
         getJSON("/api/divisions/" + (divisionKey || "bla"))
           .then((d) => setDepts(d.departments || []))
           .catch((e) => setErr(e.message));
+        getJSON("/api/technicians").then((d) => setTechnicians(d.technicians || [])).catch(() => {});
+        getJSON("/api/roles").then((d) => setRoles(d.roles || [])).catch(() => {});
       }, [divisionKey]);
 
       const loadMachines = useCallback((dk) => {
@@ -3806,6 +3838,7 @@
         if (!name.trim()) { setErr("Your name is required."); return; }
         if (!deptKey) { setErr("Choose a department."); return; }
         if (!f.equipment_name) { setErr("Select a machine."); return; }
+        if (!f.owner.trim()) { setErr("Owner is required."); return; }
         if (woType === "unscheduled") {
           if (!f.problem.trim()) { setErr("Problem is required."); return; }
           if (!f.date_notified.trim()) { setErr("Date notified is required."); return; }
@@ -3825,16 +3858,17 @@
               author: name.trim(), department_key: deptKey, wo_type: woType,
               equipment_name: f.equipment_name, equipment_eq_id: f.equipment_eq_id,
               status: "Pending", urgency: f.urgency, date_notified: f.date_notified,
-              problem: f.problem,
+              problem: f.problem, owner: f.owner,
             };
           } else {
+            if (!f.assigned_to.trim()) { setErr("Assigned to is required for scheduled work orders."); return; }
             // New scheduled WOs are always Pending and recur on the chosen
             // frequency. Completion fields are collected at close-out.
             payload = {
               author: name.trim(), department_key: deptKey, wo_type: woType,
               equipment_name: f.equipment_name, equipment_eq_id: f.equipment_eq_id,
               status: "Pending", due_date: f.due_date, frequency: f.frequency,
-              audit_item: f.audit_item,
+              audit_item: f.audit_item, owner: f.owner, assigned_to: f.assigned_to,
             };
           }
           const d = await sendJSON("/api/workorders", "POST", payload);
@@ -3905,6 +3939,7 @@
                     <${SelectInput} label="Urgency" required=${true} value=${f.urgency} onChange=${set("urgency")} options=${URGENCY_OPTIONS} placeholder="Select urgency…" />
                     <${TextInput} label="Date Notified" required=${true} value=${f.date_notified} onChange=${set("date_notified")} placeholder="MM/DD/YYYY" />
                   </div>
+                  <${SelectInput} label="Owner" required=${true} value=${f.owner} onChange=${set("owner")} placeholder="Select your role or name…" options=${assignableOptions} />
                   <${TextArea} label="Problem" required=${true} value=${f.problem} onChange=${set("problem")} rows=${3} />
                   <div className="text-[11px] text-slate-400 bg-emerald-50/60 border border-emerald-100 rounded-xl px-3 py-2">
                     New unscheduled work orders start as <b>Pending</b>. Work performed by, labor time, downtime, material cost and comments are collected later, when the work order is marked <b>Closed and Completed</b>.
@@ -3914,6 +3949,8 @@
                     <${TextInput} label="First Due Date" required=${true} value=${f.due_date} onChange=${set("due_date")} placeholder="M/D/YYYY" />
                     <${SelectInput} label="Frequency" required=${true} value=${f.frequency} onChange=${set("frequency")} options=${FREQUENCY_OPTIONS} placeholder="How often…" />
                   </div>
+                  <${SelectInput} label="Owner" required=${true} value=${f.owner} onChange=${set("owner")} placeholder="Select your role or name…" options=${assignableOptions} />
+                  <${SelectInput} label="Assigned To" required=${true} value=${f.assigned_to} onChange=${set("assigned_to")} placeholder="Select role or technician…" options=${assignableOptions} />
                   <${TextArea} label="Audit Item" required=${true} value=${f.audit_item} onChange=${set("audit_item")} rows=${4} />
                   <div className="text-[11px] text-slate-400 bg-emerald-50/60 border border-emerald-100 rounded-xl px-3 py-2">
                     New scheduled work orders start as <b>Pending</b> and <b>recur automatically</b> on the chosen frequency — the next occurrence is created on schedule whether or not the previous one was completed. Work performed by, labor time, downtime, material cost and comments are collected when a work order is marked <b>Closed and Completed</b>.
@@ -7727,7 +7764,7 @@
         navigate((r) => ({ view: "department", divisionKey: r.divisionKey || "bla", deptKey, tab: tab || "Machines" }));
       const openMachine = (eqId) =>
         navigate((r) => ({ view: "machine", divisionKey: r.divisionKey || "bla", deptKey: r.deptKey, eqId }));
-      const openMySchedule = () => navigate({ view: "my-schedule" });
+      const openMySchedule = () => navigate({ view: "my-schedule", divisionKey: route.divisionKey || "" });
       const selectView = (key) => { setActiveRole(""); changeView(key); navigate({ view: "divisions" }); };
       const selectDivision = (div) => navigate({ view: "division", divisionKey: div.key || "bla" });
       // Selecting a role applies its assigned view profile (set via the "Mint"
@@ -7769,8 +7806,8 @@
             ${route.view === "inactive" && html`<${InactivePage} onCompany=${goCompany} onOpenDept=${openDept} divisionKey=${route.divisionKey} />`}
             ${route.view === "spare-parts" && html`<${SparePartsPage} onCompany=${goCompany} onOpenMachine=${openMachine} onOpenDept=${openDept} lockDivisionKey=${route.divisionKey} />`}
             ${route.view === "my-schedule" && (activeRole
-              ? html`<${RoleSchedulePage} role=${activeRole} onCompany=${goCompany} onOpenWo=${setWoId} />`
-              : html`<${MySchedulePage} user=${getRawUser()} onCompany=${goCompany} onOpenWo=${setWoId} />`)}
+              ? html`<${RoleSchedulePage} role=${activeRole} onCompany=${goCompany} onOpenWo=${setWoId} defaultDivisionKey=${route.divisionKey || ""} />`
+              : html`<${MySchedulePage} user=${getRawUser()} onCompany=${goCompany} onOpenWo=${setWoId} defaultDivisionKey=${route.divisionKey || ""} />`)}
             ${route.view === "division" && html`
               <${DivisionDashboard} divisionKey=${route.divisionKey || "bla"} onHome=${goCompany}
                 refreshSignal=${dataVersion}

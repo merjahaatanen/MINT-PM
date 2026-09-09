@@ -1,0 +1,143 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+5368,EQ ID 5368,125 HP Compressor,Maintenance,16508,Change Oil,Pending,6/29/2026,,Outside Service,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,9841,"1) Remove and inspect 3 or 4 filter bags per instructions
+2) Remove inlet taper and inspect fan wheel per instructions
+3) Check fan housing and surrounding structures for loose bolts, wear, etc.
+4) Check fan v-belt conditions per instructions
+5) Check fan for noise, vibration, dust leaks, etc.
+6) Check fan motor housing for abnormally high temperatures
+7) Check operation of rotary airlock
+8) Check rotary air lock gearbox for excessive heat, check oil level
+9) Check cleaning pulses per instructions
+10) Check entire filter structure for leaks, loose bolts, and vibration
+11) Check explosion door seals
+12) Inspect rotary air lock chain for correct tension and alignment",Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,315,Replace batteries in Flamex control panel.,Pending,3/18/2026,,Outside Service,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,9770,"1) Check fan bearings for heat build up (200 degrees max)
+2) Grease bearings on main drive motor per instructions
+3) Grease bearings on both side of air lock and motor
+4) Grease fan bearings as required
+5) Inspect Motor cleanliness (clean if necessary)",Pending,2/16/2024,,Technician,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,9844,Have Flamex technician perform certification test and recalibrate control panel.,Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,316,"1) Check fan bearings for heat build up (200 degrees max)
+2) Grease bearings on main drive motor per instructions
+3) Grease bearings on both side of air lock and motor
+4) Grease fan bearings as required
+5) Inspect Motor cleanliness (clean if necessary)",Closed and Completed,4/18/2022,Dan Taylor,Technician,1.00,0.00,0.00,4/28/2022,Dan Taylor - 04/28/22 11:03:06 AM: Completed 4/28/2022,[]
+568,EQ ID 568,Dust Collection System,Maintenance,317,Have Flamex technician perform certification test and recalibrate control panel.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,314,"1) Remove and inspect 3 or 4 filter bags per instructions
+2) Remove inlet taper and inspect fan wheel per instructions
+3) Check fan housing and surrounding structures for loose bolts, wear, etc.
+4) Check fan v-belt conditions per instructions
+5) Check fan for noise, vibration, dust leaks, etc.
+6) Check fan motor housing for abnormally high temperatures
+7) Check operation of rotary airlock
+8) Check rotary air lock gearbox for excessive heat, check oil level
+9) Check cleaning pulses per instructions
+10) Check entire filter structure for leaks, loose bolts, and vibration
+11) Check explosion door seals
+12) Inspect rotary air lock chain for correct tension and alignment",Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,2670,"1) Check fan bearings for heat build up (200 degrees max)
+2) Grease bearings on main drive motor per instructions
+3) Grease bearings on both side of air lock and motor
+4) Grease fan bearings as required
+5) Inspect Motor cleanliness (clean if necessary)",Closed and Completed,11/13/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,3196,Grease the auger bearings #2 grease,Closed and Completed,2/1/2024,Bart James,Maintenance Mechanic,0.00,0.00,0.50,6/5/2025,"Dale Kee - 06/09/25 12:35:50 PM: The bearing was making a bit of noise. Grease had a lot of dust in the bearing, cleaned and oiled the bearing with a heavy weight oil.",[]
+708,EQ ID 708,General Maintenance,Maintenance,483,Clean manufacturing conference room window ledge.,Closed and Completed,4/18/2022,.,Technician,0.00,0.00,0.00,1/10/2024,,[]
+1795,EQ ID 1795,VRC 2-Post Straddle Elevator- Hydraulic,Maintenance,4443,"Check the fluid level to make sure it is at the full mark.
+Check for frays and kinks in the inlet line.
+Check the hyd. fluid to see if it is cloudy, off color, contains suspended settlement, or have liquid layers. Change fluid if needed.
+Check or change the fluid filter. 10 microns or less is recommended.",Closed and Completed,8/18/2023,.,Maintenance Mechanic,0.00,0.00,0.00,1/18/2024,,[]
+681,EQ ID 681,Banding Shredder,Maintenance,11742,"Disconnect power & 
+1) Knife removal & rotation
+- Remove feed works guard assembly, then remove 4 bolts holding feed works in place
+- Begin swinging the feed works open. The chain connecting the feed works to the gear reducer can be slipped off once of the sprockets.
+- Pivot feed works assembly clear. Remove the infeed material guide by removing 4 button head screws. Both knifes can be accessed through opening in front housing, you may have to rotate flywheel by hand to bring knife to access hole.
+- Remove bolts securing knifes. If there is a shim in knife pocket, leave in place when rotating knife edge.
+- Clean knife pockets thoroughly and move any burrs on the used knife edge to assure it is set properly.
+- Replace knife in pocket and lightly tighten bolts. Seat knife by tapping it with brass hammer.
+-Finish tightening the bolts with a torque wrench (60 ft-lb)",Pending,5/20/2026,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+569,EQ ID 569,RTU 1,Maintenance,318,PM by Subcontractor,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+570,EQ ID 570,RTU 2,Maintenance,319,PM by subcontractor.,Closed and Completed,9/18/2022,/,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+571,EQ ID 571,RTU 3,Maintenance,320,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+572,EQ ID 572,RTU 4,Maintenance,321,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+573,EQ ID 573,RTU 5,Maintenance,322,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+574,EQ ID 574,RTU 6,Maintenance,323,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+575,EQ ID 575,RTU 7,Maintenance,324,PM by subcontractor,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+576,EQ ID 576,RTU 8,Maintenance,325,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+577,EQ ID 577,RTU 9,Maintenance,326,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+578,EQ ID 578,RTU 10,Maintenance,327,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+579,EQ ID 579,RTU 11,Maintenance,328,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+580,EQ ID 580,EF-1,Maintenance,9797,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+580,EQ ID 580,EF-1,Maintenance,329,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+581,EQ ID 581,EF-2,Maintenance,9761,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+581,EQ ID 581,EF-2,Maintenance,330,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+582,EQ ID 582,EF-3,Maintenance,9764,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+582,EQ ID 582,EF-3,Maintenance,331,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+583,EQ ID 583,EF-4,Maintenance,9750,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+583,EQ ID 583,EF-4,Maintenance,332,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+584,EQ ID 584,EF-5,Maintenance,9775,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+584,EQ ID 584,EF-5,Maintenance,333,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+585,EQ ID 585,EF-6,Maintenance,9751,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+585,EQ ID 585,EF-6,Maintenance,334,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+586,EQ ID 586,EF-7,Maintenance,9766,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+586,EQ ID 586,EF-7,Maintenance,335,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,9872,Fire/Security system test. Inspect/clean smoke detectors included.,Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,339,Waste Management PM on garbage compactor. Call for service.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,336,Fire/Security system test. Inspect/clean smoke detectors included.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,338,Quarterly sprinkler test by Superior Fire Protection.,Closed and Completed,6/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,9873,Waste Management PM on garbage compactor. Call for service.,Closed and Completed,1/16/2025,Waste Management,Outside Service,0.00,0.00,0.00,5/2/2026,Dale Kee - 06/02/26  7:57:08 AM: Replaced the can,[]
+590,EQ ID 590,Man Lift,Maintenance,9732,PM by Lily Co.,Pending,4/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+590,EQ ID 590,Man Lift,Maintenance,340,PM by Lily Co.,Closed and Completed,6/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+591,EQ ID 591,"Dock Doors, Plates Locks, Rapid Roll and Fire Doors",Maintenance,9620,Check Doc-Loc communication bulbs,Pending,2/10/2024,,Technician,0.00,0.00,0.00,,,[]
+591,EQ ID 591,"Dock Doors, Plates Locks, Rapid Roll and Fire Doors",Maintenance,9735,"Inspect Doors, Plates and Doc-Loc operation",Pending,4/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+591,EQ ID 591,"Dock Doors, Plates Locks, Rapid Roll and Fire Doors",Maintenance,341,Check Doc-Loc communication bulbs,Closed and Completed,4/18/2022,.,Technician,0.00,0.00,0.00,1/10/2024,,[]
+591,EQ ID 591,"Dock Doors, Plates Locks, Rapid Roll and Fire Doors",Maintenance,342,"Inspect Doors, Plates and Doc-Loc operation",Closed and Completed,6/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+592,EQ ID 592,10 gal. Water Heaters,Maintenance,9871,Check operation and drain tank.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+592,EQ ID 592,10 gal. Water Heaters,Maintenance,343,Check operation and drain tank.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+593,EQ ID 593,Building,Maintenance,9860,Have sprinkler system alarm tested.,Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+593,EQ ID 593,Building,Maintenance,9861,Have security alarm system tested.,Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+593,EQ ID 593,Building,Maintenance,9609,"1) Check all lighting and replace bulbs.
+2) Inspect Roof
+3) Check all lighting (replace bulbs as necessary)
+4) Inspect all appliances
+5) Inspect all door locks
+6) Inspect all plumbing
+7) Inspect Compressor/Generator room
+8) Inspect building and grounds",Pending,2/10/2024,,Technician,0.00,0.00,0.00,,,[]
+593,EQ ID 593,Building,Maintenance,344,Have sprinkler system alarm tested.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+593,EQ ID 593,Building,Maintenance,345,Have security alarm system tested.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+593,EQ ID 593,Building,Maintenance,346,"1) Check all lighting and replace bulbs.
+2) Inspect Roof
+3) Check all lighting (replace bulbs as necessary)
+4) Inspect all appliances
+5) Inspect all door locks
+6) Inspect all plumbing
+7) Inspect Compressor/Generator room
+8) Inspect building and grounds",Closed and Completed,4/18/2022,.,Technician,0.00,0.00,0.00,1/10/2024,,[]
+627,EQ ID 627,Appliances,Maintenance,9903,Clean refrigeration coils on ice makers and refrigerators.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+627,EQ ID 627,Appliances,Maintenance,9748,"1)  Clean dust from back of microwaves and air circulation panel in ice makers and refrigerators.
+2)  Clean out ice makers with ""Ice Maker Solution"" per instructions on doors.",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+627,EQ ID 627,Appliances,Maintenance,399,Clean refrigeration coils on ice makers and refrigerators.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+627,EQ ID 627,Appliances,Maintenance,400,"1)  Clean dust from back of microwaves and air circulation panel in ice makers and refrigerators.
+2)  Clean out ice makers with ""Ice Maker Solution"" per instructions on doors.",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,9827,"1) Inspect all LED's and test system per instructions
+2) Flamex technician to perform certification tests and recalibrate control panel.",Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,11737,"1) Wipe off cabinet and blow off inside with low pressure air. Be careful not to damage any internal components or circuits.
+2) Detector line should be activated by flashing light, make sure the fire LED & buzzer alerts.",Pending,5/31/2024,,Operator,0.00,0.00,0.00,,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,11739,"Detectors
+1) Remove cover & inspect detectors to ensure that they are free of dust and moisture. If any dust is present blow out with low pressure and dry out ant moisture completely. 
+2) Entry point should be found and sealed with caulking. 
+3) Inspect detector lenses and clean if there is buildup of material. Lens should have a shiny black appearance with no cracks or chips.
+4) Each detector should be tested for proper operation. This is done by exposing them to sunlight or a flashlight directly in front of lens. Detector should activate properly each time.",Pending,7/17/2024,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,11740,"Extinguishing Device
+1) The strainer on each should be removed and inspected, any build up should be cleaned off.
+2) While testing, assembly should be activated so water is sprayed at least once. Be sure to hat switch is returned to normal condition after completion of test.",Pending,7/17/2024,,Operator,0.00,0.00,0.00,,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,884,"1) Inspect all LED's and test system per instructions
+2) Flamex technician to perform certification tests and recalibrate control panel.",Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+567,EQ ID 567,Band Saw,Maintenance,9986,"1) Clean all metal chips and debris from saw.
+2) Check all safety devices",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+567,EQ ID 567,Band Saw,Maintenance,313,"1) Clean all metal chips and debris from saw.
+2) Check all safety devices",Closed and Completed,4/18/2022,Jimmy Sadler,Operator,0.50,0.00,0.00,3/7/2023,Jimmy Sadler - 03/08/23 10:44:52 AM: Done,[]
+567,EQ ID 567,Band Saw,Maintenance,4725,"1) Clean all metal chips and debris from saw.
+2) Check all safety devices",Closed and Completed,4/8/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
