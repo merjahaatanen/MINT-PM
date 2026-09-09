@@ -430,7 +430,7 @@ log (the frontend remembers it in \code{localStorage}).
 All endpoints return JSON. Read endpoints are unauthenticated on the LAN.
 
 \subsubsection{Navigation and Dashboards}
-\begin{longtable}{@{}p{0.10\textwidth}>{\ttfamily\small}p{0.50\textwidth}p{0.33\textwidth}@{}}
+\begin{longtable}{@{}p{0.16\textwidth}>{\ttfamily\small}p{0.45\textwidth}p{0.31\textwidth}@{}}
 \toprule
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
@@ -449,17 +449,17 @@ GET & /api/inactive & All soft-deleted departments/machines. \\
 \end{longtable}
 
 \subsubsection{Work-Order Lifecycle}
-\begin{longtable}{@{}p{0.13\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.33\textwidth}@{}}
+\begin{longtable}{@{}p{0.17\textwidth}>{\ttfamily\small}p{0.44\textwidth}p{0.31\textwidth}@{}}
 \toprule
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
 \endhead
 POST & /api/workorders & Create a WO; fires the new-unscheduled e-mail. \\
-PATCH/PUT & /api/workorder/<wo\_id> & Field-level edit of any WO; fires the completed e-mail on status transition. \\
+PATCH / PUT & /api/workorder/<wo\_id> & Field-level edit of any WO; fires the completed e-mail on status transition. \\
 DELETE & /api/workorder/<wo\_id> & Delete a manual WO (admin-gated; scraped WOs cannot be deleted). \\
 POST & /api/workorder/<wo\_id>/stop-recurrence & Stop a recurring series (admin-gated). \\
 POST & /api/workorder/<wo\_id>/solutions & Append a solution-log entry. \\
-GET/POST & /api/workorder/<wo\_id>/attachments & List / upload attachments. \\
+GET / POST & /api/workorder/<wo\_id>/attachments & List / upload attachments. \\
 GET & /api/attachments/<att\_id> & Download an attachment. \\
 GET & /api/workorder/<wo\_id>/audit & WO change history (admin-gated). \\
 POST & /api/workorder/<wo\_id>/assign & Assign to a technician (Sean-gated). \\
@@ -467,7 +467,7 @@ POST & /api/workorder/<wo\_id>/assign & Assign to a technician (Sean-gated). \\
 \end{longtable}
 
 \subsubsection{Structure Management}
-\begin{longtable}{@{}p{0.13\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.33\textwidth}@{}}
+\begin{longtable}{@{}p{0.17\textwidth}>{\ttfamily\small}p{0.44\textwidth}p{0.31\textwidth}@{}}
 \toprule
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
@@ -477,37 +477,37 @@ POST & /api/machines & Create a machine. \\
 POST & /api/departments/<dk>/deactivate\ \textbar\ restore & Soft-delete / restore a department. \\
 POST & /api/machines/deactivate\ \textbar\ restore & Soft-delete / restore a machine. \\
 POST & /api/departments/<dk>/machines/<eq>/nickname & Set/clear a display nickname (admin-gated). \\
-GET/POST & /api/technicians & List / add technicians. \\
+GET / POST & /api/technicians & List / add technicians. \\
 DELETE & /api/technicians/<name> & Remove a technician. \\
 GET & /api/roles, /api/roles/views & List active roles; public role/view-key pairs. \\
 POST & /api/roles & Add a role with aliases (Sean-gated). \\
 DELETE & /api/roles/<name> & Delete a role (Sean-gated). \\
 POST & /api/roles/<name>/view & Assign a view profile to a role (master-gated). \\
-GET/POST/DELETE & /api/view-profiles[/<key>] & List (open) / create-update / delete (master-gated) view profiles. \\
-GET/POST & /api/departments/<dk>/floorplan & Read / save (admin-gated) a department floor plan. \\
+GET / POST / DELETE & /api/view-profiles[/<key>] & List (open) / create-update / delete (master-gated) view profiles. \\
+GET / POST & /api/departments/<dk>/floorplan & Read / save (admin-gated) a department floor plan. \\
 \bottomrule
 \end{longtable}
 
 \subsubsection{Spare Parts, Machine Info, and Vendor Contacts}
-\begin{longtable}{@{}p{0.15\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.31\textwidth}@{}}
+\begin{longtable}{@{}p{0.19\textwidth}>{\ttfamily\small}p{0.43\textwidth}p{0.30\textwidth}@{}}
 \toprule
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
 \endhead
 GET & /api/spare-parts & Global spare-parts list, newest first. \\
 GET & /api/spare-parts/options & Departments/machines/divisions for the create/edit form. \\
-POST/PATCH/DELETE & /api/spare-parts[/<id>] & Create / edit / delete a part (admin-gated). \\
+POST / PATCH / DELETE & /api/spare-parts[/<id>] & Create / edit / delete a part (admin-gated). \\
 GET & /api/departments/<dk>/machines/<eq>/spare-parts & Parts linked to one machine. \\
-GET, PATCH/POST & /api/departments/<dk>/machines/<eq>/info & Read / update the editable Machine Info record. \\
+GET, PATCH / POST & /api/departments/<dk>/machines/<eq>/info & Read / update the editable Machine Info record. \\
 POST & /api/departments/<dk>/machines/<eq>/parse-notes & LLM sorts free-form notes into structured contacts/logins/purchase info. \\
 GET & /api/vendor-contacts & Combined vendor list. \\
-POST/PATCH/DELETE & /api/vendor-contacts[/<id>] & Create / edit / delete vendor contacts (edit-gated). \\
-POST/DELETE & /api/vendor-contact-types[/<name>] & Manage contact types (edit-gated). \\
+POST / PATCH / DELETE & /api/vendor-contacts[/<id>] & Create / edit / delete vendor contacts (edit-gated). \\
+POST / DELETE & /api/vendor-contact-types[/<name>] & Manage contact types (edit-gated). \\
 \bottomrule
 \end{longtable}
 
 \subsubsection{Analytics and AI}
-\begin{longtable}{@{}p{0.10\textwidth}>{\ttfamily\small}p{0.52\textwidth}p{0.31\textwidth}@{}}
+\begin{longtable}{@{}p{0.17\textwidth}>{\ttfamily\small}p{0.46\textwidth}p{0.29\textwidth}@{}}
 \toprule
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
@@ -516,17 +516,17 @@ GET & /api/departments/<dk>/machines/<eq>/trends & Per-machine monthly KPI trend
 GET & /api/departments/<dk>/trends & Department monthly trends. \\
 GET & /api/departments/<dk>/machines-trends & Per-machine yearly totals (Pareto chart). \\
 GET & \ldots/month-synopsis & LLM synopsis of what drove a month's stats. \\
-GET/POST/PUT & \ldots/guide & Read / generate / save-edit the checklist (edit-gated for writes). \\
+GET / POST / PUT & \ldots/guide & Read / generate / save-edit the checklist (edit-gated for writes). \\
 POST & \ldots/guide/update & AI update with new work orders. \\
 GET & \ldots/guide/versions[/<n>] & Version history / a specific version. \\
 POST & \ldots/guide/versions/<n>/restore & Restore an old checklist version. \\
-GET/POST/DELETE & /api/calendar-events[/<id>] & Calendar entries. \\
-GET/POST/DELETE & /api/chart-events[/<id>] & Global chart timeline markers (edit-gated). \\
+GET / POST / DELETE & /api/calendar-events[/<id>] & Calendar entries. \\
+GET / POST / DELETE & /api/chart-events[/<id>] & Global chart timeline markers (edit-gated). \\
 \bottomrule
 \end{longtable}
 
 \subsubsection{System and E-mail}
-\begin{longtable}{@{}p{0.13\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.33\textwidth}@{}}
+\begin{longtable}{@{}p{0.17\textwidth}>{\ttfamily\small}p{0.44\textwidth}p{0.31\textwidth}@{}}
 \toprule
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
@@ -534,7 +534,7 @@ GET/POST/DELETE & /api/chart-events[/<id>] & Global chart timeline markers (edit
 POST & /api/reload & Force a data reload. \\
 GET & /api/edit-auth, /api/admin-auth, /api/sean-auth & Whether each gate is password-protected. \\
 POST & /api/verify-\{edit\textbar admin\textbar sean\}-password & Verify a supplied password. \\
-GET/POST & /api/email/status, /api/email/recipients & E-mail configuration status / recipient list. \\
+GET / POST & /api/email/status, /api/email/recipients & E-mail configuration status / recipient list. \\
 POST & /api/email/test, /api/email/weekly-digest & Send a test e-mail / trigger the weekly digest. \\
 \bottomrule
 \end{longtable}
