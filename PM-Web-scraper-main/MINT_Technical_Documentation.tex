@@ -1,0 +1,785 @@
+\documentclass[11pt,a4paper]{article}
+
+% =============================================================================
+% MINT + PM Web Scraper -- Technical Documentation
+% Paste this entire file into a new Overleaf project as main.tex and
+% compile with pdfLaTeX.
+% =============================================================================
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{enumitem}
+
+\setlist{nosep, leftmargin=1.4em}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    urlcolor=blue!60!black,
+    pdftitle={MINT + PM Web Scraper - Technical Documentation},
+    pdfauthor={Bobrick Washroom Equipment - Maintenance Engineering}
+}
+
+\definecolor{codebg}{RGB}{245,245,245}
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{codebg},
+    frame=single,
+    framerule=0pt,
+    breaklines=true,
+    columns=fullflexible,
+    keepspaces=true,
+    showstringspaces=false
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\title{\textbf{MINT + PM Web Scraper}\\[4pt]
+       \Large Technical Documentation\\[4pt]
+       \normalsize Bobrick Maintenance Dashboard \& Preventive-Maintenance Data Platform}
+\author{Bobrick Washroom Equipment --- Maintenance Engineering}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% =============================================================================
+\section{Introduction}
+% =============================================================================
+
+\subsection{Purpose}
+This document describes the architecture, data model, APIs, and operational
+procedures of \textbf{MINT} (Maintenance INTelligence) and its companion
+\textbf{PM Web Scraper}. Together they form a self-hosted maintenance
+management platform for Bobrick Washroom Equipment that:
+
+\begin{itemize}
+    \item Scrapes historical work-order data from the legacy Bobrick PM
+          system (\code{circaweb.bobrick.com/PME}) using a live, logged-in
+          Chrome browser session, across multiple company divisions.
+    \item Serves a single-page web dashboard with a four-level drill-down:
+          \emph{Company} $\rightarrow$ \emph{Division} $\rightarrow$
+          \emph{Department} $\rightarrow$ \emph{Machine}.
+    \item Acts as the system of record going forward: users create and edit
+          work orders, machines, departments, vendor contacts, spare parts
+          and machine information directly in MINT, layered on top of the
+          frozen scraped snapshot.
+    \item Generates and maintains AI-assisted per-machine troubleshooting
+          checklists (LLM-backed, with full version history and manual-edit
+          preservation).
+    \item Sends e-mail notifications for new unscheduled work orders,
+          completed work orders, and a weekly scheduled-maintenance digest.
+\end{itemize}
+
+\subsection{Scope}
+The system runs as a single Python/Flask process, reachable on the local
+LAN. All state lives on the local file system: JSON snapshots, SQLite
+databases, Markdown checklists, and uploaded attachments. The only external
+services are optional LLM providers (Ollama Cloud or Google Gemini) and an
+optional SMTP server for notifications.
+
+\subsection{Terminology}
+\begin{description}
+    \item[PM system] The legacy Bobrick preventive-maintenance web
+          application being scraped.
+    \item[MINT] The dashboard application described in this document.
+    \item[WO] Work order. \emph{Unscheduled} (breakdown/repair) or
+          \emph{Scheduled} (preventive maintenance).
+    \item[Division] A Bobrick business unit (e.g.\ BLA, BED, BMC). Each is
+          scraped and stored independently.
+    \item[EQ ID] Equipment identifier; machines are addressed by the numeric
+          portion of their equipment ID.
+    \item[Machine / Equipment] Used interchangeably throughout the codebase.
+    \item[Checklist / Guide] The per-machine AI troubleshooting checklist
+          (Markdown, stored under \code{guides/}).
+\end{description}
+
+% =============================================================================
+\section{System Overview}
+% =============================================================================
+
+\subsection{High-Level Architecture}
+The platform is organized into five logical layers.
+
+\begin{enumerate}
+    \item \textbf{Acquisition layer} --- \code{scraper.py},
+          \code{chrome\_session.py}, \code{run\_parallel.py},
+          \code{nightly\_update.py}. Drives a real, already-logged-in Chrome
+          browser via the DevTools remote-debugging protocol to extract
+          every work order, comment, and attachment from the PM system.
+          Output is written to per-department JSON/CSV snapshot files, and
+          is division-aware so any Bobrick division can be scraped with the
+          same pipeline.
+    \item \textbf{Storage layer} --- Frozen scraped JSON snapshots
+          (read-only) plus two SQLite databases: \code{mint\_data/mint.db}
+          for all user-created and user-edited data, and
+          \code{guides/versions.db} for checklist version history. Uploaded
+          files live under \code{mint\_data/attachments/}.
+    \item \textbf{Application layer} --- \code{server.py}, a Flask
+          application that merges the frozen snapshot with the live store at
+          load time, exposes a JSON REST API, and hosts background jobs
+          (weekly e-mail digest, recurring-PM generation, Chrome session
+          bootstrap).
+    \item \textbf{Intelligence layer} --- \code{analyze\_equipment.py} and
+          \code{guide\_engine.py}. LLM-backed trend analysis, monthly
+          synopses, and troubleshooting-checklist generation via Ollama
+          Cloud or Google Gemini.
+    \item \textbf{Presentation layer} --- \code{webapp/index.html}, a single
+          self-contained single-page application built with React (via
+          \code{htm} and Babel standalone), Tailwind CSS, \code{marked} for
+          Markdown rendering, and \code{jsPDF} for client-side PDF export.
+          All frontend dependencies are vendored locally so the app works
+          fully offline on the LAN.
+\end{enumerate}
+
+\subsection{Data Flow}
+\begin{lstlisting}
+ Legacy PM site (circaweb.bobrick.com/PME), any division
+        |  logged-in Chrome, DevTools port auto-detected
+        v
+ scraper.py / run_parallel.py / nightly_update.py
+        |  writes
+        v
+ divisions/<slug>/work_orders_*.json/.csv   (frozen snapshot, BLA at root)
+        |                                mint_data/mint.db  (user writes)
+        |                                guides/*.md + versions.db
+        v                                /
+ server.py  reload_data(): merge snapshot + store, apply overrides,
+        |   hide inactive items, index by wo_id
+        v
+ JSON REST API (/api/...)  <---->  webapp/index.html (React SPA)
+        |
+        v
+ mint_email.py  (SMTP notifications, inert until configured)
+\end{lstlisting}
+
+\subsection{Key Design Principles}
+\begin{description}
+    \item[Frozen snapshot + write layer] Scraped PM data is never mutated.
+          User changes live in SQLite and are merged over the snapshot at
+          load time. Field-level edits to any WO (scraped or manual) are
+          stored as JSON patches.
+    \item[Attributability] Every mutating API call requires an
+          \code{author} (``Your name'') and writes an audit-log row.
+    \item[Soft deletion] Departments and machines are never hard-deleted;
+          they are flagged inactive and can be restored.
+    \item[Manual-edit preservation] Operator edits to AI checklists are
+          diffed into an append-only edit log that is re-injected into every
+          future LLM prompt, so edits survive full regeneration.
+    \item[Fail-safe scraping] Nightly rescrapes write to temp files and are
+          only promoted over live data when the result looks valid; an
+          expired login can never wipe good data.
+    \item[Offline-first frontend] All JavaScript/CSS dependencies are
+          vendored; the app requires no CDN or internet connection to
+          render.
+\end{description}
+
+% =============================================================================
+\section{Repository Layout}
+% =============================================================================
+
+\begin{longtable}{@{}>{\ttfamily}p{0.40\textwidth}p{0.55\textwidth}@{}}
+\toprule
+\textbf{Path} & \textbf{Description} \\
+\midrule
+\endhead
+server.py & Flask backend, REST API, background schedulers. \\
+mint\_store.py & SQLite write store for all user-created data. \\
+mint\_email.py & SMTP notification module (inert until configured). \\
+version\_store.py & Append-only checklist version history (SQLite). \\
+guide\_engine.py & Checklist create/edit/archive/regenerate engine. \\
+analyze\_equipment.py & LLM trend analysis, stats, prompt building, transport. \\
+scraper.py & Live-browser PM work-order scraper. \\
+chrome\_session.py & Persistent logged-in debug-Chrome session manager. \\
+run\_parallel.py & Multi-department scrape orchestration, per division. \\
+nightly\_update.py & Full rescrape + checklist regeneration cycle. \\
+parse\_html.py & HTML parsing helpers for captured pages / equipment lists. \\
+enrich\_assigned\_to.py & One-time backfill of Owner / Assigned-To fields. \\
+build\_vendor\_contacts.py & Builds the vendor contact list from source CSVs. \\
+import\_machine\_longevity.py & Imports the machine-longevity CSV into machine\_info. \\
+webapp/index.html & The entire SPA frontend (single file). \\
+webapp/vendor/ & Vendored react, react-dom, htm, babel, tailwind, marked, jspdf. \\
+guides/ & Live checklists, baselines/, edits/, archive/, versions.db. \\
+mint\_data/ & mint.db, attachments/, email\_recipients.json (git-ignored). \\
+divisions/<slug>/ & Per-division scraped snapshots, pages mirror, profiles. \\
+pages/ & Offline mirror of every scraped BLA page. \\
+work\_orders\_*.json/.csv & Frozen BLA scraped snapshots (master + per department). \\
+equipment\_data.json/.csv & Scraped equipment master list (BLA). \\
+start\_chrome\_debug.bat & Manual launcher for the debug Chrome profile. \\
+requirements.txt & Python dependencies. \\
+.env & Local secrets/config (git-ignored; see \S\ref{sec:config}). \\
+\bottomrule
+\end{longtable}
+
+% =============================================================================
+\section{Acquisition Layer (Scraping)}
+% =============================================================================
+
+\subsection{Chrome Session Management}
+The scraper attaches to a real Chrome browser that a human has logged into
+the PM site, so no credentials are stored in code.
+
+\begin{enumerate}
+    \item Chrome is launched once with a dedicated profile and
+          \code{--remote-debugging-port=0}, letting Chrome pick a free port.
+    \item The chosen port is read from the \code{DevToolsActivePort} file
+          Chrome writes into the profile directory, then verified against
+          the debug endpoint.
+    \item The window is left open so a human can re-login if the session
+          expires; the same session is reused for every scrape.
+\end{enumerate}
+
+Standalone usage: \code{python chrome\_session.py} (launch and print port)
+or \code{python chrome\_session.py --status} (report port and login state).
+
+\subsection{Work-Order Scraper}
+For every equipment record, the scraper:
+\begin{enumerate}
+    \item Opens the Equipment Dashboard for that machine.
+    \item Iterates every row of the Unscheduled Work Orders grid, opening
+          the Edit Work Order dialog for each.
+    \item Captures date notified, urgency, problem, status, material cost,
+          labor time, work performed by, downtime hours, completed
+          date/time, the full comment log with timestamps, and all
+          attachment filenames. Two distinct people/teams are captured on
+          every WO: \code{owner} (who reported it) and \code{assigned\_to}
+          (the skill/team it is assigned to) --- these are different
+          concepts and are kept separate end to end.
+    \item Repeats the same for the Scheduled (PM) grid.
+\end{enumerate}
+
+Every visited page is mirrored into \code{pages/} (form state baked in,
+scripts stripped), enabling a full offline replay with
+\code{python scraper.py --from-html} against a private headless Chrome ---
+useful for testing scraper changes without touching the live site.
+\code{enrich\_assigned\_to.py} is a one-time backfill script that
+re-derives the owner / assigned-to fields from saved HTML exports for
+records scraped before the distinction existed.
+
+\subsection{Multi-Division Scraping}
+\label{sec:divisions}
+The scraper and orchestrator are division-aware so the same pipeline used
+for BLA can target any division exposed by the PM system's division
+dropdown (BLA, BED, BMC, BWEC, KKP, BGD, CIT):
+
+\begin{itemize}
+    \item \code{scraper.py --division <slug>} routes all output paths under
+          \code{divisions/<slug>/} instead of the repository root. BLA,
+          with no \code{--division} flag, is unchanged and still writes to
+          the root.
+    \item The Chrome session actively sets the division selector before
+          scraping, since it does not inherit whatever division was last
+          selected interactively.
+    \item \code{--equipment-list-only} builds just that division's
+          equipment master; a heuristic warns if scraped equipment IDs
+          collide heavily with BLA's, indicating the selector did not take
+          effect.
+    \item \code{run\_parallel.py --division <slug>} discovers that
+          division's departments and scrapes them the same way as BLA
+          (per-department parallel jobs), namespaced under
+          \code{divisions/<slug>/}.
+    \item \textbf{Status:} BLA is fully scraped at the repository root. BED
+          has a complete scrape under \code{divisions/bed/}. Other
+          divisions are scraped incrementally with the same pipeline;
+          department keys are namespaced per division (e.g.\
+          \code{bed\_maintenance}) to avoid collisions with identically
+          named departments in other divisions.
+\end{itemize}
+
+\subsection{Nightly Update Cycle}
+One cycle (\code{python nightly\_update.py}) performs, in order:
+\begin{enumerate}
+    \item Archives every current checklist into a timestamped folder.
+    \item Snapshots current unscheduled WO IDs per machine, to detect what
+          is new after the scrape.
+    \item Rescrapes all departments sequentially through the single logged
+          in Chrome. Results go to temp files first and are only promoted
+          over live per-department files when valid. A per-department
+          timeout kills hung departments so the run continues.
+    \item Merges per-department files into the master snapshot files.
+    \item Regenerates checklists only for machines that gained new
+          unscheduled WOs, preserving all manual edits.
+    \item Reloads the server's in-memory data so the frontend updates
+          immediately.
+\end{enumerate}
+
+% =============================================================================
+\section{Storage Layer}
+% =============================================================================
+
+\subsection{Frozen Scraped Snapshots}
+Scraped data lives in flat JSON/CSV files per department, e.g.\
+\code{work\_orders\_unscheduled\_toilet\_partitions.json} (or under
+\code{divisions/<slug>/} for non-BLA divisions). These files are treated as
+read-only historical truth; the application never rewrites them outside the
+nightly promotion step.
+
+\subsection{MINT Write Store (SQLite)}
+\label{sec:store}
+Database: \code{mint\_data/mint.db}. A module-level write lock serializes
+writes so ID assignment stays atomic. Manual work orders receive the prefix
+\code{M-} so they can never collide with the purely numeric PM WO numbers.
+
+\begin{longtable}{@{}>{\ttfamily}p{0.24\textwidth}p{0.71\textwidth}@{}}
+\toprule
+\textbf{Table} & \textbf{Purpose / key columns} \\
+\midrule
+\endhead
+divisions & Company $\rightarrow$ division layer: \code{key} (PK), \code{name}. \\
+departments & User-added departments: \code{key} (PK), \code{name}, \code{label}, \code{division\_key}. Scraped departments are configured statically. \\
+machines & User-added machines: \code{eq\_id}, \code{equipment\_name}, \code{dept\_key}, \code{make}, \code{model}, \code{vendor}, \code{asset\_num}. \\
+work\_orders & Manually created WOs: \code{wo\_id} (PK, \code{M-} prefixed), \code{wo\_type}, \code{department\_key}, equipment fields, full record as JSON. \\
+wo\_overrides & Field-level edits applied to any WO (scraped or manual): \code{wo\_id} (PK) $\rightarrow$ JSON patch. \\
+solutions & Append-only Solution log entries per WO (used instead of comments on unscheduled WOs). \\
+attachments & Uploaded file metadata; bytes live under \code{mint\_data/attachments/}. \\
+inactive\_items & Soft-delete flags. PK is (\code{item\_type}, \code{item\_key}). \\
+audit\_log & Who did what and when: \code{wo\_id}, \code{author}, \code{action}, \code{detail}, timestamp. \\
+calendar\_events & User calendar entries (date, department, equipment, title, description). \\
+chart\_events & Global timeline markers rendered on every trend chart. \\
+machine\_info & Editable machine information / longevity data, PK (\code{dept\_key}, \code{eq\_id}): category, location, serial/asset number, year, condition, service status, replacement cost/year, comments, LLM-parsed summary. \\
+technicians & Individually tracked technician roster with aliases and an active flag. \\
+roles & Shared ``assigned-to'' identities (e.g.\ ``QA Technician'') multiple people can sign in as for My Schedule, without individual tracking: \code{name} (PK), aliases, active flag, assigned \code{view\_key}. \\
+view\_profiles & Named, saved sets of enabled UI features that can be assigned to a role, so it sees only a curated subset of MINT. \\
+vendor\_contacts & Editable Vendor \& Utilities list: company, contact, address, phone/cell/fax, email, type, service-contract fields, linked equipment IDs. \\
+vendor\_contact\_types & Contact-type lookup; deletion blocked while a contact still references the type. \\
+floorplan\_items & Interactive floor-plan boxes per department: id, dept\_key, optional machine link, label, position/size, z-order. \\
+machine\_nicknames & Admin-set display name overriding the scraped PM equipment name, PK (\code{dept\_key}, \code{eq\_id}). \\
+spare\_parts & Division-scoped spare-parts inventory: description, digital ID, picture, primary machine link, part type, location, quantity, condition, brand, set membership, purchasing info, barcode. \\
+spare\_part\_machines & Many-to-many link from a part to additional machines beyond its primary one. \\
+\bottomrule
+\end{longtable}
+
+Schema creation is idempotent (\code{CREATE TABLE IF NOT EXISTS}) with
+lightweight migrations for columns added after initial release.
+
+\subsection{Checklist Version Store}
+Database: \code{guides/versions.db}. Every change to a checklist --- AI
+generated, AI updated, or hand-edited --- is recorded as a new immutable
+version containing the full Markdown, with source (\code{ai\_generate},
+\code{ai\_update}, \code{manual\_edit}, \code{import}, \code{restore}),
+author, timestamp, and linked previous/next version references.
+
+% =============================================================================
+\section{Application Layer (server.py)}
+% =============================================================================
+
+\subsection{Startup Sequence}
+Running \code{python server.py}: loads \code{.env}, performs the initial
+data merge, best-effort launches the debug Chrome
+(\code{CHROME\_AUTOSTART=1} by default), starts the weekly digest scheduler
+thread, and runs Flask threaded on \code{SERVER\_HOST:SERVER\_PORT}
+(default \code{0.0.0.0:5000}).
+
+\subsection{Data Merge (reload\_data)}
+The core of the read path. It atomically rebuilds the in-memory caches:
+\begin{enumerate}
+    \item Refreshes the technician/role lists and rebuilds the live
+          department map (static scraped departments plus user-added ones,
+          minus inactive ones).
+    \item Auto-generates due occurrences for recurring scheduled-WO series.
+    \item Loads each department's scheduled/unscheduled JSON, tagging
+          records with WO type and department key.
+    \item Injects manually created WOs from the store, normalizing dates so
+          they sort correctly.
+    \item Builds a global WO index, applies field-level overrides, and
+          tags solution/attachment counts.
+    \item Filters out soft-deleted machines and their WOs, then swaps all
+          caches in atomically.
+\end{enumerate}
+
+\subsection{Recurring Scheduled Work Orders}
+Scheduled WOs with a frequency form a series. Occurrence generation is
+purely date-driven: on every reload, occurrences are created on a fixed
+cadence from the seed's first due date through today plus the next
+upcoming one, independent of completion status. A series can be
+permanently stopped (admin-gated) while keeping existing occurrences.
+
+\subsection{Access Control}
+Independent shared passwords, all supplied via header or JSON body and all
+optional (a blank password leaves that gate open so a fresh install is
+never locked out):
+
+\begin{longtable}{@{}p{0.16\textwidth}>{\ttfamily}p{0.25\textwidth}p{0.51\textwidth}@{}}
+\toprule
+\textbf{Gate} & \textbf{Env / header} & \textbf{Protects} \\
+\midrule
+\endhead
+Edit & EDIT\_PASSWORD / X-Edit-Password & Checklist generate/edit/update, vendor-contact and chart-event mutations. \\
+Admin & ADMIN\_PASSWORD / X-Admin-Password & Deleting work orders, viewing WO change history, stopping recurrence, spare-parts mutations, nicknames, floor-plan edits. \\
+Sean (supervisor) & SEAN\_PASSWORD / X-Sean-Password & Work-order assignment and the completed-WO team dashboard. Defaults to \code{sean}. \\
+Master & MASTER\_PASSWORD / X-Master-Password & Managing view profiles and assigning them to roles. Defaults to \code{mintmaster}. \\
+\bottomrule
+\end{longtable}
+
+Every mutation also requires an \code{author} name, persisted to the audit
+log (the frontend remembers it in \code{localStorage}).
+
+\subsection{API Reference}
+All endpoints return JSON. Read endpoints are unauthenticated on the LAN.
+
+\subsubsection{Navigation and Dashboards}
+\begin{longtable}{@{}p{0.10\textwidth}>{\ttfamily\small}p{0.50\textwidth}p{0.33\textwidth}@{}}
+\toprule
+\textbf{Method} & \textbf{Path} & \textbf{Description} \\
+\midrule
+\endhead
+GET & / & Serves the SPA. \\
+GET & /api/company & Company KPIs + one card per division. \\
+GET & /api/division, /api/divisions/<key> & Division dashboard: departments, KPIs, inactive departments. \\
+GET & /api/departments/<dept\_key> & Department dashboard: machines, KPIs, inactive machines. \\
+GET & /api/departments/<dk>/machines/<eq\_id> & Machine detail. \\
+GET & /api/workorders & All departments' WOs, compact, newest first. \\
+GET & /api/workorder/<wo\_id> & Full work-order detail. \\
+GET & /api/weekly, /api/monthly & Weekly and monthly schedule views. \\
+GET & /api/completed-counts, /api/team-stats & Completed-WO counts and per-technician stats. \\
+GET & /api/inactive & All soft-deleted departments/machines. \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Work-Order Lifecycle}
+\begin{longtable}{@{}p{0.13\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.33\textwidth}@{}}
+\toprule
+\textbf{Method} & \textbf{Path} & \textbf{Description} \\
+\midrule
+\endhead
+POST & /api/workorders & Create a WO; fires the new-unscheduled e-mail. \\
+PATCH/PUT & /api/workorder/<wo\_id> & Field-level edit of any WO; fires the completed e-mail on status transition. \\
+DELETE & /api/workorder/<wo\_id> & Delete a manual WO (admin-gated; scraped WOs cannot be deleted). \\
+POST & /api/workorder/<wo\_id>/stop-recurrence & Stop a recurring series (admin-gated). \\
+POST & /api/workorder/<wo\_id>/solutions & Append a solution-log entry. \\
+GET/POST & /api/workorder/<wo\_id>/attachments & List / upload attachments. \\
+GET & /api/attachments/<att\_id> & Download an attachment. \\
+GET & /api/workorder/<wo\_id>/audit & WO change history (admin-gated). \\
+POST & /api/workorder/<wo\_id>/assign & Assign to a technician (Sean-gated). \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Structure Management}
+\begin{longtable}{@{}p{0.13\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.33\textwidth}@{}}
+\toprule
+\textbf{Method} & \textbf{Path} & \textbf{Description} \\
+\midrule
+\endhead
+POST & /api/departments & Create a department. \\
+POST & /api/machines & Create a machine. \\
+POST & /api/departments/<dk>/deactivate\ \textbar\ restore & Soft-delete / restore a department. \\
+POST & /api/machines/deactivate\ \textbar\ restore & Soft-delete / restore a machine. \\
+POST & /api/departments/<dk>/machines/<eq>/nickname & Set/clear a display nickname (admin-gated). \\
+GET/POST & /api/technicians & List / add technicians. \\
+DELETE & /api/technicians/<name> & Remove a technician. \\
+GET & /api/roles, /api/roles/views & List active roles; public role/view-key pairs. \\
+POST & /api/roles & Add a role with aliases (Sean-gated). \\
+DELETE & /api/roles/<name> & Delete a role (Sean-gated). \\
+POST & /api/roles/<name>/view & Assign a view profile to a role (master-gated). \\
+GET/POST/DELETE & /api/view-profiles[/<key>] & List (open) / create-update / delete (master-gated) view profiles. \\
+GET/POST & /api/departments/<dk>/floorplan & Read / save (admin-gated) a department floor plan. \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Spare Parts, Machine Info, and Vendor Contacts}
+\begin{longtable}{@{}p{0.15\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.31\textwidth}@{}}
+\toprule
+\textbf{Method} & \textbf{Path} & \textbf{Description} \\
+\midrule
+\endhead
+GET & /api/spare-parts & Global spare-parts list, newest first. \\
+GET & /api/spare-parts/options & Departments/machines/divisions for the create/edit form. \\
+POST/PATCH/DELETE & /api/spare-parts[/<id>] & Create / edit / delete a part (admin-gated). \\
+GET & /api/departments/<dk>/machines/<eq>/spare-parts & Parts linked to one machine. \\
+GET, PATCH/POST & /api/departments/<dk>/machines/<eq>/info & Read / update the editable Machine Info record. \\
+POST & /api/departments/<dk>/machines/<eq>/parse-notes & LLM sorts free-form notes into structured contacts/logins/purchase info. \\
+GET & /api/vendor-contacts & Combined vendor list. \\
+POST/PATCH/DELETE & /api/vendor-contacts[/<id>] & Create / edit / delete vendor contacts (edit-gated). \\
+POST/DELETE & /api/vendor-contact-types[/<name>] & Manage contact types (edit-gated). \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Analytics and AI}
+\begin{longtable}{@{}p{0.10\textwidth}>{\ttfamily\small}p{0.52\textwidth}p{0.31\textwidth}@{}}
+\toprule
+\textbf{Method} & \textbf{Path} & \textbf{Description} \\
+\midrule
+\endhead
+GET & /api/departments/<dk>/machines/<eq>/trends & Per-machine monthly KPI trends. \\
+GET & /api/departments/<dk>/trends & Department monthly trends. \\
+GET & /api/departments/<dk>/machines-trends & Per-machine yearly totals (Pareto chart). \\
+GET & \ldots/month-synopsis & LLM synopsis of what drove a month's stats. \\
+GET/POST/PUT & \ldots/guide & Read / generate / save-edit the checklist (edit-gated for writes). \\
+POST & \ldots/guide/update & AI update with new work orders. \\
+GET & \ldots/guide/versions[/<n>] & Version history / a specific version. \\
+POST & \ldots/guide/versions/<n>/restore & Restore an old checklist version. \\
+GET/POST/DELETE & /api/calendar-events[/<id>] & Calendar entries. \\
+GET/POST/DELETE & /api/chart-events[/<id>] & Global chart timeline markers (edit-gated). \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{System and E-mail}
+\begin{longtable}{@{}p{0.13\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.33\textwidth}@{}}
+\toprule
+\textbf{Method} & \textbf{Path} & \textbf{Description} \\
+\midrule
+\endhead
+POST & /api/reload & Force a data reload. \\
+GET & /api/edit-auth, /api/admin-auth, /api/sean-auth & Whether each gate is password-protected. \\
+POST & /api/verify-\{edit\textbar admin\textbar sean\}-password & Verify a supplied password. \\
+GET/POST & /api/email/status, /api/email/recipients & E-mail configuration status / recipient list. \\
+POST & /api/email/test, /api/email/weekly-digest & Send a test e-mail / trigger the weekly digest. \\
+\bottomrule
+\end{longtable}
+
+% =============================================================================
+\section{Intelligence Layer (LLM Integration)}
+% =============================================================================
+
+\subsection{Providers and Transport}
+Two providers are supported, selected by environment:
+\begin{itemize}
+    \item \textbf{Ollama Cloud} (default when \code{OLLAMA\_API\_KEY} is
+          set).
+    \item \textbf{Google Gemini} (\code{GEMINI\_API\_KEY}).
+\end{itemize}
+Because the corporate network blocks the standard Python TLS stack, HTTPS
+calls are made through a Windows-native PowerShell transport instead. The
+module also computes local statistics (material cost, labor time, downtime
+hours) and builds prompts.
+
+\subsection{Troubleshooting-Checklist Engine}
+Single source of truth for creating, editing, archiving, and regenerating
+per-machine checklists, used both interactively and by the nightly job.
+
+\textbf{Manual-edit preservation.} When an operator saves a hand-edited
+checklist, the previous file is backed up, the old/new Markdown is diffed,
+and the added/removed lines are appended to an edit log. That log is
+rendered into an ``operator edits that must be preserved'' block injected
+into every future prompt, so edits survive regeneration. Entries are
+applied oldest-first with later wins, so edits-of-edits are handled
+automatically.
+
+% =============================================================================
+\section{E-mail Notifications}
+% =============================================================================
+
+Three flows, each rendered as HTML with a plain-text fallback:
+\begin{enumerate}
+    \item \textbf{New unscheduled WO} --- sent immediately on creation.
+    \item \textbf{Closed and completed} --- sent when a WO transitions into
+          a completed status (transition-only; re-saving does not
+          re-notify).
+    \item \textbf{Weekly digest} --- scheduled work due this coming week
+          plus any past-due scheduled work still pending, sent by a daemon
+          thread on a configurable schedule.
+\end{enumerate}
+
+Transport is plain SMTP, so a self-serve Gmail App Password, Office 365, or
+any SMTP server works. The module is intentionally inert until credentials
+are configured and at least one recipient is set.
+
+% =============================================================================
+\section{Presentation Layer (Frontend)}
+% =============================================================================
+
+The entire UI is a single self-contained file, \code{webapp/index.html},
+served by Flask with no-cache headers. Technology choices:
+\begin{itemize}
+    \item \textbf{React} with \textbf{htm} tagged templates and
+          \textbf{Babel standalone} for in-browser compilation --- no build
+          step.
+    \item \textbf{Tailwind CSS} for styling.
+    \item \textbf{marked} to render checklist Markdown; \textbf{jsPDF} for
+          client-side PDF export.
+    \item All libraries vendored locally: works fully offline on the LAN.
+\end{itemize}
+
+Client-side routing uses a view state of company $\rightarrow$ division
+$\rightarrow$ department $\rightarrow$ machine, plus an inactive view
+listing soft-deleted items with restore actions. The machine page has tabs
+for Dashboard, AI Troubleshooting Checklist, Unscheduled WOs, and Scheduled
+WOs, plus Machine Info and trend/Pareto charts. The Unscheduled/Scheduled WO
+tabs include CSV/JSON and client-side PDF export buttons for a machine's
+work-order list.
+
+\textbf{Nicknames.} Any machine can be given an admin-set display nickname
+while the real PM equipment name is preserved and still shown; grouping and
+statistics continue to key off the real PM name.
+
+\textbf{Floor Plan.} Selected departments have an interactive,
+percent-positioned Floor Plan tab: a sidebar lists linked machines with live
+stats and a highlight for any with a critical open WO; admin edit mode
+supports dragging, resizing, linking/relabeling, and adding boxes.
+
+\textbf{Spare Parts.} A division-scoped spare-parts inventory screen lists
+parts with description, type, location, quantity, condition, linked
+machine(s), and purchasing info; a part can also be viewed from the machine
+it is linked to.
+
+\textbf{Roles and View Profiles.} Beyond individually tracked technicians,
+shared roles (e.g.\ ``QA Technician'') let multiple people sign in as a team
+identity for My Schedule. A master-gated admin page defines named view
+profiles (curated sets of enabled features) and assigns one to each role,
+so a role's users only see the subset of MINT relevant to them.
+
+% =============================================================================
+\section{Configuration Reference}
+\label{sec:config}
+% =============================================================================
+
+All configuration is via environment variables, typically in a git-ignored
+\code{.env} file.
+
+\begin{longtable}{@{}>{\ttfamily}p{0.30\textwidth}>{\ttfamily}p{0.14\textwidth}p{0.48\textwidth}@{}}
+\toprule
+\textbf{Variable} & \textbf{Default} & \textbf{Meaning} \\
+\midrule
+\endhead
+SERVER\_HOST / SERVER\_PORT & 0.0.0.0 / 5000 & Bind address and port. \\
+EDIT\_PASSWORD & (blank) & Checklist/vendor/chart-event edit gate; blank = open. \\
+ADMIN\_PASSWORD & (blank) & Delete-WO / history / spare-parts / nickname / floor-plan gate; blank = open. \\
+SEAN\_PASSWORD & sean & Assignment + team-dashboard gate. \\
+MASTER\_PASSWORD & mintmaster & View-profile / role-view management gate. \\
+OLLAMA\_API\_KEY / OLLAMA\_MODEL & -- / gpt-oss:120b & Ollama Cloud checklist provider. \\
+GEMINI\_API\_KEY / GEMINI\_MODEL & -- / gemini-2.5-flash & Gemini provider (fallback). \\
+CHROME\_AUTOSTART & 1 & 0 = do not auto-launch debug Chrome. \\
+CHROME\_DEBUG\_PORT & 0 & 0 = auto-pick and capture; or pin a port. \\
+CHROME\_PATH / CHROME\_PROFILE & auto & Non-standard Chrome binary / profile path. \\
+NIGHTLY\_DEPT\_TIMEOUT & 14400 & Per-department scrape timeout (seconds). \\
+EMAIL\_ENABLED & auto & 1/0; defaults on when SMTP credentials exist. \\
+SMTP\_HOST / SMTP\_PORT & -- / 587 & Mail server. \\
+SMTP\_USER / SMTP\_PASSWORD / SMTP\_FROM & -- & Credentials; FROM defaults to USER. \\
+SMTP\_STARTTLS & 1 & 0 disables STARTTLS. \\
+GMAIL\_ADDRESS / GMAIL\_APP\_PASSWORD & -- & Gmail shortcuts for the SMTP\_* vars. \\
+MINT\_BASE\_URL & http://localhost:5000 & Base URL used in e-mail links. \\
+WEEKLY\_DIGEST\_ENABLED / DAY / HOUR & 1 / 0 / 7 & Weekly digest schedule (0 = Monday). \\
+\bottomrule
+\end{longtable}
+
+% =============================================================================
+\section{Setup and Deployment}
+% =============================================================================
+
+\subsection{Prerequisites}
+\begin{itemize}
+    \item Windows machine (the LLM transport and Chrome management are
+          Windows-specific), Python 3.10+, Google Chrome installed.
+    \item Python dependencies from \code{requirements.txt}: selenium,
+          webdriver-manager, beautifulsoup4, lxml, google-genai,
+          python-dotenv, flask, flask-cors, APScheduler.
+\end{itemize}
+
+\subsection{One-Time Setup}
+\begin{lstlisting}
+pip install -r requirements.txt
+
+# Create .env with real keys:
+#   GEMINI_API_KEY=...
+#   OLLAMA_API_KEY=...
+#   EDIT_PASSWORD=...  ADMIN_PASSWORD=...  (optional)
+\end{lstlisting}
+\code{.env} is git-ignored and must never be committed.
+
+\subsection{Chrome Login Session}
+\begin{lstlisting}
+python server.py          # auto-launches debug Chrome, captures the port
+# First time: log into the PM site in that Chrome window; leave it open.
+
+python chrome_session.py            # manual launch + port
+python chrome_session.py --status   # running port + login state
+\end{lstlisting}
+If the session expires, scrapes are skipped (never overwriting good data)
+and the failure is reported.
+
+\subsection{Running the Server}
+\begin{lstlisting}
+python server.py
+#   Local:   http://127.0.0.1:5000
+#   Network: http://<host-ip>:5000   (LAN)
+\end{lstlisting}
+For local development/testing without Chrome or the nightly machinery:
+\begin{lstlisting}
+$env:CHROME_AUTOSTART="0"; $env:NIGHTLY_ENABLED="0"; python server.py
+\end{lstlisting}
+
+\subsection{LAN Access}
+The server binds \code{0.0.0.0}; open the firewall once (Admin PowerShell):
+\begin{lstlisting}
+New-NetFirewallRule -DisplayName "PM Dashboard" -Direction Inbound `
+    -Action Allow -Protocol TCP -LocalPort 5000
+\end{lstlisting}
+
+\subsection{Manual Data Operations}
+\begin{lstlisting}
+python scraper.py --limit 3      # quick scrape smoke test
+python scraper.py --from-html    # offline replay from ./pages/
+python run_parallel.py --division bed --refresh-profiles
+python nightly_update.py         # full rescrape + regeneration cycle
+python analyze_equipment.py --equipment-id 1877   # ad-hoc LLM analysis
+curl -X POST http://localhost:5000/api/reload      # hot-reload data
+\end{lstlisting}
+
+\subsection{Operational Notes}
+\begin{itemize}
+    \item \textbf{Stale server process:} a previously started
+          \code{server.py} can hold port 5000 so a new instance silently
+          fails to bind while the old code keeps answering. Stop the old
+          \code{python.exe} running \code{server.py} before restarting.
+    \item \textbf{Attachments and databases} live under \code{mint\_data/}
+          and \code{guides/} --- include both in any backup strategy.
+    \item \textbf{Division scraping} requires re-selecting the target
+          division in the debug Chrome dropdown before each division's
+          run, otherwise the session silently keeps scraping the previous
+          division.
+\end{itemize}
+
+% =============================================================================
+\section{Security Considerations}
+% =============================================================================
+
+\begin{itemize}
+    \item The application is designed for a trusted LAN: reads are
+          unauthenticated; writes are gated by shared passwords transmitted
+          in headers over plain HTTP. It must not be exposed to the
+          internet without a reverse proxy adding TLS and real
+          authentication.
+    \item Scraping reuses an interactive Chrome login --- no PM credentials
+          are stored anywhere in the codebase.
+    \item Secrets live only in the git-ignored \code{.env}. Any API keys
+          that were historically committed must be treated as leaked and
+          rotated.
+    \item Every mutation is attributable via the mandatory author name and
+          the audit log; scraped records are immutable (edits are overlay
+          patches) and manual WOs are the only deletable records.
+\end{itemize}
+
+% =============================================================================
+\section{Known Limitations and Future Work}
+% =============================================================================
+
+\begin{itemize}
+    \item Single-process, single-host deployment; SQLite and in-memory
+          caches limit horizontal scaling (acceptable for a facility-level
+          tool).
+    \item The Windows PowerShell TLS transport ties LLM calls to Windows.
+    \item Author identity is honor-system (a typed name), not authenticated
+          accounts; the same is true for shared role logins.
+    \item BLA and BED are fully populated; other divisions (BMC, BWEC, KKP,
+          BGD, CIT) are scraped incrementally with the same division-aware
+          pipeline described in Section~\ref{sec:divisions}.
+    \item The frontend is one large HTML file; a build pipeline with proper
+          module splitting would improve maintainability.
+    \item The e-mail digest scheduler uses a polling daemon thread;
+          migrating to APScheduler jobs (already a dependency) would be
+          cleaner.
+\end{itemize}
+
+\end{document}

@@ -1,8 +1,13 @@
+> **SUPERSEDED:** This file caused broken/garbled rendering in Overleaf.
+> Use `MINT_Technical_Documentation.tex` in this same folder instead --
+> it is a clean rewrite of this document. This file is kept only for
+> history and is not meant to be pasted into Overleaf anymore.
+
 \documentclass[11pt,a4paper]{article}
 
 % ---------------------------------------------------------------------------
-% MINT + PM Web Scraper -- Technical Design Document
-% Copy this whole file into Overleaf as main.tex and compile with pdfLaTeX.
+% MINT + PM Web Scraper -- Technical Design Document (SUPERSEDED)
+% Do not paste this file into Overleaf; see MINT_Technical_Documentation.tex
 % ---------------------------------------------------------------------------
 
 \usepackage[margin=2.5cm]{geometry}
