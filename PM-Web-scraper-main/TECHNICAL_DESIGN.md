@@ -70,7 +70,9 @@ self-hosted maintenance-management platform for the Bobrick BLA facility that:
           browser session.
     \item Serves a modern single-page web dashboard with a four-level
           drill-down: \emph{Company} $\rightarrow$ \emph{Division} $\rightarrow$
-          \emph{Department} $\rightarrow$ \emph{Machine}.
+          \emph{Department} $\rightarrow$ \emph{Machine}, spanning multiple
+          Bobrick divisions (BLA, BED, and others in progress), each scraped
+          and stored independently under \code{divisions/<slug>/}.
     \item Acts as the \emph{system of record going forward}: users create and
           edit work orders, machines, departments, vendor contacts and machine
           information directly in MINT, layered on top of the frozen scraped
@@ -247,6 +249,47 @@ Standalone usage: \code{python chrome\_session.py} (launch and print port) or
 Overrides: \code{CHROME\_PATH}, \code{CHROME\_PROFILE},
 \code{CHROME\_DEBUG\_PORT} (0 = auto).
 
+\subsection{Multi-Division Scraping}
+\label{sec:divisions}
+The scraper and orchestrator are division-aware so the same pipeline used for
+BLA can be pointed at any other division exposed by the PM system's
+\code{\#ddlDivision} dropdown (e.g.\ BED, BMC, BWEC, KKP, BGD, CIT):
+
+\begin{itemize}[nosep]
+    \item \code{scraper.py --division <slug>} calls
+          \code{set\_division()}, which routes all output paths
+          (\code{out\_dir}, \code{pages\_dir}, \code{equipment\_data.csv})
+          under \code{divisions/<slug>/} instead of the repo root (BLA, with
+          no \code{--division} flag, is unchanged and still writes to the
+          root for backward compatibility).
+    \item A headless/attached Chrome session actively sets the Kendo
+          \code{\#ddlDivision} control to the target division before
+          scraping the Equipment All grid or any department, since the
+          session does not inherit whatever division was last selected in
+          the interactive debug Chrome.
+    \item \code{--equipment-list-only} builds just the per-division
+          equipment master (\code{divisions/<slug>/equipment\_data.json/.csv})
+          via \code{parse\_html.py}'s \code{parse\_equipment\_html\_string()} /
+          \code{save\_equipment\_data()}, and a heuristic
+          (\code{\_warn\_if\_matches\_bla()}) flags a run if $>$80\% of scraped
+          EQ IDs collide with BLA's, indicating the division selector did not
+          take effect.
+    \item \code{run\_parallel.py --division <slug> [--rebuild-equipment]}
+          runs \code{build\_equipment\_list\_step()} first, then discovers
+          that division's departments from its equipment CSV
+          (\code{discover\_departments()}) and scrapes them the same way as
+          BLA (per-department parallel jobs + orphan-unscheduled pass), all
+          namespaced under \code{divisions/<slug>/} for output, profiles, and
+          logs.
+    \item \textbf{Status:} BLA is fully scraped at the repository root. BED
+          has a complete scrape (8 departments: Tube Mill, Toilet Partitions,
+          Shower Seats, Shipping, Quality Assurance, Maintenance, Grab Bars,
+          Facilites) under \code{divisions/bed/}. Additional divisions
+          (e.g.\ BMC) are scraped incrementally as time allows; department
+          keys are namespaced per division (e.g.\ \code{bed\_maintenance}) to
+          avoid collisions with identically-named BLA departments.
+\end{itemize}
+
 \subsection{Work-Order Scraper (\code{scraper.py})}
 For every equipment record, the scraper:
 \begin{enumerate}[nosep]
@@ -257,7 +300,15 @@ For every equipment record, the scraper:
     \item Captures from the dialog: date notified, urgency, problem, status,
           material cost, labor time, work performed by, downtime hours,
           completed date/time; the full comment log with timestamps; and all
-          attachment filenames.
+          attachment filenames. Two distinct people/teams are captured on
+          every WO: \code{owner} (who reported it, unscheduled WOs' ``Owner''
+          column) and \code{assigned\_to} (the skill/team it is assigned to,
+          scheduled WOs' ``Assigned To (Skill)'' column) --- these are not
+          the same concept and are kept separate end to end.
+          \code{enrich\_assigned\_to.py} is a one-time backfill script that
+          re-derives both fields from saved ``All Open Work Orders'' HTML
+          exports for historical records scraped before the distinction was
+          added.
     \item Repeats the same for the \emph{Scheduled} (PM) grid.
 \end{enumerate}
 
@@ -328,6 +379,12 @@ machine\_info & Editable machine information / longevity data, PK (\code{dept\_k
 technicians & Technician roster with JSON \code{aliases} and an \code{active} flag; used for assignment and team stats. \\
 vendor\_contacts & Editable Vendor \& Utilities list: company, contact, address, phone/cell/fax, email, type, service-contract fields, and \code{machine\_eq} (JSON list of linked EQ IDs). \\
 vendor\_contact\_types & Contact-type lookup (seeded with \code{TPF} and \code{Facility}); deletion is blocked while contacts still reference the type. \\
+floorplan\_items & Interactive floor-plan boxes per department (currently Toilet Partitions): \code{id}, \code{dept\_key}, optional \code{eq\_id} link, \code{label}, \code{x/y/w/h} (\% of canvas), \code{z}-order. Saved as a full atomic replace per department. \\
+machine\_nicknames & Admin-set display name overriding the scraped PM equipment name, PK (\code{dept\_key}, \code{eq\_id}); blank nickname deletes the row and reverts to the PM name. \\
+roles & Shared ``assigned-to'' identities (e.g.\ \code{QA Technician}) that multiple people can sign in as to see/complete team work via My Schedule, without being tracked individually like a technician: \code{name} (PK), JSON \code{aliases}, \code{active}, and an assigned \code{view\_key} (a saved view profile). \\
+view\_profiles & Named, saved sets of enabled UI features (\code{key} PK, \code{label}, JSON \code{features}) that can be assigned to a role so it only sees a curated subset of MINT, managed from the ``Mint'' master-admin page. \\
+spare\_parts & Division-scoped spare-parts inventory: \code{id} (PK), \code{description}, \code{digital\_id}, \code{picture}, \code{division\_key}, an optional primary machine link (\code{machine\_dept\_key/eq\_id/name}), \code{part\_type}, \code{location}, \code{quantity}, \code{condition}, \code{brand}, set-membership fields, purchasing fields (\code{buy\_direct}, \code{where\_to\_buy}, \code{purchase\_link}, \code{price\_new}), \code{barcode\_qr}. \\
+spare\_part\_machines & Many-to-many: a part can additionally be linked to any number of machines beyond its primary one. PK (\code{part\_id}, \code{dept\_key}, \code{eq\_id}). \\
 \bottomrule
 \end{longtable}
 
@@ -406,6 +463,7 @@ is never locked out):
 Edit & EDIT\_PASSWORD / X-Edit-Password & Checklist generate/edit/update, vendor-contact and chart-event mutations. \\
 Admin & ADMIN\_PASSWORD / X-Admin-Password & Deleting work orders, viewing WO change history, stopping recurrence. \\
 Sean (supervisor) & SEAN\_PASSWORD / X-Sean-Password & Work-order assignment and the completed-WO team dashboard. Defaults to \code{"sean"} so it is always protected. \\
+Master & MASTER\_PASSWORD / X-Master-Password & The ``Mint'' admin page: creating/editing/deleting view profiles and assigning a view profile to a role. Defaults to \code{"mintmaster"} so it is always protected. \\
 \bottomrule
 \end{longtable}
 
@@ -452,7 +510,7 @@ POST & /api/workorder/<wo\_id>/assign & Assign to a technician (Sean-gated). \\
 \bottomrule
 \end{longtable}
 
-\subsubsection{Structure Management (Departments / Machines / Technicians)}
+\subsubsection{Structure Management (Departments / Machines / Technicians / Roles)}
 \begin{longtable}{@{}p{0.13\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.33\textwidth}@{}}
 \toprule
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
@@ -462,8 +520,33 @@ POST & /api/departments & Create a department. \\
 POST & /api/machines & Create a machine. \\
 POST & /api/departments/<dk>/deactivate | restore & Soft-delete / restore a department. \\
 POST & /api/machines/deactivate | restore & Soft-delete / restore a machine (body: dept\_key, eq\_id, name, author). \\
+POST & /api/departments/<dk>/machines/<eq>/nickname & Set/clear a machine's display nickname (admin-gated). \\
 GET/POST & /api/technicians & List / add technicians. \\
 DELETE & /api/technicians/<name> & Remove a technician. \\
+GET & /api/roles, /api/roles/views & List active role names; public {name, view\_key} pairs for landing-page view switching. \\
+POST & /api/roles & Add a role with aliases (Sean-gated). \\
+DELETE & /api/roles/<name> & Delete a role (Sean-gated). \\
+POST & /api/roles/<name>/view & Assign a saved view profile to a role (master-gated). \\
+GET & /api/view-profiles & List saved view profiles (open). \\
+POST & /api/view-profiles & Create/update a view profile (master-gated). \\
+DELETE & /api/view-profiles/<key> & Delete a view profile (master-gated). \\
+GET/POST & /api/departments/<dk>/floorplan & Read / save (admin-gated) a department's interactive floor plan. \\
+\bottomrule
+\end{longtable}
+
+\subsubsection{Spare Parts Inventory}
+\begin{longtable}{@{}p{0.13\textwidth}>{\ttfamily\small}p{0.47\textwidth}p{0.33\textwidth}@{}}
+\toprule
+\textbf{Method} & \textbf{Path} & \textbf{Description} \\
+\midrule
+\endhead
+GET & /api/spare-parts & Global spare-parts list, newest first. \\
+GET & /api/spare-parts/options & Departments/machines (nickname-aware) and divisions, for the create/edit form's pickers. \\
+POST & /api/spare-parts & Create a part (admin-gated). \\
+GET & /api/spare-parts/<id> & Read one part. \\
+PATCH/PUT & /api/spare-parts/<id> & Edit a part (admin-gated). \\
+DELETE & /api/spare-parts/<id> & Delete a part (admin-gated). \\
+GET & /api/departments/<dk>/machines/<eq>/spare-parts & Parts linked to one machine (primary or secondary link). \\
 \bottomrule
 \end{longtable}
 
@@ -615,7 +698,34 @@ listing soft-deleted items with restore actions. The machine page has four
 tabs: Dashboard, AI Troubleshooting Checklist, Unscheduled WOs, and Scheduled
 WOs, plus Machine Info and trends/Pareto charts at machine and department
 level. Deactivation uses a reusable confirm-with-name modal; the user's name
-is remembered in \code{localStorage} and attached to every mutation.
+is remembered in \code{localStorage} and attached to every mutation. The
+Unscheduled/Scheduled WO tabs' calendar-style headers include CSV/JSON and
+client-side PDF (\code{jsPDF}) export buttons for a machine's work-order
+list.
+
+\textbf{Nicknames.} Any machine can be given an admin-set display nickname
+(\code{NicknameModal}) while the real PM equipment name is preserved and
+still shown (``PM name: ...''); grouping/statistics continue to key off the
+real PM name.
+
+\textbf{Floor Plan.} The Toilet Partitions department has an interactive,
+percent-positioned Floor Plan tab (\code{FloorPlanTab}): a sidebar lists
+linked machines with live stats and a red highlight for any with a critical
+open WO; admin edit mode supports dragging, resizing, linking/relabeling, and
+adding boxes, saved as a full replace via
+\code{/api/departments/<key>/floorplan}.
+
+\textbf{Spare Parts.} A division-scoped spare-parts inventory screen lists
+parts with their description, type, location, quantity, condition, linked
+machine(s), and purchasing info; creation/edit/delete are admin-gated, and a
+part can be viewed from the machine it is linked to.
+
+\textbf{Roles and View Profiles.} Beyond individually-tracked technicians,
+shared \emph{roles} (e.g.\ ``QA Technician'') let multiple people sign in as
+a team identity for My Schedule. A master-gated ``Mint'' admin page defines
+named \emph{view profiles} (curated sets of enabled features) and assigns one
+to each role, so a role's users only see the subset of MINT relevant to
+them.
 
 % ===========================================================================
 \section{Configuration Reference}
@@ -634,6 +744,7 @@ SERVER\_HOST / SERVER\_PORT & 0.0.0.0 / 5000 & Bind address and port. \\
 EDIT\_PASSWORD & (blank) & Checklist/vendor/chart-event edit gate; blank = open. \\
 ADMIN\_PASSWORD & (blank) & Delete-WO / history / stop-recurrence gate; blank = open. \\
 SEAN\_PASSWORD & sean & Assignment + team-dashboard gate (always protected). \\
+MASTER\_PASSWORD & mintmaster & ``Mint'' admin page gate for view profiles / role views (always protected). \\
 OLLAMA\_API\_KEY / OLLAMA\_MODEL & -- / gpt-oss:120b & Ollama Cloud checklist provider. \\
 GEMINI\_API\_KEY / GEMINI\_MODEL & -- / gemini-2.5-flash & Gemini provider (fallback). \\
 CHROME\_AUTOSTART & 1 & 0 = do not auto-launch debug Chrome. \\
@@ -762,8 +873,12 @@ curl -X POST http://localhost:5000/api/reload      # hot-reload data
     \item The Windows-PowerShell TLS transport ties LLM calls to Windows.
     \item Author identity is honor-system (a typed name), not authenticated
           accounts.
-    \item Only the BLA division is populated; the company layer is designed
-          so additional divisions (e.g.\ BED) can be added later.
+    \item BLA and BED are populated; other divisions (BMC, BWEC, KKP, BGD,
+          CIT) are scraped incrementally with the same division-aware
+          pipeline (\S\ref{sec:divisions}) --- the company layer already
+          supports any number of divisions.
+    \item Author identity for roles (shared team logins) is likewise
+          honor-system; a role is not tied to an individual's credentials.
     \item Frontend is one large HTML file; a build pipeline (Vite + proper
           module splitting) would improve maintainability.
     \item E-mail digest scheduling uses a polling daemon thread; migrating to
