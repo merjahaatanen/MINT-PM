@@ -18,7 +18,10 @@
 \usepackage{hyperref}
 \usepackage{parskip}
 \usepackage{enumitem}
-\usepackage{path}
+
+% Zero-width breakable point, used after "/" in long API paths so they can
+% wrap inside narrow table columns instead of overflowing.
+\newcommand{\sbrk}{\hspace{0pt}}
 
 \setlist{nosep, leftmargin=1.4em}
 
@@ -436,16 +439,16 @@ All endpoints return JSON. Read endpoints are unauthenticated on the LAN.
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
 \endhead
-GET & \path{/} & Serves the SPA. \\
-GET & \path{/api/company} & Company KPIs + one card per division. \\
-GET & \path{/api/division}, \path{/api/divisions/<key>} & Division dashboard: departments, KPIs, inactive departments. \\
-GET & \path{/api/departments/<dept\_key>} & Department dashboard: machines, KPIs, inactive machines. \\
-GET & \path{/api/departments/<dk>/machines/<eq\_id>} & Machine detail. \\
-GET & \path{/api/workorders} & All departments' WOs, compact, newest first. \\
-GET & \path{/api/workorder/<wo\_id>} & Full work-order detail. \\
-GET & \path{/api/weekly}, \path{/api/monthly} & Weekly and monthly schedule views. \\
-GET & \path{/api/completed-counts}, \path{/api/team-stats} & Completed-WO counts and per-technician stats. \\
-GET & \path{/api/inactive} & All soft-deleted departments/machines. \\
+GET & /\sbrk & Serves the SPA. \\
+GET & /\sbrk api/\sbrk company & Company KPIs + one card per division. \\
+GET & /\sbrk api/\sbrk division, /\sbrk api/\sbrk divisions/\sbrk <key> & Division dashboard: departments, KPIs, inactive departments. \\
+GET & /\sbrk api/\sbrk departments/\sbrk <dept\_key> & Department dashboard: machines, KPIs, inactive machines. \\
+GET & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk machines/\sbrk <eq\_id> & Machine detail. \\
+GET & /\sbrk api/\sbrk workorders & All departments' WOs, compact, newest first. \\
+GET & /\sbrk api/\sbrk workorder/\sbrk <wo\_id> & Full work-order detail. \\
+GET & /\sbrk api/\sbrk weekly, /\sbrk api/\sbrk monthly & Weekly and monthly schedule views. \\
+GET & /\sbrk api/\sbrk completed-counts, /\sbrk api/\sbrk team-stats & Completed-WO counts and per-technician stats. \\
+GET & /\sbrk api/\sbrk inactive & All soft-deleted departments/machines. \\
 \bottomrule
 \end{longtable}
 
@@ -455,15 +458,15 @@ GET & \path{/api/inactive} & All soft-deleted departments/machines. \\
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
 \endhead
-POST & \path{/api/workorders} & Create a WO; fires the new-unscheduled e-mail. \\
-PATCH / PUT & \path{/api/workorder/<wo\_id>} & Field-level edit of any WO; fires the completed e-mail on status transition. \\
-DELETE & \path{/api/workorder/<wo\_id>} & Delete a manual WO (admin-gated; scraped WOs cannot be deleted). \\
-POST & \path{/api/workorder/<wo\_id>/stop-recurrence} & Stop a recurring series (admin-gated). \\
-POST & \path{/api/workorder/<wo\_id>/solutions} & Append a solution-log entry. \\
-GET / POST & \path{/api/workorder/<wo\_id>/attachments} & List / upload attachments. \\
-GET & \path{/api/attachments/<att\_id>} & Download an attachment. \\
-GET & \path{/api/workorder/<wo\_id>/audit} & WO change history (admin-gated). \\
-POST & \path{/api/workorder/<wo\_id>/assign} & Assign to a technician (Sean-gated). \\
+POST & /\sbrk api/\sbrk workorders & Create a WO; fires the new-unscheduled e-mail. \\
+PATCH / PUT & /\sbrk api/\sbrk workorder/\sbrk <wo\_id> & Field-level edit of any WO; fires the completed e-mail on status transition. \\
+DELETE & /\sbrk api/\sbrk workorder/\sbrk <wo\_id> & Delete a manual WO (admin-gated; scraped WOs cannot be deleted). \\
+POST & /\sbrk api/\sbrk workorder/\sbrk <wo\_id>/\sbrk stop-recurrence & Stop a recurring series (admin-gated). \\
+POST & /\sbrk api/\sbrk workorder/\sbrk <wo\_id>/\sbrk solutions & Append a solution-log entry. \\
+GET / POST & /\sbrk api/\sbrk workorder/\sbrk <wo\_id>/\sbrk attachments & List / upload attachments. \\
+GET & /\sbrk api/\sbrk attachments/\sbrk <att\_id> & Download an attachment. \\
+GET & /\sbrk api/\sbrk workorder/\sbrk <wo\_id>/\sbrk audit & WO change history (admin-gated). \\
+POST & /\sbrk api/\sbrk workorder/\sbrk <wo\_id>/\sbrk assign & Assign to a technician (Sean-gated). \\
 \bottomrule
 \end{longtable}
 
@@ -473,19 +476,19 @@ POST & \path{/api/workorder/<wo\_id>/assign} & Assign to a technician (Sean-gate
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
 \endhead
-POST & \path{/api/departments} & Create a department. \\
-POST & \path{/api/machines} & Create a machine. \\
-POST & \path{/api/departments/<dk>/deactivate} \textbar\ \path{restore} & Soft-delete / restore a department. \\
-POST & \path{/api/machines/deactivate} \textbar\ \path{restore} & Soft-delete / restore a machine. \\
-POST & \path{/api/departments/<dk>/machines/<eq>/nickname} & Set/clear a display nickname (admin-gated). \\
-GET / POST & \path{/api/technicians} & List / add technicians. \\
-DELETE & \path{/api/technicians/<name>} & Remove a technician. \\
-GET & \path{/api/roles}, \path{/api/roles/views} & List active roles; public role/view-key pairs. \\
-POST & \path{/api/roles} & Add a role with aliases (Sean-gated). \\
-DELETE & \path{/api/roles/<name>} & Delete a role (Sean-gated). \\
-POST & \path{/api/roles/<name>/view} & Assign a view profile to a role (master-gated). \\
-GET / POST / DELETE & \path{/api/view-profiles[/<key>]} & List (open) / create-update / delete (master-gated) view profiles. \\
-GET / POST & \path{/api/departments/<dk>/floorplan} & Read / save (admin-gated) a department floor plan. \\
+POST & /\sbrk api/\sbrk departments & Create a department. \\
+POST & /\sbrk api/\sbrk machines & Create a machine. \\
+POST & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk deactivate\ \textbar\ restore & Soft-delete / restore a department. \\
+POST & /\sbrk api/\sbrk machines/\sbrk deactivate\ \textbar\ restore & Soft-delete / restore a machine. \\
+POST & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk machines/\sbrk <eq>/\sbrk nickname & Set/clear a display nickname (admin-gated). \\
+GET / POST & /\sbrk api/\sbrk technicians & List / add technicians. \\
+DELETE & /\sbrk api/\sbrk technicians/\sbrk <name> & Remove a technician. \\
+GET & /\sbrk api/\sbrk roles, /\sbrk api/\sbrk roles/\sbrk views & List active roles; public role/view-key pairs. \\
+POST & /\sbrk api/\sbrk roles & Add a role with aliases (Sean-gated). \\
+DELETE & /\sbrk api/\sbrk roles/\sbrk <name> & Delete a role (Sean-gated). \\
+POST & /\sbrk api/\sbrk roles/\sbrk <name>/\sbrk view & Assign a view profile to a role (master-gated). \\
+GET / POST / DELETE & /\sbrk api/\sbrk view-profiles[/\sbrk <key>] & List (open) / create-update / delete (master-gated) view profiles. \\
+GET / POST & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk floorplan & Read / save (admin-gated) a department floor plan. \\
 \bottomrule
 \end{longtable}
 
@@ -495,15 +498,15 @@ GET / POST & \path{/api/departments/<dk>/floorplan} & Read / save (admin-gated) 
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
 \endhead
-GET & \path{/api/spare-parts} & Global spare-parts list, newest first. \\
-GET & \path{/api/spare-parts/options} & Departments/machines/divisions for the create/edit form. \\
-POST / PATCH / DELETE & \path{/api/spare-parts[/<id>]} & Create / edit / delete a part (admin-gated). \\
-GET & \path{/api/departments/<dk>/machines/<eq>/spare-parts} & Parts linked to one machine. \\
-GET, PATCH / POST & \path{/api/departments/<dk>/machines/<eq>/info} & Read / update the editable Machine Info record. \\
-POST & \path{/api/departments/<dk>/machines/<eq>/parse-notes} & LLM sorts free-form notes into structured contacts/logins/purchase info. \\
-GET & \path{/api/vendor-contacts} & Combined vendor list. \\
-POST / PATCH / DELETE & \path{/api/vendor-contacts[/<id>]} & Create / edit / delete vendor contacts (edit-gated). \\
-POST / DELETE & \path{/api/vendor-contact-types[/<name>]} & Manage contact types (edit-gated). \\
+GET & /\sbrk api/\sbrk spare-parts & Global spare-parts list, newest first. \\
+GET & /\sbrk api/\sbrk spare-parts/\sbrk options & Departments/machines/divisions for the create/edit form. \\
+POST / PATCH / DELETE & /\sbrk api/\sbrk spare-parts[/\sbrk <id>] & Create / edit / delete a part (admin-gated). \\
+GET & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk machines/\sbrk <eq>/\sbrk spare-parts & Parts linked to one machine. \\
+GET, PATCH / POST & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk machines/\sbrk <eq>/\sbrk info & Read / update the editable Machine Info record. \\
+POST & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk machines/\sbrk <eq>/\sbrk parse-notes & LLM sorts free-form notes into structured contacts/logins/purchase info. \\
+GET & /\sbrk api/\sbrk vendor-contacts & Combined vendor list. \\
+POST / PATCH / DELETE & /\sbrk api/\sbrk vendor-contacts[/\sbrk <id>] & Create / edit / delete vendor contacts (edit-gated). \\
+POST / DELETE & /\sbrk api/\sbrk vendor-contact-types[/\sbrk <name>] & Manage contact types (edit-gated). \\
 \bottomrule
 \end{longtable}
 
@@ -513,16 +516,16 @@ POST / DELETE & \path{/api/vendor-contact-types[/<name>]} & Manage contact types
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
 \endhead
-GET & \path{/api/departments/<dk>/machines/<eq>/trends} & Per-machine monthly KPI trends. \\
-GET & \path{/api/departments/<dk>/trends} & Department monthly trends. \\
-GET & \path{/api/departments/<dk>/machines-trends} & Per-machine yearly totals (Pareto chart). \\
-GET & \path{.../month-synopsis} & LLM synopsis of what drove a month's stats. \\
-GET / POST / PUT & \path{.../guide} & Read / generate / save-edit the checklist (edit-gated for writes). \\
-POST & \path{.../guide/update} & AI update with new work orders. \\
-GET & \path{.../guide/versions[/<n>]} & Version history / a specific version. \\
-POST & \path{.../guide/versions/<n>/restore} & Restore an old checklist version. \\
-GET / POST / DELETE & \path{/api/calendar-events[/<id>]} & Calendar entries. \\
-GET / POST / DELETE & \path{/api/chart-events[/<id>]} & Global chart timeline markers (edit-gated). \\
+GET & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk machines/\sbrk <eq>/\sbrk trends & Per-machine monthly KPI trends. \\
+GET & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk trends & Department monthly trends. \\
+GET & /\sbrk api/\sbrk departments/\sbrk <dk>/\sbrk machines-trends & Per-machine yearly totals (Pareto chart). \\
+GET & \ldots/\sbrk month-synopsis & LLM synopsis of what drove a month's stats. \\
+GET / POST / PUT & \ldots/\sbrk guide & Read / generate / save-edit the checklist (edit-gated for writes). \\
+POST & \ldots/\sbrk guide/\sbrk update & AI update with new work orders. \\
+GET & \ldots/\sbrk guide/\sbrk versions[/\sbrk <n>] & Version history / a specific version. \\
+POST & \ldots/\sbrk guide/\sbrk versions/\sbrk <n>/\sbrk restore & Restore an old checklist version. \\
+GET / POST / DELETE & /\sbrk api/\sbrk calendar-events[/\sbrk <id>] & Calendar entries. \\
+GET / POST / DELETE & /\sbrk api/\sbrk chart-events[/\sbrk <id>] & Global chart timeline markers (edit-gated). \\
 \bottomrule
 \end{longtable}
 
@@ -532,11 +535,11 @@ GET / POST / DELETE & \path{/api/chart-events[/<id>]} & Global chart timeline ma
 \textbf{Method} & \textbf{Path} & \textbf{Description} \\
 \midrule
 \endhead
-POST & \path{/api/reload} & Force a data reload. \\
-GET & \path{/api/edit-auth}, \path{/api/admin-auth}, \path{/api/sean-auth} & Whether each gate is password-protected. \\
-POST & \path{/api/verify-{edit|admin|sean}-password} & Verify a supplied password. \\
-GET / POST & \path{/api/email/status}, \path{/api/email/recipients} & E-mail configuration status / recipient list. \\
-POST & \path{/api/email/test}, \path{/api/email/weekly-digest} & Send a test e-mail / trigger the weekly digest. \\
+POST & /\sbrk api/\sbrk reload & Force a data reload. \\
+GET & /\sbrk api/\sbrk edit-auth, /\sbrk api/\sbrk admin-auth, /\sbrk api/\sbrk sean-auth & Whether each gate is password-protected. \\
+POST & /\sbrk api/\sbrk verify-\{edit\textbar admin\textbar sean\}-password & Verify a supplied password. \\
+GET / POST & /\sbrk api/\sbrk email/\sbrk status, /\sbrk api/\sbrk email/\sbrk recipients & E-mail configuration status / recipient list. \\
+POST & /\sbrk api/\sbrk email/\sbrk test, /\sbrk api/\sbrk email/\sbrk weekly-digest & Send a test e-mail / trigger the weekly digest. \\
 \bottomrule
 \end{longtable}
 
