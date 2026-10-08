@@ -1,0 +1,58 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12412,Check air pressure (6.5 bar),Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12413,"1) Clean filters with compressed air
+2) Clean vacuum pre-filter
+3) Clean photocells",Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12414,"1) Check cooling liquid level
+2) Check condensation level
+3) 5 Zerk fittings along back of machine require EPO grease
+4) Check the Auto Lube. This is filled from in front of and below horizontal tool holder",Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12416,"Boring block: Requires Kluber NBU15
+1) All vertical zerks (1) pump of grease 
+2) All horizontal zerks (2) pumps of grease 
+3) Saw (3) pumps of grease",Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12417,1) Filter element replacement (cartridge),Pending,8/19/2024,,Maintenance,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12418,"1) Check Palette
+2) Lubricate bearings",Pending,1/5/2026,,Operator,0.00,0.00,0.00,,,[]
+5230,EQ ID 5230,Black Bros Glue Spreader,Thrislington,11686,Lubricate idler bearings with high grade ball bearing grease every 16 hours of operation. Do NOT mix oils.,Pending,5/21/2024,,Operator,0.00,0.00,0.00,,,[]
+5230,EQ ID 5230,Black Bros Glue Spreader,Thrislington,11688,"Lubricate all lubrication points EXCEPT idler bearings. Machine oil should be used on roller chains, elevating screws, pivot points, etc. Do NOT mix oils.",Pending,7/14/2024,,Operator,0.00,0.00,0.00,,,[]
+5175,EQ ID 5175,Edge Bander,Thrislington,11878,"1) Clean dust and adhesive residue 
+2) Make sure that the alignment is calibrated for accurate edge banding",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5175,EQ ID 5175,Edge Bander,Thrislington,14316,Replace worn or broken blades when necessary to avoid uneven edge banding and reduced efficiency. Ensure you properly adjust the trimming unit to achieve clean and precise cuts.,Pending,2/10/2025,,Lead,0.00,0.00,0.00,,,[]
+5175,EQ ID 5175,Edge Bander,Thrislington,11879,Replace worn or broken blades when necessary to avoid uneven edge banding and reduced efficiency. Ensure you properly adjust the trimming unit to achieve clean and precise cuts.,Closed and Completed,6/10/2024,Operator,Lead,0.00,0.00,0.00,1/9/2025,Andy Curtis - 01/10/25  1:09:43 AM: Operator changes the blades when needed.,[]
+5173,EQ ID 5173,Shaper,Thrislington,11683,"Dust filter on electrical box should be removed and cleaned out with compressed air. Keep nozzle 6 inches away from filter to avoid damaging it, replace filter if necessary.",Pending,7/16/2024,,Operator,0.00,0.00,0.00,,,[]
+5173,EQ ID 5173,Shaper,Thrislington,11684,"1) Inspect conveyor chain every 500 hours of operation.
+2) Raise the hold down assembly, (using screwdrivers) lift conveyor chain up out of its slide trough.
+3) Should be enough slack to lift high enough to see condition of the plastic tape using a light. It is normal for grooves to be worn in tape. The tape is (1/32) inch thick and must be replaced BEFORE is wears through. 
+4) If tape must be replaced, refer to section on CHANGING THE UHMW TAPE ON 390 SHAPER (page 23 of manual).",Closed and Completed,11/16/2024,Andy Curtis,Maintenance Mechanic,0.00,0.00,0.00,1/9/2025,Andy Curtis - 01/09/25  8:03:55 PM: This machine has been removed from the cell.,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11804,"1) Clean machine
+2) Clean tool storage
+3) Clean and restore tool lubricant level
+4) Check tool integrity
+5) Check pneumatic system",Pending,6/3/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11805,Clean electro-spindle,Pending,5/28/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11806,"1) Clean filter bowl
+2) Check electric cabinet fan
+3) Check safety devices",Pending,7/17/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11807,Check refill level of electro-spindle coolant liquid,Pending,9/1/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11808,"1) Grease clamps and stops
+2) Lubricate electro-spindle head slides greasing
+3) Check electrical connections",Pending,11/1/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11809,"1) Clean and replace electrical cabinet cooling fan filters
+2) Grease swarf exhauster bearings
+3) Check limit switch",Pending,4/1/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11813,"1) Check axes racks state for wear
+2) Check tooling integrity control unit
+3) Check tightness of fasteners on machine structure
+4) Electro-spindle refrigerant change",Pending,4/7/2026,,Operator,0.00,0.00,0.00,,,[]
+5171,EQ ID 5171,Emmegi Dual Saw,Thrislington,11994,"1) Clean head movement areas
+2) Remove swarf from working areas
+3) Clean microswitches and limit switches
+4) Clean control and check zones on machine
+5) Clean slide bars and supporting surfaces",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5171,EQ ID 5171,Emmegi Dual Saw,Thrislington,11995,Lubricate slide bars and supporting surfaces,Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5171,EQ ID 5171,Emmegi Dual Saw,Thrislington,14315,"1) Drain condensate if needed
+2) Topping up lubricant tanks",Pending,4/10/2025,,Operator,0.00,0.00,0.00,,,[]
+5171,EQ ID 5171,Emmegi Dual Saw,Thrislington,11996,"1) Drain condensate if needed
+2) Topping up lubricant tanks",Closed and Completed,8/5/2024,"Andy Curtis, Garrett Blankenship",Operator,0.25,0.00,0.00,1/9/2025,"Andy Curtis - 01/10/25  1:08:35 AM: Drained the condensate bowl.
+Operator filled up lubricant tanks when needed.",[]

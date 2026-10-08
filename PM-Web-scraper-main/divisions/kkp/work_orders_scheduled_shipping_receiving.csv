@@ -1,0 +1,31 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+5365,EQ ID 5365,Over head fan,Shipping/Receiving,15416,"- Check for the presence of the safety cable and shackle.
+- Ensure all mounting bolts are present and torqued to 40ft.lb (54.2 N-m)
+- Inspect motor terminations inside the motor junction box and tighten if necessary.
+- Check the gear reducer for oil leakage. 
+- Ensure all 16 bolts securing the airfoils to the fan are present and torqued 29 ft-lb (39.3 N-m)
+- Ensure airfoils are secured to one another by airfoils retainers.
+- Ensure the bolts securing the winglets to the airfoils are securely tightened.
+- Inspect the airfoils and hub for signs of damage or cracks.
+- Check guy wires for fraying or damage.",Closed and Completed,4/17/2025,Zolo,Maintenance,0.00,0.00,0.00,4/21/2025,,[]
+5365,EQ ID 5365,Over head fan,Shipping/Receiving,15440,"- Check for the presence of the safety cable and shackle.
+- Ensure all mounting bolts are present and torqued to 40ft.lb (54.2 N-m)
+- Inspect motor terminations inside the motor junction box and tighten if necessary.
+- Check the gear reducer for oil leakage. 
+- Ensure all 16 bolts securing the airfoils to the fan are present and torqued 29 ft-lb (39.3 N-m)
+- Ensure airfoils are secured to one another by airfoils retainers.
+- Ensure the bolts securing the winglets to the airfoils are securely tightened.
+- Inspect the airfoils and hub for signs of damage or cracks.
+- Check guy wires for fraying or damage.",Closed and Completed,4/21/2026,Zolo,Maintenance,0.00,0.00,0.00,5/14/2026,,[]
+5122,EQ ID 5122,Standard pallet truck,Shipping/Receiving,4671,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,3/1/2024,,[]
+5121,EQ ID 5121,Standard pallet truck,Shipping/Receiving,4672,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,3/1/2024,,[]
+5119,EQ ID 5119,Standard pallet truck,Shipping/Receiving,4674,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,2/28/2024,,[]
+5083,EQ ID 5083,Automated stretch wrapper,Shipping/Receiving,3831,"Examine the FDS belt for wear
+Examine the turntable drive belt for correct tension and wear.
+Examine the pre-stretch belt for correct tension and wear.
+Examine the pre-stretch chains and sprockets for wear.
+Lubricate the chain with SAE 3oil.",Closed and Completed,2/5/2023,Zolo,Maintenance,0.00,0.00,0.00,2/6/2023,,[]
+5083,EQ ID 5083,Automated stretch wrapper,Shipping/Receiving,6233,"EXAMINE THE FDS BELT WEAR
+EXAMINE THE TURNTABLE DRIVE BELT FOR CORRECT TENSION AND WEAR
+EXAMINE PRE-STRETCH BELT FOR CORRECT TENSION AND WEAR
+EXAMINE THE CHAIN WITH SAE-30 OIL.",Closed and Completed,7/27/2023,Zolo,Maintenance,0.00,0.00,1.00,8/3/2023,,[]

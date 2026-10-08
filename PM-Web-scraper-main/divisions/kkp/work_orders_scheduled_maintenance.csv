@@ -1,0 +1,73 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,20422,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Pending,9/19/2026,,Maintenance,0.00,0.00,0.00,,,[]
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,17767,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Closed and Completed,11/24/2025,Zolo,Maintenance,0.00,0.00,0.00,11/25/2025,,[]
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,17801,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Closed and Completed,1/1/2026,Zolo,Maintenance,0.00,0.00,0.00,1/30/2026,,[]
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,18266,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Closed and Completed,2/21/2026,Zolo,Maintenance,0.00,0.00,0.00,5/14/2026,,[]
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,19421,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Closed and Completed,6/14/2026,Zolo,Maintenance,0.00,0.00,0.00,8/10/2026,,[]
+5263,EQ ID 5263,Sump Pump,Maintenance,9671,Annual maintenance.,Closed and Completed,1/11/2025,Groundworks,Outside Service,0.00,0.00,0.00,2/18/2025,,[]
+5256,EQ ID 5256,Heating and Cooling unit #1,Maintenance,17946,"replaced filters. unit#1,#2,#3 and #4",Closed and Completed,12/15/2025,Zolo,Maintenance,0.00,0.00,0.00,12/15/2025,,[]
+5256,EQ ID 5256,Heating and Cooling unit #1,Maintenance,18032,"replaced filters. unit#1,#2,#3 and #4",Closed and Completed,6/29/2026,Zolo,Maintenance,0.00,0.00,0.00,8/19/2026,,[]
+5259,EQ ID 5259,Heating and Cooling unit#4,Maintenance,18034,Replace filter,Closed and Completed,12/29/2025,Zolo,Maintenance,0.00,0.00,0.00,1/29/2026,,[]
+5258,EQ ID 5258,Heating Cooling unit#3,Maintenance,18033,Replace filter,Closed and Completed,12/29/2025,Zolo,Maintenance,0.00,0.00,0.00,1/29/2026,,[]
+5151,EQ ID 5151,Stapling gun,Maintenance,5346,"Check and tighten all screws/bolts.
+Clean and lubricate magazine pusher pin.",Closed and Completed,5/17/2023,Zolo,Maintenance,0.00,0.00,0.00,5/19/2023,,[]

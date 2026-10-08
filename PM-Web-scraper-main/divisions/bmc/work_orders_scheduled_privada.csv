@@ -1,0 +1,69 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+1958,EQ ID 1958,MTC CNC Hinge Pocket Machine,Privada,5647,"1.) Clean on, under and around machine, especially grease fittings
+2.) Check for water in FRL (air regulator)
+3.) Lubricate al linear guide rail bearings
+4.) Grease each bearing zerk
+  (there are 12 bearings on each head, 5 bearings on each fixture for a total of 68 bearings)  (Use NSK AS2 grease for bearings and BP Energrease LS EP 00 for rack & pinion)",Pending,5/11/2024,,Operator,0.00,0.00,0.00,,,[]
+1958,EQ ID 1958,MTC CNC Hinge Pocket Machine,Privada,1001,"1.) Clean on, under and around machine, especially grease fittings
+2.) Check for water in FRL (air regulator)
+3.) Lubricate al linear guide rail bearings
+4.) Grease each bearing zerk
+  (there are 12 bearings on each head, 5 bearings on each fixture for a total of 68 bearings)  (Use NSK AS2 grease for bearings and BP Energrease LS EP 00 for rack & pinion)",Closed without Action,3/18/2023,Sam Kesler,Operator,0.00,0.00,0.00,5/11/2023,Sam Kesler - 05/11/23  1:08:05 PM: This PM needs to be cancelled and the manufacturers recommended maintenance including the correct intervals should be used to create separate PM's for Maintenance and Operations,[]
+5327,EQ ID 5327,Automatic Applicator (NEW),Privada,11970,"1) Inspect applicator assembly
+2) Clean exterior surfaces
+3) Flush the H20 adhesive filter
+4) Clean hose exterior & inspect for hydraulic connections
+5) Keep adhesive supply in melter clean",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5327,EQ ID 5327,Automatic Applicator (NEW),Privada,11971,"1) With power locked out, remove electrical cover and check heater & temperature sensor leads are tight and secure.
+2) Tighten all loose connections. 
+3) Replace heater and/or temp. sensor if leads have bare wires that touch each other or service block.
+4) Flush system, including applicators.",Pending,6/10/2024,,Maintenance,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,12051,"1) Check for damages on protective grids, covers, or fences
+2) Check the function of gas pressure springs at the cover hoods and hinged parts",Pending,6/11/2024,,Operator,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,12052,"1) Check function of ground fault circuit disrupters
+2) Check function of water area pressure limiting value",Pending,6/2/2025,,Maintenance,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,16118,Check hydraulic/ heating hoses for leaks,Pending,9/17/2025,,Maintenance,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,12054,"Lubricate housing bearings in the machines in explosive proof design (roller bearings, fan bearings)",Pending,9/2/2024,,Operator,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,12053,Check hydraulic/ heating hoses for leaks,Closed and Completed,7/1/2024,Bart James,Maintenance,0.00,0.00,0.00,5/11/2025,Bart James - 06/17/25  8:59:16 AM: PM completed during roller change,[]
+5328,EQ ID 5328,Automatic Applicator (NEW),Privada,11973,"1) Inspect applicator assembly
+2) Clean exterior surfaces
+3) Flush the H20 adhesive filter
+4) Clean hose exterior & inspect for hydraulic connections
+5) Keep adhesive supply in melter clean",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5328,EQ ID 5328,Automatic Applicator (NEW),Privada,11974,"1) With power locked out, remove electrical cover and check heater & temperature sensor leads are tight and secure.
+2) Tighten all loose connections. 
+3) Replace heater and/or temp. sensor if leads have bare wires that touch each other or service block.
+4) Flush system, including applicators.",Pending,11/4/2024,,Maintenance,0.00,0.00,0.00,,,[]
+750,EQ ID 750,Tecnolegno 300,Privada,11992,"1) Check oil level & for leaks the in external seals and gaskets
+2) Check for cracks or ageing for the gear units with torque arm (polymer bushings)",Pending,11/4/2024,,Maintenance,0.00,0.00,0.00,,,[]
+750,EQ ID 750,Tecnolegno 300,Privada,11993,Check carefully for wear or aging in gear unit seals and gaskets,Pending,1/6/2025,,Maintenance,0.00,0.00,0.00,,,[]
+1949,EQ ID 1949,MTC Finishing Machine,Privada,11699,"1) Listen for router spindle fan operation (with machine & spindle stopped, feel air flow from bottom of spindle)
+2) Check for control cabinet fan operation
+3) Listen and watch for strange sounds, loose bolts, etc.
+4) Blow debris off fixtures, linear guide rails, etc. as it accumulates.",Pending,5/18/2024,,Operator,0.00,0.00,0.00,,,[]
+1949,EQ ID 1949,MTC Finishing Machine,Privada,11700,"1) Clean on, under, and around machine
+2) Grease all 6 grease points indicated with a RED grease decal
+  - 6 areas of the rack & pinion system; dab grease with a firm bristle brush with nylon bristles
+3) Check for water or debris in compressed air filter.",Pending,5/30/2024,,Operator,0.00,0.00,0.00,,,[]
+1949,EQ ID 1949,MTC Finishing Machine,Privada,11708,"Lubricate all linear guide rail bearings, each bearing has a grease zerk. (There are 6 bearings on the X-axis)",Pending,5/5/2026,,Operator,0.00,0.00,0.00,,,[]
+1949,EQ ID 1949,MTC Finishing Machine,Privada,11707,"Check the alignment of the safety light bar by doing the following:
+1) Turn the machine on
+2) In right side electric cabinet, turn on 24VDC breaker off
+3) Press and hold the ""Light Bar Align"" button located left of electrical cabinet
+4) Continue to hold the ""Light Bar Align"" button and turn the 24VDC breaker on
+5) Continue to hold the ""Light Bar Align"" button for 5 seconds and then release the button
+6) Observe the RED illuminated number on the face of the left light bar
+7) The number will range from 1 to 4 (with 4 being best & 1 being worst)
+8) Adjust the angle and tilt of the light bars until a reading of 4 is present
+9) Turn machine off and wait 90 seconds
+10) Turn machine on and run production as required",Closed and Completed,5/11/2025,Bart James,Maintenance,0.00,0.00,0.00,6/18/2025,,[]
+1338,EQ ID 1338,Shaper #1- Privada,Privada,10023,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Pending,7/18/2024,,Operator,0.00,0.00,0.00,,,[]
+1338,EQ ID 1338,Shaper #1- Privada,Privada,842,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed without Action,5/18/2022,Sam Kesler,Operator,0.00,0.00,0.00,5/11/2023,Sam Kesler - 05/11/23  1:04:56 PM: There is only 1 Sharper used on a daily basis. This PM can go away!,[]
+1338,EQ ID 1338,Shaper #1- Privada,Privada,5642,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed without Action,7/11/2023,Sam Kesler,Operator,0.00,0.00,0.00,6/27/2023,Sam Kesler - 06/27/23  8:35:48 AM: This Machine isn't in service,[]
+1338,EQ ID 1338,Shaper #1- Privada,Privada,6235,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed and Completed,8/27/2023,.,Operator,0.00,0.00,0.00,1/18/2024,,[]
+1339,EQ ID 1339,Shaper #2- Privada,Privada,10024,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Pending,3/18/2024,,Operator,0.00,0.00,0.00,,,[]
+1339,EQ ID 1339,Shaper #2- Privada,Privada,843,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed without Action,5/18/2022,Sam Kesler,Operator,0.00,0.00,0.00,5/11/2023,Sam Kesler - 05/11/23  1:05:13 PM: There is only 1 Sharper used on a daily basis. This PM can go away!,[]
+1339,EQ ID 1339,Shaper #2- Privada,Privada,5643,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed and Completed,7/11/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+1341,EQ ID 1341,Shaper #4- Privada,Privada,9607,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Pending,3/10/2024,,Operator,0.00,0.00,0.00,,,[]
+1341,EQ ID 1341,Shaper #4- Privada,Privada,845,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed without Action,5/18/2022,Sam Kesler,Operator,0.00,0.00,0.00,5/11/2023,Sam Kesler - 05/11/23  1:05:46 PM: There is only 1 Sharper used on a daily basis. This PM can go away!,[]
+1341,EQ ID 1341,Shaper #4- Privada,Privada,5645,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed and Completed,7/11/2023,0,Operator,0.00,0.00,0.00,1/10/2024,,[]

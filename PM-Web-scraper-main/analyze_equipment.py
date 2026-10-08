@@ -271,6 +271,75 @@ GENERAL RULES:
 """
 
 
+def build_scheduled_procedure_prompt(audit_item: str, label: str, make: str = "",
+                                     model: str = "", eq_label: str = "") -> str:
+    """Prompt asking the model to turn a scheduled (preventive-maintenance)
+    work order's short Audit Item text into a concrete, safe, step-by-step
+    procedure a maintenance technician can follow - explicitly researching the
+    named machine make/model rather than staying generic."""
+    machine_lines = [f"- Machine: {label}"]
+    if eq_label:
+        machine_lines.append(f"- EQ ID: {eq_label}")
+    if make:
+        machine_lines.append(f"- Make: {make}")
+    if model:
+        machine_lines.append(f"- Model: {model}")
+    machine_block = "\n".join(machine_lines)
+    research_hint = (
+        "Use your knowledge of this EXACT make/model (manuals, OEM maintenance "
+        "guidance, common technician practice for this machine) to make the "
+        "steps specific and accurate - do not write a generic PM checklist that "
+        "could apply to any machine."
+        if (make or model) else
+        "The make/model was not recorded in PM, so infer the likely machine type "
+        "from its name below and research typical maintenance practice for that "
+        "TYPE of equipment. Say so briefly if you have to generalize."
+    )
+
+    return f"""You are a senior maintenance technician. A scheduled (preventive
+maintenance) work order has been issued with only a short checklist line (the
+"Audit Item") describing what to do. Maintenance personnel have asked for a
+clear, step-by-step procedure they can follow, because the Audit Item alone is
+sometimes too brief to act on.
+
+=== MACHINE ===
+{machine_block}
+
+=== AUDIT ITEM (the task as written in PM) ===
+{audit_item or "(not provided)"}
+
+{research_hint}
+
+Produce the procedure as Markdown using EXACTLY this structure:
+
+1. A single H1 title line: "# Scheduled Maintenance Procedure: {label}".
+2. A one-paragraph "## Overview" explaining, in plain language, WHY this task
+   matters for this specific machine (what it prevents / protects).
+3. A "## Tools & Parts Needed" bulleted list (PPE, tools, consumables/spares).
+   If nothing special is needed, write "- Standard hand tools; no special parts."
+4. A "## Safety" bulleted list of any lockout/tagout, power-down, or PPE steps
+   required BEFORE starting, specific to this machine type where relevant.
+5. A "## Step-by-Step Procedure" as a NUMBERED list. Each step must be a single
+   concrete, actionable instruction (not vague like "inspect the machine" -
+   say what to look at, where, and what "good" vs "needs attention" looks like).
+6. A "## Completion Checklist" bulleted list of what to verify/confirm before
+   marking the work order complete.
+
+RULES:
+- Be concrete and specific to the named machine make/model - reference actual
+  components, access points, or adjustment points for that machine when you
+  can. If you are not certain about a machine-specific detail, phrase it as
+  general best practice rather than inventing a specific part number or
+  measurement you don't actually know.
+- Do NOT invent error codes, exact torque/pressure values, or part numbers you
+  are not confident about - prefer general guidance ("per OEM manual") over a
+  fabricated number.
+- Keep language direct and usable on the shop floor.
+- Do NOT add disclaimers, meta-commentary, or a preamble before the title.
+- Output ONLY the Markdown described above.
+"""
+
+
 def build_update_prompt(existing_markdown: str, new_records: list[dict],
                         stats: dict = None, label: str = "",
                         operator_edits: str = "") -> str:

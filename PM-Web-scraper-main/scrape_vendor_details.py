@@ -101,6 +101,44 @@ def _get_driver(port: int):
     return webdriver.Chrome(service=service, options=options)
 
 
+def _select_division_in_ui(driver, division_key: str, wait_secs: int = 6) -> str:
+    """Select this division in the site's #ddlDivision dropdown and wait for
+    the vendors grid to reload. A fresh page load always starts on BLA, so
+    relying on a previously-chosen division does NOT work here - we must set
+    it explicitly, exactly like scraper.py's _select_division_in_ui()."""
+    if not division_key:
+        return "no-division"
+    value = division_key.upper()
+    js = r"""
+    var val = arguments[0];
+    var el = document.getElementById('ddlDivision');
+    if (!el) return 'no-ddl';
+    try {
+      if (window.jQuery) {
+        var dd = jQuery('#ddlDivision').data('kendoDropDownList');
+        if (dd) { dd.value(val); dd.trigger('change'); return 'kendo'; }
+      }
+    } catch (e) { return 'err:' + e; }
+    el.value = val;
+    el.dispatchEvent(new Event('change', {bubbles:true}));
+    return 'plain';
+    """
+    try:
+        status = driver.execute_script(js, value)
+    except WebDriverException as e:
+        status = f"exec-error:{e}"
+    print(f"  [division] set #ddlDivision -> {value} ({status})")
+    time.sleep(3)  # let the Kendo grid tear down + re-read for the new division
+    try:
+        WebDriverWait(driver, wait_secs).until(
+            EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#gridVendors .vendtooltip"))
+        )
+    except TimeoutException:
+        pass
+    time.sleep(1)
+    return status
+
+
 def _wait_for_grid(driver, timeout: int = 30):
     try:
         WebDriverWait(driver, timeout).until(
@@ -221,6 +259,18 @@ def _scrape_online(args) -> list[dict]:
         _wait_for_grid(driver, timeout=args.timeout)
         time.sleep(1)  # let Kendo finish rendering
 
+        division_key = (args.division_key or "bla").strip().lower()
+        if division_key != "bla":
+            _select_division_in_ui(driver, division_key)
+
+        try:
+            shown = driver.find_element(
+                By.CSS_SELECTOR, "span.k-dropdown[aria-owns='ddlDivision_listbox'] .k-input"
+            ).text
+            print(f"[division] grid is now showing: {shown}")
+        except Exception:
+            pass
+
         vendor_ids = _read_vendor_ids(driver)
         print(f"[grid] found {len(vendor_ids)} vendor rows")
         if args.limit:
@@ -332,8 +382,12 @@ def _regenerate_vendor_contacts():
     subprocess.run([sys.executable, str(HERE / "build_vendor_contacts.py")], check=True)
 
 
-def _update_db(tooltips: list[dict]) -> int:
-    existing = mint_store.list_vendor_contacts()
+def _update_db(tooltips: list[dict], division_key: str = "bla") -> int:
+    """Merge tooltip data into vendor_contacts, scoped to division_key so a
+    company name that exists in multiple divisions (e.g. 'McMaster-Carr' in
+    both BLA and BED) never gets cross-contaminated."""
+    existing = [c for c in mint_store.list_vendor_contacts()
+                if (c.get("division_key") or "bla") == division_key]
     existing_by_norm = {}
     for c in existing:
         norm = _normalize_company(c["company"])
@@ -348,7 +402,7 @@ def _update_db(tooltips: list[dict]) -> int:
         norm = _normalize_company(name)
         matches = existing_by_norm.get(norm, [])
         if not matches:
-            # Not in DB yet; add it now
+            # Not in DB yet (for this division); add it now
             fields = {
                 "company": name,
                 "contact": tip_contact,
@@ -361,6 +415,7 @@ def _update_db(tooltips: list[dict]) -> int:
                 "service_contract": "",
                 "contract_type": "",
                 "machine_eq": [],
+                "division_key": division_key,
             }
             mint_store.add_vendor_contact(fields, author="Merja Haatanen")
             updated += 1
@@ -402,6 +457,9 @@ def main():
                     help="Fetch and print one tooltip, then exit")
     ap.add_argument("--no-update-db", action="store_true",
                     help="Skip updating the live SQLite database")
+    ap.add_argument("--division-key", default="bla",
+                    help="Division these vendors belong to (must match the Division "
+                         "dropdown set in the live PM session, e.g. 'bed'). Defaults to 'bla'.")
     args = ap.parse_args()
 
     if args.from_html:
@@ -424,7 +482,7 @@ def main():
     _regenerate_vendor_contacts()
 
     if not args.no_update_db:
-        n = _update_db(tooltips)
+        n = _update_db(tooltips, division_key=(args.division_key or "bla").strip().lower())
         print(f"[db] updated/added {n} contact record(s)")
 
     print("done")

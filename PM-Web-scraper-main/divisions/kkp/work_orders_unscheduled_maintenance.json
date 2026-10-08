@@ -1,0 +1,40 @@
+[
+  {
+    "equipment_id": "5236",
+    "equipment_eq_id": "EQ ID 5236",
+    "equipment_name": "Trash compactors",
+    "department": "Maintenance",
+    "wo_id": "15604",
+    "date_notified": "04/24/2025",
+    "urgency": "5. Prod Ongoing, Maint Required",
+    "problem": "Hydraulic oil leaking. WM tech came out inspected and rescheduled for repair.",
+    "status": "Closed and Completed",
+    "material_cost": "0",
+    "labor_time": "0",
+    "work_performed_by": "Waste Management technician",
+    "assigned_to": "Maintenance",
+    "downtime_hours": "0",
+    "completed_datetime": "05/14/2025 10:00 AM",
+    "comments": "",
+    "attachments": []
+  },
+  {
+    "equipment_id": "5129",
+    "equipment_eq_id": "EQ ID 5129",
+    "equipment_name": "Electric Scissors",
+    "department": "Maintenance",
+    "wo_id": "10729",
+    "date_notified": "03/12/2024",
+    "urgency": "6. General Maint",
+    "problem": "Batteries not charging.",
+    "status": "Closed and Completed",
+    "material_cost": "0",
+    "labor_time": "0",
+    "work_performed_by": "John, forklift specialist",
+    "assigned_to": "Maintenance",
+    "downtime_hours": "0",
+    "completed_datetime": "03/13/2024 02:00 PM",
+    "comments": "Zolo Batbayar - 03/21/24  6:09:06 AM: Installed new batteries.",
+    "attachments": []
+  }
+]

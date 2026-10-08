@@ -207,6 +207,9 @@ def _init() -> None:
             CREATE TABLE IF NOT EXISTS technicians (
                 name       TEXT PRIMARY KEY COLLATE NOCASE,
                 aliases    TEXT NOT NULL DEFAULT '[]',
+                title      TEXT NOT NULL DEFAULT '',
+                division_key TEXT NOT NULL DEFAULT 'bla',
+                is_supervisor INTEGER NOT NULL DEFAULT 0,
                 active     INTEGER NOT NULL DEFAULT 1,
                 created_at TEXT NOT NULL,
                 created_by TEXT NOT NULL DEFAULT ''
@@ -240,6 +243,7 @@ def _init() -> None:
                 contract_type    TEXT NOT NULL DEFAULT '',
                 machine_eq       TEXT NOT NULL DEFAULT '[]',
                 source           TEXT NOT NULL DEFAULT '',
+                division_key     TEXT NOT NULL DEFAULT 'bla',
                 created_at       TEXT NOT NULL,
                 created_by       TEXT NOT NULL DEFAULT '',
                 updated_at       TEXT NOT NULL,
@@ -334,6 +338,18 @@ def _init() -> None:
         role_cols = {r["name"] for r in c.execute("PRAGMA table_info(roles)").fetchall()}
         if "view_key" not in role_cols:
             c.execute("ALTER TABLE roles ADD COLUMN view_key TEXT NOT NULL DEFAULT ''")
+        # Migration: add title/division_key to technicians if from an older schema.
+        tech_cols = {r["name"] for r in c.execute("PRAGMA table_info(technicians)").fetchall()}
+        if "title" not in tech_cols:
+            c.execute("ALTER TABLE technicians ADD COLUMN title TEXT NOT NULL DEFAULT ''")
+        if "division_key" not in tech_cols:
+            c.execute("ALTER TABLE technicians ADD COLUMN division_key TEXT NOT NULL DEFAULT 'bla'")
+        if "is_supervisor" not in tech_cols:
+            c.execute("ALTER TABLE technicians ADD COLUMN is_supervisor INTEGER NOT NULL DEFAULT 0")
+        # Migration: add division_key to vendor_contacts if it exists from an older schema.
+        vendor_cols = {r["name"] for r in c.execute("PRAGMA table_info(vendor_contacts)").fetchall()}
+        if "division_key" not in vendor_cols:
+            c.execute("ALTER TABLE vendor_contacts ADD COLUMN division_key TEXT NOT NULL DEFAULT 'bla'")
         type_count = c.execute("SELECT COUNT(*) AS n FROM vendor_contact_types").fetchone()["n"]
         if not type_count:
             c.execute(
@@ -751,6 +767,7 @@ def set_nickname(dept_key: str, eq_id: str, nickname: str, author: str = "") -> 
 VENDOR_CONTACT_FIELDS = (
     "company", "contact", "address", "phone", "cell", "fax", "email",
     "type", "service_contract", "contract_type", "machine_eq", "source",
+    "division_key",
 )
 
 
@@ -776,6 +793,8 @@ def _clean_vendor_fields(fields: dict) -> dict:
             elif not isinstance(raw, (list, tuple)):
                 raw = []
             out["machine_eq"] = json.dumps([str(e).strip() for e in raw if str(e).strip()])
+        elif k == "division_key":
+            out["division_key"] = (str(fields.get("division_key") or "").strip().lower() or "bla")
         else:
             out[k] = str(fields.get(k) or "").strip()
     return out
@@ -908,6 +927,15 @@ WO_FIELDS = (
     "audit_item", "status", "material_cost", "labor_time", "work_performed_by",
     "helpers", "downtime_hours", "completed_datetime", "completion_comments",
     "frequency", "series_id", "recurrence_stopped", "assigned_to", "owner",
+    # "Machine is down" tracking: set at creation time; downtime_end is filled
+    # in later (when the machine actually started running again, which may be
+    # earlier than when the WO itself gets administratively closed) so MINT
+    # can compute business-hours downtime for just these flagged WOs.
+    "is_downtime", "downtime_end",
+    # Contact email for the person who filed the request, captured on the
+    # employee "general maintenance request" intake form (not asked for on
+    # the normal maintenance-staff WO creation form).
+    "requester_email",
 )
 
 
@@ -1327,7 +1355,7 @@ def delete_chart_event(event_id: int, author: str = "") -> bool:
 # Technicians (maintenance workers tracked in team stats)
 # --------------------------------------------------------------------------- #
 def list_technicians(active_only: bool = True) -> list[dict]:
-    query = "SELECT name, aliases, active, created_at, created_by FROM technicians"
+    query = "SELECT name, aliases, title, division_key, is_supervisor, active, created_at, created_by FROM technicians"
     params = ()
     if active_only:
         query += " WHERE active = 1"
@@ -1351,7 +1379,7 @@ def get_technician(name: str) -> dict | None:
         return None
     with _connect() as c:
         r = c.execute(
-            "SELECT name, aliases, active, created_at, created_by FROM technicians "
+            "SELECT name, aliases, title, division_key, is_supervisor, active, created_at, created_by FROM technicians "
             "WHERE name = ? COLLATE NOCASE",
             (name,),
         ).fetchone()
@@ -1365,16 +1393,19 @@ def get_technician(name: str) -> dict | None:
     return data
 
 
-def add_technician(name: str, aliases: list[str] | None = None, author: str = "") -> dict:
+def add_technician(name: str, aliases: list[str] | None = None, author: str = "",
+                    title: str = "", division_key: str = "bla", is_supervisor: bool = False) -> dict:
     name = (name or "").strip()
     if not name:
         raise ValueError("technician name is required")
     aliases = sorted({(a or "").strip().lower() for a in (aliases or []) if (a or "").strip()})
+    title = (title or "").strip()
+    division_key = (division_key or "bla").strip().lower()
     with _lock, _connect() as c:
         c.execute(
-            "INSERT OR REPLACE INTO technicians (name, aliases, active, created_at, created_by) "
-            "VALUES (?, ?, 1, ?, ?)",
-            (name, json.dumps(aliases), _now(), author or ""),
+            "INSERT OR REPLACE INTO technicians (name, aliases, title, division_key, is_supervisor, active, created_at, created_by) "
+            "VALUES (?, ?, ?, ?, ?, 1, ?, ?)",
+            (name, json.dumps(aliases), title, division_key, 1 if is_supervisor else 0, _now(), author or ""),
         )
     _audit("", author, "add_technician", name)
     return get_technician(name)

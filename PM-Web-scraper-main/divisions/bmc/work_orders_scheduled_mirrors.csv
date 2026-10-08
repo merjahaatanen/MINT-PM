@@ -1,0 +1,238 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,11956,Remove sludge,Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,14509,"1) Remove all water and give all internal surfaces a thorough cleaning. Water can be disposed of properly or put back in unit. 
+2) Check for dust buildup on fan blades, this can lead to unbalancing and vibration.",Pending,4/28/2025,,Lead,0.00,0.00,0.00,,,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,480,Blow out Starter Box,Closed and Completed,4/18/2022,Andy Curtis,Maintenance,0.15,0.00,0.00,4/4/2022,Andy Curtis - 09/29/22  5:30:04 AM: Done but w/o not closed.,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,2718,Blow out Starter Box,Closed without Action,11/13/2022,Andy Curtis,Maintenance,0.20,0.00,0.00,11/18/2022,Andy Curtis - 12/10/22  7:41:06 AM: Not needed this time,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,3562,Blow out Starter Box,Closed and Completed,1/10/2023,.,Maintenance,0.00,0.00,0.00,1/16/2024,,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,11958,"1) Remove all water and give all internal surfaces a thorough cleaning. Water can be disposed of properly or put back in unit. 
+2) Check for dust buildup on fan blades, this can lead to unbalancing and vibration.",Closed and Completed,8/19/2024,"Corey Hart, Dana, Amber Throgmorton, Jarvis Partee",Lead,2.00,0.00,0.00,9/24/2024,,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,11957,"Remove doors, stop fan & clean internally",Closed and Completed,6/24/2024,Mirror group,Maintenance,0.00,0.00,0.00,9/27/2024,Andy Curtis - 01/13/25  9:20:12 PM: This was cleaned during inventory in September,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,13548,"1) Remove all water and give all internal surfaces a thorough cleaning. Water can be disposed of properly or put back in unit. 
+2) Check for dust buildup on fan blades, this can lead to unbalancing and vibration.",Closed and Completed,1/24/2025,Operators,Lead,0.00,0.00,0.00,1/29/2025,Garrett Blankenship - 01/28/25 11:57:40 PM: Unit was cleaned during inventory in September.,[]
+669,EQ ID 669,"Ready Bender, pneumatic",Mirrors,13570,Clean and lubricate pivot points,Pending,2/24/2025,,Operator,0.00,0.00,0.00,,,[]
+669,EQ ID 669,"Ready Bender, pneumatic",Mirrors,451,Clean and lubricate pivot points,Closed and Completed,7/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+669,EQ ID 669,"Ready Bender, pneumatic",Mirrors,9754,Clean and lubricate pivot points,Closed and Completed,5/16/2024,Corey Hart,Operator,0.50,0.00,0.00,6/17/2024,Jesus Tostado - 10/24/24 12:52:55 PM: Did not change the oil filter.,[]
+5324,EQ ID 5324,Stroke Sander- Doucet,Mirrors,13562,Clean the surfaces and the equipment using air pressure on a regular basis.,Pending,10/25/2024,,Operator,0.00,0.00,0.00,,,[]
+5324,EQ ID 5324,Stroke Sander- Doucet,Mirrors,13560,Lubricate the linear or cylindrical bearings occasionally to make the sander move more efficiently.,Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+5324,EQ ID 5324,Stroke Sander- Doucet,Mirrors,11841,Lubricate the linear or cylindrical bearings occasionally to make the sander move more efficiently.,Closed and Completed,6/10/2024,Corey Hart,Operator,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:33:26 PM: Did not change the oil filter.,[]
+5324,EQ ID 5324,Stroke Sander- Doucet,Mirrors,11840,Clean the surfaces and the equipment using air pressure on a regular basis.,Closed and Completed,5/29/2024,Cody Burke,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:45:50 PM: Did not change the oil filter.,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,13571,"1) Check Ceramic tips on mistrack switches if worn through replace
+2) Grease and oil all lube points",Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,13554,Test Safety Switch,Pending,11/8/2024,,Operator,0.00,0.00,0.00,,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,9757,Lube Jack system,Pending,7/16/2024,,Operator,0.00,0.00,0.00,,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,437,Test Safety Switch,Closed and Completed,4/2/2022,Dale Kee,Operator,0.00,0.00,0.00,5/22/2023,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,436,"1) Check Ceramic tips on mistrack switches if worn through replace
+2) Grease and oil all lube points",Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,438,Lube Jack system,Closed and Completed,9/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,5797,Test Safety Switch,Closed and Completed,6/9/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,9611,"1) Check Ceramic tips on mistrack switches if worn through replace
+2) Grease and oil all lube points",Closed and Completed,2/10/2024,Danny Nichols,Operator,0.50,0.00,0.00,3/11/2024,Jesus Tostado - 10/24/24 12:55:14 PM: Did not change the oil filter.,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,9978,Test Safety Switch,Closed and Completed,1/31/2024,Danny Nichols,Operator,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:12:46 PM: We don`t have this machine,[]
+661,EQ ID 661,Corner Polisher,Mirrors,14335,"1) Check graphite pads on plates for wear, replace if necessary
+2) Change abrasive belt when worn. To change remove dust hoods and compress spring tension
+3) Check abrasive belt for cupping, this can be due to exposure to moisture. Change belt if this occurs.
+4) Check for abrasive belt alignment with patens. Belt should be even with patens, if this is not the case adjust motor mount setting for proper alignment.",Pending,4/13/2025,,Operator,0.00,0.00,0.00,,,[]
+661,EQ ID 661,Corner Polisher,Mirrors,439,Blow out Starter Box,Closed and Completed,4/18/2022,Andy Curtis,Maintenance,0.15,0.00,0.00,4/4/2022,Andy Curtis - 09/29/22  5:27:59 AM: Done but w/o not closed.,[]
+661,EQ ID 661,Corner Polisher,Mirrors,2860,Blow out Starter Box,Closed without Action,11/13/2022,Andy Curtis,Maintenance,0.20,0.00,0.00,11/18/2022,Andy Curtis - 12/10/22  7:42:53 AM: Not needed this time,[]
+661,EQ ID 661,Corner Polisher,Mirrors,3564,Blow out Starter Box,Closed and Completed,1/10/2023,.,Maintenance,0.00,0.00,0.00,12/20/2022,,[]
+661,EQ ID 661,Corner Polisher,Mirrors,11856,"1) Check graphite pads on plates for wear, replace if necessary
+2) Change abrasive belt when worn. To change remove dust hoods and compress spring tension
+3) Check abrasive belt for cupping, this can be due to exposure to moisture. Change belt if this occurs.
+4) Check for abrasive belt alignment with patens. Belt should be even with patens, if this is not the case adjust motor mount setting for proper alignment.",Closed and Completed,6/10/2024,Operators,Operator,0.00,0.00,0.00,1/13/2025,Andy Curtis - 01/13/25  9:18:58 PM: Belts get changed as needed by operators. Any further problems get reported.,[]
+666,EQ ID 666,Stroke Sander,Mirrors,442,Blow out Starter Box,Closed and Completed,4/18/2022,Andy Curtis,Maintenance Mechanic,0.15,0.00,0.00,4/4/2022,Andy Curtis - 09/29/22  5:29:26 AM: Done but w/o not closed.,[]
+666,EQ ID 666,Stroke Sander,Mirrors,2862,Blow out Starter Box,Closed without Action,11/13/2022,Andy Curtis,Maintenance Mechanic,0.20,0.00,0.00,11/18/2022,Andy Curtis - 12/10/22  7:44:48 AM: Not needed this time,[]
+666,EQ ID 666,Stroke Sander,Mirrors,3566,Blow out Starter Box,Closed and Completed,1/10/2023,.,Maintenance Mechanic,0.00,0.00,0.00,12/20/2022,,[]
+705,EQ ID 705,165 Assembly Driver 2,Mirrors,9739,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+705,EQ ID 705,165 Assembly Driver 2,Mirrors,13552,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Pending,10/31/2024,,Operator,0.00,0.00,0.00,,,[]
+705,EQ ID 705,165 Assembly Driver 2,Mirrors,481,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,1/16/2024,,[]
+705,EQ ID 705,165 Assembly Driver 2,Mirrors,12102,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,6/13/2024,Josh Martin,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:10:28 PM: We don`t have this machine,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,13551,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Pending,10/31/2024,,Operator,0.00,0.00,0.00,,,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,9906,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,482,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,12101,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,6/13/2024,Josh Martin,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:08:24 PM: We don`t have this machine,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,13549,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,10/31/2024,Josh Martin,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:08:55 PM: We don`t have this machine,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,13550,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,10/31/2024,Josh Martin,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:09:29 PM: We don`t have this machine,[]
+716,EQ ID 716,Miller Maxstar 200 Welder,Mirrors,11727,Blow out inside of unit during heavy service clean monthly. Do NOT remove case while blowing out unit.,Pending,5/4/2025,,Maintenance,0.00,0.00,0.00,,,[]
+716,EQ ID 716,Miller Maxstar 200 Welder,Mirrors,11726,"1) Replace unreadable labels
+2) Clean and tighten weld terminals
+3) Replace damaged gas hose
+4) Repair or replace cracked cables and cords",Closed and Completed,11/12/2024,Operators,Maintenance,0.00,0.00,0.00,1/13/2025,Andy Curtis - 01/13/25  9:21:24 PM: Welder is in good shape,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,12999,"1) Check escapement for screw feeder machine.
+2) Check pneumatic system (FRL and hoses)
+3) Check screw gun",Pending,12/10/2024,,Technician,0.00,0.00,0.00,,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,13557,Check stop plate for wear,Pending,12/24/2024,,Operator,0.00,0.00,0.00,,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,13561,"1) Clean all moving part in screw feeder housing.
+2) Check screw feed hoses",Pending,4/24/2025,,Technician,0.00,0.00,0.00,,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,423,"1) Clean all moving part in screw feeder housing.
+2) Check screw feed hoses",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,422,Check stop plate for wear,Closed and Completed,5/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,421,"1) Check escapement for screw feeder machine.
+2) Check pneumatic system (FRL and hoses)
+3) Check screw gun",Closed and Completed,6/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,9724,"1) Check escapement for screw feeder machine.
+2) Check pneumatic system (FRL and hoses)
+3) Check screw gun",Closed and Completed,4/16/2024,Jesus Tostado,Technician,1.00,5.00,0.00,9/10/2024,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,9719,Check stop plate for wear,Closed and Completed,3/16/2024,Dell Ross,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:14:58 PM: We don`t have this machine,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,9777,"1) Clean all moving part in screw feeder housing.
+2) Check screw feed hoses",Closed and Completed,7/16/2024,Dell Ross,Technician,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:33:52 PM: Did not change the oil filter.,[]
+652,EQ ID 652,Autofeed Screw driver,Mirrors,13553,Thoroughly clean the machine,Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+652,EQ ID 652,Autofeed Screw driver,Mirrors,424,Thoroughly clean the machine,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+652,EQ ID 652,Autofeed Screw driver,Mirrors,425,"Requires Factory Service, Assembly Automation",Closed and Completed,3/18/2024,Dell Ross,Outside Service,0.50,0.00,0.00,4/18/2024,Jesus Tostado - 10/24/24 12:50:17 PM: Did not change the oil filter.,[]
+652,EQ ID 652,Autofeed Screw driver,Mirrors,9622,Thoroughly clean the machine,Closed and Completed,2/10/2024,Dell Ross,Operator,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:11:48 PM: We don`t have this machine,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9896,Change Hydraulic oil,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,13558,"1) Change v-notch die sets.
+2)Change hydraulic oil filter (Mobile D.T.E. 25 Hyd. Oil )",Pending,4/24/2025,,Operator,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,13565,"1) Service and clean tooling (Remove each tool and clean)
+2) Lubricate drive chains and all grease points (Mobilith AW2 Grease)",Pending,1/24/2025,,Operator,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,15427,Inspect Sensors,Pending,6/18/2025,,Technician,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,434,Change the Un-Coiler's reduction gear oil using Boston Gear Mobil SHC634 synthetic lubricating oil,Pending,3/18/2025,,Technician,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,433,Inspect Sensors,Closed and Completed,5/18/2022,Andy Curtis,Technician,0.30,0.00,0.00,5/18/2022,Andy Curtis - 12/10/22  7:38:40 AM: Done,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,431,"1) Change v-notch die sets.
+2)Change hydraulic oil filter (Mobile D.T.E. 25 Hyd. Oil )",Closed without Action,9/18/2022,Andy Curtis,Operator,0.00,0.00,0.00,12/10/2022,Andy Curtis - 12/10/22  7:35:38 AM: Not needed at this time,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,3561,Inspect Sensors,Closed and Completed,2/10/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,429,Change Hydraulic oil,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,430,"1) Check and tighten all bolts and fasteners on all punch dies.
+2) Clean Coolant filter
+3) Evaluate coolant, and change if necessary
+4) Clean out air filter cabinet on controller box
+5) Clean forming roller section (Rollers) with clean cloth
+6) Change Coolant",Closed and Completed,4/18/2022,.,Maintenance,0.00,0.00,0.00,1/10/2024,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,3560,"1) Change v-notch die sets.
+2)Change hydraulic oil filter (Mobile D.T.E. 25 Hyd. Oil )",Closed and Completed,6/10/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,432,"1) Service and clean tooling (Remove each tool and clean)
+2) Lubricate drive chains and all grease points (Mobilith AW2 Grease)",Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9623,"1) Check and tighten all bolts and fasteners on all punch dies.
+2) Clean Coolant filter
+3) Evaluate coolant, and change if necessary
+4) Clean out air filter cabinet on controller box
+5) Clean forming roller section (Rollers) with clean cloth
+6) Change Coolant",Closed and Completed,2/10/2024,Josh Marting,Maintenance,1.00,0.00,0.00,3/10/2024,Jesus Tostado - 10/24/24 12:47:27 PM: Did not change the oil filter.,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9723,"1) Service and clean tooling (Remove each tool and clean)
+2) Lubricate drive chains and all grease points (Mobilith AW2 Grease)",Closed and Completed,4/16/2024,Josh Marting,Operator,1.00,0.00,0.00,4/16/2024,Jesus Tostado - 10/24/24 12:48:00 PM: Did not change the oil filter.,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9806,Inspect Sensors,Closed and Completed,3/16/2024,Danny Nichols,Technician,0.50,0.00,0.00,4/16/2024,Jesus Tostado - 10/24/24 12:51:03 PM: Did not change the oil filter.,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9979,"1) Change v-notch die sets.
+2)Change hydraulic oil filter (Mobile D.T.E. 25 Hyd. Oil )",Closed and Completed,7/16/2024,"Josh Martin, Danny Nichols",Operator,1.00,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:18:22 PM: Did not change the oil filter.,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,13564,"1) Check and tighten all bolts and fasteners on all punch dies.
+2) Clean Coolant filter
+3) Evaluate coolant, and change if necessary
+4) Clean out air filter cabinet on controller box
+5) Clean forming roller section (Rollers) with clean cloth
+6) Change Coolant",Closed and Completed,1/24/2025,"Garrett Blankenship, Operators",Maintenance,0.50,0.00,0.00,1/24/2025,"Garrett Blankenship - 01/28/25 11:56:37 PM: Tightened all bolts and fasteners, blew out cabinet air filters.
+
+Coolant was changed recently, operators completed the rest. | Garrett Blankenship - 01/28/25 11:56:24 PM: Tightened all bolts and fasteners, blew out cabinet air filters.
+
+Coolant was changed recently, operators completed the rest.",[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,13568,Inspect Sensors,Closed and Completed,12/24/2024,Dale and Benn,Technician,0.25,0.00,0.00,4/17/2025,Dale Kee - 04/18/25  7:12:57 AM: Checked all sensors,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,14508,"1) Check and tighten all bolts and fasteners on all punch dies.
+2) Clean Coolant filter
+3) Evaluate coolant, and change if necessary
+4) Clean out air filter cabinet on controller box
+5) Clean forming roller section (Rollers) with clean cloth
+6) Change Coolant",Pending,4/28/2025,Garrett Blankenship,Maintenance,0.00,0.00,0.00,4/23/2025,Garrett Blankenship - 04/23/25  1:10:34 AM: Testing comments on PMS,[]
+658,EQ ID 658,"Grinder, 290 Mirror Frame, Corner",Mirrors,435,Blow out Starter Box,Closed and Completed,4/18/2022,Andy Curtis,Maintenance,0.15,0.00,0.00,4/4/2022,Andy Curtis - 09/29/22  5:27:10 AM: Done but w/o not closed.,[]
+658,EQ ID 658,"Grinder, 290 Mirror Frame, Corner",Mirrors,2859,Blow out Starter Box,Closed without Action,11/13/2022,Andy Curtis,Maintenance,0.20,0.00,0.00,11/18/2022,Andy Curtis - 12/10/22  7:42:08 AM: Not needed this time,[]
+658,EQ ID 658,"Grinder, 290 Mirror Frame, Corner",Mirrors,3563,Blow out Starter Box,Closed and Completed,1/10/2023,.,Maintenance,0.00,0.00,0.00,12/20/2022,,[]
+671,EQ ID 671,165 Assembly Driver 1,Mirrors,9910,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+671,EQ ID 671,165 Assembly Driver 1,Mirrors,452,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+671,EQ ID 671,165 Assembly Driver 1,Mirrors,12998,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,9/10/2024,Jesus Tostado,Operator,1.00,5.00,0.00,9/10/2024,,[]
+672,EQ ID 672,165 Assembly Driver 4,Mirrors,9902,"Check Torque, set to 10 - 11 lb.-in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+672,EQ ID 672,165 Assembly Driver 4,Mirrors,453,"Check Torque, set to 10 - 11 lb.-in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+673,EQ ID 673,165 Assembly Driver 6,Mirrors,9904,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+673,EQ ID 673,165 Assembly Driver 6,Mirrors,454,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+674,EQ ID 674,165 Assembly Driver 5,Mirrors,9833,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+674,EQ ID 674,165 Assembly Driver 5,Mirrors,455,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+675,EQ ID 675,165 Assembly Driver 3,Mirrors,9824,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+675,EQ ID 675,165 Assembly Driver 3,Mirrors,456,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,13566,"1) Open Tooling and clean. Inspect for broken springs/ damage.
+2) Cutoff Tool, check return cylinder shaft for adjustment",Pending,2/24/2025,,Operator,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,458,"1) Check Uncoiler arm spring, replace if weak (about every 2 - 3 years)
+2) Factory service machine, inspect and adjust",Pending,3/18/2024,,Technician,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,9875,"1) Inspect for damage 
+2) Fill gear box with Shell Tellus 32 hydraulic oil to the middle of the top gear shafts.
+3) Replace PLC Relays every 250,000 cycles
+4) Check drive Coupling cores
+5) Change Die springs (200,000 cycles)",Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,9765,"1) Uncoiler, Check motor and power transmission (e.g. gear, sprocket, chain, nuts and bolts etc.)
+2) Take out dies & punches inspect to sharpen",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,13559,"Check finished part for burrs, schedule maintenance if indicated",Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,462,Replace shock absorbers under main punch,Pending,3/18/2025,,Technician,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,459,"1) Inspect for damage 
+2) Fill gear box with Shell Tellus 32 hydraulic oil to the middle of the top gear shafts.
+3) Replace PLC Relays every 250,000 cycles
+4) Check drive Coupling cores
+5) Change Die springs (200,000 cycles)",Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,461,"Check finished part for burrs, schedule maintenance if indicated",Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,460,"1) Uncoiler, Check motor and power transmission (e.g. gear, sprocket, chain, nuts and bolts etc.)
+2) Take out dies & punches inspect to sharpen",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,457,"1) Open Tooling and clean. Inspect for broken springs/ damage.
+2) Cutoff Tool, check return cylinder shaft for adjustment",Closed and Completed,7/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,9729,"1) Open Tooling and clean. Inspect for broken springs/ damage.
+2) Cutoff Tool, check return cylinder shaft for adjustment",Closed and Completed,5/16/2024,"Josh Martin, Jesus Tostado",Operator,0.50,0.00,0.00,6/16/2024,Jesus Tostado - 10/24/24 12:49:34 PM: Did not change the oil filter.,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,9621,"Check finished part for burrs, schedule maintenance if indicated",Closed and Completed,2/10/2024,John McDonald,Operator,0.10,0.00,0.00,10/24/2024,Jesus Tostado - 10/24/24 12:19:06 PM: Did not change the oil filter.,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,9823,Remove all dies and punches.  Clean and inspect for damage,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,464,change the hydraulic oil with (Mobil DTE 24) Shell Tellus 32,Pending,3/18/2024,,Technician,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,9759,change the hydraulic filter,Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,13569,"Check punch #1 hole for burrs.  Replace punch, die, and stripper if burrs are found.",Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,467,Change the Un-Coiler's reduction gear oil with Boston Gear Mobil SCH634 synthetic lubricating oil,Pending,3/18/2025,,Technician,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,463,Remove all dies and punches.  Clean and inspect for damage,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,466,"Check punch #1 hole for burrs.  Replace punch, die, and stripper if burrs are found.",Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,465,change the hydraulic filter,Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,9627,"Check punch #1 hole for burrs.  Replace punch, die, and stripper if burrs are found.",Closed and Completed,2/10/2024,"John McDonald, Josh Martin",Operator,1.00,0.00,0.00,3/11/2024,Jesus Tostado - 10/24/24 12:52:00 PM: Did not change the oil filter.,[]
+678,EQ ID 678,Back Machine,Mirrors,10026,grease all grease fittings (one is under servo cover),Pending,2/2/2024,,Operator,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,13555,"1) Check Hydraulic fluid level, refill if necessary
+2) Check all hoses for leaks and damage",Pending,12/24/2024,,Operator,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,470,"1) Factory service, Inspect and adjust (schedule with Roll Former)
+2) Replace hydraulic fluid",Pending,3/18/2024,,Outside Service,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,9742,"1) Replace all Shear springs
+2) Clean both punch and die tooling from debris build-up
+3) Replace die springs and sharpen tooling",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,13556,Check finished part for burrs (< 10% thickness),Pending,11/24/2024,,QA Technician,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,468,grease all grease fittings (one is under servo cover),Closed and Completed,4/2/2022,1,Operator,0.00,0.00,0.00,9/18/2023,Jeffery Riffle - 09/18/23 11:50:25 AM: Motor was bound.  Took off and greased.  Also replaced motor,[]
+678,EQ ID 678,Back Machine,Mirrors,472,Check finished part for burrs (< 10% thickness),Closed and Completed,4/18/2022,.,QA Technician,0.00,0.00,0.00,1/10/2024,,[]
+678,EQ ID 678,Back Machine,Mirrors,471,"1) Replace all Shear springs
+2) Clean both punch and die tooling from debris build-up
+3) Replace die springs and sharpen tooling",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+678,EQ ID 678,Back Machine,Mirrors,469,"1) Check Hydraulic fluid level, refill if necessary
+2) Check all hoses for leaks and damage",Closed and Completed,5/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+678,EQ ID 678,Back Machine,Mirrors,7268,grease all grease fittings (one is under servo cover),Closed and Completed,10/3/2023,.,Operator,0.00,0.00,0.00,1/18/2024,,[]
+678,EQ ID 678,Back Machine,Mirrors,9720,"1) Check Hydraulic fluid level, refill if necessary
+2) Check all hoses for leaks and damage",Closed and Completed,3/16/2024,Corey Hart,Operator,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:13:35 PM: We don`t have this machine,[]
+678,EQ ID 678,Back Machine,Mirrors,9613,Check finished part for burrs (< 10% thickness),Closed and Completed,2/10/2024,Jesus Tostado,QA Technician,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:14:23 PM: We don`t have this machine,[]
+1962,EQ ID 1962,Robotic Screw Machine,Mirrors,11744,"1) Remove power driver for inspection
+2) Insect cylinder, gland, piston, outer gland seal, inner seal, rod real, piston V-cup",Pending,5/5/2026,,Maintenance,0.00,0.00,0.00,,,[]
+1962,EQ ID 1962,Robotic Screw Machine,Mirrors,11745,"Feeder Maintenance
+1) Remove parts of the escapement and clean. Clean rails and slide block.
+2) Lubricate the piston seal with small amount of petroleum jelly.
+
+Escapement Maintenance
+1) Turn off power and disconnect air supply. Disconnect the feed tubing and air lines and remove escapement form mount.
+2) Remove parts in the order listed (Lexan top, Deflector, Rail cover, Cylinder, Slide block, Gland, Spring, Piston)
+3) Clean feed rails and bowl rails with denatured alcohol.
+4) Wipe all grease form piston, seals, inside of cylinder, and the gland.
+5) Lubricate piston seal with Vaseline and assemble the parts in reverse order listed above.",Closed without Action,7/3/2024,Jesus Tostado,Maintenance,0.00,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:05:49 PM: We don`t have this machine anymore,[]
+1962,EQ ID 1962,Robotic Screw Machine,Mirrors,11743,"1) Clean parts with denatured alcohol and check for wear (Jaw set, Feed Tube, Jaw Spring)
+2) Spray parts with WD-40, then assemble parts in reverse order.
+3) Replace bit tip and replace bit extension if there is wear.
+4) Check for any air leaks and eliminate. Verify proper air flow control settings and tighten if needed.
+5) Check position of each prox. rail sensor and tighten (snug) holding screws.
+6) Check shoulder screw fastening the rear of driver cylinder is tight.
+7) Tighten all spanner nuts
+9) Verify nosepiece driving position and adjust/tighten top and bottom shock absorbers",Closed without Action,7/13/2024,Jesus Tostado,Maintenance Mechanic,0.00,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:07:03 PM: We don`t have this machine,[]
+1962,EQ ID 1962,Robotic Screw Machine,Mirrors,11779,"1) Check alignment between bowl and escapement
+2) Wash the bowl the mild detergent
+3) Check bowl level switch on hopper, paddle switch when vertical should enable hopper.",Closed and Completed,6/3/2024,"Corey Hart, Dell Ross",Operator,1.00,0.00,0.00,9/24/2024,,[]

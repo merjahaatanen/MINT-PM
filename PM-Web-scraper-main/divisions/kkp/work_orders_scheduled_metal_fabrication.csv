@@ -1,0 +1,57 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+5370,EQ ID 5370,Advance lift,Metal Fabrication,20421,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Pending,9/19/2026,,Maintenance,0.00,0.00,0.00,,,[]
+5370,EQ ID 5370,Advance lift,Metal Fabrication,16855,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Closed and Completed,8/28/2025,Zolo,Maintenance,0.00,0.00,0.00,11/24/2025,,[]
+5370,EQ ID 5370,Advance lift,Metal Fabrication,17765,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Closed and Completed,12/24/2025,Zolo,Maintenance,0.00,0.00,0.00,1/16/2026,,[]
+5370,EQ ID 5370,Advance lift,Metal Fabrication,18227,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Closed and Completed,2/16/2026,Zolo,Maintenance,0.00,0.00,0.00,5/14/2026,,[]
+5370,EQ ID 5370,Advance lift,Metal Fabrication,19422,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Closed and Completed,6/14/2026,Zolo,Maintenance,0.00,0.00,0.00,6/24/2026,,[]
+5155,EQ ID 5155,Laser Marking Machine 2020,Metal Fabrication,10622,"Check filter mats and clean them if necessary. 
+Mats can be cleaned using compressed air or water wash.",Closed and Completed,4/4/2024,Zolo,Maintenance,0.00,0.00,1.00,4/8/2024,,[]
+5086,EQ ID 5086,Norlok clincher,Metal Fabrication,3425,"Grease upper tooling. Check tightness of bolts. i.e frame, booster, tooling etc.",Closed and Completed,1/2/2023,Zolo,Maintenance,0.00,0.00,0.00,2/27/2023,Zolo Batbayar - 02/27/23  6:40:18 AM: No longer in use.,[]
+5126,EQ ID 5126,Electric Forklift Truck (sit-down)#3,Metal Fabrication,6265,Preventive Maintenance.,Closed and Completed,12/29/2023,Forklift specialist,Outside Service,0.00,0.00,0.00,1/9/2024,,[]
+5191,EQ ID 5191,Desiccant Compressed Air Dryer,Metal Fabrication,3841,"Check condition of Mufflers by reading tower Pressure Gauge when the tower is re-generation cycle. If pressure is above 3PSIG, Muffler replacement maybe required.",Closed and Completed,2/6/2023,Zolo,Maintenance,0.00,0.00,0.00,2/22/2023,Zolo Batbayar - 02/27/23  6:44:16 AM: Both mufflers been replaced.,[]
+5079,EQ ID 5079,Trumpf laser cutter,Metal Fabrication,4107,PM performed by Trumpf service.,Closed and Completed,7/23/2023,Trumpf,Outside Service,0.00,0.00,4.00,5/17/2023,,[]
+5112,EQ ID 5112,Scissor lift pallet truck,Metal Fabrication,4678,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,0.00,3/25/2024,,[]
+5111,EQ ID 5111,Scissor lift pallet truck,Metal Fabrication,4683,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,0.00,4/8/2024,,[]
+5109,EQ ID 5109,Scissor lift pallet truck,Metal Fabrication,4685,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,0.00,4/8/2024,,[]
+5087,EQ ID 5087,Welding robots,Metal Fabrication,9704,PM by Lincoln Automation.,Closed without Action,1/12/2025,Zolo,Outside Service,0.00,0.00,0.00,1/13/2025,,[]
+5087,EQ ID 5087,Welding robots,Metal Fabrication,17700,Please fill out ABB system PM checklist.,Closed and Completed,11/13/2025,Zolo,Maintenance,0.00,0.00,0.00,11/10/2025,,[]
+5087,EQ ID 5087,Welding robots,Metal Fabrication,17736,Please fill out ABB system PM checklist.,Closed and Completed,5/18/2026,Zolo,Maintenance,0.00,0.00,0.00,5/14/2026,,[]
+5084,EQ ID 5084,Ingersoll Rand Air Compressor,Metal Fabrication,3452,Ingersoll Rand tech.,Closed and Completed,6/8/2023,IR tech,Outside Service,0.00,0.00,0.00,6/13/2023,,[]
+5081,EQ ID 5081,Holtec Nitrogen Generator,Metal Fabrication,7199,"Replace filter elements (F-101 thru 104)
+AE-101 25% gas Amp sensor only",Closed and Completed,3/27/2024,Zolo,Maintenance,0.00,0.00,1.00,3/1/2024,,[]
+5080,EQ ID 5080,Trumpf press brake,Metal Fabrication,4272,PM by Trumpf tech.,Closed and Completed,8/7/2023,Zolo,Outside Service,0.00,0.00,0.00,10/26/2023,,[]

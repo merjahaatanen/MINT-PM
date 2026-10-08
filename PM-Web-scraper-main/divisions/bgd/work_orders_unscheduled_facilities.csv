@@ -1,0 +1,10 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,date_notified,urgency,problem,status,material_cost,labor_time,work_performed_by,assigned_to,downtime_hours,completed_datetime,comments,attachments
+,,,Facilities,20722,09/16/2026,6. General Maint,Can we add an emergency light to the maintenance cage?  We would like to have one on above the door that faces into the maintenance cage.  Please see John King with any questions you have about the location of the light.,Pending,0,0,,Maintenance,0,,,[]
+,,,Facilities,20775,09/21/2026,6. General Maint,"Hello Maintenance team,
+
+Preston is already aware of this request. Not a priority but please audit the outside/inside of the building at all sides and fill in any gaps that a racoon can go through. They can fit through very tight spaces so even if its fist size we need to fill. 
+
+If there is a lot of work to be done please just note locations and get back to me and will create plan on filling the gaps.
+
+Best,
+Agkop Baltagian",Pending,0,1,Preston,Supervisor,0,09/23/2026 10:00 AM,"Preston Ellexson - 09/23/26  7:57:00 AM: Walked the building perimeter. Scrap cage area is the main place I see that needs repaired to keep out animals. The corner of the cage facing the north employee parking needs repaired as well. This isn't tin damage, but it looks like the wall has shifted off of the slab slightly. Still intact, just out a little. Smaller animals could get in here possibly. I emailed this to Agkop, and I will see how he wants to proceed.",[]

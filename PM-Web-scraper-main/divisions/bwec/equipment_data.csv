@@ -1,0 +1,425 @@
+eq_id,dept,dept_num,equipment_name,asset_num,make,model,vendor,wo_qty,modified
+EQ ID 5052,Spot Weld,33,Speedy Packer Machine,3124,Sealed Air,SpeedyPacker Insight,Sealed Air (Canada) Co/CIE,0,7/28/2025 7:04 AM
+EQ ID 1356,Maintenance,29,Toyota Forklift,11248,Toyota,7FBCU35,Wajax,1,3/10/2025 3:48 AM
+EQ ID 5358,Spot Weld,33,Drum Carrier,,Global Industrial,HD80A,Global Industrial,0,1/23/2025 10:16 AM
+EQ ID 5357,Fabrication,24,AIDA 150 Ton Puch Press,,AIDA,AIDA NC1-1500(2),AIDA,0,1/15/2025 6:19 AM
+EQ ID 5343,Fabrication,24,Diversitech Wet Dust Collector,3170,Diversitech Typhone series,WX 5000,Diversitech,0,1/14/2025 6:52 AM
+EQ ID 1176,Assembly,23,Rocker Arm Welder,10629,TECNA,-,Welder,0,2/2/2024 9:54 AM
+EQ ID 490,Assembly,23,Rocker Arm Welder,21079,Weldomatic,AF,Welder,0,2/2/2024 9:51 AM
+EQ ID 523,Assembly,23,Spot Welder,10627,TECNA,TELEX 520134,Welder,0,2/2/2024 9:51 AM
+EQ ID 495,Assembly,23,Rocker Arm Welder,10484,Weldomatic,FTC,Welder,0,2/2/2024 9:51 AM
+EQ ID 455,Spot Weld,33,Projection Welder,10639,TECNA,-,Welder,0,2/2/2024 9:07 AM
+EQ ID 522,Spot Weld,33,Spot Welder,10628,TECNA,TELEX 520134,Welder,0,2/2/2024 9:07 AM
+EQ ID 5057,Spot Weld,33,Barrel Pump Truck,-,Global Industrial,TY30,Global Industrial,0,12/18/2023 10:48 AM
+EQ ID 5261,Spot Weld,33,Pump Truck,-,BT Lifter,BT L2000U/11,Pump Truck,0,12/18/2023 9:07 AM
+EQ ID 5061,Spot Weld,33,Pump Truck,-,Uline,H-1043,Uline,0,12/18/2023 8:31 AM
+EQ ID 5060,Spot Weld,33,Pump Truck,-,Uline,H-1043,Uline,0,12/15/2023 10:19 AM
+EQ ID 5059,Spot Weld,33,Pump Truck,-,Uline,H-1043,Uline,0,12/15/2023 9:36 AM
+EQ ID 5058,Spot Weld,33,Pump Truck,-,BT Lifter,BT L2000U/10,Pump Truck,0,12/15/2023 7:56 AM
+EQ ID 5045,Assembly,23,Pump Truck,-,BT Lifter,BTL5000 lbs/11,Pump Truck,0,12/15/2023 6:01 AM
+EQ ID 5044,Assembly,23,Pump Truck,-,BT Lifter,BT L2000U/10,Pump Truck,0,12/14/2023 7:47 AM
+EQ ID 5237,Spot Weld,33,Resistance Welder,3147,TENCA,4648NR,Rainbow Electronics Spotwelding Inc.,0,12/14/2023 5:46 AM
+EQ ID 5043,Assembly,23,Pump Truck,21198,BT Lifter,BT L2000/11,Pump Truck,0,12/14/2023 2:30 AM
+EQ ID 5035,Fabrication,24,Pump Truck,-,BT Lifter,BT L 2000 U/11,Pump Truck,0,12/13/2023 9:26 AM
+EQ ID 5050,Fabrication,24,Pump Truck,-,BT Lifter,BT L 2000 U/11,Pump Truck,0,12/12/2023 5:06 AM
+EQ ID 471,Fabrication,24,Pump Truck,10631,BT,L23 U/12,Pump Truck,0,12/12/2023 4:24 AM
+EQ ID 1200,Fabrication,24,Pump Truck,,BT,L23 U/12,Pump Truck,0,12/11/2023 10:09 AM
+EQ ID 1199,Fabrication,24,Pump Truck,-,BT,BT L23 U/12,Pump Truck,0,12/11/2023 9:38 AM
+EQ ID 5260,Fabrication,24,Skid-Lifter,-,Lift-Rite,RG30M270048,Skid-Lifter,0,12/11/2023 7:35 AM
+EQ ID 1201,Fabrication,24,Pump Truck,-,BT,BTL 2000 U/11,Pump Truck,0,12/11/2023 6:58 AM
+EQ ID 5040,Fabrication,24,Skid-Lifter,-,Filt-Rite,RG30M270048,Skid-Lifter,0,12/11/2023 6:24 AM
+EQ ID 513,Fabrication,24,Skid-Lifter,-,LIFT-RITE,RG3OM270048,Skid-Lifter,0,12/11/2023 5:26 AM
+EQ ID 5056,Spot Weld,33,Skid-Lifter,-,Econo Lift,HPSL22,Skid-Lifter,0,12/8/2023 12:20 PM
+EQ ID 5054,Spot Weld,33,Skid-Lifter,,Econo Lift,HPSL22,Skid-Lifter,0,12/1/2023 4:09 AM
+EQ ID 5245,Maintenance,29,Tumbler,3143,Roto Finish,Gemini-700,COAS Industrial,0,11/27/2023 4:07 AM
+EQ ID 5038,Assembly,23,Skid-Lifter,-,Econo Lift,HPSL22,Skid-Lifter,0,11/20/2023 6:08 AM
+EQ ID 5037,Assembly,23,Skid-Lifter,-,Econo Lift,HPSL22,Skid-Lifter,0,11/17/2023 11:16 AM
+EQ ID 5055,Spot Weld,33,Skid-Lifter,-,Econo Lift,HPSL22,Skid-Lifter,0,11/17/2023 11:15 AM
+EQ ID 5246,Maintenance,29,Scissor Lift Table,,U-Line,H-1784,Uline,0,10/27/2023 10:54 AM
+EQ ID 5242,Assembly,23,Door Cell Grinder,-,DLETA,GR450,Global Industrial,0,9/28/2023 10:52 AM
+EQ ID 5238,Spot Weld,33,Resistance Welder,3116,TENCA,4648NR,Rainbow Electronics Spotwelding Inc.,0,9/19/2023 5:50 AM
+EQ ID 5064,Spot Weld,33,Resistance Welder,3123,TENCA,4648NR,Rainbow Electronics Spotwelding Inc.,0,9/15/2023 3:50 AM
+EQ ID 5063,Spot Weld,33,Resistance Welder,3121,TENCA,4648NR,Rainbow Electronics Spotwelding Inc.,0,9/15/2023 3:49 AM
+EQ ID 5062,Spot Weld,33,Resistance Welder,3122,TENCA,4662NR,Rainbow Electronics Spotwelding Inc.,0,9/15/2023 3:48 AM
+EQ ID 361,Shipping,32,Electric Pump Truck,,RAYMOND,102T-F45L,Pump Truck,0,9/8/2023 7:00 AM
+EQ ID 5224,Assembly,23,Tape Dispenser,,Better Pack,BP555eS,3G Packaging,0,7/20/2023 4:10 AM
+EQ ID 5223,Assembly,23,Tape Dispenser,,Better Pack,BP555eS,3G Packaging,0,7/20/2023 4:09 AM
+EQ ID 5222,Assembly,23,Tape Dispenser,,Better Pack,BP555eS,3G Packaging,0,7/20/2023 4:02 AM
+EQ ID 5221,Shipping,32,Tape Dispenser,,Better Pack,BP555eS,3G Packaging,0,7/17/2023 7:08 AM
+EQ ID 5220,Shipping,32,Tape Dispenser,,Better Pack,BP555eS,3G Packaging,0,7/17/2023 6:54 AM
+EQ ID 443,Shipping,32,Hyster Reach,10456,Hyster,N30XMR3,Wajax,1,6/6/2023 9:18 AM
+EQ ID 1451,Shipping,32,Toyota Reach,11490,Toyota,8BRU23,Wajax,1,6/6/2023 9:17 AM
+EQ ID 5209,Assembly,23,Spot Welder,3089,TENCA,4662NR,Rainbow Electronics Spotwelding Inc.,0,3/1/2023 10:38 AM
+EQ ID 5202,Quality Assurance,27,Mobile Lift Table,-,Global Industrial,BS15,Global Industrial,0,2/6/2023 6:46 AM
+EQ ID 5193,Spot Weld,33,Pump Truck,,ULINE,H-5387,Uline,0,1/26/2023 7:23 AM
+EQ ID 5192,Spot Weld,33,Pump Truck,,ULINE,H-5387,Uline,0,1/26/2023 7:22 AM
+EQ ID 5049,Shipping,32,Pump Truck,-,BT LIFTER,-,Pump Truck,0,5/18/2022 9:33 AM
+EQ ID 5048,Shipping,32,Pump Truck,-,BT LIFTER,BT L 2000,Pump Truck,0,5/18/2022 8:29 AM
+EQ ID 5047,Shipping,32,Pump Truck,-,BT LIFTER,C 62937,Pump Truck,0,5/18/2022 8:08 AM
+EQ ID 5078,Assembly,23,Dust Collector 2,3088,Donaldson Tonit,US-1200,Air Separation Technologies Inc.,1,5/2/2022 11:21 AM
+EQ ID 5077,Assembly,23,Robotic Grinder 2,3086,Yaskawa,ERAR-1000-06UXH25-B15,Yaskawa Motoman Canada Inc.,0,5/2/2022 11:20 AM
+EQ ID 5069,Fabrication,24,130-TON ACCURPRESS,N/A,PRESTIGE HYBRID,313010,J&R Services & Sales Ltd.,1,4/19/2022 5:46 AM
+EQ ID 5051,Spot Weld,33,iMold,-,Sealed Air,Instapak iMold,Sealed Air (Canada) Co/CIE,0,4/7/2022 3:58 AM
+EQ ID 5053,Spot Weld,33,Speedy Packer Machine 2,-,Sealed Air,SpeedyPacker Insight,Sealed Air (Canada) Co/CIE,0,4/7/2022 3:54 AM
+EQ ID 5066,Shipping,32,Hyster Forklift,3083,Hyster,E50XN-27,Wajax,1,4/5/2022 7:42 AM
+EQ ID 1565,Maintenance,29,VFD Compressor (2017),11929,Garden Denver,VS40,Garden Denver,0,4/5/2022 7:31 AM
+EQ ID 5065,Maintenance,29,Atlas Copco VSD Compressor,3085,Atlas Copco,GA37LVSD+,Atlas Copco,0,4/5/2022 7:30 AM
+EQ ID 5042,Assembly,23,Rocker Arm Welder,,,,,0,4/2/2022 10:16 AM
+EQ ID 1220,Assembly,23,Rocker Arm Welder,11411,TECNA,TE 90 Mark II,,0,4/2/2022 10:16 AM
+EQ ID 1352,Fabrication,24,Conveyor for return system,11445,,,,0,4/2/2022 10:16 AM
+EQ ID 1353,Fabrication,24,Press Brake - 45 Ton (AccurPress),,AccurPress,S4505,,0,4/2/2022 10:16 AM
+EQ ID 1358,Fabrication,24,Split Type Room Air Conditioner,,Goodman,,,0,4/2/2022 10:16 AM
+EQ ID 1380,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1381,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1382,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1383,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1411,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1412,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1413,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1414,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1432,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1433,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1434,Quality Assurance,27,SW Mix Cell 359-4 Tab Bender,,In-House Made,359 Cabinet,,2,4/2/2022 10:16 AM
+EQ ID 1435,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1436,Maintenance,29,Emergency Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 519,Fabrication,24,Sm Overhead Door,,,,,0,4/2/2022 10:16 AM
+EQ ID 520,Maintenance,29,Snow Blower,10479,Noma Performance,629104X31,,0,4/2/2022 10:16 AM
+EQ ID 456,Assembly,23,Projection Welder,10659,TECNA,,,0,4/2/2022 10:16 AM
+EQ ID 491,Spot Weld,33,Rocker Arm Welder,1064,Weldomatic,AF,,0,4/2/2022 10:16 AM
+EQ ID 492,Spot Weld,33,Rocker Arm Welder,510,Weldomatic,AF,,0,4/2/2022 10:16 AM
+EQ ID 493,Spot Weld,33,Rocker Arm Welder,6791,Weldomatic,AF,,0,4/2/2022 10:16 AM
+EQ ID 494,Assembly,23,Rocker Arm Welder,1249,Weldomatic,AF,,0,4/2/2022 10:16 AM
+EQ ID 1179,Spot Weld,33,Rocker Arm Welder,11909,Weld-o-matic,AF,,0,4/2/2022 10:16 AM
+EQ ID 1180,Spot Weld,33,Rocker Arm Welder,10486,Weld-o-matic,AF,,0,4/2/2022 10:16 AM
+EQ ID 1181,Spot Weld,33,Rocker Arm Welder,11924,Weld-o-matic,AF,,0,4/2/2022 10:16 AM
+EQ ID 1182,Spot Weld,33,Rocker Arm Welder,7580,Weld-o-matic,AF,,0,4/2/2022 10:16 AM
+EQ ID 1185,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 1186,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 1188,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 1580,Spot Weld,33,Resistance Welder,11539,Techna,NKLP 28,,0,4/2/2022 10:16 AM
+EQ ID 1581,Spot Weld,33,Resistance Welder,11540,Techna,NKLP 28,,0,4/2/2022 10:16 AM
+EQ ID 1582,Spot Weld,33,Resistance Welder,11541,Techna,4646R,,0,4/2/2022 10:16 AM
+EQ ID 1583,Spot Weld,33,Resistance Welder,11471,Weld-o-matic,AF,,0,4/2/2022 10:16 AM
+EQ ID 1586,Maintenance,29,Refrigerant Air Dryer (2012),11919,Gardner Denver,RNC250A5,,0,4/2/2022 10:16 AM
+EQ ID 1613,Assembly,23,Robotic Welder,11473,ABB/Omron,PTD-600-01,,0,4/2/2022 10:16 AM
+EQ ID 1627,Assembly,23,Belt grinder - Door cell,,US motors,S63CXJCK-7449,,0,4/2/2022 10:16 AM
+EQ ID 1660,Quality Assurance,27,SW 254 Cell B354 Flange to Cabinet Jig,,In-House Made,B354 Cabinets,,1,4/2/2022 10:16 AM
+EQ ID 1665,Quality Assurance,27,Create currently unavailable item,,,BWC Manufactured Model,,0,4/2/2022 10:16 AM
+EQ ID 1666,Quality Assurance,27,General Radius Checker Template,,BWC In-house,general use,,0,4/2/2022 10:16 AM
+EQ ID 1667,Fabrication,24,Amada Fiber Laser,,Amada,FLC3015AJ,,1,4/2/2022 10:16 AM
+EQ ID 1669,Assembly,23,Auto-Skirt Machine,,Bobrick,Made in house,,0,4/2/2022 10:16 AM
+EQ ID 1672,Spot Weld,33,North Pin Bender,,Bobrick,In House,,0,4/2/2022 10:16 AM
+EQ ID 1673,Spot Weld,33,South Pin Bender,,Bobrick,In House,,0,4/2/2022 10:16 AM
+EQ ID 1674,Quality Assurance,27,General Rod Machine,,BWC In-house,General Rod,,0,4/2/2022 10:16 AM
+EQ ID 1675,Quality Assurance,27,Assy Rec Cell 367-8 Rec Cell (AMADA) Bend Locator Sensor,,BWC In-house,367-8,,0,4/2/2022 10:16 AM
+EQ ID 1677,Quality Assurance,27,254 hinge to wrapper jig,,Bobrick,In House,,0,4/2/2022 10:16 AM
+EQ ID 1678,Quality Assurance,27,SW Box Cell B3961 Bottom to Wrapper,,In-House Made,3961_3974,,1,4/2/2022 10:16 AM
+EQ ID 1679,Quality Assurance,27,SW Box Cell B3961 Push Rod,,In-House Made,3961,,1,4/2/2022 10:16 AM
+EQ ID 1688,Quality Assurance,27,SW 254 Cell B353 Hinge to Cabinet Jig,,In-House Made,353,,2,4/2/2022 10:16 AM
+EQ ID 1705,Assembly,23,Amada Press Brake,,Amada,HG 1303 RM,,0,4/2/2022 10:16 AM
+EQ ID 1718,Quality Assurance,27,Assy Towel Sensor Assy Activation Test Fixture,,BLA Supplied,3974-182,,0,4/2/2022 10:16 AM
+EQ ID 1752,Maintenance,29,"30"" Sweatbee Fan",,Big Ass Fans,Sweat Bee 30,,0,4/2/2022 10:16 AM
+EQ ID 1753,Maintenance,29,"30"" Sweatbee Fan",,Big Ass Fans,Sweatbee 30,,0,4/2/2022 10:16 AM
+EQ ID 1754,Maintenance,29,"30"" Sweatbee Fan",,Big Ass Fans,Sweatbee 30,,0,4/2/2022 10:16 AM
+EQ ID 1766,Quality Assurance,27,Assy 4262 Cell 4262-1 Wrapper Squaring Jig,,BWC In-house,4262-1,,0,4/2/2022 10:16 AM
+EQ ID 1770,Maintenance,29,Air Barrier,,Enershield,DS-96,,0,4/2/2022 10:16 AM
+EQ ID 1771,Maintenance,29,Air Barrier,,Enershield,DS-96,,0,4/2/2022 10:16 AM
+EQ ID 1772,Maintenance,29,Air Barrier,,Enershield,DS-96,,0,4/2/2022 10:16 AM
+EQ ID 1773,Quality Assurance,27,SW Large Co B43644 HARD plastic stripping jig,,BWC In-house,Contura,,0,4/2/2022 10:16 AM
+EQ ID 1774,Quality Assurance,27,SW Large Co B43644 CLEAR plastic stripping jig,,BWC In-house,Contura,,0,4/2/2022 10:16 AM
+EQ ID 1775,Quality Assurance,27,SW Mix Cell B369 Hinge-to-Flange Jig,,BWC In-house,369 Family,,0,4/2/2022 10:16 AM
+EQ ID 1778,Quality Assurance,27,SW Mix Cell B369 Door-to Hinge,,BWC In-house,369 Family,,0,4/2/2022 10:16 AM
+EQ ID 1792,Quality Assurance,27,Assy 367-302 back lock opening check jig,,BWC In-house,367-68,,1,4/2/2022 10:16 AM
+EQ ID 1805,Quality Assurance,27,SW 254 Hinge to Cabinet Jig,,BWC In-house,254,,1,4/2/2022 10:16 AM
+EQ ID 1891,Quality Assurance,27,Assy Super Cell 3944-240 Lower Cabinet Jig,,BWC In-house,3944-240,,0,4/2/2022 10:16 AM
+EQ ID 1892,Quality Assurance,27,Assy Super Cell 3944-240 Upper Cabinet,,BWC In-house,3944-240,,0,4/2/2022 10:16 AM
+EQ ID 1896,Quality Assurance,27,SW 254-6 Plastic Stripper Jig,,BWC In-house,"B254, B353, B354, ND5",,1,4/2/2022 10:16 AM
+EQ ID 1948,Maintenance,29,Emergency Light,,,,,1,4/2/2022 10:16 AM
+EQ ID 1983,Shipping,32,Pump truck,,Uline,AC25,,0,4/2/2022 10:16 AM
+EQ ID 1984,Shipping,32,Pump Truck,,Uline,AC25,,0,4/2/2022 10:16 AM
+EQ ID 2023,Quality Assurance,27,Assy & SW 3961-Back Weld Jig 002,,,3961 and 3974 family,,0,4/2/2022 10:16 AM
+EQ ID 2024,Quality Assurance,27,SW 4262 Cabinet Weld Jig Now.2020,,,4262,,0,4/2/2022 10:16 AM
+EQ ID 2027,Spot Weld,33,Electro mechanical rivet machine,11932,National Rivet,500,,0,4/2/2022 10:16 AM
+EQ ID 2029,Maintenance,29,Refrigerant Air Dryer (2017),11929 (2017 compressor tag),Gardner Denver,GSRN-250A-536,,0,4/2/2022 10:16 AM
+EQ ID 2030,Shipping,32,General Maintenance Request,,,,,0,4/2/2022 10:16 AM
+EQ ID 2031,Assembly,23,General Maintenance Request,,,,,0,4/2/2022 10:16 AM
+EQ ID 2033,Fabrication,24,General Maintenance Request,,,,,0,4/2/2022 10:16 AM
+EQ ID 2034,Spot Weld,33,General Maintenance Request,,,,,0,4/2/2022 10:16 AM
+EQ ID 2040,Spot Weld,33,Buffing Machine,,In house,2020,,0,4/2/2022 10:16 AM
+EQ ID 2041,Spot Weld,33,Tab Bender,,In house,2020,,0,4/2/2022 10:16 AM
+EQ ID 2065,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 2066,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 2073,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 2076,Spot Weld,33,Resistance Welder,11933,Tecna,WS-402,,0,4/2/2022 10:16 AM
+EQ ID 2077,Spot Weld,33,Resistance Welder,11934,Tecna,TE 101,,0,4/2/2022 10:16 AM
+EQ ID 2078,Spot Weld,33,Resistance Welder,11935,Tecna,TE 101,,0,4/2/2022 10:16 AM
+EQ ID 445,Fabrication,24,Pedestal Jib,,,,,1,4/2/2022 10:16 AM
+EQ ID 446,Shipping,32,Port-A-Cool,,GENERAL SHELTERS,PAC2K163SFC,,0,4/2/2022 10:16 AM
+EQ ID 447,Assembly,23,Port-O-Cool,,,,,0,4/2/2022 10:16 AM
+EQ ID 448,Fabrication,24,Power Notcher,6740,,,,0,4/2/2022 10:16 AM
+EQ ID 449,Assembly,23,Press Brake,1098,Chicago,135,,0,4/2/2022 10:16 AM
+EQ ID 450,Fabrication,24,Press Brake - 45 Ton,1244,Allsteel,458,,2,4/2/2022 10:16 AM
+EQ ID 451,Fabrication,24,Press Brake - 65 Ton,,Allsteel,65-10,,1,4/2/2022 10:16 AM
+EQ ID 452,Fabrication,24,Press Brake - Robotic,10656,AMADA,,,0,4/2/2022 10:16 AM
+EQ ID 453,Fabrication,24,Press Brake - 25T,11421,Gasparini,XP-25,,1,4/2/2022 10:16 AM
+EQ ID 454,Fabrication,24,Press Brake - 160 Ton,10626,Yawei,PBH160-3100,,1,4/2/2022 10:16 AM
+EQ ID 343,Assembly,23,250 Syncrowave,11923,MILLER,,,1,4/2/2022 10:16 AM
+EQ ID 344,Fabrication,24,Band Saw,,Ram Machine,,,0,4/2/2022 10:16 AM
+EQ ID 345,Fabrication,24,Bench Grinder,,Baldor,612E,,0,4/2/2022 10:16 AM
+EQ ID 346,Fabrication,24,Bench Grinder,,Punch products,,,0,4/2/2022 10:16 AM
+EQ ID 347,Maintenance,29,Company Van,10463,GMC,1999 Savana 2500,,0,4/2/2022 10:16 AM
+EQ ID 348,Maintenance,29,Compressor,8889,Binks,33-1051,,0,4/2/2022 10:16 AM
+EQ ID 351,Fabrication,24,Fladder,10533,Fladder,,,1,4/2/2022 10:16 AM
+EQ ID 353,Fabrication,24,Drill Press,,AEI Motors,BS240E,,0,4/2/2022 10:16 AM
+EQ ID 354,General,0,Drill Press,,Rockwell,,,0,4/2/2022 10:16 AM
+EQ ID 355,Fabrication,24,Dust Collector,10532,Donaldson,DFT3-6,,1,4/2/2022 10:16 AM
+EQ ID 356,Fabrication,24,Edger,5923,Gauer,"5H 30""",,0,4/2/2022 10:16 AM
+EQ ID 357,Fabrication,24,Edger,6662,Gauer,"40""",,0,4/2/2022 10:16 AM
+EQ ID 358,Fabrication,24,Edger,10475,Gauer Metal,"24""",,0,4/2/2022 10:16 AM
+EQ ID 359,Fabrication,24,Edger,21331,Gauer Metal,"40""",,0,4/2/2022 10:16 AM
+EQ ID 360,Fabrication,24,Edger,10488,Gauer Metal,"12""",,0,4/2/2022 10:16 AM
+EQ ID 472,Fabrication,24,Punch Press - 300 Ton,10516,Allsteel,300-10x4,,1,4/2/2022 10:16 AM
+EQ ID 473,Fabrication,24,Punch Press - 120 Ton,10445,Aida,PC-5,,1,4/2/2022 10:16 AM
+EQ ID 474,Fabrication,24,Punch Press - 150 Ton,10448,Aida,NC1-110(2),,1,4/2/2022 10:16 AM
+EQ ID 475,Fabrication,24,Punch Press - 330 Ton,11912,KOMATSU,,,1,4/2/2022 10:16 AM
+EQ ID 476,Fabrication,24,Punch Press - 80Ton,10449,Komatsu,0BS80-2,,1,4/2/2022 10:16 AM
+EQ ID 477,Assembly,23,Robotic Grinder,11916,MOTOMAN,,,0,4/2/2022 10:16 AM
+EQ ID 480,Assembly,23,Rocker Arm Welder,10481,Alberts S/W,,,0,4/2/2022 10:16 AM
+EQ ID 482,Assembly,23,Rocker Arm Welder,5934,Weldomatic,AF,,0,4/2/2022 10:16 AM
+EQ ID 485,Assembly,23,Rocker Arm Welder,21081,Weldomatic,AF,,0,4/2/2022 10:16 AM
+EQ ID 486,Spot Weld,33,Rocker Arm Welder,6793,Peer Equipment,AR-425,,0,4/2/2022 10:16 AM
+EQ ID 497,General,0,Sander,,G.E. Motors,,,0,4/2/2022 10:16 AM
+EQ ID 499,Fabrication,24,Sander,1096,,,,0,4/2/2022 10:16 AM
+EQ ID 500,General,0,Scale,,Dover Pad Ltd,SP903,,0,4/2/2022 10:16 AM
+EQ ID 501,General,0,Scale,,Hdwe Richardson,5401DB1,,0,4/2/2022 10:16 AM
+EQ ID 502,Maintenance,29,Scissor Lift,10535,Skyjack,SJIII 4626,,4,4/2/2022 10:16 AM
+EQ ID 503,Fabrication,24,Scrap Chopper,10490,Sweed,450AE,,0,4/2/2022 10:16 AM
+EQ ID 506,Fabrication,24,Shear (4 foot),10506,Barcorp,MEA12601,,0,4/2/2022 10:16 AM
+EQ ID 507,Fabrication,24,Shear (8 ft),10450,Cincinnati,,,1,4/2/2022 10:16 AM
+EQ ID 508,Shipping,32,Shipping Door #1,,,,,1,4/2/2022 10:16 AM
+EQ ID 509,Shipping,32,Shipping Door #2,,,,,1,4/2/2022 10:16 AM
+EQ ID 510,Shipping,32,Shipping Door #3,,,,,1,4/2/2022 10:16 AM
+EQ ID 511,Shipping,32,Shipping Door #4,,,,,1,4/2/2022 10:16 AM
+EQ ID 362,Shipping,32,Electric Pump Truck,10632,RAYMOND,102T-F45L,,2,4/2/2022 10:16 AM
+EQ ID 363,Shipping,32,Electric Pump Truck,10633,RAYMOND,102T-F45L,,0,4/2/2022 10:16 AM
+EQ ID 364,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 365,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 366,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 367,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 368,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 369,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 370,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 371,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 372,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 373,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 374,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 375,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 376,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 377,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 378,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 379,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 380,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 381,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 382,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 383,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 384,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 385,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 386,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 387,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 388,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 389,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 390,Maintenance,29,Emergency Light,,,,,0,4/2/2022 10:16 AM
+EQ ID 391,Maintenance,29,Fire Extinguisher,,,,,1,4/2/2022 10:16 AM
+EQ ID 392,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 393,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 394,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 395,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 396,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 397,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 398,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 399,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 400,Maintenance,29,Fire Extinguisher,,,,,1,4/2/2022 10:16 AM
+EQ ID 401,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 402,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 403,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 404,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 405,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 406,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 407,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 408,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 409,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 410,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 411,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 412,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 413,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 414,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 415,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 416,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 417,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 418,Maintenance,29,Fire Extinguisher,,,,,0,4/2/2022 10:16 AM
+EQ ID 421,Shipping,32,Forklift,11906,HYSTER,,,1,4/2/2022 10:16 AM
+EQ ID 422,General,0,Grinder,,,,,0,4/2/2022 10:16 AM
+EQ ID 423,Maintenance,29,Tube Heater,,A.O. Smith,JB1N078NS,,1,4/2/2022 10:16 AM
+EQ ID 424,Maintenance,29,Heater,,Olsen,KAS-260,,0,4/2/2022 10:16 AM
+EQ ID 425,Maintenance,29,Heater,,Trane,GHNE030,,0,4/2/2022 10:16 AM
+EQ ID 426,Maintenance,29,Heater,,Trane,GHNE020,,0,4/2/2022 10:16 AM
+EQ ID 427,Maintenance,29,Heater,,Trane,GHNE030,,0,4/2/2022 10:16 AM
+EQ ID 428,Maintenance,29,Heater,,,,,0,4/2/2022 10:16 AM
+EQ ID 429,Maintenance,29,Heater,,Olsen,KAS-200,,0,4/2/2022 10:16 AM
+EQ ID 430,Maintenance,29,Heater,,Modine,PDP300AE0130,,0,4/2/2022 10:16 AM
+EQ ID 431,Maintenance,29,Heater,,Olsen,KAS-260,,0,4/2/2022 10:16 AM
+EQ ID 432,Maintenance,29,Heater,,Modine,PDP300AE0130,,0,4/2/2022 10:16 AM
+EQ ID 433,Fabrication,24,Horizontal Drill,10630,Kao Ming,KMR700DS,,0,4/2/2022 10:16 AM
+EQ ID 434,Fabrication,24,Laser,11918,Trumpf,,,5,4/2/2022 10:16 AM
+EQ ID 435,Fabrication,24,Lathe,10465,Clausing Metosh,C13305,,0,4/2/2022 10:16 AM
+EQ ID 436,Fabrication,24,Lg Overhead Door,,,,,0,4/2/2022 10:16 AM
+EQ ID 437,Assembly,23,Lift-Table,,LIFT-RITE,PPL2200,,0,4/2/2022 10:16 AM
+EQ ID 438,Assembly,23,Lift-Table,,ALL-LIFT,PFL2200,,0,4/2/2022 10:16 AM
+EQ ID 439,Assembly,23,Lift-Table,,ALL-LIFT,PFL2200,,0,4/2/2022 10:16 AM
+EQ ID 440,Assembly,23,Lift-Table,,ALL-LIFT,PFL2200,,0,4/2/2022 10:16 AM
+EQ ID 441,Fabrication,24,Milling Machine,21372,Bridgeport Machines,1985,,0,4/2/2022 10:16 AM
+EQ ID 442,Assembly,23,Multi-Cell,10620,,,,0,4/2/2022 10:16 AM
+EQ ID 525,Assembly,23,Spot Welder,10640,TECNA,TELEX,,0,4/2/2022 10:16 AM
+EQ ID 528,Assembly,23,Spot Welder,10658,TECNA,,,0,4/2/2022 10:16 AM
+EQ ID 529,Assembly,23,Spot Welder,11901,TECNA,,,0,4/2/2022 10:16 AM
+EQ ID 531,Fabrication,24,Surface Grinder,7891,Heinman Machinery Ltd,FSG-618M,,0,4/2/2022 10:16 AM
+EQ ID 532,Assembly,23,Tig Welder,10474,Thermal Arc,Tigwave 250,,0,4/2/2022 10:16 AM
+EQ ID 535,Assembly,23,Tig Welder,7875,L-Tec Welding,11250HF,,0,4/2/2022 10:16 AM
+EQ ID 536,Assembly,23,Tig Welder,10635,MILLER,,,0,4/2/2022 10:16 AM
+EQ ID 537,Maintenance,29,Time Clock,,,,,0,4/2/2022 10:16 AM
+EQ ID 538,Maintenance,29,Time Clock,,,,,0,4/2/2022 10:16 AM
+EQ ID 540,Assembly,23,Vacuum Lift,10643,,,,0,4/2/2022 10:16 AM
+EQ ID 541,Assembly,23,Vacuum Lift,10529,,,,0,4/2/2022 10:16 AM
+EQ ID 542,Spot Weld,33,Vacuum Lift,10528,,,,0,4/2/2022 10:16 AM
+EQ ID 543,Assembly,23,Vacuum Lift,10526,,,,0,4/2/2022 10:16 AM
+EQ ID 544,Shipping,32,Wrapping Machine,10531,Lantech,Q-300,,1,4/2/2022 10:16 AM
+EQ ID 545,Fabrication,24,Shear Feed (8'),10451,,,,0,4/2/2022 10:16 AM
+EQ ID 740,Fabrication,24,Laser Slat Cleaner,11926,Garrett Industrial,,,0,4/2/2022 10:16 AM
+EQ ID 741,Assembly,23,Dust Collector,11921,Donaldson,,,1,4/2/2022 10:16 AM
+EQ ID 851,Quality Assurance,27,SW 254 Series Door Hinge Jig,,,254 Series,,3,4/2/2022 10:16 AM
+EQ ID 853,Quality Assurance,27,SW 254 Series Flap Door Jig,,,254 Series,,2,4/2/2022 10:16 AM
+EQ ID 854,Quality Assurance,27,SW 254 Series International Label Jig,,,254 Series,,1,4/2/2022 10:16 AM
+EQ ID 855,Quality Assurance,27,SW 254 Series Flange Jig,,,354,,2,4/2/2022 10:16 AM
+EQ ID 857,Quality Assurance,27,SW 369 Series Flange and Door Hinge Jig,,,301,,0,4/2/2022 10:16 AM
+EQ ID 858,Quality Assurance,27,SW 369 Series Flange and Door Hinge Jig,,,301,,0,4/2/2022 10:16 AM
+EQ ID 859,Quality Assurance,27,SW 369 Series Flange and Door Hinge Jig,,,301,,0,4/2/2022 10:16 AM
+EQ ID 860,Quality Assurance,27,SW 369 Series Flange and Door Hinge Jig,,,301,,0,4/2/2022 10:16 AM
+EQ ID 861,Quality Assurance,27,SW 369 Series Flange and Door Hinge Jig,,,301,,2,4/2/2022 10:16 AM
+EQ ID 862,Quality Assurance,27,SW 369 Series Spring Clip Jig,,,301,,2,4/2/2022 10:16 AM
+EQ ID 864,Quality Assurance,27,SW Mix Cell 359 Towel Tray Sides Jig,,,359,,1,4/2/2022 10:16 AM
+EQ ID 865,Quality Assurance,27,SW Mix Cell 359 Flap Door Jig,,,359,,1,4/2/2022 10:16 AM
+EQ ID 867,Quality Assurance,27,SW Mix Cell 369 Series Towel Tray Jig,,,369 Series,,2,4/2/2022 10:16 AM
+EQ ID 872,Quality Assurance,27,"SW 4262 Door Stop, Hinge and Angle Jig",,,4262,,0,4/2/2022 10:16 AM
+EQ ID 874,Quality Assurance,27,SW 4262 Towel Guide Jig,,,4262,,1,4/2/2022 10:16 AM
+EQ ID 875,Quality Assurance,27,Break Press 301-40 Door Bend Jig,,,,,0,4/2/2022 10:16 AM
+EQ ID 876,Quality Assurance,27,Break Press 301-301 Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 877,Quality Assurance,27,Break Press 359-300 Wrapper Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 878,Quality Assurance,27,Break Press 359 Door Bend Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 879,Quality Assurance,27,Break Press 362-115 Towel Tray Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 880,Quality Assurance,27,Break Press 369-17 Flange Jig,,,,,0,4/2/2022 10:16 AM
+EQ ID 881,Quality Assurance,27,Break Press 369-17 Wrapper Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 883,Quality Assurance,27,Break Press 3644-302 Wrapper Length Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 884,Quality Assurance,27,Break Press 3644-302 Wrapper Width Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 885,Quality Assurance,27,Break Press 3944-2 Towel Tray Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 886,Quality Assurance,27,"Break Press 4353-3, 4354-3, 4354-13, 4369-203 Flange Jig",,,,,1,4/2/2022 10:16 AM
+EQ ID 887,Quality Assurance,27,Break Press 4369-203 Wrapper Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 888,Quality Assurance,27,Break Press 4369 Towel Tray Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 891,Quality Assurance,27,Break Press 43699-10 and 43949-10 Skirt Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 892,Quality Assurance,27,Break Press 43944- Towel Tray Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 893,Quality Assurance,27,Assy Door Cell Door Hinge and Angle Jig,,,4353,,1,4/2/2022 10:16 AM
+EQ ID 894,Quality Assurance,27,Assy Door Cell Brackets Jig,,,,,1,4/2/2022 10:16 AM
+EQ ID 895,Quality Assurance,27,Assy Door Cell International Label JIg,,,,,1,4/2/2022 10:16 AM
+EQ ID 896,Quality Assurance,27,Assy Door Cell Door Hing and Angle Jig,,,4354,,1,4/2/2022 10:16 AM
+EQ ID 898,Quality Assurance,27,Assy Door Cell 4369-8 Door Hinge Jig,,,4369,,2,4/2/2022 10:16 AM
+EQ ID 899,Quality Assurance,27,Assy Door Cell 43944-10 Door Hinge Jig,,,43944,,2,4/2/2022 10:16 AM
+EQ ID 900,Quality Assurance,27,Assy Door Cell 43944-10 Stud Jig,,,43944,,2,4/2/2022 10:16 AM
+EQ ID 901,Quality Assurance,27,SW Large Contura Bottom Flusher Jig,,,43944 and 43949,,1,4/2/2022 10:16 AM
+EQ ID 902,Quality Assurance,27,SW Large Contura Hinge To Flange Jig,,,43944 and 43949,,1,4/2/2022 10:16 AM
+EQ ID 903,Quality Assurance,27,SW Large Contura Towel Guide Jig,,,43944 and 43949,,1,4/2/2022 10:16 AM
+EQ ID 904,Quality Assurance,27,"SW Large Contura Towel Tray, Lock Angle and Door Holder Jig",,,,,1,4/2/2022 10:16 AM
+EQ ID 905,Quality Assurance,27,SW Large Contura Plastic Stripper Jig,,,43944 and 43949,,1,4/2/2022 10:16 AM
+EQ ID 906,Quality Assurance,27,SW Large Contura Table Jig,,,43944 and 43949,,1,4/2/2022 10:16 AM
+EQ ID 907,Quality Assurance,27,Assy Receptacle Cell 275 and 368 Inside Hooks Jig,,,275 and 368-12,,1,4/2/2022 10:16 AM
+EQ ID 908,Quality Assurance,27,Assy Receptacle Cell Back Hooks Jig,,,275,,1,4/2/2022 10:16 AM
+EQ ID 909,Quality Assurance,27,Assy Receptacle Cell 275 Squeeze Jig,,,275,,1,4/2/2022 10:16 AM
+EQ ID 910,Quality Assurance,27,Assy Receptacle Cell 279 Back Hooks Jig,,,279,,1,4/2/2022 10:16 AM
+EQ ID 911,Quality Assurance,27,Assy Receptacle Cell 279 Inside Hooks Jig,,,279,,1,4/2/2022 10:16 AM
+EQ ID 912,Quality Assurance,27,Assy Receptacle Cell 367-8 and 368-12 Squeeze JIg,,,367-8 and 368-12,,1,4/2/2022 10:16 AM
+EQ ID 913,Quality Assurance,27,Assy Receptacle Cell 368-12 Back Hooks,,,368-12,,1,4/2/2022 10:16 AM
+EQ ID 914,Quality Assurance,27,Shear Jig 254-4 Door Basic,,,,,0,4/2/2022 10:16 AM
+EQ ID 915,Quality Assurance,27,Shear Jig 254-102 Wrapper,,,254-102,,1,4/2/2022 10:16 AM
+EQ ID 919,Quality Assurance,27,Shear Jig 275-117 Receptacle Back,,,275-117,,1,4/2/2022 10:16 AM
+EQ ID 921,Quality Assurance,27,Shear Jig 279-17 Receptacle Back & Bottom,,,279,,1,4/2/2022 10:16 AM
+EQ ID 922,Quality Assurance,27,Shear Jig 301-40 & 353-50 Flange,,,,,1,4/2/2022 10:16 AM
+EQ ID 923,Quality Assurance,27,Shear Jig 301-251 Door,,,,,0,4/2/2022 10:16 AM
+EQ ID 924,Quality Assurance,27,Shear Jig 353-103 Back Panel,,,,,1,4/2/2022 10:16 AM
+EQ ID 927,Quality Assurance,27,Shear Jig 354-102 Wrapper,,,,,0,4/2/2022 10:16 AM
+EQ ID 929,Quality Assurance,27,Shear Jig 354-110 Back Panel,,,354,,0,4/2/2022 10:16 AM
+EQ ID 930,Quality Assurance,27,Shear Jig 354-152 Flange,,,354,,0,4/2/2022 10:16 AM
+EQ ID 931,Quality Assurance,27,Shear Jig 359-112 Shelf Bottom,,,359,,0,4/2/2022 10:16 AM
+EQ ID 932,Quality Assurance,27,Shear Jig 359-300 Cabinet Back and End,,,359,,0,4/2/2022 10:16 AM
+EQ ID 934,Quality Assurance,27,Shear Jig 369-17 Flange,,,369,,0,4/2/2022 10:16 AM
+EQ ID 936,Quality Assurance,27,Shear Jig 369-46 & 3699-46 Upper Back,,,369 and 3699,,0,4/2/2022 10:16 AM
+EQ ID 937,Quality Assurance,27,Shear Jig 369-47 Lower Back,,,369,,0,4/2/2022 10:16 AM
+EQ ID 938,Quality Assurance,27,Shear Jig 369-129 Door,,,369,,1,4/2/2022 10:16 AM
+EQ ID 939,Quality Assurance,27,Shear Jig 369-212 Receptacle Front & Bottom,,,369,,0,4/2/2022 10:16 AM
+EQ ID 942,Quality Assurance,27,Shear Jig 3644-16 Top Cover,,,3644,,0,4/2/2022 10:16 AM
+EQ ID 943,Quality Assurance,27,Shear Jig 3644-305 Bottom,,,3644,,0,4/2/2022 10:16 AM
+EQ ID 944,Quality Assurance,27,Shear Jig 3900-104 Back,,,,,0,4/2/2022 10:16 AM
+EQ ID 945,Quality Assurance,27,Shear Jig 3944-2-20 Towel Tray,,,,,0,4/2/2022 10:16 AM
+EQ ID 947,Quality Assurance,27,Shear Jig 3944-21 Lower Back,,,3944,,0,4/2/2022 10:16 AM
+EQ ID 948,Quality Assurance,27,Shear Jig 3944-120 Wrapper,,,3944,,1,4/2/2022 10:16 AM
+EQ ID 949,Quality Assurance,27,Shear Jig 3944-344 Flange,,,3944,,1,4/2/2022 10:16 AM
+EQ ID 950,Quality Assurance,27,Shear Jig 3961-6 Bottom,,,,,0,4/2/2022 10:16 AM
+EQ ID 952,Quality Assurance,27,Shear Jig 3961-104 Door,,,3961,,1,4/2/2022 10:16 AM
+EQ ID 953,Quality Assurance,27,Shear Jig 3961-106 Bottom Pan,,,,,0,4/2/2022 10:16 AM
+EQ ID 954,Quality Assurance,27,Shear Jig 4262-1 Wrapper,,,4262,,1,4/2/2022 10:16 AM
+EQ ID 955,Quality Assurance,27,Shear Jig 4262-3 Door,,,4262,,1,4/2/2022 10:16 AM
+EQ ID 958,Quality Assurance,27,Shear Jig 4353-17 Back,,,4353,,0,4/2/2022 10:16 AM
+EQ ID 959,Quality Assurance,27,Shear Jig 4369-7 Upper Back,,,4369,,0,4/2/2022 10:16 AM
+EQ ID 960,Quality Assurance,27,Shear Jig 4369-9 Lower Back,,,4369,,0,4/2/2022 10:16 AM
+EQ ID 961,Quality Assurance,27,Shear Jig 4369-42-20 Towel Tray,,,4369,,0,4/2/2022 10:16 AM
+EQ ID 968,Quality Assurance,27,Shear Jig 43944-4 Back Plate,,,43944,,0,4/2/2022 10:16 AM
+EQ ID 969,Quality Assurance,27,Shear Jig 43944-5 Center Back,,,43944,,0,4/2/2022 10:16 AM
+EQ ID 970,Quality Assurance,27,Shear Jig 43944-7 End Cap,,,43944,,0,4/2/2022 10:16 AM
+EQ ID 971,Quality Assurance,27,Shear Jig 43944-72 Towel Tray,,,43944,,0,4/2/2022 10:16 AM
+EQ ID 972,Quality Assurance,27,Shear Jig 43944-203 Flange,,,43944,,0,4/2/2022 10:16 AM
+EQ ID 978,Quality Assurance,27,Assy Small Contura Jig Bottom Edges,,,4369 and 43699,,1,4/2/2022 10:16 AM
+EQ ID 981,Quality Assurance,27,Assy Small Contura Jig Hinge & Towel,,,4369 and 43699,,1,4/2/2022 10:16 AM
+EQ ID 982,Quality Assurance,27,Assy Small Contura Jig Hinge Half to Flange,,,4353 and 4354,,1,4/2/2022 10:16 AM
+EQ ID 983,Quality Assurance,27,Assy Small Contura Jig Hinge Half To Flange,,,4354,,0,4/2/2022 10:16 AM
+EQ ID 986,Quality Assurance,27,Assy Small Contura Jig Plastic Stripper,,,4369 and 43699,,1,4/2/2022 10:16 AM
+EQ ID 987,Quality Assurance,27,Assy Small Contura Jig Strike Plates,,,4354,,1,4/2/2022 10:16 AM
+EQ ID 988,Quality Assurance,27,Assy Small Contura Jig Weld Nuts,,,4354,,1,4/2/2022 10:16 AM
+EQ ID 989,Quality Assurance,27,Assy Super Cell Jig Back To Lower Back,,,3944 Series,,1,4/2/2022 10:16 AM
+EQ ID 990,Quality Assurance,27,Assy Super Cell Jig Back To Lower Back 3961,,,3961 Series,,1,4/2/2022 10:16 AM
+EQ ID 991,Quality Assurance,27,Assy Super Cell Jig Back To Wrapper,,,3961 Series,,1,4/2/2022 10:16 AM
+EQ ID 992,Quality Assurance,27,Assy Super Cell Jig Bottom Pan To Wrapper,,,3961 Series,,1,4/2/2022 10:16 AM
+EQ ID 994,Quality Assurance,27,Assy Super Cell Jig Door Hinge & Lock Angle,,,3961 Series,,1,4/2/2022 10:16 AM
+EQ ID 997,Quality Assurance,27,Assy Super Cell Table Jig,,,3944 and 3961 Series,,1,4/2/2022 10:16 AM
+EQ ID 1001,Quality Assurance,27,SW Mix Cell Receptacle Back 367-8 REC Squeeze,,In-House Made,3644,,1,4/2/2022 10:16 AM
+EQ ID 1084,Maintenance,29,Generator 1084,,GENERAC Portable Products,7000 EXL Extended Life Generator,,1,4/2/2022 10:16 AM
+EQ ID 1085,Maintenance,29,Generator 1085,,GENERAC Portable Products,7000 EXL Extended Life Generator,,1,4/2/2022 10:16 AM
+EQ ID 1086,Maintenance,29,Generator 1086,,GENERAC Portable Products,7000 EXL Extended Life Generator,,1,4/2/2022 10:16 AM
+EQ ID 1087,Maintenance,29,Generator 1087,,GENERAC Portable Products,7000 EXL Extended Life Generator,,1,4/2/2022 10:16 AM
+EQ ID 1095,Maintenance,29,Ductless Mini (Comport-Aire) Shipping Office,,Goodman,SMH095A-0,,0,4/2/2022 10:16 AM
+EQ ID 1096,Maintenance,29,Ductless Split (Tool Room),,GOODMAN,MSG24HRN1N,,0,4/2/2022 10:16 AM
+EQ ID 1097,Maintenance,29,CARRIER ROOFTOP #1,,Carrier,48TFE012-A-121--,,0,4/2/2022 10:16 AM
+EQ ID 1098,Maintenance,29,CARRIER ROOFTOP #2,,Carrier,48GS-018040301--,,0,4/2/2022 10:16 AM
+EQ ID 1099,Maintenance,29,CARRIER ROOFTOP #3,,Carrier,48TJE006---101QE,,0,4/2/2022 10:16 AM
+EQ ID 1100,Maintenance,29,CARRIER ROOFTOP #4,,Carrier,48TCEA06A2A1A0A0A0,,0,4/2/2022 10:16 AM
+EQ ID 1101,Maintenance,29,CARRIER ROOFTOP #5,,Carrier,48TCED08A2A1A0A0A0,,0,4/2/2022 10:16 AM
+EQ ID 1102,Maintenance,29,CARRIER ROOFTOP #6,,Carrier,48TJ006---101QE,,0,4/2/2022 10:16 AM
+EQ ID 1103,Maintenance,29,ROOF EXHAUST,,,DELHIEF12,,1,4/2/2022 10:16 AM
+EQ ID 1104,Maintenance,29,ROOF EXHAUST,,,DELHIEF12,,0,4/2/2022 10:16 AM
+EQ ID 1106,Maintenance,29,ROOF EXHAUSTER,,,DELHI318,,0,4/2/2022 10:16 AM
+EQ ID 1107,Maintenance,29,ROOF EXHAUSTER,,,DELHI318,,0,4/2/2022 10:16 AM
+EQ ID 1108,Maintenance,29,ROOF EXHAUSTER,,,DELHI318,,0,4/2/2022 10:16 AM
+EQ ID 1109,Maintenance,29,ROOF EXHAUSTER,,,DELHI318,,0,4/2/2022 10:16 AM
+EQ ID 1110,Maintenance,29,ROOF EXHAUSTER,,,DELHI316,,0,4/2/2022 10:16 AM
+EQ ID 1111,Maintenance,29,UNIT HEATER,,MODINE,HOB-35,,0,4/2/2022 10:16 AM
+EQ ID 1112,Maintenance,29,WALL EXHAUST (STAGE 1),,LEADER FAN,LF20,,0,4/2/2022 10:16 AM
+EQ ID 1113,Maintenance,29,WALL EXHAUST (STAGE 2),,LEADER FAN,LF20,,0,4/2/2022 10:16 AM
+EQ ID 1114,Maintenance,29,Split Unit (Comm Room),,Split Unit,40MHHC---1,,0,4/2/2022 10:16 AM
+EQ ID 1174,Assembly,23,Rocker Arm Welder,10660,TECNA,,,0,4/2/2022 10:16 AM
+EQ ID 1175,Assembly,23,Rivet Machine,10657,National Rivet + MFG,500B,,1,4/2/2022 10:16 AM

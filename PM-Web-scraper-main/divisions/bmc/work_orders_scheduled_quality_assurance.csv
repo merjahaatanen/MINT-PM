@@ -1,0 +1,638 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+1221,EQ ID 1221,"Fixture, F-0011, Cam (2888)",Quality Assurance,9908,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1221,EQ ID 1221,"Fixture, F-0011, Cam (2888)",Quality Assurance,730,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1222,EQ ID 1222,"Fixture, F-0012, Flange Assembly (2888)",Quality Assurance,9834,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1222,EQ ID 1222,"Fixture, F-0012, Flange Assembly (2888)",Quality Assurance,731,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1223,EQ ID 1223,"Fixture, F-0013, Lock Angle Bracket Weld (2888)",Quality Assurance,9915,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1223,EQ ID 1223,"Fixture, F-0013, Lock Angle Bracket Weld (2888)",Quality Assurance,732,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1224,EQ ID 1224,"Fixture, F-0014, Lock Assembly (2888)",Quality Assurance,9752,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1224,EQ ID 1224,"Fixture, F-0014, Lock Assembly (2888)",Quality Assurance,733,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,1/16/2024,,[]
+1225,EQ ID 1225,"Gauge, G-0001, Foam Thickness Go/No Go (290)",Quality Assurance,9846,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1225,EQ ID 1225,"Gauge, G-0001, Foam Thickness Go/No Go (290)",Quality Assurance,734,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1226,EQ ID 1226,"Fixture, F-0001, Shateboard (290)",Quality Assurance,9847,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1226,EQ ID 1226,"Fixture, F-0001, Shateboard (290)",Quality Assurance,735,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1227,EQ ID 1227,"Fixture, F-0002, Shateboard (290)",Quality Assurance,9850,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1227,EQ ID 1227,"Fixture, F-0002, Shateboard (290)",Quality Assurance,736,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1228,EQ ID 1228,"Fixture, F-0003, 18x30, Timesaver (290)",Quality Assurance,9864,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1228,EQ ID 1228,"Fixture, F-0003, 18x30, Timesaver (290)",Quality Assurance,737,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1229,EQ ID 1229,"Fixture, F-0004, 18x30, Timesaver (290)",Quality Assurance,9878,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1229,EQ ID 1229,"Fixture, F-0004, 18x30, Timesaver (290)",Quality Assurance,738,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1230,EQ ID 1230,"Fixture, F-0005, 18x36, Timesaver (290)",Quality Assurance,9914,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1230,EQ ID 1230,"Fixture, F-0005, 18x36, Timesaver (290)",Quality Assurance,739,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1231,EQ ID 1231,"Fixture, F-0006, 18x36, Timesaver (290)",Quality Assurance,9892,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1231,EQ ID 1231,"Fixture, F-0006, 18x36, Timesaver (290)",Quality Assurance,740,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1232,EQ ID 1232,"Fixture, F-0007, 24x30, Timesaver (290)",Quality Assurance,9930,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1232,EQ ID 1232,"Fixture, F-0007, 24x30, Timesaver (290)",Quality Assurance,741,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1233,EQ ID 1233,"Fixture, F-0008, 24x30,Timesaver (290)",Quality Assurance,9912,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1233,EQ ID 1233,"Fixture, F-0008, 24x30,Timesaver (290)",Quality Assurance,742,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1234,EQ ID 1234,"Fixture, F-0009, 24x36, Timesaver (290)",Quality Assurance,9909,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1234,EQ ID 1234,"Fixture, F-0009, 24x36, Timesaver (290)",Quality Assurance,743,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1235,EQ ID 1235,"Fixture, F-0010, 24x36, Timesaver (290)",Quality Assurance,9919,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1235,EQ ID 1235,"Fixture, F-0010, 24x36, Timesaver (290)",Quality Assurance,744,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1236,EQ ID 1236,"Fixture, F-0015, Lock Assembly (262)",Quality Assurance,9920,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1236,EQ ID 1236,"Fixture, F-0015, Lock Assembly (262)",Quality Assurance,745,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1237,EQ ID 1237,"Fixture, F-0016, Weld Test (221)",Quality Assurance,9913,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1237,EQ ID 1237,"Fixture, F-0016, Weld Test (221)",Quality Assurance,746,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1238,EQ ID 1238,"Fixture, F-0017, Cam Arbor Press (2888)",Quality Assurance,5397,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/21/2024,,QA Technician,0.00,0.00,0.00,,,[]
+1238,EQ ID 1238,"Fixture, F-0017, Cam Arbor Press (2888)",Quality Assurance,747,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,test,QA Technician,0.00,0.00,0.00,4/21/2023,,[]
+1239,EQ ID 1239,"Fixture, F-0018, 270 Lid, 262/270 Fladder",Quality Assurance,9916,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1239,EQ ID 1239,"Fixture, F-0018, 270 Lid, 262/270 Fladder",Quality Assurance,748,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1240,EQ ID 1240,"Fixture, F-0019, 270 Lid, 262/270 Fladder",Quality Assurance,9890,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1240,EQ ID 1240,"Fixture, F-0019, 270 Lid, 262/270 Fladder",Quality Assurance,749,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1241,EQ ID 1241,"Fixture, F-0020, 270 Lid, 262/270 Fladder",Quality Assurance,9851,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1241,EQ ID 1241,"Fixture, F-0020, 270 Lid, 262/270 Fladder",Quality Assurance,750,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1242,EQ ID 1242,"Fixture, F-0021, 262 Door, 262/270 Fladder",Quality Assurance,9852,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1242,EQ ID 1242,"Fixture, F-0021, 262 Door, 262/270 Fladder",Quality Assurance,751,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1243,EQ ID 1243,"Fixture, F-0022, 262 Door, 262/270 Fladder",Quality Assurance,9849,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1243,EQ ID 1243,"Fixture, F-0022, 262 Door, 262/270 Fladder",Quality Assurance,752,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1244,EQ ID 1244,"Fixture, F-0023, 262 Door, 262/270 Fladder",Quality Assurance,9856,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1244,EQ ID 1244,"Fixture, F-0023, 262 Door, 262/270 Fladder",Quality Assurance,753,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1245,EQ ID 1245,"Fixture, F-0024, 262 Door, 262/270 Fladder",Quality Assurance,9891,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1245,EQ ID 1245,"Fixture, F-0024, 262 Door, 262/270 Fladder",Quality Assurance,754,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1246,EQ ID 1246,"Fixture, F-0025, 2621 Door, 262/270 Fladder",Quality Assurance,9932,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1246,EQ ID 1246,"Fixture, F-0025, 2621 Door, 262/270 Fladder",Quality Assurance,755,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1247,EQ ID 1247,"Fixture, F-0026, 2621 Door, 262/270 Fladder",Quality Assurance,9880,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1247,EQ ID 1247,"Fixture, F-0026, 2621 Door, 262/270 Fladder",Quality Assurance,756,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1248,EQ ID 1248,"Fixture, F-0027, 2621 Door, 262/270 Fladder",Quality Assurance,9918,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1248,EQ ID 1248,"Fixture, F-0027, 2621 Door, 262/270 Fladder",Quality Assurance,757,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1249,EQ ID 1249,"Fixture, F-0028, Screw (Stainless)",Quality Assurance,9762,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1249,EQ ID 1249,"Fixture, F-0028, Screw (Stainless)",Quality Assurance,758,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,1/16/2024,,[]
+1250,EQ ID 1250,"Fixture, F-0029, Outswing (Solid)",Quality Assurance,9929,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1250,EQ ID 1250,"Fixture, F-0029, Outswing (Solid)",Quality Assurance,759,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1251,EQ ID 1251,"Boundary Board, BB-0001, Corner Sander (290)",Quality Assurance,9876,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1251,EQ ID 1251,"Boundary Board, BB-0001, Corner Sander (290)",Quality Assurance,760,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1252,EQ ID 1252,"Boundary Board, BB-0002, Corner Welder (290)",Quality Assurance,9917,"1) Review Samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1252,EQ ID 1252,"Boundary Board, BB-0002, Corner Welder (290)",Quality Assurance,761,"1) Review Samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1253,EQ ID 1253,"Boundary Board, BB-0003, Glass (Mirrors)",Quality Assurance,9926,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1253,EQ ID 1253,"Boundary Board, BB-0003, Glass (Mirrors)",Quality Assurance,762,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1254,EQ ID 1254,"Boundary Board, BB-0004, Miter Sander (290)",Quality Assurance,9895,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1254,EQ ID 1254,"Boundary Board, BB-0004, Miter Sander (290)",Quality Assurance,763,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1255,EQ ID 1255,"Boundary Board, BB-0005, Side Polisher (290)",Quality Assurance,9921,"1) Review samples
+2) Review labels & stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1255,EQ ID 1255,"Boundary Board, BB-0005, Side Polisher (290)",Quality Assurance,764,"1) Review samples
+2) Review labels & stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1256,EQ ID 1256,"Boundary Board, BB-0006, Weld (Fabrication)",Quality Assurance,9894,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1256,EQ ID 1256,"Boundary Board, BB-0006, Weld (Fabrication)",Quality Assurance,765,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1257,EQ ID 1257,"Boundary Board, BB-0007, Burr (Fabrication)",Quality Assurance,9924,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1257,EQ ID 1257,"Boundary Board, BB-0007, Burr (Fabrication)",Quality Assurance,766,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1258,EQ ID 1258,"Boundary Board, BB-0008, Dent (Fabrication)",Quality Assurance,9848,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1258,EQ ID 1258,"Boundary Board, BB-0008, Dent (Fabrication)",Quality Assurance,767,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1264,EQ ID 1264,"Refractometer, M-0001, RHB Series, Brix (Mirrors)",Quality Assurance,9940,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1264,EQ ID 1264,"Refractometer, M-0001, RHB Series, Brix (Mirrors)",Quality Assurance,768,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1265,EQ ID 1265,"6"" Caliper, M-0002, Serial Number 0111691, Mitutoyo (Mirrors)",Quality Assurance,9899,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1265,EQ ID 1265,"6"" Caliper, M-0002, Serial Number 0111691, Mitutoyo (Mirrors)",Quality Assurance,769,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1266,EQ ID 1266,"6"" Caliper, M-0003, Serial Number 12506371, Mitutoyo (T. Magneson)",Quality Assurance,9933,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1266,EQ ID 1266,"6"" Caliper, M-0003, Serial Number 12506371, Mitutoyo (T. Magneson)",Quality Assurance,770,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1267,EQ ID 1267,"6"" Caliper, M-0004, Serial Number BF016622, Mitutoyo (Fabrication)",Quality Assurance,9938,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1267,EQ ID 1267,"6"" Caliper, M-0004, Serial Number BF016622, Mitutoyo (Fabrication)",Quality Assurance,771,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1268,EQ ID 1268,"12"" Caliper, M-0005, Serial Number 07533667, Mitutoyo (Fabrication)",Quality Assurance,9935,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1268,EQ ID 1268,"12"" Caliper, M-0005, Serial Number 07533667, Mitutoyo (Fabrication)",Quality Assurance,772,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1269,EQ ID 1269,"24"" Caliper, M-0006, Serial Number 321984, Mitutoyo (Fabrication)",Quality Assurance,9943,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1269,EQ ID 1269,"24"" Caliper, M-0006, Serial Number 321984, Mitutoyo (Fabrication)",Quality Assurance,773,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1270,EQ ID 1270,"Bent Feeler Gage Set, M-0007 (Fabrication)",Quality Assurance,9946,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1270,EQ ID 1270,"Bent Feeler Gage Set, M-0007 (Fabrication)",Quality Assurance,774,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1271,EQ ID 1271,"Feeler Gage Set, M-0008, 70-817, Armstrong (Fabrication)",Quality Assurance,9927,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1271,EQ ID 1271,"Feeler Gage Set, M-0008, 70-817, Armstrong (Fabrication)",Quality Assurance,775,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1272,EQ ID 1272,"6"" Double Square, M-0009, 7182-006, Products Engineering (Fabrication)",Quality Assurance,9882,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1272,EQ ID 1272,"6"" Double Square, M-0009, 7182-006, Products Engineering (Fabrication)",Quality Assurance,776,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1273,EQ ID 1273,"Micrometer, 0-1"", M-0010, 103-113, Mitutoyo (Fabrication)",Quality Assurance,9942,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1273,EQ ID 1273,"Micrometer, 0-1"", M-0010, 103-113, Mitutoyo (Fabrication)",Quality Assurance,777,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1274,EQ ID 1274,"Radius Gage Set, M-0011, S167C, Starrett (Fabrication)",Quality Assurance,9888,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1274,EQ ID 1274,"Radius Gage Set, M-0011, S167C, Starrett (Fabrication)",Quality Assurance,778,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1275,EQ ID 1275,"Combination Set, M-0012, C9-12-4R, Starrett (Fabrication)",Quality Assurance,9836,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1275,EQ ID 1275,"Combination Set, M-0012, C9-12-4R, Starrett (Fabrication)",Quality Assurance,779,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1276,EQ ID 1276,"6"" Caliper, M-0013, Serial Number 08379672, Mitutoyo (Holzma)",Quality Assurance,9853,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1276,EQ ID 1276,"6"" Caliper, M-0013, Serial Number 08379672, Mitutoyo (Holzma)",Quality Assurance,780,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1277,EQ ID 1277,"72"" Level, M-0014 (Holzma)",Quality Assurance,9855,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1277,EQ ID 1277,"72"" Level, M-0014 (Holzma)",Quality Assurance,781,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1278,EQ ID 1278,"72"" Level, M-0015 (Laminate)",Quality Assurance,9854,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1278,EQ ID 1278,"72"" Level, M-0015 (Laminate)",Quality Assurance,782,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1279,EQ ID 1279,"Jig, J-0001, Contura Lock Bracket Weld (2888)",Quality Assurance,9889,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1279,EQ ID 1279,"Jig, J-0001, Contura Lock Bracket Weld (2888)",Quality Assurance,783,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1280,EQ ID 1280,"Jig, J-0002, Door to Frame Weld (2888)",Quality Assurance,9941,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1280,EQ ID 1280,"Jig, J-0002, Door to Frame Weld (2888)",Quality Assurance,784,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1281,EQ ID 1281,"jig, J-0003, Stop Bracket Weld (2888)",Quality Assurance,9884,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1281,EQ ID 1281,"jig, J-0003, Stop Bracket Weld (2888)",Quality Assurance,785,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1282,EQ ID 1282,"Jig, J-0004, Hinge Weld (262)",Quality Assurance,9936,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1282,EQ ID 1282,"Jig, J-0004, Hinge Weld (262)",Quality Assurance,786,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1283,EQ ID 1283,"Jig, J-0005, Towel Tray Weld (262)",Quality Assurance,9948,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1283,EQ ID 1283,"Jig, J-0005, Towel Tray Weld (262)",Quality Assurance,787,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1284,EQ ID 1284,"Jig, J-0006, Towel Tray Weld (262)",Quality Assurance,9953,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1284,EQ ID 1284,"Jig, J-0006, Towel Tray Weld (262)",Quality Assurance,788,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1285,EQ ID 1285,"Jig, J-0007, Door to Unit Weld (262)",Quality Assurance,9950,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1285,EQ ID 1285,"Jig, J-0007, Door to Unit Weld (262)",Quality Assurance,789,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1286,EQ ID 1286,"Jig, J-0008, Hinge Weld (270)",Quality Assurance,9957,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1286,EQ ID 1286,"Jig, J-0008, Hinge Weld (270)",Quality Assurance,790,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1287,EQ ID 1287,"Jig, J-0009, Hinge Weld (270)",Quality Assurance,9944,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1287,EQ ID 1287,"Jig, J-0009, Hinge Weld (270)",Quality Assurance,791,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1288,EQ ID 1288,"Jig, J-0010, Hinge (Privada)",Quality Assurance,9887,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1288,EQ ID 1288,"Jig, J-0010, Hinge (Privada)",Quality Assurance,792,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1289,EQ ID 1289,"Jig, J-0011, Magnet (Privada)",Quality Assurance,9949,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1289,EQ ID 1289,"Jig, J-0011, Magnet (Privada)",Quality Assurance,793,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1290,EQ ID 1290,"jig, J-0012, In Swing/Out Swing (Privada)",Quality Assurance,9897,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1290,EQ ID 1290,"jig, J-0012, In Swing/Out Swing (Privada)",Quality Assurance,794,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1291,EQ ID 1291,"Gauge, G-0002, Foam Thickness, Go/No Go (165)",Quality Assurance,9863,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1291,EQ ID 1291,"Gauge, G-0002, Foam Thickness, Go/No Go (165)",Quality Assurance,795,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1292,EQ ID 1292,"Gauge, G-0003, Corner Gap (290)",Quality Assurance,9865,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1292,EQ ID 1292,"Gauge, G-0003, Corner Gap (290)",Quality Assurance,796,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1293,EQ ID 1293,"Gauge, G-0004, Corner Gap (290)",Quality Assurance,9867,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1293,EQ ID 1293,"Gauge, G-0004, Corner Gap (290)",Quality Assurance,797,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1294,EQ ID 1294,"Gauge, G-0005, Miter Corner Gap (165)",Quality Assurance,9866,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1294,EQ ID 1294,"Gauge, G-0005, Miter Corner Gap (165)",Quality Assurance,798,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1295,EQ ID 1295,"Gauge, G-0006, Miter Corner Gap (165)",Quality Assurance,9923,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1295,EQ ID 1295,"Gauge, G-0006, Miter Corner Gap (165)",Quality Assurance,799,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1296,EQ ID 1296,"Gauge, G-0007, Miter Corner Gap (165)",Quality Assurance,9955,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1296,EQ ID 1296,"Gauge, G-0007, Miter Corner Gap (165)",Quality Assurance,800,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1297,EQ ID 1297,"Gauge, G-0008, Miter Corner Gap (165)",Quality Assurance,9898,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1297,EQ ID 1297,"Gauge, G-0008, Miter Corner Gap (165)",Quality Assurance,801,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1298,EQ ID 1298,"Gauge, G-0009, Miter Corner Gap (165)",Quality Assurance,9951,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1298,EQ ID 1298,"Gauge, G-0009, Miter Corner Gap (165)",Quality Assurance,802,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1299,EQ ID 1299,"Gauge, G-0010, Miter Corner Gap (165)",Quality Assurance,9945,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1299,EQ ID 1299,"Gauge, G-0010, Miter Corner Gap (165)",Quality Assurance,803,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1300,EQ ID 1300,"Gauge, G-0011, Miter Corner Gap (165)",Quality Assurance,9960,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1300,EQ ID 1300,"Gauge, G-0011, Miter Corner Gap (165)",Quality Assurance,804,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1301,EQ ID 1301,"Gauge, G-0012, Door Frame (2888)",Quality Assurance,9829,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1301,EQ ID 1301,"Gauge, G-0012, Door Frame (2888)",Quality Assurance,805,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1302,EQ ID 1302,"Gauge, G-0013, Drop Test (2888)",Quality Assurance,9828,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1302,EQ ID 1302,"Gauge, G-0013, Drop Test (2888)",Quality Assurance,806,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1303,EQ ID 1303,"Gauge, G-0014, Material Thickness, Go/No Go (Holzma) Ref: G-1080",Quality Assurance,9831,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1303,EQ ID 1303,"Gauge, G-0014, Material Thickness, Go/No Go (Holzma) Ref: G-1080",Quality Assurance,807,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1304,EQ ID 1304,"Gauge, G-0015, Magnet, Go/No Go (Privada)",Quality Assurance,9900,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1304,EQ ID 1304,"Gauge, G-0015, Magnet, Go/No Go (Privada)",Quality Assurance,808,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1305,EQ ID 1305,"Gauge, G-0016, Shaper 1, Go/No Go (Privada)",Quality Assurance,9956,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1305,EQ ID 1305,"Gauge, G-0016, Shaper 1, Go/No Go (Privada)",Quality Assurance,809,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1306,EQ ID 1306,"Gauge, G-0017, Shaper 2, Go/No Go (Privada)",Quality Assurance,9843,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1306,EQ ID 1306,"Gauge, G-0017, Shaper 2, Go/No Go (Privada)",Quality Assurance,810,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1307,EQ ID 1307,"Gauge, G-0018, Shaper 3, Go/No Go (Privada)",Quality Assurance,9965,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1307,EQ ID 1307,"Gauge, G-0018, Shaper 3, Go/No Go (Privada)",Quality Assurance,811,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1308,EQ ID 1308,"Gauge, G-0019, Shaper 4, Go/No Go (Privda)",Quality Assurance,9877,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1308,EQ ID 1308,"Gauge, G-0019, Shaper 4, Go/No Go (Privda)",Quality Assurance,812,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1309,EQ ID 1309,"Gauge, G-0020, MS-47PT1 Magnet/Pole Tester (Privada)",Quality Assurance,9893,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1309,EQ ID 1309,"Gauge, G-0020, MS-47PT1 Magnet/Pole Tester (Privada)",Quality Assurance,813,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1310,EQ ID 1310,"Gauge, G-0021, Measuring, 40.25"" (Stainless) Ref: T-1030318",Quality Assurance,9879,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1310,EQ ID 1310,"Gauge, G-0021, Measuring, 40.25"" (Stainless) Ref: T-1030318",Quality Assurance,814,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1311,EQ ID 1311,"Gauge, G-0022, Measuring, 72.25"" (Stainless) Ref: T-1030318",Quality Assurance,9868,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1311,EQ ID 1311,"Gauge, G-0022, Measuring, 72.25"" (Stainless) Ref: T-1030318",Quality Assurance,815,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1312,EQ ID 1312,"Gauge, G-0023, Measuring, 86"" (Stainless) Ref: T-1030318",Quality Assurance,9959,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1312,EQ ID 1312,"Gauge, G-0023, Measuring, 86"" (Stainless) Ref: T-1030318",Quality Assurance,816,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1313,EQ ID 1313,"Gauge, G-0024, Measuring, 96"" (Stainless) Ref: T-1030318",Quality Assurance,9952,"1) Cleaning
+2) Visual
+2) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1313,EQ ID 1313,"Gauge, G-0024, Measuring, 96"" (Stainless) Ref: T-1030318",Quality Assurance,817,"1) Cleaning
+2) Visual
+2) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1314,EQ ID 1314,"Gauge, G-0025, Depth (Solid)",Quality Assurance,9966,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1314,EQ ID 1314,"Gauge, G-0025, Depth (Solid)",Quality Assurance,818,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1316,EQ ID 1316,"Gauge, G-0026, Go/No Go (Door Notcher)",Quality Assurance,9947,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1316,EQ ID 1316,"Gauge, G-0026, Go/No Go (Door Notcher)",Quality Assurance,12080,"!) Make sure access doors & E-stop is working properly before running machine
+2) Make sure saw & bit is secured firmly before running machine",Pending,6/17/2024,,Operator,0.00,0.00,0.00,,,[]
+1316,EQ ID 1316,"Gauge, G-0026, Go/No Go (Door Notcher)",Quality Assurance,12081,Hub city pillow block bearings should be greased weekly.,Pending,6/17/2024,,Operator,0.00,0.00,0.00,,,[]
+1316,EQ ID 1316,"Gauge, G-0026, Go/No Go (Door Notcher)",Quality Assurance,819,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1317,EQ ID 1317,"Gauge, G-0027, Go/No Go (Gapless)",Quality Assurance,9963,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1317,EQ ID 1317,"Gauge, G-0027, Go/No Go (Gapless)",Quality Assurance,820,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1318,EQ ID 1318,"Gauge, G-0028, Drill Bit Depth (Laminate)",Quality Assurance,9830,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1318,EQ ID 1318,"Gauge, G-0028, Drill Bit Depth (Laminate)",Quality Assurance,821,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1319,EQ ID 1319,"Jig, J-0013, In Swing/Out Swing (1040)",Quality Assurance,9964,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1319,EQ ID 1319,"Jig, J-0013, In Swing/Out Swing (1040)",Quality Assurance,822,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1320,EQ ID 1320,"Jig, J-0014, In Swing/Out Swing (1040)",Quality Assurance,9972,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1320,EQ ID 1320,"Jig, J-0014, In Swing/Out Swing (1040)",Quality Assurance,823,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1321,EQ ID 1321,"Jig, J-0015, Leveling Bar (1540)",Quality Assurance,9971,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1321,EQ ID 1321,"Jig, J-0015, Leveling Bar (1540)",Quality Assurance,824,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1322,EQ ID 1322,"Jig, J-0016, Leveling Bar (1540)",Quality Assurance,9961,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1322,EQ ID 1322,"Jig, J-0016, Leveling Bar (1540)",Quality Assurance,825,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1323,EQ ID 1323,"Jig, J-0017, Leveling Bar (1541/1548)",Quality Assurance,9826,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1323,EQ ID 1323,"Jig, J-0017, Leveling Bar (1541/1548)",Quality Assurance,826,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1324,EQ ID 1324,"Jig, J-0018, Leveling Bar (1541 4"" stile)",Quality Assurance,9958,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1324,EQ ID 1324,"Jig, J-0018, Leveling Bar (1541 4"" stile)",Quality Assurance,827,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1325,EQ ID 1325,"Jig, J-0019, Leveling Bar, 1542/1552 7"" stile)",Quality Assurance,9954,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1325,EQ ID 1325,"Jig, J-0019, Leveling Bar, 1542/1552 7"" stile)",Quality Assurance,828,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1326,EQ ID 1326,"Jig, J-0020, Leveling Bar (1541 3"" stile)",Quality Assurance,9870,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1326,EQ ID 1326,"Jig, J-0020, Leveling Bar (1541 3"" stile)",Quality Assurance,829,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1327,EQ ID 1327,"Jig, J-0021, Leveling Bar (1541 3"" stile)",Quality Assurance,9869,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1327,EQ ID 1327,"Jig, J-0021, Leveling Bar (1541 3"" stile)",Quality Assurance,830,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1328,EQ ID 1328,"Jig, J-0022, Leveling Bar (1541 5"" stile)",Quality Assurance,9874,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1328,EQ ID 1328,"Jig, J-0022, Leveling Bar (1541 5"" stile)",Quality Assurance,831,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1331,EQ ID 1331,"72"" Level, M-0016 (Privada)",Quality Assurance,9837,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1331,EQ ID 1331,"72"" Level, M-0016 (Privada)",Quality Assurance,833,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]

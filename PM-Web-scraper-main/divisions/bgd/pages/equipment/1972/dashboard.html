@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en" class="k-webkit k-webkit153"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Dashboard - Bobrick  PME</title>
+    <link rel="stylesheet" href="/PME/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <link href="/PME/css/kendo/kendo.common.min.css" rel="stylesheet">
+    <link href="/PME/css/kendo/kendo.office365.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/PME/css/site.css">
+
+
+    <link href="/PME/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="/PME/css/utils/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-2">
+            <div class="container">
+                <!--<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Preventive Maintenance</a>-->
+
+                <a class="navbar-brand" href="/PME/Home/Index">
+                    <img src="/PME/css/img/pmlogo2.png" alt="..." height="50">
+
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" autocomplete="off">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav nav-pills flex-grow-1">
+
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/PME">Home</a>
+                        </li>
+
+                        <li class="nav-item dropdown active">
+                            <a role="button" data-toggle="dropdown" aria-haspopup="true" href="#" aria-expanded="false" id="WorkOrder" class="dropdown-toggle nav-link ">Work Orders</a>
+
+                            <div class="dropdown-menu" aria-labelledby="WorkOrder">
+                                <a class="dropdown-item" href="/PME/Forms/WorkOrderUnshdAll">Unscheduled Work Orders</a>
+                                <a class="dropdown-item" href="/PME/Forms/WorkOrderShdAll">Scheduled Work Orders</a>
+
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/PME/Forms/MaintSchdAll">Maint. Schedule</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/PME/Forms/EquipmentAll">Equipment</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/PME/Forms/SparesAll">Spares</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/PME/Forms/VendorsAll">Vendors</a>
+                        </li>
+                        <!--
+                        <li class="nav-item active">
+                            <a class="nav-link " asp-area="" asp-controller="Forms" asp-action="VendorEdit">Vendor Edit</a>
+                        </li>
+                            -->
+                        <!--<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>-->
+                    </ul>
+                    <p class="nav navbar-text">Hello, Merja Haatanen</p>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="MainPlaceHolderPME" class="container" data-access="1">
+        <main role="main" class="pb-3">
+            
+<div class="row"><h4 class="pt">Equipment Dashboard&nbsp;<button id="btnEditWO" class="btn btn-xs bob-btn" onclick="EquipmentMgr.EditEquipment(1972)" autocomplete="off">1972</button></h4></div>
+<div id="EquipmentPlaceHolder" data-eqp-det="/PME/Forms/GetEquipmentData"> </div>
+<div id="EqpDashPlaceHolder" class="">
+    <form id="form" method="post" action="/form" autocomplete="off">
+        <div class="k-widget k-form k-form-horizontal ml-2" id="EqpDash" style="width:99%" data-equip-id="1972" data-maintsched="/PME/Forms/GetMaintSchdAll" data-wou="/PME/Forms/GetWorkOrdersUnschdlALL" data-wos="/PME/Forms/GetWorkOrdersSchdlALL" data-spares="/PME/Forms/GetSparesAll" data-eqp-det="/PME/Forms/GetEquipemntDashALL" data-delete-wo="/PME/Forms/DeleteWorkOrder" data-delete-ms="/PME/Forms/DeleteMaintSchd" data-delete-sp="/PME/Forms/DeleteSpares">
+            <div class="k-form-field" style="margin-bottom:0px;font-size:.9rem">
+                <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Division:</label>
+                <label class="k-label k-label-data" id="lblDivED">BGD</label>
+                <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Department:</label>
+                <label class="k-label k-label-data " id="lblDeptED">Office</label>
+                <div class="k-form-field-wrap">
+                    <button id="btnAddSchedMaint" class="btn btn-xs bob-btn float-right" autocomplete="off"><i class="fa fa-plus-square"></i>&nbsp;New Sched. Maint.</button>
+                    <button id="btnAddSpare" class="btn btn-xs bob-btn float-right mr-2" autocomplete="off"><i class="fa fa-plus-square"></i>&nbsp;New Spare</button>
+
+                </div>
+            </div>
+            <div class="k-form-field" style="margin-bottom:.5rem">
+                <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Equpment:</label>
+                <label class="k-label k-label-data" id="lblEqpED">AC</label>
+                <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Machine ID:</label>
+                <label class="k-label k-label-data" id="lblEqpED">EQ ID 1972 </label>
+
+            </div>
+
+            <ul class="nav nav-tabs" id="myEqpDashTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="eqpdashsum-tab" data-toggle="tab" href="#eqpdashsum" role="tab" aria-controls="eqpdashsum" aria-selected="false">Equipment Summary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="eqpdashuwo-tab" data-toggle="tab" href="#eqpdashuwo" role="tab" aria-controls="eqpdashuwo" aria-selected="false">Unscheduled Work Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="eqpdashswo-tab" data-toggle="tab" href="#eqpdashswo" role="tab" aria-controls="eqpdashswo" aria-selected="true">Scheduled Work Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="eqpdashspares-tab" data-toggle="tab" href="#eqpdashspares" role="tab" aria-controls="eqpdashspares" aria-selected="false">Spares</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="eqpdashsm-tab" data-toggle="tab" href="#eqpdashsm" role="tab" aria-controls="eqpdashsm" aria-selected="false">Scheduled Maintenance</a>
+                </li>
+
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="eqpdashsum" style="font-size:.9rem" role="tabpanel" aria-labelledby="eqpdashsum-tab">
+                    <div class="k-form-field" style="margin-bottom:0px; margin-top:10px">
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Make:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblMakeED"></label>
+                        <label class="k-label col-eqp-dash" style="width:60px" for="tb1" id="TextBox-form-label">Asset No:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblAssetNoED"></label>
+                        <label class="k-label col-eqp-dash" style="width:60px" for="tb1" id="TextBox-form-label">Model:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblModelED"></label>
+                        <label class="k-label col-eqp-dash" style="width:60px" for="tb1" id="TextBox-form-label">Serial No:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblSerialED"></label>
+                    </div>
+                    <div class="k-form-field" style="margin-bottom:0px">
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Comment:</label>
+                        <div class="k-form-field-wrap pt-1" data-container-for="tbVolts">
+                            <label class="k-label k-label-data" style="width: 100%; min-height: 15px; max-height: 120px; overflow:auto; white-space: pre-wrap;" id="lblCommentED"></label>
+                        </div>
+                    </div>
+                    <div class="k-form-field" style="margin-bottom:0px">
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Critical?</label>
+                        <label class="k-label k-label-data lbl-eqp-dash mt-1">
+                        </label>
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Obsolete?</label>
+                        <label class="k-label k-label-data lbl-eqp-dash mt-1">
+                        </label>
+                        <label class="k-label col-eqp-dash" style="width:60px" for="tb1" id="TextBox-form-label">Function:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblFunED"></label>
+                    </div>
+                    <div class="k-form-field" style="margin-bottom:0px;">
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">P.O. No :</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblPONoED"></label>
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Original Cost:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblOrigCostED">0.0000</label>
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Purchase Date:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblPurchDtED"></label>
+                        <label class="k-label col-eqp-dash" style="max-width: 140px !important; width: 130px" for="tb1" id="TextBox-form-label">Warranty End Date:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" style="max-width:100px;width:100px" id="lblWarrantyED"></label>
+                    </div>
+                    <legend class="k-window-legend-form-eqp mt-2">Utilities</legend>
+                    <div class="k-form-field" style="margin-bottom:0px;">
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Volts:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblVoltsED">  </label>
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Amps:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblAmpsED">  </label>
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">PH:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblPhED">0 </label>
+                        <label class="k-label col-eqp-dash" style="max-width: 170px !important; width: 160px" for="tb1" id="TextBox-form-label">Brunch Dust Collection:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" style="max-width:20px;width:20px" id="lblBranchDustED"></label>
+                    </div>
+                    <div class="k-form-field" style="margin-bottom:0px;">
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Air:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash-chk mt-1">
+                        </label>
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Water:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash-chk mt-1">
+                        </label>
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Draine:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash-chk mt-1">
+                        </label>
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Gas:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash-chk mt-1">
+                        </label>
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Battery:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash-chk mt-1">
+                        </label>
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Propane:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash-chk mt-1">
+                        </label>
+                        <label class="k-label col-eqp-dash justify-content-start" for="tb1" id="TextBox-form-label">Network:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash-chk mt-1">
+                        </label>
+                    </div>
+
+                    <div class="k-form-field" style="margin-bottom:0px;">
+                        <label class="k-label col-eqp-dash" for="tb1" style="max-width: 160px !important;" id="TextBox-form-label">Replacement Name:</label>
+                        <label class="k-label k-label-data" id="lblReplNameED"> </label>
+                        <label class="k-label col-eqp-dash" style="max-width: 160px !important;" for="tb1" id="TextBox-form-label">Replacement Year:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblReplYearED">0 </label>
+                        <label class="k-label col-eqp-dash" style="max-width: 160px !important;" for="tb1" id="TextBox-form-label">Replacement Cost:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblReplCostED">0.0000 </label>
+                    </div>
+                    <legend class="k-window-legend-form-eqp mt-2">Vendors</legend>
+                    <div class="k-form-field" style="margin-bottom:0px">
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Manufacturer:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblMfgED"></label>
+                    </div>
+                    <div class="k-form-field" style="margin-bottom:0px;">
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Distributor A:</label>
+                        <label class="k-label k-label-data" id="lblDistAED"></label>
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Distributor B:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblDistBED"></label>
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Distributor C:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblDistCED"></label>
+                    </div>
+                    <div class="k-form-field" style="margin-bottom:0px;">
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Service A:</label>
+                        <label class="k-label k-label-data" id="lblServAED"> </label>
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Service B:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblServBED"></label>
+                        <label class="k-label col-eqp-dash" for="tb1" id="TextBox-form-label">Service C:</label>
+                        <label class="k-label k-label-data lbl-eqp-dash" id="lblServCED"></label>
+                    </div>
+                    <legend class="k-window-legend-form-eqp mt-2">Additional Information</legend>
+                    <div class="k-form-field" style="margin-bottom:0px">
+                        <label class="k-label col-eqp-dash justify-content-start" style="max-width: 130px !important;" for="tb1" id="TextBox-form-label">Machine Settings:</label>
+                        <div class="k-form-field-wrap pt-1" data-container-for="tbVolts">
+                            <label class="k-label k-label-data" style="width: 100%; min-height: 15px; max-height: 120px; overflow:auto; white-space: pre-wrap;" id="lblMachSetED"></label>
+                        </div>
+                    </div>
+
+                    <div class="k-form-field" style="margin-bottom:0px">
+                        <label class="k-label col-eqp-dash" style="max-width: 130px !important;" for="tb1" id="TextBox-form-label">Attachments</label>
+                        <div class="k-form-field-wrap pt-1" data-container-for="tbVolts">
+                            <div class="k-form-field-wrap" id="divAttchments">
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="eqpdashuwo" role="tabpanel" aria-labelledby="eqpdashuwo-tab">
+                    <div class="p-3" id="divGridContainerWOU">
+                        <div id="gridWOU" data-role="grid" class="k-grid k-widget k-grid-display-block"><div class="k-grid-header" style="padding-right: 15px;"><div class="k-grid-header-wrap k-auto-scrollable"><table role="grid"><colgroup><col style="width:33px"><col style="width:38px"><col style="width:250px"><col style="width:110px"><col style="width:180px"><col><col style="width:90px"><col style="width:90px"><col style="width:90px"><col style="width:110px"></colgroup><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="0" id="d12ecc37-8a05-449c-9ede-844be58d9d8a" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="1" id="fc1aa50a-1fc8-446e-ab8d-afc4a9cf9e39" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="EquipmentName" aria-haspopup="true" rowspan="1" data-title="Equip, Name" data-index="2" id="db387cd7-806d-4879-9fb7-70cf18fe6724" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Equip, Name</a></th><th scope="col" role="columnheader" data-field="WOStatusDsc" aria-haspopup="true" rowspan="1" data-title="Status" data-index="3" id="d4c1a03e-bddb-4656-b0e9-5b4a254e2c0d" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Status</a></th><th scope="col" role="columnheader" data-field="WorkPerformedBy" aria-haspopup="true" rowspan="1" data-title="Work Performed By" data-index="4" id="339882ce-f62c-47b1-a9ad-853ef9972225" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Work Performed By</a></th><th scope="col" role="columnheader" data-field="Comment" aria-haspopup="true" rowspan="1" data-title="Comment Log" data-index="5" id="ba828d39-50ac-42a9-92a8-ed109277a7ab" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Comment Log</a></th><th scope="col" role="columnheader" data-field="LaborTime" aria-haspopup="true" rowspan="1" data-title="Lbr Time" data-index="6" id="59f98201-073d-4b03-9d6f-293be9810f38" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Lbr Time</a></th><th scope="col" role="columnheader" data-field="MaterialCost" aria-haspopup="true" rowspan="1" data-title="Mtrl Cost" data-index="7" id="1bd673d5-a7cf-4cf6-ac0d-4a237d1e837f" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Mtrl Cost</a></th><th scope="col" role="columnheader" data-field="DownTime" aria-haspopup="true" rowspan="1" data-title="Downtime" data-index="8" id="10764210-387b-449b-a436-c55337f3decc" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Downtime</a></th><th scope="col" role="columnheader" data-field="CompletedDateTime" aria-haspopup="true" rowspan="1" data-title="Completed Dt" data-index="9" id="c2536a66-6ece-44a7-9c97-4735cd74b195" class="k-header k-sorted" data-role="columnsorter" data-dir="asc" aria-sort="ascending"><a class="k-link" href="#">Completed Dt<span class="k-icon k-i-sort-asc-sm"></span></a></th></tr></thead></table></div></div><div class="k-grid-content k-auto-scrollable"><table role="grid"><colgroup><col style="width:33px"><col style="width:38px"><col style="width:250px"><col style="width:110px"><col style="width:180px"><col><col style="width:90px"><col style="width:90px"><col style="width:90px"><col style="width:110px" class="k-sorted"></colgroup><tbody role="rowgroup"><tr class="k-master-row" data-uid="5d61de78-17e4-4365-9012-96d1d79dfaf6" role="row"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Work Order" href="#" onclick="EquipmentDashMgr.EditWorkOrderUnschd(17070)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Work Order" href="#" onclick="EquipmentDashMgr.DeleteWorkOrder(17070,0)"><i class="fa fa-trash"></i></a></td><td class="" role="gridcell">AC</td><td class="" role="gridcell">Closed without Action</td><td class="" role="gridcell">Preston</td><td class="k-textarea-cell" role="gridcell"><span class="pmpt-bob">Preston Ellexson - 09/25/25  8:15:10 AM:&nbsp;</span>When I went to check this out, the control panel was accurate with date and time. Checked all while I was there and they are all up to date. 
+</td><td class="" role="gridcell">0.00</td><td class="" role="gridcell">0.00</td><td class="" role="gridcell">0.00</td><td class="" role="gridcell">9/24/2025</td></tr></tbody></table></div></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade active show" id="eqpdashswo" role="tabpanel" aria-labelledby="eqpdashswo-tab">
+                    <div class="p-3" id="divGridContainerWOS">
+                        <div id="gridWOS" data-role="grid" class="k-grid k-widget k-grid-display-block"><div class="k-grid-header" style="padding-right: 15px;"><div class="k-grid-header-wrap k-auto-scrollable"><table role="grid"><colgroup><col style="width:33px"><col style="width:38px"><col style="width:220px"><col style="width:420px"><col style="width:90px"><col style="width:100px"><col style="width:140px"><col><col style="width:80px"><col style="width:80px"><col style="width:80px"><col style="width:110px"></colgroup><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="0" id="7c7028cd-67a2-403e-b6b1-824f36b99381" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="1" id="dbe91e21-35de-4d9b-a485-06ca3cb67926" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="EquipmentName" aria-haspopup="true" rowspan="1" data-title="Equip, Name" data-index="2" id="62ffbd1d-4346-4b9b-b2ff-c9b0cd1793dc" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Equip, Name</a></th><th scope="col" role="columnheader" data-field="AuditItem" aria-haspopup="true" rowspan="1" data-title="Audit Item" data-index="3" id="6e8a915d-433c-4659-8dc6-b8aad1adeb77" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Audit Item</a></th><th scope="col" role="columnheader" data-field="WOStatusDsc" aria-haspopup="true" rowspan="1" data-title="Status" data-index="4" id="103b9f2f-4d67-4cb4-b1bc-ae1c59e9dc1e" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Status</a></th><th scope="col" role="columnheader" data-field="DueDate" aria-haspopup="true" rowspan="1" data-title="Due Dt" data-index="5" id="a0b40f2d-9dfe-4211-aabb-b1c578993bb1" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Due Dt</a></th><th scope="col" role="columnheader" data-field="WorkPerformedBy" aria-haspopup="true" rowspan="1" data-title="Work Performed By" data-index="6" id="d8e3fda9-0406-483a-a939-2442feb4b7ed" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Work Performed By</a></th><th scope="col" role="columnheader" data-field="Comment" aria-haspopup="true" rowspan="1" data-title="Comment Log" data-index="7" id="a26a1f52-ab1c-422b-9a0d-03a8fbd0a442" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Comment Log</a></th><th scope="col" role="columnheader" data-field="LaborTime" aria-haspopup="true" rowspan="1" data-title="Lbr Time" data-index="8" id="36b7fdf6-3374-4f4e-a861-5373a47d249b" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Lbr Time</a></th><th scope="col" role="columnheader" data-field="MaterialCost" aria-haspopup="true" rowspan="1" data-title="Mtrl Cost" data-index="9" id="37dfa26c-6e69-475b-a1aa-177d09068fcb" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Mtrl Cost</a></th><th scope="col" role="columnheader" data-field="DownTime" aria-haspopup="true" rowspan="1" data-title="Downtime" data-index="10" id="74e085e6-471b-42f8-811a-c3b7f6fc0847" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Downtime</a></th><th scope="col" role="columnheader" data-field="CompletedDateTime" aria-haspopup="true" rowspan="1" data-title="Completed Dt" data-index="11" id="99b7e7fb-283b-4d36-8fe3-1383b4dafed5" class="k-header k-sorted" data-role="columnsorter" data-dir="asc" aria-sort="ascending"><a class="k-link" href="#">Completed Dt<span class="k-icon k-i-sort-asc-sm"></span></a></th></tr></thead></table></div></div><div class="k-grid-content k-auto-scrollable"><table role="grid"><colgroup><col style="width:33px"><col style="width:38px"><col style="width:220px"><col style="width:420px"><col style="width:90px"><col style="width:100px"><col style="width:140px"><col><col style="width:80px"><col style="width:80px"><col style="width:80px"><col style="width:110px" class="k-sorted"></colgroup><tbody role="rowgroup"></tbody></table></div></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="eqpdashspares" role="tabpanel" aria-labelledby="eqpdashspares-tab">
+                    <div class="p-3" id="divGridContainerSpares">
+                        <div id="gridSpares" data-role="grid" class="k-grid k-widget k-grid-display-block"><div class="k-grid-header" style="padding-right: 15px;"><div class="k-grid-header-wrap k-auto-scrollable"><table role="grid"><colgroup><col style="width:33px"><col style="width:42px"><col style="width:110px"><col><col><col><col><col><col style="width:80px"><col style="width:80px"><col style="width:80px"></colgroup><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="0" id="1aeda0fa-8970-4103-a917-298d645bf8f0" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="1" id="8f591c31-5ec8-47b8-b2e8-d848ab1bb3c4" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="DepartmentName" aria-haspopup="true" rowspan="1" data-title="Dept." data-index="2" id="90d32483-d2fb-444c-b87e-a29624cc4375" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Dept.</a></th><th scope="col" role="columnheader" data-field="EquipmentName" aria-haspopup="true" rowspan="1" data-title="Equipment Name" data-index="3" id="c383b071-ba77-4c7d-b5c2-fe837f5871e7" class="k-header k-sorted" data-role="columnsorter" data-dir="asc" aria-sort="ascending"><a class="k-link" href="#">Equipment Name<span class="k-icon k-i-sort-asc-sm"></span></a></th><th scope="col" role="columnheader" data-field="PartNo" aria-haspopup="true" rowspan="1" data-title="Part No." data-index="4" id="5e24694c-ff52-4a51-ad82-ea1bc2e864f4" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Part No.</a></th><th scope="col" role="columnheader" data-field="PartDsc" aria-haspopup="true" rowspan="1" data-title="Part Dsc" data-index="5" id="dae7e7b2-2099-45fb-bd9a-4a1110427bbe" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Part Dsc</a></th><th scope="col" role="columnheader" data-field="BinLoc" aria-haspopup="true" rowspan="1" data-title="Bin Loc" data-index="6" id="32418060-a37d-4837-af63-52ead964754d" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Bin Loc</a></th><th scope="col" role="columnheader" data-field="Vendor" aria-haspopup="true" rowspan="1" data-title="Vendor" data-index="7" id="977137f2-dbb3-4e44-b5cd-8cc82b8b27b0" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Vendor</a></th><th scope="col" role="columnheader" data-field="QtyReq" aria-haspopup="true" rowspan="1" data-title="Qty Req." data-index="8" id="8d3e0e20-35df-4b27-b398-ea69a19b6e80" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Qty Req.</a></th><th scope="col" role="columnheader" data-field="QtyInStock" aria-haspopup="true" rowspan="1" data-title="In Stock" data-index="9" id="b6d1f201-cd7f-46ea-8294-2ac0e63d2d20" class="k-header" data-role="columnsorter"><a class="k-link" href="#">In Stock</a></th><th scope="col" role="columnheader" data-field="QtyToOrder" aria-haspopup="true" rowspan="1" data-title="To Order" data-index="10" id="15e8aee4-e4f4-453e-b253-8be4010069f0" class="k-header" data-role="columnsorter"><a class="k-link" href="#">To Order</a></th></tr></thead></table></div></div><div class="k-grid-content k-auto-scrollable"><table role="grid" data-role="selectable" class="k-selectable"><colgroup><col style="width:33px"><col style="width:42px"><col style="width:110px"><col><col><col><col><col><col style="width:80px"><col style="width:80px"><col style="width:80px" class="k-sorted"></colgroup><tbody role="rowgroup"></tbody></table></div></div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="eqpdashsm" role="tabpanel" aria-labelledby="eqpdashsm-tab">
+                    <div class="p-2" id="divGridContainerMaintSchd">
+                        <div id="gridMaintSchd" data-role="grid" class="k-grid k-widget k-grid-display-block"><div class="k-grid-header" style="padding-right: 15px;"><div class="k-grid-header-wrap k-auto-scrollable"><table role="grid"><colgroup><col style="width:33px"><col style="width:38px"><col style="width:250px"><col style="width:180px"><col style="width:160px"><col style="width:100px"><col></colgroup><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="0" id="9f49e5b5-3de8-4b86-9d70-05187c2ebd48" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="1" id="39d48a67-4f04-4847-ad80-f51d7b4e9807" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="EquipmentName" aria-haspopup="true" rowspan="1" data-title="Equip, Name" data-index="2" id="cff16d03-d450-493a-af30-6440294ee8eb" class="k-header k-sorted" data-role="columnsorter" data-dir="asc" aria-sort="ascending"><a class="k-link" href="#">Equip, Name<span class="k-icon k-i-sort-asc-sm"></span></a></th><th scope="col" role="columnheader" data-field="ReqStartDt" aria-haspopup="true" rowspan="1" data-title="Rqstd Start Dt" data-index="3" id="9618be1f-f506-471b-ad69-cce13f5bedff" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Rqstd Start Dt</a></th><th scope="col" role="columnheader" data-field="FreqDsc" aria-haspopup="true" rowspan="1" data-title="Frequency" data-index="4" id="627becbb-191c-4e8f-9e8b-0e3d951616e7" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Frequency</a></th><th scope="col" role="columnheader" data-field="EstimatedTime" aria-haspopup="true" rowspan="1" data-title="Est. Time (Hrs)" data-index="5" id="f275f987-befe-41cf-98a0-56c8d1f68e0e" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Est. Time (Hrs)</a></th><th scope="col" role="columnheader" data-field="AuditItem" aria-haspopup="true" rowspan="1" data-title="Audit Item" data-index="6" id="b4d27a46-a9aa-4838-abc6-470d66136b19" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Audit Item</a></th></tr></thead></table></div></div><div class="k-grid-content k-auto-scrollable"><table role="grid"><colgroup><col style="width:33px"><col style="width:38px"><col style="width:250px"><col style="width:180px"><col style="width:160px"><col style="width:100px"><col class="k-sorted"></colgroup><tbody role="rowgroup"></tbody></table></div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted d-print-none">
+        <div class="container">
+            © 2021 - Bobrick - <a href="/PME/Home/Privacy">Privacy</a>
+        </div>
+    </footer>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    <!--Grid-->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!--Grid-->
+
+
+    
+
+    
+
+    
+    
+    
+    
+    
+
+    
+
+
+
+<div class="k-list-container k-popup k-group k-reset" id="ddlDivisionEquip-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDivisionEquip_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused" aria-selected="true" data-offset-index="0" id="0067af65-5875-4c68-bb50-e3d00a660d6f">BLA</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">BED</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">BMC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">BWEC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">KKP</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">BGD</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">CIT</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlDepartment-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="60cf50cc-b2ae-4289-8a64-947851b64f51">Select a Department...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDepartment_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlFunction-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlFunction_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">General</li><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused k-state-selected" aria-selected="true" data-offset-index="1" id="5c74d3ff-271a-4844-a8f3-3517b41f2257">TPF</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">Laminate</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">Solid</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div aria-hidden="true" class="k-calendar-container k-popup k-group k-reset" data-role="popup" id="dtPurchDate_dateview" style="display: none; position: absolute;"></div><div aria-hidden="true" class="k-calendar-container k-popup k-group k-reset" data-role="popup" id="dtWarrEndDate_dateview" style="display: none; position: absolute;"></div><div class="k-list-container k-popup k-group k-reset" id="ddlPH-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlPH_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused" aria-selected="true" data-offset-index="0" id="a01858cc-bb9a-43ef-ac68-4ed6e5b0ca98"></li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">1</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">3</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlBranchDust-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlBranchDust_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused" aria-selected="true" data-offset-index="0" id="3fb99178-5530-4606-a61d-f095d6cf6a2a">No</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">Yes</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlVendMfg-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="046e29b0-f1de-4904-a44d-989e2e4bb22f">Select a Vendor...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlVendMfg_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlVendDistA-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="2412e2f6-a0bb-43c8-a480-6e9d59138f64">Select a Vendor...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlVendDistA_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlVendDistB-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="a46b8b2d-89b9-46fc-9c86-e8af00d67824">Select a Vendor...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlVendDistB_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlVendDistC-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="6882a0ff-ae5f-4bbc-bc89-c5c8b55820e8">Select a Vendor...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlVendDistC_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlVendServA-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="70d7873e-5b9c-4b60-8428-fc07d9ec39fc">Select a Vendor...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlVendServA_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlVendServB-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="8fb4d53b-3392-49cb-99af-dd7cf4807666">Select a Vendor...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlVendServB_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlVendServC-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="af9bba11-3ca3-459d-856b-b2d3473340d2">Select a Vendor...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlVendServC_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-widget k-window" tabindex="0" data-role="draggable" style="visibility: visible; display: none; padding-top: 31px; min-width: 90px; min-height: 50px; width: 60%; height: 80%; top: 715.203px; left: 58.5px;"><div class="k-window-titlebar" style="margin-top: -31px;"><span class="k-window-title" id="EquipmentWindow_wnd_title">Edit Equipment</span><div class="k-window-actions"><a role="button" href="#" class="k-button k-flat k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div></div><div id="EquipmentWindow" style="" data-role="window" class="k-window-content" role="dialog" aria-labelledby="EquipmentWindow_wnd_title">
+    
+    <div id="PMEForm" class="venddlgcont" style="width:99.5%" data-get-guid="/PME/Forms/GetGuid" data-equipment-upd="/PME/Forms/UpdateEquipment" data-equipment-id="4" data-equipment-unique-id="" data-upl-attach="/PME/Forms/UploadAttachments" data-eqpdownload="/PME/Forms/DownloadAttachment" data-delete-attach="/PME/Forms/DeleteAttachment">
+        <form id="form" method="post" action="/form" autocomplete="off">
+            <div class="k-widget k-form k-form-horizontal" style="width:99%">
+                <fieldset class="k-form-fieldset" style="margin-top:0px">
+                    <legend class=""></legend>
+                    <ul class="nav nav-tabs" id="myEqpTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="eqhome-tab" data-toggle="tab" href="#eqhome" role="tab" aria-controls="eqhome" aria-selected="true">Equipment</a>
+                        </li>
+                        <li class="nav-item" id="CommentTabWO">
+                            <a class="nav-link" id="eqvendor-tab" data-toggle="tab" href="#eqvendor" role="tab" aria-controls="eqvendor" aria-selected="false">Vendor Information</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="eqaddinfo-tab" data-toggle="tab" href="#eqaddinfo" role="tab" aria-controls="eqaddinfo" aria-selected="false">Additional Information</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-3" id="myTabContent">
+                        <div class="tab-pane fade show active" id="eqhome" role="tabpanel" aria-labelledby="eqhome-tab">
+                            <div class="k-form-field">
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Division:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDivisionEquip">
+                                    <span title="" class="k-widget k-dropdown eqp-input" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlDivisionEquip_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="111108e6-933a-4161-9c36-8d9e83bc6f12" style="width: 200px;"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="111108e6-933a-4161-9c36-8d9e83bc6f12" unselectable="on" role="option" aria-selected="true" class="k-input">BLA</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDivisionEquip" style="width: 200px; display: none;" class="eqp-input" data-role="dropdownlist" autocomplete="off"><option value="BLA" selected="selected">BLA</option><option value="BED">BED</option><option value="BMC">BMC</option><option value="BWEC">BWEC</option><option value="KKP">KKP</option><option value="BGD">BGD</option><option value="CIT">CIT</option></select></span>
+                                </div>
+                            </div>
+
+                            <div class="k-form-field">
+
+                                <label class="k-label col1 req" for="tb1" id="label-ddlDivision">Department:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDepartment">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlDepartment_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="3614f78b-0402-4594-8ca6-d03164ded108" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="3614f78b-0402-4594-8ca6-d03164ded108" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Department...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDepartment" class="eqp-ddl" required="" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="" selected="selected">Select a Department...</option></select></span>
+                                </div>
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">Departemnt No:</label>
+                                <label class="k-label justify-content-start align-items-start" for="tb1" id="lblDeptNo">74</label>
+
+                            </div>
+                            <div class="k-form-field form-border-after">
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Equipment Name:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbOrgName">
+                                    <span class="k-widget k-textbox eqp-input" style="width: 100%;"><input id="tbEquipmentName" autocomplete="off" class="eqp-input k-input" maxlength="100" style="width: 100%;" required="" data-role="textbox" aria-disabled="false" value=""></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field form-border-after">
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Machine ID:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbMachineID">
+                                    <span class="k-widget k-textbox eqp-input k-state-disabled" style="width: 100%;"><input id="tbMachineID" disabled="disabled" autocomplete="off" class="eqp-input k-input" maxlength="100" style="width: 100%;" required="" data-role="textbox" aria-disabled="true" value=""></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Make:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbMake">
+                                    <span class="k-widget k-textbox eqp-input" style="width: 100%;"><input id="tbMake" name="tbMake" class="eqp-input k-input" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="off" value=""></span>
+                                </div>
+
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">Asset No:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbAssetNo">
+                                    <span class="k-widget k-textbox eqp-input" style="width: 100%;"><input id="tbAssetNo" name="tbAssetNo" class="eqp-input k-input" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="off" value=""></span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="k-form-field form-border-after">
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Model:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbModel">
+                                    <span class="k-widget k-textbox eqp-input" style="width: 100%;"><input id="tbModel" name="tbModel" class="eqp-input k-input" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="off" value=""></span>
+                                </div>
+
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Serial No:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbSerialNo">
+                                    <span class="k-widget k-textbox eqp-input" style="width: 100%;"><input id="tbSerialNo" name="tbSerialNo" class="eqp-input k-input" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="off" value=""></span>
+
+                                </div>
+
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1 justify-content-start" for="tb1" id="TextBox-form-label">Comments:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbComments">
+                                    <span class="k-widget k-textarea eqp-ta" style="width: 100%;"><textarea id="tbComments" rows="4" class="eqp-ta k-input" style="width: 100%; resize: none;" data-role="textarea" aria-disabled="false" placeholder="Enter your comment here." autocomplete="off"></textarea></span>
+                                </div>
+                            </div>
+
+                            <div class="k-form-field form-border-after">
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Critical?</label>
+                                <div class="w-20" data-container-for="checkCritical">
+                                    <input type="checkbox" id="checkCritical" style="margin-top: 7px;" name="checkCrytical" title="Crytical" autocomplete="off" aria-labelledby="Gas-form-label" data-type="boolean" data-bind="checked:Crytical" class="k-checkbox eqp-check">
+                                </div>
+
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Obsolete?</label>
+                                <div class="w-2" data-container-for="checkObsolete">
+                                    <input type="checkbox" id="checkObsolete" style="margin-top: 7px;" name="checkObsolete" title="Obsolete" autocomplete="off" aria-labelledby="Gas-form-label" data-type="boolean" data-bind="checked:Obsolete" class="k-checkbox eqp-check">
+                                </div>
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">Function:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlFunction">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlFunction_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="5c74d3ff-271a-4844-a8f3-3517b41f2257" style="width: 200px;"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="bdb450b4-0805-43f6-b6dd-5e5ea06dbc36" unselectable="on" role="option" aria-selected="true" class="k-input">TPF</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlFunction" style="width: 200px; display: none;" class="eqp-ddl" data-role="dropdownlist" autocomplete="off"><option value="General">General</option><option value="TPF" selected="selected">TPF</option><option value="Laminate">Laminate</option><option value="Solid">Solid</option></select></span>
+
+
+                                </div>
+
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">P.O. No:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbPONO">
+                                    <span class="k-widget k-textbox eqp-input" style="width: 100%;"><input id="tbPONO" name="tbPONO" class="eqp-input k-input" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="off" value=""></span>
+                                </div>
+
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">Original Cost:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbOrigCost">
+                                    <span class="k-widget k-numerictextbox eqp-input" style="width: 100%;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value eqp-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="display: inline-block;" value=""><input id="tbOrigCost" name="tbOrigCost" class="eqp-input k-input" style="display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" autocomplete="off" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+
+                                </div>
+
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Purchase Date:</label>
+                                <div class="k-form-field-wrap" data-container-for="dtPurchDate">
+                                    <span class="k-widget k-datepicker eqp-dt" style="width: 150px;"><span class="k-picker-wrap k-state-default"><input id="dtPurchDate" class="eqp-dt k-input" style="width: 100%;" name="dtPurchDate" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="dtPurchDate_dateview" autocomplete="off" aria-disabled="false" value=""><span unselectable="on" class="k-select" aria-label="select" role="button" aria-controls="dtPurchDate_dateview"><span class="k-icon k-i-calendar"></span></span></span></span>
+                                </div>
+
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">Warranty End Date:</label>
+                                <div class="k-form-field-wrap" data-container-for="dtWarrEndDate">
+                                    <span class="k-widget k-datepicker eqp-dt" style="width: 150px;"><span class="k-picker-wrap k-state-default"><input id="dtWarrEndDate" class="eqp-dt k-input" style="width: 100%;" name="dtWarrEndDate" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="dtWarrEndDate_dateview" autocomplete="off" aria-disabled="false" value=""><span unselectable="on" class="k-select" aria-label="select" role="button" aria-controls="dtWarrEndDate_dateview"><span class="k-icon k-i-calendar"></span></span></span></span>
+
+                                </div>
+
+                            </div>
+                            <legend class="k-window-legend-form">Utilities</legend>
+                            <div class="k-form-field">
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">Volts:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbVolts">
+                                    <span class="k-widget k-textbox eqp-input" style="width: 150px;"><input id="tbVolts" maxlength="10" name="tbVolts" class="eqp-input k-input" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="off" value=""></span>
+                                </div>
+                                <label class="k-label col1" for="checkAir" id="lblAir">Air:</label>
+                                <div class="k-form-field-wrap" data-container-for="checkAir">
+                                    <input type="checkbox" id="checkAir" style="margin-top: 7px;" name="checkAir" title="Air" autocomplete="off" aria-labelledby="Air-form-label" data-type="boolean" data-bind="checked:Air" class="k-checkbox justify-content-end eqp-check">
+                                </div>
+                                <label class="k-label col1" for="checkGas" id="TextBox-form-label">Gas:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbVolts">
+                                    <input type="checkbox" id="checkGas" style="margin-top: 7px;" name="checkGas" title="Gas" autocomplete="off" aria-labelledby="Gas-form-label" data-type="boolean" data-bind="checked:Gas" class="k-checkbox eqp-check">
+                                </div>
+                                <label class="k-label col1" for="checkNetwork" id="TextBox-form-label">Network:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbVolts">
+                                    <input type="checkbox" id="checkNetwork" style="margin-top: 7px;" name="checkNetwork" title="Network" autocomplete="off" aria-labelledby="Network-form-label" data-type="boolean" data-bind="checked:Network" class="k-checkbox eqp-check">
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1" for="tbAmps" id="TextBox-form-label">Amps:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbAmps">
+                                    <span class="k-widget k-textbox eqp-input" style="width: 150px;"><input id="tbAmps" maxlength="10" name="tbAmps" class="eqp-input k-input" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="off" value=""></span>
+                                </div>
+                                <label class="k-label col1" for="checkWater" id="TextBox-form-label">Water:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbWater">
+                                    <input type="checkbox" id="checkWater" style="margin-top: 7px;" name="checkWater" title="Water" autocomplete="off" aria-labelledby="Air-form-label" data-type="boolean" data-bind="checked:Air" class="k-checkbox justify-content-end eqp-check">
+                                </div>
+                                <label class="k-label col1" for="checkBattery" id="TextBox-form-label">Battery:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbVolts">
+                                    <input type="checkbox" id="checkBattery" style="margin-top: 7px;" name="checkBattery" title="Battery" autocomplete="off" aria-labelledby="Battery-form-label" data-type="boolean" data-bind="checked:Battery" class="k-checkbox eqp-check">
+                                </div>
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">&nbsp;</label>
+                                <div class="k-form-field-wrap" data-container-for="tbVolts">
+
+                                </div>
+                            </div>
+                            <div class="k-form-field form-border-after">
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">PH:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlPH">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlPH_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="a48b99bd-fb4e-461f-b1d3-fa0be8efcae9" style="width: 150px;"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="a48b99bd-fb4e-461f-b1d3-fa0be8efcae9" unselectable="on" role="option" aria-selected="true" class="k-input"></span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlPH" class="eqp-ddl" style="width: 150px; display: none;" data-role="dropdownlist" autocomplete="off"><option value="0" selected="selected"></option><option value="1">1</option><option value="3">3</option></select></span>
+                                </div>
+                                <label class="k-label col1" for="checkDraine" id="TextBox-form-label">Draine:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbWater">
+                                    <input type="checkbox" id="checkDraine" style="margin-top: 7px;" name="checkDraine" title="Draine" autocomplete="off" aria-labelledby="Draine-form-label" data-type="boolean" data-bind="checked:Draine" class="k-checkbox justify-content-end eqp-check">
+                                </div>
+                                <label class="k-label col1" for="checkPropane" id="TextBox-form-label">Propane:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbVolts">
+                                    <input type="checkbox" id="checkPropane" style="margin-top: 7px;" name="checkPropane" title="Propane" autocomplete="off" aria-labelledby="Propane-form-label" data-type="boolean" data-bind="checked:Propane" class="k-checkbox eqp-check">
+                                </div>
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">&nbsp;</label>
+                                <div class="k-form-field-wrap" data-container-for="tbVolts">
+
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label" style="width:200px" for="tb1" id="TextBox-form-label">Branch Dust Collection (Vacuum)?</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDivisionEquip">
+                                    <span title="" class="k-widget k-dropdown ddl-check" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlBranchDust_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="e3503f97-435c-4a12-a0f2-ec4fbff8ea01" style="width: 120px;"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="e3503f97-435c-4a12-a0f2-ec4fbff8ea01" unselectable="on" role="option" aria-selected="true" class="k-input">No</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlBranchDust" class="ddl-check" style="width: 120px; display: none;" data-role="dropdownlist" autocomplete="off"><option value="N" selected="selected">No</option><option value="Y">Yes</option></select></span>
+                                </div>
+                            </div>
+                            <legend class="k-window-legend-form">Replacement Option</legend>
+                            <div class="k-form-field form-border-after">
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">Replacement Name:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbOrgName">
+                                    <span class="k-widget k-textbox eqp-input" style="width: 100%;"><input id="tbReplName" name="tbReplName" class="eqp-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="off" value=""></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Replacement Year:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbMake">
+                                    <span class="k-widget k-numerictextbox eqp-input" style="width: 200px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value eqp-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" aria-valuemin="2020" autocomplete="off" aria-disabled="false" style="display: inline-block;" value=""><input id="tbReplYear" name="tbReplYear" class="eqp-input k-input" style="display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-valuemin="2020" aria-disabled="false" autocomplete="off" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                                </div>
+
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">Replacement Cost:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbAssetNo">
+                                    <span class="k-widget k-numerictextbox eqp-input" style="width: 200px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value eqp-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="display: inline-block;" value=""><input id="tbReplCost" class="eqp-input k-input" name="tbReplCost" style="display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" autocomplete="off" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="eqvendor" role="tabpanel" aria-labelledby="eqvendor-tab">
+
+                            <div class="k-form-field form-border-after">
+                                <label class="k-label col1 req" style="width:100px" for="ddlVendMfg" id="label-ddlDivision">Manufacturer:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDepartment">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlVendMfg_listbox" aria-labelledby="label-ddlDivision" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="472de665-0fcd-4003-8f48-f54aa2db09d8" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="472de665-0fcd-4003-8f48-f54aa2db09d8" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Vendor...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlVendMfg" class="eqp-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Vendor...</option></select></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1" style="width:100px" for="ddlVendDistA" id="label-ddlDivision">Distributor A:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDepartment">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlVendDistA_listbox" aria-labelledby="label-ddlDivision" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="66d2f055-5a74-47c4-b03b-40502142fc28" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="66d2f055-5a74-47c4-b03b-40502142fc28" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Vendor...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlVendDistA" class="eqp-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Vendor...</option></select></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1" style="width:100px" for="ddlVendDistB" id="label-ddlDivision">Distributor B:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDepartment">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlVendDistB_listbox" aria-labelledby="label-ddlDivision" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="f9fbf87f-8d42-47b8-a3a2-0feba8e1e13d" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="f9fbf87f-8d42-47b8-a3a2-0feba8e1e13d" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Vendor...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlVendDistB" class="eqp-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Vendor...</option></select></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field form-border-after">
+                                <label class="k-label col1" style="width:100px" for="ddlVendDistC" id="label-ddlDivision">Distributor C:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDepartment">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlVendDistC_listbox" aria-labelledby="label-ddlDivision" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="f1ad238f-6088-4693-b378-1e959af92b5e" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="f1ad238f-6088-4693-b378-1e959af92b5e" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Vendor...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlVendDistC" class="eqp-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Vendor...</option></select></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1" style="width:100px" for="ddlVendServA" id="label-ddlDivision">Service A:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDepartment">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlVendServA_listbox" aria-labelledby="label-ddlDivision" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="37725864-1c1d-475e-88c8-99646366c798" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="37725864-1c1d-475e-88c8-99646366c798" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Vendor...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlVendServA" class="eqp-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Vendor...</option></select></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1" style="width:100px" for="ddlVendServB" id="label-ddlDivision">Service B:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDepartment">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlVendServB_listbox" aria-labelledby="label-ddlDivision" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="5d383830-ced0-4fc2-85d4-bff6ad8d8388" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="5d383830-ced0-4fc2-85d4-bff6ad8d8388" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Vendor...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlVendServB" class="eqp-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Vendor...</option></select></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1" style="width:100px" for="ddlVendServC" id="label-ddlDivision">Service C:</label>
+                                <div class="k-form-field-wrap" data-container-for="ddlDepartment">
+                                    <span title="" class="k-widget k-dropdown eqp-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlVendServC_listbox" aria-labelledby="label-ddlDivision" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="edb5f50e-10e3-4dfa-93e6-f99f5d3ec9a8" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="edb5f50e-10e3-4dfa-93e6-f99f5d3ec9a8" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Vendor...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlVendServC" class="eqp-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Vendor...</option></select></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="eqaddinfo" role="tabpanel" aria-labelledby="eqaddinfo-tab">
+                            <div class="k-form-field">
+                                <label class="k-label col1 justify-content-start" style="width:120px" for="tbMachineSetts" id="TextBox-form-label">Machine Settings:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbComments">
+                                    <span class="k-widget k-textarea eqp-ta" style="width: 100%;"><textarea id="tbMachineSetts" class="eqp-ta k-input" rows="4" style="width: 100%; resize: none;" data-role="textarea" aria-disabled="false" placeholder="Enter machine settings here." autocomplete="off"></textarea></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1 justify-content-start" style="width:120px" for="FilesUpload" id="TextBox-form-label">Attchments:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbPONO">
+                                    <div class="k-widget k-upload k-upload-async k-upload-empty"><div class="k-dropzone"><div class="k-button k-upload-button" aria-label="Select files..."><input name="files" id="FilesUpload" type="file" accept=".pdf,.gif,.jpg,.png,.docx,.xlsx,.xls,.doc,.ppt,.pptx" data-role="upload" multiple="multiple" autocomplete="off" value=""><span>Select files...</span></div><em class="k-dropzone-hint">Drop files here to upload</em></div></div>
+                                </div>
+
+
+                            </div>
+                            <div class="k-form-field">
+                                <label class="k-label col1 justify-content-start" style="width:120px" for="FilesUpload" id="TextBox-form-label"></label>
+                                <div class="k-form-field-wrap" id="divAttchmentsEqp">
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+</fieldset>
+            </div>
+
+        </form>
+    </div>
+    <div class="window-footer">
+        <button id="btnCancelEqp" data-role="button" class="btn btn-xs btn-secondary stdbutton float-right ml-2" role="button" tabindex="0" autocomplete="off">Close</button>
+        <button id="btnSaveEqp" class="btn btn-xs bob-btn stdbutton float-right" data-role="button" role="button" tabindex="0" autocomplete="off">Save</button>
+    </div>
+</div><div class="k-resize-handle k-resize-n"></div><div class="k-resize-handle k-resize-e"></div><div class="k-resize-handle k-resize-s"></div><div class="k-resize-handle k-resize-w"></div><div class="k-resize-handle k-resize-se"></div><div class="k-resize-handle k-resize-sw"></div><div class="k-resize-handle k-resize-ne"></div><div class="k-resize-handle k-resize-nw"></div></div><div aria-hidden="true" class="k-calendar-container k-popup k-group k-reset" data-role="popup" id="dtNotifiedDate_dateview" style="display: none; position: absolute;"></div><div class="k-list-container k-popup k-group k-reset" id="ddlDivisionWO-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDivisionWO_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">BLA</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">BED</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">BMC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">BWEC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">KKP</li><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused k-state-selected" aria-selected="true" data-offset-index="5" id="4d9a0a9a-20a3-44f8-ac1c-210b6b1b77f1">BGD</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">CIT</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlDepartmentWO-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="86cda3a0-9b77-42fb-b8a2-4b3bd0aa2dc6">Select a Department...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDepartmentWO_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">Assembly</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">Fabrication</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">Facilities</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">General</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">Grab Bars</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">Maintenance</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">Mirrors</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="7">Office</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="8">Quality Assurance</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="9">Shipping</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="10">Spot Weld</li></ul></div><div class="k-nodata" style="display: none;"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlEquipmentWO-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="fcc930d4-9448-47b1-ad2c-78fee89643d8">Select a Equipment...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlEquipmentWO_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">AC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">Bottle Filling Station (Breakroom)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">Bottle Filling Station (Front Offices)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">Break Room</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">Conference Room (Troubadour)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">Downstairs Conference Room</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">ERT Area/Storage Room</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="7">Handwash Area</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="8">Heater</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="9">Heater (Above North Offices)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="10">Heater (Bathrooms)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="11">Hot Water Heater</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="12">Ice Dispenser &amp; Cuber</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="13">Lights</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="14">Refrigerator</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="15">Restrooms (Downstairs)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="16">Restrooms (Employee)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="17">Restrooms (Upstairs)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="18">Server Room</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="19">Supervisors Conference Rooms</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="20">Supervisors Offices</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="21">Supply Chain Offices</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="22">Upstairs Conference Room</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="23">Upstairs Training Room</li></ul></div><div class="k-nodata" style="display: none;"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlOwnerWO-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="97b2efe9-e49f-4ae6-ad53-dbf3f9cb4a1a">Select an Owner...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlOwnerWO_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">M/E</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">Maintenance</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">QA</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">Supervisor</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlUrgencyWO-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="c742adac-97a9-4624-8ef8-904c9cf11c4f">Select an Urgency...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlUrgencyWO_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">1. Prod Stopped</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">2. General Maint - High Priority</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">3. Prod Affected, Not Stopped</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">4. Prod Continuing but Affected Equipment stopped</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">5. Prod Ongoing, Maint Required</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">6. General Maint</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlOwnerWO2-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel">Select an Owner...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlOwnerWO2_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">M/E</li><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused k-state-selected" aria-selected="true" data-offset-index="1" id="b894d9e0-5e89-4b16-9e4e-f5284eefd9a5">Maintenance</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">QA</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">Supervisor</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlUrgencyWO2-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel">Select an Urgency...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlUrgencyWO2_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">1. Prod Stopped</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">2. General Maint - High Priority</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">3. Prod Affected, Not Stopped</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">4. Prod Continuing but Affected Equipment stopped</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">5. Prod Ongoing, Maint Required</li><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused k-state-selected" aria-selected="true" data-offset-index="5" id="70847830-9528-438b-9cca-ac1ecd0ed01f">6. General Maint</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div aria-hidden="true" class="k-calendar-container k-popup k-group k-reset" data-role="popup" id="dtCompletedWO_dateview" style="display: none; position: absolute;"></div><div class="k-list-container k-list-scroller k-popup k-group k-reset" unselectable="on" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><ul tabindex="-1" role="listbox" aria-hidden="true" unselectable="on" class="k-list k-reset" id="dtCompletedWO_timeview" style="overflow: auto;"></ul></div><div class="k-widget k-window k-state-focused" tabindex="0" data-role="draggable" style="visibility: visible; display: none; padding-top: 31px; min-width: 90px; min-height: 300px; max-height: 720px; width: 60%; height: 79%; top: 10px; left: 385px; z-index: 10003; transform: scale(0.7);"><div class="k-window-titlebar" style="margin-top: -31px;"><span class="k-window-title" id="WorkOrderWindow_wnd_title">Edit Work Order</span><div class="k-window-actions"><a role="button" href="#" class="k-button k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div></div><div id="WorkOrderWindow" style="max-height: 720px;" data-role="window" class="k-window-content" role="dialog" aria-labelledby="WorkOrderWindow_wnd_title">
+    <div id="PMEFormWorkOrder" class="venddlgcont" style="width:99.5%" data-uname="Merja Haatanen" data-delete-attach="/PME/Forms/DeleteAttachment" data-upl-attach="/PME/Forms/UploadAttachments" data-wo-lookup-by-loc-dpt="/PME/Forms/GetEquipByDivAndDept" data-wo-det="/PME/Forms/GetWorkOrderData" data-wo-update="/PME/Forms/UpdateWorkOrder" data-wo-lookup-by-loc="/PME/Forms/GetMaintSchdLookupsByLoc" data-get-guid="/PME/Forms/GetGuid" data-wo-upd="/PME/Forms/UpdateWorkOrder" data-wo-create="/PME/Forms/CreateWorkOrder" data-wo-id="4" data-wo-unique-id="7B9014BE-841E-45C9-B196-B2745094D15D" data-wodownload="/PME/Forms/DownloadAttachment">
+        <form id="form" method="post" action="/form" autocomplete="off">
+            <div class="k-widget k-form k-form-horizontal ml-2" style="width:99%">
+                <fieldset class="k-form-fieldset" style="margin-top:0px">
+                    <legend class=""></legend>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" id="wohome-tab" data-toggle="tab" href="#wohome" role="tab" aria-controls="wohome" aria-selected="false">Work Order</a>
+                        </li>
+                        <li class="nav-item" id="CommentTabWO">
+                            <a class="nav-link" id="wocomment-tab" data-toggle="tab" href="#wocomment" role="tab" aria-controls="wocomment" aria-selected="false">Comment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="woattach-tab" data-toggle="tab" href="#woattach" role="tab" aria-controls="woattach" aria-selected="true">Attachments</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade" id="wohome" role="tabpanel" aria-labelledby="wohome-tab">
+                            <legend class="k-window-legend-form uwo mt-2" style="display: block;">Reported By</legend>
+                            <div class="k-form-field mt-2 uwo" style="display: flex;">
+                                <table class="table table-sm">
+                                    <tbody><tr><td class="text-right">Employee Name:</td><td class="text-uppercase lbl-wo" id="tdRptByName">Agkop Baltagian</td><td class="text-right">Employee Title:</td><td class="text-uppercase lbl-wo" id="tdRptByTitle">002656</td><td class="text-right">Division:</td><td class="text-uppercase lbl-wo" id="tdRptByDiv">BGD</td></tr>
+                                    <tr><td class="text-right">Email:</td><td class="text-uppercase lbl-wo" id="tdRptByEmail">Agkop.Baltagian@bobrick.com</td><td class="text-right">Phone:</td><td class="text-uppercase lbl-wo" id="tdRptByPhone">(580) 916-4309 Ext. 4309</td><td class="text-right">Department:</td><td class="text-uppercase lbl-wo" id="tdRptByDpt">2102</td></tr>
+                                    <tr><td class="text-right">Manager:</td><td class="text-uppercase lbl-wo" id="tdRptByManager">Debbie Friesen</td><td class="text-right"></td><td class="text-uppercase lbl-wo" id="tdRptByPhone"></td><td class="text-right"></td><td class="text-uppercase lbl-wo" id="tdRptByDpt"></td></tr>
+                                </tbody></table>
+                            </div>
+
+                            <legend class="k-window-legend-form" id="WOLegend">Unscheduled Maintenance Information</legend>
+                            <div class="new-uwo" style="display: none;">
+                                <div class="k-form-field">
+                                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Date Notified:</label>
+                                    <div class="k-form-field-wrap" data-container-for="dtNotifiedDate">
+                                        <span class="k-widget k-datepicker eqp-dt" style="width: 150px;"><span class="k-picker-wrap k-state-default"><input id="dtNotifiedDate" class="eqp-dt k-input" style="width: 100%;" name="dtPurchDate" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="dtNotifiedDate_dateview" autocomplete="off" aria-disabled="false" value=""><span unselectable="on" class="k-select" aria-label="select" role="button" aria-controls="dtNotifiedDate_dateview"><span class="k-icon k-i-calendar"></span></span></span></span>
+                                    </div>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Division:</label>
+                                    <div class="k-form-field-wrap" data-container-for="ddlDivisionWO">
+                                        <span title="" class="k-widget k-dropdown wo-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" aria-owns="ddlDivisionWO_listbox" aria-live="polite" aria-disabled="true" aria-readonly="false" aria-busy="false" style="width: 200px;" aria-activedescendant="4d9a0a9a-20a3-44f8-ac1c-210b6b1b77f1"><span unselectable="on" class="k-dropdown-wrap k-state-disabled"><span id="862ce363-5131-4e44-8c51-d2d2af06154a" unselectable="on" role="option" aria-selected="true" class="k-input">BGD</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDivisionWO" style="width: 200px; display: none;" class="wo-ddl" data-role="dropdownlist" autocomplete="off" disabled="disabled"><option value="BLA">BLA</option><option value="BED">BED</option><option value="BMC">BMC</option><option value="BWEC">BWEC</option><option value="KKP">KKP</option><option value="BGD" selected="selected">BGD</option><option value="CIT">CIT</option></select></span>
+                                    </div>
+                                </div>
+                                <div class="k-form-field">
+
+                                    <label class="k-label col1 req" for="tb1" id="label-ddlDivision">Department:</label>
+                                    <div class="k-form-field-wrap" data-container-for="ddlDepartmentWO">
+                                        <span title="" class="k-widget k-dropdown wo-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" aria-owns="ddlDepartmentWO_listbox" aria-live="polite" aria-disabled="true" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="86cda3a0-9b77-42fb-b8a2-4b3bd0aa2dc6"><span unselectable="on" class="k-dropdown-wrap k-state-disabled"><span id="cec6075f-5816-4b72-8cf5-261612f008be" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Department...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDepartmentWO" class="wo-ddl" required="" data-role="dropdownlist" style="display: none;" autocomplete="off" disabled="disabled"><option value="" selected="selected">Select a Department...</option><option value="23">Assembly</option><option value="24">Fabrication</option><option value="74">Facilities</option><option value="3">General</option><option value="38">Grab Bars</option><option value="29">Maintenance</option><option value="28">Mirrors</option><option value="12">Office</option><option value="27">Quality Assurance</option><option value="32">Shipping</option><option value="33">Spot Weld</option></select></span>
+                                    </div>
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Departemnt No:</label>
+                                    <label class="k-label justify-content-start align-items-start" for="tb1" id="lblDeptNoWO"></label>
+
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Maintenance Category:</label>
+
+                                    <label class="k-label col1" for="checkEqpServ" id="TextBox-form-label">Equipment Service</label>
+                                    <div class="" data-container-for="tbVolts" style="width:30px">
+                                        <input type="checkbox" id="checkEqpServ" value="E" style="margin-top: 7px;" name="MaintService" title="Equipment Service" autocomplete="off" aria-labelledby="Gas-form-label" data-type="boolean" data-bind="checked:Gas" class="k-checkbox eqp-check">
+                                    </div>
+                                    <label class="k-label col1" for="checkFacilityServ" id="TextBox-form-label">Facility Service</label>
+                                    <div class="k-form-field-wrap" data-container-for="tbVolts">
+                                        <input type="checkbox" id="checkFacilityServ" value="F" style="margin-top: 7px;" name="MaintService" title="&gt;Facility Service" autocomplete="off" aria-labelledby="Network-form-label" data-type="boolean" data-bind="checked:Network" class="k-checkbox eqp-check">
+                                    </div>
+
+                                </div>
+                                <div class="k-form-field req" id="divEqpAffWO">
+                                    <label class="k-label col1 req" for="ddlEquipmentWO" id="label-ddlEquipment">Equpment Affected:</label>
+                                    <div class="k-form-field-wrap" data-container-for="ddlEquipmentWO">
+                                        <span title="" class="k-widget k-dropdown wo-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" aria-owns="ddlEquipmentWO_listbox" aria-labelledby="label-ddlEquipment" aria-live="polite" aria-disabled="true" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="fcc930d4-9448-47b1-ad2c-78fee89643d8"><span unselectable="on" class="k-dropdown-wrap k-state-disabled"><span id="48aec4b0-fd03-423c-bbcb-f2d537cd611a" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Equipment...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlEquipmentWO" class="wo-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off" disabled="disabled"><option value="0">Select a Equipment...</option><option value="1972">AC</option><option value="1947">Bottle Filling Station (Breakroom)</option><option value="1946">Bottle Filling Station (Front Offices)</option><option value="1533">Break Room</option><option value="1975">Conference Room (Troubadour)</option><option value="1530">Downstairs Conference Room</option><option value="1369">ERT Area/Storage Room</option><option value="2112">Handwash Area</option><option value="1487">Heater</option><option value="1842">Heater (Above North Offices)</option><option value="1841">Heater (Bathrooms)</option><option value="2056">Hot Water Heater</option><option value="226">Ice Dispenser &amp; Cuber</option><option value="1913">Lights</option><option value="2137">Refrigerator</option><option value="830">Restrooms (Downstairs)</option><option value="1971">Restrooms (Employee)</option><option value="1970">Restrooms (Upstairs)</option><option value="1459">Server Room</option><option value="1974">Supervisors Conference Rooms</option><option value="1973">Supervisors Offices</option><option value="1510">Supply Chain Offices</option><option value="1531">Upstairs Conference Room</option><option value="1532">Upstairs Training Room</option></select></span>
+                                    </div>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1 req" for="ddlOwnerWO" id="label-ddlEquipment">Owner:</label>
+                                    <div class="k-form-field-wrap" data-container-for="ddlOwnerWO">
+                                        <span title="" class="k-widget k-dropdown wo-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlOwnerWO_listbox" aria-labelledby="label-ddlEquipment" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="97b2efe9-e49f-4ae6-ad53-dbf3f9cb4a1a"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="40628805-d40d-4a6b-8042-567f1330ba09" unselectable="on" role="option" aria-selected="true" class="k-input">Select an Owner...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlOwnerWO" class="wo-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="" selected="selected">Select an Owner...</option><option value="M/E">M/E</option><option value="Maintenance">Maintenance</option><option value="QA">QA</option><option value="Supervisor">Supervisor</option></select></span>
+                                    </div>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1 req" for="ddlUrgencyWO" id="label-ddlEquipment">Urgency:</label>
+                                    <div class="k-form-field-wrap" data-container-for="ddlUrgencyWO">
+                                        <span title="" class="k-widget k-dropdown wo-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlUrgencyWO_listbox" aria-labelledby="label-ddlEquipment" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="c742adac-97a9-4624-8ef8-904c9cf11c4f"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="c94bf384-5b06-4e90-81d5-50d31e51dc95" unselectable="on" role="option" aria-selected="true" class="k-input">Select an Urgency...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlUrgencyWO" class="wo-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="" selected="selected">Select an Urgency...</option><option value="1">1. Prod Stopped</option><option value="2">2. General Maint - High Priority</option><option value="3">3. Prod Affected, Not Stopped</option><option value="4">4. Prod Continuing but Affected Equipment stopped</option><option value="5">5. Prod Ongoing, Maint Required</option><option value="6">6. General Maint</option></select></span>
+                                    </div>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1 justify-content-start req" for="tbProblemWO" id="TextBox-form-label">Problem:</label>
+                                    <div class="k-form-field-wrap" data-container-for="tbComments">
+                                        <span class="k-widget k-textarea wo-ta" style="width: 100%;"><textarea id="tbProblemWO" class="wo-ta k-input" rows="5" style="width: 100%; resize: none;" data-role="textarea" aria-disabled="false" maxlength="500" placeholder="Describe Problem Here." autocomplete="off"></textarea></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="old-uwo" style="display: block;">
+                                <div class="k-form-field" style="margin-bottom:0px">
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Date Notified:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblNotifiedDate">09/24/2025</label>
+
+                                </div>
+                                <div class="k-form-field" style="margin-bottom:0px">
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Division:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblDivisionWO">BGD</label>
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Department:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblDepartmentWO">Office</label>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Maintenance Category:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblMaintCat">Equipment Service</label>
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Equpment Affected:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblEquipmentWO">AC</label>
+
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1" for="ddlOwnerWO" id="label-ddlEquipment">Owner:</label>
+                                    <div class="k-form-field-wrap" data-container-for="ddlOwnerWO">
+                                        <span title="" class="k-widget k-dropdown wo-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlOwnerWO2_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="b894d9e0-5e89-4b16-9e4e-f5284eefd9a5"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="abba4ce0-5e0e-4cc5-8002-c19bffc68239" unselectable="on" role="option" aria-selected="true" class="k-input">Maintenance</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlOwnerWO2" class="wo-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="">Select an Owner...</option><option value="M/E">M/E</option><option value="Maintenance" selected="selected">Maintenance</option><option value="QA">QA</option><option value="Supervisor">Supervisor</option></select></span>
+                                    </div>
+
+                                    <label class="k-label col1" for="ddlUrgencyWO" id="label-ddlEquipment">Urgency:</label>
+                                    <div class="k-form-field-wrap" data-container-for="ddlUrgencyWO">
+                                        <span title="" class="k-widget k-dropdown wo-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlUrgencyWO2_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" style="" aria-activedescendant="70847830-9528-438b-9cca-ac1ecd0ed01f"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="b8532dda-9b3d-4929-8d66-395b634f8100" unselectable="on" role="option" aria-selected="true" class="k-input">6. General Maint</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlUrgencyWO2" class="wo-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="">Select an Urgency...</option><option value="1">1. Prod Stopped</option><option value="2">2. General Maint - High Priority</option><option value="3">3. Prod Affected, Not Stopped</option><option value="4">4. Prod Continuing but Affected Equipment stopped</option><option value="5">5. Prod Ongoing, Maint Required</option><option value="6" selected="selected">6. General Maint</option></select></span>
+                                    </div>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1 justify-content-start" for="tbProblemWO" id="TextBox-form-label">Problem:</label>
+                                    <div class="k-form-field-wrap" data-container-for="tbComments">
+                                        <label class="k-label k-label-data lbl-wo text-primary" style="padding-top: 5px; width: 100%; min-height: 40px; max-height: 80px; overflow: auto; white-space: pre-wrap;" id="lblProblemWO">Hello Maintenance team,
+
+Can you please take a look at the AC unit in the training room? For some reason it shows the date to be January 1st so I assume this is why it is shut off.
+
+Best,
+Agkop Baltagian</label>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="old-swo" style="display: none;">
+                                <div class="k-form-field" style="margin-bottom:0px">
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Date Notified:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblNotifiedDateSWO"></label>
+
+                                </div>
+                                <div class="k-form-field" style="margin-bottom:0px">
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Division:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblDivisionSWO"></label>
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Department:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblDepartmentSWO"></label>
+                                </div>
+                                <div class="k-form-field" style="margin-bottom:5px">
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Equpment Affected:</label>
+                                    <label class="k-label k-label-data lbl-wo" style="width:50%" id="lblEquipmentSWO"></label>
+                                </div>
+                                <div class="k-form-field" style="margin-bottom:0px">
+                                    <label class="k-label col1 justify-content-start" for="tb1" id="TextBox-form-label">Audit Item:</label>
+                                    <div class="k-form-field-wrap" data-container-for="tbVolts">
+                                        <label class="k-label k-label-data lbl-wo text-primary" style="width: 100%; min-height: 90px; max-height: 120px; overflow:auto; white-space: pre-wrap;" id="lblAuditItemSWO"></label>
+                                    </div>
+                                </div>
+                                <div class="k-form-field" style="margin-bottom:0px">
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Due Date:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblDueDtSWO"></label>
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Frequency:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblFreqSWO"></label>
+                                </div>
+                                <div class="k-form-field" style="margin-bottom:0px">
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Estimated Time:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblEstTimeWO"></label>
+
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Assign To Skill:</label>
+                                    <label class="k-label k-label-data lbl-wo" id="lblSkillsSWO"></label>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1 justify-content-start" for="tb1" id="TextBox-form-label">Service Vend A:</label>
+                                    <label class="k-label k-label-data lbl-wo" style="max-width: 25%; min-width: 5%" id="lblServVendAWO"></label>
+                                    <label class="k-label col1 justify-content-start" style="width:100px" for="tb1" id="TextBox-form-label">Service Vend B:</label>
+                                    <label class="k-label k-label-data lbl-wo" style="max-width: 20%; min-width: 5%" id="lblServVendBWO"></label>
+                                    <label class="k-label col1 justify-content-start" style="width:100px" for="tb1" id="TextBox-form-label">Service Vend C:</label>
+                                    <label class="k-label k-label-data lbl-wo" style="max-width: 10%; min-width: 5%" id="lblServVendCWO"></label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="old-wo" style="display: block;">
+                                <legend class="k-window-legend-form old-wo" style="display: block;">Work Order Resolution</legend>
+                                <div class="k-form-field">
+                                    <label class="k-label col1 justify-content-start" for="tb1" id="TextBox-form-label">Please check Status:</label>
+
+
+                                    <div class="" data-container-for="tbVolts" style="width:15px">
+                                        <input type="checkbox" id="checkEqpServ" value="CC" style="margin-top: 7px;" name="StatusWO" title="&gt;Closed and Completed" autocomplete="off" aria-labelledby="Gas-form-label" data-type="boolean" data-bind="checked:Gas" class="k-checkbox eqp-check">
+                                    </div>
+                                    <label class="k-label k-label-data ml-2" style="width:15%" for="checkEqpServ" id="TextBox-form-label">Closed and Completed</label>
+
+                                    <div class="" data-container-for="tbVolts" style="width:15px">
+                                        <input type="checkbox" id="checkFacilityServ" value="CWA" style="margin-top: 7px;" name="StatusWO" title="Closed Without Action" autocomplete="off" aria-labelledby="Network-form-label" data-type="boolean" data-bind="checked:Network" class="k-checkbox eqp-check" checked="checked">
+                                    </div>
+                                    <div class="k-label k-label-data ml-2" style="width:30%" for="checkFacilityServ" id="TextBox-form-label"><span>Closed Without Action <i>(Explain in Comments)</i></span></div>
+
+                                    <div class="" data-container-for="tbVolts" style="width:15px">
+                                        <input type="checkbox" id="checkFacilityServ" value="P" style="margin-top: 7px;" name="StatusWO" title="&gt;Facility Service" autocomplete="off" aria-labelledby="Network-form-label" data-type="boolean" data-bind="checked:Network" class="k-checkbox eqp-check">
+                                    </div>
+                                    <label class="k-label k-label-data ml-2" style="width:23%" for="checkFacilityServ" id="TextBox-form-label"><span>Pending <i>(Explain in Comments)</i></span></label>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Material Cost:</label>
+                                    <div class="k-form-field-wrap" data-container-for="tbMake">
+                                        <span class="k-widget k-numerictextbox wo-ntb" style="width: 200px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value wo-ntb k-input" aria-hidden="true" title="0.00" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="display: inline-block;" aria-valuenow="0" value="0.00"><input id="tbMtrlCostWO" class="wo-ntb k-input" name="tbMtrlCostWO" style="display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" autocomplete="off" aria-valuenow="0" value="0"><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                                    </div>
+
+                                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Labor Time (Hours):</label>
+                                    <div class="k-form-field-wrap" data-container-for="tbAssetNo">
+                                        <span class="k-widget k-numerictextbox wo-ntb" style="width: 200px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value wo-ntb k-input" aria-hidden="true" title="0.00" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="display: inline-block;" aria-valuenow="0" value="0.00"><input id="tbLbrTimeWO" class="wo-ntb k-input" name="tbLbrTimeWO" style="display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" autocomplete="off" aria-valuenow="0" value="0"><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                                    </div>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1" for="tbWorkPerformedByWO" id="TextBox-form-label">Work Performed By:</label>
+                                    <div class="k-form-field-wrap" data-container-for="tbOrgName">
+                                        <span class="k-widget k-textbox wo-tb" style="width: 100%;"><input id="tbWorkPerformedByWO" name="tbWorkPerformedByWO" class="wo-tb k-input" maxlength="200" style="width: 100%;" required="" data-role="textbox" aria-disabled="false" autocomplete="off" value="Preston"></span>
+                                    </div>
+                                </div>
+
+                                <div class="k-form-field">
+                                    <label class="k-label col1" for="tbWorkPerformedByWO" id="TextBox-form-label">Completed Date/Time:</label>
+                                    <div class="k-form-field-wrap" data-container-for="tbOrgName">
+                                        <span class="k-widget k-datetimepicker vend-input" style="width: 250px;"><span class="k-picker-wrap k-state-default"><input id="dtCompletedWO" name="dtCompletedWO" class="vend-input k-input" style="width: 100%;" required="" data-role="datetimepicker" type="text" role="combobox" aria-expanded="false" autocomplete="off" value="09/24/2025 01:30 PM"><span unselectable="on" class="k-select"><span class="k-link k-link-date" aria-label="Open the date view" aria-controls="dtCompletedWO_dateview"><span unselectable="on" class="k-icon k-i-calendar"></span></span><span class="k-link k-link-time" aria-label="Open the time view" aria-controls="dtCompletedWO_timeview"><span unselectable="on" class="k-icon k-i-clock"></span></span></span></span></span>
+                                    </div>
+                                </div>
+                                <div class="k-form-field">
+                                    <label class="k-label col1" for="tbWorkPerformedByWO" id="TextBox-form-label">Downtime Hours:</label>
+                                    <div class="k-form-field-wrap" data-container-for="tbOrgName">
+                                        <span class="k-widget k-numerictextbox wo-ntb" style="width: 200px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value wo-ntb k-input" aria-hidden="true" title="0.00" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="display: inline-block;" aria-valuenow="0" value="0.00"><input id="tbDowntimeHours" name="dtCompletedWO" class="wo-ntb k-input" style="display: none;" required="" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" autocomplete="off" aria-valuenow="0" value="0"><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="k-form-field uwo" style="display: flex;">
+                                <label class="k-label col1" for="tb1" id="TextBox-form-label">Send Email:</label>
+                                <label class="" style="width:0px;" for="checkEqpServ" id="TextBox-form-label"></label>
+                                <div class="" data-container-for="tbVolts" style="width:30px">
+                                    <input type="checkbox" id="checkSendEmailWO" value="E" style="margin-top: 7px;" name="checkSendEmailWO" title="Send Email" autocomplete="off" aria-labelledby="Gas-form-label" data-type="boolean" data-bind="checked:Gas" class="k-checkbox eqp-check" checked="checked">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="wocomment" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="k-form-field mt-4">
+                                <label class="k-label justify-content-start col1" style="width:80px" for="tbComment" id="TextBox-form-label">Comment:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbCommentsWO">
+                                    <span class="k-widget k-textarea wo-ta" style="width: 100%;"><textarea id="tbCommentWO" class="wo-ta k-input" rows="10" style="width: 100%; resize: none;" data-role="textarea" aria-disabled="false" maxlength="5000" placeholder="Please enter comment here." autocomplete="off"></textarea></span>
+                                </div>
+                            </div>
+                            <div class="k-form-field" style="padding-left:55px">
+                                <div id="divCommentsWO"><table class="ml-5"><tbody><tr><td><span class="pmpt-bob">Preston Ellexson - 09/25/25  8:15:10 AM:</span></td></tr><tr><td class="pb-2" style="white-space:pre-line">When I went to check this out, the control panel was accurate with date and time. Checked all while I was there and they are all up to date. </td></tr></tbody></table></div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade active show" id="woattach" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="k-form-field mt-4">
+                                <label class="k-label col1 justify-content-start" style="width:80px" for="FilesUpload" id="TextBox-form-label">Attchments:</label>
+                                <div class="k-form-field-wrap" data-container-for="tbPONO">
+                                    <div class="k-widget k-upload k-upload-async k-upload-empty"><div class="k-dropzone"><div class="k-button k-upload-button" aria-label="Select files..."><input name="files" id="FilesUploadWorkOrder" type="file" accept=".pdf,.gif,.jpg,.png,.docx,.xlsx,.xls,.doc,.ppt,.pptx" data-role="upload" multiple="multiple" autocomplete="off" value=""><span>Select files...</span></div><em class="k-dropzone-hint">Drop files here to upload</em></div></div>
+                                </div>
+                            </div>
+                            <div class="k-form-field wo-attach" style="display:none">
+                                <label class="k-label col1 justify-content-start" style="width:80px" for="FilesUpload" id="TextBox-form-label"></label>
+                                <div class="k-form-field-wrap" id="divAttchmentsWorkOrder"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </div>
+        </form>
+    </div>
+    <div class="window-footer">
+        <div class="float-left form-text text-muted" style="width:75%">
+            <small>
+                <span>
+                    <label id="lblCreatedWorkOrder" class="mr-4 ml-4 float-left"><b>Created:&nbsp;</b>Agkop Baltagian - 09/24/25  9:25:00 AM</label>
+                    <label id="lblModifiedWorkOrder" class="ml-4 ml-4 float-left"><b>Modified:&nbsp;</b>Preston Ellexson - 09/25/25  8:15:00 AM</label>
+
+                </span>
+
+
+            </small>
+
+        </div>
+        <div class="float-right" style="width:20%">
+            <button id="btnCancelWorkOrder" data-role="button" class="btn btn-xs btn-secondary stdbutton float-right ml-2" role="button" tabindex="0" autocomplete="off">Close</button>
+            <button id="btnSaveWorkOrder" class="btn btn-xs bob-btn stdbutton float-right" data-role="button" role="button" tabindex="0" autocomplete="off">Save</button>
+        </div>
+
+    </div>
+
+</div><div class="k-resize-handle k-resize-n"></div><div class="k-resize-handle k-resize-e"></div><div class="k-resize-handle k-resize-s"></div><div class="k-resize-handle k-resize-w"></div><div class="k-resize-handle k-resize-se"></div><div class="k-resize-handle k-resize-sw"></div><div class="k-resize-handle k-resize-ne"></div><div class="k-resize-handle k-resize-nw"></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlDivisionMaintSchd-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDivisionMaintSchd_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused" aria-selected="true" data-offset-index="0" id="860b0e95-af77-4fa8-bc05-3dfc48e30253">BLA</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">BED</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">BMC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">BWEC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">KKP</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">BGD</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">CIT</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlDepartmentMaintSchd-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="ba603c21-5fb7-41a5-b78f-1915e4d16c72">Select a Department...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDepartmentMaintSchd_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlEquipmentMaintSchd-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="30d6617a-a025-422a-96ae-c33796445908">Select a Equipment...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlEquipmentMaintSchd_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlSkillsMaintSchd-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="4e3b2c60-3a80-43d1-8167-9e389fd65c45">Select a Skills...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlSkillsMaintSchd_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">Electrician</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">Lead</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">Machinist</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">Maintenance Mechanic</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">Material Handler</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">Mechanic</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">Operator</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="7">Outside Service</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="8">Supervisor</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="9">Technician</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="10">M/E</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="11">Maintenance</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="12">QA</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="13">QA Technician</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="14">Sr. Mechanic</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlFrequencyMaintSchd-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="6f704faf-6da7-49bb-980d-24aa1fc1d076">Select a Frequency...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlFrequencyMaintSchd_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">Daily (1)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">Every 2 Days (2)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">Bi-weekly (3)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">Weekly (7)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">Bi-monthly (15)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">Monthly (1)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">2 Months (2)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="7">3 Months (3)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="8">4 Months (4)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="9">5 Months (5)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="10">6 Months (6)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="11">7 Months (7)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="12">8 Months (8)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="13">9 Months (9)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="14">10 Months (10)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="15">11 Months (11)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="16">Yearly (1)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="17">2 Years (2)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="18">3 Years (3)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="19">4 Years (4)</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="20">5 Years (5)</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div aria-hidden="true" class="k-calendar-container k-popup k-group k-reset" data-role="popup" id="dtRqstStartDtMaintSchd_dateview" style="display: none; position: absolute;"></div><div class="k-list-container k-popup k-group k-reset" id="ddlCreateWOMaintSchd-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlCreateWOMaintSchd_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused" aria-selected="true" data-offset-index="0" id="dd43a3b6-48ce-4ea5-a5b8-8fb5f1c1281b">Yes</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">No</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-widget k-window" tabindex="0" data-role="draggable" style="visibility: visible; display: none; padding-top: 31px; min-width: 90px; min-height: 50px; width: 60%; height: 70%; top: 715.203px; left: 58.5px;"><div class="k-window-titlebar" style="margin-top: -31px;"><span class="k-window-title" id="MaintSchdWindow_wnd_title">Edit Maintenance Schedule</span><div class="k-window-actions"><a role="button" href="#" class="k-button k-flat k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div></div><div id="MaintSchdWindow" style="" data-role="window" class="k-window-content" role="dialog" aria-labelledby="MaintSchdWindow_wnd_title">
+    <div id="PMEFormMaintSchd" class="venddlgcont" style="width:99.5%" data-uname="Merja Haatanen" data-eqp-lookup-by-loc-dpt="/PME/Forms/GetEquipByDivAndDept" data-maintschd-det="/PME/Forms/GetMaintSchdData" data-maintschd-lookup-by-loc="/PME/Forms/GetMaintSchdLookupsByLoc" data-get-guid="/PME/Forms/GetGuid" data-maintschd-upd="/PME/Forms/UpdateMaintSchd" data-maintschd-id="4" data-maintschd-unique-id="7B9014BE-841E-45C9-B196-B2745094D15D">
+        <form id="form" method="post" action="/form" autocomplete="off">
+            <div class="k-widget k-form k-form-horizontal" style="width:99%">
+                <fieldset class="k-form-fieldset" style="margin-top:0px">
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="ddlDivisionMaintSchd" id="TextBox-form-label">Division:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlDivisionMaintSchd">
+                            <span title="" class="k-widget k-dropdown ms-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlDivisionMaintSchd_listbox" aria-labelledby="TextBox-form-label" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="b4a90a83-1c71-4a0c-8b32-305ccdd41ce5" style="width: 200px;"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="b4a90a83-1c71-4a0c-8b32-305ccdd41ce5" unselectable="on" role="option" aria-selected="true" class="k-input">BLA</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDivisionMaintSchd" style="width: 200px; display: none;" class="ms-ddl" data-role="dropdownlist" autocomplete="off"><option value="BLA" selected="selected">BLA</option><option value="BED">BED</option><option value="BMC">BMC</option><option value="BWEC">BWEC</option><option value="KKP">KKP</option><option value="BGD">BGD</option><option value="CIT">CIT</option></select></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+
+                        <label class="k-label col1 req" for="ddlDepartmentMaintSchd" id="label-ddlDivision">Department:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlDepartmentMaintSchd">
+                            <span title="" class="k-widget k-dropdown ms-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlDepartmentMaintSchd_listbox" aria-labelledby="label-ddlDivision" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="00b247cd-1ac7-4cae-8e46-4cd56b973f6b" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="00b247cd-1ac7-4cae-8e46-4cd56b973f6b" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Department...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDepartmentMaintSchd" class="ms-ddl" required="" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="" selected="selected">Select a Department...</option></select></span>
+                        </div>
+                        <label class="k-label col1" for="tb1" id="TextBox-form-label">Departemnt No:</label>
+                        <label class="k-label justify-content-start align-items-start" for="tb1" id="lblDeptNoMaintSchd"></label>
+
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="ddlEquipmentMaintSchd" id="label-ddlEquipment">Equpment:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlEquipmentMaintSchd">
+                            <span title="" class="k-widget k-dropdown ms-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlEquipmentMaintSchd_listbox" aria-labelledby="label-ddlEquipment" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="54e9a337-5f08-474a-ac3b-26b3aa59e012" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="54e9a337-5f08-474a-ac3b-26b3aa59e012" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Equipment...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlEquipmentMaintSchd" class="ms-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Equipment...</option></select></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="ddlFrequencyMaintSchd" id="label-ddlEquipment">Frequency:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlFrequencyMaintSchd">
+                            <span title="" class="k-widget k-dropdown ms-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlFrequencyMaintSchd_listbox" aria-labelledby="label-ddlEquipment" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="db4c5523-242a-4996-b759-e15acdfbf505" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="db4c5523-242a-4996-b759-e15acdfbf505" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Frequency...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlFrequencyMaintSchd" class="ms-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="" selected="selected">Select a Frequency...</option><option value="1">Daily (1)</option><option value="2">Every 2 Days (2)</option><option value="3">Bi-weekly (3)</option><option value="4">Weekly (7)</option><option value="5">Bi-monthly (15)</option><option value="6">Monthly (1)</option><option value="7">2 Months (2)</option><option value="8">3 Months (3)</option><option value="9">4 Months (4)</option><option value="10">5 Months (5)</option><option value="11">6 Months (6)</option><option value="12">7 Months (7)</option><option value="13">8 Months (8)</option><option value="14">9 Months (9)</option><option value="15">10 Months (10)</option><option value="16">11 Months (11)</option><option value="17">Yearly (1)</option><option value="18">2 Years (2)</option><option value="19">3 Years (3)</option><option value="20">4 Years (4)</option><option value="21">5 Years (5)</option></select></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="tbFreyOffsetMaintSchd" id="TextBox-form-label">Frey Offset (Days):</label>
+                        <div class="k-form-field-wrap" data-container-for="tbCost">
+                            <span class="k-widget k-numerictextbox ms-input" style="max-width: 250px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value ms-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="max-width: 250px; display: inline-block;" value=""><input id="tbFreyOffsetMaintSchd" autocomplete="off" class="ms-input k-input" style="max-width: 250px; display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 justify-content-start" for="tbAuditItemMaintSchd" id="TextBox-form-label">Audit Item:</label>
+                        <div class="k-form-field-wrap" data-container-for="tbComments">
+                            <span class="k-widget k-textarea ms-ta" style="width: 100%;"><textarea id="tbAuditItemMaintSchd" class="ms-ta k-input" rows="12" style="width: 100%; resize: none;" data-role="textarea" aria-disabled="false" placeholder="Enter Audit Item Here." autocomplete="off"></textarea></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="dtRqstStartDtMaintSchd" id="TextBox-form-label">Requested Start Date:</label>
+                        <div class="k-form-field-wrap" data-container-for="dtPurchDate">
+                            <span class="k-widget k-datepicker ms-dt" style="max-width: 150px;"><span class="k-picker-wrap k-state-default"><input id="dtRqstStartDtMaintSchd" class="ms-dt k-input" style="max-width: 150px; width: 100%;" name="dtPurchDate" data-role="datepicker" type="text" role="combobox" aria-expanded="false" aria-owns="dtRqstStartDtMaintSchd_dateview" autocomplete="off" aria-disabled="false" value=""><span unselectable="on" class="k-select" aria-label="select" role="button" aria-controls="dtRqstStartDtMaintSchd_dateview"><span class="k-icon k-i-calendar"></span></span></span></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Estimated Time (Hours):</label>
+                        <div class="k-form-field-wrap" data-container-for="tbCost">
+                            <span class="k-widget k-numerictextbox ms-input" style="max-width: 250px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value ms-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="max-width: 250px; display: inline-block;" value=""><input id="tbEstTimeMaintSchd" autocomplete="off" class="ms-input k-input" style="max-width: 250px; display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="ddlSkillsMaintSchd" id="label-ddlEquipment">Assign To Skill:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlSkills">
+                            <span title="" class="k-widget k-dropdown ms-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlSkillsMaintSchd_listbox" aria-labelledby="label-ddlEquipment" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="d43c3fc9-3dcc-49b3-a6c0-7d53b3acc9b1" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="d43c3fc9-3dcc-49b3-a6c0-7d53b3acc9b1" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Skills...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlSkillsMaintSchd" class="ms-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="" selected="selected">Select a Skills...</option><option value="Electrician">Electrician</option><option value="Lead">Lead</option><option value="Machinist">Machinist</option><option value="Maintenance Mechanic">Maintenance Mechanic</option><option value="Material Handler">Material Handler</option><option value="Mechanic">Mechanic</option><option value="Operator">Operator</option><option value="Outside Service">Outside Service</option><option value="Supervisor">Supervisor</option><option value="Technician">Technician</option><option value="M/E">M/E</option><option value="Maintenance">Maintenance</option><option value="QA">QA</option><option value="QA Technician">QA Technician</option><option value="Sr. Mechanic">Sr. Mechanic</option></select></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1" for="ddlCreateWOMaintSchd" id="TextBox-form-label">Create Work Orders:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlDivisionEquip">
+                            <span title="" class="k-widget k-dropdown ms-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlCreateWOMaintSchd_listbox" aria-labelledby="TextBox-form-label" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="6974b6c3-8eeb-4dad-b99d-8678170efd23" style="width: 120px;"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="6974b6c3-8eeb-4dad-b99d-8678170efd23" unselectable="on" role="option" aria-selected="true" class="k-input">Yes</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlCreateWOMaintSchd" class="ms-ddl" style="width: 120px; display: none;" data-role="dropdownlist" autocomplete="off"><option value="Y" selected="selected">Yes</option><option value="N">No</option></select></span>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+        </form>
+    </div>
+    <div class="window-footer">
+        <div class="float-left form-text text-muted" style="width:75%">
+            <small>
+                <span>
+                    <label id="lblCreatedMaintSchd" class="mr-4"></label>
+                    <label id="lblModifiedMaintSchd" class="ml-4"></label>
+
+</span>
+
+
+            </small>
+
+         </div>
+            <div class="float-right" style="width:20%">
+                <button id="btnCancelMaintSchd" data-role="button" class="btn btn-xs btn-secondary stdbutton float-right ml-2" role="button" tabindex="0" autocomplete="off">Close</button>
+                <button id="btnSaveMaintSchd" class="btn btn-xs bob-btn stdbutton float-right" data-role="button" role="button" tabindex="0" autocomplete="off">Save</button>
+            </div>
+        </div>
+
+    </div><div class="k-resize-handle k-resize-n"></div><div class="k-resize-handle k-resize-e"></div><div class="k-resize-handle k-resize-s"></div><div class="k-resize-handle k-resize-w"></div><div class="k-resize-handle k-resize-se"></div><div class="k-resize-handle k-resize-sw"></div><div class="k-resize-handle k-resize-ne"></div><div class="k-resize-handle k-resize-nw"></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlDivisionSpares-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDivisionSpares_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused" aria-selected="true" data-offset-index="0" id="a4f94998-baf0-4b7e-be6e-351733042e0e">BLA</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">BED</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">BMC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">BWEC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">KKP</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">BGD</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">CIT</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlDepartmentSpares-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="7f96dba8-65ea-4020-bae5-985cc0325cdd">Select a Department...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDepartmentSpares_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlEquipment-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="edb2c6c3-e073-4635-913d-cb37a4e76336">Select a Equipment...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlEquipment_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlGLDepartmrnt-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="b48d6d6b-7cbf-4e34-8e49-2ff0e1cc3b7a">Select a GL Account Number/ Departmnt...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlGLDepartmrnt_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlVendMfg-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="27aca1c4-c188-4f5f-af84-16894abe597c">Select a Vendor...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlVendMfg_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlVendDist-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-list-optionlabel k-state-selected k-state-focused" id="3dd13102-a075-4156-b7e8-3f85beee91ff">Select a Vendor...</div><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlVendDist_listbox" aria-live="off" data-role="staticlist" role="listbox"></ul></div><div class="k-nodata" style=""><div>No data found.</div></div></div><div class="k-widget k-window" tabindex="0" data-role="draggable" style="visibility: visible; display: none; padding-top: 31px; min-width: 90px; min-height: 50px; width: 60%; height: 70%; top: 715.203px; left: 58.5px;"><div class="k-window-titlebar" style="margin-top: -31px;"><span class="k-window-title" id="SparesWindow_wnd_title">Edit Spares</span><div class="k-window-actions"><a role="button" href="#" class="k-button k-flat k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div></div><div id="SparesWindow" style="" data-role="window" class="k-window-content" role="dialog" aria-labelledby="SparesWindow_wnd_title">
+    <div id="PMEFormSpr" class="venddlgcont" style="width:99.5%" data-eqp-lookup-by-loc-dpt="/PME/Forms/GetEquipByDivAndDept" data-spares-det="/PME/Forms/GetSparesData" data-spares-lookup-by-loc="/PME/Forms/GetSparesLookupsByLoc" data-get-guid="/PME/Forms/GetGuid" data-spares-upd="/PME/Forms/UpdateSpares" data-spares-id="4" data-spares-unique-id="7B9014BE-841E-45C9-B196-B2745094D15D">
+        <form id="form" method="post" action="/form" autocomplete="off">
+            <div class="k-widget k-form k-form-horizontal" style="width:99%">
+                <fieldset class="k-form-fieldset" style="margin-top:0px">
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Division:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlDivisionEquip">
+                            <span title="" class="k-widget k-dropdown spt-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlDivisionSpares_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="b9288c64-c949-418d-b47a-c4c3a38f78f7" style="width: 200px;"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="b9288c64-c949-418d-b47a-c4c3a38f78f7" unselectable="on" role="option" aria-selected="true" class="k-input">BLA</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDivisionSpares" style="width: 200px; display: none;" class="spt-ddl" required="" data-role="dropdownlist" autocomplete="off"><option value="BLA" selected="selected">BLA</option><option value="BED">BED</option><option value="BMC">BMC</option><option value="BWEC">BWEC</option><option value="KKP">KKP</option><option value="BGD">BGD</option><option value="CIT">CIT</option></select></span>
+                        </div>
+                    </div>
+
+                    <div class="k-form-field">
+
+                        <label class="k-label col1 req" for="tb1" id="label-ddlDivision">Department:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlDepartment">
+                            <span title="" class="k-widget k-dropdown spr-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlDepartmentSpares_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="1c9aeca0-2b06-4ed4-9212-74896251400c" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="1c9aeca0-2b06-4ed4-9212-74896251400c" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Department...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDepartmentSpares" class="spr-ddl" required="" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="" selected="selected">Select a Department...</option></select></span>
+                        </div>
+                        <label class="k-label col1" for="tb1" id="TextBox-form-label">Departemnt No:</label>
+                        <label class="k-label justify-content-start align-items-start" for="tb1" id="lblDeptNo"></label>
+
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="ddlEquipment" id="label-ddlEquipment">Equpment:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlEquipment">
+                            <span title="" class="k-widget k-dropdown spr-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlEquipment_listbox" aria-labelledby="label-ddlEquipment" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="c42e8e95-67c3-4417-9080-bfaad75f0067" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="c42e8e95-67c3-4417-9080-bfaad75f0067" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Equipment...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlEquipment" class="spr-ddl" required="" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Equipment...</option></select></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Part Number:</label>
+                        <div class="k-form-field-wrap" data-container-for="tbPartNo">
+                            <span class="k-widget k-textbox spr-input" style="width: 100%;"><input id="tbPartNo" autocomplete="off" class="spr-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" value=""></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Part Description:</label>
+                        <div class="k-form-field-wrap" data-container-for="tbPartDsc">
+                            <span class="k-widget k-textbox spr-input" style="width: 100%;"><input id="tbPartDsc" autocomplete="off" class="spr-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" value=""></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Bin Location:</label>
+                        <div class="k-form-field-wrap" data-container-for="tbPartDsc">
+                            <span class="k-widget k-textbox spr-input" style="width: 100%;"><input id="tbBinLoc" autocomplete="off" class="spr-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" value=""></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="tb1" id="label-ddlDivision">GL Account#/Dept.:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlGLDepartmrnt">
+                            <span title="" class="k-widget k-dropdown spr-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlGLDepartmrnt_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="f285ee0b-173b-4c7f-baee-2b3c9c9ad68f" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="f285ee0b-173b-4c7f-baee-2b3c9c9ad68f" unselectable="on" role="option" aria-selected="true" class="k-input">Select a GL Account Number/ Departmnt...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlGLDepartmrnt" class="spr-ddl" required="" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="" selected="selected">Select a GL Account Number/ Departmnt...</option></select></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label req">Cost:</label>
+                        <div class="k-form-field-wrap" data-container-for="tbCost">
+                            <span class="k-widget k-numerictextbox spr-input" style="width: 250px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value spr-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="display: inline-block;" value=""><input id="tbCost" autocomplete="off" class="spr-input k-input" style="display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label req">Quantity Required:</label>
+                        <div class="k-form-field-wrap" data-container-for="tbQtyReq">
+                            <span class="k-widget k-numerictextbox spr-input" style="max-width: 250px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value spr-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="max-width: 250px; display: inline-block;" value=""><input id="tbQtyReq" autocomplete="off" class="spr-input k-input" style="max-width: 250px; display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                        </div>
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Quantity in Stock:</label>
+                        <div class="k-form-field-wrap" data-container-for="tbQtyInStock">
+                            <span class="k-widget k-numerictextbox spr-input" style="max-width: 250px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value spr-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="max-width: 250px; display: inline-block;" value=""><input id="tbQtyInStock" autocomplete="off" class="spr-input k-input" style="max-width: 250px; display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field form-border-after">
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Quantity On Order:</label>
+                        <div class="k-form-field-wrap" data-container-for="tbQtyOnOrder">
+                            <span class="k-widget k-numerictextbox spr-input" style="max-width: 250px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value spr-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="max-width: 250px; display: inline-block;" value=""><input id="tbQtyOnOrder" autocomplete="off" class="spr-input k-input" style="max-width: 250px; display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                        </div>
+                        <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Lead Time (Days):</label>
+                        <div class="k-form-field-wrap" data-container-for="tbLT">
+                            <span class="k-widget k-numerictextbox spr-input" style="max-width: 250px;"><span class="k-numeric-wrap k-state-default"><input type="text" class="k-formatted-value spr-input k-input" aria-hidden="true" title="" tabindex="0" role="spinbutton" autocomplete="off" aria-disabled="false" style="max-width: 250px; display: inline-block;" value=""><input id="tbLT" autocomplete="off" class="spr-input k-input" style="max-width: 250px; display: none;" data-role="numerictextbox" role="spinbutton" type="text" aria-disabled="false" value=""><span class="k-icon k-i-warning" style="display: none;"></span><span class="k-select"><span unselectable="on" class="k-link k-link-increase" aria-label="Increase value" title="Increase value"><span unselectable="on" class="k-icon k-i-arrow-60-up"></span></span><span unselectable="on" class="k-link k-link-decrease" aria-label="Decrease value" title="Decrease value"><span unselectable="on" class="k-icon k-i-arrow-60-down"></span></span></span></span></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1" for="ddlVendMfg" id="label-ddlDivision">Manufacturer:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlVendMfg">
+                            <span title="" class="k-widget k-dropdown spr-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlVendMfg_listbox" aria-labelledby="label-ddlDivision" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="4f307cb1-90a0-47c8-bd9b-85f875b9c668" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="4f307cb1-90a0-47c8-bd9b-85f875b9c668" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Vendor...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlVendMfg" class="spr-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Vendor...</option></select></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field form-border-after">
+                        <label class="k-label col1" for="ddlVendMfg" id="label-ddlDivision">Distributor:</label>
+                        <div class="k-form-field-wrap" data-container-for="ddlVendDist">
+                            <span title="" class="k-widget k-dropdown spr-ddl" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlVendDist_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="f783227a-089c-42f2-acf7-f705709b5f28" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="f783227a-089c-42f2-acf7-f705709b5f28" unselectable="on" role="option" aria-selected="true" class="k-input">Select a Vendor...</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlVendDist" class="spr-ddl" data-role="dropdownlist" style="display: none;" autocomplete="off"><option value="0" selected="selected">Select a Vendor...</option></select></span>
+                        </div>
+                    </div>
+                    <div class="k-form-field">
+                        <label class="k-label col1 justify-content-start" for="tbMachineSetts" id="TextBox-form-label">Comments:</label>
+                        <div class="k-form-field-wrap" data-container-for="tbComments">
+                            <span class="k-widget k-textarea spr-ta" style="width: 100%;"><textarea id="tbComments" class="spr-ta k-input" rows="4" style="width: 100%; resize: none;" data-role="textarea" aria-disabled="false" maxlength="500" placeholder="Enter comments here." autocomplete="off"></textarea></span>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+
+        </form>
+
+    </div>
+
+    <div class="window-footer">
+        <button id="btnCancelSpr" data-role="button" class="btn btn-xs btn-secondary stdbutton float-right ml-2" role="button" tabindex="0" autocomplete="off">Close</button>
+        <button id="btnSaveSpr" class="btn btn-xs bob-btn stdbutton float-right" data-role="button" role="button" tabindex="0" autocomplete="off">Save</button>
+    </div>
+
+</div><div class="k-resize-handle k-resize-n"></div><div class="k-resize-handle k-resize-e"></div><div class="k-resize-handle k-resize-s"></div><div class="k-resize-handle k-resize-w"></div><div class="k-resize-handle k-resize-se"></div><div class="k-resize-handle k-resize-sw"></div><div class="k-resize-handle k-resize-ne"></div><div class="k-resize-handle k-resize-nw"></div></div></body></html>

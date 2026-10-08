@@ -1,0 +1,318 @@
+<html lang="en" class="k-webkit k-webkit152"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendors - Bobrick  PME</title>
+    <link rel="stylesheet" href="/PME/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <link href="/PME/css/kendo/kendo.common.min.css" rel="stylesheet">
+    <link href="/PME/css/kendo/kendo.office365.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/PME/css/site.css">
+
+
+    <link href="/PME/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="/PME/css/utils/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-2">
+            <div class="container">
+                <!--<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Preventive Maintenance</a>-->
+
+                <a class="navbar-brand" href="/PME/Home/Index">
+                    <img src="/PME/css/img/pmlogo2.png" alt="..." height="50">
+
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" autocomplete="0">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav nav-pills flex-grow-1">
+
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/PME">Home</a>
+                        </li>
+
+                        <li class="nav-item dropdown active">
+                            <a role="button" data-toggle="dropdown" aria-haspopup="true" href="#" aria-expanded="false" id="WorkOrder" class="dropdown-toggle nav-link ">Work Orders</a>
+
+                            <div class="dropdown-menu" aria-labelledby="WorkOrder">
+                                <a class="dropdown-item" href="/PME/Forms/WorkOrderUnshdAll">Unscheduled Work Orders</a>
+                                <a class="dropdown-item" href="/PME/Forms/WorkOrderShdAll">Scheduled Work Orders</a>
+
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/PME/Forms/MaintSchdAll">Maint. Schedule</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/PME/Forms/EquipmentAll">Equipment</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/PME/Forms/SparesAll">Spares</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="/PME/Forms/VendorsAll">Vendors</a>
+                        </li>
+                        <!--
+                        <li class="nav-item active">
+                            <a class="nav-link " asp-area="" asp-controller="Forms" asp-action="VendorEdit">Vendor Edit</a>
+                        </li>
+                            -->
+                        <!--<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>-->
+                    </ul>
+                    <p class="nav navbar-text">Hello, Merja Haatanen</p>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="MainPlaceHolderPME" class="container" data-access="1">
+        <main role="main" class="pb-3">
+            
+<div class="row"><h4 class="pt">Vendors</h4></div>
+<!--<div class="card title-blue-opal mt-2"><div class="card-header" style="border-bottom:none;">Vendors</div></div>-->
+<div id="VendorsPlaceHolder" class="" data-vendors="/PME/Forms/GetVendorsAll" data-tooltip="/PME/Forms/GetVendorToolTip" data-delete="/PME/Forms/DeleteVendor">
+    <div class="k-widget k-form k-form-horizontal mt-2 mb-1">
+
+        <div class="k-form-field form-border-after" style="padding-bottom: 10px; margin-bottom: 8px;" id="divVendorsPlaceHolderPrompts">
+            <label class="k-label col1" for="tb1" id="TextBox-form-label">Division:</label>
+
+
+            <div class="k-form-field-wrap" data-container-for="tbAmps">
+                <span title="" class="k-widget k-dropdown" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlDivision_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="929c7a48-dc2b-47ed-9784-2f5baa07d486" style=""><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="929c7a48-dc2b-47ed-9784-2f5baa07d486" unselectable="on" role="option" aria-selected="true" class="k-input">BWEC</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDivision" data-role="dropdownlist" style="display: none;" autocomplete="0"><option value="BLA" selected="selected">BLA</option><option value="BED">BED</option><option value="BMC">BMC</option><option value="BWEC">BWEC</option><option value="KKP">KKP</option><option value="BGD">BGD</option><option value="CIT">CIT</option></select></span>
+            </div>
+
+
+
+            <label class="k-label col1" for="tb1" id="TextBox-form-label">Manufacturer</label>
+            <div class="k-form-field-wrap" data-container-for="tbVolts">
+                <input type="checkbox" id="checkManufacturer" style="margin-top: 7px;" checked="" name="checkManufacturer" title="Air" autocomplete="0" aria-labelledby="Air-form-label" data-type="boolean" data-bind="checked:Air" class="k-checkbox justify-content-end vendtp">
+            </div>
+            <label class="k-label col1" for="tb1" id="TextBox-form-label">Distributor:</label>
+            <div class="k-form-field-wrap" data-container-for="tbVolts">
+                <input type="checkbox" id="checkDistributor" style="margin-top: 7px;" checked="" name="checDistributor" title="Gas" autocomplete="0" aria-labelledby="Gas-form-label" data-type="boolean" data-bind="checked:Gas" class="k-checkbox vendtp">
+            </div>
+            <label class="k-label col1" for="tb1" id="TextBox-form-label">Service Provider:</label>
+            <div class="k-form-field-wrap" data-container-for="tbVolts">
+                <input type="checkbox" id="checkService" style="margin-top: 7px;" checked="" name="checService" title="Network" autocomplete="0" aria-labelledby="Network-form-label" data-type="boolean" data-bind="checked:Network" class="k-checkbox vendtp">
+            </div>
+            <div class="k-form-field-wrap">
+                <button id="btnAddVendor" class="btn btn-xs bob-btn" autocomplete="0"><i class="fa fa-plus-square"></i>&nbsp;Add Vendor</button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="p-2" id="divGridContainer">
+        <div id="gridVendors" data-role="grid" class="k-grid k-widget k-grid-display-block k-grid-lockedcolumns" style="height: 500px;"><div class="k-grid-header" style="padding-right: 15px;"><div class="k-grid-header-locked" style="width: 108px;"><table style=""><colgroup><col style="width:33px"><col style="width:33px"><col style="width:42px"></colgroup><thead><tr><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="0" id="3ac9c7a6-87c0-45c5-8145-1d8113280996" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="1" id="9bb3a70e-8eae-4e42-8166-4df8939e0795" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th><th scope="col" role="columnheader" data-field="ID" aria-haspopup="true" rowspan="1" data-title=" " data-index="2" id="968f7cd4-0664-494d-8cb3-05529ce5821d" class="k-header" data-role="columnsorter"><a class="k-link" href="#"> </a></th></tr><tr class="k-filter-row" style="height: 42px;"><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr></thead></table></div><div class="k-grid-header-wrap k-auto-scrollable" style="width: 365px;"><table role="grid" style="width: 1325px;"><colgroup><col style="width:45px"><col style="width:45px"><col style="width:45px"><col style="width:310px"><col style="width:280px"><col style="width:200px"><col style="width:60px"><col style="width:200px"><col style="width:140px"></colgroup><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader" data-field="MFG_IND" aria-haspopup="true" rowspan="1" data-title="Mfg" data-index="3" id="1726bf38-76af-4dca-9ca0-20bab4d1724e" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Mfg</a></th><th scope="col" role="columnheader" data-field="DIST_IND" aria-haspopup="true" rowspan="1" data-title="Dist" data-index="4" id="91aba4ec-6327-40d7-b752-a407d9e8bbdf" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Dist</a></th><th scope="col" role="columnheader" data-field="SERV_IND" aria-haspopup="true" rowspan="1" data-title="Serv" data-index="5" id="f50324d4-38b0-4dd0-a88e-7f589c6f10d5" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Serv</a></th><th scope="col" role="columnheader" data-field="CompanyName" aria-haspopup="true" rowspan="1" data-title="Company Name" data-index="6" id="a0299a9e-9d22-42f3-98b1-0ba9e7647171" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Company Name</a></th><th scope="col" role="columnheader" data-field="Address1" aria-haspopup="true" rowspan="1" data-title="Address" data-index="7" id="d6da49dc-4d99-4078-890c-876c60fc2c20" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Address</a></th><th scope="col" role="columnheader" data-field="City" aria-haspopup="true" rowspan="1" data-title="City" data-index="8" id="3eef9e07-7776-4c85-831a-c801a8687304" class="k-header" data-role="columnsorter"><a class="k-link" href="#">City</a></th><th scope="col" role="columnheader" data-field="State" aria-haspopup="true" rowspan="1" data-title="State" data-index="9" id="aa4865c5-e73b-4b0d-8359-d8d4466d047b" class="k-header" data-role="columnsorter"><a class="k-link" href="#">State</a></th><th scope="col" role="columnheader" data-field="ContactPerson" aria-haspopup="true" rowspan="1" data-title="Contact" data-index="10" id="2f426cf8-0614-462f-b97f-70ccf0418f6b" class="k-header" data-role="columnsorter"><a class="k-link" href="#">Contact</a></th><th scope="col" role="columnheader" data-field="Modified" aria-haspopup="true" rowspan="1" data-title="Modified" data-index="11" id="74d47e78-4119-4109-8a44-c6eed1cb742e" class="k-header k-sorted" data-role="columnsorter" data-dir="desc" aria-sort="descending"><a class="k-link" href="#">Modified<span class="k-icon k-i-sort-desc-sm"></span></a></th></tr><tr class="k-filter-row" style="height: 42px;"><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th><th><span data-field="CompanyName" class="k-filtercell" data-role="filtercell"><span class="k-operator-hidden"><input data-bind="value: value" aria-label="Company Name" title="Company Name" class="k-textbox" autocomplete="0" style="width: 306.6px;"><div unselectable="on" style="display: none;">eq</div></span></span></th><th><span data-field="Address1" class="k-filtercell" data-role="filtercell"><span class="k-operator-hidden"><input data-bind="value: value" aria-label="Address" title="Address" class="k-textbox" autocomplete="0" style="width: 276.6px;"><div unselectable="on" style="display: none;">eq</div></span></span></th><th><span data-field="City" class="k-filtercell" data-role="filtercell"><span class="k-operator-hidden"><input data-bind="value: value" aria-label="City" title="City" class="k-textbox" autocomplete="0" style="width: 196.6px;"><div unselectable="on" style="display: none;">eq</div></span></span></th><th><span data-field="State" class="k-filtercell" data-role="filtercell"><span class="k-operator-hidden"><input data-bind="value: value" aria-label="State" title="State" class="k-textbox" autocomplete="0" style="width: 56.6px;"><div unselectable="on" style="display: none;">eq</div></span></span></th><th><span data-field="ContactPerson" class="k-filtercell" data-role="filtercell"><span class="k-operator-hidden"><input data-bind="value: value" aria-label="Contact" title="Contact" class="k-textbox" autocomplete="0" style="width: 196.6px;"><div unselectable="on" style="display: none;">eq</div></span></span></th><th>&nbsp;</th></tr></thead></table></div></div><div class="k-grid-content-locked" style="width: 108px; height: 404.4px;"><table data-role="selectable" class="k-selectable" style=""><colgroup><col style="width:33px"><col style="width:33px"><col style="width:42px"></colgroup><tbody><tr class="k-master-row" data-uid="0705c7cb-a48e-4c93-a208-c7d3c0dc9527" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="223"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(223)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(223)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-alt k-master-row" data-uid="e3f6368a-aa62-43e8-8cef-8c2a2edb5232" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="222"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(222)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(222)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-master-row" data-uid="26bbf491-bcb4-4808-9aa9-148a35b084fc" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="217"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(217)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(217)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-alt k-master-row" data-uid="11a8657b-c1c2-44f8-8630-01f0fa689bc6" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="209"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(209)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(209)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-master-row" data-uid="6f04851e-c5c0-49b2-abd5-cb4a332d49c4" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="205"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(205)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(205)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-alt k-master-row" data-uid="5bf5fa1c-bd05-4b02-8440-725567795de5" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="182"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(182)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(182)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-master-row" data-uid="ec1886e3-7b1e-4f17-bc83-44d80571d110" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="176"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(176)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(176)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-alt k-master-row" data-uid="9574aafd-bcd6-4c09-87fa-c7ff8b587038" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="170"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(170)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(170)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-master-row" data-uid="dc5bc8bf-11c4-4ea0-8cb0-a16fe6131f12" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="169"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(169)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(169)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-alt k-master-row" data-uid="6d61e244-d719-4b96-a20b-136524cf405e" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="144"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(144)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(144)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-master-row" data-uid="78055b3c-1393-4a62-a829-05436ff90538" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="143"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(143)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(143)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-alt k-master-row" data-uid="a719295e-7476-46b0-ba1f-1d030d37d66d" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="138"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(138)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(138)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-master-row" data-uid="822296d2-fcb7-4e5e-9beb-846703170a16" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="137"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(137)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(137)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-alt k-master-row" data-uid="15b0e522-98ea-455d-bf90-7e3b45204a0e" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="136"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(136)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(136)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-master-row" data-uid="829ba049-325c-46a5-b0ca-160bdf959b26" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="135"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(135)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(135)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-alt k-master-row" data-uid="cce9e560-ad07-4182-8a93-52bdde21f458" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="132"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(132)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(132)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-master-row" data-uid="b0a626e8-2ef1-4d1f-a333-de9cd2ceb3ed" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="133"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(133)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(133)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-alt k-master-row" data-uid="cc0f1fa9-a3ec-4aec-8541-ed0e71abfa8b" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="134"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(134)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(134)"><i class="fa fa-trash"></i></a></td></tr><tr class="k-master-row" data-uid="9237db27-99b0-4d1f-bc22-bef02957cf4e" role="row" style="height: 33px;"><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs bd-teal-100 vendtooltip" href="#" data-id="39"><i class="fa fa-binoculars"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn btn-xs btn-info-bob" title="Edit Vendor" href="#" onclick="VendorMgr.EditVendor(39)"><i class="fa fa-edit"></i></a></td><td class="table-btn-cell" role="gridcell"><a class="btn bd-red-300 btn-xs" title="Delete Vendor" href="#" onclick="VendorMgr.DeleteVendor(39)"><i class="fa fa-trash"></i></a></td></tr></tbody></table></div><div class="k-grid-content k-auto-scrollable" style="width: 381px; height: 419.4px;"><table role="grid" data-role="selectable" class="k-selectable" style="height: auto; width: 1325px;"><colgroup><col style="width:45px"><col style="width:45px"><col style="width:45px"><col style="width:310px"><col style="width:280px"><col style="width:200px"><col style="width:60px"><col style="width:200px"><col style="width:140px" class="k-sorted"></colgroup><tbody role="rowgroup"><tr class="k-master-row" data-uid="0705c7cb-a48e-4c93-a208-c7d3c0dc9527" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell">AIDA</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">George Munschauer</td><td class="" role="gridcell">1/15/2025 6:15 AM</td></tr><tr class="k-alt k-master-row" data-uid="e3f6368a-aa62-43e8-8cef-8c2a2edb5232" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Diversitech</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">-</td><td class="" role="gridcell">1/14/2025 6:52 AM</td></tr><tr class="k-master-row" data-uid="26bbf491-bcb4-4808-9aa9-148a35b084fc" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Welder</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">-</td><td class="" role="gridcell">2/2/2024 9:06 AM</td></tr><tr class="k-alt k-master-row" data-uid="11a8657b-c1c2-44f8-8630-01f0fa689bc6" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">COAS Industrial</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Tom Watkins</td><td class="" role="gridcell">10/27/2023 10:44 AM</td></tr><tr class="k-master-row" data-uid="6f04851e-c5c0-49b2-abd5-cb4a332d49c4" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell">3G Packaging</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Kyle</td><td class="" role="gridcell">7/17/2023 6:52 AM</td></tr><tr class="k-alt k-master-row" data-uid="5bf5fa1c-bd05-4b02-8440-725567795de5" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Global Industrial</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Rachel Lagundzin</td><td class="" role="gridcell">2/6/2023 6:42 AM</td></tr><tr class="k-master-row" data-uid="ec1886e3-7b1e-4f17-bc83-44d80571d110" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Uline</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">-</td><td class="" role="gridcell">1/26/2023 7:15 AM</td></tr><tr class="k-alt k-master-row" data-uid="9574aafd-bcd6-4c09-87fa-c7ff8b587038" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell">Northern Dock Systems</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Ryan Johnson</td><td class="" role="gridcell">7/4/2022 11:14 AM</td></tr><tr class="k-master-row" data-uid="dc5bc8bf-11c4-4ea0-8cb0-a16fe6131f12" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Skid-Lifter</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">-</td><td class="" role="gridcell">6/30/2022 8:29 AM</td></tr><tr class="k-alt k-master-row" data-uid="6d61e244-d719-4b96-a20b-136524cf405e" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Yaskawa Motoman Canada Inc.</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Travis Gore</td><td class="" role="gridcell">5/2/2022 11:18 AM</td></tr><tr class="k-master-row" data-uid="78055b3c-1393-4a62-a829-05436ff90538" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Air Separation Technologies Inc.</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Amir Fard</td><td class="" role="gridcell">5/2/2022 11:17 AM</td></tr><tr class="k-alt k-master-row" data-uid="a719295e-7476-46b0-ba1f-1d030d37d66d" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell">J&amp;R Services &amp; Sales Ltd.</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Hayden Lee</td><td class="" role="gridcell">4/19/2022 5:45 AM</td></tr><tr class="k-master-row" data-uid="822296d2-fcb7-4e5e-9beb-846703170a16" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell">Sealed Air (Canada) Co/CIE</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Matt Heit</td><td class="" role="gridcell">4/7/2022 3:48 AM</td></tr><tr class="k-alt k-master-row" data-uid="15b0e522-98ea-455d-bf90-7e3b45204a0e" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Rainbow Electronics Spotwelding Inc.</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">N/A</td><td class="" role="gridcell">4/7/2022 3:46 AM</td></tr><tr class="k-master-row" data-uid="829ba049-325c-46a5-b0ca-160bdf959b26" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Wajax</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Dino Jacob</td><td class="" role="gridcell">4/5/2022 7:39 AM</td></tr><tr class="k-alt k-master-row" data-uid="cce9e560-ad07-4182-8a93-52bdde21f458" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell">Pump Truck</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">N/A</td><td class="" role="gridcell">4/4/2022 11:51 AM</td></tr><tr class="k-master-row" data-uid="b0a626e8-2ef1-4d1f-a333-de9cd2ceb3ed" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell">Garden Denver</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Cathy</td><td class="" role="gridcell">4/4/2022 11:51 AM</td></tr><tr class="k-alt k-master-row" data-uid="cc0f1fa9-a3ec-4aec-8541-ed0e71abfa8b" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell">Atlas Copco</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">Cathy</td><td class="" role="gridcell">4/4/2022 11:51 AM</td></tr><tr class="k-master-row" data-uid="9237db27-99b0-4d1f-bc22-bef02957cf4e" role="row" style="height: 33px;"><td class="" role="gridcell"><span><i class="fa fa-check"></i></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell"><span></span></td><td class="" role="gridcell">Bobrick Washroom Equipment</td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell"></td><td class="" role="gridcell">4/2/2022 10:16 AM</td></tr></tbody></table></div><div class="k-pager-wrap k-grid-pager k-widget k-floatwrap k-pager-md" data-role="pager"><span class="k-pager-info k-label">Total: 19</span></div></div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted d-print-none">
+        <div class="container">
+            © 2021 - Bobrick - <a href="/PME/Home/Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="/PME/lib/kendo/jquery.min.js"></script>
+    <script src="/PME/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/PME/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+    <script src="/PME/lib/kendo/kendo.core.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.data.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.calendar.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.popup.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.list.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.userevents.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.textbox.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.textarea.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.dropdownlist.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.selectable.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.datepicker.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.combobox.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.validator.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.upload.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.numerictextbox.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.fx.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.tooltip.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.multiselect.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.draganddrop.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.dialog.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.window.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.timepicker.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.datetimepicker.min.js"></script>
+
+
+    <!--Grid-->
+    <script src="/PME/lib/kendo/kendo.filtermenu.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.binder.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.columnsorter.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.sortable.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.filtercell.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.drawing.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.progressbar.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.color.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.pdf.min.js"></script>
+    <script src="/PME/lib/kendo/jszip.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.ooxml.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.excel.min.js"></script>
+    <script src="/PME/lib/kendo/pako_deflate.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.pager.min.js"></script>
+    <script src="/PME/lib/kendo/kendo.grid.min.js"></script>
+    <!--Grid-->
+
+
+    <script src="/PME/lib/jquery.dataTables.min.js"></script>
+
+    
+
+    <script src="/PME/js/vendor.js?v=A_aGppeCeeCBaV_ShpC6KsulngwHAccVg5YyXid63WY"></script>
+    
+    <script>
+
+        $(document).ready(function () {
+
+            VendorMgr.Init();
+
+        });
+    </script>
+
+
+
+<div class="k-widget k-window" tabindex="0" data-role="draggable" style="visibility: visible; display: none; padding-top: 31px; min-width: 90px; min-height: 50px; width: 50%; height: 70%; top: 129.637px; left: 15px;"><div class="k-window-titlebar" style="margin-top: -31px;"><span class="k-window-title" id="VendorWindow_wnd_title">Edit Vendor</span><div class="k-window-actions"><a role="button" href="#" class="k-button k-flat k-button-icon k-window-action" aria-label="Close"><span class="k-icon k-i-close"></span></a></div></div><div id="VendorWindow" style="" data-role="window" class="k-window-content" role="dialog" aria-labelledby="VendorWindow_wnd_title">
+    <div id="PMEForm" class="venddlgcont" style="width:99%" data-vendor-upd="/PME/Forms/UpdateVendor" data-vendor-id="0">
+        <div class="k-widget k-form k-form-horizontal" style="width:99%">
+            <fieldset class="k-form-fieldset ">
+                <div class="k-form-field">
+                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Division:</label>
+
+
+                    <div class="k-form-field-wrap" data-container-for="tbAmps">
+                        <span title="" class="k-widget k-dropdown vend-input" unselectable="on" role="listbox" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-owns="ddlDivisionVend_listbox" aria-live="polite" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="bdf76807-190a-4466-b2ed-163c6e553af8" style="width: 200px;"><span unselectable="on" class="k-dropdown-wrap k-state-default"><span id="bdf76807-190a-4466-b2ed-163c6e553af8" unselectable="on" role="option" aria-selected="true" class="k-input">BLA</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select id="ddlDivisionVend" style="width: 200px; display: none;" class="vend-input" data-role="dropdownlist" autocomplete="0"><option value="BLA" selected="selected">BLA</option><option value="BED">BED</option><option value="BMC">BMC</option><option value="BWEC">BWEC</option><option value="KKP">KKP</option><option value="BGD">BGD</option><option value="CIT">CIT</option></select></span>
+                    </div>
+
+
+
+
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Vendor Type:</label>
+
+
+                    <input type="checkbox" id="checkManufacturerVend" style="margin-top: 7px;" name="checkManufacturerVend" title="Air" autocomplete="0" aria-labelledby="Air-form-label" data-type="boolean" data-bind="checked:Air" class="k-checkbox justify-content-end vendtp  vend-chk">
+
+                    <label class="k-label pl-2" style="width: 100px; align-items: flex-start" for="checkManufacturerVend" id="TextBox-form-label">Manufacturer</label>
+
+
+                    <input type="checkbox" id="checkDistributorVend" style="margin-top: 7px;" name="checkDistributorVend" title="Gas" autocomplete="0" aria-labelledby="Gas-form-label" data-type="boolean" data-bind="checked:Gas" class="k-checkbox vendtp vend-chk">
+
+                    <label class="k-label pl-2" style="width: 100px; align-items: flex-start" for="checkDistributorVend" id="TextBox-form-label">Distributor</label>
+
+
+                    <input type="checkbox" id="checkServiceVend" style="margin-top: 7px;" name="checkServiceVend" title="Network" autocomplete="0" aria-labelledby="Network-form-label" data-type="boolean" data-bind="checked:Network" class="k-checkbox vendtp vend-chk">
+
+                    <label class="k-label pl-2" for="checkServiceVend" style="width: 100px; align-items: flex-start" id="TextBox-form-label" required="">Service Provider</label>
+
+                </div>
+
+
+                <div class="k-form-field">
+                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Vendor Name:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbOrgName">
+                        <span class="k-widget k-textbox vend-input" style="width: 100%;"><input id="tbOrgName" name="tbOrgName" class="vend-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Phone Number:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbPhoneNo">
+                        <span class="k-widget k-textbox vend-input" style="width: 100%;"><input id="tbPhoneNo" name="tbPhoneNo" class="vend-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Fax Number:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbFaxNo">
+                        <span class="k-widget k-textbox vend-input" style="width: 100%;"><input id="tbFaxNo" name="tbFaxNo" class="vend-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Contact Person:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbContactPerson">
+                        <input id="tbContactPerson" name="tbContactPerson" class="vend-input" maxlength="500" style="width: 100%;" autocomplete="0">
+                    </div>
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Email:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbEmail">
+                        <span class="k-widget k-textbox vend-input" style="width: 100%;"><input id="tbEmail" name="tbEmail" class="vend-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1 req" for="tb1" id="TextBox-form-label">Web Site URL:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbWebSiteURL">
+                        <span class="k-widget k-textbox vend-input" style="width: 100%;"><input id="tbWebSiteURL" class="vend-input k-input" name="tbWebSiteURL" maxlength="200" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Address Line 1:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbAddress1">
+                        <span class="k-widget k-textbox vend-input" style="width: 100%;"><input id="tbAddress1" name="tbAddress1" class="vend-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Address Line 2:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbAddress2">
+                        <span class="k-widget k-textbox vend-input" style="width: 100%;"><input id="tbAddress2" name="tbAddress2" class="vend-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Address Line 3:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbAddress3">
+                        <span class="k-widget k-textbox vend-input" style="width: 100%;"><input id="tbAddress3" name="tbAddress3" class="vend-input k-input" maxlength="100" style="width: 100%;" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+                </div>
+
+                <div class="k-form-field">
+                    <label class="k-label col1" for="tb1" id="TextBox-form-label">City:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbAmps">
+                        <span class="k-widget k-textbox vend-input" style="width: 100%;"><input id="tbCity" style="width:100%" class="vend-input k-input" name="tbCity" maxlength="100" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1" for="tb1" id="TextBox-form-label">State/Province:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbWater">
+                        <span class="k-widget k-textbox vend-input" style="width: 60%;"><input id="tbState" style="width: 100%;" class="vend-input k-input" name="tbState" maxlength="20" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+
+                    <label class="k-label col1" for="tb1" id="TextBox-form-label">Zip/Postal Code:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbZip">
+                        <span class="k-widget k-textbox vend-input" style="width: 60%;"><input id="tbZip" style="width: 100%;" class="vend-input k-input" name="tbZip" maxlength="20" data-role="textbox" aria-disabled="false" autocomplete="0"></span>
+                    </div>
+
+                </div>
+                <div class="k-form-field">
+                    <label class="k-label col1 justify-content-start" for="tb1" id="TextBox-form-label">Remarks:</label>
+                    <div class="k-form-field-wrap" data-container-for="tbRenark">
+                        <span class="k-widget k-textarea vend-input" style="width: 100%;"><textarea id="tbRemark" class="vend-input k-input" rows="4" style="width: 100%; resize: none;" data-role="textarea" aria-disabled="false" maxlength="5000" placeholder="Enter your comment here." autocomplete="0"></textarea></span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+
+    </div>
+    <div class="window-footer">
+        <button id="btnCancelVendor" data-role="button" class="btn btn-xs btn-secondary stdbutton float-right ml-2" role="button" tabindex="0" autocomplete="0">Close</button>
+        <button id="btnSaveVendor" class="btn btn-xs bob-btn stdbutton float-right" data-role="button" role="button" tabindex="0" autocomplete="0">Save</button>
+    </div>
+</div><div class="k-resize-handle k-resize-n"></div><div class="k-resize-handle k-resize-e"></div><div class="k-resize-handle k-resize-s"></div><div class="k-resize-handle k-resize-w"></div><div class="k-resize-handle k-resize-se"></div><div class="k-resize-handle k-resize-sw"></div><div class="k-resize-handle k-resize-ne"></div><div class="k-resize-handle k-resize-nw"></div></div><div class="k-animation-container" style="width: 170px; height: 160px; box-sizing: content-box; overflow: hidden; display: none; position: absolute; top: 140.637px; z-index: 10002; left: 175px;" aria-hidden="true"><div class="k-list-container k-popup k-group k-reset" id="ddlDivision-list" data-role="popup" aria-hidden="true" style="position: absolute; font-size: 12.8px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: normal; width: 164.55px; min-width: 164.55px; white-space: normal; height: auto; display: none; transform: translateY(-160px);"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on" style="height: auto;"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDivision_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">BLA</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">BED</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">BMC</li><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused k-state-selected" aria-selected="true" data-offset-index="3" id="ba338175-3bcd-48c7-a124-ecf2b3356316">BWEC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">KKP</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">BGD</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">CIT</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div></div><div class="k-list-container k-popup k-group k-reset" id="ddlDivisionVend-list" data-role="popup" aria-hidden="true" style="display: none; position: absolute;"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="ddlDivisionVend_listbox" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-selected k-state-focused" aria-selected="true" data-offset-index="0" id="d79df9e7-db48-4c16-9b25-b6648d50ac1b">BLA</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">BED</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="2">BMC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="3">BWEC</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="4">KKP</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="5">BGD</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="6">CIT</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div></body></html>

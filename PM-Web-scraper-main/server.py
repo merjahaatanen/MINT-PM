@@ -111,18 +111,44 @@ def _admin_ok(req) -> bool:
 # ALWAYS password-protected.
 SEAN_PASSWORD = os.environ.get("SEAN_PASSWORD", "").strip() or "sean"
 
+# Per-supervisor-technician passwords, keyed by lowercase technician name.
+# Each maps to an environment variable the deployer sets to require its own
+# password before someone can sign in as that technician with Sean-level
+# authority (assign work to others, team stats/schedule, manage
+# technicians/roles). A supervisor technician with no password configured
+# here is open, same as Sean is when SEAN_PASSWORD is unset.
+_SUPERVISOR_PASSWORD_ENV = {
+    "michael nygard": "MICHAEL_PASSWORD",
+}
+
+
+def _supervisor_password(name_l: str) -> str:
+    env_name = _SUPERVISOR_PASSWORD_ENV.get((name_l or "").strip().lower())
+    if not env_name:
+        return ""
+    return os.environ.get(env_name, "").strip()
+
 
 def _sean_ok(req) -> bool:
     """True if the request may perform Sean-only actions (assign work orders to
-    someone else, view completed-counts dashboard). Open when no SEAN_PASSWORD
-    is configured; otherwise the caller must supply it via the 'X-Sean-Password'
-    header (or a 'password' JSON field)."""
-    if not SEAN_PASSWORD:
-        return True
+    someone else, view completed-counts dashboard). The caller is identified
+    via the 'X-User-Name' header:
+      - A technician flagged as a supervisor (_SUPERVISOR_TECHS) must match
+        their own per-technician password (see _SUPERVISOR_PASSWORD_ENV),
+        supplied via 'X-Sean-Password' header or 'password' JSON field. If no
+        password is configured for them, they're authorized outright.
+      - Anyone else needs Sean's password (SEAN_PASSWORD), or is open when
+        SEAN_PASSWORD is unset."""
+    user_name = (req.headers.get("X-User-Name") or "").strip().lower()
     supplied = (req.headers.get("X-Sean-Password") or "").strip()
     if not supplied:
         body = req.get_json(silent=True) or {}
         supplied = (body.get("password") or "").strip()
+    if user_name and user_name in _SUPERVISOR_TECHS:
+        required = _supervisor_password(user_name)
+        return (not required) or supplied == required
+    if not SEAN_PASSWORD:
+        return True
     return supplied == SEAN_PASSWORD
 
 
@@ -151,13 +177,19 @@ def _master_ok(req) -> bool:
 # original three on first run.
 _TECHNICIANS: set[str] = set()
 _TECH_ALIASES: dict[str, set[str]] = {}
+# Technician names (lowercased) flagged as supervisors in the store, who get
+# the same elevated authority as the hardcoded "Sean" password gate (assign
+# work to others, team stats/schedule, manage technicians/roles) once signed
+# in under their own name (see _sean_ok()).
+_SUPERVISOR_TECHS: set[str] = set()
 
 
 def _load_technicians() -> None:
     """Reload the in-memory technician sets from the store."""
-    global _TECHNICIANS, _TECH_ALIASES
+    global _TECHNICIANS, _TECH_ALIASES, _SUPERVISOR_TECHS
     _TECHNICIANS = set()
     _TECH_ALIASES = {}
+    _SUPERVISOR_TECHS = set()
     for t in store.list_technicians(active_only=True):
         name = (t.get("name") or "").strip()
         if not name:
@@ -170,6 +202,8 @@ def _load_technicians() -> None:
             if a:
                 aliases.add(a)
         _TECH_ALIASES[name] = aliases
+        if t.get("is_supervisor"):
+            _SUPERVISOR_TECHS.add(name_l)
 
 
 _load_technicians()
@@ -327,6 +361,14 @@ _SCRAPED_DIVISIONS = [
     {"key": "bla", "name": DIVISION["name"], "dir": OUTPUT_DIR},
     {"key": "bed", "name": "BED",
      "dir": os.path.join(OUTPUT_DIR, "divisions", "bed")},
+    {"key": "bmc", "name": "BMC",
+     "dir": os.path.join(OUTPUT_DIR, "divisions", "bmc")},
+    {"key": "bwec", "name": "BWEC",
+     "dir": os.path.join(OUTPUT_DIR, "divisions", "bwec")},
+    {"key": "kkp", "name": "KKP",
+     "dir": os.path.join(OUTPUT_DIR, "divisions", "kkp")},
+    {"key": "bgd", "name": "BGD",
+     "dir": os.path.join(OUTPUT_DIR, "divisions", "bgd")},
 ]
 
 _BED_DIR = os.path.join(OUTPUT_DIR, "divisions", "bed")
@@ -352,12 +394,107 @@ _BED_DEPARTMENTS = {
 }
 _STATIC_DEPARTMENTS.update(_BED_DEPARTMENTS)
 
+_BMC_DIR = os.path.join(OUTPUT_DIR, "divisions", "bmc")
+_BMC_DEPARTMENTS = {
+    f"bmc_{slug}": {
+        "key": f"bmc_{slug}",
+        "name": name,
+        "label": name,
+        "dir": _BMC_DIR,
+        "unscheduled": f"work_orders_unscheduled_{slug}.json",
+        "scheduled": f"work_orders_scheduled_{slug}.json",
+    }
+    for slug, name in [
+        ("maintenance", "Maintenance"),
+        ("privada", "Privada"),
+        ("thrislington", "Thrislington"),
+        ("mirrors", "Mirrors"),
+        ("shipping", "Shipping"),
+        ("toilet_partitions", "Toilet Partitions"),
+        ("stainless", "Stainless"),
+        ("general", "General"),
+        ("quality_assurance", "Quality Assurance"),
+    ]
+}
+_STATIC_DEPARTMENTS.update(_BMC_DEPARTMENTS)
+
+_BWEC_DIR = os.path.join(OUTPUT_DIR, "divisions", "bwec")
+_BWEC_DEPARTMENTS = {
+    f"bwec_{slug}": {
+        "key": f"bwec_{slug}",
+        "name": name,
+        "label": name,
+        "dir": _BWEC_DIR,
+        "unscheduled": f"work_orders_unscheduled_{slug}.json",
+        "scheduled": f"work_orders_scheduled_{slug}.json",
+    }
+    for slug, name in [
+        ("assembly", "Assembly"),
+        ("fabrication", "Fabrication"),
+        ("general", "General"),
+        ("maintenance", "Maintenance"),
+        ("quality_assurance", "Quality Assurance"),
+        ("shipping", "Shipping"),
+        ("spot_weld", "Spot Weld"),
+    ]
+}
+_STATIC_DEPARTMENTS.update(_BWEC_DEPARTMENTS)
+
+_KKP_DIR = os.path.join(OUTPUT_DIR, "divisions", "kkp")
+_KKP_DEPARTMENTS = {
+    f"kkp_{slug}": {
+        "key": f"kkp_{slug}",
+        "name": name,
+        "label": name,
+        "dir": _KKP_DIR,
+        "unscheduled": f"work_orders_unscheduled_{slug}.json",
+        "scheduled": f"work_orders_scheduled_{slug}.json",
+    }
+    for slug, name in [
+        ("assembly", "Assembly"),
+        ("maintenance", "Maintenance"),
+        ("metal_fabrication", "Metal Fabrication"),
+        ("shipping_receiving", "Shipping/Receiving"),
+        ("warehouse", "Warehouse"),
+    ]
+}
+_STATIC_DEPARTMENTS.update(_KKP_DEPARTMENTS)
+
+_BGD_DIR = os.path.join(OUTPUT_DIR, "divisions", "bgd")
+_BGD_DEPARTMENTS = {
+    f"bgd_{slug}": {
+        "key": f"bgd_{slug}",
+        "name": name,
+        "label": name,
+        "dir": _BGD_DIR,
+        "unscheduled": f"work_orders_unscheduled_{slug}.json",
+        "scheduled": f"work_orders_scheduled_{slug}.json",
+    }
+    for slug, name in [
+        ("assembly", "Assembly"),
+        ("fabrication", "Fabrication"),
+        ("grab_bars", "Grab Bars"),
+        ("maintenance", "Maintenance"),
+        ("mirrors", "Mirrors"),
+        ("office", "Office"),
+        ("quality_assurance", "Quality Assurance"),
+        ("shipping", "Shipping"),
+        ("spot_weld", "Spot Weld"),
+        ("facilities", "Facilities"),
+    ]
+}
+_STATIC_DEPARTMENTS.update(_BGD_DEPARTMENTS)
+
 # Live department map (static + user-added). Rebuilt by reload_data(). Every
 # scraped department maps to its division; _DEPT_DIVISION tracks each
 # department's division so the company layer can group them.
 DEPARTMENTS = dict(_STATIC_DEPARTMENTS)
 _DEPT_DIVISION = {k: "bla" for k in _STATIC_DEPARTMENTS}
 _DEPT_DIVISION.update({k: "bed" for k in _BED_DEPARTMENTS})
+_DEPT_DIVISION.update({k: "bmc" for k in _BMC_DEPARTMENTS})
+_DEPT_DIVISION.update({k: "bwec" for k in _BWEC_DEPARTMENTS})
+_DEPT_DIVISION.update({k: "kkp" for k in _KKP_DEPARTMENTS})
+_DEPT_DIVISION.update({k: "bgd" for k in _BGD_DEPARTMENTS})
 
 
 def _rebuild_departments() -> None:
@@ -368,6 +505,10 @@ def _rebuild_departments() -> None:
     merged = dict(_STATIC_DEPARTMENTS)
     div = {k: "bla" for k in _STATIC_DEPARTMENTS}
     div.update({k: "bed" for k in _BED_DEPARTMENTS})
+    div.update({k: "bmc" for k in _BMC_DEPARTMENTS})
+    div.update({k: "bwec" for k in _BWEC_DEPARTMENTS})
+    div.update({k: "kkp" for k in _KKP_DEPARTMENTS})
+    div.update({k: "bgd" for k in _BGD_DEPARTMENTS})
     for d in store.list_departments():
         key = d["key"]
         merged[key] = {
@@ -800,6 +941,74 @@ def _apply_nicknames(dept_data: dict) -> None:
                 r["equipment_name"] = nick or pm
 
 
+# --------------------------------------------------------------------------- #
+# Machine downtime: business-hours only
+# --------------------------------------------------------------------------- #
+# "Downtime" should only reflect time the plant is actually staffed, not raw
+# calendar time a WO happened to sit open overnight/over the weekend. So
+# instead of trusting PM's manually-typed downtime_hours field, MINT computes
+# it from date_notified -> completed_datetime, counting only Mon-Fri 5AM-10PM.
+_BIZ_START_HOUR = 5
+_BIZ_END_HOUR = 22
+
+
+def _business_hours_between(start: datetime, end: datetime) -> float:
+    """Hours of overlap between [start, end) and the Mon-Fri 5AM-10PM window,
+    summed across every calendar day the span touches."""
+    if not start or not end or end <= start:
+        return 0.0
+    total = timedelta(0)
+    day = start.date()
+    last_day = end.date()
+    while day <= last_day:
+        if day.weekday() < 5:  # Monday=0 ... Friday=4
+            window_start = datetime(day.year, day.month, day.day, _BIZ_START_HOUR, 0)
+            window_end = datetime(day.year, day.month, day.day, _BIZ_END_HOUR, 0)
+            seg_start = max(window_start, start)
+            seg_end = min(window_end, end)
+            if seg_end > seg_start:
+                total += seg_end - seg_start
+        day += timedelta(days=1)
+    return round(total.total_seconds() / 3600.0, 2)
+
+
+def _parse_wo_dt(value, *, end_of_day_if_midnight: bool = False):
+    """Parse a WO date field ('MM/DD/YYYY' or 'MM/DD/YYYY hh:mm AM/PM'). PM
+    stores a bare date (implicit midnight) whenever no time was captured;
+    for completed_datetime that midnight almost always means 'time unknown'
+    rather than a genuine midnight completion, so bump it to the end of the
+    business day instead (otherwise same-day WOs would compute to 0h)."""
+    dt = ae._parse_date(value)
+    if not dt:
+        return None
+    if end_of_day_if_midnight and dt.hour == 0 and dt.minute == 0:
+        dt = dt.replace(hour=_BIZ_END_HOUR, minute=0)
+    return dt
+
+
+def _compute_downtime_hours(rec: dict) -> str:
+    """Downtime doesn't apply to every work order (many are general requests,
+    routine PM, etc.), so it's NOT auto-computed for everything. It's only
+    computed for WOs explicitly flagged is_downtime=True (a checkbox set at
+    creation time), using the business-hours span between date_notified/
+    due_date and downtime_end - a separate field for when the machine actually
+    started running again, since a WO is often administratively closed a day
+    or more after the fact. Every other work order just keeps whatever
+    downtime_hours value was manually entered (unchanged)."""
+    if not rec.get("is_downtime"):
+        return rec.get("downtime_hours") or "0"
+    end_raw = rec.get("downtime_end")
+    if not end_raw:
+        return rec.get("downtime_hours") or "0"
+    start = _parse_wo_dt(rec.get("date_notified") or rec.get("due_date"))
+    if not start:
+        return rec.get("downtime_hours") or "0"
+    end = _parse_wo_dt(end_raw, end_of_day_if_midnight=True)
+    if not end:
+        return rec.get("downtime_hours") or "0"
+    return str(_business_hours_between(start, end))
+
+
 def reload_data() -> datetime:
     """(Re)load every department's work orders + the equipment master into the
     in-memory caches, then atomically swap them in. Safe to call at any time.
@@ -832,7 +1041,7 @@ def reload_data() -> datetime:
         # Self-heal date fields to the canonical MM/DD/YYYY the dashboard sorts
         # on, so manual WOs saved with a 2-digit year etc. don't sink to the
         # bottom of the list.
-        for df in ("date_notified", "due_date", "completed_datetime"):
+        for df in ("date_notified", "due_date", "completed_datetime", "downtime_end"):
             if rec.get(df):
                 rec[df] = _normalize_date(rec[df])
         key = rec.get("department_key")
@@ -860,6 +1069,7 @@ def reload_data() -> datetime:
             rec.update(patch)
         rec["_sol_count"] = sol_counts.get(wid, 0)
         rec["_att_count"] = att_counts.get(wid, 0) + len(rec.get("attachments") or [])
+        rec["downtime_hours"] = _compute_downtime_hours(rec)
 
     equip = _load_equipment()
 
@@ -1034,6 +1244,38 @@ def _guide_path(eq_id: str) -> str:
     return os.path.join(GUIDES_DIR, f"{safe}.md")
 
 
+PROCEDURE_DIR = os.path.join(GUIDES_DIR, "scheduled")
+os.makedirs(PROCEDURE_DIR, exist_ok=True)
+
+
+def _procedure_path(wo_id: str) -> str:
+    """Cache path for a scheduled work order's AI-generated step-by-step
+    procedure (see api_get_procedure / api_generate_procedure)."""
+    safe = "".join(c for c in str(wo_id) if c.isalnum() or c in ("-", "_"))
+    return os.path.join(PROCEDURE_DIR, f"{safe}.md")
+
+
+def _machine_make_model(dept_key: str, eq_id: str) -> tuple[str, str]:
+    """Best-effort (make, model) for a machine: prefer the scraped equipment
+    list, then fall back to the imported PM Equipment Summary (machine_info)."""
+    eq_id = _num_id(eq_id)
+    master = next((e for e in _EQUIP_BY_KEY.get(dept_key, [])
+                   if _num_id(e.get("eq_id")) == eq_id), None)
+    make = (master or {}).get("make", "").strip()
+    model = (master or {}).get("model", "").strip()
+    if make or model:
+        return make, model
+    info = store.get_machine_info(dept_key, eq_id) if hasattr(store, "get_machine_info") else None
+    if info:
+        try:
+            summary = json.loads(info.get("summary_json") or "{}")
+        except ValueError:
+            summary = {}
+        make = make or (summary.get("make") or "").strip()
+        model = model or (summary.get("model") or "").strip()
+    return make, model
+
+
 def _backup_guide(eq_id: str):
     """Copy the current guide to a timestamped .bak before it is overwritten,
     so any regenerate/update is reversible. Returns the backup path or None."""
@@ -1129,6 +1371,75 @@ def api_company():
     })
 
 
+def _division_names() -> dict[str, str]:
+    """key -> display name for every division (scraped + user-added)."""
+    names = {d["key"]: d["name"] for d in _SCRAPED_DIVISIONS}
+    for d in store.list_divisions():
+        names[d["key"]] = d["name"]
+    return names
+
+
+@app.route("/api/search")
+def api_search():
+    """Global search across every division/department: matches machines (by
+    name, EQ ID, or nickname) and work orders (by WO ID or problem/audit
+    text). Powers the header's global search box so a result can be opened
+    directly without drilling down through Division -> Department first."""
+    q = (request.args.get("q") or "").strip().lower()
+    if len(q) < 2:
+        return jsonify({"machines": [], "work_orders": []})
+
+    div_names = _division_names()
+    machines = []
+    seen_machines = set()
+    for dept_key in DEPARTMENTS:
+        div_key = _DEPT_DIVISION.get(dept_key, "bla")
+        dept_label = DEPARTMENTS[dept_key]["label"]
+        nicks = store.list_nicknames(dept_key)
+        for e in _EQUIP_BY_KEY.get(dept_key, []):
+            eq_id = _num_id(e.get("eq_id"))
+            if not eq_id or (dept_key, eq_id) in seen_machines:
+                continue
+            pm_name = (e.get("equipment_name") or "").strip() or "Unknown"
+            nickname = (nicks.get(eq_id) or "").strip()
+            name = nickname or pm_name
+            eq_label = (e.get("eq_id") or f"EQ ID {eq_id}").strip()
+            haystack = f"{name} {eq_label} {eq_id} {pm_name}".lower()
+            if q not in haystack:
+                continue
+            seen_machines.add((dept_key, eq_id))
+            machines.append({
+                "eq_id": eq_id, "eq_label": eq_label, "name": name,
+                "dept_key": dept_key, "dept_label": dept_label,
+                "division_key": div_key, "division_label": div_names.get(div_key, div_key.upper()),
+            })
+    machines.sort(key=lambda m: m["name"].lower())
+
+    work_orders = []
+    for wo_id, rec in _WO_INDEX.items():
+        haystack = " ".join([
+            str(wo_id), rec.get("problem") or "", rec.get("audit_item") or "",
+            rec.get("equipment_name") or "",
+        ]).lower()
+        if q not in haystack:
+            continue
+        dept_key = rec.get("department_key") or ""
+        work_orders.append({
+            "wo_id": wo_id,
+            "equipment_name": rec.get("equipment_name") or "",
+            "department": rec.get("department") or DEPARTMENTS.get(dept_key, {}).get("label", ""),
+            "status": rec.get("status") or "",
+            "problem": rec.get("problem") or rec.get("audit_item") or "",
+        })
+    # Exact WO ID matches first, then keep the rest in index order.
+    work_orders.sort(key=lambda w: w["wo_id"] != q)
+
+    return jsonify({
+        "machines": machines[:25],
+        "work_orders": work_orders[:25],
+    })
+
+
 # --------------------------------------------------------------------------- #
 # Division
 # --------------------------------------------------------------------------- #
@@ -1173,14 +1484,107 @@ def api_division(div_key="bla"):
     })
 
 
+def _machine_info_longevity_row(m: dict) -> dict:
+    """Shape one machine_info DB row into the same fields the Excel-workbook
+    longevity table uses, so divisions without a workbook sheet (e.g. KKP)
+    still get a Longevity table from the per-machine data scraped straight off
+    each machine's PM Equipment Summary page."""
+    try:
+        summary = json.loads(m.get("summary_json") or "{}")
+    except ValueError:
+        summary = {}
+    dept_key = m.get("dept_key") or ""
+    cfg = DEPARTMENTS.get(dept_key, {})
+    year_new = m.get("year_new") or ""
+    if not year_new:
+        pd = summary.get("purchase_date") or ""
+        yr = re.search(r"(19|20)\d{2}", pd)
+        year_new = yr.group(0) if yr else ""
+    ery = m.get("replacement_year") or summary.get("replacement_year") or ""
+    return {
+        "division": (m.get("division_key") or "").upper(),
+        "item_num": m.get("eq_id") or "",
+        "department": cfg.get("name") or dept_key,
+        "dept_key": dept_key,
+        "category": m.get("category") or "",
+        "machine": m.get("equipment_name") or summary.get("equipment") or "",
+        "location": m.get("location_workcenter") or "",
+        "type": m.get("type_capex") or "",
+        "serial_no": m.get("serial_no") or summary.get("serial_no") or "",
+        "asset_num": m.get("asset_num") or summary.get("asset_no") or "",
+        "year_new": year_new,
+        "condition": m.get("condition") or "",
+        "service_status": m.get("service_status") or "",
+        "as_of_year_month": m.get("as_of_year_month") or "",
+        "estimated_replacement_year": ery,
+        "comments": m.get("comments") or summary.get("comment") or "",
+    }
+
+
+def _machine_info_longevity_rows(division_key: str = "", dept_key: str = "",
+                                  require_data: bool = True) -> list[dict]:
+    rows = store.list_machine_info(dept_key) if dept_key else store.list_machine_info()
+    if division_key:
+        rows = [r for r in rows if (r.get("division_key") or "") == division_key]
+    out = [_machine_info_longevity_row(r) for r in rows]
+    if not require_data:
+        return out
+    # Only worth showing as a table if the machine actually has some
+    # longevity-relevant data (otherwise every machine with no info yet would
+    # clutter the table with blank rows).
+    return [r for r in out if any([r["year_new"], r["estimated_replacement_year"],
+                                    r["serial_no"], r["asset_num"], r["condition"]])]
+
+
+def _norm_machine_name(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
+
+
+_LONGEVITY_FILL_FIELDS = [f for f in lp.OUTPUT_FIELDS
+                          if f not in ("division", "item_num", "department", "dept_key", "machine")]
+
+
+def _merge_longevity_with_machine_info(excel_rows: list[dict], division_key: str,
+                                        dept_key: str = "") -> list[dict]:
+    """Merge Excel-workbook longevity rows with per-machine data from the
+    Machine Info tab (populated by import_equipment_summary.py or entered
+    directly by users), so a division having an Excel worksheet doesn't hide
+    longevity info that lives on individual machines. Excel values win when
+    both sources have data for the same field; blank Excel fields are filled
+    in from Machine Info, and machines with Machine Info data but no matching
+    Excel row are appended as extra rows."""
+    info_rows = _machine_info_longevity_rows(division_key=division_key, dept_key=dept_key,
+                                              require_data=False)
+    by_name: dict[str, dict] = {}
+    # Copy each row so we never mutate the cached Excel-workbook dicts in place.
+    merged = [dict(r) for r in excel_rows]
+    for row in merged:
+        key = _norm_machine_name(row.get("machine"))
+        if key:
+            by_name[key] = row
+    for info in info_rows:
+        key = _norm_machine_name(info.get("machine"))
+        match = by_name.get(key) if key else None
+        if match:
+            for f in _LONGEVITY_FILL_FIELDS:
+                if not (match.get(f) or "").strip() and (info.get(f) or "").strip():
+                    match[f] = info[f]
+        elif any([info["year_new"], info["estimated_replacement_year"],
+                  info["serial_no"], info["asset_num"], info["condition"]]):
+            merged.append(info)
+    return merged
+
+
 @app.route("/api/divisions/<div_key>/longevity")
 def api_division_longevity(div_key):
-    """Division-wide estimated-replacement-year table from the Excel workbook.
-    User edits are merged in from longevity_edits.json; the original Excel file
-    remains the source of truth for unedited fields."""
+    """Division-wide estimated-replacement-year table from the Excel workbook,
+    merged with per-machine data from the Machine Info tab (see
+    _merge_longevity_with_machine_info). User edits to Excel-sourced rows are
+    merged in from longevity_edits.json."""
+    items = _merge_longevity_with_machine_info(lp.by_division(div_key), div_key)
     return jsonify({
         "division": div_key,
-        "items": lp.by_division(div_key),
+        "items": items,
     })
 
 
@@ -1304,13 +1708,19 @@ def _machine_contacts(dept_key: str) -> list[dict]:
 
 @app.route("/api/vendor-contacts")
 def api_vendor_contacts():
-    """Vendor & Utilities Contacts tab: the editable vendor list (DB), every
-    contact card that lives on a Toilet Partitions machine, and the machine
-    list used by the 'assign to machine' picker."""
+    """Vendor & Utilities Contacts tab: the editable vendor list (DB, filtered
+    by division when a division_key query param is given), every contact card
+    that lives on a Toilet Partitions machine (BLA-only), and the machine list
+    used by the 'assign to machine' picker."""
+    division_key = (request.args.get("division_key") or "").strip().lower()
+    vendors = store.list_vendor_contacts()
+    if division_key:
+        vendors = [v for v in vendors if (v.get("division_key") or "bla") == division_key]
+    show_toilet = not division_key or division_key == "bla"
     return jsonify({
-        "vendors": store.list_vendor_contacts(),
-        "machine_contacts": _machine_contacts("toilet"),
-        "machines": _toilet_machine_list(),
+        "vendors": vendors,
+        "machine_contacts": _machine_contacts("toilet") if show_toilet else [],
+        "machines": _toilet_machine_list() if show_toilet else [],
         "types": store.list_vendor_contact_types(),
         "editable": True,
         "protected": bool(EDIT_PASSWORD),
@@ -1498,16 +1908,19 @@ def api_department(dept_key):
 
 @app.route("/api/departments/<dept_key>/longevity")
 def api_department_longevity(dept_key):
-    """Department-level estimated-replacement-year table from the Excel workbook.
-    Rows are filtered to the requested department; editable details still live on
-    the per-machine Machine Info tab."""
+    """Department-level estimated-replacement-year table from the Excel workbook,
+    merged with per-machine data from the Machine Info tab (see
+    _merge_longevity_with_machine_info). Editable details still live on the
+    per-machine Machine Info tab."""
     if dept_key not in DEPARTMENTS:
         return jsonify({"error": "department not found"}), 404
     division_key = _DEPT_DIVISION.get(dept_key, "bla")
+    items = _merge_longevity_with_machine_info(
+        lp.by_department(dept_key, division_key), division_key, dept_key)
     return jsonify({
         "department": dept_key,
         "division": division_key,
-        "items": lp.by_department(dept_key, division_key),
+        "items": items,
     })
 
 
@@ -1954,14 +2367,19 @@ def _normalize_parsed_notes(data: dict) -> dict:
     }
 
 
-def _original_pm_notes(eq_id):
+def _original_pm_notes(eq_id, dept_key=None):
     """Return (comment, machine_settings) parsed straight from the ORIGINAL
     scraped PM Equipment Summary (pages/equipment/<eq_id>/dashboard.html).
 
     This is the source of truth for AI note sorting so that re-sorting a machine
     can never degrade earlier, already-cleaned text. Returns (None, None) when
-    there is no scraped page for this machine (e.g. a user-added machine)."""
-    path = os.path.join(EQUIPMENT_PAGES_DIR, str(eq_id), "dashboard.html")
+    there is no scraped page for this machine (e.g. a user-added machine).
+    dept_key picks the right division's pages dir (each non-BLA division's
+    dashboards live under divisions/<slug>/pages/equipment/, not the BLA root)."""
+    base_dir = DEPARTMENTS.get(dept_key, {}).get("dir", OUTPUT_DIR)
+    pages_dir = (EQUIPMENT_PAGES_DIR if base_dir == OUTPUT_DIR
+                 else os.path.join(base_dir, "pages", "equipment"))
+    path = os.path.join(pages_dir, str(eq_id), "dashboard.html")
     if not os.path.exists(path):
         return None, None
     try:
@@ -1991,7 +2409,7 @@ def api_parse_machine_notes(dept_key, eq_id):
     machine_settings = (body.get("machine_settings") or "").strip()
     # Prefer the pristine PM scrape as the source of truth.
     source = "submitted"
-    orig_c, orig_m = _original_pm_notes(eq_id)
+    orig_c, orig_m = _original_pm_notes(eq_id, dept_key)
     if orig_c is not None or orig_m is not None:
         comment = (orig_c or "").strip()
         machine_settings = (orig_m or "").strip()
@@ -2498,6 +2916,7 @@ def _inject_wo_live(rec: dict) -> None:
     kind = "scheduled" if rec.get("wo_type") == "scheduled" else "unscheduled"
     rec.setdefault("_sol_count", 0)
     rec.setdefault("_att_count", len(rec.get("attachments") or []))
+    rec["downtime_hours"] = _compute_downtime_hours(rec)
     with _DATA_LOCK:
         _DEPT_DATA.setdefault(key, {"unscheduled": [], "scheduled": []})[kind].append(rec)
         _WO_INDEX[str(rec.get("wo_id"))] = rec
@@ -2542,8 +2961,15 @@ def api_create_workorder():
         "labor_time": str(body.get("labor_time") or "0"),
         "material_cost": str(body.get("material_cost") or "0"),
         "downtime_hours": str(body.get("downtime_hours") or "0"),
+        # "Machine is down" tracking (set at creation time via a checkbox).
+        # downtime_end is filled in later, at whatever point the machine
+        # actually started running again - see _compute_downtime_hours.
+        "is_downtime": bool(body.get("is_downtime")),
+        "downtime_end": _normalize_date(body.get("downtime_end") or ""),
         "work_performed_by": (body.get("work_performed_by") or "").strip(),
         "completed_datetime": _normalize_date(body.get("completed_datetime") or ""),
+        "owner": (body.get("owner") or "").strip(),
+        "assigned_to": (body.get("assigned_to") or "").strip(),
     }
     if wo_type == "unscheduled":
         # Default the notified date to today so the new WO sorts to the top
@@ -2589,6 +3015,77 @@ def api_create_workorder():
                     "work_order": _wo_detail(rec), "email": email_result})
 
 
+def _general_dept_for_division(division_key: str) -> str | None:
+    """Pick a sensible catch-all department for a division's employee-filed
+    general maintenance requests: a department literally named General,
+    falling back to Facilities, then Maintenance, then (if none of those
+    exist) whichever department sorts first."""
+    division_key = (division_key or "").strip().lower()
+    candidates = [k for k in DEPARTMENTS if _DEPT_DIVISION.get(k) == division_key]
+    if not candidates:
+        return None
+    for preferred in ("general", "facilities", "maintenance"):
+        for k in candidates:
+            if (DEPARTMENTS[k].get("name") or "").strip().lower() == preferred:
+                return k
+    return sorted(candidates, key=lambda k: (DEPARTMENTS[k].get("label") or k).lower())[0]
+
+
+@app.route("/api/employee-request", methods=["POST"])
+def api_employee_request():
+    """Lightweight work-order intake for non-maintenance employees: pick a
+    division, give a name/email, and describe the issue. No department or
+    machine selection required. MINT stamps the date/time itself and files it
+    as a Pending, unscheduled work order against that division's general-
+    purpose department, triggering the same new-unscheduled-WO email as any
+    other work order."""
+    body = request.get_json(silent=True) or {}
+    name = (body.get("name") or "").strip()
+    email = (body.get("email") or "").strip()
+    problem = (body.get("problem") or "").strip()
+    division_key = (body.get("division_key") or "").strip().lower()
+
+    if not division_key:
+        return jsonify({"error": "Choose a division."}), 400
+    if not name:
+        return jsonify({"error": "Your name is required."}), 400
+    if not email:
+        return jsonify({"error": "Your email is required."}), 400
+    if not problem:
+        return jsonify({"error": "Please describe the issue."}), 400
+
+    dept_key = _general_dept_for_division(division_key)
+    if not dept_key:
+        return jsonify({"error": "That division isn't set up to receive requests yet."}), 400
+
+    fields = {
+        "department": DEPARTMENTS[dept_key]["name"],
+        "department_key": dept_key,
+        "wo_type": "unscheduled",
+        "status": "Pending",
+        "urgency": "6. General Maint",
+        "date_notified": datetime.now().strftime("%m/%d/%Y"),
+        "problem": problem,
+        "owner": name,
+        "requester_email": email,
+    }
+    try:
+        created = store.add_work_order(fields, author=name)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
+    rec = created["data"]
+    rec["department_key"] = dept_key
+    rec["is_manual"] = True
+    _inject_wo_live(rec)
+
+    rec2 = dict(rec)
+    rec2["created_by"] = name
+    email_result = emailer.notify_new_unscheduled(rec2, dept_label=DEPARTMENTS[dept_key]["label"])
+
+    return jsonify({"ok": True, "wo_id": rec["wo_id"], "email": email_result})
+
+
 @app.route("/api/workorder/<wo_id>", methods=["PATCH", "PUT"])
 def api_edit_workorder(wo_id):
     wo_id = str(wo_id).strip()
@@ -2612,7 +3109,7 @@ def api_edit_workorder(wo_id):
         return jsonify({"error": "Only Sean can assign work orders to someone else."}), 403
 
     # Keep dates canonical so edited WOs stay correctly sorted.
-    for df in ("date_notified", "due_date", "completed_datetime"):
+    for df in ("date_notified", "due_date", "completed_datetime", "downtime_end"):
         if df in editable:
             editable[df] = _normalize_date(editable[df])
 
@@ -2620,6 +3117,7 @@ def api_edit_workorder(wo_id):
     store.set_override(wo_id, editable, author=author)
     with _DATA_LOCK:
         rec.update(editable)
+        rec["downtime_hours"] = _compute_downtime_hours(rec)
 
     # Fire the "Closed & Completed" email when the status transitions into a
     # completed state (any WO type). Only on the transition, so re-saving an
@@ -2885,9 +3383,17 @@ def api_my_schedule():
 # --------------------------------------------------------------------------- #
 @app.route("/api/technicians", methods=["GET"])
 def api_list_technicians():
-    """List all active technicians (names only; aliases are Sean-only)."""
-    names = [t["name"] for t in store.list_technicians(active_only=True)]
-    return jsonify({"technicians": names})
+    """List all active technicians (names only; aliases are Sean-only).
+    Optionally filtered to a single division via ?division_key=bed."""
+    techs = store.list_technicians(active_only=True)
+    division_key = (request.args.get("division_key") or "").strip().lower()
+    if division_key:
+        techs = [t for t in techs if (t.get("division_key") or "bla") == division_key]
+    names = [t["name"] for t in techs]
+    details = [{"name": t["name"], "title": t.get("title") or "",
+                "division_key": t.get("division_key") or "bla",
+                "is_supervisor": bool(t.get("is_supervisor"))} for t in techs]
+    return jsonify({"technicians": names, "details": details})
 
 
 @app.route("/api/technicians", methods=["POST"])
@@ -2899,6 +3405,9 @@ def api_add_technician():
     author = (body.get("author") or "").strip()
     name = (body.get("name") or "").strip()
     aliases = body.get("aliases") or []
+    title = (body.get("title") or "").strip()
+    division_key = (body.get("division_key") or "bla").strip().lower()
+    is_supervisor = bool(body.get("is_supervisor"))
     if not author:
         return jsonify({"error": "Your name is required."}), 400
     if not name:
@@ -2907,7 +3416,8 @@ def api_add_technician():
         return jsonify({"error": "aliases must be a list."}), 400
     aliases = [str(a).strip() for a in aliases if str(a).strip()]
     try:
-        tech = store.add_technician(name, aliases=aliases, author=author)
+        tech = store.add_technician(name, aliases=aliases, author=author, title=title,
+                                     division_key=division_key, is_supervisor=is_supervisor)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
     _load_technicians()  # refresh in-memory sets immediately
@@ -3345,13 +3855,31 @@ def api_sean_auth_status():
     return jsonify({"protected": bool(SEAN_PASSWORD)})
 
 
+@app.route("/api/tech-auth")
+def api_tech_auth_status():
+    """Tell the frontend whether a given supervisor technician (e.g. Michael
+    Nygard) requires their own password to sign in with Sean-level authority."""
+    name = (request.args.get("name") or "").strip().lower()
+    return jsonify({"protected": bool(_supervisor_password(name))})
+
+
 @app.route("/api/verify-sean-password", methods=["POST"])
 def api_verify_sean_password():
-    """Validate Sean's password (used to unlock assignment + team stats)."""
+    """Validate Sean's password (used to unlock assignment + team stats), or --
+    when 'name' identifies a supervisor technician -- that technician's own
+    password instead."""
+    body = request.get_json(silent=True) or {}
+    name = (body.get("name") or "").strip().lower()
+    supplied = (body.get("password") or "").strip()
+    if name and name in _SUPERVISOR_TECHS:
+        required = _supervisor_password(name)
+        if not required:
+            return jsonify({"ok": True, "protected": False})
+        if supplied == required:
+            return jsonify({"ok": True})
+        return jsonify({"ok": False, "error": "Incorrect password"}), 401
     if not SEAN_PASSWORD:
         return jsonify({"ok": True, "protected": False})
-    body = request.get_json(silent=True) or {}
-    supplied = (body.get("password") or "").strip()
     if supplied == SEAN_PASSWORD:
         return jsonify({"ok": True})
     return jsonify({"ok": False, "error": "Incorrect password"}), 401
@@ -3427,6 +3955,69 @@ def api_save_guide(dept_key, eq_id):
         "exists": True,
         "markdown": result["markdown"],
         "generated_at": result["generated_at"],
+    })
+
+
+# --------------------------------------------------------------------------- #
+# Scheduled work-order step-by-step procedure (Ollama)
+# --------------------------------------------------------------------------- #
+@app.route("/api/workorder/<wo_id>/procedure")
+def api_get_procedure(wo_id):
+    path = _procedure_path(wo_id)
+    if not os.path.exists(path):
+        return jsonify({"exists": False, "markdown": None})
+    with open(path, encoding="utf-8") as f:
+        return jsonify({
+            "exists": True,
+            "markdown": f.read(),
+            "generated_at": os.path.getmtime(path),
+        })
+
+
+@app.route("/api/workorder/<wo_id>/procedure", methods=["POST"])
+def api_generate_procedure(wo_id):
+    """Generate (or regenerate) an AI step-by-step procedure for a SCHEDULED
+    work order, from its Audit Item text plus the specific machine's
+    make/model, so maintenance personnel get concrete guidance instead of the
+    bare checklist line. First-time generation needs the edit password; a
+    regenerate (?regenerate=1) needs the admin password, matching the
+    per-machine troubleshooting checklist."""
+    regen = str(request.args.get("regenerate") or "").strip() not in ("", "0", "false")
+    if regen:
+        if not _admin_ok(request):
+            return jsonify({"error": "Admin password required to regenerate this procedure."}), 401
+    elif not _edit_ok(request):
+        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+
+    rec = _WO_INDEX.get(str(wo_id).strip()) or store.get_work_order(str(wo_id).strip())
+    if rec is None:
+        return jsonify({"error": "work order not found"}), 404
+    if rec.get("wo_type") != "scheduled":
+        return jsonify({"error": "step-by-step procedures are only generated for scheduled work orders"}), 400
+
+    dept_key = rec.get("department_key") or ""
+    eq_id = _num_id(rec.get("equipment_id") or rec.get("equipment_eq_id") or "")
+    equipment_name = (rec.get("equipment_name") or "").strip() or "Unknown machine"
+    eq_label = (rec.get("equipment_eq_id") or "").strip()
+    label = f"{equipment_name} ({eq_label})" if eq_label else equipment_name
+    make, model = _machine_make_model(dept_key, eq_id) if dept_key and eq_id else ("", "")
+    audit_item = (rec.get("audit_item") or "").strip()
+
+    prompt = ae.build_scheduled_procedure_prompt(
+        audit_item, label, make=make, model=model, eq_label=eq_label
+    )
+    try:
+        markdown = ae.analyze(prompt, MODEL)
+    except SystemExit as e:  # analyze() calls sys.exit on failure
+        return jsonify({"error": str(e)}), 502
+
+    path = _procedure_path(wo_id)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(markdown)
+    return jsonify({
+        "exists": True,
+        "markdown": markdown,
+        "generated_at": os.path.getmtime(path),
     })
 
 

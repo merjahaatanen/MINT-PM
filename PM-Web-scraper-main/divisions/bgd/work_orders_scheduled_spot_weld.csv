@@ -1,0 +1,3 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+256,EQ ID 256,"Spotwelder, C-Gun",Spot Weld,7536,"1.) visually inspect air lines for damage 
+2.) Visually inspect Power cords for damage.",Closed and Completed,12/13/2023,Josh Patton,Maintenance,0.05,0.00,0.00,3/13/2024,,[]

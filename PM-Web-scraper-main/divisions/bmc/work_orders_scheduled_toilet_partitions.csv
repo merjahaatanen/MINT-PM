@@ -1,0 +1,147 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+565,EQ ID 565,"60"" Return Conveyor (1080 1/2"" Panel finisher)",Toilet Partitions,9749,Check oil level in gear reducer.,Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+565,EQ ID 565,"60"" Return Conveyor (1080 1/2"" Panel finisher)",Toilet Partitions,9618,Lubricate all bearings.,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+565,EQ ID 565,"60"" Return Conveyor (1080 1/2"" Panel finisher)",Toilet Partitions,312,Lubricate all bearings.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+565,EQ ID 565,"60"" Return Conveyor (1080 1/2"" Panel finisher)",Toilet Partitions,311,Check oil level in gear reducer.,Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+698,EQ ID 698,Universal 280 - 3/4 Finishing Machine (1080),Toilet Partitions,12002,Keep work unit clean. remove dust and shavings away from unit.,Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+698,EQ ID 698,Universal 280 - 3/4 Finishing Machine (1080),Toilet Partitions,12003,"1) Lubricate the slide guides
+2) Lubricate the ball screws",Pending,7/8/2024,,Operator,0.00,0.00,0.00,,,[]
+282,EQ ID 282,CNC Router #153 (Gapless) Anderson Router,Toilet Partitions,11890,"1) Check the machine’s air pressure regulator
+2) If spindle is liquid cooled, check water cooling system. Alternately if the spindle is air cooled, you will clean the spindle fan.",Pending,6/3/2024,,Operator,0.00,0.00,0.00,,,[]
+282,EQ ID 282,CNC Router #153 (Gapless) Anderson Router,Toilet Partitions,11891,"1) Clean and lubricate bearings and screws
+2) Clean vacuum pump filters
+3) Clean the spindle taper
+4) Check all connections",Pending,6/7/2024,,Operator,0.00,0.00,0.00,,,[]
+282,EQ ID 282,CNC Router #153 (Gapless) Anderson Router,Toilet Partitions,16116,"1) Clean the control cabinet
+2) Clean rails & check for loose bolts on machine
+3) Lubricate racks",Pending,9/17/2025,,Maintenance,0.00,0.00,0.00,,,[]
+282,EQ ID 282,CNC Router #153 (Gapless) Anderson Router,Toilet Partitions,11894,"1) Clean the control cabinet
+2) Clean rails & check for loose bolts on machine
+3) Lubricate racks",Closed and Completed,6/17/2024,TSG JD Young,Maintenance,0.00,0.00,0.00,3/5/2025,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9901,"1) Cleaning, side pressure device
+2) Check rubber seal on chip channel (dust extraction system)",Pending,1/16/2025,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,10025,Check rubber strips and brushes on pressure beam,Pending,2/2/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9624,"1) Check oil level on compressed air system
+2) Check wipers on saw carriage
+3) Check wipers on program fence",Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,16115,"1) Check rubber on clamp jaw, panel clamping
+2) Air conditioning unit, Check condensation hose",Pending,9/17/2025,,Maintenance,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9625,Check wipers on saw carriage,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9821,Check rubber seal on chip channel (dust extraction system),Pending,1/16/2025,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9731,"Air conditioning unit, Check condensation hose",Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9626,Check wipers on program fence,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,443,"1) Cleaning, side pressure device
+2) Check rubber seal on chip channel (dust extraction system)",Closed and Completed,3/18/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,448,Check rubber seal on chip channel (dust extraction system),Closed and Completed,3/18/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,444,Check rubber strips and brushes on pressure beam,Closed and Completed,4/2/2022,111,Operator,0.00,0.00,0.00,9/15/2023,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,445,"1) Check oil level on compressed air system
+2) Check wipers on saw carriage
+3) Check wipers on program fence",Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,447,Check wipers on saw carriage,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,450,Check wipers on program fence,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,449,"Air conditioning unit, Check condensation hose",Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,446,"1) Check rubber on clamp jaw, panel clamping
+2) Air conditioning unit, Check condensation hose",Closed and Completed,6/18/2022,.,Maintenance,0.00,0.00,0.00,1/16/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,7252,Check rubber strips and brushes on pressure beam,Closed and Completed,9/30/2023,.,Operator,0.00,0.00,0.00,1/18/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9736,"1) Check rubber on clamp jaw, panel clamping
+2) Air conditioning unit, Check condensation hose",Closed and Completed,4/16/2024,Bart James,Maintenance,0.00,0.00,0.00,4/16/2024,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,9722,Clean glue pot,Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,9628,Clean sensor in glue pot,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,11887,"Refill tank, when refilling tank do not allow dust to fall in oil container.",Pending,9/2/2024,,Operator,0.00,0.00,0.00,,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,11888,"1) Lubricate chain track
+2) Lubricate conveyor chain
+3) Lubricate top pressure unit",Pending,6/5/2024,,Operator,0.00,0.00,0.00,,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,485,Clean sensor in glue pot,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,484,Clean glue pot,Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+710,EQ ID 710,Outswing drilling machine,Toilet Partitions,11969,check and fill airline oiler.,Pending,5/5/2025,,Operator,0.00,0.00,0.00,,,[]
+310,EQ ID 310,A&S Panel Saw #221 (Packing Saw),Toilet Partitions,16119,"1) Remove & replace oil filter.
+2) Check for oil leaks
+3) Tighten bolts & fittings if necessary",Pending,12/17/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+310,EQ ID 310,A&S Panel Saw #221 (Packing Saw),Toilet Partitions,11918,"1) Remove & replace oil filter.
+2) Check for oil leaks
+3) Tighten bolts & fittings if necessary",Closed and Completed,10/7/2024,Jeff Riffle,Maintenance Mechanic,0.00,0.00,0.00,8/5/2024,Bart James - 06/17/25  9:00:58 AM: PM completed during roller change,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,9730,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,9617,Check overhead crane components.,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,9778,Check and clean filter element.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,295,Check and clean filter element.,Closed and Completed,4/18/2022,Dan Taylor,Operator,0.00,0.00,0.00,5/9/2022,Dan Taylor - 05/09/22  3:54:15 PM: Cleaned | Dan Taylor - 05/09/22  3:52:38 PM: Cleaned | Dan Taylor - 05/09/22  3:52:06 PM: Cleaned | Dan Taylor - 05/09/22  3:51:46 PM: Cleaned | Dan Taylor - 05/09/22  3:51:20 PM: Cleaned | Dan Taylor - 05/09/22  3:50:48 PM: Cleaned | Dan Taylor - 05/09/22  3:50:25 PM: Cleaned | Dan Taylor - 05/09/22  3:49:51 PM: cleaned | Dan Taylor - 05/09/22  3:48:09 PM: Cleaned filter and housing | Dan Taylor - 05/09/22  3:47:00 PM: Cleaned filter and housing,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,293,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,4/18/2022,1,Operator,0.00,0.00,0.00,9/25/2023,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,294,Check overhead crane components.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,7325,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,10/25/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,2666,Check and clean filter element.,Closed and Completed,11/13/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,9769,Check and clean filter element.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,9615,Check bolt and nut tightness.,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,9616,Check overhead crane components.,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,296,Check and clean filter element.,Closed and Completed,4/18/2022,Dan Taylor,Operator,0.50,0.00,0.00,5/9/2022,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,297,Check bolt and nut tightness.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,298,Check overhead crane components.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,2667,Check and clean filter element.,Closed and Completed,11/13/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,299,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,4/18/2022,Dan Taylor,Operator,0.50,0.00,0.00,5/9/2022,Dan Taylor - 05/09/22  3:53:08 PM: Cleaned,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,300,Check overhead crane components.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,301,Check bolt and nut tightness.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,2668,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,11/13/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,9773,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,2/16/2024,Karolina TEST,Operator,0.00,0.00,1.00,7/28/2025,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,9592,Check overhead crane components.,Closed and Completed,2/9/2024,Dale Kee Ron Miller (Test),Operator,0.00,0.00,0.10,8/6/2025,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,9771,Check and clean filter element.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,9594,Check overhead crane components.,Pending,2/9/2024,,Operator,0.00,0.00,0.00,,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,9595,Check bolt and nut tightness.,Pending,2/9/2024,,Operator,0.00,0.00,0.00,,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,302,Check and clean filter element.,Closed and Completed,4/18/2022,Dan Taylor,Operator,0.50,0.00,0.00,5/9/2022,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,303,Check overhead crane components.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,304,Check bolt and nut tightness.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,2669,Check and clean filter element.,Closed and Completed,11/13/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,9981,Grease slides.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,9591,Clean and oil chain.,Pending,2/9/2024,,Operator,0.00,0.00,0.00,,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,9596,Grease sprocket shaft bearings.,Pending,2/9/2024,,Operator,0.00,0.00,0.00,,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,305,Grease slides.,Closed and Completed,4/18/2022,TEST,Operator,0.00,0.00,0.10,4/21/2023,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,306,Clean and oil chain.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,307,Grease sprocket shaft bearings.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,5395,Grease slides.,Closed and Completed,5/21/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+680,EQ ID 680,Gannomat 1080 Drilling Machine,Toilet Partitions,9612,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Pending,2/10/2024,,,0.00,0.00,0.00,,,[]
+680,EQ ID 680,Gannomat 1080 Drilling Machine,Toilet Partitions,474,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Closed and Completed,4/18/2022,.,,0.00,0.00,0.00,1/10/2024,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9791,"1) Lubricate slide
+2) Check ARF",Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9792,Check ARF,Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,16151,Square the back and side fences,Pending,12/18/2025,,Technician,0.00,0.00,0.00,,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,16150,"1) Check for Squareness
+2) Check Sensors",Pending,6/18/2026,,Technician,0.00,0.00,0.00,,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,478,Check Sensors,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,479,"1) Check for Squareness
+2) Check Sensors",Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,477,Square the back and side fences,Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,476,Check ARF,Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,475,"1) Lubricate slide
+2) Check ARF",Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9767,Square the back and side fences,Closed without Action,7/16/2024,Day shift,Technician,0.00,0.00,0.00,6/18/2025,Andy Curtis - 06/18/25  7:31:54 PM: New Machine,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9911,"1) Check for Squareness
+2) Check Sensors",Closed without Action,1/16/2025,Day shift,Technician,0.00,0.00,0.00,6/18/2025,Andy Curtis - 06/18/25  7:30:56 PM: New Machine,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9905,Check Sensors,Closed without Action,1/16/2025,Day shift,Technician,0.00,0.00,0.00,6/18/2025,Andy Curtis - 06/18/25  7:31:23 PM: New Machine,[]
+1385,EQ ID 1385,Multicyl Punch,Toilet Partitions,16152,"Oil level may have to be topped up. Generally, the sealed Multicyl oil system should only be replaced when doing a seal change, or after service of one year",Pending,6/18/2026,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1385,EQ ID 1385,Multicyl Punch,Toilet Partitions,11886,"Oil level may have to be topped up. Generally, the sealed Multicyl oil system should only be replaced when doing a seal change, or after service of one year",Closed without Action,3/10/2025,.,Maintenance Mechanic,0.00,0.00,0.00,6/18/2025,Andy Curtis - 06/18/25  7:33:54 PM: Not used often.,[]
+2022,EQ ID 2022,Saw 2 (north) Homag,Toilet Partitions,11762,"1) Refill lubricant tank
+2) Check and clean lubrication points",Pending,3/2/2025,,Operator,0.00,0.00,0.00,,,[]
+2020,EQ ID 2020,Intel-Store,Toilet Partitions,5467,"Location -Top part of the scissor lift mechanism
+Use Reference pictures notes from Manual
+*Check black tooth belt for damage check tension replace or adjust if needed .
+*Check all guide rollers on X  and Y axis check for play check that all are moving and clean guides.
+*Check sliding blocks for damage replace if needed
+*Inspect power chain blow if needed 
+*Check Transmission gears for leaks check oil level 
+*Clean dust deposits from dive on transmission
+*Grease the toothed segments with Molykote lube 
+*Grease all bearing  nipples using Part #4-155-70-0005 make sure to grease until a fresh rim of grease forms at the seals .
+*Grease the scissor lift mechanism  bearings 
+*Grease rotary drive bearings 
+*Check both drive tires make sure they are in the center and not drifting to the side look at the shaft no grease swirl marks should be seen tighten locks if needed",Closed and Completed,7/1/2023,Stiles Tech,Maintenance Mechanic,0.00,"4,000.00",0.00,1/16/2024,,[]
+2020,EQ ID 2020,Intel-Store,Toilet Partitions,5468,"*Wipe and clean steel cable inspect for damage or if its worn out 
+*Lightly lubricate the steel cable once each year with a brush",Closed and Completed,5/1/2024,Jimmy Sadler,Maintenance Mechanic,0.00,0.00,0.00,6/5/2024,,[]

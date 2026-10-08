@@ -1,0 +1,39 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+1719,EQ ID 1719,Arpac stretch wrapper,Shipping,11690,"Make sure power is OFF or disconnected before servicing.
+1) Clean up trash around area, wipe up and grease or spills.
+2) Using wipes and warm soapy water, clean external surfaces of machine.
+
+Machine should be on for this part of servicing.
+1) While machine is cycling, press E-Stop. The machine should immediately stop, pull button back up to reset.",Pending,5/18/2024,,Operator,0.00,0.00,0.00,,,[]
+1719,EQ ID 1719,Arpac stretch wrapper,Shipping,11691,"Machine power should be OFF or disconnected before servicing. 
+1) Cleaning film saver pre-stretch roller
+   - Do NOT use acetone to clean rollers or they will be damaged
+   - Push knob down to open roller door, thoroughly clean roller with wipes and isopropyl alcohol. Close door when finished.
+2) Cleaning Photo Sensor
+   - Spray small amount of window cleaning solution to face of photo eye, then dry photo eye with cleaning wipe.",Pending,5/30/2024,,Operator,0.00,0.00,0.00,,,[]
+1719,EQ ID 1719,Arpac stretch wrapper,Shipping,11692,"Machine power should be OFF or disconnected before servicing.
+1) Greasing center shaft bearing
+  - Apply one pump of grease (grease gun with No.2 Grade Lithium Grease) to the grease fitting, then wipe fitting clean.",Pending,9/13/2024,,Operator,0.00,0.00,0.00,,,[]
+1719,EQ ID 1719,Arpac stretch wrapper,Shipping,11693,"Machine power should be OFF or disconnected before servicing.
+1) Checking Turntable Drive Chain Tension
+  - Loosen bolt.
+  - Turn nut until you begin to feel resistance of chain tightener against the chain, then turn another 30 degrees.
+  - While holding nut still, tighten bolt. Do NOT overtighten chain, machine will get damaged if you do.
+2) Check Fasteners for Tightness
+  - Check all exterior fasteners for tightness, tighten as required.
+3) Grease Carriage Lift Chain
+  - Appy a thin film of grease (No.2 lithium grease) to the lift chain, then wipe any excess grease.",Pending,5/4/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1720,EQ ID 1720,Cousins stretch wrapper,Shipping,11724,"LP-SRT High/Low Profile
+1) Test operation & adjust carriage safety switch as required
+2) Inspect & tighten set screws of pre-stretch roller bearings
+3) Lubricate & adjust tension of pre-stretch chains
+4) Inspect & tighten set-screws pre-stretch sprockets",Pending,7/17/2024,,Operator,0.00,0.00,0.00,,,[]
+1720,EQ ID 1720,Cousins stretch wrapper,Shipping,11723,"LP-SRT High/Low Profile
+1) Inspect turntable support rollers
+2) Lubricate & adjust tension of turntable drive chain
+3) Inspect & tighten set screws on turntable gear reducer sprocket
+4) Inspect, check or adjust sensing distance of 1PX turntable pulse prox. sensor, tighten locking nuts if required
+5)  Inspect, check or adjust sensing distance of 5PX carriage pulse prox. sensor, tighten locking nuts if required
+6) Lubricate & adjust tension of carriage lift chain
+7) Inspect & tighten mounting/ set screws of carriage lift sprockets
+8) Inspect carriage limit switch arms",Closed and Completed,10/17/2024,Gen Pac,Maintenance Mechanic,0.00,0.00,0.00,9/27/2024,Andy Curtis - 02/10/25 10:11:15 PM: This was done on a yearly PM at inventory last year in Sept.,[]

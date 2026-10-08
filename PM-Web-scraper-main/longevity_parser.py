@@ -106,6 +106,9 @@ _DEPT_KEY_ALIASES = {
     "shipping": "shipping",
     "fabrication": "machine_shop",
     "tube mill": "machine_shop",
+    "metal fabrication": "machine_shop",
+    "shipping receiving": "shipping",
+    "warehouse": "warehouse",
 }
 
 
@@ -178,8 +181,10 @@ DIVISION_SHEETS = OrderedDict([
     ("bla", "BLA"),
     ("bmc", "BMC"),
     ("bwc", "BWC"),
+    ("bwec", "BWC"),
     ("bed", "BED"),
     ("thris", "THRIS"),
+    ("kkp", "KKP"),  # no sheet in the workbook yet; wired up for when it's added
 ])
 
 

@@ -1,0 +1,116 @@
+eq_id,dept,dept_num,equipment_name,asset_num,make,model,vendor,wo_qty,modified
+EQ ID 5392,Metal Fabrication,15,TruMatic 5000 (K11),,Trumpf,TruMatic 5000 (K11),Trumpf,0,6/10/2026 6:12 AM
+EQ ID 5391,Warehouse,40,Stockchaser,,Lift solution,Stockchaser-100,UNK or N/A,0,5/21/2026 8:42 AM
+EQ ID 5389,Metal Fabrication,15,Air dryer,,Atlas Copco,CD150+115/230-40FASME ULHL150,Atlas Copco,0,5/15/2026 6:16 AM
+EQ ID 5388,Metal Fabrication,15,Air Dryer,,Atlas Copco,CD150+115/230-40FASME ULHL150,Atlas Copco,0,5/15/2026 6:14 AM
+EQ ID 5387,Metal Fabrication,15,Air compressor,,Atlas Copco,GA37VSDs,Atlas Copco,0,5/15/2026 6:11 AM
+EQ ID 5386,Metal Fabrication,15,Air compressor,,Atlas Copco,GA37VSDs,Atlas Copco,0,5/15/2026 6:08 AM
+EQ ID 5385,Shipping/Receiving,20,Electric Forklift #7,,Toyota,8FBE15U,Toyota,0,5/15/2026 5:43 AM
+EQ ID 5384,Metal Fabrication,15,TruMatic 5000,,Trumpf,K11 Punch Laser machine,Trumpf,0,5/15/2026 5:39 AM
+EQ ID 5373,Maintenance,30,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",,N/A,N/A,UNK or N/A,1,11/24/2025 6:28 AM
+EQ ID 5370,Metal Fabrication,15,Advance lift,,N/A,P-2536,UNK or N/A,1,8/28/2025 11:50 AM
+EQ ID 5369,Assembly,10,Free Standing Bridge Crane,,Gorbel A Class Above,Order#681171,Gorbel A Class above,1,8/22/2025 7:56 AM
+EQ ID 5365,Shipping/Receiving,20,Over head fan,,Big ass fan,Powerfoil X3.0,Big Ass Fans,1,4/17/2025 5:38 AM
+EQ ID 5364,Metal Fabrication,15,Electric High Lift Truck,GD2409529,Global Industrial,N/A,UNK or N/A,0,4/3/2025 12:35 PM
+EQ ID 5363,Metal Fabrication,15,Marking machine 2024,,Cajo,Cajo Hercules Advanced 20W,Cajo Technologies,0,4/1/2025 12:44 PM
+EQ ID 5155,Metal Fabrication,15,Laser Marking Machine 2020,CHF2020FC205K,CAJO,Hercules Multimark,Cajo Technologies,1,4/1/2025 12:35 PM
+EQ ID 5356,Assembly,10,Speedy Packer,,Sealed Air,SP5,Sealed Air,1,12/5/2024 7:11 AM
+EQ ID 5355,Assembly,10,Tape machine#7,5ES00201442,Better Packaging,BP555eS,Better Packages (Better Pack),0,12/2/2024 5:56 AM
+EQ ID 5349,Maintenance,30,Backflow,,N/A,N/A,UNK or N/A,0,8/30/2024 7:27 AM
+EQ ID 5348,Maintenance,30,Fire sprinkler,,N/A,N/A,UNK or N/A,0,8/30/2024 7:26 AM
+EQ ID 5347,Maintenance,30,Sewer line,,N/A,N/A,UNK or N/A,0,8/30/2024 7:14 AM
+EQ ID 5344,Maintenance,30,AirEye fan,006819,Big ass fan,FA532A4562,Big Ass Fans,0,8/22/2024 9:39 AM
+EQ ID 5342,Assembly,10,Claw Vacuum Pump,,BUSCH Production,MV 0312 B 001,Stiles,1,7/31/2024 6:00 AM
+EQ ID 5326,Metal Fabrication,15,Tube Bender,80199,Transfluid,2023,Transfluid,2,5/24/2024 11:46 AM
+EQ ID 5272,Assembly,10,Fanuc Robot,,Fanuc,M-710iC/50T/70T,UNK or N/A,1,2/20/2024 5:22 AM
+EQ ID 5271,Metal Fabrication,15,Electric pallet jack,3322100857,Big Joe,D-40,UNK or N/A,0,2/19/2024 11:12 AM
+EQ ID 5269,Assembly,10,Schmalz Blower,,Schmalz,SB-M/SB-L,Schmalz,0,1/29/2024 7:56 AM
+EQ ID 5268,Assembly,10,Dust filter for Vacuum lift,,Schmalz,FTF-50-P,Schmalz,0,1/29/2024 7:53 AM
+EQ ID 5267,Assembly,10,JUMBO lift handle,,Schmalz,21965380,Schmalz,0,1/29/2024 7:50 AM
+EQ ID 5227,Assembly,10,Stapling gun s/n 651837,651837,Boxer,26182740,ISM enterprises,0,1/24/2024 11:37 AM
+EQ ID 5228,Assembly,10,Stapling gun s/n 320376,320376,Boxer,26180720,ISM enterprises,0,1/24/2024 11:36 AM
+EQ ID 5152,Assembly,10,Stapling gun s/n 651178,651178,Boxer Stapling Machine,26180720,ISM enterprises,0,1/24/2024 11:36 AM
+EQ ID 5208,Assembly,10,Stapling gun s/n 651319,651319,Boxer Stapling Machine,26182740,ISM enterprises,0,1/24/2024 11:33 AM
+EQ ID 5265,Assembly,10,Cordless Screwdriver and Nutrunner,SP23C08536,Ingersoll Rand,QXFN2AT015PS06,UNK or N/A,0,1/19/2024 1:07 PM
+EQ ID 5264,Warehouse,40,Dock door/Leveler,,N/A,N/A,UNK or N/A,0,1/12/2024 6:30 AM
+EQ ID 5263,Maintenance,30,Sump Pump,,SafeDri,SD-1850,UNK or N/A,0,1/11/2024 9:21 AM
+EQ ID 5086,Metal Fabrication,15,Norlok clincher,21091,Norlok,Heavy Duty Surelock,Norlok,1,11/20/2023 11:58 AM
+EQ ID 5256,Maintenance,30,Heating and Cooling unit #1,3223C08704,Carrier,48GCFM06A2A6A0A0A0,UNK or N/A,1,11/20/2023 7:38 AM
+EQ ID 5259,Maintenance,30,Heating and Cooling unit#4,3323C06942,Carrier,48GCFM06A2A6A0A0A0,UNK or N/A,1,11/20/2023 7:36 AM
+EQ ID 5257,Maintenance,30,Heating and Cooling unit#2,3423C07620,Carrier,48GCFM06A2A6A0A0A0,UNK or N/A,0,11/20/2023 7:35 AM
+EQ ID 5258,Maintenance,30,Heating Cooling unit#3,3323C06805,Carrier,48GCFM06A2A6A0A0A0,UNK or N/A,1,11/20/2023 7:35 AM
+EQ ID 5251,Assembly,10,Cordless drill,,Festool,"CXS 2,6-Set",Festool,0,11/13/2023 10:03 AM
+EQ ID 5250,Assembly,10,Cordless drill,,Festool,"T18+3 HPC 4,0 I-Set",Festool,0,11/13/2023 10:02 AM
+EQ ID 5249,Assembly,10,Cordless drill,,Festool,"TXS 2,6-Set",Festool,0,11/13/2023 9:59 AM
+EQ ID 5247,Metal Fabrication,15,Slag hog,,SlatPro,SlatPro,SlatPro,0,11/2/2023 9:36 AM
+EQ ID 5243,Assembly,10,CNC Routing oil pumps,,Lafer,RA 063 F,Homag,0,10/5/2023 10:27 AM
+EQ ID 5241,Assembly,10,N-300 nesting Vacuum Pump#3,A3713381,Becker Pump,VTLF2.250/0-79,Becker Pumps Corp.,0,9/26/2023 9:13 AM
+EQ ID 5127,Warehouse,40,Electric forklift truck (sit-down) #1,23804,Toyota,7FBEU18,Toyota,0,9/6/2023 8:15 AM
+EQ ID 5128,Warehouse,40,Electric forklift truck(sit-down) #4,12553,Toyota,8FBE18U,Toyota,0,9/6/2023 8:15 AM
+EQ ID 5236,Maintenance,30,Trash compactors,,Marathon,300T,Marathon compaction & recycling solution,0,9/5/2023 7:21 AM
+EQ ID 5235,Maintenance,30,Trash containers,,Marathon,RJ-40-00,Marathon compaction & recycling solution,0,9/5/2023 7:19 AM
+EQ ID 5126,Metal Fabrication,15,Electric Forklift Truck (sit-down)#3,60282,Toyota,8FBCU28,Toyota,0,9/1/2023 11:58 AM
+EQ ID 5233,Warehouse,40,Electric forklift truck (sit-down)#6,11904,Toyota,8FBES15U,Toyota,0,9/1/2023 10:59 AM
+EQ ID 5232,Warehouse,40,Electric forklift truck (sit-down)#5,11903,Toyota,8FBES15U,Toyota,0,9/1/2023 10:58 AM
+EQ ID 5226,Maintenance,30,Sawzall,,Milwaukee,CAT.NO.2821-20,UNK or N/A,0,8/10/2023 10:58 AM
+EQ ID 5225,Maintenance,30,Cordless TPC drill,,Festool,"TPC 18/4 HPC 4,0 I-Set",Festool,0,8/10/2023 10:55 AM
+EQ ID 5117,Assembly,10,Standard pallet truck-G2,15061436-14/086,N/A,H-2708,UNK or N/A,0,5/11/2023 8:57 AM
+EQ ID 5114,Assembly,10,Standard Pallet truck-G1,12121436-5/086,N/A,H-2708,UNK or N/A,0,5/11/2023 7:39 AM
+EQ ID 5143,Assembly,10,Rivet gun#13,12172200,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 11:10 AM
+EQ ID 5147,Assembly,10,Rivet gun#9,0158100,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 11:10 AM
+EQ ID 5138,Assembly,10,Rivet gun#8,0370687,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 10:54 AM
+EQ ID 5137,Assembly,10,Rivet gun#11,03175833,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 10:53 AM
+EQ ID 5146,Assembly,10,Rivet gun#6,0363689,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 10:53 AM
+EQ ID 5139,Assembly,10,Rivet gun#3,0362688,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 10:52 AM
+EQ ID 5140,Assembly,10,Rivet gun#1,0363687,Gersipa,Taurus2,UNK or N/A,0,2/23/2023 10:51 AM
+EQ ID 5141,Assembly,10,Rivet gun#4,0589426,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 10:51 AM
+EQ ID 5144,Assembly,10,Rivet gun#7,0158102,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 10:50 AM
+EQ ID 5145,Assembly,10,Rivet gun#2,0370452,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 10:49 AM
+EQ ID 5148,Assembly,10,Rivet gun#10,0158101,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 10:48 AM
+EQ ID 5149,Assembly,10,Rivet gun#5,1096418,Gesipa,Taurus2,UNK or N/A,0,2/23/2023 10:47 AM
+EQ ID 5201,Warehouse,40,Hand pallet truck,702393,Uline,H-1043,UNK or N/A,0,2/3/2023 7:27 AM
+EQ ID 5191,Metal Fabrication,15,Desiccant Compressed Air Dryer,,Ingersoll Rand,HLA1601HE0AA,Ingersoll Rand,0,1/4/2023 9:05 AM
+EQ ID 5190,Maintenance,30,Ladder #8,,Ladder,HB-2-G,Home Depot,0,12/1/2022 3:08 PM
+EQ ID 5189,Maintenance,30,Ladder #7,,Ladder,10210B,Home Depot,0,12/1/2022 3:07 PM
+EQ ID 5188,Maintenance,30,Ladder #6,,Ladder,AS-2,Home Depot,0,12/1/2022 3:06 PM
+EQ ID 5187,Maintenance,30,Ladder #5,,Ladder,SSK-4T,Home Depot,0,12/1/2022 12:52 PM
+EQ ID 5186,Maintenance,30,Ladder #4,,Ladder,Ladder,Home Depot,0,12/1/2022 12:51 PM
+EQ ID 5101,Assembly,10,Tape machine #8,5ES00097844,Better pack,555es,Better Packages (Better Pack),0,11/22/2022 11:42 AM
+EQ ID 5103,Assembly,10,Tape machine #6,5ES00098137,Better Pack,555es,Better Packages (Better Pack),0,11/22/2022 11:41 AM
+EQ ID 5105,Assembly,10,Tape machine #4,5ESO00043971,Better pack,555es,Better Packages (Better Pack),0,11/22/2022 11:40 AM
+EQ ID 5102,Assembly,10,Tape machine #5,5ESO00044301,Better pack,555es,Better Packages (Better Pack),0,11/22/2022 11:40 AM
+EQ ID 5106,Assembly,10,Tape machine #3,5ES00097836,Better pack,555es,Better Packages (Better Pack),0,11/22/2022 11:39 AM
+EQ ID 5107,Assembly,10,Tape machine #2,5ES00036485,Better pack,555es,Better Packages (Better Pack),0,11/22/2022 11:38 AM
+EQ ID 5108,Assembly,10,Tape machine #1,5ES00105720,Better pack,555es,Better Packages (Better Pack),0,11/22/2022 11:38 AM
+EQ ID 5167,Assembly,10,N-300 Nesting Vacuum Pump#2,A3320487,Becker Pumps,VTLF2.250/0-79,Becker Pumps Corp.,0,8/26/2022 10:24 AM
+EQ ID 5085,Assembly,10,Homag N-300 Nest CNC Router,0-250-80-4143,Homag,N-300,Homag,0,8/26/2022 10:14 AM
+EQ ID 5123,Assembly,10,Walkie stacker#1,6BWS11-10050,Toyota,6BWS11,Toyota,0,8/18/2022 1:37 PM
+EQ ID 5124,Assembly,10,Walkie Stacker#2,6BWS11-10049,Toyota,6BWS11,Toyota,0,8/18/2022 1:37 PM
+EQ ID 5125,Assembly,10,Walkie stacker#3,6BWS15-10424,Toyota,6BWS15,Toyota,0,8/18/2022 1:36 PM
+EQ ID 5157,Metal Fabrication,15,Tapping arm,026191,Flexarm,A-32,Flexarm,0,5/27/2022 11:42 AM
+EQ ID 5079,Metal Fabrication,15,Trumpf laser cutter,A0312L0202,Trumpf,Trulaser 2030,Trumpf,3,5/25/2022 5:29 AM
+EQ ID 5156,Assembly,10,Spin-pull threaded insert tool,RK-50SP-A819,Rivet king,RK-50SP,Industrial Rivet & Fastener Co.,0,5/24/2022 10:29 AM
+EQ ID 5154,Warehouse,40,Standard pallet truck,753747,N/A,H-1043,UNK or N/A,0,5/24/2022 5:25 AM
+EQ ID 5153,Warehouse,40,Standard pallet truck,753746,N/A,H-1043,UNK or N/A,0,5/24/2022 5:23 AM
+EQ ID 5151,Maintenance,30,Stapling gun,320404,Boxer Stapling Machine,26180720,ISM enterprises,0,5/20/2022 9:14 AM
+EQ ID 5129,Maintenance,30,Electric Scissors,22100841,Skyjack,SJIII-3219,UNK or N/A,0,5/18/2022 8:07 AM
+EQ ID 5122,Shipping/Receiving,20,Standard pallet truck,4060686,N/A,N/A,UNK or N/A,0,5/13/2022 11:41 AM
+EQ ID 5121,Shipping/Receiving,20,Standard pallet truck,2687247,N/A,N/A,UNK or N/A,0,5/13/2022 11:39 AM
+EQ ID 5120,Warehouse,40,Standard pallet truck,J20021081-2/421,N/A,120125,UNK or N/A,0,5/13/2022 11:37 AM
+EQ ID 5119,Shipping/Receiving,20,Standard pallet truck,13071436-5/043,N/A,N/A,UNK or N/A,0,5/13/2022 11:35 AM
+EQ ID 5118,Assembly,10,Standard pallet truck,702534,N/A,H-1043,UNK or N/A,0,5/13/2022 11:33 AM
+EQ ID 5112,Metal Fabrication,15,Scissor lift pallet truck,316823,UKN,H-2507,UNK or N/A,0,5/13/2022 9:35 AM
+EQ ID 5116,Assembly,10,Standard pallet truck,5239047,Toyota,HPT28U,Toyota,0,5/13/2022 9:34 AM
+EQ ID 5113,Assembly,10,Standard Fork pallet truck,702393,N/A,H-1043,UNK or N/A,0,5/13/2022 9:25 AM
+EQ ID 5115,Assembly,10,Standard pallet truck,5204058,Toyota,HPT28U,UNK or N/A,0,5/13/2022 9:12 AM
+EQ ID 5111,Metal Fabrication,15,Scissor lift pallet truck,362710,Uline,H-2507,Uline,0,5/13/2022 6:47 AM
+EQ ID 5109,Metal Fabrication,15,Scissor lift pallet truck,362706,Uline,H-2507,Uline,0,5/13/2022 6:43 AM
+EQ ID 5092,Assembly,10,Air prep station KB300-A,na,Custom,na,UNK or N/A,0,5/2/2022 1:21 PM
+EQ ID 5088,Metal Fabrication,15,Camfil air filter for welder,G75376001,Camfil,GS4,Camfil,0,5/2/2022 12:58 PM
+EQ ID 5087,Metal Fabrication,15,Welding robots,502656,Lincoln Electric,Project 13784-001,Lincoln Electric / Wolf Robotics,2,5/2/2022 12:57 PM
+EQ ID 5084,Metal Fabrication,15,Ingersoll Rand Air Compressor,NL1947U17228,Ingersoll Rand,R37NE-A,Ingersoll Rand,0,5/2/2022 12:48 PM
+EQ ID 5083,Shipping/Receiving,20,Automated stretch wrapper,QX051440,Lantech,Q-300XT Plus,Lantech,0,5/2/2022 12:47 PM
+EQ ID 5081,Metal Fabrication,15,Holtec Nitrogen Generator,J1431-1903,Holtec,HSS-7,Holtec,0,5/2/2022 12:43 PM
+EQ ID 5080,Metal Fabrication,15,Trumpf press brake,B0403A0181,Trumpf,TruBend Cell 7036,Trumpf,2,5/2/2022 12:42 PM
+EQ ID 5074,Assembly,10,Eyewash station - compressor room,N/A,N/A,N/A,UNK or N/A,1,4/26/2022 12:05 PM
+EQ ID 5075,Assembly,10,Eyewash station - speedy packer,N/A,N/A,N/A,UNK or N/A,1,4/26/2022 12:05 PM

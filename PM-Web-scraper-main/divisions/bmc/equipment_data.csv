@@ -1,0 +1,364 @@
+eq_id,dept,dept_num,equipment_name,asset_num,make,model,vendor,wo_qty,modified
+EQ ID 5379,Maintenance,29,Portable Generator,,Westinghouse,WGEN14500DFC,,0,3/9/2026 11:06 AM
+EQ ID 5378,Privada,42,Forklift,,Toyota,8FBC25U,,0,2/12/2026 9:21 AM
+EQ ID 5376,Thrislington,999,Emmegi Drilling Machine (NEW),,Emmegi,Phantomatic T3 A,,0,12/19/2025 10:58 AM
+EQ ID 5375,Thrislington,999,Emmegi Dual Saw (NEW),,Emmegi,Classic Magic O500 TU/4,,0,12/19/2025 10:56 AM
+EQ ID 1958,Privada,42,MTC CNC Hinge Pocket Machine,3207,MTC,HARP7713,,1,12/11/2025 5:03 AM
+EQ ID 703,Mirrors,28,Cat Wet Dust Collector,,Cat C-5,0,,2,10/21/2025 5:33 AM
+EQ ID 668,Mirrors,28,TOX Clinching Machine (Swager Machine),,0,CMH 03.63,,0,9/26/2025 5:45 AM
+EQ ID 5368,Maintenance,29,125 HP Compressor,,Sullivan-Palatek,SP16-125VFD,,1,7/17/2025 10:18 AM
+EQ ID 5163,Mirrors,28,Stand-up Stacker Forklift,?,Toyota,RF1-BH1X45,,0,6/19/2025 6:41 AM
+EQ ID 5158,Shipping,32,Toyota 3500 lb (new),3096,Toyota,8FBE20U,,0,4/24/2025 7:02 AM
+EQ ID 669,Mirrors,28,"Ready Bender, pneumatic",10174,Bantam Brake,B512,,2,4/17/2025 6:44 AM
+EQ ID 565,Toilet Partitions,40,"60"" Return Conveyor (1080 1/2"" Panel finisher)",11655,Doucet,"60"" Return Conveyor",,2,4/9/2025 5:02 AM
+EQ ID 699,Toilet Partitions,40,Thomas Return System-1080 (3/4),11623,Thomas,70x13438,,0,4/9/2025 4:59 AM
+EQ ID 5362,Shipping,32,Reach Truck (new),,Toyota,RF1-BH1X35,The Lilly Company,0,3/11/2025 5:33 AM
+EQ ID 5359,Toilet Partitions,40,Thomas Conveyor - Tenoner,,Thomas Conveyor,100 X 146 SB,,0,2/12/2025 2:31 AM
+EQ ID 5179,Thrislington,999,CNC Router,11625,Homag,BMG110/Venture114M,Stiles Machinery,0,1/6/2025 7:26 PM
+EQ ID 698,Toilet Partitions,40,Universal 280 - 3/4 Finishing Machine (1080),11342,Technolegno,Universal 280,,2,12/18/2024 12:12 PM
+EQ ID 5350,Toilet Partitions,40,Single End Tenoner,,Voorwood,A517Z(H),,0,9/9/2024 9:21 AM
+EQ ID 5327,Privada,42,Automatic Applicator (NEW),,Nordson,Series H-20,,2,8/15/2024 9:32 AM
+EQ ID 5339,Thrislington,999,Fora -Fresatrice CNC (NEW),,SCM,M800,,7,7/16/2024 10:54 AM
+EQ ID 5337,Stainless,24,262 Multi-Gun Welder,3149,TJ Snow,Custom,T. J. Snow Co. Inc.,4,6/22/2024 7:54 AM
+EQ ID 5333,Privada,42,PUR hot melt adhesive system (NEW),3163,Burkle,SKA,,5,6/22/2024 7:48 AM
+EQ ID 5335,Stainless,24,Toyota Electric Lift,3164,Toyota,6BWR15,The Lilly Company,0,6/18/2024 11:03 AM
+EQ ID 5320,Mirrors,28,Forklift,3165,Toyota,8FBCU25,The Lilly Company,0,6/18/2024 8:55 AM
+EQ ID 5334,Shipping,32,Toyota Pallet Jack (new),,Toyota,8HBW23,,0,6/17/2024 8:43 AM
+EQ ID 5328,Privada,42,Automatic Applicator (NEW),,Nordson,Series H-20,,2,6/6/2024 6:46 AM
+EQ ID 5324,Mirrors,28,Stroke Sander- Doucet,3144,Doucet,MSP-PMC-264,,2,5/9/2024 8:23 PM
+EQ ID 5318,Shipping,32,Lantech Stretch Wrapper,,Lantech,QL400XT,,0,4/16/2024 5:50 AM
+EQ ID 647,Stainless,24,2888 Cam Riviter,,National Rivet & Manufacturing Co,1000,,5,2/12/2024 5:34 AM
+EQ ID 282,Toilet Partitions,40,CNC Router #153 (Gapless) Anderson Router,153,Andi,Stratos,Anderson,5,11/10/2023 8:39 AM
+EQ ID 5230,Thrislington,999,Black Bros Glue Spreader,3131,Black Bros.,"22D-1175 86"" T&B SPR",,3,10/30/2023 6:20 AM
+EQ ID 5231,Shipping,32,Electric Pallet Jack (new),3136,Toyota,8HBW23,,0,8/23/2023 4:30 AM
+EQ ID 5229,Thrislington,999,Air Table,3132,Thomas,80X90 ATF,,0,8/16/2023 6:40 AM
+EQ ID 1576,Shipping,32,Toyota Stacker (2017) #3,11534,Toyota,9BRU18,,0,7/31/2023 5:37 AM
+EQ ID 718,Shipping,32,Toyota Stacker #1,11368,Toyota,8BRU18,,0,7/31/2023 5:35 AM
+EQ ID 5217,Thrislington,999,General,,N/A,N/A,,1,6/28/2023 7:58 AM
+EQ ID 659,Mirrors,28,TimeSaver Polishing Machine,10820,Fab-Tech Machinery,2211-23-0,,3,6/12/2023 6:10 AM
+EQ ID 750,Privada,42,Tecnolegno 300,11371,Universal 300UL DX,300,,2,6/8/2023 11:27 AM
+EQ ID 5211,Shipping,32,Toyota 8000lb Forklift,11106,Toyota,7FBCU35,,0,4/5/2023 9:27 AM
+EQ ID 5183,Thrislington,999,Anver-lift C&C Router,11661,Anver lift,VT180-2.5-A-B,,1,11/2/2022 9:05 AM
+EQ ID 5184,Thrislington,999,Anver-Lift- Door Finishing,11662,Anver Lift,VT180-2.5-A-B,,0,11/2/2022 9:04 AM
+EQ ID 5181,Thrislington,999,Heated Pinch Rollers,11614,Black Bros.,Panel Express,,0,10/18/2022 10:20 AM
+EQ ID 5178,Thrislington,999,Tunnel Wrapper,,Osama,CLR-2-2000,,0,10/18/2022 10:16 AM
+EQ ID 5177,Thrislington,999,Pinch Roller,,Osama,CLR-2-2000,,0,10/18/2022 10:15 AM
+EQ ID 5175,Thrislington,999,Edge Bander,,Homag,Edgeteq S-500,,2,10/18/2022 10:12 AM
+EQ ID 5174,Thrislington,999,Thomas Conveyor,,Thomas Manufacturing,70X134 SB,,0,10/18/2022 10:10 AM
+EQ ID 5173,Thrislington,999,Shaper,11400,Larick,390,,1,10/18/2022 9:26 AM
+EQ ID 5172,Thrislington,999,Emmegi Drilling Machine,11621,Emmegi,Phantomatic M3,,9,10/18/2022 9:23 AM
+EQ ID 5171,Thrislington,999,Emmegi Dual Saw,11622,Emmegi,Norma VIS 400 TU/5,,3,10/18/2022 9:22 AM
+EQ ID 568,Maintenance,29,Dust Collection System,,Torit,HPT160,,4,9/12/2022 10:25 AM
+EQ ID 2021,Toilet Partitions,40,Saw 1 (south) Homag,?,Homag,Sawteq B-400,,1,7/29/2022 8:17 AM
+EQ ID 5162,Mirrors,28,Horizontal Manual screw machine #3 New,to be assinged,Assembly Automation,SA-1.5& SS-6C,,0,6/27/2022 7:02 AM
+EQ ID 5161,Stainless,24,Stamtec Press,?,Stamtec,OCP-160,,0,6/24/2022 6:17 AM
+EQ ID 691,Shipping,32,Forklift- 15000 lb,11334,Caterpillar,GC70K,,0,6/22/2022 5:21 AM
+EQ ID 693,Stainless,24,Fork Lift,11335,Toyota,8FBCU32,,0,4/2/2022 10:16 AM
+EQ ID 694,Toilet Partitions,40,Forklift 8000lb,11106,Toyota,7FBCU35,,0,4/2/2022 10:16 AM
+EQ ID 697,Shipping,32,Toyota Pallet Jack (2006),10897,Toyota,7HBW23,,0,4/2/2022 10:16 AM
+EQ ID 661,Mirrors,28,Corner Polisher,10836,Ritter,R-903,,1,4/2/2022 10:16 AM
+EQ ID 664,Maintenance,29,Sullivan Palatek 75hp compressor,,Sullivan-Palatek,75UDGK,,0,4/2/2022 10:16 AM
+EQ ID 666,Mirrors,28,Stroke Sander,3071,,,,2,4/2/2022 10:16 AM
+EQ ID 667,Toilet Partitions,40,Holzma Panel Saw,11312,Optimat,HPL 380,,8,4/2/2022 10:16 AM
+EQ ID 704,Stainless,24,Cat Wet Dust Collector #2,,,,,0,4/2/2022 10:16 AM
+EQ ID 705,Mirrors,28,165 Assembly Driver 2,,Cleco,5RSA-10BQ,,2,4/2/2022 10:16 AM
+EQ ID 706,Mirrors,28,165 Assembly Driver 7,,Cleco,5RSA-10BQ,,2,4/2/2022 10:16 AM
+EQ ID 708,Maintenance,29,General Maintenance,,,,,0,4/2/2022 10:16 AM
+EQ ID 709,Toilet Partitions,40,Edgebander KDN 1630,,Brandt,KDN 1630,,4,4/2/2022 10:16 AM
+EQ ID 710,Toilet Partitions,40,Outswing drilling machine,,sugino self feeder,es5-6a131ousm1,,1,4/2/2022 10:16 AM
+EQ ID 713,Mirrors,28,Repair welder -- Miller,,Miller,Max Star 200 LX,,0,4/2/2022 10:16 AM
+EQ ID 714,Toilet Partitions,40,Shaper,,Northfield,DVC215TTFS4001CRL,,0,4/2/2022 10:16 AM
+EQ ID 715,Stainless,24,Benchmaster Press,#10781,165 ton,SGR-165,,0,4/2/2022 10:16 AM
+EQ ID 716,Mirrors,28,Miller Maxstar 200 Welder,,Miller,Maxstar 200,,1,4/2/2022 10:16 AM
+EQ ID 717,Maintenance,29,Scissor Lift,,Terex,TS26,,0,4/2/2022 10:16 AM
+EQ ID 1626,Stainless,24,End drive conveyor 05,,Dorner 2200 series,220M240400A0103,,0,4/2/2022 10:16 AM
+EQ ID 1629,Toilet Partitions,40,Anver Lift- Gapless Router,,Anver,VT180-2.5-D9,,0,4/2/2022 10:16 AM
+EQ ID 1630,Privada,42,Anver Lift- Privada Finish,,Anver,VT180-2.5-D9,,0,4/2/2022 10:16 AM
+EQ ID 1631,Privada,42,Anver Lift- Privada Hot Press Exit,,Anver,VT180-2.5-A-B,,0,4/2/2022 10:16 AM
+EQ ID 1632,Privada,42,Anver Lift- Privada Glue Spreader,,Anver,VT180-2.5-A-B,,0,4/2/2022 10:16 AM
+EQ ID 1634,Stainless,24,262 Finished Product Lift,,Interthor,,,0,4/2/2022 10:16 AM
+EQ ID 1635,Stainless,24,2888 Finished Product Lift,,Interthor,,,0,4/2/2022 10:16 AM
+EQ ID 1636,Stainless,24,270 Finished Product Lift,10818,Southworth,LX415285,,0,4/2/2022 10:16 AM
+EQ ID 1637,Stainless,24,221 Finished Product Lift,,Southworth,4429412,,2,4/2/2022 10:16 AM
+EQ ID 1641,Stainless,24,Universal Robot 262 Press,11488,Universal Robot,UR10/ CB3,,0,4/2/2022 10:16 AM
+EQ ID 1719,Shipping,32,Arpac stretch wrapper,11370,Arpac,Pro 4116 W-L,,4,4/2/2022 10:16 AM
+EQ ID 1720,Shipping,32,Cousins stretch wrapper,11468,Cousins,LP-SW,,1,4/2/2022 10:16 AM
+EQ ID 1728,Stainless,24,2888 Cam Riveter (NEW),11555,Edward Segal,P250-P,,0,4/2/2022 10:16 AM
+EQ ID 1729,Stainless,24,2888 Cartoner,11550,Econoseal,10735,,0,4/2/2022 10:16 AM
+EQ ID 1730,Stainless,24,262 Cartoner,11551,Econoseal,10735,,4,4/2/2022 10:16 AM
+EQ ID 1744,Toilet Partitions,40,Toyota Forklift (Saw Center Secondary),11563,Toyota,7FBCU35,,0,4/2/2022 10:16 AM
+EQ ID 1745,Shipping,32,Drexel Lift,11560,Drexel,SLT30AC,,0,4/2/2022 10:16 AM
+EQ ID 1782,Toilet Partitions,40,Osama Glue Spreader,11636,Osama,23062,,0,4/2/2022 10:16 AM
+EQ ID 1783,Toilet Partitions,40,Heated Pinch Rollers,11614,Black Brothers,Panel Express,,0,4/2/2022 10:16 AM
+EQ ID 1794,Shipping,32,Toyota Pallet Jack (2018),,Toyota,8HBW23,,0,4/2/2022 10:16 AM
+EQ ID 1795,Maintenance,29,VRC 2-Post Straddle Elevator- Hydraulic,11642,P Flow Industries,21 Series,,0,4/2/2022 10:16 AM
+EQ ID 1797,Toilet Partitions,40,1540 Finish Machine Conveyor,11545,Thomas,70x134 SB,,0,4/2/2022 10:16 AM
+EQ ID 1800,General,0,Mezzanine Elevator,11642,PFlow,Series 21,,0,4/2/2022 10:16 AM
+EQ ID 1801,Mirrors,28,Robotic Frame Sander,11559,Yaskawa,ERAR-1000-06VX280-B10,,0,4/2/2022 10:16 AM
+EQ ID 1803,Stainless,24,Fladder 262-270,,Fladder,200/GYRO 1000 VAC,,4,4/2/2022 10:16 AM
+EQ ID 1887,Privada,42,Finish table #1,,,,,0,4/2/2022 10:16 AM
+EQ ID 1888,Privada,42,Finish table #2,,,,,0,4/2/2022 10:16 AM
+EQ ID 1889,Privada,42,Finish table #3,,,,,0,4/2/2022 10:16 AM
+EQ ID 1890,Privada,42,Finish table #4,,,,,0,4/2/2022 10:16 AM
+EQ ID 1949,Privada,42,MTC Finishing Machine,,MTC,HARP7713,,3,4/2/2022 10:16 AM
+EQ ID 310,Toilet Partitions,40,A&S Panel Saw #221 (Packing Saw),221,A&S,7X7,,2,4/2/2022 10:16 AM
+EQ ID 547,Toilet Partitions,40,250# Vacuum Lift A- 1540 door notcher,,Anver,A,,3,4/2/2022 10:16 AM
+EQ ID 548,Toilet Partitions,40,250# Vacuum Lift B- 1080 Panel Cell,,Anver,Lift B,,3,4/2/2022 10:16 AM
+EQ ID 549,Toilet Partitions,40,250# Vacuum Lift C- 1540 Glue Spreader,,Anver,Lift C,,0,4/2/2022 10:16 AM
+EQ ID 550,Toilet Partitions,40,250# Vacuum Lift- 1080,,Anver,VT180-2.5-D9,,3,4/2/2022 10:16 AM
+EQ ID 553,Toilet Partitions,40,A&S Saw,10210,A&S,7x7 10V,,3,4/2/2022 10:16 AM
+EQ ID 556,Toilet Partitions,40,Lay-up Table (Hot Press),11330,Midwest,Lay-up Table,,0,4/2/2022 10:16 AM
+EQ ID 561,Toilet Partitions,40,1080 Finishing Machine-Panel Cell,11329,Technolegno,Sanding Machine,,0,4/2/2022 10:16 AM
+EQ ID 648,Stainless,24,2888 Auto Rivet Machine (Door),10839,Chicago Rivet,912-D,,2,4/2/2022 10:16 AM
+EQ ID 649,Maintenance,29,Trash Compactor,,Waste Management,,,0,4/2/2022 10:16 AM
+EQ ID 651,Mirrors,28,Screw Machine Horizontal 2,,,,,3,4/2/2022 10:16 AM
+EQ ID 652,Mirrors,28,Autofeed Screw driver,10771,Assembly Automation,,,2,4/2/2022 10:16 AM
+EQ ID 655,Mirrors,28,"Screw Machine, Horizontal 1",10327,Bobrick,Custom,,0,4/2/2022 10:16 AM
+EQ ID 657,Mirrors,28,"Roll Former, B-290",10819,Custom,Custom,,6,4/2/2022 10:16 AM
+EQ ID 658,Mirrors,28,"Grinder, 290 Mirror Frame, Corner",,Delta 31-391,31-391,,0,4/2/2022 10:16 AM
+EQ ID 671,Mirrors,28,165 Assembly Driver 1,,Cleco,5RSA-10BQ,,1,4/2/2022 10:16 AM
+EQ ID 672,Mirrors,28,165 Assembly Driver 4,,Cleco,5RSA-10BQ,,1,4/2/2022 10:16 AM
+EQ ID 673,Mirrors,28,165 Assembly Driver 6,,Uryu,US-LT30B-11,,1,4/2/2022 10:16 AM
+EQ ID 674,Mirrors,28,165 Assembly Driver 5,,Uryu,US-LT30B-11,,1,4/2/2022 10:16 AM
+EQ ID 675,Mirrors,28,165 Assembly Driver 3,,Cleco,5RSA-10BQ,,1,4/2/2022 10:16 AM
+EQ ID 676,Mirrors,28,"Roll Former, 165 Frames, Hydromek",,Custom Roll Former - 165,Custom,,6,4/2/2022 10:16 AM
+EQ ID 677,Mirrors,28,"Hanger Machine, Hydromek",10853,Hydromek,,,5,4/2/2022 10:16 AM
+EQ ID 678,Mirrors,28,Back Machine,10699,Hydromek,Custom,,6,4/2/2022 10:16 AM
+EQ ID 680,Toilet Partitions,40,Gannomat 1080 Drilling Machine,10861,Gannomat,470,,1,4/2/2022 10:16 AM
+EQ ID 681,Maintenance,29,Banding Shredder,11301,Sweed Machinery,510AMXHD,,1,4/2/2022 10:16 AM
+EQ ID 682,Stainless,24,General Maintenance,,,,,0,4/2/2022 10:16 AM
+EQ ID 683,Mirrors,28,General Maintenance,,,,,0,4/2/2022 10:16 AM
+EQ ID 685,Toilet Partitions,40,General Maintenance,,,,,0,4/2/2022 10:16 AM
+EQ ID 686,Toilet Partitions,40,Battery Charger Exide System 3000,,,,,0,4/2/2022 10:16 AM
+EQ ID 687,General,0,General Maintenance,,,,,1,4/2/2022 10:16 AM
+EQ ID 689,Toilet Partitions,40,Leveling Bar Drilling Machine,,Local Manufacture,,,4,4/2/2022 10:16 AM
+EQ ID 690,Toilet Partitions,40,Slotted Stile Glue Table (1040),,,,,0,4/2/2022 10:16 AM
+EQ ID 569,Maintenance,29,RTU 1,,Carrier,48EJD038 SERIES 610 DC,,0,4/2/2022 10:16 AM
+EQ ID 570,Maintenance,29,RTU 2,,Carrier,48EJD038 SERIES 610DC,,0,4/2/2022 10:16 AM
+EQ ID 571,Maintenance,29,RTU 3,,Carrier,48EJD038 SERIES 610DC,,0,4/2/2022 10:16 AM
+EQ ID 572,Maintenance,29,RTU 4,,Carrier,48EJD038 SERIES 610DC,,0,4/2/2022 10:16 AM
+EQ ID 573,Maintenance,29,RTU 5,,Carrier,48EJD038 SERIES 610DC,,0,4/2/2022 10:16 AM
+EQ ID 574,Maintenance,29,RTU 6,,Carrier,48EJD038 SERIES 610DC,,0,4/2/2022 10:16 AM
+EQ ID 575,Maintenance,29,RTU 7,,Carrier,48TJD014 SERIES 631ZC,,0,4/2/2022 10:16 AM
+EQ ID 576,Maintenance,29,RTU 8,,Carrier,48TJD014 SERIES 631ZC,,0,4/2/2022 10:16 AM
+EQ ID 577,Maintenance,29,RTU 9,,Carrier,48TJD014 SERIES 611ZC,,0,4/2/2022 10:16 AM
+EQ ID 578,Maintenance,29,RTU 10,,Carrier,48TJD005 SERIES 611BD,,0,4/2/2022 10:16 AM
+EQ ID 579,Maintenance,29,RTU 11,,Carrier,48TJD009 SERIES 611ZC,,0,4/2/2022 10:16 AM
+EQ ID 580,Maintenance,29,EF-1,,Exaust Fan,TXB810,,1,4/2/2022 10:16 AM
+EQ ID 581,Maintenance,29,EF-2,,Exaust Fan,TXB805,,1,4/2/2022 10:16 AM
+EQ ID 582,Maintenance,29,EF-3,,Exaust Fan,T36,,1,4/2/2022 10:16 AM
+EQ ID 583,Maintenance,29,EF-4,,Exaust Fan,BUBB54,,1,4/2/2022 10:16 AM
+EQ ID 584,Maintenance,29,EF-5,,Exaust Fan,BUBB54,,1,4/2/2022 10:16 AM
+EQ ID 585,Maintenance,29,EF-6,,Exaust Fan,DB1108,,1,4/2/2022 10:16 AM
+EQ ID 586,Maintenance,29,EF-7,,Exaust Fan,DB1108,,1,4/2/2022 10:16 AM
+EQ ID 587,Maintenance,29,Critical Systems Inspections,,N/A,,,3,4/2/2022 10:16 AM
+EQ ID 590,Maintenance,29,Man Lift,,Terex,TS26,,1,4/2/2022 10:16 AM
+EQ ID 591,Maintenance,29,"Dock Doors, Plates Locks, Rapid Roll and Fire Doors",,Rite-Hite,,,2,4/2/2022 10:16 AM
+EQ ID 592,Maintenance,29,10 gal. Water Heaters,,State Patriot,LDE1010MSY,,1,4/2/2022 10:16 AM
+EQ ID 593,Maintenance,29,Building,,2000,,,3,4/2/2022 10:16 AM
+EQ ID 595,Stainless,24,160 TStraight Side Press (270),,Allsteel,160T-8X3,,3,4/2/2022 10:16 AM
+EQ ID 596,Stainless,24,SGR 165 Ton Press,,Benchmaster Titan Series,SGR 165,,2,4/2/2022 10:16 AM
+EQ ID 598,Stainless,24,221 Multi-head Welder,,Custom Built,Special,,4,4/2/2022 10:16 AM
+EQ ID 599,Stainless,24,221 Cartoner,10800,Econoseal E-System 2000,7731,,3,4/2/2022 10:16 AM
+EQ ID 600,Stainless,24,270-2 Rocker Arm Welder,11261,PEER,AF,,0,4/2/2022 10:16 AM
+EQ ID 601,Stainless,24,270-1 Rocker Arm Welder,,Peer,AR-450,,0,4/2/2022 10:16 AM
+EQ ID 602,Stainless,24,262 Multi-head Welder,,Janda,Spec 12 Gun,,0,4/2/2022 10:16 AM
+EQ ID 603,Stainless,24,262-1 Rocker Arm Welder,,Acme,2-30-30,,2,4/2/2022 10:16 AM
+EQ ID 604,Stainless,24,262-3 Rocker Arm Welder,,Acme,2-24-30,,2,4/2/2022 10:16 AM
+EQ ID 605,Stainless,24,262-35 Ton Press Brake,10872,Allsteel,35T-4,,3,4/2/2022 10:16 AM
+EQ ID 606,Stainless,24,Die Lubricant Sprayer,,Flexspray,Slim-flex,,1,4/2/2022 10:16 AM
+EQ ID 607,Stainless,24,Pull Off Coil Reel,,Coe,CPR-PO-10024,,5,4/2/2022 10:16 AM
+EQ ID 608,Stainless,24,ServoMaster Feed,,Coe,CPRF,,3,4/2/2022 10:16 AM
+EQ ID 609,Stainless,24,Shear,,Tennsmith,LM 412,,1,4/2/2022 10:16 AM
+EQ ID 610,Stainless,24,End Drive Conveyor,,Dorner 2200 Series,220M240400A0103,,2,4/2/2022 10:16 AM
+EQ ID 611,Stainless,24,Stacker,,Coe,SPGST-020,,2,4/2/2022 10:16 AM
+EQ ID 612,Stainless,24,Lift Table- Coil line flip table,,Southworth,LS2-24,,6,4/2/2022 10:16 AM
+EQ ID 614,Stainless,24,262-200 T Press Brake,,Allsteel,200T-6' x 3',,5,4/2/2022 10:16 AM
+EQ ID 616,Stainless,24,262-2 Rocker Arm Welder,,Acme,2-24-30,,0,4/2/2022 10:16 AM
+EQ ID 617,Stainless,24,2888 Multi-head Welder,,Janda,Spec. 16 Gun,,2,4/2/2022 10:16 AM
+EQ ID 618,Stainless,24,2888-1 Rocker Arm Welder,,ACME,SPOT,,2,4/2/2022 10:16 AM
+EQ ID 619,Stainless,24,2888-2 Rocker Arm Welder,,ACME,SPOT,,1,4/2/2022 10:16 AM
+EQ ID 620,Stainless,24,2888-3 Rocker Arm Welder,,ACME,SPOT,,2,4/2/2022 10:16 AM
+EQ ID 621,Stainless,24,2888-35 T Press Brake,,Allsteel,35T-4',,3,4/2/2022 10:16 AM
+EQ ID 623,Stainless,24,Bernard Coolant Circulator,,Bernard,3500SS,,0,4/2/2022 10:16 AM
+EQ ID 624,Stainless,24,Gauer Deburring Machine,,Gauer,5H-30,,2,4/2/2022 10:16 AM
+EQ ID 627,Maintenance,29,Appliances,,Varies,Varies,,2,4/2/2022 10:16 AM
+EQ ID 628,Maintenance,29,Square D Buss Duct,,,,,0,4/2/2022 10:16 AM
+EQ ID 629,Maintenance,29,Square D Buss Duct,,,,,0,4/2/2022 10:16 AM
+EQ ID 630,Maintenance,29,Square D Buss Duct,,,,,0,4/2/2022 10:16 AM
+EQ ID 631,Maintenance,29,Square D Buss Duct,,,,,0,4/2/2022 10:16 AM
+EQ ID 632,Stainless,24,Pull Off Coil Reel 05,,Coe Press,cpr-po-6024,,5,4/2/2022 10:16 AM
+EQ ID 634,Stainless,24,Straightener,,Coe Press,cpps-350-24,,3,4/2/2022 10:16 AM
+EQ ID 635,Stainless,24,Straightener 05,,Coe Press,CPPS-250-24,,3,4/2/2022 10:16 AM
+EQ ID 636,Stainless,24,Servomaster Feed 05,,Coe Press,CPRF-S124,,4,4/2/2022 10:16 AM
+EQ ID 637,Stainless,24,Shear 05,,Tennsmith,LM412,,1,4/2/2022 10:16 AM
+EQ ID 638,Stainless,24,Stacker 05,,coe press,SPGST-020,,2,4/2/2022 10:16 AM
+EQ ID 641,Stainless,24,Aida 110 ton,,Aida,NC1-1100(2)E,,5,4/2/2022 10:16 AM
+EQ ID 642,Stainless,24,Aida 60 ton,,aida 60 ton,pc-5,,0,4/2/2022 10:16 AM
+EQ ID 643,Stainless,24,cat wet dust collector,,Cat,,,0,4/2/2022 10:16 AM
+EQ ID 645,Stainless,24,2888 Lock Swager,10851,Suhner/Somex,BEM20-125 ISO 30,,0,4/2/2022 10:16 AM
+EQ ID 646,Stainless,24,262 lock Swager,,,,,0,4/2/2022 10:16 AM
+EQ ID 1044,Toilet Partitions,40,Router tool,,Sioux,MYLCO1324,,0,4/2/2022 10:16 AM
+EQ ID 1105,Mirrors,28,Robotic Welder,11393,Motoman/Fronius,MH6/Trans TIG 3000 Comfort,,1,4/2/2022 10:16 AM
+EQ ID 1121,Stainless,24,270 Cartoner,11375,E2000,9349,,0,4/2/2022 10:16 AM
+EQ ID 1123,General,0,100 Gallon Water Heater,,State industries,Sandblaster S8T10075NE,,0,4/2/2022 10:16 AM
+EQ ID 1146,Maintenance,29,Genie Boom Lift,11423,Genie,Z4023NRJ,,0,4/2/2022 10:16 AM
+EQ ID 1162,Maintenance,29,Sullivan Palatek Air Compressor,11426,Sullivan Palatek,75UDVAW,,0,4/2/2022 10:16 AM
+EQ ID 1163,Stainless,24,2888- 175 Ton Press,11416,AccurPress,717510,,0,4/2/2022 10:16 AM
+EQ ID 1183,Toilet Partitions,40,Toyota Fork Lift ( Saw Center Main),11422,Toyota,7FBCU35,,0,4/2/2022 10:16 AM
+EQ ID 1202,Maintenance,29,Olympian Generator,11436,Olympian,LG0060KG036.8N18HPNLA,,0,4/2/2022 10:16 AM
+EQ ID 1221,Quality Assurance,27,"Fixture, F-0011, Cam (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1222,Quality Assurance,27,"Fixture, F-0012, Flange Assembly (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1223,Quality Assurance,27,"Fixture, F-0013, Lock Angle Bracket Weld (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1224,Quality Assurance,27,"Fixture, F-0014, Lock Assembly (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1225,Quality Assurance,27,"Gauge, G-0001, Foam Thickness Go/No Go (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1226,Quality Assurance,27,"Fixture, F-0001, Shateboard (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1227,Quality Assurance,27,"Fixture, F-0002, Shateboard (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1228,Quality Assurance,27,"Fixture, F-0003, 18x30, Timesaver (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1229,Quality Assurance,27,"Fixture, F-0004, 18x30, Timesaver (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1230,Quality Assurance,27,"Fixture, F-0005, 18x36, Timesaver (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1231,Quality Assurance,27,"Fixture, F-0006, 18x36, Timesaver (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1232,Quality Assurance,27,"Fixture, F-0007, 24x30, Timesaver (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1233,Quality Assurance,27,"Fixture, F-0008, 24x30,Timesaver (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1234,Quality Assurance,27,"Fixture, F-0009, 24x36, Timesaver (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1235,Quality Assurance,27,"Fixture, F-0010, 24x36, Timesaver (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1236,Quality Assurance,27,"Fixture, F-0015, Lock Assembly (262)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1237,Quality Assurance,27,"Fixture, F-0016, Weld Test (221)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1238,Quality Assurance,27,"Fixture, F-0017, Cam Arbor Press (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1239,Quality Assurance,27,"Fixture, F-0018, 270 Lid, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1240,Quality Assurance,27,"Fixture, F-0019, 270 Lid, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1241,Quality Assurance,27,"Fixture, F-0020, 270 Lid, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1242,Quality Assurance,27,"Fixture, F-0021, 262 Door, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1243,Quality Assurance,27,"Fixture, F-0022, 262 Door, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1244,Quality Assurance,27,"Fixture, F-0023, 262 Door, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1245,Quality Assurance,27,"Fixture, F-0024, 262 Door, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1246,Quality Assurance,27,"Fixture, F-0025, 2621 Door, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1247,Quality Assurance,27,"Fixture, F-0026, 2621 Door, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1248,Quality Assurance,27,"Fixture, F-0027, 2621 Door, 262/270 Fladder",,,,,1,4/2/2022 10:16 AM
+EQ ID 1249,Quality Assurance,27,"Fixture, F-0028, Screw (Stainless)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1250,Quality Assurance,27,"Fixture, F-0029, Outswing (Solid)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1251,Quality Assurance,27,"Boundary Board, BB-0001, Corner Sander (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1252,Quality Assurance,27,"Boundary Board, BB-0002, Corner Welder (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1253,Quality Assurance,27,"Boundary Board, BB-0003, Glass (Mirrors)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1254,Quality Assurance,27,"Boundary Board, BB-0004, Miter Sander (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1255,Quality Assurance,27,"Boundary Board, BB-0005, Side Polisher (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1256,Quality Assurance,27,"Boundary Board, BB-0006, Weld (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1257,Quality Assurance,27,"Boundary Board, BB-0007, Burr (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1258,Quality Assurance,27,"Boundary Board, BB-0008, Dent (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1259,Quality Assurance,27,"Boundary Board, BB-0009, 1540 Edge Finish (Laminate)",,,,,0,4/2/2022 10:16 AM
+EQ ID 1260,Quality Assurance,27,"Boundary Board, BB-0010, 1080/1090 Insert (Solid)",,,,,0,4/2/2022 10:16 AM
+EQ ID 1261,Quality Assurance,27,"Boundary Board, BB-0011, Edge Bander (Laminate)",,,,,0,4/2/2022 10:16 AM
+EQ ID 1262,Quality Assurance,27,"Boundary Board, BB-0012, 1530 Series (Laminate)",,,,,0,4/2/2022 10:16 AM
+EQ ID 1263,Quality Assurance,27,"Boundary Board, BB-0013, Door Notcher (Laminate)",,,,,0,4/2/2022 10:16 AM
+EQ ID 1264,Quality Assurance,27,"Refractometer, M-0001, RHB Series, Brix (Mirrors)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1265,Quality Assurance,27,"6"" Caliper, M-0002, Serial Number 0111691, Mitutoyo (Mirrors)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1266,Quality Assurance,27,"6"" Caliper, M-0003, Serial Number 12506371, Mitutoyo (T. Magneson)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1267,Quality Assurance,27,"6"" Caliper, M-0004, Serial Number BF016622, Mitutoyo (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1268,Quality Assurance,27,"12"" Caliper, M-0005, Serial Number 07533667, Mitutoyo (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1269,Quality Assurance,27,"24"" Caliper, M-0006, Serial Number 321984, Mitutoyo (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1270,Quality Assurance,27,"Bent Feeler Gage Set, M-0007 (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1271,Quality Assurance,27,"Feeler Gage Set, M-0008, 70-817, Armstrong (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1272,Quality Assurance,27,"6"" Double Square, M-0009, 7182-006, Products Engineering (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1273,Quality Assurance,27,"Micrometer, 0-1"", M-0010, 103-113, Mitutoyo (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1274,Quality Assurance,27,"Radius Gage Set, M-0011, S167C, Starrett (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1275,Quality Assurance,27,"Combination Set, M-0012, C9-12-4R, Starrett (Fabrication)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1276,Quality Assurance,27,"6"" Caliper, M-0013, Serial Number 08379672, Mitutoyo (Holzma)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1277,Quality Assurance,27,"72"" Level, M-0014 (Holzma)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1278,Quality Assurance,27,"72"" Level, M-0015 (Laminate)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1279,Quality Assurance,27,"Jig, J-0001, Contura Lock Bracket Weld (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1280,Quality Assurance,27,"Jig, J-0002, Door to Frame Weld (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1281,Quality Assurance,27,"jig, J-0003, Stop Bracket Weld (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1282,Quality Assurance,27,"Jig, J-0004, Hinge Weld (262)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1283,Quality Assurance,27,"Jig, J-0005, Towel Tray Weld (262)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1284,Quality Assurance,27,"Jig, J-0006, Towel Tray Weld (262)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1285,Quality Assurance,27,"Jig, J-0007, Door to Unit Weld (262)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1286,Quality Assurance,27,"Jig, J-0008, Hinge Weld (270)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1287,Quality Assurance,27,"Jig, J-0009, Hinge Weld (270)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1288,Quality Assurance,27,"Jig, J-0010, Hinge (Privada)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1289,Quality Assurance,27,"Jig, J-0011, Magnet (Privada)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1290,Quality Assurance,27,"jig, J-0012, In Swing/Out Swing (Privada)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1291,Quality Assurance,27,"Gauge, G-0002, Foam Thickness, Go/No Go (165)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1292,Quality Assurance,27,"Gauge, G-0003, Corner Gap (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1293,Quality Assurance,27,"Gauge, G-0004, Corner Gap (290)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1294,Quality Assurance,27,"Gauge, G-0005, Miter Corner Gap (165)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1295,Quality Assurance,27,"Gauge, G-0006, Miter Corner Gap (165)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1296,Quality Assurance,27,"Gauge, G-0007, Miter Corner Gap (165)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1297,Quality Assurance,27,"Gauge, G-0008, Miter Corner Gap (165)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1298,Quality Assurance,27,"Gauge, G-0009, Miter Corner Gap (165)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1299,Quality Assurance,27,"Gauge, G-0010, Miter Corner Gap (165)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1300,Quality Assurance,27,"Gauge, G-0011, Miter Corner Gap (165)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1301,Quality Assurance,27,"Gauge, G-0012, Door Frame (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1302,Quality Assurance,27,"Gauge, G-0013, Drop Test (2888)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1303,Quality Assurance,27,"Gauge, G-0014, Material Thickness, Go/No Go (Holzma) Ref: G-1080",,,,,1,4/2/2022 10:16 AM
+EQ ID 1304,Quality Assurance,27,"Gauge, G-0015, Magnet, Go/No Go (Privada)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1305,Quality Assurance,27,"Gauge, G-0016, Shaper 1, Go/No Go (Privada)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1306,Quality Assurance,27,"Gauge, G-0017, Shaper 2, Go/No Go (Privada)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1307,Quality Assurance,27,"Gauge, G-0018, Shaper 3, Go/No Go (Privada)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1308,Quality Assurance,27,"Gauge, G-0019, Shaper 4, Go/No Go (Privda)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1309,Quality Assurance,27,"Gauge, G-0020, MS-47PT1 Magnet/Pole Tester (Privada)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1310,Quality Assurance,27,"Gauge, G-0021, Measuring, 40.25"" (Stainless) Ref: T-1030318",,,,,1,4/2/2022 10:16 AM
+EQ ID 1311,Quality Assurance,27,"Gauge, G-0022, Measuring, 72.25"" (Stainless) Ref: T-1030318",,,,,1,4/2/2022 10:16 AM
+EQ ID 1312,Quality Assurance,27,"Gauge, G-0023, Measuring, 86"" (Stainless) Ref: T-1030318",,,,,1,4/2/2022 10:16 AM
+EQ ID 1313,Quality Assurance,27,"Gauge, G-0024, Measuring, 96"" (Stainless) Ref: T-1030318",,,,,1,4/2/2022 10:16 AM
+EQ ID 1314,Quality Assurance,27,"Gauge, G-0025, Depth (Solid)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1316,Quality Assurance,27,"Gauge, G-0026, Go/No Go (Door Notcher)",,,,,3,4/2/2022 10:16 AM
+EQ ID 1317,Quality Assurance,27,"Gauge, G-0027, Go/No Go (Gapless)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1318,Quality Assurance,27,"Gauge, G-0028, Drill Bit Depth (Laminate)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1319,Quality Assurance,27,"Jig, J-0013, In Swing/Out Swing (1040)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1320,Quality Assurance,27,"Jig, J-0014, In Swing/Out Swing (1040)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1321,Quality Assurance,27,"Jig, J-0015, Leveling Bar (1540)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1322,Quality Assurance,27,"Jig, J-0016, Leveling Bar (1540)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1323,Quality Assurance,27,"Jig, J-0017, Leveling Bar (1541/1548)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1324,Quality Assurance,27,"Jig, J-0018, Leveling Bar (1541 4"" stile)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1325,Quality Assurance,27,"Jig, J-0019, Leveling Bar, 1542/1552 7"" stile)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1326,Quality Assurance,27,"Jig, J-0020, Leveling Bar (1541 3"" stile)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1327,Quality Assurance,27,"Jig, J-0021, Leveling Bar (1541 3"" stile)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1328,Quality Assurance,27,"Jig, J-0022, Leveling Bar (1541 5"" stile)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1329,Toilet Partitions,40,Gannomat 1040 Drilling Machine,,Gannomat,,,0,4/2/2022 10:16 AM
+EQ ID 1331,Quality Assurance,27,"72"" Level, M-0016 (Privada)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1334,Stainless,24,221 Sutherland Press,11377,Sutherland,Mark2-176,,2,4/2/2022 10:16 AM
+EQ ID 1338,Privada,42,Shaper #1- Privada,11428,Larick,390,,1,4/2/2022 10:16 AM
+EQ ID 1339,Privada,42,Shaper #2- Privada,11399,Larick,390,,1,4/2/2022 10:16 AM
+EQ ID 1341,Privada,42,Shaper #4- Privada,11429,Larick,390,,1,4/2/2022 10:16 AM
+EQ ID 1343,Toilet Partitions,40,Stainless Chop Saw,,Milwaukee,,,0,4/2/2022 10:16 AM
+EQ ID 1385,Toilet Partitions,40,Multicyl Punch,,Multicyl,UN3-H C-Frame cage,,1,4/2/2022 10:16 AM
+EQ ID 1446,Maintenance,29,Flamex Spark Detector,,Flamex,,,5,4/2/2022 10:16 AM
+EQ ID 1517,Privada,42,Thomas Conveyer-Privada,11491,Thomas,70x136 SB,,0,4/2/2022 10:16 AM
+EQ ID 1518,Privada,42,Edge Bander-Privada,11479,Brandt,KDN630,,1,4/2/2022 10:16 AM
+EQ ID 1574,Shipping,32,Toyota Pallet Jack (2014),11402,Toyota,7HBW23,,0,4/2/2022 10:16 AM
+EQ ID 700,Stainless,24,Fladder Return System,11347,Portec,8ZT50-180,,4,4/2/2022 10:16 AM
+EQ ID 701,Stainless,24,Fladder,11351,Fladder,AUT1000 vac,,3,4/2/2022 10:16 AM
+EQ ID 2022,Toilet Partitions,40,Saw 2 (north) Homag,,Homag,Sawteq B-400,,1,4/2/2022 10:16 AM
+EQ ID 2038,Mirrors,28,Tilt & Lift #2,11664,,TMS-40-DC-PTDS,,1,4/2/2022 10:16 AM
+EQ ID 2047,Privada,42,Door Latch Drilling Machine,,Luguna Tools,MCNC,,0,4/2/2022 10:16 AM
+EQ ID 2097,Maintenance,29,Air Dryer,,Sullivan-Palatek,SFD-500PLC,,0,4/2/2022 10:16 AM
+EQ ID 2113,Privada,42,General Maintenance,,,,,0,4/2/2022 10:16 AM
+EQ ID 2138,Shipping,32,Toyota Pallet Jack (2021),,Toyota,8HBW23,,0,4/2/2022 10:16 AM
+EQ ID 125,Toilet Partitions,40,Edge Finisher Laminate,11242,Technolegno,Compact 28,,0,4/2/2022 10:16 AM
+EQ ID 566,Maintenance,29,Mig Welder,,Miller,Millermatic 185,,0,4/2/2022 10:16 AM
+EQ ID 567,Maintenance,29,Band Saw,,Jet Machine & Tool,HVBS7MW,,1,4/2/2022 10:16 AM
+EQ ID 1959,Toilet Partitions,40,Thomas Conveyer- 1080 Panel Cell,,Thomas,70X134SB,,0,4/2/2022 10:16 AM
+EQ ID 1962,Mirrors,28,Robotic Screw Machine,11633,Visumatic,,,1,4/2/2022 10:16 AM
+EQ ID 1965,Toilet Partitions,40,1080 Tecnolegno DX (Panel),11652,Tecnolegno,Universal 28 DX,,1,4/2/2022 10:16 AM
+EQ ID 1987,Stainless,24,262-6 Wrapper Blank Die,10862,,,,0,4/2/2022 10:16 AM
+EQ ID 1988,Stainless,24,262-3 Door Blank Die,10886,,,,0,4/2/2022 10:16 AM
+EQ ID 1989,Stainless,24,2621-6 Wrapper Blank Die,11250,,,,0,4/2/2022 10:16 AM
+EQ ID 1990,Stainless,24,262/2621-3 Door Draw Die,10875,,,,0,4/2/2022 10:16 AM
+EQ ID 1991,Stainless,24,262/261-3 Pinch Trim Die,10873,,,,0,4/2/2022 10:16 AM
+EQ ID 1992,Stainless,24,262/261-6 Wrapper Form Die,,,,,0,4/2/2022 10:16 AM
+EQ ID 1993,Stainless,24,288-204 Wrapper Blank Die,,,,,0,4/2/2022 10:16 AM
+EQ ID 1994,Stainless,24,4388-304 Flange Wrapper Blank,,,,,0,4/2/2022 10:16 AM
+EQ ID 1995,Stainless,24,288-56 Door Die,,,,,0,4/2/2022 10:16 AM
+EQ ID 1996,Stainless,24,288-213 Pierce & Form,,,,,0,4/2/2022 10:16 AM
+EQ ID 1997,Stainless,24,288-213 Form (Allsteel),,,,,0,4/2/2022 10:16 AM
+EQ ID 1998,Stainless,24,288-204 (4388-304) Form (Accurpress),10498,,,,0,4/2/2022 10:16 AM
+EQ ID 1999,Stainless,24,4288-102 Inner Housing Form (Accurpress),10527,,,,0,4/2/2022 10:16 AM
+EQ ID 2000,Stainless,24,4388-305 Flange Die (DIEnamic),,,,,0,4/2/2022 10:16 AM
+EQ ID 2001,Stainless,24,270-4B/B Punch/Form,10871,,,,0,4/2/2022 10:16 AM
+EQ ID 2002,Stainless,24,270-5 Lid Die,,,,,0,4/2/2022 10:16 AM
+EQ ID 2003,Stainless,24,"270 Station #1,2,3",,,,,0,4/2/2022 10:16 AM
+EQ ID 2004,Stainless,24,221-102 Blank Die,10870,,,,0,4/2/2022 10:16 AM
+EQ ID 2005,Stainless,24,221 Station #1 & 2,,,,,0,4/2/2022 10:16 AM
+EQ ID 2006,Stainless,24,221-3 Form Die (DIEnamic),,,,,0,4/2/2022 10:16 AM
+EQ ID 2019,Shipping,32,Spotter Truck,,2011 Ottawa,YT30,,0,4/2/2022 10:16 AM
+EQ ID 2020,Toilet Partitions,40,Intel-Store,,Homag,Storeteq S-200,,0,4/2/2022 10:16 AM

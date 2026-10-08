@@ -1,0 +1,635 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+343,EQ ID 343,250 Syncrowave,Assembly,9992,Full cleanup,Pending,7/17/2024,,Outside Service,0.00,0.00,0.00,,Nick Kosyak - 03/05/25  6:29:24 AM: Looking for new vendor to perform maintenance.,[]
+343,EQ ID 343,250 Syncrowave,Assembly,205,Full cleanup,Closed without Action,9/18/2022,Nick Kosyak,Outside Service,0.25,0.00,0.00,2/24/2023,,[]
+741,EQ ID 741,Dust Collector,Assembly,14941,Clean Filter.,Pending,4/5/2025,,Operator,0.00,0.00,0.00,,,[]
+741,EQ ID 741,Dust Collector,Assembly,494,Clean Filter.,Closed and Completed,4/18/2022,Jose Morena,Operator,2.00,0.00,0.00,4/22/2022,,[]
+741,EQ ID 741,Dust Collector,Assembly,5072,Clean Filter.,Closed and Completed,4/30/2023,Jose Morena,Operator,2.00,0.00,0.00,2/14/2025,,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,16940,Clean clutch - lubricate moving parts - check tooling,Pending,12/9/2025,,Technician,0.00,0.00,0.00,,,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,708,Clean clutch - lubricate moving parts - check tooling,Closed and Completed,6/18/2022,Nick Kosyak,Technician,0.25,0.00,0.00,12/20/2022,,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,3698,Clean clutch - lubricate moving parts - check tooling,Closed and Completed,3/20/2023,Nick Kosyak,Technician,0.50,0.00,0.00,3/17/2023,,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,4857,Clean clutch - lubricate moving parts - check tooling,Closed and Completed,6/17/2023,Nick Kosyak,Technician,0.50,0.00,0.00,6/16/2023,,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,6090,Clean clutch - lubricate moving parts - check tooling,Closed and Completed,9/19/2023,Nick Kosyak,Technician,0.50,0.00,0.00,9/26/2023,Nick Kosyak - 09/26/23  5:26:59 AM: Completed together with WO 7227.,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,7350,Clean clutch - lubricate moving parts - check tooling,Closed and Completed,12/26/2023,Nick Kosyak,Technician,0.25,0.00,0.00,12/8/2023,,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,9285,Clean clutch - lubricate moving parts - check tooling,Closed and Completed,3/8/2024,Nick Kosyak,Technician,0.25,0.00,0.00,4/5/2024,,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,10961,Clean clutch - lubricate moving parts - check tooling,Closed and Completed,7/5/2024,Nick Kosyak,Technician,0.25,0.00,0.00,1/15/2025,,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,14364,Clean clutch - lubricate moving parts - check tooling,Closed and Completed,4/15/2025,Nick Kosyak,Technician,0.25,0.00,0.00,4/18/2025,,[]
+1175,EQ ID 1175,Rivet Machine,Assembly,15547,Clean clutch - lubricate moving parts - check tooling,Closed and Completed,7/30/2025,"Nick Kosyak, Damian Mannings",Technician,0.25,0.00,0.00,9/9/2025,,[]
+5069,EQ ID 5069,130-TON ACCURPRESS,Fabrication,12288,"To be PM check and oil change, this year maybe Sep",Pending,9/24/2024,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1667,EQ ID 1667,Amada Fiber Laser,Fabrication,4295,Change Filter on Air Intake,Pending,2/9/2024,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+445,EQ ID 445,Pedestal Jib,Fabrication,17045,Annual inspection.,Pending,9/19/2026,,Outside Service,0.00,0.00,0.00,,,[]
+445,EQ ID 445,Pedestal Jib,Fabrication,14236,Annual inspection.,Closed and Completed,1/3/2025,Source Industrial,Outside Service,3.00,554.50,0.00,8/22/2025,,[]
+450,EQ ID 450,Press Brake - 45 Ton,Fabrication,274,PM,Pending,3/18/2023,,Outside Service,0.00,0.00,0.00,,,[]
+450,EQ ID 450,Press Brake - 45 Ton,Fabrication,12289,to do the PM check and oil change on Sep,Pending,9/24/2024,,Outside Service,0.00,0.00,0.00,,,[]
+451,EQ ID 451,Press Brake - 65 Ton,Fabrication,275,"PM 
+NO PM check this machine anymore Cancel
+Dunrite 
+WE will check on Apr to see how is the machine",Pending,3/18/2023,,Outside Service,0.00,0.00,0.00,,,[]
+453,EQ ID 453,Press Brake - 25T,Fabrication,12287,"PM
+NO pm this year 2023 Year",Pending,7/4/2025,,Outside Service,0.00,0.00,0.00,,,[]
+453,EQ ID 453,Press Brake - 25T,Fabrication,276,"PM
+NO pm this year 2023 Year",Closed without Action,3/18/2023,Robert,Outside Service,0.00,0.00,0.00,7/3/2024,,[]
+454,EQ ID 454,Press Brake - 160 Ton,Fabrication,277,"Pm check and Oil change
+We change the oil and fitter complete",Pending,3/18/2023,,Outside Service,0.00,0.00,0.00,,,[]
+351,EQ ID 351,Fladder,Fabrication,206,Clean up (filters/ bed) and oiling,Pending,3/18/2023,,Outside Service,0.00,0.00,0.00,,,[]
+355,EQ ID 355,Dust Collector,Fabrication,207,Clean-up the filter,Pending,3/18/2023,,Outside Service,0.00,0.00,0.00,,,[]
+472,EQ ID 472,Punch Press - 300 Ton,Fabrication,278,"PM check and every 2 year oil change
+Dunrite Machinery 
+Apr",Pending,3/18/2023,,Outside Service,0.00,0.00,0.00,,,[]
+473,EQ ID 473,Punch Press - 120 Ton,Fabrication,11306,"1. PM 
+ Pm check this year 2024 Year and change the clutch oil
+Aida service 
+Feb",Pending,4/15/2025,,Outside Service,0.00,0.00,0.00,,,[]
+473,EQ ID 473,Punch Press - 120 Ton,Fabrication,279,"1. PM 
+ Pm check this year 2024 Year and change the clutch oil
+Aida service 
+Feb",Closed and Completed,3/18/2023,Aida,Outside Service,"1,500.00",0.00,4.00,4/9/2024,,[]
+474,EQ ID 474,Punch Press - 150 Ton,Fabrication,11307,"1. PM 
+ Pm check this year  2024 Year and change the clutch oil
+Aida service",Pending,4/15/2025,,Outside Service,0.00,0.00,0.00,,,[]
+474,EQ ID 474,Punch Press - 150 Ton,Fabrication,280,"1. PM 
+ Pm check this year  2024 Year and change the clutch oil
+Aida service",Closed and Completed,3/18/2023,Aida,Outside Service,"1,500.00",0.00,4.00,4/9/2024,,[]
+475,EQ ID 475,Punch Press - 330 Ton,Fabrication,9572,"PM check the machine and rebuild the machine and change the oil /2024 year  
+Dunrite machinery
+Jun 2025",Pending,1/9/2025,,Outside Service,0.00,0.00,0.00,,,[]
+475,EQ ID 475,Punch Press - 330 Ton,Fabrication,281,"PM check the machine and rebuild the machine and change the oil /2024 year  
+Dunrite machinery
+Jun 2025",Closed and Completed,3/18/2023,dunrite,Outside Service,0.00,"3,000.00",6.00,11/30/2023,,[]
+476,EQ ID 476,Punch Press - 80Ton,Fabrication,282,"1. PM 
+Need to do the PM check and change the oil in 2025 year J&R  Machinery
+Aug 2025",Pending,3/18/2023,,Outside Service,0.00,0.00,0.00,,,[]
+507,EQ ID 507,Shear (8 ft),Fabrication,11325,"flip blades, Complete Blade change from Dunrite 
+Apr 2025",Pending,4/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+507,EQ ID 507,Shear (8 ft),Fabrication,286,"flip blades, Complete Blade change from Dunrite 
+Apr 2025",Closed and Completed,3/18/2023,dunrite,Outside Service,0.00,"1,258.00",4.00,3/14/2024,,[]
+434,EQ ID 434,Laser,Fabrication,5073,"1. X and Y axis racks - Clean (book 6-15)
+2. Order and replace PN 0369322(G35.13), 0369321(G35.14), 0369321(G40.1) and 0369320(G40.2)(compressed-air cutting filters)
+(book 6-22 and 6-23)
+3. Filter elements (compact dust extractor) - Check (6-23)
+4. Air conditioning unit in the switch cabinet - Clean (6-43)
+5. Lubricating strip Lubricate grease nipples - Lubricate grease nipples (6-48 and 6-54)
+6. Connector mounting device and screw-type connector in switch cabinet (6-42)",Pending,3/30/2024,,Technician,0.00,0.00,0.00,,,[]
+434,EQ ID 434,Laser,Fabrication,5074,"1. Order and replace 0364032(P1.5). Compress air filter cartridge 40u (book 6-22)
+2. X/Y Deflection mirror - Check and clean (6-28)
+3. FocusLine Deflection mirror (Y/Z direction) - Check and clean (6-30)
+4. FocusLine mirror (copper) - Check and clean (6-32)
+5. Telescopic mirror (Deflection mirror in X/Y direction) - Check and clean (6-33)
+6. Phase shifter (Deflection mirror in Y/X direction) - Check and clean (6-35)
+7. Unload Rake frame chain Clean - Clean (6-52)
+8. Unload Lifting chains - Check chain elongation, clean and Replace if necessary (6-53)
+9. Unload Z axis/X axis guides Check - Check (6-54)
+10. RF cabinet - Check fans for running noises (7-37)
+11. RF output stage (front side) - Check sacrificial anodes and potential hoses and replace if necessary (7-38)
+12. RF output stage (front side) - Check operating values (7-42)
+13. RF output stage (rear side) - Clean group cathodes (7-48)
+14. Cooling unit - Change cooling water (cleaning cycle)
+order 4 barrels of 200L de-ionized water, 1653109(Cu), 1652609(Al), 2x 146152(filters), 2x o-rings. (7-17)",Pending,9/30/2023,,Technician,0.00,0.00,0.00,,,[]
+434,EQ ID 434,Laser,Fabrication,5075,"1. Purging valves (compact dust extractor) - Check (book 6-18)
+2. Order and replace 4x 0369323(G35.15, G35.16, G40.3 and G40.17) Activated carbon filters (compressed-air cutting) (6-23 and 6-24)
+3. Safety light barrier - Clean (6-42)
+4. Control cabinet fan - Check and Clean (6-43)
+5. Lifting chains - Check for wear (6-45 and 6-46)",Pending,6/30/2023,,Technician,0.00,0.00,0.00,,,[]
+434,EQ ID 434,Laser,Fabrication,5076,"Change Air Filters
+Change Cooling water and Filters
+Grease and Oil Machine
+General Check up",Pending,9/30/2023,,Outside Service,0.00,0.00,0.00,,,[]
+434,EQ ID 434,Laser,Fabrication,5077,"1. Order motor oil 
+Z axis motors Oil change - Oil Change (book 6-49)
+Rake frame motor Oil change - Oil Change (6-54)
+
+2. Order central lubrication grease pn Microlub 111780 if needed
+fill-up to mark on grease reservoir in pneumatic panel (6-10)",Pending,3/30/2025,,Technician,0.00,0.00,0.00,,,[]
+1356,EQ ID 1356,Toyota Forklift,Maintenance,16828,Preventative Maintenance.,Pending,2/27/2026,,Outside Service,0.00,0.00,0.00,,,[]
+1356,EQ ID 1356,Toyota Forklift,Maintenance,14985,Preventative Maintenance.,Closed and Completed,3/10/2025,Raven Lift,Outside Service,1.00,85.00,0.00,3/6/2025,"Nick Kosyak - 03/11/25  3:58:26 AM: The monitor and all necessary cables are there, may need further system setup once connected to the laptop. Let me know if further assistance is required.",[]
+1356,EQ ID 1356,Toyota Forklift,Maintenance,14997,Preventative Maintenance.,Closed and Completed,9/11/2025,Raven Lift,Outside Service,1.00,93.50,0.00,7/10/2025,,[]
+5245,EQ ID 5245,Tumbler,Maintenance,7887,Grease bearings.,Closed and Completed,11/2/2024,Nick Kosyak,Maintenance Mechanic,0.25,0.00,0.00,1/13/2025,,[]
+1586,EQ ID 1586,Refrigerant Air Dryer (2012),Maintenance,4293,Change Filters,Closed and Completed,2/9/2024,Atlas Copco,Maintenance Mechanic,2.00,485.00,0.00,1/15/2025,Nick Kosyak - 02/29/24  6:41:04 AM: To be completed Sep. 2024 along the rest of the filters. | Nick Kosyak - 01/23/24  3:09:44 AM: Ignore previous comment. | Nick Kosyak - 01/23/24  3:08:42 AM: Complete. Awaiting Invoice.,[]
+2029,EQ ID 2029,Refrigerant Air Dryer (2017),Maintenance,4294,Change Filters,Closed and Completed,2/9/2024,Atlas Copco,Maintenance Mechanic,2.00,485.00,0.00,1/15/2025,Nick Kosyak - 02/29/24  6:41:26 AM: To be completed Sep. 2024 along the rest of the filters.,[]
+502,EQ ID 502,Scissor Lift,Maintenance,16829,Preventive maintenance & Lift test,Pending,11/27/2025,,Outside Service,0.00,0.00,0.00,,,[]
+502,EQ ID 502,Scissor Lift,Maintenance,16830,Preventive maintenance & Lift test,Pending,11/27/2025,,Outside Service,0.00,0.00,0.00,,,[]
+502,EQ ID 502,Scissor Lift,Maintenance,283,Preventive maintenance & Lift test,Closed and Completed,6/18/2022,Raven Lift,Outside Service,5.00,489.74,0.00,11/4/2022,,[]
+502,EQ ID 502,Scissor Lift,Maintenance,3710,Preventive maintenance & Lift test,Closed and Completed,3/21/2023,Raven Lift,Outside Service,1.00,80.00,0.00,3/27/2023,Nick Kosyak - 03/28/23  9:49:32 AM: Complete. Awaiting Invoice.,[]
+502,EQ ID 502,Scissor Lift,Maintenance,5300,Preventive maintenance & Lift test,Closed and Completed,7/13/2023,Raven Lift,Outside Service,1.00,80.00,0.00,7/7/2023,Nick Kosyak - 07/20/23  3:53:57 AM: Complete. Awaiting Invoice.,[]
+502,EQ ID 502,Scissor Lift,Maintenance,6535,Preventive maintenance & Lift test,Closed and Completed,10/20/2023,Raven Lift,Outside Service,1.00,80.00,0.00,11/2/2023,Nick Kosyak - 11/13/23  3:38:53 AM: Heater operational.,[]
+502,EQ ID 502,Scissor Lift,Maintenance,8007,Preventive maintenance & Lift test,Closed and Completed,2/13/2024,Raven Lift,Outside Service,1.00,85.00,0.00,3/6/2025,"Nick Kosyak - 03/11/25  3:58:07 AM: The monitor and all necessary cables are there, may need further system setup once connected to the laptop. Let me know if further assistance is required. | Nick Kosyak - 03/10/25  3:40:15 AM: Complete. Awaiting invoice.",[]
+502,EQ ID 502,Scissor Lift,Maintenance,284,Inspection of harnesses,Closed and Completed,3/18/2025,Raven Lift,Outside Service,1.00,85.00,0.00,3/6/2025,Nick Kosyak - 03/17/25  4:13:26 AM: Complete. Awaiting invoice.,[]
+502,EQ ID 502,Scissor Lift,Maintenance,14996,Preventive maintenance & Lift test,Closed and Completed,6/11/2025,Raven Lift,Outside Service,1.00,85.00,0.00,7/10/2025,Nick Kosyak - 07/22/25  6:30:00 AM: Complete. Awaiting invoice.,[]
+502,EQ ID 502,Scissor Lift,Maintenance,14998,Preventive maintenance & Lift test,Closed without Action,6/11/2025,-,Outside Service,0.00,0.00,0.00,8/27/2025,Nick Kosyak - 08/27/25  5:55:32 AM: Duplicate WO generated. | Nick Kosyak - 07/22/25  6:30:03 AM: Complete. Awaiting invoice.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,17303,Check the CO2 fire extinguisher in the communications room,Pending,11/15/2025,,Operator,0.00,0.00,0.00,,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,238,Check the CO2 fire extinguisher in the communications room,Closed and Completed,4/18/2022,Tyco,Operator,0.50,0.00,0.00,4/26/2022,Nick Kosyak - 04/27/22  9:46:22 AM: Complete. Awaiting Invoice.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,237,Inspection,Closed and Completed,4/18/2022,Tyco,Maintenance Mechanic,4.00,0.00,0.00,4/26/2022,Nick Kosyak - 04/27/22  9:46:48 AM: Complete. Awaiting Invoice.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,2659,Inspection,Closed and Completed,11/13/2022,Levina,Maintenance Mechanic,1.00,0.00,0.00,11/15/2022,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,2660,Check the CO2 fire extinguisher in the communications room,Closed and Completed,11/13/2022,Nick Kosyak,Operator,0.10,0.00,0.00,12/19/2022,Nick Kosyak - 12/19/22 10:07:42 AM: Dave contacted. Will notify when available.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,3691,Check the CO2 fire extinguisher in the communications room,Closed and Completed,1/19/2023,Nick Kosyak,Operator,0.25,0.00,0.00,1/17/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,3628,Inspection,Closed and Completed,1/14/2023,Lavina,Maintenance Mechanic,1.00,0.00,0.00,1/17/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,4031,Inspection,Closed and Completed,2/18/2023,Lavina,Maintenance Mechanic,1.00,0.00,0.00,2/24/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,4032,Check the CO2 fire extinguisher in the communications room,Closed and Completed,2/18/2023,Nick Kosyak,Operator,0.25,0.00,0.00,2/24/2023,Nick Kosyak - 02/24/23  6:23:49 AM: Cameron to be contacted regarding the constant shifting of the parking stones.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,4574,Check the CO2 fire extinguisher in the communications room,Closed and Completed,3/24/2023,Nick Kosyak,Operator,0.10,0.00,0.00,3/16/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,4572,Inspection,Closed and Completed,3/24/2023,Lavina Beals,Maintenance Mechanic,2.00,0.00,0.00,3/16/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,4862,Inspection,Closed and Completed,4/17/2023,Safety,Maintenance Mechanic,2.00,0.00,0.00,4/28/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,4863,Check the CO2 fire extinguisher in the communications room,Closed and Completed,4/17/2023,Nick Kosyak,Operator,0.10,0.00,0.00,4/28/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,5485,Inspection,Closed and Completed,6/1/2023,Alden,Maintenance Mechanic,1.50,0.00,0.00,6/22/2023,Nick Kosyak - 06/26/23  6:53:39 AM: Pads replaced. Filter replacement TBD.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,5486,Check the CO2 fire extinguisher in the communications room,Closed and Completed,6/1/2023,Nick Kosyak,Operator,0.25,0.00,0.00,6/26/2023,Nick Kosyak - 06/26/23  6:54:15 AM: Pads replaced. Filter replacement TBD.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,6189,Check the CO2 fire extinguisher in the communications room,Closed and Completed,7/26/2023,Nick Kosyak,Operator,0.10,0.00,0.00,8/25/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,6187,Inspection,Closed and Completed,7/26/2023,Alden,Maintenance Mechanic,1.00,0.00,0.00,8/25/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,7016,Inspection,Closed and Completed,9/28/2023,Alden Alleyne,Maintenance Mechanic,2.00,0.00,0.00,9/27/2023,Nick Kosyak - 09/29/23  8:58:53 AM: Complete. Awaiting Invoice.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,7017,Check the CO2 fire extinguisher in the communications room,Closed and Completed,9/28/2023,Nick Kosyak,Operator,0.25,0.00,0.00,9/28/2023,Nick Kosyak - 09/29/23  8:59:41 AM: Disregard below comment. System error. | Nick Kosyak - 09/29/23  8:59:07 AM: Complete. Awaiting Invoice.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,7401,Inspection,Closed and Completed,10/29/2023,Safety,Maintenance Mechanic,0.00,0.00,0.00,11/30/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,7402,Check the CO2 fire extinguisher in the communications room,Closed and Completed,10/29/2023,Nick Kosyak,Operator,0.25,0.00,0.00,12/7/2023,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,9258,Inspection,Closed and Completed,1/8/2024,Alden,Maintenance Mechanic,1.00,0.00,0.00,12/18/2023,Nick Kosyak - 12/21/23  6:02:22 AM: To be serviced Dec. 22,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,9259,Check the CO2 fire extinguisher in the communications room,Closed and Completed,1/8/2024,Nick Kosyak,Operator,0.25,0.00,0.00,12/19/2023,Nick Kosyak - 12/21/23  6:02:33 AM: To be serviced Dec. 22,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,9429,Check the CO2 fire extinguisher in the communications room,Closed and Completed,1/21/2024,Nick Kosyak,Operator,0.10,0.00,0.00,3/28/2024,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,9428,Inspection,Closed and Completed,1/21/2024,Alden,Maintenance Mechanic,1.00,0.00,0.00,3/28/2024,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,10848,Inspection,Closed and Completed,4/28/2024,Alden Alleyne,Maintenance Mechanic,1.00,0.00,0.00,3/11/2025,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,10849,Check the CO2 fire extinguisher in the communications room,Closed and Completed,4/28/2024,Nick Kosyak,Operator,0.15,0.00,0.00,3/12/2025,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,15024,Check the CO2 fire extinguisher in the communications room,Closed and Completed,4/12/2025,Nick Kosyak,Operator,0.10,0.00,0.00,4/28/2025,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,15511,Check the CO2 fire extinguisher in the communications room,Closed and Completed,5/28/2025,Nick Kosyak,Operator,0.10,0.00,0.00,5/30/2025,Nick Kosyak - 05/30/25  3:52:44 AM: Wheel replaced with a used wheel from another pump truck.,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,15897,Check the CO2 fire extinguisher in the communications room,Closed and Completed,6/30/2025,Nick Kosyak,Operator,0.10,0.00,0.00,7/4/2025,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,16295,Check the CO2 fire extinguisher in the communications room,Closed and Completed,8/4/2025,Nick Kosyak,Operator,0.10,0.00,0.00,8/6/2025,,[]
+391,EQ ID 391,Fire Extinguisher,Maintenance,16587,Check the CO2 fire extinguisher in the communications room,Closed and Completed,9/6/2025,Nick Kosyak,Operator,0.10,0.00,0.00,10/7/2025,,[]
+400,EQ ID 400,Fire Extinguisher,Maintenance,15001,Annual Fire Extinguisher Inspection,Pending,3/11/2026,,Outside Service,0.00,0.00,0.00,,,[]
+400,EQ ID 400,Fire Extinguisher,Maintenance,249,Annual Fire Extinguisher Inspection,Closed and Completed,3/18/2023,Tyco,Outside Service,5.00,310.00,0.00,3/22/2023,Nick Kosyak - 03/23/23  9:52:30 AM: Complete. Awaiting Invoice.,[]
+400,EQ ID 400,Fire Extinguisher,Maintenance,5393,Annual Fire Extinguisher Inspection,Closed and Completed,4/21/2024,Jhonson Controls,Outside Service,8.00,365.00,0.00,9/19/2024,,[]
+423,EQ ID 423,Tube Heater,Maintenance,17030,changing of filter and checking all belts.,Pending,3/18/2026,,Outside Service,0.00,0.00,0.00,,,[]
+423,EQ ID 423,Tube Heater,Maintenance,271,changing of filter and checking all belts.,Closed and Completed,9/18/2022,Field Temp,Outside Service,6.00,650.00,0.00,10/3/2022,,[]
+423,EQ ID 423,Tube Heater,Maintenance,3847,changing of filter and checking all belts.,Closed and Completed,7/6/2023,Field Temp,Outside Service,4.00,685.00,0.00,7/17/2023,Nick Kosyak - 07/20/23  3:53:16 AM: Complete. Awaiting Invoice.,[]
+423,EQ ID 423,Tube Heater,Maintenance,6719,changing of filter and checking all belts.,Closed and Completed,2/4/2024,Field Temp,Outside Service,8.00,685.00,0.00,1/18/2024,Nick Kosyak - 02/01/24  9:50:10 AM: Complete. Awaiting invoice.,[]
+423,EQ ID 423,Tube Heater,Maintenance,10515,changing of filter and checking all belts.,Closed and Completed,8/26/2024,Field Temp,Outside Service,6.00,720.00,0.00,1/10/2025,Nick Kosyak - 01/15/25  3:23:11 AM: Awaiting most recent invoice.,[]
+423,EQ ID 423,Tube Heater,Maintenance,14558,changing of filter and checking all belts.,Closed and Completed,8/3/2025,Field Temp,Outside Service,6.00,760.00,0.00,7/25/2025,Nick Kosyak - 07/29/25  3:23:41 AM: Complete. Awaiting invoice.,[]
+1084,EQ ID 1084,Generator 1084,Maintenance,16960,Check & Test,Pending,11/10/2025,,Technician,0.00,0.00,0.00,,,[]
+1084,EQ ID 1084,Generator 1084,Maintenance,652,Check & Test,Closed and Completed,5/18/2022,Nick Kosyak,Technician,1.00,211.60,0.00,5/4/2022,Nick Kosyak - 05/05/22  5:21:20 AM: Replaced battery.,[]
+1084,EQ ID 1084,Generator 1084,Maintenance,2885,Check & Test,Closed and Completed,12/13/2022,"Nick Kosyak, Javy Manalo",Technician,0.25,0.00,0.00,1/18/2023,,[]
+1084,EQ ID 1084,Generator 1084,Maintenance,4039,Check & Test,Closed and Completed,3/18/2023,Nick Kosyak,Technician,0.20,0.00,0.00,5/8/2023,,[]
+1084,EQ ID 1084,Generator 1084,Maintenance,5577,Check & Test,Closed and Completed,7/8/2023,Nick Kosyak,Technician,0.17,0.00,0.00,9/29/2023,Nick Kosyak - 09/29/23  9:00:22 AM: Disregard below comment. System error.,[]
+1084,EQ ID 1084,Generator 1084,Maintenance,7403,Check & Test,Closed and Completed,11/29/2023,Javy Manalo,Technician,0.25,0.00,0.00,4/9/2024,Nick Kosyak - 04/09/24  9:26:57 AM: Disregard previous comment.,[]
+1084,EQ ID 1084,Generator 1084,Maintenance,11028,Check & Test,Closed without Action,6/9/2024,Nick Kosyak,Technician,0.25,0.00,0.00,7/9/2025,,[]
+1084,EQ ID 1084,Generator 1084,Maintenance,16335,Check & Test,Closed and Completed,9/9/2025,"Nick Kosyak, Damian Mannings",Technician,0.25,0.00,0.00,9/9/2025,,[]
+1085,EQ ID 1085,Generator 1085,Maintenance,16957,Check & Test,Pending,11/10/2025,,Technician,0.00,0.00,0.00,,,[]
+1085,EQ ID 1085,Generator 1085,Maintenance,653,Check & Test,Closed and Completed,5/18/2022,Nick Kosyak,Technician,1.00,350.85,0.00,5/4/2022,Nick Kosyak - 05/05/22  5:23:34 AM: Replaced Battery and Wheels.,[]
+1085,EQ ID 1085,Generator 1085,Maintenance,2886,Check & Test,Closed and Completed,12/13/2022,"Nick Kosyak, Javy Manalo",Technician,0.25,0.00,0.00,1/18/2023,,[]
+1085,EQ ID 1085,Generator 1085,Maintenance,4040,Check & Test,Closed and Completed,3/18/2023,Nick Kosyak,Technician,0.20,0.00,0.00,5/8/2023,,[]
+1085,EQ ID 1085,Generator 1085,Maintenance,5578,Check & Test,Closed and Completed,7/8/2023,Nick Kosyak,Technician,0.17,0.00,0.00,9/29/2023,Nick Kosyak - 09/29/23  9:00:35 AM: Disregard below comment. System error.,[]
+1085,EQ ID 1085,Generator 1085,Maintenance,7404,Check & Test,Closed and Completed,11/29/2023,Javy Manalo,Technician,0.25,0.00,0.00,4/9/2024,Nick Kosyak - 04/09/24  9:25:31 AM: Disregard previous comment.,[]
+1085,EQ ID 1085,Generator 1085,Maintenance,11025,Check & Test,Closed and Completed,6/9/2024,Nick Kosyak,Technician,0.25,0.00,0.00,7/9/2025,,[]
+1085,EQ ID 1085,Generator 1085,Maintenance,16332,Check & Test,Closed and Completed,9/9/2025,"Nick Kosyak, Damian Mannings",Technician,0.25,0.00,0.00,9/9/2025,,[]
+1086,EQ ID 1086,Generator 1086,Maintenance,16958,Check & Test,Pending,11/10/2025,,Technician,0.00,0.00,0.00,,,[]
+1086,EQ ID 1086,Generator 1086,Maintenance,654,Check & Test,Closed and Completed,5/18/2022,Nick Kosyak,Technician,1.00,211.60,0.00,5/4/2022,Nick Kosyak - 05/05/22  5:22:44 AM: Replaced Battery.,[]
+1086,EQ ID 1086,Generator 1086,Maintenance,2887,Check & Test,Closed and Completed,12/13/2022,"Nick Kosyak, Javy Manalo",Technician,0.25,0.00,0.00,1/18/2023,,[]
+1086,EQ ID 1086,Generator 1086,Maintenance,4041,Check & Test,Closed and Completed,3/18/2023,Nick Kosyak,Technician,0.20,0.00,0.00,5/8/2023,,[]
+1086,EQ ID 1086,Generator 1086,Maintenance,5579,Check & Test,Closed and Completed,7/8/2023,Nick Kosyak,Technician,0.17,0.00,0.00,9/29/2023,Nick Kosyak - 09/29/23  9:00:51 AM: Disregard below comment. System error. | Nick Kosyak - 09/29/23  9:00:47 AM: Disregard below comment. System error.,[]
+1086,EQ ID 1086,Generator 1086,Maintenance,7405,Check & Test,Closed and Completed,11/29/2023,Javy Manalo,Technician,0.25,0.00,0.00,4/9/2024,Nick Kosyak - 04/09/24  9:26:09 AM: Disregard previous comment.,[]
+1086,EQ ID 1086,Generator 1086,Maintenance,11026,Check & Test,Closed and Completed,6/9/2024,Nick Kosyak,Technician,0.25,0.00,0.00,7/9/2025,,[]
+1086,EQ ID 1086,Generator 1086,Maintenance,16333,Check & Test,Closed and Completed,9/9/2025,"Nick Kosyak, Damian Mannings",Technician,0.25,0.00,0.00,9/9/2025,,[]
+1087,EQ ID 1087,Generator 1087,Maintenance,16959,Check & Test,Pending,11/10/2025,,Technician,0.00,0.00,0.00,,,[]
+1087,EQ ID 1087,Generator 1087,Maintenance,655,Check & Test,Closed and Completed,5/18/2022,Nick Kosyak,Technician,1.00,350.85,0.00,5/4/2022,Nick Kosyak - 05/05/22  5:20:13 AM: Replaced battery and wheels.,[]
+1087,EQ ID 1087,Generator 1087,Maintenance,2888,Check & Test,Closed and Completed,12/13/2022,"Nick Kosyak, Javy Manalo",Technician,0.25,0.00,0.00,1/18/2023,,[]
+1087,EQ ID 1087,Generator 1087,Maintenance,4042,Check & Test,Closed and Completed,3/18/2023,Nick Kosyak,Technician,0.20,0.00,0.00,5/8/2023,,[]
+1087,EQ ID 1087,Generator 1087,Maintenance,5580,Check & Test,Closed and Completed,7/8/2023,Nick Kosyak,Technician,0.17,0.00,0.00,9/29/2023,Nick Kosyak - 09/29/23  9:01:09 AM: Disregard below comment. System error.,[]
+1087,EQ ID 1087,Generator 1087,Maintenance,7406,Check & Test,Closed and Completed,11/29/2023,Javy Manalo,Technician,0.25,0.00,0.00,4/9/2024,Nick Kosyak - 04/09/24  9:26:32 AM: Disregard previous comment.,[]
+1087,EQ ID 1087,Generator 1087,Maintenance,11027,Check & Test,Closed and Completed,6/9/2024,Nick Kosyak,Technician,0.25,0.00,0.00,7/9/2025,,[]
+1087,EQ ID 1087,Generator 1087,Maintenance,16334,Check & Test,Closed and Completed,9/9/2025,"Nick Kosyak, Damian Mannings",Technician,0.25,0.00,0.00,9/9/2025,,[]
+1103,EQ ID 1103,ROOF EXHAUST,Maintenance,16276,"Annual inspection of exhaust vent.
+
+- Check condition.
+- Ensure function.
+- Schedule vendor if necessary.
+
+Breaker locations - Panel H (Sml. Contura) & Panel N (Fab. TV)",Pending,7/2/2026,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1103,EQ ID 1103,ROOF EXHAUST,Maintenance,16215,"Annual inspection of exhaust vent.
+
+- Check condition.
+- Ensure function.
+- Schedule vendor if necessary.
+
+Breaker locations - Panel H (Sml. Contura) & Panel N (Fab. TV)",Closed and Completed,6/25/2025,Nick Kosyak,Maintenance Mechanic,0.25,0.00,0.00,6/25/2025,,[]
+1434,EQ ID 1434,SW Mix Cell 359-4 Tab Bender,Quality Assurance,13732,check against towel tray and cabinet assy made using the bender,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1434,EQ ID 1434,SW Mix Cell 359-4 Tab Bender,Quality Assurance,13747,check against towel tray and cabinet assy made using the bender,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1434,EQ ID 1434,SW Mix Cell 359-4 Tab Bender,Quality Assurance,877,check against towel tray and cabinet assy made using the bender,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,0.50,0.00,0.00,7/18/2023,"Patricia Morena - 07/21/23  6:16:52 AM: See attachments for more information.
+Jig is used to bend the 359-4 towel tray tabs. 
+EQ ID #1434. | Patricia Morena - 07/18/23  8:05:00 AM: See attachments for more information. 
+EQ ID #1434.","[{""name"": ""359-4 Towel Tray july2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/358?guid=069b45af-c73d-4fbd-89da-980161ad858e""}]"
+1434,EQ ID 1434,SW Mix Cell 359-4 Tab Bender,Quality Assurance,6478,check against towel tray and cabinet assy made using the bender,Closed without Action,7/18/2024,LA,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+1434,EQ ID 1434,SW Mix Cell 359-4 Tab Bender,Quality Assurance,6558,check against towel tray and cabinet assy made using the bender,Closed without Action,7/21/2024,LA,QA Technician,0.00,0.00,0.00,10/31/2024,Luz Mari Andal - 11/08/24  7:03:17 AM: 2 new jigs in Oct2024,[]
+1660,EQ ID 1660,SW 254 Cell B354 Flange to Cabinet Jig,Quality Assurance,13163,check cabinet made using the jig,Pending,9/23/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1660,EQ ID 1660,SW 254 Cell B354 Flange to Cabinet Jig,Quality Assurance,955,check cabinet made using the jig,Closed without Action,3/18/2023,Lala,QA Technician,0.00,0.00,0.00,6/29/2023,Luz Mari Andal - 06/29/23  5:46:49 AM: this is a duplicate to UWO558,[]
+1660,EQ ID 1660,SW 254 Cell B354 Flange to Cabinet Jig,Quality Assurance,6253,check cabinet made using the jig,Closed without Action,6/29/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:16:08 PM: no issue on this item,[]
+1678,EQ ID 1678,SW Box Cell B3961 Bottom to Wrapper,Quality Assurance,10404,use with 3961 push rod jig and measure cabinet assembly made using the jig,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1678,EQ ID 1678,SW Box Cell B3961 Bottom to Wrapper,Quality Assurance,958,use with 3961 push rod jig and measure cabinet assembly made using the jig,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,"Luz Mari Andal - 02/16/24  7:00:21 AM: no issue with jig, will revisit",[]
+1679,EQ ID 1679,SW Box Cell B3961 Push Rod,Quality Assurance,10405,check function together with 3961 bottom to wrapper jig Eq ID 1678,Pending,2/16/2025,,Technician,0.00,0.00,0.00,,,[]
+1679,EQ ID 1679,SW Box Cell B3961 Push Rod,Quality Assurance,959,check function together with 3961 bottom to wrapper jig Eq ID 1678,Closed without Action,3/18/2023,LA,Technician,0.00,0.00,0.00,2/16/2024,"Luz Mari Andal - 02/16/24  7:00:32 AM: no issue with jig, will revisit",[]
+1688,EQ ID 1688,SW 254 Cell B353 Hinge to Cabinet Jig,Quality Assurance,13161,confirm measurements on B353-101 cabinet assembly made from the jig,Pending,9/23/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1688,EQ ID 1688,SW 254 Cell B353 Hinge to Cabinet Jig,Quality Assurance,13743,confirm measurements on B353-101 cabinet assembly made from the jig,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1688,EQ ID 1688,SW 254 Cell B353 Hinge to Cabinet Jig,Quality Assurance,960,confirm measurements on B353-101 cabinet assembly made from the jig,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,3.00,0.00,0.00,6/21/2023,"Patricia Morena - 07/19/23  8:37:43 AM: Weld Hinge to Cabinet
+EQ ID #1688
+Notes:
+- 4 jigs in 254 cell
+- 2 in 254 North
+- 2 in 254 South
+- one from each side is being used
+- Springs were added to stopper so jig fits better in cabinet
+- See attachments for further clarification
+
+Visual Observations:
+- Make sure jig goes in at the right angle, have to re-adjust as hinge will be lopsided.
+- hinge moves easily, make sure hinge gets held down properly. | Patricia Morena - 06/21/23  8:51:38 AM: Notes: 
+- 4 jigs in 254 cell
+- 2 in 254 North
+- 2 in 254 South 
+- one from each side is being used 
+- Springs were added to stopper so jig fits better in cabinet
+- See attachments for further clarification
+
+Visual Observations:
+- Make sure jig goes in at the right angle, have to re-adjust as hinge will be lopsided.
+-  hinge moves easily, make sure hinge gets held down properly.","[{""name"": ""353 Hinge to Cab June2023.PDF"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/298?guid=2b2a917d-11ee-4edb-a201-24d26efa8bac""}, {""name"": ""353-101 Cabinet Assy. june2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/299?guid=2b2a917d-11ee-4edb-a201-24d26efa8bac""}]"
+1688,EQ ID 1688,SW 254 Cell B353 Hinge to Cabinet Jig,Quality Assurance,6498,confirm measurements on B353-101 cabinet assembly made from the jig,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+1688,EQ ID 1688,SW 254 Cell B353 Hinge to Cabinet Jig,Quality Assurance,6144,confirm measurements on B353-101 cabinet assembly made from the jig,Closed without Action,6/21/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:15:22 PM: no issue on this item | Luz Mari Andal - 09/23/24 12:15:15 PM: no issue on this item,[]
+1792,EQ ID 1792,Assy 367-302 back lock opening check jig,Quality Assurance,974,visual check,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:52:28 AM: No issue w jig,[]
+1792,EQ ID 1792,Assy 367-302 back lock opening check jig,Quality Assurance,10382,visual check,Closed and Completed,2/16/2025,Lala,QA Technician,0.00,0.00,0.00,2/27/2025,Luz Mari Andal - 02/27/25  9:28:11 AM: squeeze jig has the feature to check direction of the key slot. 02.27.2025LA,[]
+1805,EQ ID 1805,SW 254 Hinge to Cabinet Jig,Quality Assurance,13159,see jig drawing; confirmation check on 254-101 made by the jig,Pending,9/23/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1805,EQ ID 1805,SW 254 Hinge to Cabinet Jig,Quality Assurance,977,see jig drawing; confirmation check on 254-101 made by the jig,Closed without Action,3/18/2023,Lala,QA Technician,1.00,0.00,0.00,5/26/2023,Luz Mari Andal - 05/26/23  5:12:18 AM: no issue on cabinet using this jig | Luz Mari Andal - 05/26/23  5:11:44 AM: no issue on cabinet using this jig,[]
+1805,EQ ID 1805,SW 254 Hinge to Cabinet Jig,Quality Assurance,5801,see jig drawing; confirmation check on 254-101 made by the jig,Closed without Action,5/26/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:14:30 PM: no issue on this item,[]
+1896,EQ ID 1896,SW 254-6 Plastic Stripper Jig,Quality Assurance,993,check flap door made,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+851,EQ ID 851,SW 254 Series Door Hinge Jig,Quality Assurance,13160,Refer to drawing,Pending,9/23/2025,,QA Technician,0.00,0.00,0.00,,,[]
+851,EQ ID 851,SW 254 Series Door Hinge Jig,Quality Assurance,13739,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+851,EQ ID 851,SW 254 Series Door Hinge Jig,Quality Assurance,13746,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+851,EQ ID 851,SW 254 Series Door Hinge Jig,Quality Assurance,555,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,2.00,0.00,0.00,6/20/2023,"Patricia Morena - 07/19/23  8:36:21 AM: Use to weld the hinge half to the door of models 254, 353, 354, and ND-5; modified jigs released Jan2019 and Feb 2019
+EQ ID #851
+Comments from process analyst: Two extra grinded down holes on 254-5 south side jig; does not cause additional problems for operator. Jigs will not be replaced or modified.
+
+Comments from operator:
+- Two jigs in work cell
+- Not snug enough
+- Hinge moves easily, harder to hold down | Patricia Morena - 06/20/23  6:47:20 AM: Comments from process analyst: Two extra grinded down holes on 254-5 south side jig; does not cause additional problems for operator. Jigs will not be replaced or modified. 
+
+Comments from operator: 
+- Two jigs in work cell
+- Not snug enough
+- Hinge moves easily, harder to hold down","[{""name"": ""254-5 Door Assembly June2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/295?guid=fc57a06c-336a-44b8-8b06-25e4e160c818""}, {""name"": ""254 Door Hinge Jig 3_June2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/296?guid=fc57a06c-336a-44b8-8b06-25e4e160c818""}]"
+851,EQ ID 851,SW 254 Series Door Hinge Jig,Quality Assurance,6497,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+851,EQ ID 851,SW 254 Series Door Hinge Jig,Quality Assurance,6129,Refer to drawing,Closed and Completed,6/20/2024,Lala,QA Technician,1.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:14:53 PM: no issue on this item | Luz Mari Andal - 09/23/24 12:13:19 PM: new jig passed to SW 09.23.2024; dimensions on sample received are within tolerances,"[{""name"": ""254-5 Door Assembly hinge to door jig 09.23.2024.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/626?guid=425a661a-07ae-4171-9897-3bcf11140dad""}]"
+851,EQ ID 851,SW 254 Series Door Hinge Jig,Quality Assurance,6557,Refer to drawing,Closed and Completed,7/21/2024,LA,QA Technician,0.00,0.00,0.00,10/31/2024,Luz Mari Andal - 11/08/24  7:03:02 AM: 2 new jigs in Oct2024 | Luz Mari Andal - 11/08/24  7:02:48 AM: 2 new jigs in Oct2024,[]
+853,EQ ID 853,SW 254 Series Flap Door Jig,Quality Assurance,13162,Refer to drawing,Pending,9/23/2025,,QA Technician,0.00,0.00,0.00,,,[]
+853,EQ ID 853,SW 254 Series Flap Door Jig,Quality Assurance,13736,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+853,EQ ID 853,SW 254 Series Flap Door Jig,Quality Assurance,556,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,2.00,0.00,0.00,6/28/2023,"Patricia Morena - 07/19/23  8:38:33 AM: Jig is used to hold flap door in place while it is welded on the wrapper of 254, 353, 354, and ND-5
+EQ ID #853
+Notes:
+- 2 jigs, one used in each side (254 North and 254 South)
+- jig were modified to have 3 total stoppers to keep flap door in place and squared.
+- Original jig did not meet both sides of door.
+- Stoppers were added to have jig touch both ends of door exactly and to keep flap door in place.
+- This changed has been modified by the operators in the work cell. | Patricia Morena - 06/28/23  4:56:53 AM: Notes:
+- 2 jigs, one used in each side (254 North and 254 South)
+- jig were modified to have 3 total stoppers to keep flap door in place and squared.
+- Original jig did not meet both sides of door. 
+- Stoppers were added to have jig touch both ends of door exactly and to keep flap door in place. 
+- This changed has been modified by the operators in the work cell.","[{""name"": ""254 Flap Door to Door Final_June2023.PDF"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/304?guid=52a65795-496a-45cc-8746-e249eefdc7da""}]"
+853,EQ ID 853,SW 254 Series Flap Door Jig,Quality Assurance,6499,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+853,EQ ID 853,SW 254 Series Flap Door Jig,Quality Assurance,6243,Refer to drawing,Closed without Action,6/28/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:15:48 PM: no issue on this item,[]
+854,EQ ID 854,SW 254 Series International Label Jig,Quality Assurance,13153,Refer to drawing,Pending,9/23/2026,,QA Technician,0.00,0.00,0.00,,,[]
+854,EQ ID 854,SW 254 Series International Label Jig,Quality Assurance,557,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:09:53 PM: no issue on this item,[]
+855,EQ ID 855,SW 254 Series Flange Jig,Quality Assurance,13727,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+855,EQ ID 855,SW 254 Series Flange Jig,Quality Assurance,13735,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+855,EQ ID 855,SW 254 Series Flange Jig,Quality Assurance,558,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,2.00,0.00,0.00,7/4/2023,"Patricia Morena - 07/19/23  8:40:11 AM: Welds the flange to the 354 cabinet
+EQ ID #855
+Visual observations:
+- 354 Flange to Cabinet Jig
+- Two jigs in 254 cell
+- No modifications to the jig
+- No problems, works as is
+- See attachment for measurements | Patricia Morena - 07/11/23  3:58:58 AM: Visual observations: 
+- 354 Flange to Cabinet Jig 
+- Two jigs in 254 cell
+- No modifications to the jig
+- No problems, works as is 
+- See attachment for measurements","[{""name"": ""354 Flange to Cabinet June2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/339?guid=189dee94-7dd0-478d-ab36-d22158b67a96""}]"
+855,EQ ID 855,SW 254 Series Flange Jig,Quality Assurance,6372,Refer to drawing,Closed without Action,7/11/2024,Lala,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+855,EQ ID 855,SW 254 Series Flange Jig,Quality Assurance,6500,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+861,EQ ID 861,SW 369 Series Flange and Door Hinge Jig,Quality Assurance,13725,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+861,EQ ID 861,SW 369 Series Flange and Door Hinge Jig,Quality Assurance,13737,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+861,EQ ID 861,SW 369 Series Flange and Door Hinge Jig,Quality Assurance,559,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,2.00,0.00,0.00,7/5/2023,"Patricia Morena - 07/19/23  8:46:32 AM: Used to weld the flange and the hinge half to the door of model 301
+EQ ID #857
+Notes:
+- One in cell
+- No problems with jig, use with ease
+- Hinge is straight when welded on door
+- See attachments for further information | Patricia Morena - 07/05/23  6:07:10 AM: Notes:
+- One in cell 
+- No problems with jig, use with ease
+- Hinge is straight when welded on door 
+- See attachments for further information","[{""name"": ""369 hinge-to-flange jig July2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/311?guid=afcee21f-ddfd-4d84-9ce5-894b40b684a3""}, {""name"": ""369 Door Indicator Jig July2023.PDF"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/312?guid=afcee21f-ddfd-4d84-9ce5-894b40b684a3""}]"
+861,EQ ID 861,SW 369 Series Flange and Door Hinge Jig,Quality Assurance,6290,Refer to drawing,Closed without Action,7/5/2024,Lala,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+861,EQ ID 861,SW 369 Series Flange and Door Hinge Jig,Quality Assurance,6506,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+862,EQ ID 862,SW 369 Series Spring Clip Jig,Quality Assurance,13728,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+862,EQ ID 862,SW 369 Series Spring Clip Jig,Quality Assurance,13742,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+862,EQ ID 862,SW 369 Series Spring Clip Jig,Quality Assurance,560,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/4/2023,"Patricia Morena - 07/19/23  8:44:18 AM: Used to properly position and weld the spring clip inside the 301 cabinet
+EQ ID #862
+Notes:
+- One in cell
+- No problems with jig, use with ease
+- Hinge is straight when welded on door
+- hinge is pushed directly to the right side of jig to ensure jig is welded straight | Patricia Morena - 07/11/23 11:03:42 AM: Notes:
+- One in cell 
+- No problems with jig, use with ease
+- Hinge is straight when welded on door
+- hinge is pushed directly to the right side of jig to ensure jig is welded straight","[{""name"": ""369 Door Indicator Jig July2023.PDF"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/340?guid=9eb3755d-21bb-413a-ae26-a8ea4afcd682""}]"
+862,EQ ID 862,SW 369 Series Spring Clip Jig,Quality Assurance,6378,Refer to drawing,Closed without Action,7/11/2024,LA,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+862,EQ ID 862,SW 369 Series Spring Clip Jig,Quality Assurance,6504,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+864,EQ ID 864,SW Mix Cell 359 Towel Tray Sides Jig,Quality Assurance,13733,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+864,EQ ID 864,SW Mix Cell 359 Towel Tray Sides Jig,Quality Assurance,561,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/18/2023,"Patricia Morena - 07/18/23  6:51:58 AM: Used to weld the sides of the towel tray inside the 359 cabinet
+EQ ID #865","[{""name"": ""359 Towel Tray Sides Jig 2023.xlsx"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/354?guid=0916e7dc-de86-4943-a5e3-7ab4097843f9""}]"
+864,EQ ID 864,SW Mix Cell 359 Towel Tray Sides Jig,Quality Assurance,6462,Refer to drawing,Closed without Action,7/18/2024,LA,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+865,EQ ID 865,SW Mix Cell 359 Flap Door Jig,Quality Assurance,13734,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+865,EQ ID 865,SW Mix Cell 359 Flap Door Jig,Quality Assurance,562,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/18/2023,"Patricia Morena - 07/18/23  6:59:27 AM: Jig used to weld the side of flap door to the towel tray inside the 359 cabinet
+EQ ID #865.
+See attachments for further information.","[{""name"": ""359-4 Towel Tray july2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/355?guid=3cf25be4-deaf-4ddc-9e96-9cbd878ec778""}, {""name"": ""359 Cabinet with Carton july2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/356?guid=3cf25be4-deaf-4ddc-9e96-9cbd878ec778""}, {""name"": ""359 Flap Door jig 2023.xlsx"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/357?guid=3cf25be4-deaf-4ddc-9e96-9cbd878ec778""}]"
+865,EQ ID 865,SW Mix Cell 359 Flap Door Jig,Quality Assurance,6463,Refer to drawing,Closed without Action,7/18/2024,LA,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+867,EQ ID 867,SW Mix Cell 369 Series Towel Tray Jig,Quality Assurance,13726,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+867,EQ ID 867,SW Mix Cell 369 Series Towel Tray Jig,Quality Assurance,13744,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+867,EQ ID 867,SW Mix Cell 369 Series Towel Tray Jig,Quality Assurance,563,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/5/2023,"Patricia Morena - 07/19/23  8:45:24 AM: Used to weld the towel tray inside the 369 and 3699 cabinets
+EQ ID #867
+Notes:
+-One jig in cell
+- Keeps towel tray even on both sides
+- Hinge is straight when welded on
+- No big gap between door and hinge when assembled
+- Jig is easy to use | Patricia Morena - 07/05/23  4:28:56 AM: Notes:
+-One jig in cell 
+- Keeps towel tray even on both sides 
+- Hinge is straight when welded on 
+- No big gap between door and hinge when assembled
+- Jig is easy to use","[{""name"": ""369TT02 July2023.PDF"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/310?guid=2853ccad-12f1-447e-bc42-be45744ffcee""}]"
+867,EQ ID 867,SW Mix Cell 369 Series Towel Tray Jig,Quality Assurance,6287,Refer to drawing,Closed without Action,7/5/2024,Lala,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+867,EQ ID 867,SW Mix Cell 369 Series Towel Tray Jig,Quality Assurance,6505,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+874,EQ ID 874,SW 4262 Towel Guide Jig,Quality Assurance,13878,Refer to drawing,Pending,11/21/2025,,QA Technician,0.00,0.00,0.00,,,[]
+874,EQ ID 874,SW 4262 Towel Guide Jig,Quality Assurance,564,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/24/2023,"Patricia Morena - 08/01/23  5:53:07 AM: Jig used to weld the towel guide on the wrapper for 4262 cabinet.
+EQ ID #874","[{""name"": ""4262 towel guide jig aug2023.xlsx"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/373?guid=5ab42207-8d17-48bf-b40b-11d555200648""}, {""name"": ""4262-121 cabinet assy aug2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/374?guid=5ab42207-8d17-48bf-b40b-11d555200648""}]"
+874,EQ ID 874,SW 4262 Towel Guide Jig,Quality Assurance,6664,Refer to drawing,Closed without Action,8/1/2024,Lala,QA Technician,0.00,0.00,0.00,11/21/2024,,[]
+876,EQ ID 876,Break Press 301-301 Jig,Quality Assurance,565,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+877,EQ ID 877,Break Press 359-300 Wrapper Jig,Quality Assurance,566,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+878,EQ ID 878,Break Press 359 Door Bend Jig,Quality Assurance,567,check against sample from the jig,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+879,EQ ID 879,Break Press 362-115 Towel Tray Jig,Quality Assurance,568,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+881,EQ ID 881,Break Press 369-17 Wrapper Jig,Quality Assurance,569,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+883,EQ ID 883,Break Press 3644-302 Wrapper Length Jig,Quality Assurance,570,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+884,EQ ID 884,Break Press 3644-302 Wrapper Width Jig,Quality Assurance,571,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+885,EQ ID 885,Break Press 3944-2 Towel Tray Jig,Quality Assurance,572,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+886,EQ ID 886,"Break Press 4353-3, 4354-3, 4354-13, 4369-203 Flange Jig",Quality Assurance,573,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+887,EQ ID 887,Break Press 4369-203 Wrapper Jig,Quality Assurance,574,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+888,EQ ID 888,Break Press 4369 Towel Tray Jig,Quality Assurance,575,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+891,EQ ID 891,Break Press 43699-10 and 43949-10 Skirt Jig,Quality Assurance,576,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+892,EQ ID 892,Break Press 43944- Towel Tray Jig,Quality Assurance,577,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+893,EQ ID 893,Assy Door Cell Door Hinge and Angle Jig,Quality Assurance,13745,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+893,EQ ID 893,Assy Door Cell Door Hinge and Angle Jig,Quality Assurance,578,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.50,0.00,0.00,7/18/2023,"Patricia Morena - 07/19/23  8:18:00 AM: Jig used to weld the hinge half, the angle, and waste receptacle hanger to the 4353-8 door
+EQ ID #893
+See attachments for notes and measurements.","[{""name"": ""4353 Jig with Door.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/359?guid=e770d7f9-50db-4de7-bcfb-aa6ab7282eb0""}, {""name"": ""4353 Jig with Door.PDF"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/360?guid=e770d7f9-50db-4de7-bcfb-aa6ab7282eb0""}]"
+893,EQ ID 893,Assy Door Cell Door Hinge and Angle Jig,Quality Assurance,6496,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+894,EQ ID 894,Assy Door Cell Brackets Jig,Quality Assurance,13880,Refer to drawing,Pending,11/21/2025,,QA Technician,0.00,0.00,0.00,,,[]
+894,EQ ID 894,Assy Door Cell Brackets Jig,Quality Assurance,579,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,0.50,0.00,0.00,8/18/2023,"Patricia Morena - 08/22/23  4:16:25 AM: Jig used to put two brackets on opposite ends of the 4353-8 door
+EQ ID 894
+See attached for more comments","[{""name"": ""4354 Door Cell Brackets jig aug2023.xlsx"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/393?guid=f5eb65e3-e18f-4490-82b0-6f592e654d4d""}, {""name"": ""4354 door cell bracket assy aug2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/394?guid=f5eb65e3-e18f-4490-82b0-6f592e654d4d""}]"
+894,EQ ID 894,Assy Door Cell Brackets Jig,Quality Assurance,6939,Refer to drawing,Closed without Action,8/22/2024,Lala,QA Technician,0.00,0.00,0.00,11/21/2024,,[]
+895,EQ ID 895,Assy Door Cell International Label JIg,Quality Assurance,13748,Refer to drawing Jan.2019 updated drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+895,EQ ID 895,Assy Door Cell International Label JIg,Quality Assurance,580,Refer to drawing Jan.2019 updated drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,0.50,0.00,0.00,7/24/2023,"Patricia Morena - 07/25/23  8:55:05 AM: Jig modified in Jan2019.
+Jig used to properly position the international label on the 4353-8 and 4354-108 doors.
+EQ ID 895.","[{""name"": ""4354 Door Label Jig july2023.PDF"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/370?guid=9d2dbc46-d52a-4ecd-847b-dbc708b7c175""}]"
+895,EQ ID 895,Assy Door Cell International Label JIg,Quality Assurance,6596,Refer to drawing Jan.2019 updated drawing,Closed without Action,7/25/2024,LA,QA Technician,0.00,0.00,0.00,10/31/2024,Luz Mari Andal - 11/08/24  7:03:36 AM: 2 new jigs in Oct2024,[]
+896,EQ ID 896,Assy Door Cell Door Hing and Angle Jig,Quality Assurance,13749,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+896,EQ ID 896,Assy Door Cell Door Hing and Angle Jig,Quality Assurance,581,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/24/2023,"Patricia Morena - 07/26/23  4:49:21 AM: - Jig used to weld the hinge half and the angle to the 4354-108 door
+- EQ ID #896
+- One jig in Door Cell","[{""name"": ""4354 Jig with Door july2023.PDF"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/371?guid=5096ada3-77ca-4b8f-bf60-55a40e717c55""}, {""name"": ""4354-108 hinge and angle jig july2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/372?guid=5096ada3-77ca-4b8f-bf60-55a40e717c55""}]"
+896,EQ ID 896,Assy Door Cell Door Hing and Angle Jig,Quality Assurance,6606,Refer to drawing,Closed without Action,7/26/2024,LA,QA Technician,0.00,0.00,0.00,10/31/2024,Luz Mari Andal - 11/08/24  7:03:50 AM: 2 new jigs in Oct2024,[]
+898,EQ ID 898,Assy Door Cell 4369-8 Door Hinge Jig,Quality Assurance,13730,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+898,EQ ID 898,Assy Door Cell 4369-8 Door Hinge Jig,Quality Assurance,13740,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+898,EQ ID 898,Assy Door Cell 4369-8 Door Hinge Jig,Quality Assurance,582,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/4/2023,"Patricia Morena - 07/19/23  8:42:39 AM: Jig used to weld the hinge half to 4369-8 door
+EQ ID #898
+Refer to attachments for information and measurements. | Patricia Morena - 07/12/23  8:35:51 AM: Refer to attachments for information and measurements.","[{""name"": ""4369-8 Door Assy July2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/343?guid=ad87f961-1640-4779-90fe-2e7baa29e898""}, {""name"": ""4369-8 door hinge jig measurements.xlsx"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/344?guid=ad87f961-1640-4779-90fe-2e7baa29e898""}]"
+898,EQ ID 898,Assy Door Cell 4369-8 Door Hinge Jig,Quality Assurance,6395,Refer to drawing,Closed without Action,7/12/2024,LA,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+898,EQ ID 898,Assy Door Cell 4369-8 Door Hinge Jig,Quality Assurance,6502,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+899,EQ ID 899,Assy Door Cell 43944-10 Door Hinge Jig,Quality Assurance,13729,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+899,EQ ID 899,Assy Door Cell 43944-10 Door Hinge Jig,Quality Assurance,13738,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+899,EQ ID 899,Assy Door Cell 43944-10 Door Hinge Jig,Quality Assurance,583,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/4/2023,"Patricia Morena - 07/19/23  8:43:15 AM: Jig used to weld the hinge half to the 43944-10 door
+EQ ID #899
+See attached for measurements and information. | Patricia Morena - 07/12/23 10:26:42 AM: See attached for measurements and information.","[{""name"": ""43944-10 stud assy july2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/347?guid=222ff74e-0de6-481e-a607-ea40746ab161""}, {""name"": ""43944-10 door hinge jig measurements.xlsx"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/348?guid=222ff74e-0de6-481e-a607-ea40746ab161""}]"
+899,EQ ID 899,Assy Door Cell 43944-10 Door Hinge Jig,Quality Assurance,6397,Refer to drawing,Closed without Action,7/12/2024,LA,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+899,EQ ID 899,Assy Door Cell 43944-10 Door Hinge Jig,Quality Assurance,6503,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+900,EQ ID 900,Assy Door Cell 43944-10 Stud Jig,Quality Assurance,13731,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+900,EQ ID 900,Assy Door Cell 43944-10 Stud Jig,Quality Assurance,13741,Refer to drawing,Pending,11/8/2025,,QA Technician,0.00,0.00,0.00,,,[]
+900,EQ ID 900,Assy Door Cell 43944-10 Stud Jig,Quality Assurance,584,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/4/2023,"Patricia Morena - 07/19/23  8:41:48 AM: Jig used to weld the stud to the 43944-10 door
+EQ ID #900
+Note:
+- Make sure jig is against left side of door, touching the sides.
+- only one jig in cell | Patricia Morena - 07/12/23  6:09:01 AM: Note: 
+- Make sure jig is against left side of door, touching the sides. 
+- only one jig in cell","[{""name"": ""43944-10 stud assy july2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/341?guid=e7478099-ec9f-4875-97d3-9e4b9dc7e44b""}, {""name"": ""43944-10 stud jig July2023.PDF"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/342?guid=e7478099-ec9f-4875-97d3-9e4b9dc7e44b""}]"
+900,EQ ID 900,Assy Door Cell 43944-10 Stud Jig,Quality Assurance,6391,Refer to drawing,Closed without Action,7/12/2024,LA,QA Technician,0.00,0.00,0.00,7/25/2024,,[]
+900,EQ ID 900,Assy Door Cell 43944-10 Stud Jig,Quality Assurance,6501,Refer to drawing,Closed without Action,7/19/2024,LA,QA Technician,0.00,0.00,0.00,8/8/2024,,[]
+901,EQ ID 901,SW Large Contura Bottom Flusher Jig,Quality Assurance,14813,Refer to drawing,Pending,2/25/2026,,QA Technician,0.00,0.00,0.00,,,[]
+901,EQ ID 901,SW Large Contura Bottom Flusher Jig,Quality Assurance,585,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,,[]
+901,EQ ID 901,SW Large Contura Bottom Flusher Jig,Quality Assurance,10380,Refer to drawing,Closed and Completed,2/16/2025,Lala,QA Technician,0.00,0.00,0.00,2/25/2025,Luz Mari Andal - 02/25/25 12:35:21 PM: no observed gap between wrapper and the bottom pan using the jigs,[]
+902,EQ ID 902,SW Large Contura Hinge To Flange Jig,Quality Assurance,10381,Refer to drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+902,EQ ID 902,SW Large Contura Hinge To Flange Jig,Quality Assurance,586,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:48:33 AM: no known issue w assy,[]
+903,EQ ID 903,SW Large Contura Towel Guide Jig,Quality Assurance,10383,Refer to drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+903,EQ ID 903,SW Large Contura Towel Guide Jig,Quality Assurance,587,Refer to drawing,Closed without Action,3/18/2023,Lala,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:53:07 AM: No issue w jig,[]
+904,EQ ID 904,"SW Large Contura Towel Tray, Lock Angle and Door Holder Jig",Quality Assurance,13879,Refer to drawing,Pending,11/21/2025,,QA Technician,0.00,0.00,0.00,,,[]
+904,EQ ID 904,"SW Large Contura Towel Tray, Lock Angle and Door Holder Jig",Quality Assurance,588,Refer to drawing,Closed and Completed,3/18/2023,Patricia Morena,QA Technician,1.00,0.00,0.00,7/24/2023,"Patricia Morena - 08/15/23  3:35:59 AM: Jig used to weld the towel tray, lock angle and the door holder for models 43944 and 43949
+EQ ID 904
+See attached for further information","[{""name"": ""4369 towel tray to flange aug2023.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/390?guid=cd38bd67-9c2b-4411-9265-fea6aa11838e""}, {""name"": ""43944 43949 towel tray jig.xlsx"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/391?guid=cd38bd67-9c2b-4411-9265-fea6aa11838e""}]"
+904,EQ ID 904,"SW Large Contura Towel Tray, Lock Angle and Door Holder Jig",Quality Assurance,6840,Refer to drawing,Closed without Action,8/15/2024,Lala,QA Technician,0.00,0.00,0.00,11/21/2024,,[]
+905,EQ ID 905,SW Large Contura Plastic Stripper Jig,Quality Assurance,589,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+906,EQ ID 906,SW Large Contura Table Jig,Quality Assurance,590,check against welded cabinet,Closed without Action,3/18/2023,Lala,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:53:21 AM: No issue w jig,[]
+906,EQ ID 906,SW Large Contura Table Jig,Quality Assurance,10384,check against welded cabinet,Closed and Completed,2/16/2025,Lala,QA Technician,0.00,0.00,0.00,2/25/2025,Luz Mari Andal - 02/25/25 12:37:29 PM: No observed issue on welded cabinet assy used on date code 17 BBC B43944,[]
+907,EQ ID 907,Assy Receptacle Cell 275 and 368 Inside Hooks Jig,Quality Assurance,10385,Refer to drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+907,EQ ID 907,Assy Receptacle Cell 275 and 368 Inside Hooks Jig,Quality Assurance,591,Refer to drawing,Closed without Action,3/18/2023,Lala,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:54:06 AM: Will need to revisit with hooks adjusted nearer to specs in Oct2023,[]
+908,EQ ID 908,Assy Receptacle Cell Back Hooks Jig,Quality Assurance,10386,Refer to Drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+908,EQ ID 908,Assy Receptacle Cell Back Hooks Jig,Quality Assurance,592,Refer to Drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:54:47 AM: will need to revisit as hooks were adjusted nearer to specs Oct2023,[]
+909,EQ ID 909,Assy Receptacle Cell 275 Squeeze Jig,Quality Assurance,10387,measure width of receptacle,Pending,2/16/2025,,Technician,0.00,0.00,0.00,,,[]
+909,EQ ID 909,Assy Receptacle Cell 275 Squeeze Jig,Quality Assurance,593,measure width of receptacle,Closed without Action,3/18/2023,LA,Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:55:16 AM: No issue w jig,[]
+910,EQ ID 910,Assy Receptacle Cell 279 Back Hooks Jig,Quality Assurance,10389,Refer to Drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+910,EQ ID 910,Assy Receptacle Cell 279 Back Hooks Jig,Quality Assurance,594,Refer to Drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:56:23 AM: No issue w jig | Luz Mari Andal - 02/16/24  6:55:31 AM: No issue w jig,[]
+911,EQ ID 911,Assy Receptacle Cell 279 Inside Hooks Jig,Quality Assurance,10390,Refer to Drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+911,EQ ID 911,Assy Receptacle Cell 279 Inside Hooks Jig,Quality Assurance,595,Refer to Drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:56:28 AM: No issue w jig | Luz Mari Andal - 02/16/24  6:55:41 AM: No issue w jig,[]
+912,EQ ID 912,Assy Receptacle Cell 367-8 and 368-12 Squeeze JIg,Quality Assurance,596,"Refer to Drawing, check width and key hole slot direction on 367-12 and 368-12 assemblies",Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:56:33 AM: No issue w jig | Luz Mari Andal - 02/16/24  6:55:52 AM: No issue w jig,[]
+912,EQ ID 912,Assy Receptacle Cell 367-8 and 368-12 Squeeze JIg,Quality Assurance,10391,"Refer to Drawing, check width and key hole slot direction on 367-12 and 368-12 assemblies",Closed and Completed,2/16/2025,LA,QA Technician,0.00,0.00,0.00,2/27/2025,"Luz Mari Andal - 02/27/25  9:29:53 AM: 15-3/32"" fitted samples with no issue to B3644 17BBC and 3974 18BBC.02.27.2025 LA",[]
+913,EQ ID 913,Assy Receptacle Cell 368-12 Back Hooks,Quality Assurance,597,Refer to Drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:56:05 AM: No issue w jig,[]
+913,EQ ID 913,Assy Receptacle Cell 368-12 Back Hooks,Quality Assurance,10388,Refer to Drawing,Closed and Completed,2/16/2025,Lala,QA Technician,0.00,0.00,0.00,2/27/2025,"Luz Mari Andal - 02/27/25  9:27:02 AM: 15/32"" to edge, are good but has tendency to not be straight, reminded the operators to hold properly.LA 02.27.2025",[]
+915,EQ ID 915,Shear Jig 254-102 Wrapper,Quality Assurance,598,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:09:38 PM: no issue on this item,[]
+919,EQ ID 919,Shear Jig 275-117 Receptacle Back,Quality Assurance,599,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:10:09 PM: no issue on this item,[]
+921,EQ ID 921,Shear Jig 279-17 Receptacle Back & Bottom,Quality Assurance,600,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:07:54 PM: no issue on this item,[]
+922,EQ ID 922,Shear Jig 301-40 & 353-50 Flange,Quality Assurance,601,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:08:17 PM: no issue on this item,[]
+924,EQ ID 924,Shear Jig 353-103 Back Panel,Quality Assurance,602,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:08:36 PM: no issue on this item,[]
+938,EQ ID 938,Shear Jig 369-129 Door,Quality Assurance,603,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:10:58 PM: no issue on this item,[]
+948,EQ ID 948,Shear Jig 3944-120 Wrapper,Quality Assurance,604,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:08:56 PM: no issue on this item,[]
+949,EQ ID 949,Shear Jig 3944-344 Flange,Quality Assurance,605,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:09:12 PM: no issue on this item,[]
+952,EQ ID 952,Shear Jig 3961-104 Door,Quality Assurance,606,Refer to drawing,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:10:26 PM: no issue on this item,[]
+954,EQ ID 954,Shear Jig 4262-1 Wrapper,Quality Assurance,607,check against actual sample,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:10:42 PM: no issue on this item,[]
+955,EQ ID 955,Shear Jig 4262-3 Door,Quality Assurance,608,check against actual sample,Closed without Action,3/18/2024,Lala,QA Technician,0.00,0.00,0.00,9/23/2024,Luz Mari Andal - 09/23/24 12:11:19 PM: no issue on this item,[]
+978,EQ ID 978,Assy Small Contura Jig Bottom Edges,Quality Assurance,609,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:57:30 AM: No issue w jig | Luz Mari Andal - 02/16/24  6:56:54 AM: No issue w jig,[]
+978,EQ ID 978,Assy Small Contura Jig Bottom Edges,Quality Assurance,10392,Refer to drawing,Closed and Completed,2/16/2025,Lala,QA Technician,0.00,0.00,0.00,2/25/2025,,"[{""name"": ""4369-230 Panel Assy bottom flusher 02.25.2025.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/730?guid=4f3483bf-5b1d-4f1e-9f00-20173768dc22""}]"
+981,EQ ID 981,Assy Small Contura Jig Hinge & Towel,Quality Assurance,14815,Refer to drawing,Pending,2/25/2026,,QA Technician,0.00,0.00,0.00,,,[]
+981,EQ ID 981,Assy Small Contura Jig Hinge & Towel,Quality Assurance,610,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:57:34 AM: No issue w jig | Luz Mari Andal - 02/16/24  6:57:07 AM: No issue w jig,[]
+981,EQ ID 981,Assy Small Contura Jig Hinge & Towel,Quality Assurance,10393,Refer to drawing,Closed and Completed,2/16/2025,Lala,QA Technician,0.00,0.00,0.00,2/25/2025,,"[{""name"": ""4369-302 Shell Assy jig to weld towel guide to flange Feb2025.pdf"", ""url"": ""https://circaweb.bobrick.com/PME/Forms/DownloadAttachment/731?guid=80f38e18-8dd8-459a-af4a-cda1cdeb436f""}]"
+982,EQ ID 982,Assy Small Contura Jig Hinge Half to Flange,Quality Assurance,10394,Refer to drawing; check impact to B4353,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+982,EQ ID 982,Assy Small Contura Jig Hinge Half to Flange,Quality Assurance,611,Refer to drawing; check impact to B4353,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:57:39 AM: No issue w jig | Luz Mari Andal - 02/16/24  6:57:17 AM: No issue w jig,[]
+986,EQ ID 986,Assy Small Contura Jig Plastic Stripper,Quality Assurance,612,Refer to drawing,Pending,3/18/2025,,QA Technician,0.00,0.00,0.00,,,[]
+987,EQ ID 987,Assy Small Contura Jig Strike Plates,Quality Assurance,10395,Refer to drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+987,EQ ID 987,Assy Small Contura Jig Strike Plates,Quality Assurance,613,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:57:53 AM: No issue w jig,[]
+988,EQ ID 988,Assy Small Contura Jig Weld Nuts,Quality Assurance,10396,Refer to drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+988,EQ ID 988,Assy Small Contura Jig Weld Nuts,Quality Assurance,614,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,Luz Mari Andal - 02/16/24  6:58:04 AM: No issue w jig,[]
+989,EQ ID 989,Assy Super Cell Jig Back To Lower Back,Quality Assurance,615,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,"Luz Mari Andal - 02/16/24  6:58:52 AM: no issue with jig, will revisit | Luz Mari Andal - 02/16/24  6:58:45 AM: no issue with jig, will revisit",[]
+989,EQ ID 989,Assy Super Cell Jig Back To Lower Back,Quality Assurance,10397,Refer to drawing,Closed and Completed,2/16/2025,Lala,QA Technician,0.00,0.00,0.00,2/25/2025,"Luz Mari Andal - 02/25/25 12:58:23 PM: no issue on welded cabinet shell using the jig, used for B3974 18BBC",[]
+990,EQ ID 990,Assy Super Cell Jig Back To Lower Back 3961,Quality Assurance,616,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,"Luz Mari Andal - 02/16/24  6:59:13 AM: no issue with jig, will revisit",[]
+990,EQ ID 990,Assy Super Cell Jig Back To Lower Back 3961,Quality Assurance,10398,Refer to drawing,Closed and Completed,2/16/2025,LA,QA Technician,0.00,0.00,0.00,2/27/2025,"Luz Mari Andal - 02/27/25  9:49:40 AM: no issue on welded cabinet shells,  welder table that is a common jig for 3944-440 shell; it is part of the table 02.27.2025 LA",[]
+991,EQ ID 991,Assy Super Cell Jig Back To Wrapper,Quality Assurance,617,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,"Luz Mari Andal - 02/16/24  6:59:24 AM: no issue with jig, will revisit",[]
+991,EQ ID 991,Assy Super Cell Jig Back To Wrapper,Quality Assurance,10399,Refer to drawing,Closed and Completed,2/16/2025,Lala,QA Technician,0.00,0.00,0.00,2/25/2025,"Luz Mari Andal - 02/25/25 12:56:58 PM: no issue on cabinet welded used on B3974 18BBC, receptacle fits with no issue",[]
+992,EQ ID 992,Assy Super Cell Jig Bottom Pan To Wrapper,Quality Assurance,10400,Refer to drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+992,EQ ID 992,Assy Super Cell Jig Bottom Pan To Wrapper,Quality Assurance,618,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,"Luz Mari Andal - 02/16/24  6:59:38 AM: no issue with jig, will revisit",[]
+994,EQ ID 994,Assy Super Cell Jig Door Hinge & Lock Angle,Quality Assurance,10401,Refer to drawing,Pending,2/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+994,EQ ID 994,Assy Super Cell Jig Door Hinge & Lock Angle,Quality Assurance,619,Refer to drawing,Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,"Luz Mari Andal - 02/16/24  6:59:49 AM: no issue with jig, will revisit",[]
+997,EQ ID 997,Assy Super Cell Table Jig,Quality Assurance,620,"Refer to drawing
+manual and auto used in tandem",Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,"Luz Mari Andal - 02/16/24  6:59:58 AM: no issue with jig, will revisit",[]
+997,EQ ID 997,Assy Super Cell Table Jig,Quality Assurance,10402,"Refer to drawing
+manual and auto used in tandem",Closed and Completed,2/16/2025,Lala,QA Technician,0.00,0.00,0.00,2/25/2025,Luz Mari Andal - 02/25/25 12:45:15 PM: No issue on cabinet shell used for B3974 18 BBC,[]
+1001,EQ ID 1001,SW Mix Cell Receptacle Back 367-8 REC Squeeze,Quality Assurance,14849,"measure assembly made, request for drawing update",Pending,2/27/2026,,QA Technician,0.00,0.00,0.00,,,[]
+1001,EQ ID 1001,SW Mix Cell Receptacle Back 367-8 REC Squeeze,Quality Assurance,621,"measure assembly made, request for drawing update",Closed without Action,3/18/2023,LA,QA Technician,0.00,0.00,0.00,2/16/2024,"Luz Mari Andal - 02/16/24  7:00:11 AM: no issue with jig, will revisit",[]
+1001,EQ ID 1001,SW Mix Cell Receptacle Back 367-8 REC Squeeze,Quality Assurance,10403,"measure assembly made, request for drawing update",Closed and Completed,2/16/2025,LA,QA Technician,0.00,0.00,0.00,2/27/2025,"Luz Mari Andal - 02/27/25  9:31:14 AM: jig was in use at the Rec Cell during audit, 15-3-32"" no issue fitting the B3644 17 BBC. 02.27.2025LA",[]
+443,EQ ID 443,Hyster Reach,Shipping,16831,Preventive Maintenance,Pending,11/27/2025,,Outside Service,0.00,0.00,0.00,,,[]
+443,EQ ID 443,Hyster Reach,Shipping,272,Preventive maintenance - lift test,Closed and Completed,6/18/2022,Raven Lift,Outside Service,1.00,78.00,0.00,7/18/2022,,[]
+443,EQ ID 443,Hyster Reach,Shipping,273,Preventive Maintenance,Closed and Completed,6/18/2022,Raven Lift,Outside Service,1.00,78.00,0.00,7/18/2022,,[]
+443,EQ ID 443,Hyster Reach,Shipping,3651,Preventive Maintenance,Closed and Completed,3/15/2023,Raven Lift,Outside Service,1.00,80.00,0.00,3/27/2023,Nick Kosyak - 03/28/23  9:48:59 AM: Complete. Awaiting Invoice.,[]
+443,EQ ID 443,Hyster Reach,Shipping,3650,Preventive maintenance - lift test,Closed and Completed,3/15/2023,Raven Lift,Outside Service,1.00,80.00,0.00,3/27/2023,Nick Kosyak - 03/28/23  9:49:08 AM: Complete. Awaiting Invoice.,[]
+443,EQ ID 443,Hyster Reach,Shipping,5302,Preventive Maintenance,Closed and Completed,7/13/2023,Raven Lift,Outside Service,1.00,80.00,0.00,7/7/2023,Nick Kosyak - 07/20/23  3:56:35 AM: Double entry.,[]
+443,EQ ID 443,Hyster Reach,Shipping,5301,Preventive maintenance - lift test,Closed without Action,7/13/2023,-,Outside Service,0.00,0.00,0.00,7/20/2023,Nick Kosyak - 07/20/23  3:55:44 AM: Double entry.,[]
+443,EQ ID 443,Hyster Reach,Shipping,5304,Preventive maintenance - lift test,Closed without Action,7/13/2023,-,Outside Service,0.00,0.00,0.00,7/20/2023,Nick Kosyak - 07/20/23  3:56:01 AM: Double entry.,[]
+443,EQ ID 443,Hyster Reach,Shipping,6538,Preventive maintenance - lift test,Closed without Action,10/20/2023,-,Outside Service,0.00,0.00,0.00,9/29/2023,Nick Kosyak - 09/29/23  9:05:41 AM: Duplicate.,[]
+443,EQ ID 443,Hyster Reach,Shipping,6539,Preventive maintenance - lift test,Closed without Action,10/20/2023,-,Outside Service,0.00,0.00,0.00,9/29/2023,Nick Kosyak - 09/29/23  9:05:58 AM: Duplicate.,[]
+443,EQ ID 443,Hyster Reach,Shipping,6541,Preventive Maintenance,Closed and Completed,10/20/2023,Raven Lift,Outside Service,1.00,80.00,0.00,9/29/2023,Nick Kosyak - 11/13/23  3:40:23 AM: Heater operational. | Nick Kosyak - 09/29/23  9:06:16 AM: Complete. Awaiting Invoice.,[]
+443,EQ ID 443,Hyster Reach,Shipping,7408,Preventive maintenance - lift test,Closed without Action,12/29/2023,-,Outside Service,0.00,0.00,0.00,12/8/2023,Nick Kosyak - 12/08/23  2:55:41 AM: Duplicate entry.,[]
+443,EQ ID 443,Hyster Reach,Shipping,7407,Preventive maintenance - lift test,Closed and Completed,12/29/2023,Raven Lift,Outside Service,1.00,80.00,0.00,12/28/2023,Nick Kosyak - 01/04/24  2:57:45 AM: Complete. Awaiting Invoice.,[]
+443,EQ ID 443,Hyster Reach,Shipping,8009,Preventive Maintenance,Closed without Action,2/13/2024,-,Outside Service,0.00,0.00,0.00,5/23/2024,Nick Kosyak - 01/08/25 10:44:49 AM: Double entry.,[]
+443,EQ ID 443,Hyster Reach,Shipping,9260,Preventive maintenance - lift test,Closed and Completed,3/8/2024,-,Outside Service,0.00,0.00,0.00,5/23/2024,Nick Kosyak - 01/08/25 10:46:50 AM: Double entry.,[]
+443,EQ ID 443,Hyster Reach,Shipping,9998,Preventive maintenance - lift test,Closed and Completed,4/17/2024,Raven Lift,Outside Service,1.00,85.00,0.00,3/6/2025,Nick Kosyak - 03/10/25  3:38:03 AM: Complete. Awaiting invoice.,[]
+443,EQ ID 443,Hyster Reach,Shipping,14298,Preventive Maintenance,Closed and Completed,4/8/2025,Raven Lift,Outside Service,1.00,85.00,0.00,7/10/2025,Nick Kosyak - 07/22/25  6:30:50 AM: Complete. Awaiting invoice. | Nick Kosyak - 04/01/25  9:52:29 AM: To be done in June.,[]
+1451,EQ ID 1451,Toyota Reach,Shipping,7411,Preventative Maintenance,Closed and Completed,12/29/2023,Raven Lift,Outside Service,1.00,80.00,0.00,12/28/2023,Nick Kosyak - 01/04/24  2:57:49 AM: Complete. Awaiting Invoice.,[]
+5066,EQ ID 5066,Hyster Forklift,Shipping,9999,Preventative Maintenance.,Closed without Action,4/17/2024,-,Outside Service,0.00,0.00,0.00,5/23/2024,Nick Kosyak - 01/08/25 10:46:03 AM: Double entry.,[]
+508,EQ ID 508,Shipping Door #1,Shipping,17348,Test safety edge operation,Pending,11/17/2025,,Lead,0.00,0.00,0.00,,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,287,Test safety edge operation,Closed and Completed,4/18/2022,Nick Kosyak,Lead,0.50,0.00,0.00,4/21/2022,Nick Kosyak - 04/21/22  8:23:30 AM: Complete. Awaiting Invoice.,[]
+508,EQ ID 508,Shipping Door #1,Shipping,2661,Test safety edge operation,Closed and Completed,11/13/2022,Nick Kosyak,Lead,0.10,0.00,0.00,12/20/2022,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,3693,Test safety edge operation,Closed and Completed,1/20/2023,Nick Kosyak,Lead,0.25,0.00,0.00,2/13/2023,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,4337,Test safety edge operation,Closed and Completed,3/13/2023,Nick Kosyak,Lead,0.10,0.00,0.00,3/17/2023,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,4858,Test safety edge operation,Closed and Completed,4/17/2023,Nick Kosyak,Lead,0.10,0.00,0.00,4/24/2023,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,5409,Test safety edge operation,Closed and Completed,5/24/2023,Nick Kosyak,Lead,0.10,0.00,0.00,6/7/2023,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,5925,Test safety edge operation,Closed and Completed,7/7/2023,Nick Kosyak,Lead,1.00,0.00,0.00,7/24/2023,Nick Kosyak - 07/24/23 10:45:40 AM: Battery replaced. Safety edge operational. | Nick Kosyak - 07/24/23  6:49:11 AM: Non-responsive. Need new batteries.,[]
+508,EQ ID 508,Shipping Door #1,Shipping,6571,Test safety edge operation,Closed and Completed,8/24/2023,Nick Kosyak,Lead,0.25,0.00,0.00,8/28/2023,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,7021,Test safety edge operation,Closed and Completed,9/28/2023,Nick Kosyak,Lead,0.25,0.00,0.00,10/2/2023,Nick Kosyak - 10/02/23  4:12:22 AM: Tightened the sensor. Switch operational. | Nick Kosyak - 09/29/23 10:46:43 AM: Safety Edge unresponsive.,[]
+508,EQ ID 508,Shipping Door #1,Shipping,7417,Test safety edge operation,Closed and Completed,11/2/2023,Nick Kosyak,Lead,0.10,0.00,0.00,12/13/2023,"Nick Kosyak - 12/13/23  4:26:02 AM: Dave has been notified, will investigate the oil leak.",[]
+508,EQ ID 508,Shipping Door #1,Shipping,9333,Test safety edge operation,Closed and Completed,1/13/2024,Nick Kosyak,Lead,0.10,0.00,0.00,1/23/2024,Nick Kosyak - 01/23/24  3:23:29 AM: Ignore previous comment.,[]
+508,EQ ID 508,Shipping Door #1,Shipping,10072,Test safety edge operation,Closed and Completed,2/23/2024,Nick Kosyak,Lead,0.10,0.00,0.00,2/29/2024,Nick Kosyak - 02/29/24  6:42:53 AM: Low sensor sensitivity. May need to be adjusted next time.,[]
+508,EQ ID 508,Shipping Door #1,Shipping,10568,Test safety edge operation,Closed and Completed,3/29/2024,Nick Kosyak,Lead,0.10,0.00,0.00,4/5/2024,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,10955,Test safety edge operation,Closed and Completed,5/5/2024,JH Secord,Lead,1.00,"1,080.00",0.00,3/7/2025,Nick Kosyak - 03/10/25  3:37:29 AM: New cord and controller installed. Awaiting invoice. | Nick Kosyak - 02/03/25  7:13:02 AM: Safety switch operational. Awaiting invoice. | Nick Kosyak - 01/15/25  5:10:36 AM: Safety switch does not work. Changing battery did nothing. Adjusting the sensitivity makes the door just go up. The door also slides after stopping for multiple feet.,[]
+508,EQ ID 508,Shipping Door #1,Shipping,15049,Test safety edge operation,Closed and Completed,4/13/2025,Nick Kosyak,Lead,0.50,0.00,0.00,5/7/2025,"Nick Kosyak - 05/07/25  7:03:24 AM: Raven Lift contacted, awaiting service date.",[]
+508,EQ ID 508,Shipping Door #1,Shipping,15656,Test safety edge operation,Closed and Completed,6/7/2025,Nick Kosyak,Lead,0.25,0.00,0.00,6/9/2025,Nick Kosyak - 06/09/25  3:48:45 AM: Needed to adjust Safety Edge sensitivity. | Nick Kosyak - 06/09/25  3:48:41 AM: Needed to adjust Safety Edge sensitivity.,[]
+508,EQ ID 508,Shipping Door #1,Shipping,16010,Test safety edge operation,Closed and Completed,7/9/2025,Nick Kosyak,Lead,0.10,0.00,0.00,7/22/2025,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,16453,Test safety edge operation,Closed and Completed,8/22/2025,"Nick Kosyak, Damian Mannings",Lead,0.10,0.00,0.00,9/9/2025,,[]
+508,EQ ID 508,Shipping Door #1,Shipping,16944,Test safety edge operation,Closed and Completed,10/9/2025,Nick Kosyak,Lead,0.10,0.00,0.00,10/17/2025,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,17349,Test safety edge operation,Pending,11/17/2025,,Lead,0.00,0.00,0.00,,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,288,Test safety edge operation,Closed and Completed,4/18/2022,Nick Kosyak,Lead,0.50,0.00,0.00,4/21/2022,Nick Kosyak - 04/21/22  8:23:49 AM: Complete. Awaiting Invoice.,[]
+509,EQ ID 509,Shipping Door #2,Shipping,2662,Test safety edge operation,Closed and Completed,11/13/2022,Nick Kosyak,Lead,0.10,0.00,0.00,12/20/2022,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,3694,Test safety edge operation,Closed and Completed,1/20/2023,Nick Kosyak,Lead,0.25,0.00,0.00,2/13/2023,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,4338,Test safety edge operation,Closed and Completed,3/13/2023,Nick Kosyak,Lead,0.10,0.00,0.00,3/17/2023,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,4859,Test safety edge operation,Closed and Completed,4/17/2023,Nick Kosyak,Lead,0.10,0.00,0.00,4/24/2023,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,5410,Test safety edge operation,Closed and Completed,5/24/2023,Nick Kosyak,Lead,0.10,0.00,0.00,6/7/2023,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,5926,Test safety edge operation,Closed and Completed,7/7/2023,Nick Kosyak,Lead,0.10,0.00,0.00,7/24/2023,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,6565,Test safety edge operation,Closed and Completed,8/24/2023,Nick Kosyak,Lead,0.25,0.00,0.00,8/28/2023,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,7018,Test safety edge operation,Closed and Completed,9/28/2023,Nick Kosyak,Lead,0.10,0.00,0.00,9/29/2023,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,7414,Test safety edge operation,Closed and Completed,10/29/2023,Nick Kosyak,Lead,0.50,0.00,0.00,10/10/2023,"Nick Kosyak - 10/10/23 10:12:57 AM: Leveled most of the area. Need more concrete to finish. Area slippery and dusty, concrete not sealed.",[]
+509,EQ ID 509,Shipping Door #2,Shipping,7570,Test safety edge operation,Closed and Completed,11/10/2023,Nick Kosyak,Lead,0.10,0.00,0.00,12/13/2023,"Nick Kosyak - 12/13/23  4:26:26 AM: Dave has been notified, will investigate the oil leak. | Nick Kosyak - 12/13/23  4:26:22 AM: Dave has been notified, will investigate the oil leak.",[]
+509,EQ ID 509,Shipping Door #2,Shipping,9335,Test safety edge operation,Closed and Completed,1/13/2024,Nick Kosyak,Lead,0.10,0.00,0.00,1/23/2024,Nick Kosyak - 01/23/24  3:23:42 AM: Ignore previous comment.,[]
+509,EQ ID 509,Shipping Door #2,Shipping,10073,Test safety edge operation,Closed and Completed,2/23/2024,Nick Kosyak,Lead,0.10,0.00,0.00,2/29/2024,Nick Kosyak - 02/29/24  6:43:10 AM: Low sensor sensitivity. May need to be adjusted next time.,[]
+509,EQ ID 509,Shipping Door #2,Shipping,10569,Test safety edge operation,Closed and Completed,3/29/2024,Nick Kosyak,Lead,0.10,0.00,0.00,4/5/2024,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,10959,Test safety edge operation,Closed and Completed,5/5/2024,Nick Kosyak,Lead,0.10,0.00,0.00,1/15/2025,Nick Kosyak - 01/15/25  5:10:49 AM: Safety switch does not work. Changing battery did nothing. Adjusting the sensitivity makes the door just go up. The door also slides after stopping for multiple feet.,[]
+509,EQ ID 509,Shipping Door #2,Shipping,14367,Test safety edge operation,Closed and Completed,2/15/2025,JH Secord,Lead,1.00,"1,080.00",0.00,3/7/2025,Nick Kosyak - 03/10/25  3:37:35 AM: New cord and controller installed. Awaiting invoice.,[]
+509,EQ ID 509,Shipping Door #2,Shipping,15051,Test safety edge operation,Closed and Completed,4/13/2025,Nick Kosyak,Lead,0.25,0.00,0.00,5/7/2025,Nick Kosyak - 05/07/25  7:03:54 AM: Sensitivity adjusted.,[]
+509,EQ ID 509,Shipping Door #2,Shipping,15658,Test safety edge operation,Closed and Completed,6/7/2025,Nick Kosyak,Lead,0.25,0.00,0.00,6/9/2025,Nick Kosyak - 06/09/25  3:49:24 AM: Adjusted safety edge sensitivity.,[]
+509,EQ ID 509,Shipping Door #2,Shipping,16011,Test safety edge operation,Closed and Completed,7/9/2025,Nick Kosyak,Lead,0.10,0.00,0.00,7/22/2025,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,16454,Test safety edge operation,Closed and Completed,8/22/2025,"Nick Kosyak, Damian Mannings",Lead,0.10,0.00,0.00,9/9/2025,,[]
+509,EQ ID 509,Shipping Door #2,Shipping,16945,Test safety edge operation,Closed and Completed,10/9/2025,Nick Kosyak,Lead,0.10,0.00,0.00,10/17/2025,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,17346,Test safety edge operation,Pending,11/17/2025,,Lead,0.00,0.00,0.00,,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,289,Test safety edge operation,Closed and Completed,4/18/2022,Nick Kosyak,Lead,0.50,0.00,0.00,4/21/2022,Nick Kosyak - 04/21/22  8:23:13 AM: Complete. Awaiting Invoice.,[]
+510,EQ ID 510,Shipping Door #3,Shipping,2663,Test safety edge operation,Closed and Completed,11/13/2022,Nick Kosyak,Lead,0.10,0.00,0.00,12/20/2022,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,3695,Test safety edge operation,Closed and Completed,1/20/2023,Nick Kosyak,Lead,0.25,0.00,0.00,2/13/2023,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,4339,Test safety edge operation,Closed and Completed,3/13/2023,Nick Kosyak,Lead,0.10,0.00,0.00,3/17/2023,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,4860,Test safety edge operation,Closed and Completed,4/17/2023,Nick Kosyak,Lead,0.10,0.00,0.00,4/24/2023,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,5411,Test safety edge operation,Closed and Completed,5/24/2023,Nick Kosyak,Lead,0.10,0.00,0.00,6/7/2023,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,5927,Test safety edge operation,Closed and Completed,7/7/2023,Nick Kosyak,Lead,0.10,0.00,0.00,7/24/2023,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,6566,Test safety edge operation,Closed and Completed,8/24/2023,Nick Kosyak,Lead,0.25,0.00,0.00,8/28/2023,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,7019,Test safety edge operation,Closed and Completed,9/28/2023,Nick Kosyak,Lead,0.10,0.00,0.00,9/29/2023,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,7413,Test safety edge operation,Closed and Completed,10/29/2023,Nick Kosyak,Lead,0.50,0.00,0.00,10/10/2023,"Nick Kosyak - 10/10/23 10:12:44 AM: Leveled most of the area. Need more concrete to finish. Area slippery and dusty, concrete not sealed.",[]
+510,EQ ID 510,Shipping Door #3,Shipping,7569,Test safety edge operation,Closed and Completed,11/10/2023,Nick Kosyak,Lead,0.10,0.00,0.00,12/13/2023,"Nick Kosyak - 12/13/23  4:26:36 AM: Dave has been notified, will investigate the oil leak.",[]
+510,EQ ID 510,Shipping Door #3,Shipping,9336,Test safety edge operation,Closed and Completed,1/13/2024,Nick Kosyak,Lead,0.10,0.00,0.00,1/23/2024,Nick Kosyak - 01/23/24  3:23:55 AM: Ignore previous comment.,[]
+510,EQ ID 510,Shipping Door #3,Shipping,10074,Test safety edge operation,Closed and Completed,2/23/2024,Nick Kosyak,Lead,0.10,0.00,0.00,2/29/2024,Nick Kosyak - 02/29/24  6:42:05 AM: To be completed Sep. 2024 along the rest of the filters.,[]
+510,EQ ID 510,Shipping Door #3,Shipping,10566,Test safety edge operation,Closed and Completed,3/29/2024,Nick Kosyak,Lead,0.10,0.00,0.00,4/5/2024,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,10957,Test safety edge operation,Closed and Completed,5/5/2024,JH Secord,Lead,1.00,"1,080.00",0.00,3/7/2025,Nick Kosyak - 03/10/25  3:37:24 AM: New cord and controller installed. Awaiting invoice. | Nick Kosyak - 02/03/25  7:13:23 AM: Needs further repair by electrician. To be quoted and scheduled. | Nick Kosyak - 01/15/25  5:14:26 AM: Switch doesn't work. Changing the battery does nothing. Tightening the switch makes the door only go up.,[]
+510,EQ ID 510,Shipping Door #3,Shipping,15050,Test safety edge operation,Closed and Completed,4/13/2025,Nick Kosyak,Lead,0.50,0.00,0.00,5/7/2025,"Nick Kosyak - 05/07/25  7:03:36 AM: Raven Lift contacted, awaiting service date.",[]
+510,EQ ID 510,Shipping Door #3,Shipping,15657,Test safety edge operation,Closed and Completed,6/7/2025,Nick Kosyak,Lead,0.10,0.00,0.00,6/9/2025,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,16008,Test safety edge operation,Closed and Completed,7/9/2025,Nick Kosyak,Lead,0.17,0.00,0.00,7/22/2025,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,16451,Test safety edge operation,Closed and Completed,8/22/2025,"Nick Kosyak, Damian Mannings",Lead,0.10,0.00,0.00,9/9/2025,,[]
+510,EQ ID 510,Shipping Door #3,Shipping,16942,Test safety edge operation,Closed and Completed,10/9/2025,Nick Kosyak,Lead,0.10,0.00,0.00,10/17/2025,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,17347,Test safety edge operation,Pending,11/17/2025,,Lead,0.00,0.00,0.00,,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,290,Test safety edge operation,Closed and Completed,4/18/2022,Nick Kosyak,Lead,0.50,0.00,0.00,4/21/2022,Nick Kosyak - 04/21/22  8:24:19 AM: Complete. Awaiting Invoice.,[]
+511,EQ ID 511,Shipping Door #4,Shipping,2664,Test safety edge operation,Closed and Completed,11/13/2022,Nick Kosyak,Lead,0.10,0.00,0.00,12/20/2022,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,3696,Test safety edge operation,Closed and Completed,1/20/2023,Nick Kosyak,Lead,0.25,0.00,0.00,2/13/2023,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,4340,Test safety edge operation,Closed and Completed,3/13/2023,Nick Kosyak,Lead,0.10,0.00,0.00,3/17/2023,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,4861,Test safety edge operation,Closed and Completed,4/17/2023,Nick Kosyak,Lead,0.10,0.00,0.00,4/24/2023,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,5412,Test safety edge operation,Closed and Completed,5/24/2023,Nick Kosyak,Lead,0.10,0.00,0.00,6/7/2023,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,5928,Test safety edge operation,Closed and Completed,7/7/2023,Nick Kosyak,Lead,0.10,0.00,0.00,7/24/2023,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,6567,Test safety edge operation,Closed and Completed,8/24/2023,Nick Kosyak,Lead,0.25,0.00,0.00,8/28/2023,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,7020,Test safety edge operation,Closed and Completed,9/28/2023,Nick Kosyak,Lead,0.25,0.00,0.00,10/2/2023,Nick Kosyak - 10/02/23  4:12:07 AM: Tightened the sensor. Switch operational. | Nick Kosyak - 09/29/23 10:46:30 AM: Safety Edge unresponsive.,[]
+511,EQ ID 511,Shipping Door #4,Shipping,7416,Test safety edge operation,Closed and Completed,11/2/2023,Nick Kosyak,Lead,0.10,0.00,0.00,12/13/2023,"Nick Kosyak - 12/13/23  4:26:14 AM: Dave has been notified, will investigate the oil leak.",[]
+511,EQ ID 511,Shipping Door #4,Shipping,9334,Test safety edge operation,Closed and Completed,1/13/2024,Nick Kosyak,Lead,0.25,0.00,0.00,1/23/2024,Nick Kosyak - 01/23/24  3:24:17 AM: Battery replaced.,[]
+511,EQ ID 511,Shipping Door #4,Shipping,10075,Test safety edge operation,Closed and Completed,2/23/2024,Nick Kosyak,Lead,0.15,0.00,0.00,2/29/2024,Nick Kosyak - 02/29/24  6:42:42 AM: Low sensor sensitivity. May need to be adjusted next time.,[]
+511,EQ ID 511,Shipping Door #4,Shipping,10567,Test safety edge operation,Closed and Completed,3/29/2024,Nick Kosyak,Lead,0.10,0.00,0.00,4/5/2024,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,10956,Test safety edge operation,Closed and Completed,5/5/2024,Nick Kosyak,Lead,0.10,0.00,0.00,1/15/2025,Nick Kosyak - 01/15/25  5:11:02 AM: Safety switch does not work. Changing battery did nothing. Adjusting the sensitivity makes the door just go up. The door also slides after stopping for multiple feet.,[]
+511,EQ ID 511,Shipping Door #4,Shipping,14368,Test safety edge operation,Closed and Completed,2/15/2025,JH Secord,Lead,1.00,"1,080.00",0.00,3/7/2025,Nick Kosyak - 03/10/25  3:37:39 AM: New cord and controller installed. Awaiting invoice.,[]
+511,EQ ID 511,Shipping Door #4,Shipping,15052,Test safety edge operation,Closed and Completed,4/13/2025,Nick Kosyak,Lead,0.50,0.00,0.00,5/7/2025,Nick Kosyak - 05/07/25  7:04:08 AM: Sensitivity adjusted.,[]
+511,EQ ID 511,Shipping Door #4,Shipping,15659,Test safety edge operation,Closed and Completed,6/7/2025,Nick Kosyak,Lead,0.10,0.00,0.00,6/9/2025,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,16009,Test safety edge operation,Closed and Completed,7/9/2025,Nick Kosyak,Lead,0.10,0.00,0.00,7/22/2025,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,16452,Test safety edge operation,Closed and Completed,8/22/2025,"Nick Kosyak, Damian Mannings",Lead,0.10,0.00,0.00,9/9/2025,,[]
+511,EQ ID 511,Shipping Door #4,Shipping,16943,Test safety edge operation,Closed and Completed,10/9/2025,Nick Kosyak,Lead,0.10,0.00,0.00,10/17/2025,,[]
+362,EQ ID 362,Electric Pump Truck,Shipping,17594,Preventive Maintenance,Pending,5/6/2026,,Outside Service,0.00,0.00,0.00,,,[]
+362,EQ ID 362,Electric Pump Truck,Shipping,17595,Preventive Maintenance,Pending,5/6/2026,,Outside Service,0.00,0.00,0.00,,,[]
+362,EQ ID 362,Electric Pump Truck,Shipping,208,Preventive Maintenance,Closed and Completed,9/18/2022,Raven Lift,Outside Service,5.00,501.22,0.00,10/30/2022,,[]
+362,EQ ID 362,Electric Pump Truck,Shipping,3712,Preventive Maintenance,Closed and Completed,6/21/2023,Raven Lift,Outside Service,3.00,160.00,0.00,7/7/2023,Nick Kosyak - 07/20/23  3:54:38 AM: Complete. Awaiting Invoice.,[]
+362,EQ ID 362,Electric Pump Truck,Shipping,6536,Preventive Maintenance,Closed and Completed,1/20/2024,Raven Lift,Outside Service,2.00,160.00,0.00,1/30/2024,Nick Kosyak - 02/14/24  6:12:29 AM: Complete. Awaiting invoice.,[]
+362,EQ ID 362,Electric Pump Truck,Shipping,10349,Preventive Maintenance,Closed and Completed,8/14/2024,Raven Lift,Outside Service,6.50,502.50,0.00,3/6/2025,Nick Kosyak - 03/10/25  3:37:52 AM: Complete. Awaiting invoice.,[]
+362,EQ ID 362,Electric Pump Truck,Shipping,14999,Preventive Maintenance,Closed and Completed,9/11/2025,Raven Lift,Outside Service,1.00,85.00,0.00,10/3/2025,Nick Kosyak - 10/07/25  4:14:18 AM: Complete. Awaiting invoice.,[]
+362,EQ ID 362,Electric Pump Truck,Shipping,15000,Preventive Maintenance,Closed and Completed,9/11/2025,Raven Lift,Outside Service,1.00,85.00,0.00,10/3/2025,Nick Kosyak - 10/07/25  4:14:29 AM: Complete. Awaiting invoice.,[]
+363,EQ ID 363,Electric Pump Truck,Shipping,209,Preventive Maintenance,Closed and Completed,9/18/2022,Raven Lift,Outside Service,5.00,120.00,0.00,10/30/2022,,[]
+363,EQ ID 363,Electric Pump Truck,Shipping,4281,Preventive Maintenance,Closed and Completed,8/9/2023,Raven Lift,Outside Service,1.00,80.00,0.00,7/7/2023,Nick Kosyak - 07/20/23  3:54:51 AM: Complete. Awaiting Invoice.,[]
+363,EQ ID 363,Electric Pump Truck,Shipping,6537,Preventive Maintenance,Closed and Completed,1/20/2024,Raven Lift,Outside Service,1.00,120.00,0.00,1/30/2024,Nick Kosyak - 02/14/24  6:12:52 AM: Complete. Awaiting invoice. | Nick Kosyak - 02/14/24  6:12:46 AM: Complete. Awaiting invoice.,[]
+363,EQ ID 363,Electric Pump Truck,Shipping,10350,Preventive Maintenance,Closed without Action,8/14/2024,-,Outside Service,0.00,0.00,0.00,3/10/2025,Nick Kosyak - 03/10/25  6:11:18 AM: All walkies will be tracked under 1 scheduled maintenance. | Nick Kosyak - 03/10/25  3:37:56 AM: Complete. Awaiting invoice.,[]
+421,EQ ID 421,Forklift,Shipping,16832,Preventive Maintenance,Pending,11/27/2025,,Outside Service,0.00,0.00,0.00,,,[]
+421,EQ ID 421,Forklift,Shipping,270,Preventive Maintenance,Closed and Completed,6/18/2022,Raven Lift,Outside Service,1.00,78.00,0.00,7/18/2022,,[]
+421,EQ ID 421,Forklift,Shipping,3654,Preventive Maintenance,Closed and Completed,3/15/2023,Raven Lift,Outside Service,1.00,80.00,0.00,3/27/2023,Nick Kosyak - 03/28/23  9:48:48 AM: Complete. Awaiting Invoice.,[]
+421,EQ ID 421,Forklift,Shipping,5303,Preventive Maintenance,Closed and Completed,7/13/2023,Raven Lift,Outside Service,1.00,80.00,0.00,7/7/2023,Nick Kosyak - 07/20/23  3:56:21 AM: Double entry.,[]
+421,EQ ID 421,Forklift,Shipping,6540,Preventive Maintenance,Closed and Completed,10/20/2023,Raven Lift,Outside Service,1.00,80.00,0.00,9/29/2023,Nick Kosyak - 11/13/23  3:40:03 AM: Heater operational. | Nick Kosyak - 09/29/23  9:06:25 AM: Complete. Awaiting Invoice.,[]
+421,EQ ID 421,Forklift,Shipping,8008,Preventive Maintenance,Closed without Action,2/13/2024,-,Outside Service,0.00,0.00,0.00,5/23/2024,Nick Kosyak - 01/08/25 10:45:11 AM: Double entry.,[]
+421,EQ ID 421,Forklift,Shipping,14299,Preventive Maintenance,Closed and Completed,4/8/2025,Raven Lift,Outside Service,1.00,85.00,0.00,7/10/2025,Nick Kosyak - 07/22/25  6:30:54 AM: Complete. Awaiting invoice. | Nick Kosyak - 04/01/25  9:52:34 AM: To be done in June.,[]
+544,EQ ID 544,Wrapping Machine,Shipping,17345,Lubricate chains,Pending,11/17/2025,,Technician,0.00,0.00,0.00,,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,292,Lubricate chains,Closed and Completed,4/18/2022,Nick Kosyak,Technician,0.50,0.00,0.00,5/2/2022,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,2665,Lubricate chains,Closed and Completed,11/13/2022,Nick Kosyak,Technician,0.25,0.00,0.00,12/20/2022,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,3697,Lubricate chains,Closed and Completed,1/20/2023,Nick Kosyak,Technician,0.25,0.00,0.00,2/13/2023,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,4343,Lubricate chains,Closed and Completed,3/13/2023,Nick Kosyak,Technician,0.10,0.00,0.00,4/21/2023,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,5394,Lubricate chains,Closed and Completed,5/21/2023,Nick Kosyak,Technician,0.25,0.00,0.00,6/7/2023,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,5924,Lubricate chains,Closed and Completed,7/7/2023,Nick Kosyak,Technician,0.25,0.00,0.00,7/28/2023,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,6652,Lubricate chains,Closed and Completed,8/31/2023,Nick Kosyak,Technician,0.25,0.00,0.00,8/28/2023,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,7022,Lubricate chains,Closed and Completed,9/28/2023,Nick Kosyak,Technician,0.25,0.00,0.00,12/13/2023,"Nick Kosyak - 12/13/23  4:25:45 AM: Dave has been notified, will investigate the oil leak.",[]
+544,EQ ID 544,Wrapping Machine,Shipping,9332,Lubricate chains,Closed and Completed,1/13/2024,Nick Kosyak,Technician,0.25,0.00,0.00,1/23/2024,Nick Kosyak - 01/23/24  3:24:31 AM: Battery replaced.,[]
+544,EQ ID 544,Wrapping Machine,Shipping,10076,Lubricate chains,Closed and Completed,2/23/2024,Nick Kosyak,Technician,0.25,0.00,0.00,2/29/2024,Nick Kosyak - 02/29/24  6:41:49 AM: To be completed Sep. 2024 along the rest of the filters.,[]
+544,EQ ID 544,Wrapping Machine,Shipping,10565,Lubricate chains,Closed and Completed,3/29/2024,Nick Kosyak,Technician,0.25,0.00,0.00,4/5/2024,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,10958,Lubricate chains,Closed and Completed,5/5/2024,Samuel Packaging,Technician,3.00,528.00,0.00,11/5/2024,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,14463,Lubricate chains,Closed and Completed,2/24/2025,Samuel Packaging,Technician,3.00,528.00,0.00,11/5/2024,Nick Kosyak - 02/03/25  7:14:43 AM: Needs further repair by electrician. To be quoted and scheduled.,[]
+544,EQ ID 544,Wrapping Machine,Shipping,14559,Lubricate chains,Closed and Completed,3/3/2025,Nick Kosyak,Technician,0.10,0.00,0.00,3/10/2025,Nick Kosyak - 03/10/25  3:47:07 AM: Complete. Awaiting invoice.,[]
+544,EQ ID 544,Wrapping Machine,Shipping,14984,Lubricate chains,Closed and Completed,4/10/2025,Nick Kosyak,Technician,0.25,0.00,0.00,5/8/2025,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,15673,Lubricate chains,Closed and Completed,6/8/2025,Nick Kosyak,Technician,0.25,0.00,0.00,6/24/2025,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,16199,Lubricate chains,Closed and Completed,7/24/2025,"Nick Kosyak, Damian Mannings",Technician,0.14,0.00,0.00,9/9/2025,,[]
+544,EQ ID 544,Wrapping Machine,Shipping,16941,Lubricate chains,Closed and Completed,10/9/2025,Nick Kosyak,Technician,0.10,0.00,0.00,10/17/2025,,[]

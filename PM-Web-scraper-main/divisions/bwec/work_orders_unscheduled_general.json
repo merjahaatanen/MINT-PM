@@ -1,0 +1,21 @@
+[
+  {
+    "equipment_id": "422",
+    "equipment_eq_id": "EQ ID 422",
+    "equipment_name": "Grinder",
+    "department": "General",
+    "wo_id": "9707",
+    "date_notified": "01/15/2024",
+    "urgency": "2. General Maint - High Priority",
+    "problem": "Grinder table leg damaged.",
+    "status": "Closed and Completed",
+    "material_cost": "800",
+    "labor_time": "0.5",
+    "work_performed_by": "Nick Kosyak",
+    "assigned_to": "Maintenance",
+    "downtime_hours": "0",
+    "completed_datetime": "01/19/2024 12:00 AM",
+    "comments": "Nick Kosyak - 01/15/24 10:34:18 AM: New table ordered.",
+    "attachments": []
+  }
+]

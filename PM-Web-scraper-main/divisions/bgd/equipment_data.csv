@@ -1,0 +1,429 @@
+eq_id,dept,dept_num,equipment_name,asset_num,make,model,vendor,wo_qty,modified
+EQ ID 208,Fabrication,24,"Accurshear, 10' (WC 2002)",,Accurshear,625010,,3,3/17/2025 12:43 PM
+EQ ID 1633,Fabrication,24,TruLaser 2030 (WC 2001),,Trumpf,TruLaser 2030,,0,7/17/2024 7:45 AM
+EQ ID 5340,Fabrication,24,TruMatic 6000,,Trumpf,TruMatic 6000,,0,7/17/2024 7:45 AM
+EQ ID 5136,Assembly,23,Cleco Driver (DG 0209),N/A,Cleco,19SCA05Q,,0,5/20/2022 5:04 AM
+EQ ID 5135,Assembly,23,Cleco Driver (DG 0210),N/A,Cleco,19SCA05Q,,0,5/20/2022 5:03 AM
+EQ ID 5134,Assembly,23,Cleco Driver (FL 6011),N/A,Cleco,19SCA05Q,,0,5/20/2022 5:02 AM
+EQ ID 5133,Assembly,23,Cleco Driver (DG 0207),N/A,Cleco,19SCA05Q,,0,5/20/2022 5:01 AM
+EQ ID 5132,Assembly,23,Cleco Driver (DG 0206),N/A,Cleco,19SCA05Q,,0,5/20/2022 4:59 AM
+EQ ID 5131,Assembly,23,Cleco Driver (DG 0204),N/A,Cleco,19SCA05Q,,0,5/20/2022 4:31 AM
+EQ ID 1936,Mirrors,28,Bay Doors,,,,,0,4/15/2022 7:40 AM
+EQ ID 1937,Maintenance,29,Bay Doors,,,,,0,4/15/2022 7:40 AM
+EQ ID 2062,Quality Assurance,27,Timesaver - 293 cell,11117,Ramco,,,0,4/15/2022 7:40 AM
+EQ ID 2042,Maintenance,29,Mill,11214,Bridgeport,45842,,0,4/15/2022 7:40 AM
+EQ ID 2043,Maintenance,29,Lathe,,LeBlond,,,0,4/15/2022 7:40 AM
+EQ ID 2044,Maintenance,29,Jobsite Fan #1,,Dewalt,DCE511,,0,4/15/2022 7:40 AM
+EQ ID 2045,Maintenance,29,Jobsite Fan #2,,Dewalt,DCE511,,0,4/15/2022 7:40 AM
+EQ ID 2046,Maintenance,29,Jobsite Fan #3,,Dewalt,DCE511,,0,4/15/2022 7:40 AM
+EQ ID 2049,Assembly,23,PMU Rivet Gun #11,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 2050,Assembly,23,PMU Rivet Gun #12,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 2052,Spot Weld,33,Tube Notcher,,,,,0,4/15/2022 7:40 AM
+EQ ID 2053,Assembly,23,Cleco Driver (ZJ 8691),,Cleco,19BPA03Q,,0,4/15/2022 7:40 AM
+EQ ID 2054,Assembly,23,Cleco Driver (AE 7619),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 2055,Assembly,23,Cleco Driver (CI 2125),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 2056,Office,12,Hot Water Heater,,Bradford White Corporation,RE350T6,,0,4/15/2022 7:40 AM
+EQ ID 2137,Office,12,Refrigerator,,True Manufacturing Co.,T-72,,0,4/15/2022 7:40 AM
+EQ ID 2142,Maintenance,29,Mist Disinfecting Sprayer,,North Star,999886D,,0,4/15/2022 7:40 AM
+EQ ID 2143,Assembly,23,Vendor Foam Machine,,Sealed Air Corporation,Instapak iMold,,0,4/15/2022 7:40 AM
+EQ ID 2145,Assembly,23,Big Ass Fan,,Big Ass Fan,,,0,4/15/2022 7:40 AM
+EQ ID 2146,Maintenance,29,Trash Compactor,,City Property,,,0,4/15/2022 7:40 AM
+EQ ID 2150,Assembly,23,Large Trimline Hinge Pin Grinder,,Sharpie,A-PTGK-SD,,0,4/15/2022 7:40 AM
+EQ ID 2156,Spot Weld,33,Rivet Gun,,,,,0,4/15/2022 7:40 AM
+EQ ID 2158,Mirrors,28,Work Order,,,,,2,4/15/2022 7:40 AM
+EQ ID 2159,Assembly,23,PMU Rivet Gun #17,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 2160,Assembly,23,PMU Rivet Gun #15,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 2161,Assembly,23,PMU Rivet Gun #16,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 2068,Spot Weld,33,KKP Stroke Sander,,Grizzly,G0679,,0,4/15/2022 7:40 AM
+EQ ID 2069,Spot Weld,33,KKP Dust Collector (Stroke Sander),,Grizzly,G1030Z2P,,0,4/15/2022 7:40 AM
+EQ ID 2070,Assembly,23,Drill Press,,Grizzly,G7946,,0,4/15/2022 7:40 AM
+EQ ID 2071,Spot Weld,33,KKP Air Hose,,,,,0,4/15/2022 7:40 AM
+EQ ID 2072,Spot Weld,33,KKP Dynafile,,Dynabrade,Dynafile II,,0,4/15/2022 7:40 AM
+EQ ID 2074,Spot Weld,33,"KKP Tables, Fixtures, Etc.",,,,,0,4/15/2022 7:40 AM
+EQ ID 2080,Assembly,23,Large Trimline Spotwelder KVA-50,,Tecna,TE4666,,0,4/15/2022 7:40 AM
+EQ ID 2081,Spot Weld,33,KKP Stroke Sander,,Grizzly,G5394,,0,4/15/2022 7:40 AM
+EQ ID 2084,Spot Weld,33,KKP Work Order,,,,,0,4/15/2022 7:40 AM
+EQ ID 2085,Spot Weld,33,TLE Work Order,,,,,0,4/15/2022 7:40 AM
+EQ ID 2086,Spot Weld,33,Spotweld Work Order,,,,,0,4/15/2022 7:40 AM
+EQ ID 2087,Assembly,23,PMU 1 Work Order,,,,,0,4/15/2022 7:40 AM
+EQ ID 2088,Assembly,23,PMU 2 Work Order,,,,,0,4/15/2022 7:40 AM
+EQ ID 2089,Assembly,23,Vendor Work Order,,,,,1,4/15/2022 7:40 AM
+EQ ID 2090,Assembly,23,Large Trimline Work Order,,,,,0,4/15/2022 7:40 AM
+EQ ID 2091,Assembly,23,Small Trimline Work Order,,,,,0,4/15/2022 7:40 AM
+EQ ID 2092,Spot Weld,33,KKP Hand Buffer #1,,CS Unitec by Eisenblatter,1800 Poly PTX Eco Smart,,0,4/15/2022 7:40 AM
+EQ ID 2093,Spot Weld,33,KKP Hand Buffer #2,,CS Unitec by Eisenblatter,1800 Poly PTX Eco Smart,,0,4/15/2022 7:40 AM
+EQ ID 2094,Spot Weld,33,KKP Hand Buffer #3,,CS Unitec by Eisenblatter,1800 Poly PTX Eco Smart,,0,4/15/2022 7:40 AM
+EQ ID 2095,Spot Weld,33,KKP Table Top Grinder #1,,Custom,,,0,4/15/2022 7:40 AM
+EQ ID 2098,Spot Weld,33,KKP Dust Collector (Table Top Grinder),,Jet,JCDC-3,,0,4/15/2022 7:40 AM
+EQ ID 2104,Assembly,23,PMU Rivet Gun #13,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 2105,Maintenance,29,Compressor #1,,Gardner Denver,L55-75F,,0,4/15/2022 7:40 AM
+EQ ID 2106,Maintenance,29,Compressor #2,,Gardner Denver,L55-75F,,0,4/15/2022 7:40 AM
+EQ ID 2107,Maintenance,29,Air Dryer (Compressor #1),11779,Nano,NXC 0500,,0,4/15/2022 7:40 AM
+EQ ID 2112,Office,12,Handwash Area,,,,,0,4/15/2022 7:40 AM
+EQ ID 2114,Quality Assurance,27,Spotweld Work Order,,,,,0,4/15/2022 7:40 AM
+EQ ID 2118,Maintenance,29,Drill Press,,Shop Fox,W1669,,0,4/15/2022 7:40 AM
+EQ ID 2119,Maintenance,29,"1/2"" Drill",,Dewalt,DCD791,,0,4/15/2022 7:40 AM
+EQ ID 2120,Maintenance,29,"1/2"" Drill",,Dewalt,DCD791,,0,4/15/2022 7:40 AM
+EQ ID 2121,Maintenance,29,"1/2"" Hammerdrill",,Dewalt,DCD985,,0,4/15/2022 7:40 AM
+EQ ID 2122,Maintenance,29,"1/4"" Impact",,Dewalt,DCF887,,0,4/15/2022 7:40 AM
+EQ ID 2123,Maintenance,29,"3/4"" Impact",,Dewalt,DCF897,,0,4/15/2022 7:40 AM
+EQ ID 2124,Maintenance,29,"1/4"" Impact",,Dewalt,DCF885,,0,4/15/2022 7:40 AM
+EQ ID 2125,Maintenance,29,Forklift Water Filling Station,,Philadelphia Scientific,HydroPure PS-600,,0,4/15/2022 7:40 AM
+EQ ID 2126,Mirrors,28,Buffer,,Grizzly,G8749,,0,4/15/2022 7:40 AM
+EQ ID 2127,Shipping,32,Sweat Bee Row 11&12,,Big Ass Fan,"30"" Sweat Bee",,0,4/15/2022 7:40 AM
+EQ ID 2128,Shipping,32,Sweat Bee Row 13&14,,Big Ass Fan,"30"" Sweat Bee",,0,4/15/2022 7:40 AM
+EQ ID 2129,Shipping,32,Staple Gun,,Metabo HPT,N5008AC2,,0,4/15/2022 7:40 AM
+EQ ID 2130,Maintenance,29,Argon/Gas Storage,,,,,0,4/15/2022 7:40 AM
+EQ ID 2131,Maintenance,29,Compressor Room #1,,,,,0,4/15/2022 7:40 AM
+EQ ID 2132,Maintenance,29,Compressor Room #2,,,,,0,4/15/2022 7:40 AM
+EQ ID 1640,Assembly,23,"Large Trimline Spotwelder ""Sparky"" KVA-35",,Federal,BA-G-8,,0,4/15/2022 7:40 AM
+EQ ID 1646,Spot Weld,33,Rivet Gun #1,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1649,Assembly,23,PMU Rivet Gun #1,,Stanley,PRG-540,,0,4/15/2022 7:40 AM
+EQ ID 1651,Assembly,23,PMU Rivet Gun #3,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1652,Maintenance,29,Tig Welder,11141,Miller,Syncrowave 250,,0,4/15/2022 7:40 AM
+EQ ID 1661,Mirrors,28,"Die 293 18"" Frame",11770,Dienamic Tool & Die Inc,,,0,4/15/2022 7:40 AM
+EQ ID 1662,Mirrors,28,"Die 293 24"" Frame",11771,Dienamic Tool & Die Inc,,,0,4/15/2022 7:40 AM
+EQ ID 1663,Assembly,23,PMU Rivet Gun #4,,Stanley,PRG-540,,0,4/15/2022 7:40 AM
+EQ ID 1671,Mirrors,28,Lift Table (293 cell 11320),11320,Bishamon,,,2,4/15/2022 7:40 AM
+EQ ID 1676,Spot Weld,33,Delta Table Saw/Foam Cutter,,Delta,TS350,,0,4/15/2022 7:40 AM
+EQ ID 1682,Assembly,23,Magazine Cell Table #1,,,,,0,4/15/2022 7:40 AM
+EQ ID 1683,Assembly,23,Magazine Cell Table #2,,,,,0,4/15/2022 7:40 AM
+EQ ID 1684,Assembly,23,Magazine Cell Table #3,,,,,0,4/15/2022 7:40 AM
+EQ ID 1685,Assembly,23,Magazine Cell Table #4,,,,,0,4/15/2022 7:40 AM
+EQ ID 1536,Shipping,32,L-Bracket Fixture,,,,,0,4/15/2022 7:40 AM
+EQ ID 1537,Shipping,32,Bay #1,,,,,0,4/15/2022 7:40 AM
+EQ ID 267,Spot Weld,33,Spotwelder KVA-20 (#11240),11240,Spotwelding Consultants,1024-20,,0,4/15/2022 7:40 AM
+EQ ID 268,Spot Weld,33,Spotwelder KVA-20 (#11709),11709,Spotwelding Consultants,1024-20,,0,4/15/2022 7:40 AM
+EQ ID 269,Assembly,23,PMU 2 Spotwelder KVA-20 (#11710),11710,Spotwelding Consultants,1024-20,,0,4/15/2022 7:40 AM
+EQ ID 270,Spot Weld,33,Spotwelder KVA-20 (#11711),11711,Spotwelding Consultants,1024-20,,0,4/15/2022 7:40 AM
+EQ ID 273,Assembly,23,Large Trimline Vacuum Lifting System,11714,Anver,VB9HV,,2,4/15/2022 7:40 AM
+EQ ID 274,Mirrors,28,"Roll Former, Channel Frame",11719,Vicon Machinery,V-1035,,0,4/15/2022 7:40 AM
+EQ ID 275,Mirrors,28,Uncoiler (Notchline),11721,Norwalk Innovation,KBRG-225D (4154E),,0,4/15/2022 7:40 AM
+EQ ID 258,Maintenance,29,Air Conditioner Unit,11226,Trane,4TXCC060BC3HCAA,,0,4/15/2022 7:40 AM
+EQ ID 259,Assembly,23,Vendor Multicyl 12.5 Ton,11231,IPEC Factory Automation,UNX-5,,0,4/15/2022 7:40 AM
+EQ ID 1392,Shipping,32,Dock Pump,,,,,0,4/15/2022 7:40 AM
+EQ ID 1453,Maintenance,29,Maintenance Work Order,,,,,1,4/15/2022 7:40 AM
+EQ ID 1459,Office,12,Server Room,,,,,0,4/15/2022 7:40 AM
+EQ ID 1462,Shipping,32,Racking,,,,,0,4/15/2022 7:40 AM
+EQ ID 1463,Shipping,32,FedEx Cart,,,,,0,4/15/2022 7:40 AM
+EQ ID 1464,Mirrors,28,293 Multicyl,11769,AMS,,,0,4/15/2022 7:40 AM
+EQ ID 1496,Shipping,32,Workstation #1,,,,,0,4/15/2022 7:40 AM
+EQ ID 1497,Shipping,32,Workstation #2,,,,,0,4/15/2022 7:40 AM
+EQ ID 1498,Shipping,32,Workstation #3,,,,,0,4/15/2022 7:40 AM
+EQ ID 1499,Shipping,32,Workstation #5,,,,,0,4/15/2022 7:40 AM
+EQ ID 1500,Shipping,32,Workstation #4,,,,,0,4/15/2022 7:40 AM
+EQ ID 1501,Shipping,32,Workstation #6,,,,,0,4/15/2022 7:40 AM
+EQ ID 1502,Mirrors,28,Hydraulic Notchline,11715,,XL2-OL,,0,4/15/2022 7:40 AM
+EQ ID 1505,Assembly,23,"Small Trimline Spotwelder, Tecna (#11774)",11774,Tecna,4647A,,0,4/15/2022 7:40 AM
+EQ ID 1506,Assembly,23,"Small Trimline Spotwelder, Tecna (#11775)",11775,Tecna,4647A,,0,4/15/2022 7:40 AM
+EQ ID 1507,Assembly,23,"PMU 1 Spotwelder, Tecna (#11776)",11776,Tecna,4647A,,0,4/15/2022 7:40 AM
+EQ ID 1508,Assembly,23,"Small Trimline Spotwelder, Tecna (#11777)",11777,Tecna,4647A,,0,4/15/2022 7:40 AM
+EQ ID 1510,Office,12,Supply Chain Offices,,,,,0,4/15/2022 7:40 AM
+EQ ID 1472,Mirrors,28,Forklift #2 (Clark),11756,Clark,TMX25,,1,4/15/2022 7:40 AM
+EQ ID 1487,Office,12,Heater,,,,,0,4/15/2022 7:40 AM
+EQ ID 1530,Office,12,Downstairs Conference Room,,,,,0,4/15/2022 7:40 AM
+EQ ID 1531,Office,12,Upstairs Conference Room,,,,,0,4/15/2022 7:40 AM
+EQ ID 1532,Office,12,Upstairs Training Room,,,,,0,4/15/2022 7:40 AM
+EQ ID 1533,Office,12,Break Room,,,,,0,4/15/2022 7:40 AM
+EQ ID 210,Mirrors,28,CNC #1,11152,Wiedemann,MO2044,,1,4/15/2022 7:40 AM
+EQ ID 195,Mirrors,28,293 Timesaver,11117,RAMCO,DW37R,,0,4/15/2022 7:40 AM
+EQ ID 199,Maintenance,29,Welder,11133,Miller,Syncrowave 250,,0,4/15/2022 7:40 AM
+EQ ID 200,Spot Weld,33,KKP Welder (North),11134,Miller,Syncrowave 250,,0,4/15/2022 7:40 AM
+EQ ID 202,Maintenance,29,Miller Welder,,Miller,Syncrowave 250,,0,4/15/2022 7:40 AM
+EQ ID 203,Mirrors,28,Belt Sander,11142,Beach Mfg,,,0,4/15/2022 7:40 AM
+EQ ID 205,Mirrors,28,Mirror Back Panel Former,11144,,,,0,4/15/2022 7:40 AM
+EQ ID 207,Mirrors,28,Table Saw,11148,William Altendorf,F45,,0,4/15/2022 7:40 AM
+EQ ID 55,Assembly,23,Autobag # 1,3094,,,,0,4/15/2022 7:40 AM
+EQ ID 122,Assembly,23,Cleco Driver (UJ 2753),,Cleco,14SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 169,Quality Assurance,27,Scissor Lift-Finish Good (NT Vendor),11327,Bishamon,,,0,4/15/2022 7:40 AM
+EQ ID 171,Assembly,23,Cleco Driver (UJ 2755),,Cleco,14SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 173,Assembly,23,B13AD10200896 Milwaukee Torque Driver,,Milwaukee,Cat No: 0490-20,,0,4/15/2022 7:40 AM
+EQ ID 190,Spot Weld,33,KKP Welder (South),11112,Miller,Syncrowave 250,,0,4/15/2022 7:40 AM
+EQ ID 214,Mirrors,28,Punch Press (Notchline),11157,Minster,Minster O.B.I. No.6,,0,4/15/2022 7:40 AM
+EQ ID 215,Shipping,32,Stretch Wrapper,11164,Lantech,Q300,,0,4/15/2022 7:40 AM
+EQ ID 216,Quality Assurance,27,Air Dryer,11165,Domnick Hunter,995,,0,4/15/2022 7:40 AM
+EQ ID 217,Quality Assurance,27,Air Compressor,11166,Sullair,003-114944,,0,4/15/2022 7:40 AM
+EQ ID 218,Quality Assurance,27,"Air Compressor, Extra",11167,Manuf. Sullair,16B5-75H,,0,4/15/2022 7:40 AM
+EQ ID 219,Grab Bars,38,Tubing Notcher,11169,Saginaw,,,0,4/15/2022 7:40 AM
+EQ ID 221,Maintenance,29,Band saw,11171,Cosen,MH-1016JA,,0,4/15/2022 7:40 AM
+EQ ID 222,Assembly,23,Small Trimline Spotwelder KVA-75 (#11172),11172,Taylor Winfield,A3338,,1,4/15/2022 7:40 AM
+EQ ID 225,Assembly,23,Vendor Spotwelder KVA-30 (#11175),11175,Spotwelding Consultants,AR-430-24,,0,4/15/2022 7:40 AM
+EQ ID 226,Office,12,Ice Dispenser & Cuber,11176,Superior Products,SM407/SFA291,,0,4/15/2022 7:40 AM
+EQ ID 233,Shipping,32,Stand-Up Forklift #1,11193,Clark,NPR20,,0,4/15/2022 7:40 AM
+EQ ID 234,Assembly,23,Stand-Up Forklift #2,11194,Clark,NPR20,,1,4/15/2022 7:40 AM
+EQ ID 235,Shipping,32,Big Ass Fan,11196,Big Ass Fan,PF203101,,0,4/15/2022 7:40 AM
+EQ ID 236,Assembly,23,Vendor Pem Stud Riveter,11198,General Pneumatic Tools,15000 CS,,0,4/15/2022 7:40 AM
+EQ ID 239,Assembly,23,PMU 1 Spotwelder KVA-30,,Spotwelding Consultants,AR-430,,0,4/15/2022 7:40 AM
+EQ ID 241,Assembly,23,Skirt Spotwelder KVA-30 (#11203),11203,Spotwelding Consultants,AR-430,,0,4/15/2022 7:40 AM
+EQ ID 244,Assembly,23,"Small Trimline Spotwelder, KVA-20 (#11209)",11209,Spotwelding Consultants,AR-420,,0,4/15/2022 7:40 AM
+EQ ID 245,Assembly,23,"PMU 1 Spotwelder, KVA-20 (#11210)",11210,Spotwelding Consultants,AR-420,,0,4/15/2022 7:40 AM
+EQ ID 248,Mirrors,28,"Accurshear, 12'",11213,Accurshear,625012,,1,4/15/2022 7:40 AM
+EQ ID 249,Quality Assurance,27,"Milling Machine, Vertical",11214,Bridgeport,,,0,4/15/2022 7:40 AM
+EQ ID 250,Assembly,23,Vendor Spotwelder KVA-20 (#11217),11217,Spotwelding Consultants,AR-420,,0,4/15/2022 7:40 AM
+EQ ID 251,Assembly,23,Vendor Spotwelder KVA-20 (#11218),11218,Spotwelding Consultants,AR-420,,0,4/15/2022 7:40 AM
+EQ ID 253,Assembly,23,PMU 1 Spotwelder KVA-20 (#11220),11220,Spotwelding Consultants,AR-420,,0,4/15/2022 7:40 AM
+EQ ID 254,Assembly,23,Vendor Spotwelder KVA-20 (#11221),11221,Spotwelding Consultants,AR-420,,0,4/15/2022 7:40 AM
+EQ ID 255,Assembly,23,Large Trimline TIG Welder Syncrowave 250,11222,Miller,250DX,,0,4/15/2022 7:40 AM
+EQ ID 256,Spot Weld,33,"Spotwelder, C-Gun",11223,Spotwelding Consultants,EN1000,,0,4/15/2022 7:40 AM
+EQ ID 261,Assembly,23,PMU 2 Spotwelder KVA-30 (#11233),11233,Spotwelding Consultants,1-24-30,,0,4/15/2022 7:40 AM
+EQ ID 262,Assembly,23,Large Trimline Spotwelder KVA-30 (#11234),11234,Spotwelding Consultants,1-24-30,,0,4/15/2022 7:40 AM
+EQ ID 263,Assembly,23,Large Trimline Spotwelder KVA-30 (#11235),11235,Spotwelding Consultants,1-24-30,,0,4/15/2022 7:40 AM
+EQ ID 264,Assembly,23,Large Trimline Spotwelder KVA-30 (#11236),11236,Spotwelding Consultants,1-24-30,,0,4/15/2022 7:40 AM
+EQ ID 279,Mirrors,28,Corner Grinder,11757,Gecam,131,,0,4/15/2022 7:40 AM
+EQ ID 280,Mirrors,28,Corner Grinder,11799,"Gecam, MetalFinish LLC",131 2V,,0,4/15/2022 7:40 AM
+EQ ID 656,Mirrors,28,"Tig Welder, 290 Mirror Frame, Contour Arc",11333,Custom,SW,,0,4/15/2022 7:40 AM
+EQ ID 764,Assembly,23,Racking,,,,,0,4/15/2022 7:40 AM
+EQ ID 829,Mirrors,28,Timesaver,11739,Costa Levigatrici,MD5-CC-1350,,0,4/15/2022 7:40 AM
+EQ ID 830,Office,12,Restrooms (Downstairs),,,,,0,4/15/2022 7:40 AM
+EQ ID 841,Mirrors,28,Electronic AC Servo Driven Roll Feed (Notchline Infeed),11735,PRE,P20F04,,0,4/15/2022 7:40 AM
+EQ ID 842,Mirrors,28,Uncoiler (Hyraulic Notchline),11785,Norwalk Innovation,KBRG-225D (4154F),,0,4/15/2022 7:40 AM
+EQ ID 843,Mirrors,28,Notchline Conveyor,,Marathon Electric,MVJ56T17D2065D-R27,,0,4/15/2022 7:40 AM
+EQ ID 846,Mirrors,28,Die 290 Angle Frame,11730,Dienamic Tool & Die Inc,,,2,4/15/2022 7:40 AM
+EQ ID 847,Mirrors,28,Die 165 Channel Frame,11729,Dienamic Tool & Die Inc,,,0,4/15/2022 7:40 AM
+EQ ID 848,Mirrors,28,"Die 9"" Hanger Bracket",11731,Dienamic Tool & Die Inc,,,0,4/15/2022 7:40 AM
+EQ ID 850,Mirrors,28,Corner Grinder,11727,Gecam,131,,0,4/15/2022 7:40 AM
+EQ ID 1068,Assembly,23,NT Vendors Test Station Tilt Table,11772,Bobrick,,,0,4/15/2022 7:40 AM
+EQ ID 1069,Mirrors,28,Gorbel Workstation Bridge Crane,11740,,,,0,4/15/2022 7:40 AM
+EQ ID 1070,Mirrors,28,Anver Electric Powered 3 Pad Tilter,11741,Anver,ET75M3-110,,0,4/15/2022 7:40 AM
+EQ ID 1071,Mirrors,28,Electric Chain Hoist,11742,,NER005SD-10-3,,0,4/15/2022 7:40 AM
+EQ ID 1076,Assembly,23,B13AD1131680 Milwaukee Torque Driver,,Milwaukee,CAT#0490-20,,0,4/15/2022 7:40 AM
+EQ ID 1122,Mirrors,28,"Roll Former, Angle Frame",11722,Vicon,V-1448,,0,4/15/2022 7:40 AM
+EQ ID 1315,Assembly,23,NT Vendor Box Stapler,,,,,0,4/15/2022 7:40 AM
+EQ ID 1363,Shipping,32,Air Hose,,,,,0,4/15/2022 7:40 AM
+EQ ID 1369,Office,12,ERT Area/Storage Room,,,,,0,4/15/2022 7:40 AM
+EQ ID 1690,Mirrors,28,Lift Table (293 cell 11181),11181,Max Lift Tables,LPT4W-025-36,,1,4/15/2022 7:40 AM
+EQ ID 1691,Mirrors,28,Drill Press,,,,,0,4/15/2022 7:40 AM
+EQ ID 1692,Assembly,23,"Tables, Carts, etc.",,,,,0,4/15/2022 7:40 AM
+EQ ID 1693,Spot Weld,33,Drill Press,,Porter Cable,PCXB620DP,,0,4/15/2022 7:40 AM
+EQ ID 1694,Spot Weld,33,Dynafile,,Dynabrade,Dynafile II,,0,4/15/2022 7:40 AM
+EQ ID 1695,Spot Weld,33,Pallet Jack,,,,,0,4/15/2022 7:40 AM
+EQ ID 1697,Mirrors,28,Hangar Bracket Rack,,,,,0,4/15/2022 7:40 AM
+EQ ID 1702,Mirrors,28,Screw Machine (West),11733,Assembly Automation,SA-1M,,1,4/15/2022 7:40 AM
+EQ ID 1703,Assembly,23,Cleco Driver (WH 2091),,Cleco,14SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1706,Mirrors,28,Dynafile,,Dynabrade,Dynafile II,,0,4/15/2022 7:40 AM
+EQ ID 1707,Assembly,23,Cleco Driver (CD 6009),,Cleco,19PCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1708,Assembly,23,Cleco Driver (CI 2124),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1709,Assembly,23,Cleco Driver (CG 0082),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1710,Assembly,23,Cleco Driver (CI 2119),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1711,Assembly,23,Cleco Driver (CI 2010),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1712,Assembly,23,Cleco Driver (CI 2125),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1713,Assembly,23,Cleco Driver (CH 3160),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1714,Assembly,23,Cleco Driver (DG 0205),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1715,Assembly,23,Cleco Driver (CI 2130),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1716,Assembly,23,Cleco Driver (CI 2123),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1717,Assembly,23,Cleco Driver (CH 3150),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1722,Mirrors,28,Skate Table,,,,,0,4/15/2022 7:40 AM
+EQ ID 1733,Assembly,23,PMU Rivet gun #6,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1734,Assembly,23,PMU Rivet Gun #5,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1735,Assembly,23,PMU 2 Multicyl,,,UNX-5,,0,4/15/2022 7:40 AM
+EQ ID 1740,Mirrors,28,Air Hose,,,,,0,4/15/2022 7:40 AM
+EQ ID 1742,Assembly,23,PMU 2 Spotwelder KVA-30 (#11788),11788,Spotwelding Consultants,AR430,,0,4/15/2022 7:40 AM
+EQ ID 1743,Assembly,23,PMU 2 Spotwelder KVA-30 (#11789),11789,Spotwelding Consultants,AR430,,0,4/15/2022 7:40 AM
+EQ ID 1747,Assembly,23,Cleco Driver (CG 0083),,Cleco,19SCA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1748,Assembly,23,Cleco Driver (DG 0221),,Cleco,19PTA05Q,,0,4/15/2022 7:40 AM
+EQ ID 1749,Assembly,23,Staple Guns,,,,,0,4/15/2022 7:40 AM
+EQ ID 1750,Assembly,23,Skirt Multicyl (Tigerstop),,,,,0,4/15/2022 7:40 AM
+EQ ID 1751,Assembly,23,PMU Rivet Gun #7,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1768,Mirrors,28,Banders,,,,,0,4/15/2022 7:40 AM
+EQ ID 1769,Mirrors,28,Screw Machine (East),,Assembly Automation,SA-1M,,0,4/15/2022 7:40 AM
+EQ ID 1777,Mirrors,28,Sweat Bee Fan,,Big Ass Fan,"30"" Sweat Bee",,0,4/15/2022 7:40 AM
+EQ ID 1779,Mirrors,28,Pallet Jack,,,,,0,4/15/2022 7:40 AM
+EQ ID 1799,Mirrors,28,Side Buffer,,Delta,15-270,,1,4/15/2022 7:40 AM
+EQ ID 1806,Shipping,32,Bay #2,,,,,1,4/15/2022 7:40 AM
+EQ ID 1807,Shipping,32,Bay #3,,,,,0,4/15/2022 7:40 AM
+EQ ID 1808,Shipping,32,Bay #4,,,,,0,4/15/2022 7:40 AM
+EQ ID 1809,Shipping,32,Bay #5,,,,,0,4/15/2022 7:40 AM
+EQ ID 1810,Shipping,32,Bay #6,,,,,0,4/15/2022 7:40 AM
+EQ ID 1811,Shipping,32,Bay #7,,,,,0,4/15/2022 7:40 AM
+EQ ID 1812,Shipping,32,Bay #8,,,,,0,4/15/2022 7:40 AM
+EQ ID 1813,Shipping,32,Shipping Office,11796,Lantech,300XT,,0,4/15/2022 7:40 AM
+EQ ID 1814,Shipping,32,Sweat Bee Rows 1&2,,Big Ass Fan,"30"" Sweat Bee",,0,4/15/2022 7:40 AM
+EQ ID 1815,Shipping,32,Sweat Bee Rows 3&4,,Big Ass Fan,"30"" Sweat Bee",,0,4/15/2022 7:40 AM
+EQ ID 1816,Shipping,32,Sweat Bee Rows 5&6,,Big Ass Fan,"30"" Sweat Bee",,0,4/15/2022 7:40 AM
+EQ ID 1817,Shipping,32,Sweat Bee Rows 7&8,,Big Ass Fan,"30"" Sweat Bee",,0,4/15/2022 7:40 AM
+EQ ID 1841,Office,12,Heater (Bathrooms),,Lennox,LF3E-165-2,,0,4/15/2022 7:40 AM
+EQ ID 1842,Office,12,Heater (Above North Offices),,Lennox,LF3E-165-2,,0,4/15/2022 7:40 AM
+EQ ID 1843,Shipping,32,Electric Pallet Jack #1 (Clark),,Clark,WPX45,,0,4/15/2022 7:40 AM
+EQ ID 1844,Shipping,32,Electric Pallet Jack #2 (Clark),,Clark,WPX45,,0,4/15/2022 7:40 AM
+EQ ID 1845,Spot Weld,33,Vertical Bandsaw,,Porter Cable,PCB330BS,,0,4/15/2022 7:40 AM
+EQ ID 1847,Assembly,23,Dynafile,,Dynabrade,Dynafile II,,0,4/15/2022 7:40 AM
+EQ ID 1848,Assembly,23,Air Hose,,,,,0,4/15/2022 7:40 AM
+EQ ID 1849,Grab Bars,38,Polisher,,,,,0,4/15/2022 7:40 AM
+EQ ID 1850,Grab Bars,38,Tube Cutter,,Collins,EZ,,0,4/15/2022 7:40 AM
+EQ ID 1851,Spot Weld,33,Dust Collector,,Central Machinery,97869,,0,4/15/2022 7:40 AM
+EQ ID 1852,Mirrors,28,Side Buffer,,Delta,15-270,,0,4/15/2022 7:40 AM
+EQ ID 1853,Mirrors,28,293 Die Cart,,Wesco/Lexco,HTP-3338-2F-PPL,,1,4/15/2022 7:40 AM
+EQ ID 1854,Mirrors,28,Spotwelder KVA-30 (Hanger Bracket),11173,Spotwelding Consultants,AR-430-24,,0,4/15/2022 7:40 AM
+EQ ID 1855,Mirrors,28,Dust Collector (Table Saw),,Kufo,UFO-101,,0,4/15/2022 7:40 AM
+EQ ID 1856,Mirrors,28,Dust Collector (Timesaver),,Grizzly,G0508,,0,4/15/2022 7:40 AM
+EQ ID 1857,Mirrors,28,Tape Machine,,,,,0,4/15/2022 7:40 AM
+EQ ID 1858,Mirrors,28,Rivet Gun,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1859,Mirrors,28,Dust Collector (Miter Saw),,Kufo,UFO-101H,,0,4/15/2022 7:40 AM
+EQ ID 1860,Mirrors,28,Lift Table (Crating North),,American Lifts,S36-040,,1,4/15/2022 7:40 AM
+EQ ID 1861,Mirrors,28,Lift Table (Crating South),,Max Lift Tables,LPT4W-020-60,,1,4/15/2022 7:40 AM
+EQ ID 1862,Mirrors,28,Lift Table (Large Mirrors),11182,Max Lift Tables,LPT4W-025-36,,1,4/15/2022 7:40 AM
+EQ ID 1863,Mirrors,28,Lift Table (Shear),,Presto,XL36-40,,2,4/15/2022 7:40 AM
+EQ ID 1864,Mirrors,28,Staple Gun,,Hitachi,N5008AC2,,0,4/15/2022 7:40 AM
+EQ ID 1865,Mirrors,28,Staple Gun,,Hitachi,N5008AC2,,0,4/15/2022 7:40 AM
+EQ ID 1866,Mirrors,28,Nail Gun,,Hitachi,NR83A3(S),,0,4/15/2022 7:40 AM
+EQ ID 1867,Mirrors,28,Nail Gun,,Hitachi,NR83A3(S),,0,4/15/2022 7:40 AM
+EQ ID 1868,Mirrors,28,Instasheeter,,Sealed Air,Instasheeter,,0,4/15/2022 7:40 AM
+EQ ID 1869,Mirrors,28,"Tables, Carts, etc.",,,,,0,4/15/2022 7:40 AM
+EQ ID 1870,Mirrors,28,Racking,,,,,0,4/15/2022 7:40 AM
+EQ ID 1871,Mirrors,28,Tig Welder (Miter Operation),,Miller,Maxstar 200 LX,,0,4/15/2022 7:40 AM
+EQ ID 1872,Mirrors,28,Tig Welder (Manual Operation),11247,Miller,Maxstar 200 LX,,0,4/15/2022 7:40 AM
+EQ ID 1873,Mirrors,28,Tig Welder (Backup),,Miller,Maxstar 200 LX,,0,4/15/2022 7:40 AM
+EQ ID 1874,Mirrors,28,Tig Coolant System,,Miller,Coolmate,,0,4/15/2022 7:40 AM
+EQ ID 1875,Mirrors,28,Tig Welder (L-Tec),,L-Tec,Heliarc 250 HF Plus Squarewave,,0,4/15/2022 7:40 AM
+EQ ID 1880,Assembly,23,PMU Rivet Gun #8,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1883,Mirrors,28,Rollformer (293),,Lockformer,,,0,4/15/2022 7:40 AM
+EQ ID 1884,Mirrors,28,"1"" Belt Sander (290)",,Central Machinery,"1"" X 30""",,0,4/15/2022 7:40 AM
+EQ ID 1885,Spot Weld,33,Foam Speedy Packer,,Sealed Air Corporation,Speedy Packer Insight,,0,4/15/2022 7:40 AM
+EQ ID 1886,Assembly,23,PMU 1 Foam Machine,11795,Sealed Air Corporation,Instapak iMold,,0,4/15/2022 7:40 AM
+EQ ID 1893,Assembly,23,Lift Table (Large Trimline),11751,Presto,XL36-40,,1,4/15/2022 7:40 AM
+EQ ID 1894,Assembly,23,Lift Table (PMU 1),11327,Bishamon,VIS-25-36,,1,4/15/2022 7:40 AM
+EQ ID 1895,Mirrors,28,Electric Pallet Jack,,Global,RA15W,,0,4/15/2022 7:40 AM
+EQ ID 1897,Shipping,32,Forklift Battery Charger (Clark Stand-up),,Hawker Lifeguard,LG120865F3B,,1,4/15/2022 7:40 AM
+EQ ID 1898,Shipping,32,Forklift Battery Charger (Clark Stand-up),,Hawker Lifeguard,LG120865F3B,,0,4/15/2022 7:40 AM
+EQ ID 1899,Shipping,32,Forklift Battery Charger (Clark Sitdown),,Hawker PowerTech,PT3-18-200,,0,4/15/2022 7:40 AM
+EQ ID 1900,Shipping,32,Forklift Battery Charger (Clark Sitdown),,Ferro Magnetics,SHF18-1200E3 FMHF,,0,4/15/2022 7:40 AM
+EQ ID 1901,Mirrors,28,Forklift Battery Charger (Raymond),,Charging Technologies Xtreme Power,36-2B-E3 FMHF,,0,4/15/2022 7:40 AM
+EQ ID 1902,Mirrors,28,Forklift Battery Charger (Raymond),,Charging Technologies Xtreme Power,36-2B-E3 FMHF,,0,4/15/2022 7:40 AM
+EQ ID 1903,Assembly,23,Lift Table (Vendor Boxes),11750,Presto,XL36-40,,1,4/15/2022 7:40 AM
+EQ ID 1825,Spot Weld,33,Rivet Gun #2,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1826,Spot Weld,33,Rivet Gun #3,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1827,Spot Weld,33,Rivet Gun #4,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1828,Spot Weld,33,Air Hose,,,,,0,4/15/2022 7:40 AM
+EQ ID 1829,Shipping,32,FedEx/UPS Bay,,,,,0,4/15/2022 7:40 AM
+EQ ID 1830,Shipping,32,Staple Gun,,Hitachi,N5008AC2,,0,4/15/2022 7:40 AM
+EQ ID 1831,Shipping,32,Staple Gun,,Hitachi,N5008AC2,,0,4/15/2022 7:40 AM
+EQ ID 1832,Shipping,32,Stretch Wrapper,,Lantech,Q-300XT,,0,4/15/2022 7:40 AM
+EQ ID 1833,Shipping,32,Electric Forklift #1 (Raymond),,Raymond,4750C50S,,0,4/15/2022 7:40 AM
+EQ ID 1834,Shipping,32,Electric Forklift #2 (Raymond),,Raymond,4750C50S,,1,4/15/2022 7:40 AM
+EQ ID 1835,Shipping,32,Heater,,Reznor,UDAP150,,0,4/15/2022 7:40 AM
+EQ ID 1836,Mirrors,28,Heater (Rollformer),,Reznor,UDAP-150,,0,4/15/2022 7:40 AM
+EQ ID 1837,Mirrors,28,Heater (Shear),,Lennox,LF3E-165-2,,0,4/15/2022 7:40 AM
+EQ ID 1838,Mirrors,28,Heater (Saw),,Lennox,LF3E-165-2,,0,4/15/2022 7:40 AM
+EQ ID 1839,Mirrors,28,Heater (Crating),,Lennox,LF3E-165-2,,0,4/15/2022 7:40 AM
+EQ ID 1585,Mirrors,28,Crating Miter Saw,,Hitachi,C12FDH,,0,4/15/2022 7:40 AM
+EQ ID 1590,Shipping,32,Electric Forklift #1 (Clark),,Clark,TMX25,,1,4/15/2022 7:40 AM
+EQ ID 1822,Quality Assurance,27,Dust Collector (Buffer),,Central Machinery,97869,,0,4/15/2022 7:40 AM
+EQ ID 1823,Quality Assurance,27,Dust Collector (Timesaver),,Kufo,UFO-101,,0,4/15/2022 7:40 AM
+EQ ID 1905,Spot Weld,33,Hinge Cutter,,,,,0,4/15/2022 7:40 AM
+EQ ID 1908,Mirrors,28,"2"" Belt Sander (290)",,Dayton,2RYN7A,,0,4/15/2022 7:40 AM
+EQ ID 1909,Assembly,23,Lights,,,,,1,4/15/2022 7:40 AM
+EQ ID 1911,Grab Bars,38,Lights,,,,,0,4/15/2022 7:40 AM
+EQ ID 1912,Mirrors,28,Lights,,,,,0,4/15/2022 7:40 AM
+EQ ID 1913,Office,12,Lights,,,,,0,4/15/2022 7:40 AM
+EQ ID 1914,Shipping,32,Lights,,,,,0,4/15/2022 7:40 AM
+EQ ID 1915,Spot Weld,33,Lights,,,,,0,4/15/2022 7:40 AM
+EQ ID 1916,Assembly,23,357-125 Paper Peeler,,,,,0,4/15/2022 7:40 AM
+EQ ID 1917,Mirrors,28,Spotwelder KVA-20 (#11143),11143,Spotwelding Consultants,1-18-20,,0,4/15/2022 7:40 AM
+EQ ID 1919,Assembly,23,PMU 2 Foam Machine,11806,Sealed Air Corporation,Instapak iMold,,0,4/15/2022 7:40 AM
+EQ ID 1923,Shipping,32,Bander (Battery Powered),,Fromm,P329,,0,4/15/2022 7:40 AM
+EQ ID 1928,Assembly,23,Pallet Jack,,,,,1,4/15/2022 7:40 AM
+EQ ID 1929,Grab Bars,38,Pallet Jack,,,,,0,4/15/2022 7:40 AM
+EQ ID 1932,Mirrors,28,Big Ass Fan,,Big Ass Fan,Powerfoil X2.0,,0,4/15/2022 7:40 AM
+EQ ID 1933,Mirrors,28,Big Ass Fan,,Big Ass Fan,Powerfoil X2.0,,0,4/15/2022 7:40 AM
+EQ ID 1934,Shipping,32,Big Ass Fan,,Big Ass Fan,Powerfoil X2.0,,0,4/15/2022 7:40 AM
+EQ ID 1939,Grab Bars,38,Sweat Bee Fan,,Big Ass Fan,"30"" Sweat Bee",,0,4/15/2022 7:40 AM
+EQ ID 1940,Spot Weld,33,Sweat Bee Fan,,Big Ass Fan,"30"" Sweat Bee",,0,4/15/2022 7:40 AM
+EQ ID 1941,Assembly,23,Sweat Bee Fan,,Big Ass Fan,"30"" Sweat Bee",,1,4/15/2022 7:40 AM
+EQ ID 1944,Assembly,23,Large Trimline Foam Machine,,Sealed Air Corporation,Instapak iMold,,2,4/15/2022 7:40 AM
+EQ ID 1946,Office,12,Bottle Filling Station (Front Offices),,Elkay,ECH8 1N,,0,4/15/2022 7:40 AM
+EQ ID 1947,Office,12,Bottle Filling Station (Breakroom),,Elkay,ECH8 1N,,0,4/15/2022 7:40 AM
+EQ ID 1960,Spot Weld,33,Tables,,,,,0,4/15/2022 7:40 AM
+EQ ID 1961,Mirrors,28,Robotic Welder,11786,Lincoln Electric,,,2,4/15/2022 7:40 AM
+EQ ID 1964,Maintenance,29,Scissor Lift,11778,Genie,GS-2632,,0,4/15/2022 7:40 AM
+EQ ID 1966,Spot Weld,33,Tube Cutter (Manual Cold Saw),,Baileigh,CS-275EU,,0,4/15/2022 7:40 AM
+EQ ID 1968,Assembly,23,Small Trimline Foam Machine,11811,Sealed Air Corporation,Instapak iMold,,0,4/15/2022 7:40 AM
+EQ ID 1970,Office,12,Restrooms (Upstairs),,,,,0,4/15/2022 7:40 AM
+EQ ID 1971,Office,12,Restrooms (Employee),,,,,0,4/15/2022 7:40 AM
+EQ ID 1972,Office,12,AC,,,,,0,4/15/2022 7:40 AM
+EQ ID 1973,Office,12,Supervisors Offices,,,,,0,4/15/2022 7:40 AM
+EQ ID 1974,Office,12,Supervisors Conference Rooms,,,,,0,4/15/2022 7:40 AM
+EQ ID 1975,Office,12,Conference Room (Troubadour),,,,,0,4/15/2022 7:40 AM
+EQ ID 1979,Assembly,23,PMU Rivet Gun #10,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 1980,Assembly,23,PMU Rivet Gun #9,,Stanley,PRG-510A,,0,4/15/2022 7:40 AM
+EQ ID 2010,Spot Weld,33,TLE Rivet Gun,,,,,0,4/15/2022 7:40 AM
+EQ ID 2011,Spot Weld,33,TLE Staple Gun,,,,,0,4/15/2022 7:40 AM
+EQ ID 2012,Spot Weld,33,TLE Air Hose,,,,,0,4/15/2022 7:40 AM
+EQ ID 2013,Spot Weld,33,TLE Spotwelder (11814),11814,Tecna,4647NX,,0,4/15/2022 7:40 AM
+EQ ID 2014,Spot Weld,33,TLE Spotwelder (11815),11815,Tecna,4647NX,,0,4/15/2022 7:40 AM
+EQ ID 2015,Spot Weld,33,TLE Spotwelder (11816),11816,Tecna,4647NX,,0,4/15/2022 7:40 AM
+EQ ID 2016,Spot Weld,33,TLE Dynafile,,Dynabrade,Dynafile II,,0,4/15/2022 7:40 AM
+EQ ID 2017,Spot Weld,33,"TLE Tables/Fixtures,etc.",,,,,0,4/15/2022 7:40 AM
+EQ ID 2018,Mirrors,28,Nail Gun,,Metabo HPT,NR 90AE(S1),,0,4/15/2022 7:40 AM
+EQ ID 2026,Fabrication,24,Tool Grinder,,,,,0,4/2/2022 10:16 AM
+EQ ID 2007,Fabrication,24,Cut-To-Length Line,,,,,0,4/2/2022 10:16 AM
+EQ ID 1967,Fabrication,24,Panfolder (WC#2043-M1),,,,,6,4/2/2022 10:16 AM
+EQ ID 1942,Fabrication,24,Forklift Battery Charger (Toyota),,,,,1,4/2/2022 10:16 AM
+EQ ID 1935,Fabrication,24,Bay Doors,,,,,0,4/2/2022 10:16 AM
+EQ ID 1930,Fabrication,24,Big Ass Fan,,,,,0,4/2/2022 10:16 AM
+EQ ID 1931,Fabrication,24,Big Ass Fan,,,,,0,4/2/2022 10:16 AM
+EQ ID 1910,Fabrication,24,Lights,,,,,0,4/2/2022 10:16 AM
+EQ ID 1824,Fabrication,24,Buffer/Dust Collector Station,,,,,1,4/2/2022 10:16 AM
+EQ ID 1840,Fabrication,24,Heater (Laser),,,,,0,4/2/2022 10:16 AM
+EQ ID 1904,Fabrication,24,Grinder #2,,,,,0,4/2/2022 10:16 AM
+EQ ID 1818,Fabrication,24,Air Hose,,,,,0,4/2/2022 10:16 AM
+EQ ID 1819,Fabrication,24,Die Cart,,,,,0,4/2/2022 10:16 AM
+EQ ID 1820,Fabrication,24,Metal Racks,,,,,0,4/2/2022 10:16 AM
+EQ ID 1821,Fabrication,24,Dust Collector (Grinders),,,,,0,4/2/2022 10:16 AM
+EQ ID 1379,Fabrication,24,Grinder #1,,,,,0,4/2/2022 10:16 AM
+EQ ID 265,Fabrication,24,Press Brake #48 Niagara (WC 2023),,,,,0,4/2/2022 10:16 AM
+EQ ID 257,Fabrication,24,"Gauer Deburring Machine 40""",,,,,2,4/2/2022 10:16 AM
+EQ ID 252,Fabrication,24,"Dust Collector, Wet (Fladder)",,,,,2,4/2/2022 10:16 AM
+EQ ID 246,Fabrication,24,Fladder AUT,,,,,3,4/2/2022 10:16 AM
+EQ ID 247,Fabrication,24,Press Brake #46 (WC 2010),,,,,6,4/2/2022 10:16 AM
+EQ ID 242,Fabrication,24,"Punch Press, 150 ton (WC 2005)",,,,,0,4/2/2022 10:16 AM
+EQ ID 243,Fabrication,24,Press Brake #47 (WC 2013),,,,,3,4/2/2022 10:16 AM
+EQ ID 237,Fabrication,24,CNC #3 (WC 2021),,,,,0,4/2/2022 10:16 AM
+EQ ID 238,Fabrication,24,"Gauer Deburring Machine 30""",,,,,3,4/2/2022 10:16 AM
+EQ ID 230,Fabrication,24,CNC #2 (WC 2020),,,,,0,4/2/2022 10:16 AM
+EQ ID 231,Fabrication,24,Forklift,,,,,0,4/2/2022 10:16 AM
+EQ ID 232,Fabrication,24,Punch & Die Grinder,,,,,0,4/2/2022 10:16 AM
+EQ ID 191,Fabrication,24,Press Brake #45 (WC 2011),,,,,3,4/2/2022 10:16 AM
+EQ ID 192,Fabrication,24,Press Brake #44 (WC 2018),,,,,3,4/2/2022 10:16 AM
+EQ ID 193,Fabrication,24,Press Brake #43 Di-Acro (WC 2019),,,,,2,4/2/2022 10:16 AM
+EQ ID 194,Fabrication,24,Press Brake #42 (WC 2014),,,,,3,4/2/2022 10:16 AM
+EQ ID 212,Fabrication,24,Corner Notcher (WC 2024),,,,,0,4/2/2022 10:16 AM
+EQ ID 213,Fabrication,24,"Punch Press, 60 ton (WC 2007)",,,,,1,4/2/2022 10:16 AM
+EQ ID 1534,Fabrication,24,Die 330-50 Blanking #4,,,,,1,4/2/2022 10:16 AM
+EQ ID 1494,Fabrication,24,Die 3803/38034 Pan Blanking #13,,,,,0,4/2/2022 10:16 AM
+EQ ID 1474,Fabrication,24,Dynafile,,,,,0,4/2/2022 10:16 AM
+EQ ID 1513,Fabrication,24,Die 3574-108/3574-40 Combo Blanking #1,,,,,0,4/2/2022 10:16 AM
+EQ ID 1469,Fabrication,24,Die 39003 Pan Blanking #10,,,,,0,4/2/2022 10:16 AM
+EQ ID 1471,Fabrication,24,Pallet Jack,,,,,2,4/2/2022 10:16 AM
+EQ ID 1458,Fabrication,24,Brake Press Dies,,,,,0,4/2/2022 10:16 AM
+EQ ID 260,Fabrication,24,Brake Press Tooling-386-115 Flange,,,,,0,4/2/2022 10:16 AM
+EQ ID 277,Fabrication,24,Shear Niagara (WC 2003),,,,,1,4/2/2022 10:16 AM
+EQ ID 271,Fabrication,24,Lift Table (CNC#2),,,,,1,4/2/2022 10:16 AM
+EQ ID 272,Fabrication,24,Lift Table (CNC#3),,,,,1,4/2/2022 10:16 AM
+EQ ID 1538,Fabrication,24,Die 38034-3 Pan Forming #24,,,,,0,4/2/2022 10:16 AM
+EQ ID 1539,Fabrication,24,Die 330-50 Forming #5,,,,,0,4/2/2022 10:16 AM
+EQ ID 1545,Fabrication,24,Press Brake #56 (WC 2017),,,,,5,4/2/2022 10:16 AM
+EQ ID 1546,Fabrication,24,Die 39003-103 Cutout #9,,,,,0,4/2/2022 10:16 AM
+EQ ID 1547,Fabrication,24,Die Towel Tray Radius #11,,,,,0,4/2/2022 10:16 AM
+EQ ID 1548,Fabrication,24,Die 3574-45 Header #14,,,,,0,4/2/2022 10:16 AM
+EQ ID 1549,Fabrication,24,Die 3803 Pan Forming #15,,,,,0,4/2/2022 10:16 AM
+EQ ID 1550,Fabrication,24,Die Towel Tray Forming #16,,,,,0,4/2/2022 10:16 AM
+EQ ID 1551,Fabrication,24,Die Towel Tray Hem/Flat #20,,,,,0,4/2/2022 10:16 AM
+EQ ID 1552,Fabrication,24,Die Towel End Blanking #22,,,,,0,4/2/2022 10:16 AM
+EQ ID 1553,Fabrication,24,Die 352-17 Blanking #6,,,,,0,4/2/2022 10:16 AM
+EQ ID 1554,Fabrication,24,Die 39003-112 Pan Blanking #8,,,,,0,4/2/2022 10:16 AM
+EQ ID 1555,Fabrication,24,Die 357-9 Blanking #7,,,,,0,4/2/2022 10:16 AM
+EQ ID 1556,Fabrication,24,Die 357-108 Blanking #2,,,,,0,4/2/2022 10:16 AM
+EQ ID 1557,Fabrication,24,Die 352-17 Forming #3,,,,,0,4/2/2022 10:16 AM
+EQ ID 1558,Fabrication,24,Die 38034-322 Blanking #8,,,,,0,4/2/2022 10:16 AM
+EQ ID 1559,Fabrication,24,Die Towel End Forming #18,,,,,0,4/2/2022 10:16 AM
+EQ ID 1560,Fabrication,24,"Tables, Carts, etc.",,,,,2,4/2/2022 10:16 AM
+EQ ID 1578,Fabrication,24,Die 36903-322 Door Cutout #12,,,,,0,4/2/2022 10:16 AM
+EQ ID 1579,Fabrication,24,Die 35303/35903-322 Door Cutout #13,,,,,0,4/2/2022 10:16 AM
+EQ ID 1689,Fabrication,24,Die 3574-305 Blank/Form,,,,,0,4/2/2022 10:16 AM
+EQ ID 2135,Fabrication,24,Die RGD Towel Chute,,,,,0,4/2/2022 10:16 AM
+EQ ID 2116,Fabrication,24,Exhaust Fan,,,,,0,4/2/2022 10:16 AM
+EQ ID 2057,Fabrication,24,Metal Finish Machine,,,,,1,4/2/2022 10:16 AM
+EQ ID 2058,Fabrication,24,Dust Collector (Metal Finish Machine),,,,,0,4/2/2022 10:16 AM
+EQ ID 2064,Fabrication,24,Die Shadow on Di-Acro,,,,,0,4/2/2022 10:16 AM
+EQ ID 2067,Fabrication,24,Big Joe Pallet Jack,,,,,0,4/2/2022 10:16 AM
+EQ ID 1938,Fabrication,24,Sweat Bee Fan,,,,,1,4/2/2022 10:16 AM

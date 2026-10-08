@@ -171,6 +171,20 @@
       return TECHNICIANS.some((t) => t.toLowerCase() === (name || "").trim().toLowerCase());
     }
 
+    // Technician names (lowercased) flagged as supervisors by the store --
+    // refreshed whenever /api/technicians is fetched with `details`. A
+    // supervisor technician gets the same elevated authority as the
+    // password-gated "Sean" profile once signed in under their own name.
+    let SUPERVISOR_NAMES = new Set();
+    function setSupervisorNames(details) {
+      SUPERVISOR_NAMES = new Set(
+        (details || []).filter((d) => d.is_supervisor).map((d) => (d.name || "").trim().toLowerCase())
+      );
+    }
+    function isSupervisorUser() {
+      return SUPERVISOR_NAMES.has((getRawUser() || "").trim().toLowerCase());
+    }
+
     // Sean (supervisor) password lives in sessionStorage and is sent on assignment
     // and team-stats requests.
     function getSeanPw() { try { return sessionStorage.getItem("mintSeanPw") || ""; } catch (e) { return ""; } }
@@ -180,6 +194,10 @@
       const h = Object.assign({}, extra || {});
       const pw = getSeanPw();
       if (pw) h["X-Sean-Password"] = pw;
+      // Also identify the signed-in user, so the backend knows which
+      // supervisor technician's password to check the above against.
+      const user = getRawUser();
+      if (user) h["X-User-Name"] = user;
       return h;
     }
     function isSeanMode() { try { return sessionStorage.getItem("mintIsSean") === "1"; } catch (e) { return false; } }
@@ -426,7 +444,7 @@
         </svg>`;
     }
 
-    function SeanGate({ actionLabel, onUnlock, onCancel }) {
+    function SeanGate({ actionLabel, verifyName, onUnlock, onCancel }) {
       const [pw, setPw] = useState("");
       const [busy, setBusy] = useState(false);
       const [err, setErr] = useState(null);
@@ -444,7 +462,7 @@
         try {
           const r = await fetch(API + "/api/verify-sean-password", {
             method: "POST", headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ password: value }),
+            body: JSON.stringify({ password: value, name: verifyName || "" }),
           });
           const d = await r.json();
           if (!r.ok || !d.ok) throw new Error(d.error || "Incorrect password");
@@ -458,7 +476,7 @@
             onClick=${(e) => e.stopPropagation()}>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xl">🔒</span>
-              <h3 className="text-lg font-extrabold text-slate-800">Sean password required</h3>
+              <h3 className="text-lg font-extrabold text-slate-800">${(verifyName || "Sean") + " password required"}</h3>
             </div>
             <p className="text-sm text-slate-500 mb-4">Enter the supervisor password to ${actionLabel || "continue"}.</p>
             <input type="password" autoFocus ref=${inputRef}
@@ -773,6 +791,10 @@
     function ManageTechniciansModal({ technicians, setTechnicians, onClose }) {
       const [name, setName] = useState(getUserName());
       const [aliases, setAliases] = useState("");
+      const [title, setTitle] = useState("");
+      const [divisionKey, setDivisionKey] = useState("bla");
+      const [isSupervisor, setIsSupervisor] = useState(false);
+      const [details, setDetails] = useState([]);
       const [busy, setBusy] = useState(false);
       const [err, setErr] = useState(null);
       const [deleting, setDeleting] = useState(null);
@@ -781,8 +803,10 @@
         try {
           const d = await getJSON("/api/technicians");
           if (Array.isArray(d.technicians)) setTechnicians(d.technicians);
+          if (Array.isArray(d.details)) { setDetails(d.details); setSupervisorNames(d.details); }
         } catch (e) { setErr(e.message); }
       };
+      useEffect(() => { refresh(); }, []);
 
       const add = async () => {
         if (!name.trim()) { setErr("Your name is required."); return; }
@@ -791,9 +815,11 @@
         setBusy(true); setErr(null);
         try {
           await sendJSON("/api/technicians", "POST",
-            { author: name.trim(), name: tech[0], aliases: tech.slice(1) },
+            { author: name.trim(), name: tech[0], aliases: tech.slice(1), title: title.trim(), division_key: divisionKey, is_supervisor: isSupervisor },
             seanHeaders());
           setAliases("");
+          setTitle("");
+          setIsSupervisor(false);
           await refresh();
         } catch (e) { setErr(e.message); } finally { setBusy(false); }
       };
@@ -827,6 +853,20 @@
               <${NameInput} value=${name} onChange=${setName} />
               <${TextInput} label="Add technician" required=${true} value=${aliases} onChange=${setAliases}
                 placeholder="Name, alias, alias…" hint="First value is the canonical name; the rest are aliases." />
+              <${TextInput} label="Title (optional)" value=${title} onChange=${setTitle}
+                placeholder="e.g. Maintenance Manager" />
+              <div>
+                <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Division</label>
+                <select value=${divisionKey} onChange=${(e) => setDivisionKey(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                  ${Object.entries(DIV_LABELS).map(([k, label]) => html`<option key=${k} value=${k}>${label}</option>`)}
+                </select>
+              </div>
+              <label className="flex items-center gap-2 text-sm text-slate-600">
+                <input type="checkbox" checked=${isSupervisor} onChange=${(e) => setIsSupervisor(e.target.checked)}
+                  className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-400" />
+                Supervisor (same capabilities as Sean: assign work, team stats/schedule, manage technicians/roles)
+              </label>
               ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
               <button onClick=${add} disabled=${busy}
                 className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
@@ -835,13 +875,20 @@
               <div className="border-t border-slate-100 pt-4">
                 <div className="text-sm font-bold text-slate-700 mb-2">Active technicians</div>
                 <div className="space-y-2">
-                  ${technicians.map((n) => html`
+                  ${technicians.map((n) => {
+                    const info = details.find((d) => d.name === n);
+                    return html`
                     <div key=${n} className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50">
-                      <span className="text-sm font-medium text-slate-700">${n}</span>
+                      <span className="text-sm">
+                        <span className="font-medium text-slate-700">${n}</span>
+                        ${info && info.title && html`<span className="text-slate-400"> · ${info.title}</span>`}
+                        ${info && html`<span className="text-emerald-600 text-xs ml-1">(${DIV_LABELS[info.division_key] || info.division_key})</span>`}
+                        ${info && info.is_supervisor && html`<span className="text-amber-600 text-xs ml-1 font-semibold">· Supervisor</span>`}
+                      </span>
                       <button onClick=${() => remove(n)} disabled=${deleting === n}
                         className="px-3 py-1 rounded-full bg-rose-50 text-rose-600 text-xs font-semibold hover:bg-rose-100 disabled:opacity-60">
                         ${deleting === n ? "Deleting…" : "Delete"}</button>
-                    </div>`)}
+                    </div>`;})}
                   ${technicians.length === 0 && html`<div className="text-sm text-slate-400">No technicians configured.</div>`}
                 </div>
               </div>
@@ -1050,10 +1097,14 @@
     // Technician's own weekly schedule page. Shows assigned/completed/upcoming
     // work orders week by week, with the same week-scrolling as the department
     // weekly schedule. No trends.
-    function MySchedulePage({ user, onOpenWo, onCompany }) {
+    function MySchedulePage({ user, onOpenWo, onCompany, defaultDivisionKey }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [weekOffset, setWeekOffset] = useState(0);
+      const [divisions, setDivisions] = useState([]);
+      const [divisionKey, setDivisionKey] = useState(defaultDivisionKey || "");
+      useEffect(() => { getJSON("/api/company").then((d) => setDivisions(d.divisions || [])).catch(() => {}); }, []);
+      useEffect(() => { setDivisionKey(defaultDivisionKey || ""); }, [defaultDivisionKey]);
       useEffect(() => {
         if (!user) return;
         (async () => {
@@ -1061,7 +1112,7 @@
             const r = await fetch(API + "/api/my-weekly", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ author: user, offset: weekOffset }),
+              body: JSON.stringify({ author: user, offset: weekOffset, division_key: divisionKey }),
             });
             const d = await r.json().catch(() => ({}));
             if (r.status === 403) { setErr("Only registered technicians or roles can view a personal schedule."); return; }
@@ -1070,7 +1121,7 @@
             setErr(null);
           } catch (e) { setErr(e.message); setData(null); }
         })();
-      }, [user, weekOffset]);
+      }, [user, weekOffset, divisionKey]);
       const goPrev = () => setWeekOffset((o) => o - 1);
       const goNext = () => setWeekOffset((o) => o + 1);
       const goThis = () => setWeekOffset(0);
@@ -1081,21 +1132,28 @@
             { label: "Bobrick", onClick: onCompany },
             { label: "My schedule" },
           ]} />
-          <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-5">
             <div>
               <h1 className="text-2xl font-extrabold text-slate-800">My schedule</h1>
               <p className="text-sm text-slate-500">${user || "Guest"}</p>
             </div>
-            <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold shadow-sm">
-              <button type="button" onClick=${goPrev}
-                title="Previous weeks"
-                className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
-              <button type="button" onClick=${goThis}
-                className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
-                This week</button>
-              <button type="button" onClick=${goNext}
-                title="Upcoming weeks"
-                className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
+            <div className="flex items-center gap-2 flex-wrap">
+              <select value=${divisionKey} onChange=${(e) => setDivisionKey(e.target.value)}
+                className="px-3 py-2 rounded-full border border-emerald-200 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                <option value="">All divisions</option>
+                ${divisions.map((d) => html`<option key=${d.key} value=${d.key}>${d.name}</option>`)}
+              </select>
+              <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold shadow-sm">
+                <button type="button" onClick=${goPrev}
+                  title="Previous weeks"
+                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">←</button>
+                <button type="button" onClick=${goThis}
+                  className=${"px-3 py-1.5 rounded-full transition " + (weekOffset === 0 ? "bg-emerald-700 text-white shadow-sm" : "hover:bg-emerald-50 text-slate-700")}>
+                  This week</button>
+                <button type="button" onClick=${goNext}
+                  title="Upcoming weeks"
+                  className="px-3 py-1.5 rounded-full hover:bg-emerald-50 text-slate-700">→</button>
+              </div>
             </div>
           </div>
           ${err && html`<div className="text-rose-600 mb-4">${err}</div>`}
@@ -1104,9 +1162,84 @@
         </div>`;
     }
 
-    function Header({ technicians, setTechnicians, roles, setRoles, onHome, onOpenInactive, onOpenSpareParts, onOpenMySchedule, onOpenWo,
+    // Global search box: matches machines and work orders across every
+    // division/department (via /api/search) and jumps straight to the result,
+    // regardless of where you're currently browsing.
+    function GlobalSearch({ onOpenMachine, onOpenWo }) {
+      const [q, setQ] = useState("");
+      const [data, setData] = useState(null);
+      const [open, setOpen] = useState(false);
+      const [busy, setBusy] = useState(false);
+      const boxRef = useRef(null);
+
+      useEffect(() => {
+        const term = q.trim();
+        if (term.length < 2) { setData(null); setBusy(false); return; }
+        setBusy(true);
+        const t = setTimeout(() => {
+          getJSON("/api/search?q=" + encodeURIComponent(term))
+            .then((d) => { setData(d); setBusy(false); })
+            .catch(() => { setData(null); setBusy(false); });
+        }, 250);
+        return () => clearTimeout(t);
+      }, [q]);
+
+      useEffect(() => {
+        const onDocClick = (e) => { if (boxRef.current && !boxRef.current.contains(e.target)) setOpen(false); };
+        document.addEventListener("mousedown", onDocClick);
+        return () => document.removeEventListener("mousedown", onDocClick);
+      }, []);
+
+      const pick = (fn) => { fn(); setOpen(false); setQ(""); setData(null); };
+      const machines = (data && data.machines) || [];
+      const workOrders = (data && data.work_orders) || [];
+      const hasResults = machines.length > 0 || workOrders.length > 0;
+      const showPanel = open && q.trim().length >= 2;
+
+      return html`
+        <div ref=${boxRef} className="relative">
+          <input value=${q}
+            onFocus=${() => setOpen(true)}
+            onInput=${(e) => { setQ(e.target.value); setOpen(true); }}
+            placeholder="Search machines, EQ IDs, WO #s…"
+            className="w-56 sm:w-72 px-4 py-2 rounded-full bg-white/10 placeholder-emerald-100/60 text-white text-sm
+                       focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:bg-white focus:text-slate-800
+                       focus:placeholder-slate-400 transition" />
+          ${showPanel && html`
+            <div className="absolute top-full mt-2 right-0 w-96 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-2xl border border-emerald-100 z-50 fade-in">
+              ${busy && html`<div className="px-4 py-3 text-sm text-slate-400">Searching…</div>`}
+              ${!busy && !hasResults && html`<div className="px-4 py-3 text-sm text-slate-400">No matches for "${q.trim()}".</div>`}
+              ${!busy && machines.length > 0 && html`
+                <div className="px-4 pt-3 pb-1 text-xs font-bold text-slate-400 uppercase tracking-wide">Machines</div>
+                ${machines.map((m) => html`
+                  <button key=${m.division_key + "_" + m.dept_key + "_" + m.eq_id}
+                    onClick=${() => pick(() => onOpenMachine(m.division_key, m.dept_key, m.eq_id))}
+                    className="w-full text-left px-4 py-2 hover:bg-emerald-50 flex items-center justify-between gap-3">
+                    <span className="truncate">
+                      <span className="font-semibold text-slate-800">${m.name}</span>
+                      <span className="text-slate-400 text-xs ml-1.5">${m.eq_label}</span>
+                    </span>
+                    <span className="text-xs text-emerald-600 whitespace-nowrap">${m.division_label} · ${m.dept_label}</span>
+                  </button>`)}`}
+              ${!busy && workOrders.length > 0 && html`
+                <div className="px-4 pt-3 pb-1 text-xs font-bold text-slate-400 uppercase tracking-wide">Work Orders</div>
+                ${workOrders.map((w) => html`
+                  <button key=${w.wo_id}
+                    onClick=${() => pick(() => onOpenWo(w.wo_id))}
+                    className="w-full text-left px-4 py-2 hover:bg-emerald-50 flex items-center justify-between gap-3">
+                    <span className="truncate">
+                      <span className="font-semibold text-slate-800">WO #${w.wo_id}</span>
+                      <span className="text-slate-400 text-xs ml-1.5 truncate">${w.problem}</span>
+                    </span>
+                    <span className="text-xs text-emerald-600 whitespace-nowrap">${w.department}</span>
+                  </button>`)}`}
+            </div>`}
+        </div>`;
+    }
+
+    function Header({ technicians, setTechnicians, roles, setRoles, onHome, onOpenInactive, onOpenSpareParts, onOpenMySchedule, onOpenWo, onOpenMachine,
                       viewProfiles, activeProfile, viewKey, onChangeView, onViewProfilesChanged, hideUserControls,
-                      activeRole, onSwitchRole, divisionKey }) {
+                      activeRole, onSwitchViewProfile, divisionKey, divisions, onSwitchDivision }) {
       // `user` is the raw signed-in profile ("" when a guest). Guests are the
       // default and are never prompted; they can sign in later if they want.
       const [user, setUser] = useState(getRawUser());
@@ -1117,6 +1250,9 @@
       const isRole = signedIn && (roles || []).some((r) => r.toLowerCase() === userL);
       const isAssignable = isTech || isRole;
       const [showSeanGate, setShowSeanGate] = useState(false);
+      // Which identity the password gate is currently unlocking: "Sean", or a
+      // supervisor-flagged technician's own name (e.g. "Michael Nygard").
+      const [pendingSupervisor, setPendingSupervisor] = useState("Sean");
       const [showTeamStats, setShowTeamStats] = useState(false);
       const [showTeamSchedule, setShowTeamSchedule] = useState(false);
       const [showManageTechs, setShowManageTechs] = useState(false);
@@ -1127,37 +1263,69 @@
       const showSpareParts = onOpenSpareParts && featureAllowed(activeProfile, "spare_parts");
 
       const setTech = (name) => { setUserName(name); setUser(name); setSean(false); setIsSean(false); setSeanPw(""); };
-      const unlockSean = (pw) => { setUserName("Sean"); setUser("Sean"); setSean(true); setIsSean(true); setSeanPw(pw); setShowSeanGate(false); };
+      // Sign in as a supervisor identity (Sean, or a supervisor technician)
+      // once their password has been verified (or found to need none).
+      const unlockSupervisor = (name, pw) => { setUserName(name); setUser(name); setSean(true); setIsSean(true); setSeanPw(pw); setShowSeanGate(false); };
+      const unlockSean = (pw) => unlockSupervisor("Sean", pw);
       const switchUser = () => { setUserName(""); setUser(""); setSean(false); setIsSean(false); setSeanPw(""); };
       const confirmOther = () => {
         const n = otherName.trim();
         if (!n) return;
         setTech(n); setShowOther(false); setOtherName("");
       };
-      const onSelectUser = (val) => {
+      const onSelectUser = async (val) => {
         if (!val) return;
-        if (val === "sean") { setShowSeanGate(true); }
-        else if (val === "__other") { setShowOther(true); }
-        else { setTech(val); }
+        if (val === "sean") { setPendingSupervisor("Sean"); setShowSeanGate(true); return; }
+        if (val === "__other") { setShowOther(true); return; }
+        if (SUPERVISOR_NAMES.has(val.toLowerCase())) {
+          try {
+            const d = await getJSON("/api/tech-auth?name=" + encodeURIComponent(val));
+            if (d.protected) { setPendingSupervisor(val); setShowSeanGate(true); return; }
+          } catch (e) {}
+          // No password configured for this supervisor: sign in directly
+          // with full Sean-level authority, same as an unprotected Sean.
+          unlockSupervisor(val, "");
+          return;
+        }
+        setTech(val);
       };
 
       return html`
         <header className="bg-slate-900 text-white shadow-lg">
-          <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-4 flex-wrap">
+          <div className="max-w-6xl mx-auto px-6 py-3 flex flex-col gap-2">
+          <div className="flex items-center justify-end mt-1">
+            ${onOpenMachine && html`<${GlobalSearch} onOpenMachine=${onOpenMachine} onOpenWo=${onOpenWo} />`}
+          </div>
+          <div className="flex items-end gap-4 flex-wrap">
             <div onClick=${onHome}
-              className=${"flex items-end gap-3 " + (onHome ? "cursor-pointer" : "")}>
+              className=${"flex items-end gap-3 " + (onHome ? "cursor-pointer" : "")}
+              title="Back to start">
               <${MintLogo} className="h-16 w-auto" />
               <div className="text-emerald-100 text-sm font-medium -ml-2">Maintenance Intelligence & Troubleshooting</div>
             </div>
-            <div className="ml-auto flex items-center gap-2 flex-wrap">
+            <div className="ml-auto flex items-end gap-1.5 flex-wrap">
+              ${!!divisionKey && Array.isArray(divisions) && divisions.length > 0 && html`
+                <select value=${divisionKey} onChange=${(e) => onSwitchDivision(e.target.value)}
+                  title="Switch division"
+                  className="px-3 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold
+                             focus:outline-none focus:ring-2 focus:ring-emerald-300 transition cursor-pointer">
+                  <option value="__company" className="text-slate-700">Bobrick — All Divisions</option>
+                  ${divisions.map((d) => html`
+                    <option key=${d.key} value=${d.key} className="text-slate-700">${d.name}</option>`)}
+                </select>`}
+              ${roles.length > 0 && onSwitchViewProfile && html`
+                <select value=${activeRole || "__maintenance"} onChange=${(e) => onSwitchViewProfile(e.target.value)}
+                  title="Switch view"
+                  className="px-3 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold
+                             focus:outline-none focus:ring-2 focus:ring-emerald-300 transition cursor-pointer">
+                  <option value="__maintenance" className="text-slate-700">Maintenance</option>
+                  ${roles.map((r) => html`<option key=${r} value=${r} className="text-slate-700">${r}</option>`)}
+                </select>`}
               ${!!activeRole && html`
                 <span className="text-sm font-semibold text-emerald-100">Viewing as: ${activeRole}</span>
                 <button onClick=${onOpenMySchedule}
                   className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
-                  My schedule</button>
-                <button onClick=${onSwitchRole}
-                  className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
-                  Switch role</button>`}
+                  My schedule</button>`}
               ${!hideUserControls && !signedIn && html`
                 <span className="text-sm text-emerald-100/70">Guest</span>
                 <select value="" onChange=${(e) => onSelectUser(e.target.value)}
@@ -1166,12 +1334,12 @@
                   ${technicians.map((n) => html`<option key=${n} value=${n}>${n}</option>`)}
                   <option value="__other">Someone else…</option>
                 </select>
-                <button onClick=${() => setShowSeanGate(true)}
+                <button onClick=${() => { setPendingSupervisor("Sean"); setShowSeanGate(true); }}
                   className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
                   Sean (supervisor)</button>`}
               ${!hideUserControls && signedIn && html`
                 <span className="text-sm font-semibold text-emerald-100">${user}</span>
-                ${isAssignable && html`
+                ${isAssignable && !sean && html`
                   <button onClick=${onOpenMySchedule}
                     className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
                     My schedule</button>`}
@@ -1191,24 +1359,24 @@
                 <button onClick=${switchUser}
                   className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
                   Switch user</button>`}
+              ${(showInactive || showSpareParts) && html`<span className="w-px h-6 bg-white/15 mx-1"></span>`}
               ${showInactive && html`
-                <button onClick=${() => onOpenInactive(divisionKey)}
-                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20
-                             text-white text-sm font-semibold transition">
+                <button onClick=${() => onOpenInactive(divisionKey)} title="Inactive machines"
+                  className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20
+                             text-white transition">
                   <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor"
                        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 8v13H3V8"/><rect x="1" y="3" width="22" height="5" rx="1"/><path d="M10 12h4"/>
                   </svg>
-                  <span>Inactive</span>
                 </button>`}
               ${showSpareParts && html`
-                <button onClick=${() => onOpenSpareParts(divisionKey)}
-                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20
-                             text-white text-sm font-semibold transition">
+                <button onClick=${() => onOpenSpareParts(divisionKey)} title="Spare Parts"
+                  className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20
+                             text-white transition">
                   <span className="text-base leading-none" role="img" aria-label="wrench">🔧</span>
-                  <span>Spare Parts</span>
                 </button>`}
-            </div>
+          </div>
+          </div>
           </div>
           ${showOther && html`
             <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
@@ -1228,9 +1396,10 @@
                 </div>
               </div>
             </div>`}
-          ${showSeanGate && html`<${SeanGate} actionLabel="open Sean's view"
+          ${showSeanGate && html`<${SeanGate} actionLabel=${"open " + pendingSupervisor + "'s view"}
+            verifyName=${pendingSupervisor}
             onCancel=${() => setShowSeanGate(false)}
-            onUnlock=${unlockSean} />`}
+            onUnlock=${(pw) => unlockSupervisor(pendingSupervisor, pw)} />`}
           ${showTeamStats && html`<${TeamStatsModal} technicians=${technicians} onClose=${() => setShowTeamStats(false)} onOpenWo=${onOpenWo} />`}
           ${showTeamSchedule && html`<${TeamScheduleModal} technicians=${technicians} onClose=${() => setShowTeamSchedule(false)} onOpenWo=${onOpenWo} />`}
           ${showManageTechs && html`<${ManageTechniciansModal} technicians=${technicians} setTechnicians=${setTechnicians} onClose=${() => setShowManageTechs(false)} />`}
@@ -1241,7 +1410,93 @@
     /* ------------------------------------------------------------------ */
     /* Landing flow                                                        */
     /* ------------------------------------------------------------------ */
+    // Lightweight work-order intake for non-maintenance employees: pick a
+    // division, give a name/email, describe the issue. No sign-in, no
+    // department/machine selection — MINT stamps the date/time and files it
+    // as a Pending unscheduled work order on that division's general-purpose
+    // department.
+    function EmployeeRequestModal({ onClose }) {
+      const [divisions, setDivisions] = useState([]);
+      const [divisionKey, setDivisionKey] = useState("");
+      const [name, setName] = useState("");
+      const [email, setEmail] = useState("");
+      const [problem, setProblem] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [doneId, setDoneId] = useState(null);
+
+      useEffect(() => {
+        getJSON("/api/company").then((d) => setDivisions(d.divisions || [])).catch(() => {});
+      }, []);
+
+      const submit = async () => {
+        if (!divisionKey) { setErr("Choose a division."); return; }
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!email.trim()) { setErr("Your email is required."); return; }
+        if (!problem.trim()) { setErr("Please describe the issue."); return; }
+        setBusy(true); setErr(null);
+        try {
+          const d = await sendJSON("/api/employee-request", "POST", {
+            division_key: divisionKey, name: name.trim(), email: email.trim(), problem: problem.trim(),
+          });
+          setDoneId(d.wo_id);
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      return ReactDOM.createPortal(html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] flex items-start justify-center p-4 overflow-y-auto"
+          onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg my-8 fade-in"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-100">
+              <div className="font-extrabold text-lg text-emerald-800">General maintenance request</div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xl leading-none">×</button>
+            </div>
+            <div className="p-6 space-y-4">
+              ${doneId
+                ? html`
+                  <div className="text-center py-6">
+                    <div className="text-4xl mb-3">✅</div>
+                    <div className="text-lg font-bold text-slate-800 mb-1">Request submitted</div>
+                    <div className="text-sm text-slate-500 mb-6">Work order <b>#${doneId}</b> has been filed. Maintenance has been notified.</div>
+                    <button onClick=${onClose}
+                      className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800">Done</button>
+                  </div>`
+                : html`
+                  <div className="text-sm text-slate-500">
+                    Tell us what division you're in and what's going on — maintenance will take it from here.
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Division</label>
+                    <select value=${divisionKey} onChange=${(e) => setDivisionKey(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                      <option value="">Select division…</option>
+                      ${divisions.map((d) => html`<option key=${d.key} value=${d.key}>${d.name}</option>`)}
+                    </select>
+                  </div>
+                  <${TextInput} label="Your name" required=${true} value=${name} onChange=${setName} />
+                  <${TextInput} label="Your email" required=${true} value=${email} onChange=${setEmail} placeholder="name@bobrick.com" />
+                  <${TextArea} label="What's the issue?" required=${true} value=${problem} onChange=${setProblem} rows=${4} />
+                  ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+                  <div className="flex gap-2 justify-end pt-2">
+                    <button onClick=${onClose} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+                    <button onClick=${submit} disabled=${busy}
+                      className="px-5 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+                      ${busy ? "Submitting…" : "Submit request"}</button>
+                  </div>`}
+            </div>
+          </div>
+        </div>`, document.body);
+    }
+
     function LandingPage({ roles, onSelectView, onSelectRole, onSelectMint }) {
+      const [showGate, setShowGate] = useState(false);
+      const [showEmployeeRequest, setShowEmployeeRequest] = useState(false);
+      const openMint = () => {
+        if (getMasterPw()) { onSelectMint(); }
+        else { setShowGate(true); }
+      };
       return html`
         <div className="fade-in max-w-3xl mx-auto py-12 text-center">
           <div className="mb-10">
@@ -1249,6 +1504,12 @@
             <p className="text-slate-500">Select the view you want to use for this session.</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
+            <button onClick=${() => setShowEmployeeRequest(true)}
+              className="text-left bg-white rounded-2xl p-6 shadow-sm border border-emerald-100
+                         hover:shadow-lg hover:border-emerald-300 transition group sm:col-span-2">
+              <div className="text-xl font-extrabold text-slate-800 group-hover:text-emerald-800">Employee — I have a general maintenance request</div>
+              <div className="text-sm text-slate-500 mt-1">Submit a quick request — no sign-in needed. It shows up for maintenance right away.</div>
+            </button>
             <button onClick=${() => onSelectView("")}
               className="text-left bg-white rounded-2xl p-6 shadow-sm border border-emerald-100
                          hover:shadow-lg hover:border-emerald-300 transition group">
@@ -1262,17 +1523,21 @@
                 <div className="text-xl font-extrabold text-slate-800 group-hover:text-emerald-800">${r}</div>
                 <div className="text-sm text-slate-500 mt-1">Their assigned view, plus their weekly schedule filtered by division.</div>
               </button>`)}
-            <button onClick=${onSelectMint}
+            <button onClick=${openMint}
               className="text-left bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-800
                          hover:shadow-lg hover:border-slate-700 transition group">
               <div className="text-xl font-extrabold text-white">Mint</div>
               <div className="text-sm text-slate-300 mt-1">Admin: assign which view each role sees. Password protected.</div>
             </button>
           </div>
+          ${showGate && html`<${MasterGate} actionLabel="enter the MINT admin"
+            onCancel=${() => setShowGate(false)}
+            onUnlock=${(pw) => { setMasterPw(pw); setShowGate(false); onSelectMint(); }} />`}
+          ${showEmployeeRequest && html`<${EmployeeRequestModal} onClose=${() => setShowEmployeeRequest(false)} />`}
         </div>`;
     }
 
-    function DivisionPicker({ onSelectDiv, onBack }) {
+    function DivisionPicker({ onSelectDiv, onSelectCompany, onBack }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
 
@@ -1295,6 +1560,12 @@
             <p className="text-slate-500">Choose a division to open its dashboard.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <button onClick=${onSelectCompany}
+              className="text-left bg-slate-900 rounded-2xl p-5 shadow-sm border border-slate-800
+                         hover:shadow-lg hover:border-slate-700 transition group">
+              <div className="text-lg font-extrabold text-white">Bobrick — All Divisions</div>
+              <div className="text-sm text-slate-300 mt-1">Company-wide overview across every division.</div>
+            </button>
             ${data.divisions.map((d) => html`
               <button key=${d.key} onClick=${() => onSelectDiv(d)}
                 className="text-left bg-white rounded-2xl p-5 shadow-sm border border-emerald-100
@@ -1306,16 +1577,17 @@
         </div>`;
     }
 
-    function RoleSchedulePage({ role, onCompany, onOpenWo }) {
+    function RoleSchedulePage({ role, onCompany, onOpenWo, defaultDivisionKey }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [weekOffset, setWeekOffset] = useState(0);
       const [divisions, setDivisions] = useState([]);
-      const [divisionKey, setDivisionKey] = useState("");
+      const [divisionKey, setDivisionKey] = useState(defaultDivisionKey || "");
 
       useEffect(() => {
         getJSON("/api/company").then((d) => setDivisions(d.divisions || [])).catch(() => {});
       }, []);
+      useEffect(() => { setDivisionKey(defaultDivisionKey || ""); }, [defaultDivisionKey]);
 
       useEffect(() => {
         if (!role) return;
@@ -1760,7 +2032,7 @@
         </div>`;
     }
 
-    function VendorContacts() {
+    function VendorContacts({ divisionKey }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [q, setQ] = useState("");
@@ -1773,8 +2045,9 @@
 
       useEffect(() => {
         setData(null);
-        getJSON("/api/vendor-contacts").then(setData).catch((e) => setErr(e.message));
-      }, [reloadKey]);
+        const qs = divisionKey ? ("?division_key=" + encodeURIComponent(divisionKey)) : "";
+        getJSON("/api/vendor-contacts" + qs).then(setData).catch((e) => setErr(e.message));
+      }, [reloadKey, divisionKey]);
       useEffect(() => { getJSON("/api/edit-auth").then((d) => setProtectedEdit(!!d.protected)).catch(() => {}); }, []);
 
       if (err) return html`<div className="text-rose-600">${err}</div>`;
@@ -1796,11 +2069,18 @@
       const machineContacts = (data.machine_contacts || []).filter(textMatch);
 
       const emptyDraft = () => ({ company: "", contact: "", address: "", phone: "", cell: "", fax: "",
-        email: "", type: "TPF", service_contract: "", contract_type: "", machine_eq: [] });
+        email: "", type: (!divisionKey || divisionKey === "bla") ? "TPF" : "",
+        service_contract: "", contract_type: "", machine_eq: [],
+        division_key: divisionKey || "bla" });
       const openNew = () => requireAuth(() => setEditing(emptyDraft()));
       const openEdit = (v) => requireAuth(() => setEditing(Object.assign(emptyDraft(), v, { machine_eq: [...(v.machine_eq || [])] })));
 
-      const knownTypes = [...new Set(data.types || [])].sort((a, b) => a.localeCompare(b));
+      // Only offer filter pills for types this division's vendors actually use
+      // (the vendor_contact_types table is global, but not every type applies
+      // to every division - e.g. "TPF" only makes sense where BLA's Toilet
+      // Partitions machines have assigned contacts).
+      const knownTypes = [...new Set((data.vendors || [])
+        .map((v) => (v.type || "").trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b));
       const FILTERS = [{ k: "all", label: "All" }, ...knownTypes.map((t) => ({ k: t, label: t }))];
 
       return html`
@@ -1861,6 +2141,7 @@
             </div>
           </div>
 
+          ${machines.length > 0 && html`
           <div>
             <h3 className="text-sm font-extrabold text-slate-700 mb-3 flex items-center gap-2">
               Machine Contacts · Toilet Partitions <span className="text-xs font-semibold text-slate-400">(${machineContacts.length})</span></h3>
@@ -1876,7 +2157,7 @@
                 </div>`)}
               ${machineContacts.length === 0 && html`<div className="text-sm text-slate-400 col-span-full">No matching machine contacts.</div>`}
             </div>
-          </div>
+          </div>`}
         </div>`;
     }
 
@@ -2229,7 +2510,7 @@
 
       const totalUns = data.departments.reduce((a, d) => a + (d.unscheduled_count || 0), 0);
       const totalSch = data.departments.reduce((a, d) => a + (d.scheduled_count || 0), 0);
-      const divTabs = visibleTabs(divKey === "bla" ? [...DIV_TABS, "Contacts"] : DIV_TABS, viewProfile);
+      const divTabs = visibleTabs([...DIV_TABS, "Contacts"], viewProfile);
       const activeTab = divTabs.includes(tab) ? tab : divTabs[0];
 
       return html`
@@ -2260,7 +2541,7 @@
               </button>`)}
           </div>
 
-          ${activeTab === "Contacts" && html`<${VendorContacts} />`}
+          ${activeTab === "Contacts" && html`<${VendorContacts} divisionKey=${divKey} />`}
 
           ${activeTab === "Spare Parts" && html`
             <div className="fade-in">
@@ -2759,6 +3040,11 @@
 
     const DEPT_TABS = ["Machines", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"];
 
+    // Departments (beyond BLA's "toilet") that get an overall department-wide
+    // Trends tab aggregating EVERY machine in the department (no machine-group
+    // config exists for these, so the tab isn't scoped to a sub-group).
+    const DEPT_TRENDS_ALL = new Set(["bed_toilet_partitions"]);
+
     // Maps a department/machine tab label to the VIEW_FEATURES id that
     // controls its visibility under a restricted "view as" profile. Tabs not
     // listed here (e.g. "Machines") are always shown.
@@ -2812,11 +3098,19 @@
                (m.eq_id || "").toLowerCase().includes(s);
       });
       const groups = data.groups || [];
-      // Toilet Partitions gets a department-wide Trends tab aggregating just its
-      // "Machines" group. Other departments keep the standard tab set.
-      const deptTabs = visibleTabs(deptKey === "toilet"
-        ? ["Machines", "Floor Plan", "Trends", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"]
-        : DEPT_TABS, viewProfile);
+      // Toilet Partitions (BLA) gets a department-wide Trends tab aggregating
+      // just its "Machines" group. Other departments in DEPT_TRENDS_ALL get a
+      // Trends tab aggregating EVERY machine in the department (no grouping
+      // config exists for them). Everyone else keeps the standard tab set.
+      const isToiletDept = deptKey === "toilet";
+      const isDeptTrendsAll = DEPT_TRENDS_ALL.has(deptKey);
+      const deptTabs = visibleTabs(
+        isToiletDept
+          ? ["Machines", "Floor Plan", "Trends", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"]
+          : isDeptTrendsAll
+            ? ["Machines", "Trends", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled"]
+            : DEPT_TABS,
+        viewProfile);
       const activeTab = deptTabs.includes(tab) ? tab : deptTabs[0];
 
       return html`
@@ -2850,7 +3144,10 @@
 
           ${activeTab === "Trends" && html`
             <div className="fade-in">
-              <${DeptTrendsTab} deptKey=${deptKey} group="Machines" onOpenWo=${onOpenWo} />
+              <${TrendsPanel} deptKey=${deptKey}
+                group=${isToiletDept ? "Machines" : ""}
+                label=${isToiletDept ? "Machines" : "machines"}
+                onOpenWo=${onOpenWo} />
             </div>`}
 
           ${activeTab === "Longevity" && html`
@@ -3095,6 +3392,7 @@
         labor_time: rec.labor_time || "",
         material_cost: rec.material_cost || "",
         downtime_hours: rec.downtime_hours || "",
+        downtime_end: rec.downtime_end || "",
         completed_datetime: rec.completed_datetime || "",
         completion_comments: rec.completion_comments || "",
         frequency: rec.frequency || "",
@@ -3144,11 +3442,11 @@
           const req = [
             ["work_performed_by", "Work performed by"],
             ["labor_time", "Labor time"],
-            ["downtime_hours", "Downtime"],
             ["material_cost", "Material cost"],
             ["completion_comments", "Comments"],
           ];
           if (scheduled) req.unshift(["completed_datetime", "Date completed"]);
+          if (rec.is_downtime) req.push(["downtime_end", "Machine back up at"]);
           for (const [k, lbl] of req) {
             if (!String(fields[k] ?? "").trim()) { setErr(lbl + " is required to close this work order."); return; }
           }
@@ -3190,8 +3488,10 @@
                 <${TextInput} label="Helpers" value=${f.helpers} onChange=${set("helpers")} placeholder="e.g. Gabriel, Max" hint="Comma-separated names of people who helped." />
                 <${TextInput} label="Date Completed" required=${scheduled} value=${f.completed_datetime} onChange=${set("completed_datetime")} placeholder="MM/DD/YYYY" hint=${scheduled ? "" : "Defaults to today if left blank."} />
                 <${TextInput} label="Labor Time (h)" required=${true} value=${f.labor_time} onChange=${set("labor_time")} type="number" />
-                <${TextInput} label="Downtime (h)" required=${true} value=${f.downtime_hours} onChange=${set("downtime_hours")} type="number" />
                 <${TextInput} label="Material Cost ($)" required=${true} value=${f.material_cost} onChange=${set("material_cost")} type="number" />
+                ${rec.is_downtime
+                  ? html`<${TextInput} label="Machine Back Up At" required=${true} value=${f.downtime_end} onChange=${set("downtime_end")} placeholder="MM/DD/YYYY hh:mm AM/PM" hint="When the machine actually started running again (may be earlier than today)." />`
+                  : html`<${TextInput} label="Downtime (h)" value=${f.downtime_hours} onChange=${set("downtime_hours")} type="number" />`}
               </div>
               <${TextArea} label="Comments" required=${true} value=${f.completion_comments} onChange=${set("completion_comments")} rows=${3}
                 placeholder="Summary of the completed work…" />
@@ -3467,6 +3767,92 @@
         </div>`;
     }
 
+    /* ------------------------------------------------------------------ */
+    /* AI step-by-step procedure for a scheduled (PM) work order           */
+    /* ------------------------------------------------------------------ */
+    function ScheduledProcedurePanel({ woId }) {
+      const [state, setState] = useState({ loading: true });
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [protectedEdit, setProtectedEdit] = useState(false);
+      const [adminProtected, setAdminProtected] = useState(false);
+      const [gate, setGate] = useState(null);   // {label, kind: "edit"|"admin", action}
+      const base = "/api/workorder/" + woId + "/procedure";
+
+      const load = useCallback(() => {
+        setState({ loading: true });
+        getJSON(base).then((d) => setState({ loading: false, ...d })).catch((e) => setErr(e.message));
+      }, [base]);
+
+      useEffect(() => { load(); setErr(null); }, [load]);
+      useEffect(() => { getJSON("/api/edit-auth").then((d) => setProtectedEdit(!!d.protected)).catch(() => {}); }, []);
+      useEffect(() => { getJSON("/api/admin-auth").then((d) => setAdminProtected(!!d.protected)).catch(() => {}); }, []);
+
+      const runGenerate = useCallback(async (regen) => {
+        setBusy(true); setErr(null);
+        try {
+          const url = API + base + (regen ? "?regenerate=1" : "");
+          const r = await fetch(url, { method: "POST", headers: regen ? adminHeaders() : editHeaders() });
+          const d = await r.json();
+          if (r.status === 401) {
+            if (regen) { setAdminPw(""); setGate({ label: "regenerate this procedure", kind: "admin", action: () => runGenerate(true) }); }
+            else { setEditPw(""); setGate({ label: "generate this procedure", kind: "edit", action: () => runGenerate(false) }); }
+            return;
+          }
+          if (!r.ok) throw new Error(d.error || "generation failed");
+          setState({ loading: false, ...d });
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(false); }
+      }, [base]);
+
+      const requireAuth = (action) => {
+        const isAuthed = !protectedEdit || !!getEditPw();
+        if (isAuthed) action(); else setGate({ label: "generate this procedure", kind: "edit", action });
+      };
+      const generate = () => requireAuth(() => runGenerate(false));
+      const regenerate = () => {
+        if (!adminProtected || getAdminPw()) {
+          if (window.confirm("Regenerate this procedure from scratch?")) runGenerate(true);
+        } else {
+          setGate({ label: "regenerate this procedure", kind: "admin", action: () => runGenerate(true) });
+        }
+      };
+
+      const renderedHtml = state.markdown ? marked.parse(state.markdown) : "";
+
+      return html`
+        <div className="mt-4 border border-indigo-100 bg-indigo-50/40 rounded-2xl p-4">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <div className="font-bold text-indigo-800 text-sm">AI Step-by-Step Procedure</div>
+            ${!state.loading && html`
+              <div className="flex items-center gap-2">
+                ${state.exists
+                  ? html`<button onClick=${regenerate} disabled=${busy}
+                      className="px-3 py-1 rounded-full bg-white border border-indigo-200 text-indigo-700 text-xs font-semibold hover:bg-indigo-100 disabled:opacity-60">
+                      ${busy ? "Working…" : "Regenerate"}</button>`
+                  : html`<button onClick=${generate} disabled=${busy}
+                      className="px-3 py-1 rounded-full bg-indigo-600 text-white text-xs font-semibold hover:bg-indigo-700 disabled:opacity-60">
+                      ${busy ? "Generating…" : "Generate Guide"}</button>`}
+              </div>`}
+          </div>
+          ${err && html`<div className="text-rose-600 text-sm mt-2">${err}</div>`}
+          ${state.loading && html`<div className="text-indigo-400 text-sm mt-2">Loading…</div>`}
+          ${!state.loading && !state.exists && !err && html`
+            <div className="text-indigo-500 text-sm mt-2">
+              No step-by-step guide yet. Generate one from this task's Audit Item and the machine's make/model.
+            </div>`}
+          ${state.exists && html`
+            <div className="guide bg-white rounded-2xl p-4 mt-3 border border-indigo-100"
+                 dangerouslySetInnerHTML=${{ __html: renderedHtml }} />`}
+          ${gate && gate.kind === "admin" && html`<${AdminGate} actionLabel=${gate.label}
+            onCancel=${() => setGate(null)}
+            onUnlock=${() => { const a = gate.action; setGate(null); a(); }} />`}
+          ${gate && gate.kind === "edit" && html`<${PasswordGate}
+            onCancel=${() => setGate(null)}
+            onUnlock=${() => { const a = gate.action; setGate(null); a(); }} />`}
+        </div>`;
+    }
+
     function WorkOrderModal({ woId, technicians, onClose, onOpenWo, onChanged }) {
       const [rec, setRec] = useState(null);
       const [err, setErr] = useState(null);
@@ -3709,6 +4095,7 @@
                   <${Field} label="Status" value=${rec.status} />
                   <${Field} label="Assigned to" value=${rec.assigned_to} />
                   <${Field} label="Owner" value=${rec.owner} />
+                  ${rec.requester_email && html`<${Field} label="Requester email" value=${rec.requester_email} />`}
                   <${Field} label="Urgency" value=${rec.urgency} />
                   <${Field} label="Date Notified" value=${rec.date_notified} />
                   <${Field} label="Due Date" value=${rec.due_date} />
@@ -3726,6 +4113,7 @@
                   <${Field} label="Audit Item" value=${rec.audit_item} />
                   ${rec.status === CLOSED_STATUS && html`<${Field} label="Comments" value=${rec.completion_comments} />`}
                 </div>
+                ${rec.wo_type === "scheduled" && html`<${ScheduledProcedurePanel} woId=${woId} />`}
                 <${AssignmentSection} rec=${rec} technicians=${technicians} onChanged=${(wo) => { if (wo) setRec(wo); refresh(); }} />
                 ${rec.wo_type !== "scheduled" && html`<${SolutionSection} rec=${rec} name=${name} setName=${setName} onChanged=${refresh} />`}
                 <${AttachmentSection} rec=${rec} name=${name} setName=${setName} onChanged=${refresh} />
@@ -3770,22 +4158,35 @@
         const d = new Date();
         return (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
       })();
+      const [technicians, setTechnicians] = useState([]);
+      const [roles, setRoles] = useState([]);
       const [f, setF] = useState({
         equipment_eq_id: "", equipment_name: "", status: "Pending",
         urgency: "", date_notified: todayStr, due_date: "", problem: "",
         audit_item: "", work_performed_by: "", helpers: "",
         labor_time: "", material_cost: "", downtime_hours: "", solution: "", frequency: "",
+        owner: getRawUser() || "", assigned_to: "", is_downtime: false,
       });
       const set = (k) => (v) => setF((s) => ({ ...s, [k]: v }));
       const [files, setFiles] = useState([]);
       const [busy, setBusy] = useState(false);
       const [err, setErr] = useState(null);
       const [adding, setAdding] = useState(null); // null | "machine" | "dept"
+      const assignableOptions = useMemo(() => [
+        ...technicians.map((t) => ({ value: t, label: t })),
+        ...roles.map((r) => ({ value: r, label: "Role: " + r })),
+      ], [technicians, roles]);
 
       useEffect(() => {
         getJSON("/api/divisions/" + (divisionKey || "bla"))
           .then((d) => setDepts(d.departments || []))
           .catch((e) => setErr(e.message));
+        getJSON("/api/technicians?division_key=" + encodeURIComponent(divisionKey || "bla"))
+          .then((d) => {
+            setTechnicians(d.technicians || []);
+            if (Array.isArray(d.details)) setSupervisorNames(d.details);
+          }).catch(() => {});
+        getJSON("/api/roles").then((d) => setRoles(d.roles || [])).catch(() => {});
       }, [divisionKey]);
 
       const loadMachines = useCallback((dk) => {
@@ -3806,6 +4207,7 @@
         if (!name.trim()) { setErr("Your name is required."); return; }
         if (!deptKey) { setErr("Choose a department."); return; }
         if (!f.equipment_name) { setErr("Select a machine."); return; }
+        if (!f.owner.trim()) { setErr("Owner is required."); return; }
         if (woType === "unscheduled") {
           if (!f.problem.trim()) { setErr("Problem is required."); return; }
           if (!f.date_notified.trim()) { setErr("Date notified is required."); return; }
@@ -3825,16 +4227,17 @@
               author: name.trim(), department_key: deptKey, wo_type: woType,
               equipment_name: f.equipment_name, equipment_eq_id: f.equipment_eq_id,
               status: "Pending", urgency: f.urgency, date_notified: f.date_notified,
-              problem: f.problem,
+              problem: f.problem, owner: f.owner, is_downtime: f.is_downtime,
             };
           } else {
+            if (!f.assigned_to.trim()) { setErr("Assigned to is required for scheduled work orders."); return; }
             // New scheduled WOs are always Pending and recur on the chosen
             // frequency. Completion fields are collected at close-out.
             payload = {
               author: name.trim(), department_key: deptKey, wo_type: woType,
               equipment_name: f.equipment_name, equipment_eq_id: f.equipment_eq_id,
               status: "Pending", due_date: f.due_date, frequency: f.frequency,
-              audit_item: f.audit_item,
+              audit_item: f.audit_item, owner: f.owner, assigned_to: f.assigned_to,
             };
           }
           const d = await sendJSON("/api/workorders", "POST", payload);
@@ -3905,15 +4308,23 @@
                     <${SelectInput} label="Urgency" required=${true} value=${f.urgency} onChange=${set("urgency")} options=${URGENCY_OPTIONS} placeholder="Select urgency…" />
                     <${TextInput} label="Date Notified" required=${true} value=${f.date_notified} onChange=${set("date_notified")} placeholder="MM/DD/YYYY" />
                   </div>
+                  <${SelectInput} label="Owner" required=${true} value=${f.owner} onChange=${set("owner")} placeholder="Select your role or name…" options=${assignableOptions} />
                   <${TextArea} label="Problem" required=${true} value=${f.problem} onChange=${set("problem")} rows=${3} />
+                  <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2 cursor-pointer">
+                    <input type="checkbox" checked=${f.is_downtime} onChange=${(e) => set("is_downtime")(e.target.checked)}
+                      className="accent-amber-600 w-4 h-4" />
+                    Machine is down
+                  </label>
                   <div className="text-[11px] text-slate-400 bg-emerald-50/60 border border-emerald-100 rounded-xl px-3 py-2">
-                    New unscheduled work orders start as <b>Pending</b>. Work performed by, labor time, downtime, material cost and comments are collected later, when the work order is marked <b>Closed and Completed</b>.
+                    New unscheduled work orders start as <b>Pending</b>. Work performed by, labor time, material cost and comments are collected later, when the work order is marked <b>Closed and Completed</b>. If "Machine is down" is checked, you'll be asked when it started running again so downtime can be calculated.
                   </div>`
                 : html`
                   <div className="grid sm:grid-cols-2 gap-3">
                     <${TextInput} label="First Due Date" required=${true} value=${f.due_date} onChange=${set("due_date")} placeholder="M/D/YYYY" />
                     <${SelectInput} label="Frequency" required=${true} value=${f.frequency} onChange=${set("frequency")} options=${FREQUENCY_OPTIONS} placeholder="How often…" />
                   </div>
+                  <${SelectInput} label="Owner" required=${true} value=${f.owner} onChange=${set("owner")} placeholder="Select your role or name…" options=${assignableOptions} />
+                  <${SelectInput} label="Assigned To" required=${true} value=${f.assigned_to} onChange=${set("assigned_to")} placeholder="Select role or technician…" options=${assignableOptions} />
                   <${TextArea} label="Audit Item" required=${true} value=${f.audit_item} onChange=${set("audit_item")} rows=${4} />
                   <div className="text-[11px] text-slate-400 bg-emerald-50/60 border border-emerald-100 rounded-xl px-3 py-2">
                     New scheduled work orders start as <b>Pending</b> and <b>recur automatically</b> on the chosen frequency — the next occurrence is created on schedule whether or not the previous one was completed. Work performed by, labor time, downtime, material cost and comments are collected when a work order is marked <b>Closed and Completed</b>.
@@ -4967,7 +5378,7 @@
         </div>`;
     }
 
-    function YearSection({ yr, defaultOpen, deptKey, eqId, group, machineName, machineTotals, events, onEventsChanged, onOpenWo }) {
+    function YearSection({ yr, defaultOpen, deptKey, eqId, group, hasScope, machineName, machineTotals, events, onEventsChanged, onOpenWo }) {
       const [open, setOpen] = useState(!!defaultOpen);
       const [selected, setSelected] = useState(["material_cost"]);
       const [synMonth, setSynMonth] = useState(null);
@@ -4976,9 +5387,10 @@
         setSelected((s) => (s.includes(k) ? s.filter((x) => x !== k) : [...s, k]));
       const woTotal = yr.totals.unscheduled_count + yr.totals.scheduled_count;
       // The month synopsis is per-machine when an eqId is given, or a
-      // department/group aggregate when a group is given. Click-through is
-      // enabled whenever either is present.
-      const synClick = (eqId || group) ? setSynMonth : null;
+      // department/group aggregate otherwise (hasScope covers the whole-
+      // department case where group is "" / null, which is still a valid
+      // scope server-side — see api_department_month_synopsis).
+      const synClick = (eqId || hasScope) ? setSynMonth : null;
 
       // Pareto compares this year's data against a single metric — reuse the
       // same metric toggles as the line chart above and drive the Pareto off
@@ -5066,42 +5478,15 @@
         </${React.Fragment}>`;
     }
 
-    function TrendsTab({ deptKey, eqId, machineName, onOpenWo }) {
-      const [data, setData] = useState(null);
-      const [err, setErr] = useState(null);
-      const [events, reloadEvents] = useChartEvents();
-
-      useEffect(() => {
-        setData(null); setErr(null);
-        getJSON("/api/departments/" + deptKey + "/machines/" + eqId + "/trends")
-          .then(setData).catch((e) => setErr(e.message));
-      }, [deptKey, eqId]);
-
-      if (err) return html`<div className="text-rose-600">${err}</div>`;
-      if (!data) return html`<${Spinner} label="Loading trends…" />`;
-
-      const years = [...(data.years || [])].sort((a, b) => b.year - a.year);
-      if (years.length === 0)
-        return html`<div className="text-slate-400 py-8">No dated work orders to chart for ${machineName}.</div>`;
-
-      return html`
-        <div className="space-y-4">
-          <p className="text-slate-500 text-sm">
-            Monthly trends for <span className="font-semibold text-slate-700">${machineName}</span>.
-            Click a metric to plot it across the year; select several to compare
-            (each line is scaled to its own range). Click a point on the chart — or a
-            month name below — for an AI synopsis of what drove that month.
-          </p>
-          ${years.map((yr, i) => html`<${YearSection} key=${yr.year} yr=${yr} defaultOpen=${i === 0}
-            deptKey=${deptKey} eqId=${eqId} machineName=${machineName}
-            events=${events} onEventsChanged=${reloadEvents} onOpenWo=${onOpenWo} />`)}
-        </div>`;
-    }
-
-    // Department-level trends, aggregated across every machine in a single
-    // group (e.g. Toilet Partitions' "Machines"). Reuses the per-year chart /
-    // table; the AI month synopsis is disabled since there is no single machine.
-    function DeptTrendsTab({ deptKey, group, onOpenWo }) {
+    // Single Trends surface for every scope MINT supports: a machine (eqId
+    // given), a machine group (group given, e.g. BLA Toilet's "Machines"), or
+    // a whole department (group given as "" to aggregate every machine).
+    // Which scopes are actually reachable is still controlled by the curated
+    // allowlists (TRENDS_EQ_IDS / DEPT_TRENDS_ALL) — this just guarantees a
+    // single, consistent chart/table/Pareto experience wherever Trends shows up.
+    function TrendsPanel({ deptKey, eqId, group, label, machineName, onOpenWo }) {
+      const isMachineScope = !!eqId;
+      const displayLabel = isMachineScope ? machineName : (label || group || "machines");
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [machinesData, setMachinesData] = useState(null);
@@ -5109,28 +5494,31 @@
 
       useEffect(() => {
         setData(null); setErr(null);
-        getJSON("/api/departments/" + deptKey + "/trends?group=" + encodeURIComponent(group))
-          .then(setData).catch((e) => setErr(e.message));
-      }, [deptKey, group]);
+        const url = isMachineScope
+          ? "/api/departments/" + deptKey + "/machines/" + eqId + "/trends"
+          : "/api/departments/" + deptKey + "/trends?group=" + encodeURIComponent(group || "");
+        getJSON(url).then(setData).catch((e) => setErr(e.message));
+      }, [deptKey, eqId, group]);
 
-      // Per-machine yearly totals, fetched separately, to drive the "compare
-      // machines" Pareto chart in each year section.
+      // Per-machine yearly totals, for the "compare machines" Pareto chart —
+      // only meaningful (and only fetched) at group/department scope.
       useEffect(() => {
+        if (isMachineScope) { setMachinesData(null); return; }
         setMachinesData(null);
-        getJSON("/api/departments/" + deptKey + "/machines-trends?group=" + encodeURIComponent(group))
+        getJSON("/api/departments/" + deptKey + "/machines-trends?group=" + encodeURIComponent(group || ""))
           .then((d) => setMachinesData(d.machines || []))
           .catch(() => setMachinesData([]));
-      }, [deptKey, group]);
+      }, [deptKey, group, isMachineScope]);
 
       if (err) return html`<div className="text-rose-600">${err}</div>`;
       if (!data) return html`<${Spinner} label="Loading trends…" />`;
 
       const years = [...(data.years || [])].sort((a, b) => b.year - a.year);
       if (years.length === 0)
-        return html`<div className="text-slate-400 py-8">No dated work orders to chart for ${group}.</div>`;
+        return html`<div className="text-slate-400 py-8">No dated work orders to chart for ${displayLabel}.</div>`;
 
       // Build {name, totals} for each machine, scoped to a given year, for
-      // the Pareto "compare machines" bars.
+      // the Pareto "compare machines" bars (group/department scope only).
       const machineTotalsForYear = (year) =>
         (machinesData || []).map((m) => ({
           name: m.name,
@@ -5140,14 +5528,17 @@
       return html`
         <div className="space-y-4">
           <p className="text-slate-500 text-sm">
-            Monthly trends across all <span className="font-semibold text-slate-700">${group}</span> in this department.
+            ${isMachineScope
+              ? html`Monthly trends for <span className="font-semibold text-slate-700">${displayLabel}</span>.`
+              : html`Monthly trends across all <span className="font-semibold text-slate-700">${displayLabel}</span> in this department.`}
             Click a metric to plot it across the year; select several to compare
             (each line is scaled to its own range). Click a point on the chart — or a
             month name below — for an AI synopsis of what drove that month.
           </p>
           ${years.map((yr, i) => html`<${YearSection} key=${yr.year} yr=${yr} defaultOpen=${i === 0}
-            deptKey=${deptKey} eqId=${null} group=${group} machineName=${group}
-            machineTotals=${machineTotalsForYear(yr.year)}
+            deptKey=${deptKey} eqId=${isMachineScope ? eqId : null} group=${isMachineScope ? null : group}
+            hasScope=${!isMachineScope} machineName=${displayLabel}
+            machineTotals=${isMachineScope ? undefined : machineTotalsForYear(yr.year)}
             events=${events} onEventsChanged=${reloadEvents} onOpenWo=${onOpenWo} />`)}
         </div>`;
     }
@@ -5161,7 +5552,9 @@
     // tracks trends on). All other machines hide the Trends tab.
     const TRENDS_EQ_IDS = new Set([
       "1361", "135", "1335", "1503", "5", "2063", "151", "1877", "1570",
-      "1724", "5273", "105", "1879", "5351", "154", "1584",
+      "1724", "5273", "105", "1879", "5351", "154", "1584", "1589",
+      "5346", "314", "327", "735", "1566", "318", "5034", "315", "5366",
+      "324", "2009", "5353", "5345", "5305", "2036",
     ]);
 
     const ERY_OPTIONS = ["", "0-1", "1-2", "2-3", "3-4", "4-5", "5+"];
@@ -6017,7 +6410,7 @@
 
           ${activeTab === "Trends" && html`
             <div className="fade-in">
-              <${TrendsTab} deptKey=${deptKey} eqId=${eqId} machineName=${m.name} onOpenWo=${onOpenWo} />
+              <${TrendsPanel} deptKey=${deptKey} eqId=${eqId} machineName=${m.name} onOpenWo=${onOpenWo} />
             </div>`}
 
           ${activeTab === "Weekly" && html`
@@ -7173,6 +7566,9 @@
     };
 
     const DIV_LABELS = { bla: "BLA", bed: "BED" };
+    // Divisions with technicians/roles configured; Sean/technician sign-in
+    // and the related Header controls only make sense within these.
+    const TECH_DIVISIONS = new Set(["bla", "bed"]);
 
     /* ------------------------------------------------------------------ */
     /* Inactive / Archive page (global)                                    */
@@ -7670,6 +8066,8 @@
       // "Operator") anyone can switch their session to from the header.
       const [viewProfiles, setViewProfiles] = useState([]);
       const [viewKey, setViewKeyState] = useState(getViewKey());
+      // Full division list for the header's division switcher, fetched once.
+      const [divisionsList, setDivisionsList] = useState([]);
       const activeProfile = viewProfiles.find((p) => p.key === viewKey) || null;
       const changeView = (key) => { setViewKey(key); setViewKeyState(key); };
       const refreshViewProfiles = () =>
@@ -7688,10 +8086,14 @@
       }, []);
 
       useEffect(() => {
-        getJSON("/api/technicians")
-          .then((d) => { if (Array.isArray(d.technicians) && d.technicians.length) setTechnicians(d.technicians); })
+        const divKey = TECH_DIVISIONS.has(route.divisionKey) ? route.divisionKey : "bla";
+        getJSON("/api/technicians?division_key=" + encodeURIComponent(divKey))
+          .then((d) => {
+            if (Array.isArray(d.technicians)) setTechnicians(d.technicians.length ? d.technicians : TECHNICIANS);
+            if (Array.isArray(d.details)) setSupervisorNames(d.details);
+          })
           .catch(() => {});
-      }, []);
+      }, [route.divisionKey]);
 
       useEffect(() => {
         getJSON("/api/roles")
@@ -7701,6 +8103,12 @@
 
       useEffect(() => { refreshViewProfiles(); }, []);
       useEffect(() => { refreshRoleViews(); }, []);
+
+      useEffect(() => {
+        getJSON("/api/company")
+          .then((d) => { if (Array.isArray(d.divisions)) setDivisionsList(d.divisions); })
+          .catch(() => {});
+      }, []);
 
       // All navigation goes through navigate() so the Back stack stays accurate.
       const navigate = (next) => {
@@ -7727,7 +8135,11 @@
         navigate((r) => ({ view: "department", divisionKey: r.divisionKey || "bla", deptKey, tab: tab || "Machines" }));
       const openMachine = (eqId) =>
         navigate((r) => ({ view: "machine", divisionKey: r.divisionKey || "bla", deptKey: r.deptKey, eqId }));
-      const openMySchedule = () => navigate({ view: "my-schedule" });
+      // Direct machine navigation (division/department known up front) — used
+      // by the header's global search, which can jump here from anywhere.
+      const goToMachine = (divisionKey, deptKey, eqId) =>
+        navigate({ view: "machine", divisionKey: divisionKey || "bla", deptKey, eqId });
+      const openMySchedule = () => navigate({ view: "my-schedule", divisionKey: route.divisionKey || "" });
       const selectView = (key) => { setActiveRole(""); changeView(key); navigate({ view: "divisions" }); };
       const selectDivision = (div) => navigate({ view: "division", divisionKey: div.key || "bla" });
       // Selecting a role applies its assigned view profile (set via the "Mint"
@@ -7736,13 +8148,26 @@
       // gives the role their own weekly schedule, filterable by division.
       const selectRole = (role) => { setActiveRole(role); changeView(roleViews[role] || ""); navigate({ view: "divisions" }); };
       const selectMint = () => navigate({ view: "manage-role-views" });
+      // Header's view switcher: change the active role/view profile without
+      // resetting navigation, so you can flip between e.g. Maintenance and
+      // Lead views from wherever you're currently browsing.
+      const switchViewProfile = (target) => {
+        if (!target || target === "__maintenance") { setActiveRole(""); changeView(""); }
+        else { setActiveRole(target); changeView(roleViews[target] || ""); }
+      };
 
       const divLabel = DIV_LABELS[route.divisionKey || "bla"] || (route.divisionKey || "bla").toUpperCase();
-      const headerHome = route.view === "landing" || route.view === "divisions" || route.view === "manage-role-views" ? goLanding : goCompany;
-      // Sean/technician sign-in only makes sense for BLA (the only division
-      // with technicians/roles); hide it while browsing any other division.
-      const isOtherDivision = ["division", "department", "machine"].includes(route.view)
-        && route.divisionKey && route.divisionKey !== "bla";
+      // Clicking the logo always takes you all the way back to the "Who are
+      // you?" screen (the true start), regardless of how deep you are.
+      const headerHome = goLanding;
+      // Header's division switcher: jump straight to another division (or the
+      // company-wide overview) from anywhere, without losing your session.
+      const switchDivision = (key) => (key === "__company" ? goCompany() : openDivision(key));
+      // Sean/technician sign-in makes sense for divisions with technicians
+      // configured (BLA, BED); hide it everywhere else (the company-wide
+      // overview, the division picker, or any other division).
+      const isBlaContext = MAINTENANCE_VIEWS.has(route.view) && route.view !== "company"
+        && TECH_DIVISIONS.has(route.divisionKey);
       // Division context for the header's Inactive/Spare Parts buttons: scoped
       // to the division being browsed, or blank (all divisions) elsewhere
       // (e.g. the company overview).
@@ -7751,10 +8176,11 @@
 
       return html`
         <div className="min-h-screen">
-          <${Header} technicians=${technicians} setTechnicians=${setTechnicians} roles=${roles} setRoles=${setRoles} onHome=${headerHome} onOpenInactive=${openInactive} onOpenSpareParts=${openSpareParts} onOpenMySchedule=${openMySchedule} onOpenWo=${setWoId}
+          <${Header} technicians=${technicians} setTechnicians=${setTechnicians} roles=${roles} setRoles=${setRoles} onHome=${headerHome} onOpenInactive=${openInactive} onOpenSpareParts=${openSpareParts} onOpenMySchedule=${openMySchedule} onOpenWo=${setWoId} onOpenMachine=${goToMachine}
             viewProfiles=${viewProfiles} activeProfile=${activeProfile} viewKey=${viewKey} onChangeView=${changeView} onViewProfilesChanged=${refreshViewProfiles}
-            hideUserControls=${!!activeRole || !MAINTENANCE_VIEWS.has(route.view) || isOtherDivision}
-            activeRole=${activeRole} onSwitchRole=${goLanding} divisionKey=${headerDivisionKey} />
+            hideUserControls=${!!activeRole || !isBlaContext}
+            activeRole=${activeRole} onSwitchRole=${goLanding} onSwitchViewProfile=${switchViewProfile} divisionKey=${headerDivisionKey}
+            divisions=${divisionsList} onSwitchDivision=${switchDivision} />
           <main className="max-w-6xl mx-auto px-6 py-8">
             ${navHist.length > 0 && html`
               <button onClick=${goBack}
@@ -7762,15 +8188,15 @@
                 <span aria-hidden="true">←</span> Back
               </button>`}
             ${route.view === "landing" && html`<${LandingPage} roles=${roles} onSelectView=${selectView} onSelectRole=${selectRole} onSelectMint=${selectMint} />`}
-            ${route.view === "divisions" && html`<${DivisionPicker} onSelectDiv=${selectDivision} onBack=${goLanding} />`}
+            ${route.view === "divisions" && html`<${DivisionPicker} onSelectDiv=${selectDivision} onSelectCompany=${goCompany} onBack=${goLanding} />`}
             ${route.view === "manage-role-views" && html`<${ManageRoleViewsPage} roles=${roles} roleViews=${roleViews} viewProfiles=${viewProfiles} onBack=${goLanding}
                 onChanged=${() => { refreshViewProfiles(); refreshRoleViews(); }} />`}
             ${route.view === "company" && html`<${CompanyDashboard} onOpenDivision=${openDivision} viewProfile=${activeProfile} />`}
             ${route.view === "inactive" && html`<${InactivePage} onCompany=${goCompany} onOpenDept=${openDept} divisionKey=${route.divisionKey} />`}
             ${route.view === "spare-parts" && html`<${SparePartsPage} onCompany=${goCompany} onOpenMachine=${openMachine} onOpenDept=${openDept} lockDivisionKey=${route.divisionKey} />`}
             ${route.view === "my-schedule" && (activeRole
-              ? html`<${RoleSchedulePage} role=${activeRole} onCompany=${goCompany} onOpenWo=${setWoId} />`
-              : html`<${MySchedulePage} user=${getRawUser()} onCompany=${goCompany} onOpenWo=${setWoId} />`)}
+              ? html`<${RoleSchedulePage} role=${activeRole} onCompany=${goCompany} onOpenWo=${setWoId} defaultDivisionKey=${route.divisionKey || ""} />`
+              : html`<${MySchedulePage} user=${getRawUser()} onCompany=${goCompany} onOpenWo=${setWoId} defaultDivisionKey=${route.divisionKey || ""} />`)}
             ${route.view === "division" && html`
               <${DivisionDashboard} divisionKey=${route.divisionKey || "bla"} onHome=${goCompany}
                 refreshSignal=${dataVersion}

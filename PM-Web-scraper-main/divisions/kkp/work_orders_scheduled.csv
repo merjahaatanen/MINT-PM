@@ -1,0 +1,284 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+5369,EQ ID 5369,Free Standing Bridge Crane,Assembly,16815,"Header Clamp - Check for full compression of lock washer. Bolt should be tightened to manufacturers specification. 
+Spine Clamp Hardware - Check for full compression of lock washer. Bolt should be tightened to manufacturers specification.
+Truss Splice Plate - Check for full compression of lock washer. Bolt should be tightened to manufacturers specification.
+Splice Joint - All bolt should be in contact with track. Check track for alignment and that  wheel rolling surface is flash.
+Hoist Trolley - Check clevis pin. Check cotter pin. (Cotter pin should be fully wrapped around clevis pin) Check clevis pin bolt and hardware.
+End Stops - Check for full compression of lock washer. If thru bolt is exposed, replace end stops.
+Vacuum Hoist Clamp - Check for full compression of lock washer.
+Wheels - Check for cracks, puts, and grooves: all of these increase pull force. If any of these conditions exists. wheel should be replaced.
+Aluminum Bridge Hardware -  Check that lock washers are compressed and nuts tightened to torque specification. Ensure sheer lug hardware is required position and tight.
+End Trucks - Check for proper clamping hardware attachment. Ensure correct position on bridge to match specified cantilevers. Inspect end truck wheels following instruction for wheel above. Make sure body of is free of any bent materials, cracked or broken welds. Check overall condition of tubes. Examine support for bent materials, cracked or broken welds. Inspect hardware attaching end truck support tubes. Check wheel plate attachment bolts for any wear and make sure the nylock nut is still in the correct position.",Pending,8/26/2026,,Maintenance,0.00,0.00,0.00,,,[]
+5369,EQ ID 5369,Free Standing Bridge Crane,Assembly,16782,"Header Clamp - Check for full compression of lock washer. Bolt should be tightened to manufacturers specification. 
+Spine Clamp Hardware - Check for full compression of lock washer. Bolt should be tightened to manufacturers specification.
+Truss Splice Plate - Check for full compression of lock washer. Bolt should be tightened to manufacturers specification.
+Splice Joint - All bolt should be in contact with track. Check track for alignment and that  wheel rolling surface is flash.
+Hoist Trolley - Check clevis pin. Check cotter pin. (Cotter pin should be fully wrapped around clevis pin) Check clevis pin bolt and hardware.
+End Stops - Check for full compression of lock washer. If thru bolt is exposed, replace end stops.
+Vacuum Hoist Clamp - Check for full compression of lock washer.
+Wheels - Check for cracks, puts, and grooves: all of these increase pull force. If any of these conditions exists. wheel should be replaced.
+Aluminum Bridge Hardware -  Check that lock washers are compressed and nuts tightened to torque specification. Ensure sheer lug hardware is required position and tight.
+End Trucks - Check for proper clamping hardware attachment. Ensure correct position on bridge to match specified cantilevers. Inspect end truck wheels following instruction for wheel above. Make sure body of is free of any bent materials, cracked or broken welds. Check overall condition of tubes. Examine support for bent materials, cracked or broken welds. Inspect hardware attaching end truck support tubes. Check wheel plate attachment bolts for any wear and make sure the nylock nut is still in the correct position.",Closed and Completed,8/22/2025,Zolo,Maintenance,0.00,0.00,0.00,8/26/2025,,[]
+5356,EQ ID 5356,Speedy Packer,Assembly,16813,BM by Sealed Air tech.,Pending,8/26/2026,,Outside Service,0.00,0.00,0.00,,,[]
+5356,EQ ID 5356,Speedy Packer,Assembly,16066,BM by Sealed Air tech.,Closed and Completed,6/12/2025,Zolo,Outside Service,0.00,0.00,0.00,8/26/2025,,[]
+5342,EQ ID 5342,Claw Vacuum Pump,Assembly,13060,"- Check the oil level.
+- Clean the machine from dust and dirt.
+- Check the coupling (CPL) for backlash and wear.
+Change the oil Every 20000 hours.",Closed and Completed,9/16/2024,Zolo,Maintenance,0.00,0.00,0.00,12/26/2024,Zolo Batbayar - 12/26/24  7:49:38 AM: Have not installed yet.,[]
+5342,EQ ID 5342,Claw Vacuum Pump,Assembly,15295,"- Check the oil level.
+- Clean the machine from dust and dirt.
+- Check the coupling (CPL) for backlash and wear.
+Change the oil Every 20000 hours.",Closed and Completed,7/4/2025,Zolo,Maintenance,0.00,0.00,0.00,11/24/2025,Zolo Batbayar - 08/26/25 10:42:59 AM: SPARE. Have not used yet.,[]
+5342,EQ ID 5342,Claw Vacuum Pump,Assembly,17766,"- Check the oil level.
+- Clean the machine from dust and dirt.
+- Check the coupling (CPL) for backlash and wear.
+Change the oil Every 20000 hours.",Closed and Completed,2/24/2026,Zolo,Maintenance,0.00,0.00,0.00,5/14/2026,,[]
+5342,EQ ID 5342,Claw Vacuum Pump,Assembly,19424,"- Check the oil level.
+- Clean the machine from dust and dirt.
+- Check the coupling (CPL) for backlash and wear.
+Change the oil Every 20000 hours.",Closed and Completed,8/14/2026,Zolo,Maintenance,0.00,0.00,0.00,8/19/2026,,[]
+5268,EQ ID 5268,Dust filter for Vacuum lift,Assembly,10147,Clean Filter insert. Replace at least once after 5 cleaning or at least once every 2 years.,Closed and Completed,3/29/2024,Zolo,Maintenance,0.00,0.00,0.00,3/25/2024,,[]
+5267,EQ ID 5267,JUMBO lift handle,Assembly,10146,"Clean or replace filter in the Ergo handle.
+Clean or replace filter in the Sprint operator handle.
+Suction plates cam be cleaned using soap and warm water; Do not use cleaning solvent on the suction sealing lips.",Closed and Completed,3/29/2024,Zolo,Maintenance,0.00,0.00,1.00,4/8/2024,,[]
+5227,EQ ID 5227,Stapling gun s/n 651837,Assembly,9362,Clean and lubrication of tool's magazine pusher pin with a dry silicone or equivalent spray lubricant.,Closed and Completed,1/15/2024,Zolo,Maintenance,0.00,0.00,0.00,1/18/2024,,[]
+5228,EQ ID 5228,Stapling gun s/n 320376,Assembly,9359,Clean and lubrication of tool's magazine pusher pin with a dry silicone or equivalent spray lubricant.,Closed and Completed,1/15/2024,Zolo,Maintenance,0.00,0.00,0.00,1/17/2024,,[]
+5152,EQ ID 5152,Stapling gun s/n 651178,Assembly,5345,"Check and tighten all screws/bolts.
+Clean and lubricate magazine pusher pin. 
+Sealant and O- rings replaced.",Closed and Completed,5/17/2023,Zolo,Maintenance,0.00,0.00,0.00,5/15/2023,,[]
+5152,EQ ID 5152,Stapling gun s/n 651178,Assembly,9361,Clean and lubrication of tool's magazine pusher pin with a dry silicone or equivalent spray lubricant.,Closed and Completed,1/15/2024,Zolo,Maintenance,0.00,0.00,0.00,1/17/2024,,[]
+5208,EQ ID 5208,Stapling gun s/n 651319,Assembly,5347,"Check and tighten all screws/bolts.
+Clean and lubricate magazine pusher pin.",Closed and Completed,5/17/2023,Zolo,Maintenance,0.00,0.00,0.00,6/5/2023,,[]
+5243,EQ ID 5243,CNC Routing oil pumps,Assembly,7484,"Change oil and filter.
+Replace element (oil separator from air)",Closed and Completed,10/5/2024,Zolo,Maintenance,0.00,0.00,0.00,1/18/2025,,[]
+5241,EQ ID 5241,N-300 nesting Vacuum Pump#3,Assembly,8022,Check and clean air intake. Grease bearing with pump running. Inspect vanes for improper wear.,Closed and Completed,11/15/2023,Zolo,Maintenance,0.00,0.00,0.00,11/13/2023,,[]
+5117,EQ ID 5117,Standard pallet truck-G2,Assembly,4677,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,1.00,3/1/2024,,[]
+5114,EQ ID 5114,Standard Pallet truck-G1,Assembly,4680,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,0.00,2/28/2024,,[]
+5143,EQ ID 5143,Rivet gun#13,Assembly,8162,Clean and oil jaw.,Closed and Completed,12/28/2023,Zolo,Maintenance,0.00,0.00,0.00,1/10/2024,,[]
+5147,EQ ID 5147,Rivet gun#9,Assembly,4580,Clean and oil jaws.,Closed and Completed,3/24/2023,Zolo,Maintenance,0.00,0.00,0.00,3/27/2023,Zolo Batbayar - 03/27/23 10:05:20 AM: Cleaned only.,[]
+5138,EQ ID 5138,Rivet gun#8,Assembly,4576,Clean and oil jaws.,Closed and Completed,3/24/2023,Zolo,Maintenance,0.00,0.00,0.00,3/27/2023,Zolo Batbayar - 03/27/23  9:56:30 AM: Cleaned only.,[]
+5137,EQ ID 5137,Rivet gun#11,Assembly,8163,"Clean and oil jaws.
+Hydraulic oil changed",Closed and Completed,12/28/2023,Zolo,Maintenance,0.00,0.00,0.00,1/10/2024,,[]
+5139,EQ ID 5139,Rivet gun#3,Assembly,4578,"Clean and oil jaw.
+Refurbished and received from OneMonroe.",Closed and Completed,3/24/2023,Zolo,Maintenance,0.00,0.00,0.00,7/30/2024,Zolo Batbayar - 07/30/24  8:07:04 AM: Oil changed and cleaned. | Zolo Batbayar - 01/18/24 11:52:44 AM: Hydraulic oil changed.  01/18/24 | Zolo Batbayar - 03/27/23 10:02:22 AM: Cleaned only.,[]
+5140,EQ ID 5140,Rivet gun#1,Assembly,8165,Clean and oil jaws. Hydraulic oil changed.,Closed and Completed,12/28/2023,Zolo,Maintenance,0.00,0.00,0.00,1/8/2024,,[]
+5141,EQ ID 5141,Rivet gun#4,Assembly,4577,Clean and oil jaws.,Closed and Completed,3/24/2023,Zolo,Maintenance,0.00,0.00,0.00,3/27/2023,Zolo Batbayar - 03/27/23  9:57:34 AM: Cleaned only.,[]
+5145,EQ ID 5145,Rivet gun#2,Assembly,4582,"Clean and oil jaws.
+Refurbished and received from One Monroe",Closed and Completed,3/24/2023,Zolo,Maintenance,0.00,0.00,0.00,3/27/2023,Zolo Batbayar - 03/27/23 10:05:49 AM: Cleaned only.,[]
+5148,EQ ID 5148,Rivet gun#10,Assembly,4581,Clean and oil jaws. Hydraulic oil changed.,Closed and Completed,3/24/2023,Zolo,Maintenance,0.00,0.00,0.00,3/13/2023,Zolo Batbayar - 03/13/23 12:51:33 PM: Cleaned.,[]
+5149,EQ ID 5149,Rivet gun#5,Assembly,4579,Clean and oil jaws. Hydraulic oil changed.,Closed and Completed,3/24/2023,Zolo,Maintenance,0.00,0.00,0.00,3/27/2023,Zolo Batbayar - 03/27/23 10:04:41 AM: Cleaned only.,[]
+5101,EQ ID 5101,Tape machine #8,Assembly,7045,"Clean accumulated glue from blade.
+Apply light coating of machine oil to back of blade.
+Add few drops of machine oil to felt pads.
+Thoroughly clean all piece of tape, tape dust and any other foreign material. 
+Clean bottom of heaters and pressure plate of accumulated glue.",Closed and Completed,10/29/2023,Zolo,Maintenance,0.00,0.00,0.00,11/7/2023,,[]
+5103,EQ ID 5103,Tape machine #6,Assembly,5809,Clean and wash the parts.,Closed and Completed,7/30/2023,Zolo,Maintenance,0.00,0.00,0.00,8/3/2023,,[]
+5103,EQ ID 5103,Tape machine #6,Assembly,7044,"Clean accumulated glue from blade.
+Apply light coating of machine oil to back of blade.
+Add few drops of machine oil to felt pads.
+Thoroughly clean all piece of tape, tape dust and any other foreign material. 
+Clean bottom of heaters and pressure plate of accumulated glue.",Closed and Completed,10/29/2023,Zolo,Maintenance,0.00,0.00,0.00,11/8/2023,,[]
+5105,EQ ID 5105,Tape machine #4,Assembly,7047,"Clean accumulated glue from blade.
+Apply light coating of machine oil to back of blade.
+Add few drops of machine oil to felt pads.
+Thoroughly clean all piece of tape, tape dust and any other foreign material. 
+Clean bottom of heaters and pressure plate of accumulated glue.",Closed and Completed,10/29/2023,Zolo,Maintenance,0.00,0.00,0.00,11/7/2023,,[]
+5102,EQ ID 5102,Tape machine #5,Assembly,7048,"Clean accumulated glue from blade.
+Apply light coating of machine oil to back of blade.
+Add few drops of machine oil to felt pads.
+Thoroughly clean all piece of tape, tape dust and any other foreign material. 
+Clean bottom of heaters and pressure plate of accumulated glue.",Closed and Completed,10/29/2023,Zolo,Maintenance,0.00,0.00,0.00,2/20/2024,,[]
+5106,EQ ID 5106,Tape machine #3,Assembly,7049,"Clean accumulated glue from blade.
+Apply light coating of machine oil to back of blade.
+Add few drops of machine oil to felt pads.
+Thoroughly clean all piece of tape, tape dust and any other foreign material. 
+Clean bottom of heaters and pressure plate of accumulated glue.",Closed and Completed,10/29/2023,Zolo,Maintenance,0.00,0.00,0.00,11/8/2023,,[]
+5107,EQ ID 5107,Tape machine #2,Assembly,5492,"Clean accumulated glue from blade.
+Apply light coating of machine oil to back of blade.
+Add few drops of machine oil to felt pads.
+Thoroughly clean all piece of tape, tape dust and any other foreign material. 
+Clean bottom of heaters and pressure plate of accumulated glue.",Closed and Completed,6/1/2023,Zolo,Maintenance,0.00,0.00,0.00,6/5/2023,,[]
+5108,EQ ID 5108,Tape machine #1,Assembly,7050,"Clean accumulated glue from blade.
+Apply light coating of machine oil to back of blade.
+Add few drops of machine oil to felt pads.
+Thoroughly clean all piece of tape, tape dust and any other foreign material. 
+Clean bottom of heaters and pressure plate of accumulated glue.",Closed and Completed,10/29/2023,Zolo,Maintenance,0.00,0.00,0.00,11/7/2023,,[]
+5167,EQ ID 5167,N-300 Nesting Vacuum Pump#2,Assembly,3222,Check and clean air intake. Grease bearing with pump running. Inspect vanes for improper wear.,Closed and Completed,11/26/2022,Zolo,Maintenance,0.00,0.00,1.00,2/26/2024,"Zolo Batbayar - 05/14/25  8:54:34 AM: Cleaned, greased and replaced the vanes. | Zolo Batbayar - 02/26/24  7:05:24 AM: Cleaned and greased, No need to replace vain. | Zolo Batbayar - 02/17/23  7:35:08 AM: Cleaned, greased and replaced Vanes.",[]
+5085,EQ ID 5085,Homag N-300 Nest CNC Router,Assembly,5978,STILES will perform PM.,Closed and Completed,12/13/2023,Stiles tech,Outside Service,0.00,0.00,0.00,3/26/2024,,[]
+5123,EQ ID 5123,Walkie stacker#1,Assembly,9603,Preventive Maintenance,Closed and Completed,7/10/2024,Forklift specialist,Outside Service,0.00,0.00,0.00,6/24/2024,,[]
+5124,EQ ID 5124,Walkie Stacker#2,Assembly,9604,Preventive Maintenance,Closed and Completed,7/10/2024,Forklift specialist,Outside Service,0.00,0.00,0.00,6/24/2024,,[]
+5125,EQ ID 5125,Walkie stacker#3,Assembly,9605,Preventive Maintenance,Closed and Completed,7/10/2024,Forklift specialist,Outside Service,0.00,0.00,0.00,6/24/2024,,[]
+5156,EQ ID 5156,Spin-pull threaded insert tool,Assembly,4649,Check the oil level indicator to see whether loss of oil has occurred. Tool has lost oil if the level indicator pin no longer protrudes.,Closed and Completed,4/6/2023,Zolo,Maintenance,0.00,0.00,0.00,4/7/2023,,[]
+5118,EQ ID 5118,Standard pallet truck,Assembly,4675,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,0.00,3/1/2024,,[]
+5116,EQ ID 5116,Standard pallet truck,Assembly,4679,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,1.00,3/1/2024,,[]
+5113,EQ ID 5113,Standard Fork pallet truck,Assembly,4681,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,2/28/2024,,[]
+5115,EQ ID 5115,Standard pallet truck,Assembly,4682,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,2/28/2024,,[]
+5074,EQ ID 5074,Eyewash station - compressor room,Assembly,3248,"Change water, add eyewash preservative.",Closed and Completed,5/14/2023,Zolo,Maintenance,0.00,0.00,0.00,5/22/2023,,[]
+5075,EQ ID 5075,Eyewash station - speedy packer,Assembly,3249,"Change water, add eyewash preservative.",Closed and Completed,5/14/2023,Zolo,Maintenance,0.00,0.00,0.00,5/22/2023,,[]
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,20422,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Pending,9/19/2026,,Maintenance,0.00,0.00,0.00,,,[]
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,17767,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Closed and Completed,11/24/2025,Zolo,Maintenance,0.00,0.00,0.00,11/25/2025,,[]
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,17801,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Closed and Completed,1/1/2026,Zolo,Maintenance,0.00,0.00,0.00,1/30/2026,,[]
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,18266,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Closed and Completed,2/21/2026,Zolo,Maintenance,0.00,0.00,0.00,5/14/2026,,[]
+5373,EQ ID 5373,"Fire extinguisher, Emergency light, Exit signs, Emergency radio",Maintenance,19421,"Fire extinguisher
+- Verifying visible and accessible
+- Pressure gauge is in green zone
+- Confirming the pin and tamper seal are in place
+- Looking for any signs of damage or obstruction on the nozzle and hose
+Exit signs
+- 30second functional test
+- Check for physical damage
+- 90minute battery test (annually) 
+Emergency lighting
+- 30second functional test
+- Conduct a visual inspection of the unit for any physical damage
+- 90minute duration on battery.",Closed and Completed,6/14/2026,Zolo,Maintenance,0.00,0.00,0.00,8/10/2026,,[]
+5263,EQ ID 5263,Sump Pump,Maintenance,9671,Annual maintenance.,Closed and Completed,1/11/2025,Groundworks,Outside Service,0.00,0.00,0.00,2/18/2025,,[]
+5256,EQ ID 5256,Heating and Cooling unit #1,Maintenance,17946,"replaced filters. unit#1,#2,#3 and #4",Closed and Completed,12/15/2025,Zolo,Maintenance,0.00,0.00,0.00,12/15/2025,,[]
+5256,EQ ID 5256,Heating and Cooling unit #1,Maintenance,18032,"replaced filters. unit#1,#2,#3 and #4",Closed and Completed,6/29/2026,Zolo,Maintenance,0.00,0.00,0.00,8/19/2026,,[]
+5259,EQ ID 5259,Heating and Cooling unit#4,Maintenance,18034,Replace filter,Closed and Completed,12/29/2025,Zolo,Maintenance,0.00,0.00,0.00,1/29/2026,,[]
+5258,EQ ID 5258,Heating Cooling unit#3,Maintenance,18033,Replace filter,Closed and Completed,12/29/2025,Zolo,Maintenance,0.00,0.00,0.00,1/29/2026,,[]
+5151,EQ ID 5151,Stapling gun,Maintenance,5346,"Check and tighten all screws/bolts.
+Clean and lubricate magazine pusher pin.",Closed and Completed,5/17/2023,Zolo,Maintenance,0.00,0.00,0.00,5/19/2023,,[]
+5370,EQ ID 5370,Advance lift,Metal Fabrication,20421,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Pending,9/19/2026,,Maintenance,0.00,0.00,0.00,,,[]
+5370,EQ ID 5370,Advance lift,Metal Fabrication,16855,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Closed and Completed,8/28/2025,Zolo,Maintenance,0.00,0.00,0.00,11/24/2025,,[]
+5370,EQ ID 5370,Advance lift,Metal Fabrication,17765,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Closed and Completed,12/24/2025,Zolo,Maintenance,0.00,0.00,0.00,1/16/2026,,[]
+5370,EQ ID 5370,Advance lift,Metal Fabrication,18227,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Closed and Completed,2/16/2026,Zolo,Maintenance,0.00,0.00,0.00,5/14/2026,,[]
+5370,EQ ID 5370,Advance lift,Metal Fabrication,19422,"1. check hydraulic fluid
+2. Clean all debris from the vicinity of floor and pit mounted units in order to avoid interference with the lift mechanism or roller.
+3. Check for presence and proper seating of all snap rings and clips on all axles, cylinder and rolls.
+4. Check rollers , pins and bushing for any signs of wear such as flat spots, missing fasteners or dislodged bearing material.
+5. Check the hydraulic fittings for cracks or leaks and clean up any weepage on or beneath the cylinder.
+6. Check hoses and electrical lines for abrasions or other abuse and check for snug connections.
+7. Operate the unit and check for any abnormal noise or vibrations.
+8. Check all safety devices on the unit such as the condition of the pleated bellows or smooth operation of the electric toe guard.",Closed and Completed,6/14/2026,Zolo,Maintenance,0.00,0.00,0.00,6/24/2026,,[]
+5155,EQ ID 5155,Laser Marking Machine 2020,Metal Fabrication,10622,"Check filter mats and clean them if necessary. 
+Mats can be cleaned using compressed air or water wash.",Closed and Completed,4/4/2024,Zolo,Maintenance,0.00,0.00,1.00,4/8/2024,,[]
+5086,EQ ID 5086,Norlok clincher,Metal Fabrication,3425,"Grease upper tooling. Check tightness of bolts. i.e frame, booster, tooling etc.",Closed and Completed,1/2/2023,Zolo,Maintenance,0.00,0.00,0.00,2/27/2023,Zolo Batbayar - 02/27/23  6:40:18 AM: No longer in use.,[]
+5126,EQ ID 5126,Electric Forklift Truck (sit-down)#3,Metal Fabrication,6265,Preventive Maintenance.,Closed and Completed,12/29/2023,Forklift specialist,Outside Service,0.00,0.00,0.00,1/9/2024,,[]
+5191,EQ ID 5191,Desiccant Compressed Air Dryer,Metal Fabrication,3841,"Check condition of Mufflers by reading tower Pressure Gauge when the tower is re-generation cycle. If pressure is above 3PSIG, Muffler replacement maybe required.",Closed and Completed,2/6/2023,Zolo,Maintenance,0.00,0.00,0.00,2/22/2023,Zolo Batbayar - 02/27/23  6:44:16 AM: Both mufflers been replaced.,[]
+5079,EQ ID 5079,Trumpf laser cutter,Metal Fabrication,4107,PM performed by Trumpf service.,Closed and Completed,7/23/2023,Trumpf,Outside Service,0.00,0.00,4.00,5/17/2023,,[]
+5112,EQ ID 5112,Scissor lift pallet truck,Metal Fabrication,4678,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,0.00,3/25/2024,,[]
+5111,EQ ID 5111,Scissor lift pallet truck,Metal Fabrication,4683,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,0.00,4/8/2024,,[]
+5109,EQ ID 5109,Scissor lift pallet truck,Metal Fabrication,4685,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,0.00,0.00,0.00,4/8/2024,,[]
+5087,EQ ID 5087,Welding robots,Metal Fabrication,9704,PM by Lincoln Automation.,Closed without Action,1/12/2025,Zolo,Outside Service,0.00,0.00,0.00,1/13/2025,,[]
+5087,EQ ID 5087,Welding robots,Metal Fabrication,17700,Please fill out ABB system PM checklist.,Closed and Completed,11/13/2025,Zolo,Maintenance,0.00,0.00,0.00,11/10/2025,,[]
+5087,EQ ID 5087,Welding robots,Metal Fabrication,17736,Please fill out ABB system PM checklist.,Closed and Completed,5/18/2026,Zolo,Maintenance,0.00,0.00,0.00,5/14/2026,,[]
+5084,EQ ID 5084,Ingersoll Rand Air Compressor,Metal Fabrication,3452,Ingersoll Rand tech.,Closed and Completed,6/8/2023,IR tech,Outside Service,0.00,0.00,0.00,6/13/2023,,[]
+5081,EQ ID 5081,Holtec Nitrogen Generator,Metal Fabrication,7199,"Replace filter elements (F-101 thru 104)
+AE-101 25% gas Amp sensor only",Closed and Completed,3/27/2024,Zolo,Maintenance,0.00,0.00,1.00,3/1/2024,,[]
+5080,EQ ID 5080,Trumpf press brake,Metal Fabrication,4272,PM by Trumpf tech.,Closed and Completed,8/7/2023,Zolo,Outside Service,0.00,0.00,0.00,10/26/2023,,[]
+5365,EQ ID 5365,Over head fan,Shipping/Receiving,15416,"- Check for the presence of the safety cable and shackle.
+- Ensure all mounting bolts are present and torqued to 40ft.lb (54.2 N-m)
+- Inspect motor terminations inside the motor junction box and tighten if necessary.
+- Check the gear reducer for oil leakage. 
+- Ensure all 16 bolts securing the airfoils to the fan are present and torqued 29 ft-lb (39.3 N-m)
+- Ensure airfoils are secured to one another by airfoils retainers.
+- Ensure the bolts securing the winglets to the airfoils are securely tightened.
+- Inspect the airfoils and hub for signs of damage or cracks.
+- Check guy wires for fraying or damage.",Closed and Completed,4/17/2025,Zolo,Maintenance,0.00,0.00,0.00,4/21/2025,,[]
+5365,EQ ID 5365,Over head fan,Shipping/Receiving,15440,"- Check for the presence of the safety cable and shackle.
+- Ensure all mounting bolts are present and torqued to 40ft.lb (54.2 N-m)
+- Inspect motor terminations inside the motor junction box and tighten if necessary.
+- Check the gear reducer for oil leakage. 
+- Ensure all 16 bolts securing the airfoils to the fan are present and torqued 29 ft-lb (39.3 N-m)
+- Ensure airfoils are secured to one another by airfoils retainers.
+- Ensure the bolts securing the winglets to the airfoils are securely tightened.
+- Inspect the airfoils and hub for signs of damage or cracks.
+- Check guy wires for fraying or damage.",Closed and Completed,4/21/2026,Zolo,Maintenance,0.00,0.00,0.00,5/14/2026,,[]
+5122,EQ ID 5122,Standard pallet truck,Shipping/Receiving,4671,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,3/1/2024,,[]
+5121,EQ ID 5121,Standard pallet truck,Shipping/Receiving,4672,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,3/1/2024,,[]
+5119,EQ ID 5119,Standard pallet truck,Shipping/Receiving,4674,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,2/28/2024,,[]
+5083,EQ ID 5083,Automated stretch wrapper,Shipping/Receiving,3831,"Examine the FDS belt for wear
+Examine the turntable drive belt for correct tension and wear.
+Examine the pre-stretch belt for correct tension and wear.
+Examine the pre-stretch chains and sprockets for wear.
+Lubricate the chain with SAE 3oil.",Closed and Completed,2/5/2023,Zolo,Maintenance,0.00,0.00,0.00,2/6/2023,,[]
+5083,EQ ID 5083,Automated stretch wrapper,Shipping/Receiving,6233,"EXAMINE THE FDS BELT WEAR
+EXAMINE THE TURNTABLE DRIVE BELT FOR CORRECT TENSION AND WEAR
+EXAMINE PRE-STRETCH BELT FOR CORRECT TENSION AND WEAR
+EXAMINE THE CHAIN WITH SAE-30 OIL.",Closed and Completed,7/27/2023,Zolo,Maintenance,0.00,0.00,1.00,8/3/2023,,[]
+5264,EQ ID 5264,Dock door/Leveler,Warehouse,9700,Pm by Arbon/Rite Hight tech,Closed and Completed,7/12/2024,Arbon tech,Outside Service,0.00,0.00,0.00,9/27/2024,,[]
+5127,EQ ID 5127,Electric forklift truck (sit-down) #1,Warehouse,5458,Check battery and watering system.,Closed and Completed,7/26/2023,Zolo,Maintenance,0.00,0.00,1.00,6/12/2023,,[]
+5127,EQ ID 5127,Electric forklift truck (sit-down) #1,Warehouse,6263,"Preventive Maintenance.
+Freelift chain replaced on 02/01/2024.",Closed and Completed,12/29/2023,Forklift specialist,Outside Service,0.00,0.00,1.00,1/9/2024,,[]
+5128,EQ ID 5128,Electric forklift truck(sit-down) #4,Warehouse,6264,Preventive Maintenance.,Closed and Completed,12/29/2023,Forklift specialist,Outside Service,0.00,0.00,0.00,1/9/2024,,[]
+5201,EQ ID 5201,Hand pallet truck,Warehouse,4668,"Inspect, clean, grease",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,3/1/2024,,[]
+5154,EQ ID 5154,Standard pallet truck,Warehouse,4669,"Inspect, clean, grease",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,3/1/2024,,[]
+5153,EQ ID 5153,Standard pallet truck,Warehouse,4670,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,2/28/2024,,[]
+5120,EQ ID 5120,Standard pallet truck,Warehouse,4673,"Inspect, clean, grease.",Closed and Completed,3/6/2024,Zolo,Maintenance,1.00,0.00,1.00,2/28/2024,,[]

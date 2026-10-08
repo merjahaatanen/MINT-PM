@@ -1,10 +1,17 @@
 """Import PM equipment-summary dashboards into MINT machine_info.
 
 Scrapes the local pages/equipment/<id>/dashboard.html files (captured from the
-PM Equipment Dashboard -> Equipment Summary tab) for Toilet Partitions and
-stores the parsed summary as JSON on each machine's info record.
+PM Equipment Dashboard -> Equipment Summary tab) and stores the parsed summary
+as JSON on each machine's info record.
+
+Default (no --division): BLA's Toilet Partitions only, matching the original
+one-off import this script started as. Pass --division bed|bmc|... to import
+EVERY department of that division instead - department keys there are always
+f"{division}_{slug}" where slug = dept name lowercased with spaces -> "_",
+which matches how server.py registers them.
 """
 
+import argparse
 import json
 import os
 import re
@@ -108,39 +115,106 @@ def parse_equipment_summary(html: str) -> dict:
     return summary
 
 
-def _load_tpf_eq_ids() -> list[tuple[str, str]]:
-    """Return (numeric_eq_id, equipment_name) for Toilet Partitions machines."""
+def _slugify(name: str) -> str:
+    return name.strip().lower().replace(" ", "_")
+
+
+# BLA department name -> key, mirroring server.py's _STATIC_DEPARTMENTS
+# (these keys predate the division-prefixed convention used for BED/BMC, so
+# they can't be derived by simply slugifying the name - e.g. "Toilet
+# Partitions" -> "toilet", "Soap Dispenser Assembly" -> "soap").
+_BLA_NAME_TO_KEY = {
+    "Soap Dispenser Assembly": "soap",
+    "Toilet Partitions": "toilet",
+    "Assembly": "assembly",
+    "General": "general",
+    "Machine Shop": "machine_shop",
+    "Maintenance": "maintenance",
+    "Mfg Engineering": "mfg_engineering",
+    "Quality Assurance": "quality_assurance",
+    "Shipping": "shipping",
+}
+
+
+def _load_tpf_eq_ids() -> list[tuple[str, str, str]]:
+    """Return (numeric_eq_id, equipment_name, dept_key) for EVERY BLA
+    department (name mapped via _BLA_NAME_TO_KEY)."""
     out = []
     if not EQ_PATH.exists():
         return out
     with open(EQ_PATH, encoding="utf-8") as f:
         records = json.load(f)
-    name_to_key = {"Toilet Partitions": "toilet"}
     for r in records:
         dept = (r.get("dept") or "").strip()
-        if name_to_key.get(dept) != "toilet":
+        dept_key = _BLA_NAME_TO_KEY.get(dept)
+        if not dept_key:
             continue
         eq_id = (r.get("eq_id") or "").strip()
         m = re.search(r"\d+", eq_id)
         if m:
-            out.append((m.group(), r.get("equipment_name") or ""))
-    # Also include user-added TPF machines
+            out.append((m.group(), r.get("equipment_name") or "", dept_key))
+    # Also include user-added BLA machines
     for m in store.list_machines():
-        if m.get("dept_key") == "toilet":
-            eq_id = (m.get("eq_id") or "").strip()
-            numeric = re.search(r"\d+", eq_id)
-            if numeric:
-                out.append((numeric.group(), m.get("equipment_name") or ""))
+        dept_key = m.get("dept_key") or ""
+        if dept_key not in _BLA_NAME_TO_KEY.values():
+            continue
+        eq_id = (m.get("eq_id") or "").strip()
+        numeric = re.search(r"\d+", eq_id)
+        if numeric:
+            out.append((numeric.group(), m.get("equipment_name") or "", dept_key))
     return out
 
 
+def _load_division_eq_ids(division: str) -> tuple[list[tuple[str, str, str]], Path]:
+    """Return (numeric_eq_id, equipment_name, dept_key) for EVERY department in
+    a non-BLA division, plus that division's pages dir. dept_key follows
+    server.py's f"{division}_{slug}" convention."""
+    div_dir = HERE / "divisions" / division
+    eq_path = div_dir / "equipment_data.json"
+    out = []
+    if not eq_path.exists():
+        return out, div_dir / "pages" / "equipment"
+    with open(eq_path, encoding="utf-8") as f:
+        records = json.load(f)
+    for r in records:
+        dept = (r.get("dept") or "").strip()
+        if not dept:
+            continue
+        dept_key = f"{division}_{_slugify(dept)}"
+        eq_id = (r.get("eq_id") or "").strip()
+        m = re.search(r"\d+", eq_id)
+        if m:
+            out.append((m.group(), r.get("equipment_name") or "", dept_key))
+    for mach in store.list_machines():
+        dept_key = (mach.get("dept_key") or "")
+        if not dept_key.startswith(f"{division}_"):
+            continue
+        eq_id = (mach.get("eq_id") or "").strip()
+        numeric = re.search(r"\d+", eq_id)
+        if numeric:
+            out.append((numeric.group(), mach.get("equipment_name") or "", dept_key))
+    return out, div_dir / "pages" / "equipment"
+
+
 def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--division", type=str, default=None,
+                     help="Non-BLA division slug (bed, bmc, ...). Imports "
+                          "EVERY department instead of just Toilet Partitions.")
+    args = ap.parse_args()
+
+    division_key = args.division or "bla"
+    if args.division:
+        eq_rows, pages_dir = _load_division_eq_ids(args.division)
+    else:
+        eq_rows, pages_dir = _load_tpf_eq_ids(), PAGES_DIR
+
     imported = 0
     skipped = 0
     rows = []
 
-    for eq_id, name in _load_tpf_eq_ids():
-        path = PAGES_DIR / eq_id / "dashboard.html"
+    for eq_id, name, dept_key in eq_rows:
+        path = pages_dir / eq_id / "dashboard.html"
         if not path.exists():
             skipped += 1
             rows.append({"eq_id": eq_id, "name": name, "status": "no dashboard.html"})
@@ -148,9 +222,12 @@ def main():
         try:
             summary = parse_equipment_summary(path.read_text(encoding="utf-8"))
             store.set_machine_info(
-                "toilet",
+                dept_key,
                 eq_id,
-                {"summary_json": json.dumps(summary, ensure_ascii=False)},
+                {
+                    "division_key": division_key,
+                    "summary_json": json.dumps(summary, ensure_ascii=False),
+                },
                 author="PM summary import",
             )
             imported += 1

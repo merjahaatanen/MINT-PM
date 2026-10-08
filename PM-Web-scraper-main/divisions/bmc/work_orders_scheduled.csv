@@ -1,0 +1,2078 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+5368,EQ ID 5368,125 HP Compressor,Maintenance,16508,Change Oil,Pending,6/29/2026,,Outside Service,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,9841,"1) Remove and inspect 3 or 4 filter bags per instructions
+2) Remove inlet taper and inspect fan wheel per instructions
+3) Check fan housing and surrounding structures for loose bolts, wear, etc.
+4) Check fan v-belt conditions per instructions
+5) Check fan for noise, vibration, dust leaks, etc.
+6) Check fan motor housing for abnormally high temperatures
+7) Check operation of rotary airlock
+8) Check rotary air lock gearbox for excessive heat, check oil level
+9) Check cleaning pulses per instructions
+10) Check entire filter structure for leaks, loose bolts, and vibration
+11) Check explosion door seals
+12) Inspect rotary air lock chain for correct tension and alignment",Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,315,Replace batteries in Flamex control panel.,Pending,3/18/2026,,Outside Service,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,9770,"1) Check fan bearings for heat build up (200 degrees max)
+2) Grease bearings on main drive motor per instructions
+3) Grease bearings on both side of air lock and motor
+4) Grease fan bearings as required
+5) Inspect Motor cleanliness (clean if necessary)",Pending,2/16/2024,,Technician,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,9844,Have Flamex technician perform certification test and recalibrate control panel.,Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,316,"1) Check fan bearings for heat build up (200 degrees max)
+2) Grease bearings on main drive motor per instructions
+3) Grease bearings on both side of air lock and motor
+4) Grease fan bearings as required
+5) Inspect Motor cleanliness (clean if necessary)",Closed and Completed,4/18/2022,Dan Taylor,Technician,1.00,0.00,0.00,4/28/2022,Dan Taylor - 04/28/22 11:03:06 AM: Completed 4/28/2022,[]
+568,EQ ID 568,Dust Collection System,Maintenance,317,Have Flamex technician perform certification test and recalibrate control panel.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,314,"1) Remove and inspect 3 or 4 filter bags per instructions
+2) Remove inlet taper and inspect fan wheel per instructions
+3) Check fan housing and surrounding structures for loose bolts, wear, etc.
+4) Check fan v-belt conditions per instructions
+5) Check fan for noise, vibration, dust leaks, etc.
+6) Check fan motor housing for abnormally high temperatures
+7) Check operation of rotary airlock
+8) Check rotary air lock gearbox for excessive heat, check oil level
+9) Check cleaning pulses per instructions
+10) Check entire filter structure for leaks, loose bolts, and vibration
+11) Check explosion door seals
+12) Inspect rotary air lock chain for correct tension and alignment",Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,2670,"1) Check fan bearings for heat build up (200 degrees max)
+2) Grease bearings on main drive motor per instructions
+3) Grease bearings on both side of air lock and motor
+4) Grease fan bearings as required
+5) Inspect Motor cleanliness (clean if necessary)",Closed and Completed,11/13/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+568,EQ ID 568,Dust Collection System,Maintenance,3196,Grease the auger bearings #2 grease,Closed and Completed,2/1/2024,Bart James,Maintenance Mechanic,0.00,0.00,0.50,6/5/2025,"Dale Kee - 06/09/25 12:35:50 PM: The bearing was making a bit of noise. Grease had a lot of dust in the bearing, cleaned and oiled the bearing with a heavy weight oil.",[]
+708,EQ ID 708,General Maintenance,Maintenance,483,Clean manufacturing conference room window ledge.,Closed and Completed,4/18/2022,.,Technician,0.00,0.00,0.00,1/10/2024,,[]
+1795,EQ ID 1795,VRC 2-Post Straddle Elevator- Hydraulic,Maintenance,4443,"Check the fluid level to make sure it is at the full mark.
+Check for frays and kinks in the inlet line.
+Check the hyd. fluid to see if it is cloudy, off color, contains suspended settlement, or have liquid layers. Change fluid if needed.
+Check or change the fluid filter. 10 microns or less is recommended.",Closed and Completed,8/18/2023,.,Maintenance Mechanic,0.00,0.00,0.00,1/18/2024,,[]
+681,EQ ID 681,Banding Shredder,Maintenance,11742,"Disconnect power & 
+1) Knife removal & rotation
+- Remove feed works guard assembly, then remove 4 bolts holding feed works in place
+- Begin swinging the feed works open. The chain connecting the feed works to the gear reducer can be slipped off once of the sprockets.
+- Pivot feed works assembly clear. Remove the infeed material guide by removing 4 button head screws. Both knifes can be accessed through opening in front housing, you may have to rotate flywheel by hand to bring knife to access hole.
+- Remove bolts securing knifes. If there is a shim in knife pocket, leave in place when rotating knife edge.
+- Clean knife pockets thoroughly and move any burrs on the used knife edge to assure it is set properly.
+- Replace knife in pocket and lightly tighten bolts. Seat knife by tapping it with brass hammer.
+-Finish tightening the bolts with a torque wrench (60 ft-lb)",Pending,5/20/2026,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+569,EQ ID 569,RTU 1,Maintenance,318,PM by Subcontractor,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+570,EQ ID 570,RTU 2,Maintenance,319,PM by subcontractor.,Closed and Completed,9/18/2022,/,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+571,EQ ID 571,RTU 3,Maintenance,320,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+572,EQ ID 572,RTU 4,Maintenance,321,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+573,EQ ID 573,RTU 5,Maintenance,322,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+574,EQ ID 574,RTU 6,Maintenance,323,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+575,EQ ID 575,RTU 7,Maintenance,324,PM by subcontractor,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+576,EQ ID 576,RTU 8,Maintenance,325,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+577,EQ ID 577,RTU 9,Maintenance,326,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+578,EQ ID 578,RTU 10,Maintenance,327,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+579,EQ ID 579,RTU 11,Maintenance,328,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+580,EQ ID 580,EF-1,Maintenance,9797,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+580,EQ ID 580,EF-1,Maintenance,329,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+581,EQ ID 581,EF-2,Maintenance,9761,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+581,EQ ID 581,EF-2,Maintenance,330,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+582,EQ ID 582,EF-3,Maintenance,9764,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+582,EQ ID 582,EF-3,Maintenance,331,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+583,EQ ID 583,EF-4,Maintenance,9750,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+583,EQ ID 583,EF-4,Maintenance,332,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+584,EQ ID 584,EF-5,Maintenance,9775,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+584,EQ ID 584,EF-5,Maintenance,333,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+585,EQ ID 585,EF-6,Maintenance,9751,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+585,EQ ID 585,EF-6,Maintenance,334,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+586,EQ ID 586,EF-7,Maintenance,9766,PM by subcontractor.,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+586,EQ ID 586,EF-7,Maintenance,335,PM by subcontractor.,Closed and Completed,9/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,9872,Fire/Security system test. Inspect/clean smoke detectors included.,Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,339,Waste Management PM on garbage compactor. Call for service.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,336,Fire/Security system test. Inspect/clean smoke detectors included.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,338,Quarterly sprinkler test by Superior Fire Protection.,Closed and Completed,6/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+587,EQ ID 587,Critical Systems Inspections,Maintenance,9873,Waste Management PM on garbage compactor. Call for service.,Closed and Completed,1/16/2025,Waste Management,Outside Service,0.00,0.00,0.00,5/2/2026,Dale Kee - 06/02/26  7:57:08 AM: Replaced the can,[]
+590,EQ ID 590,Man Lift,Maintenance,9732,PM by Lily Co.,Pending,4/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+590,EQ ID 590,Man Lift,Maintenance,340,PM by Lily Co.,Closed and Completed,6/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+591,EQ ID 591,"Dock Doors, Plates Locks, Rapid Roll and Fire Doors",Maintenance,9620,Check Doc-Loc communication bulbs,Pending,2/10/2024,,Technician,0.00,0.00,0.00,,,[]
+591,EQ ID 591,"Dock Doors, Plates Locks, Rapid Roll and Fire Doors",Maintenance,9735,"Inspect Doors, Plates and Doc-Loc operation",Pending,4/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+591,EQ ID 591,"Dock Doors, Plates Locks, Rapid Roll and Fire Doors",Maintenance,341,Check Doc-Loc communication bulbs,Closed and Completed,4/18/2022,.,Technician,0.00,0.00,0.00,1/10/2024,,[]
+591,EQ ID 591,"Dock Doors, Plates Locks, Rapid Roll and Fire Doors",Maintenance,342,"Inspect Doors, Plates and Doc-Loc operation",Closed and Completed,6/18/2022,.,Outside Service,0.00,0.00,0.00,1/16/2024,,[]
+592,EQ ID 592,10 gal. Water Heaters,Maintenance,9871,Check operation and drain tank.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+592,EQ ID 592,10 gal. Water Heaters,Maintenance,343,Check operation and drain tank.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+593,EQ ID 593,Building,Maintenance,9860,Have sprinkler system alarm tested.,Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+593,EQ ID 593,Building,Maintenance,9861,Have security alarm system tested.,Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+593,EQ ID 593,Building,Maintenance,9609,"1) Check all lighting and replace bulbs.
+2) Inspect Roof
+3) Check all lighting (replace bulbs as necessary)
+4) Inspect all appliances
+5) Inspect all door locks
+6) Inspect all plumbing
+7) Inspect Compressor/Generator room
+8) Inspect building and grounds",Pending,2/10/2024,,Technician,0.00,0.00,0.00,,,[]
+593,EQ ID 593,Building,Maintenance,344,Have sprinkler system alarm tested.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+593,EQ ID 593,Building,Maintenance,345,Have security alarm system tested.,Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+593,EQ ID 593,Building,Maintenance,346,"1) Check all lighting and replace bulbs.
+2) Inspect Roof
+3) Check all lighting (replace bulbs as necessary)
+4) Inspect all appliances
+5) Inspect all door locks
+6) Inspect all plumbing
+7) Inspect Compressor/Generator room
+8) Inspect building and grounds",Closed and Completed,4/18/2022,.,Technician,0.00,0.00,0.00,1/10/2024,,[]
+627,EQ ID 627,Appliances,Maintenance,9903,Clean refrigeration coils on ice makers and refrigerators.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+627,EQ ID 627,Appliances,Maintenance,9748,"1)  Clean dust from back of microwaves and air circulation panel in ice makers and refrigerators.
+2)  Clean out ice makers with ""Ice Maker Solution"" per instructions on doors.",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+627,EQ ID 627,Appliances,Maintenance,399,Clean refrigeration coils on ice makers and refrigerators.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+627,EQ ID 627,Appliances,Maintenance,400,"1)  Clean dust from back of microwaves and air circulation panel in ice makers and refrigerators.
+2)  Clean out ice makers with ""Ice Maker Solution"" per instructions on doors.",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,9827,"1) Inspect all LED's and test system per instructions
+2) Flamex technician to perform certification tests and recalibrate control panel.",Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,11737,"1) Wipe off cabinet and blow off inside with low pressure air. Be careful not to damage any internal components or circuits.
+2) Detector line should be activated by flashing light, make sure the fire LED & buzzer alerts.",Pending,5/31/2024,,Operator,0.00,0.00,0.00,,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,11739,"Detectors
+1) Remove cover & inspect detectors to ensure that they are free of dust and moisture. If any dust is present blow out with low pressure and dry out ant moisture completely. 
+2) Entry point should be found and sealed with caulking. 
+3) Inspect detector lenses and clean if there is buildup of material. Lens should have a shiny black appearance with no cracks or chips.
+4) Each detector should be tested for proper operation. This is done by exposing them to sunlight or a flashlight directly in front of lens. Detector should activate properly each time.",Pending,7/17/2024,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,11740,"Extinguishing Device
+1) The strainer on each should be removed and inspected, any build up should be cleaned off.
+2) While testing, assembly should be activated so water is sprayed at least once. Be sure to hat switch is returned to normal condition after completion of test.",Pending,7/17/2024,,Operator,0.00,0.00,0.00,,,[]
+1446,EQ ID 1446,Flamex Spark Detector,Maintenance,884,"1) Inspect all LED's and test system per instructions
+2) Flamex technician to perform certification tests and recalibrate control panel.",Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+567,EQ ID 567,Band Saw,Maintenance,9986,"1) Clean all metal chips and debris from saw.
+2) Check all safety devices",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+567,EQ ID 567,Band Saw,Maintenance,313,"1) Clean all metal chips and debris from saw.
+2) Check all safety devices",Closed and Completed,4/18/2022,Jimmy Sadler,Operator,0.50,0.00,0.00,3/7/2023,Jimmy Sadler - 03/08/23 10:44:52 AM: Done,[]
+567,EQ ID 567,Band Saw,Maintenance,4725,"1) Clean all metal chips and debris from saw.
+2) Check all safety devices",Closed and Completed,4/8/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,11956,Remove sludge,Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,14509,"1) Remove all water and give all internal surfaces a thorough cleaning. Water can be disposed of properly or put back in unit. 
+2) Check for dust buildup on fan blades, this can lead to unbalancing and vibration.",Pending,4/28/2025,,Lead,0.00,0.00,0.00,,,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,480,Blow out Starter Box,Closed and Completed,4/18/2022,Andy Curtis,Maintenance,0.15,0.00,0.00,4/4/2022,Andy Curtis - 09/29/22  5:30:04 AM: Done but w/o not closed.,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,2718,Blow out Starter Box,Closed without Action,11/13/2022,Andy Curtis,Maintenance,0.20,0.00,0.00,11/18/2022,Andy Curtis - 12/10/22  7:41:06 AM: Not needed this time,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,3562,Blow out Starter Box,Closed and Completed,1/10/2023,.,Maintenance,0.00,0.00,0.00,1/16/2024,,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,11958,"1) Remove all water and give all internal surfaces a thorough cleaning. Water can be disposed of properly or put back in unit. 
+2) Check for dust buildup on fan blades, this can lead to unbalancing and vibration.",Closed and Completed,8/19/2024,"Corey Hart, Dana, Amber Throgmorton, Jarvis Partee",Lead,2.00,0.00,0.00,9/24/2024,,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,11957,"Remove doors, stop fan & clean internally",Closed and Completed,6/24/2024,Mirror group,Maintenance,0.00,0.00,0.00,9/27/2024,Andy Curtis - 01/13/25  9:20:12 PM: This was cleaned during inventory in September,[]
+703,EQ ID 703,Cat Wet Dust Collector,Mirrors,13548,"1) Remove all water and give all internal surfaces a thorough cleaning. Water can be disposed of properly or put back in unit. 
+2) Check for dust buildup on fan blades, this can lead to unbalancing and vibration.",Closed and Completed,1/24/2025,Operators,Lead,0.00,0.00,0.00,1/29/2025,Garrett Blankenship - 01/28/25 11:57:40 PM: Unit was cleaned during inventory in September.,[]
+669,EQ ID 669,"Ready Bender, pneumatic",Mirrors,13570,Clean and lubricate pivot points,Pending,2/24/2025,,Operator,0.00,0.00,0.00,,,[]
+669,EQ ID 669,"Ready Bender, pneumatic",Mirrors,451,Clean and lubricate pivot points,Closed and Completed,7/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+669,EQ ID 669,"Ready Bender, pneumatic",Mirrors,9754,Clean and lubricate pivot points,Closed and Completed,5/16/2024,Corey Hart,Operator,0.50,0.00,0.00,6/17/2024,Jesus Tostado - 10/24/24 12:52:55 PM: Did not change the oil filter.,[]
+5324,EQ ID 5324,Stroke Sander- Doucet,Mirrors,13562,Clean the surfaces and the equipment using air pressure on a regular basis.,Pending,10/25/2024,,Operator,0.00,0.00,0.00,,,[]
+5324,EQ ID 5324,Stroke Sander- Doucet,Mirrors,13560,Lubricate the linear or cylindrical bearings occasionally to make the sander move more efficiently.,Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+5324,EQ ID 5324,Stroke Sander- Doucet,Mirrors,11841,Lubricate the linear or cylindrical bearings occasionally to make the sander move more efficiently.,Closed and Completed,6/10/2024,Corey Hart,Operator,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:33:26 PM: Did not change the oil filter.,[]
+5324,EQ ID 5324,Stroke Sander- Doucet,Mirrors,11840,Clean the surfaces and the equipment using air pressure on a regular basis.,Closed and Completed,5/29/2024,Cody Burke,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:45:50 PM: Did not change the oil filter.,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,13571,"1) Check Ceramic tips on mistrack switches if worn through replace
+2) Grease and oil all lube points",Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,13554,Test Safety Switch,Pending,11/8/2024,,Operator,0.00,0.00,0.00,,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,9757,Lube Jack system,Pending,7/16/2024,,Operator,0.00,0.00,0.00,,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,437,Test Safety Switch,Closed and Completed,4/2/2022,Dale Kee,Operator,0.00,0.00,0.00,5/22/2023,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,436,"1) Check Ceramic tips on mistrack switches if worn through replace
+2) Grease and oil all lube points",Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,438,Lube Jack system,Closed and Completed,9/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,5797,Test Safety Switch,Closed and Completed,6/9/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,9611,"1) Check Ceramic tips on mistrack switches if worn through replace
+2) Grease and oil all lube points",Closed and Completed,2/10/2024,Danny Nichols,Operator,0.50,0.00,0.00,3/11/2024,Jesus Tostado - 10/24/24 12:55:14 PM: Did not change the oil filter.,[]
+659,EQ ID 659,TimeSaver Polishing Machine,Mirrors,9978,Test Safety Switch,Closed and Completed,1/31/2024,Danny Nichols,Operator,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:12:46 PM: We don`t have this machine,[]
+661,EQ ID 661,Corner Polisher,Mirrors,14335,"1) Check graphite pads on plates for wear, replace if necessary
+2) Change abrasive belt when worn. To change remove dust hoods and compress spring tension
+3) Check abrasive belt for cupping, this can be due to exposure to moisture. Change belt if this occurs.
+4) Check for abrasive belt alignment with patens. Belt should be even with patens, if this is not the case adjust motor mount setting for proper alignment.",Pending,4/13/2025,,Operator,0.00,0.00,0.00,,,[]
+661,EQ ID 661,Corner Polisher,Mirrors,439,Blow out Starter Box,Closed and Completed,4/18/2022,Andy Curtis,Maintenance,0.15,0.00,0.00,4/4/2022,Andy Curtis - 09/29/22  5:27:59 AM: Done but w/o not closed.,[]
+661,EQ ID 661,Corner Polisher,Mirrors,2860,Blow out Starter Box,Closed without Action,11/13/2022,Andy Curtis,Maintenance,0.20,0.00,0.00,11/18/2022,Andy Curtis - 12/10/22  7:42:53 AM: Not needed this time,[]
+661,EQ ID 661,Corner Polisher,Mirrors,3564,Blow out Starter Box,Closed and Completed,1/10/2023,.,Maintenance,0.00,0.00,0.00,12/20/2022,,[]
+661,EQ ID 661,Corner Polisher,Mirrors,11856,"1) Check graphite pads on plates for wear, replace if necessary
+2) Change abrasive belt when worn. To change remove dust hoods and compress spring tension
+3) Check abrasive belt for cupping, this can be due to exposure to moisture. Change belt if this occurs.
+4) Check for abrasive belt alignment with patens. Belt should be even with patens, if this is not the case adjust motor mount setting for proper alignment.",Closed and Completed,6/10/2024,Operators,Operator,0.00,0.00,0.00,1/13/2025,Andy Curtis - 01/13/25  9:18:58 PM: Belts get changed as needed by operators. Any further problems get reported.,[]
+666,EQ ID 666,Stroke Sander,Mirrors,442,Blow out Starter Box,Closed and Completed,4/18/2022,Andy Curtis,Maintenance Mechanic,0.15,0.00,0.00,4/4/2022,Andy Curtis - 09/29/22  5:29:26 AM: Done but w/o not closed.,[]
+666,EQ ID 666,Stroke Sander,Mirrors,2862,Blow out Starter Box,Closed without Action,11/13/2022,Andy Curtis,Maintenance Mechanic,0.20,0.00,0.00,11/18/2022,Andy Curtis - 12/10/22  7:44:48 AM: Not needed this time,[]
+666,EQ ID 666,Stroke Sander,Mirrors,3566,Blow out Starter Box,Closed and Completed,1/10/2023,.,Maintenance Mechanic,0.00,0.00,0.00,12/20/2022,,[]
+705,EQ ID 705,165 Assembly Driver 2,Mirrors,9739,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+705,EQ ID 705,165 Assembly Driver 2,Mirrors,13552,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Pending,10/31/2024,,Operator,0.00,0.00,0.00,,,[]
+705,EQ ID 705,165 Assembly Driver 2,Mirrors,481,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,1/16/2024,,[]
+705,EQ ID 705,165 Assembly Driver 2,Mirrors,12102,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,6/13/2024,Josh Martin,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:10:28 PM: We don`t have this machine,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,13551,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Pending,10/31/2024,,Operator,0.00,0.00,0.00,,,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,9906,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,482,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,12101,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,6/13/2024,Josh Martin,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:08:24 PM: We don`t have this machine,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,13549,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,10/31/2024,Josh Martin,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:08:55 PM: We don`t have this machine,[]
+706,EQ ID 706,165 Assembly Driver 7,Mirrors,13550,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,10/31/2024,Josh Martin,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:09:29 PM: We don`t have this machine,[]
+716,EQ ID 716,Miller Maxstar 200 Welder,Mirrors,11727,Blow out inside of unit during heavy service clean monthly. Do NOT remove case while blowing out unit.,Pending,5/4/2025,,Maintenance,0.00,0.00,0.00,,,[]
+716,EQ ID 716,Miller Maxstar 200 Welder,Mirrors,11726,"1) Replace unreadable labels
+2) Clean and tighten weld terminals
+3) Replace damaged gas hose
+4) Repair or replace cracked cables and cords",Closed and Completed,11/12/2024,Operators,Maintenance,0.00,0.00,0.00,1/13/2025,Andy Curtis - 01/13/25  9:21:24 PM: Welder is in good shape,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,12999,"1) Check escapement for screw feeder machine.
+2) Check pneumatic system (FRL and hoses)
+3) Check screw gun",Pending,12/10/2024,,Technician,0.00,0.00,0.00,,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,13557,Check stop plate for wear,Pending,12/24/2024,,Operator,0.00,0.00,0.00,,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,13561,"1) Clean all moving part in screw feeder housing.
+2) Check screw feed hoses",Pending,4/24/2025,,Technician,0.00,0.00,0.00,,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,423,"1) Clean all moving part in screw feeder housing.
+2) Check screw feed hoses",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,422,Check stop plate for wear,Closed and Completed,5/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,421,"1) Check escapement for screw feeder machine.
+2) Check pneumatic system (FRL and hoses)
+3) Check screw gun",Closed and Completed,6/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,9724,"1) Check escapement for screw feeder machine.
+2) Check pneumatic system (FRL and hoses)
+3) Check screw gun",Closed and Completed,4/16/2024,Jesus Tostado,Technician,1.00,5.00,0.00,9/10/2024,,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,9719,Check stop plate for wear,Closed and Completed,3/16/2024,Dell Ross,Operator,0.10,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:14:58 PM: We don`t have this machine,[]
+651,EQ ID 651,Screw Machine Horizontal 2,Mirrors,9777,"1) Clean all moving part in screw feeder housing.
+2) Check screw feed hoses",Closed and Completed,7/16/2024,Dell Ross,Technician,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:33:52 PM: Did not change the oil filter.,[]
+652,EQ ID 652,Autofeed Screw driver,Mirrors,13553,Thoroughly clean the machine,Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+652,EQ ID 652,Autofeed Screw driver,Mirrors,424,Thoroughly clean the machine,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+652,EQ ID 652,Autofeed Screw driver,Mirrors,425,"Requires Factory Service, Assembly Automation",Closed and Completed,3/18/2024,Dell Ross,Outside Service,0.50,0.00,0.00,4/18/2024,Jesus Tostado - 10/24/24 12:50:17 PM: Did not change the oil filter.,[]
+652,EQ ID 652,Autofeed Screw driver,Mirrors,9622,Thoroughly clean the machine,Closed and Completed,2/10/2024,Dell Ross,Operator,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:11:48 PM: We don`t have this machine,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9896,Change Hydraulic oil,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,13558,"1) Change v-notch die sets.
+2)Change hydraulic oil filter (Mobile D.T.E. 25 Hyd. Oil )",Pending,4/24/2025,,Operator,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,13565,"1) Service and clean tooling (Remove each tool and clean)
+2) Lubricate drive chains and all grease points (Mobilith AW2 Grease)",Pending,1/24/2025,,Operator,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,15427,Inspect Sensors,Pending,6/18/2025,,Technician,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,434,Change the Un-Coiler's reduction gear oil using Boston Gear Mobil SHC634 synthetic lubricating oil,Pending,3/18/2025,,Technician,0.00,0.00,0.00,,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,433,Inspect Sensors,Closed and Completed,5/18/2022,Andy Curtis,Technician,0.30,0.00,0.00,5/18/2022,Andy Curtis - 12/10/22  7:38:40 AM: Done,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,431,"1) Change v-notch die sets.
+2)Change hydraulic oil filter (Mobile D.T.E. 25 Hyd. Oil )",Closed without Action,9/18/2022,Andy Curtis,Operator,0.00,0.00,0.00,12/10/2022,Andy Curtis - 12/10/22  7:35:38 AM: Not needed at this time,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,3561,Inspect Sensors,Closed and Completed,2/10/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,429,Change Hydraulic oil,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,430,"1) Check and tighten all bolts and fasteners on all punch dies.
+2) Clean Coolant filter
+3) Evaluate coolant, and change if necessary
+4) Clean out air filter cabinet on controller box
+5) Clean forming roller section (Rollers) with clean cloth
+6) Change Coolant",Closed and Completed,4/18/2022,.,Maintenance,0.00,0.00,0.00,1/10/2024,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,3560,"1) Change v-notch die sets.
+2)Change hydraulic oil filter (Mobile D.T.E. 25 Hyd. Oil )",Closed and Completed,6/10/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,432,"1) Service and clean tooling (Remove each tool and clean)
+2) Lubricate drive chains and all grease points (Mobilith AW2 Grease)",Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9623,"1) Check and tighten all bolts and fasteners on all punch dies.
+2) Clean Coolant filter
+3) Evaluate coolant, and change if necessary
+4) Clean out air filter cabinet on controller box
+5) Clean forming roller section (Rollers) with clean cloth
+6) Change Coolant",Closed and Completed,2/10/2024,Josh Marting,Maintenance,1.00,0.00,0.00,3/10/2024,Jesus Tostado - 10/24/24 12:47:27 PM: Did not change the oil filter.,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9723,"1) Service and clean tooling (Remove each tool and clean)
+2) Lubricate drive chains and all grease points (Mobilith AW2 Grease)",Closed and Completed,4/16/2024,Josh Marting,Operator,1.00,0.00,0.00,4/16/2024,Jesus Tostado - 10/24/24 12:48:00 PM: Did not change the oil filter.,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9806,Inspect Sensors,Closed and Completed,3/16/2024,Danny Nichols,Technician,0.50,0.00,0.00,4/16/2024,Jesus Tostado - 10/24/24 12:51:03 PM: Did not change the oil filter.,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,9979,"1) Change v-notch die sets.
+2)Change hydraulic oil filter (Mobile D.T.E. 25 Hyd. Oil )",Closed and Completed,7/16/2024,"Josh Martin, Danny Nichols",Operator,1.00,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:18:22 PM: Did not change the oil filter.,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,13564,"1) Check and tighten all bolts and fasteners on all punch dies.
+2) Clean Coolant filter
+3) Evaluate coolant, and change if necessary
+4) Clean out air filter cabinet on controller box
+5) Clean forming roller section (Rollers) with clean cloth
+6) Change Coolant",Closed and Completed,1/24/2025,"Garrett Blankenship, Operators",Maintenance,0.50,0.00,0.00,1/24/2025,"Garrett Blankenship - 01/28/25 11:56:37 PM: Tightened all bolts and fasteners, blew out cabinet air filters.
+
+Coolant was changed recently, operators completed the rest. | Garrett Blankenship - 01/28/25 11:56:24 PM: Tightened all bolts and fasteners, blew out cabinet air filters.
+
+Coolant was changed recently, operators completed the rest.",[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,13568,Inspect Sensors,Closed and Completed,12/24/2024,Dale and Benn,Technician,0.25,0.00,0.00,4/17/2025,Dale Kee - 04/18/25  7:12:57 AM: Checked all sensors,[]
+657,EQ ID 657,"Roll Former, B-290",Mirrors,14508,"1) Check and tighten all bolts and fasteners on all punch dies.
+2) Clean Coolant filter
+3) Evaluate coolant, and change if necessary
+4) Clean out air filter cabinet on controller box
+5) Clean forming roller section (Rollers) with clean cloth
+6) Change Coolant",Pending,4/28/2025,Garrett Blankenship,Maintenance,0.00,0.00,0.00,4/23/2025,Garrett Blankenship - 04/23/25  1:10:34 AM: Testing comments on PMS,[]
+658,EQ ID 658,"Grinder, 290 Mirror Frame, Corner",Mirrors,435,Blow out Starter Box,Closed and Completed,4/18/2022,Andy Curtis,Maintenance,0.15,0.00,0.00,4/4/2022,Andy Curtis - 09/29/22  5:27:10 AM: Done but w/o not closed.,[]
+658,EQ ID 658,"Grinder, 290 Mirror Frame, Corner",Mirrors,2859,Blow out Starter Box,Closed without Action,11/13/2022,Andy Curtis,Maintenance,0.20,0.00,0.00,11/18/2022,Andy Curtis - 12/10/22  7:42:08 AM: Not needed this time,[]
+658,EQ ID 658,"Grinder, 290 Mirror Frame, Corner",Mirrors,3563,Blow out Starter Box,Closed and Completed,1/10/2023,.,Maintenance,0.00,0.00,0.00,12/20/2022,,[]
+671,EQ ID 671,165 Assembly Driver 1,Mirrors,9910,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+671,EQ ID 671,165 Assembly Driver 1,Mirrors,452,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+671,EQ ID 671,165 Assembly Driver 1,Mirrors,12998,"1) Check oiler, fill if necessary
+2) Check oiler application (1 drop in 5 minutes)
+3) Check air pressure (90 psi)",Closed and Completed,9/10/2024,Jesus Tostado,Operator,1.00,5.00,0.00,9/10/2024,,[]
+672,EQ ID 672,165 Assembly Driver 4,Mirrors,9902,"Check Torque, set to 10 - 11 lb.-in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+672,EQ ID 672,165 Assembly Driver 4,Mirrors,453,"Check Torque, set to 10 - 11 lb.-in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+673,EQ ID 673,165 Assembly Driver 6,Mirrors,9904,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+673,EQ ID 673,165 Assembly Driver 6,Mirrors,454,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+674,EQ ID 674,165 Assembly Driver 5,Mirrors,9833,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+674,EQ ID 674,165 Assembly Driver 5,Mirrors,455,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+675,EQ ID 675,165 Assembly Driver 3,Mirrors,9824,"Check torque, set to 10 - 11 lb.- in.",Pending,1/16/2025,,QA,0.00,0.00,0.00,,,[]
+675,EQ ID 675,165 Assembly Driver 3,Mirrors,456,"Check torque, set to 10 - 11 lb.- in.",Closed and Completed,3/18/2023,.,QA,0.00,0.00,0.00,5/16/2023,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,13566,"1) Open Tooling and clean. Inspect for broken springs/ damage.
+2) Cutoff Tool, check return cylinder shaft for adjustment",Pending,2/24/2025,,Operator,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,458,"1) Check Uncoiler arm spring, replace if weak (about every 2 - 3 years)
+2) Factory service machine, inspect and adjust",Pending,3/18/2024,,Technician,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,9875,"1) Inspect for damage 
+2) Fill gear box with Shell Tellus 32 hydraulic oil to the middle of the top gear shafts.
+3) Replace PLC Relays every 250,000 cycles
+4) Check drive Coupling cores
+5) Change Die springs (200,000 cycles)",Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,9765,"1) Uncoiler, Check motor and power transmission (e.g. gear, sprocket, chain, nuts and bolts etc.)
+2) Take out dies & punches inspect to sharpen",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,13559,"Check finished part for burrs, schedule maintenance if indicated",Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,462,Replace shock absorbers under main punch,Pending,3/18/2025,,Technician,0.00,0.00,0.00,,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,459,"1) Inspect for damage 
+2) Fill gear box with Shell Tellus 32 hydraulic oil to the middle of the top gear shafts.
+3) Replace PLC Relays every 250,000 cycles
+4) Check drive Coupling cores
+5) Change Die springs (200,000 cycles)",Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,461,"Check finished part for burrs, schedule maintenance if indicated",Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,460,"1) Uncoiler, Check motor and power transmission (e.g. gear, sprocket, chain, nuts and bolts etc.)
+2) Take out dies & punches inspect to sharpen",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,457,"1) Open Tooling and clean. Inspect for broken springs/ damage.
+2) Cutoff Tool, check return cylinder shaft for adjustment",Closed and Completed,7/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,9729,"1) Open Tooling and clean. Inspect for broken springs/ damage.
+2) Cutoff Tool, check return cylinder shaft for adjustment",Closed and Completed,5/16/2024,"Josh Martin, Jesus Tostado",Operator,0.50,0.00,0.00,6/16/2024,Jesus Tostado - 10/24/24 12:49:34 PM: Did not change the oil filter.,[]
+676,EQ ID 676,"Roll Former, 165 Frames, Hydromek",Mirrors,9621,"Check finished part for burrs, schedule maintenance if indicated",Closed and Completed,2/10/2024,John McDonald,Operator,0.10,0.00,0.00,10/24/2024,Jesus Tostado - 10/24/24 12:19:06 PM: Did not change the oil filter.,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,9823,Remove all dies and punches.  Clean and inspect for damage,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,464,change the hydraulic oil with (Mobil DTE 24) Shell Tellus 32,Pending,3/18/2024,,Technician,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,9759,change the hydraulic filter,Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,13569,"Check punch #1 hole for burrs.  Replace punch, die, and stripper if burrs are found.",Pending,11/24/2024,,Operator,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,467,Change the Un-Coiler's reduction gear oil with Boston Gear Mobil SCH634 synthetic lubricating oil,Pending,3/18/2025,,Technician,0.00,0.00,0.00,,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,463,Remove all dies and punches.  Clean and inspect for damage,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,466,"Check punch #1 hole for burrs.  Replace punch, die, and stripper if burrs are found.",Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,465,change the hydraulic filter,Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+677,EQ ID 677,"Hanger Machine, Hydromek",Mirrors,9627,"Check punch #1 hole for burrs.  Replace punch, die, and stripper if burrs are found.",Closed and Completed,2/10/2024,"John McDonald, Josh Martin",Operator,1.00,0.00,0.00,3/11/2024,Jesus Tostado - 10/24/24 12:52:00 PM: Did not change the oil filter.,[]
+678,EQ ID 678,Back Machine,Mirrors,10026,grease all grease fittings (one is under servo cover),Pending,2/2/2024,,Operator,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,13555,"1) Check Hydraulic fluid level, refill if necessary
+2) Check all hoses for leaks and damage",Pending,12/24/2024,,Operator,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,470,"1) Factory service, Inspect and adjust (schedule with Roll Former)
+2) Replace hydraulic fluid",Pending,3/18/2024,,Outside Service,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,9742,"1) Replace all Shear springs
+2) Clean both punch and die tooling from debris build-up
+3) Replace die springs and sharpen tooling",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,13556,Check finished part for burrs (< 10% thickness),Pending,11/24/2024,,QA Technician,0.00,0.00,0.00,,,[]
+678,EQ ID 678,Back Machine,Mirrors,468,grease all grease fittings (one is under servo cover),Closed and Completed,4/2/2022,1,Operator,0.00,0.00,0.00,9/18/2023,Jeffery Riffle - 09/18/23 11:50:25 AM: Motor was bound.  Took off and greased.  Also replaced motor,[]
+678,EQ ID 678,Back Machine,Mirrors,472,Check finished part for burrs (< 10% thickness),Closed and Completed,4/18/2022,.,QA Technician,0.00,0.00,0.00,1/10/2024,,[]
+678,EQ ID 678,Back Machine,Mirrors,471,"1) Replace all Shear springs
+2) Clean both punch and die tooling from debris build-up
+3) Replace die springs and sharpen tooling",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+678,EQ ID 678,Back Machine,Mirrors,469,"1) Check Hydraulic fluid level, refill if necessary
+2) Check all hoses for leaks and damage",Closed and Completed,5/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+678,EQ ID 678,Back Machine,Mirrors,7268,grease all grease fittings (one is under servo cover),Closed and Completed,10/3/2023,.,Operator,0.00,0.00,0.00,1/18/2024,,[]
+678,EQ ID 678,Back Machine,Mirrors,9720,"1) Check Hydraulic fluid level, refill if necessary
+2) Check all hoses for leaks and damage",Closed and Completed,3/16/2024,Corey Hart,Operator,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:13:35 PM: We don`t have this machine,[]
+678,EQ ID 678,Back Machine,Mirrors,9613,Check finished part for burrs (< 10% thickness),Closed and Completed,2/10/2024,Jesus Tostado,QA Technician,0.50,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:14:23 PM: We don`t have this machine,[]
+1962,EQ ID 1962,Robotic Screw Machine,Mirrors,11744,"1) Remove power driver for inspection
+2) Insect cylinder, gland, piston, outer gland seal, inner seal, rod real, piston V-cup",Pending,5/5/2026,,Maintenance,0.00,0.00,0.00,,,[]
+1962,EQ ID 1962,Robotic Screw Machine,Mirrors,11745,"Feeder Maintenance
+1) Remove parts of the escapement and clean. Clean rails and slide block.
+2) Lubricate the piston seal with small amount of petroleum jelly.
+
+Escapement Maintenance
+1) Turn off power and disconnect air supply. Disconnect the feed tubing and air lines and remove escapement form mount.
+2) Remove parts in the order listed (Lexan top, Deflector, Rail cover, Cylinder, Slide block, Gland, Spring, Piston)
+3) Clean feed rails and bowl rails with denatured alcohol.
+4) Wipe all grease form piston, seals, inside of cylinder, and the gland.
+5) Lubricate piston seal with Vaseline and assemble the parts in reverse order listed above.",Closed without Action,7/3/2024,Jesus Tostado,Maintenance,0.00,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:05:49 PM: We don`t have this machine anymore,[]
+1962,EQ ID 1962,Robotic Screw Machine,Mirrors,11743,"1) Clean parts with denatured alcohol and check for wear (Jaw set, Feed Tube, Jaw Spring)
+2) Spray parts with WD-40, then assemble parts in reverse order.
+3) Replace bit tip and replace bit extension if there is wear.
+4) Check for any air leaks and eliminate. Verify proper air flow control settings and tighten if needed.
+5) Check position of each prox. rail sensor and tighten (snug) holding screws.
+6) Check shoulder screw fastening the rear of driver cylinder is tight.
+7) Tighten all spanner nuts
+9) Verify nosepiece driving position and adjust/tighten top and bottom shock absorbers",Closed without Action,7/13/2024,Jesus Tostado,Maintenance Mechanic,0.00,0.00,0.00,9/24/2024,Jesus Tostado - 10/24/24 12:07:03 PM: We don`t have this machine,[]
+1962,EQ ID 1962,Robotic Screw Machine,Mirrors,11779,"1) Check alignment between bowl and escapement
+2) Wash the bowl the mild detergent
+3) Check bowl level switch on hopper, paddle switch when vertical should enable hopper.",Closed and Completed,6/3/2024,"Corey Hart, Dell Ross",Operator,1.00,0.00,0.00,9/24/2024,,[]
+1958,EQ ID 1958,MTC CNC Hinge Pocket Machine,Privada,5647,"1.) Clean on, under and around machine, especially grease fittings
+2.) Check for water in FRL (air regulator)
+3.) Lubricate al linear guide rail bearings
+4.) Grease each bearing zerk
+  (there are 12 bearings on each head, 5 bearings on each fixture for a total of 68 bearings)  (Use NSK AS2 grease for bearings and BP Energrease LS EP 00 for rack & pinion)",Pending,5/11/2024,,Operator,0.00,0.00,0.00,,,[]
+1958,EQ ID 1958,MTC CNC Hinge Pocket Machine,Privada,1001,"1.) Clean on, under and around machine, especially grease fittings
+2.) Check for water in FRL (air regulator)
+3.) Lubricate al linear guide rail bearings
+4.) Grease each bearing zerk
+  (there are 12 bearings on each head, 5 bearings on each fixture for a total of 68 bearings)  (Use NSK AS2 grease for bearings and BP Energrease LS EP 00 for rack & pinion)",Closed without Action,3/18/2023,Sam Kesler,Operator,0.00,0.00,0.00,5/11/2023,Sam Kesler - 05/11/23  1:08:05 PM: This PM needs to be cancelled and the manufacturers recommended maintenance including the correct intervals should be used to create separate PM's for Maintenance and Operations,[]
+5327,EQ ID 5327,Automatic Applicator (NEW),Privada,11970,"1) Inspect applicator assembly
+2) Clean exterior surfaces
+3) Flush the H20 adhesive filter
+4) Clean hose exterior & inspect for hydraulic connections
+5) Keep adhesive supply in melter clean",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5327,EQ ID 5327,Automatic Applicator (NEW),Privada,11971,"1) With power locked out, remove electrical cover and check heater & temperature sensor leads are tight and secure.
+2) Tighten all loose connections. 
+3) Replace heater and/or temp. sensor if leads have bare wires that touch each other or service block.
+4) Flush system, including applicators.",Pending,6/10/2024,,Maintenance,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,12051,"1) Check for damages on protective grids, covers, or fences
+2) Check the function of gas pressure springs at the cover hoods and hinged parts",Pending,6/11/2024,,Operator,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,12052,"1) Check function of ground fault circuit disrupters
+2) Check function of water area pressure limiting value",Pending,6/2/2025,,Maintenance,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,16118,Check hydraulic/ heating hoses for leaks,Pending,9/17/2025,,Maintenance,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,12054,"Lubricate housing bearings in the machines in explosive proof design (roller bearings, fan bearings)",Pending,9/2/2024,,Operator,0.00,0.00,0.00,,,[]
+5333,EQ ID 5333,PUR hot melt adhesive system (NEW),Privada,12053,Check hydraulic/ heating hoses for leaks,Closed and Completed,7/1/2024,Bart James,Maintenance,0.00,0.00,0.00,5/11/2025,Bart James - 06/17/25  8:59:16 AM: PM completed during roller change,[]
+5328,EQ ID 5328,Automatic Applicator (NEW),Privada,11973,"1) Inspect applicator assembly
+2) Clean exterior surfaces
+3) Flush the H20 adhesive filter
+4) Clean hose exterior & inspect for hydraulic connections
+5) Keep adhesive supply in melter clean",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5328,EQ ID 5328,Automatic Applicator (NEW),Privada,11974,"1) With power locked out, remove electrical cover and check heater & temperature sensor leads are tight and secure.
+2) Tighten all loose connections. 
+3) Replace heater and/or temp. sensor if leads have bare wires that touch each other or service block.
+4) Flush system, including applicators.",Pending,11/4/2024,,Maintenance,0.00,0.00,0.00,,,[]
+750,EQ ID 750,Tecnolegno 300,Privada,11992,"1) Check oil level & for leaks the in external seals and gaskets
+2) Check for cracks or ageing for the gear units with torque arm (polymer bushings)",Pending,11/4/2024,,Maintenance,0.00,0.00,0.00,,,[]
+750,EQ ID 750,Tecnolegno 300,Privada,11993,Check carefully for wear or aging in gear unit seals and gaskets,Pending,1/6/2025,,Maintenance,0.00,0.00,0.00,,,[]
+1949,EQ ID 1949,MTC Finishing Machine,Privada,11699,"1) Listen for router spindle fan operation (with machine & spindle stopped, feel air flow from bottom of spindle)
+2) Check for control cabinet fan operation
+3) Listen and watch for strange sounds, loose bolts, etc.
+4) Blow debris off fixtures, linear guide rails, etc. as it accumulates.",Pending,5/18/2024,,Operator,0.00,0.00,0.00,,,[]
+1949,EQ ID 1949,MTC Finishing Machine,Privada,11700,"1) Clean on, under, and around machine
+2) Grease all 6 grease points indicated with a RED grease decal
+  - 6 areas of the rack & pinion system; dab grease with a firm bristle brush with nylon bristles
+3) Check for water or debris in compressed air filter.",Pending,5/30/2024,,Operator,0.00,0.00,0.00,,,[]
+1949,EQ ID 1949,MTC Finishing Machine,Privada,11708,"Lubricate all linear guide rail bearings, each bearing has a grease zerk. (There are 6 bearings on the X-axis)",Pending,5/5/2026,,Operator,0.00,0.00,0.00,,,[]
+1949,EQ ID 1949,MTC Finishing Machine,Privada,11707,"Check the alignment of the safety light bar by doing the following:
+1) Turn the machine on
+2) In right side electric cabinet, turn on 24VDC breaker off
+3) Press and hold the ""Light Bar Align"" button located left of electrical cabinet
+4) Continue to hold the ""Light Bar Align"" button and turn the 24VDC breaker on
+5) Continue to hold the ""Light Bar Align"" button for 5 seconds and then release the button
+6) Observe the RED illuminated number on the face of the left light bar
+7) The number will range from 1 to 4 (with 4 being best & 1 being worst)
+8) Adjust the angle and tilt of the light bars until a reading of 4 is present
+9) Turn machine off and wait 90 seconds
+10) Turn machine on and run production as required",Closed and Completed,5/11/2025,Bart James,Maintenance,0.00,0.00,0.00,6/18/2025,,[]
+1338,EQ ID 1338,Shaper #1- Privada,Privada,10023,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Pending,7/18/2024,,Operator,0.00,0.00,0.00,,,[]
+1338,EQ ID 1338,Shaper #1- Privada,Privada,842,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed without Action,5/18/2022,Sam Kesler,Operator,0.00,0.00,0.00,5/11/2023,Sam Kesler - 05/11/23  1:04:56 PM: There is only 1 Sharper used on a daily basis. This PM can go away!,[]
+1338,EQ ID 1338,Shaper #1- Privada,Privada,5642,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed without Action,7/11/2023,Sam Kesler,Operator,0.00,0.00,0.00,6/27/2023,Sam Kesler - 06/27/23  8:35:48 AM: This Machine isn't in service,[]
+1338,EQ ID 1338,Shaper #1- Privada,Privada,6235,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed and Completed,8/27/2023,.,Operator,0.00,0.00,0.00,1/18/2024,,[]
+1339,EQ ID 1339,Shaper #2- Privada,Privada,10024,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Pending,3/18/2024,,Operator,0.00,0.00,0.00,,,[]
+1339,EQ ID 1339,Shaper #2- Privada,Privada,843,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed without Action,5/18/2022,Sam Kesler,Operator,0.00,0.00,0.00,5/11/2023,Sam Kesler - 05/11/23  1:05:13 PM: There is only 1 Sharper used on a daily basis. This PM can go away!,[]
+1339,EQ ID 1339,Shaper #2- Privada,Privada,5643,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed and Completed,7/11/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+1341,EQ ID 1341,Shaper #4- Privada,Privada,9607,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Pending,3/10/2024,,Operator,0.00,0.00,0.00,,,[]
+1341,EQ ID 1341,Shaper #4- Privada,Privada,845,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed without Action,5/18/2022,Sam Kesler,Operator,0.00,0.00,0.00,5/11/2023,Sam Kesler - 05/11/23  1:05:46 PM: There is only 1 Sharper used on a daily basis. This PM can go away!,[]
+1341,EQ ID 1341,Shaper #4- Privada,Privada,5645,Check pad under conveyor chain for excessive wear.  Report excessive wear to the Maintenance Department.,Closed and Completed,7/11/2023,0,Operator,0.00,0.00,0.00,1/10/2024,,[]
+1221,EQ ID 1221,"Fixture, F-0011, Cam (2888)",Quality Assurance,9908,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1221,EQ ID 1221,"Fixture, F-0011, Cam (2888)",Quality Assurance,730,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1222,EQ ID 1222,"Fixture, F-0012, Flange Assembly (2888)",Quality Assurance,9834,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1222,EQ ID 1222,"Fixture, F-0012, Flange Assembly (2888)",Quality Assurance,731,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1223,EQ ID 1223,"Fixture, F-0013, Lock Angle Bracket Weld (2888)",Quality Assurance,9915,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1223,EQ ID 1223,"Fixture, F-0013, Lock Angle Bracket Weld (2888)",Quality Assurance,732,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1224,EQ ID 1224,"Fixture, F-0014, Lock Assembly (2888)",Quality Assurance,9752,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1224,EQ ID 1224,"Fixture, F-0014, Lock Assembly (2888)",Quality Assurance,733,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,1/16/2024,,[]
+1225,EQ ID 1225,"Gauge, G-0001, Foam Thickness Go/No Go (290)",Quality Assurance,9846,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1225,EQ ID 1225,"Gauge, G-0001, Foam Thickness Go/No Go (290)",Quality Assurance,734,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1226,EQ ID 1226,"Fixture, F-0001, Shateboard (290)",Quality Assurance,9847,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1226,EQ ID 1226,"Fixture, F-0001, Shateboard (290)",Quality Assurance,735,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1227,EQ ID 1227,"Fixture, F-0002, Shateboard (290)",Quality Assurance,9850,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1227,EQ ID 1227,"Fixture, F-0002, Shateboard (290)",Quality Assurance,736,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1228,EQ ID 1228,"Fixture, F-0003, 18x30, Timesaver (290)",Quality Assurance,9864,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1228,EQ ID 1228,"Fixture, F-0003, 18x30, Timesaver (290)",Quality Assurance,737,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1229,EQ ID 1229,"Fixture, F-0004, 18x30, Timesaver (290)",Quality Assurance,9878,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1229,EQ ID 1229,"Fixture, F-0004, 18x30, Timesaver (290)",Quality Assurance,738,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1230,EQ ID 1230,"Fixture, F-0005, 18x36, Timesaver (290)",Quality Assurance,9914,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1230,EQ ID 1230,"Fixture, F-0005, 18x36, Timesaver (290)",Quality Assurance,739,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1231,EQ ID 1231,"Fixture, F-0006, 18x36, Timesaver (290)",Quality Assurance,9892,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1231,EQ ID 1231,"Fixture, F-0006, 18x36, Timesaver (290)",Quality Assurance,740,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1232,EQ ID 1232,"Fixture, F-0007, 24x30, Timesaver (290)",Quality Assurance,9930,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1232,EQ ID 1232,"Fixture, F-0007, 24x30, Timesaver (290)",Quality Assurance,741,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1233,EQ ID 1233,"Fixture, F-0008, 24x30,Timesaver (290)",Quality Assurance,9912,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1233,EQ ID 1233,"Fixture, F-0008, 24x30,Timesaver (290)",Quality Assurance,742,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1234,EQ ID 1234,"Fixture, F-0009, 24x36, Timesaver (290)",Quality Assurance,9909,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1234,EQ ID 1234,"Fixture, F-0009, 24x36, Timesaver (290)",Quality Assurance,743,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1235,EQ ID 1235,"Fixture, F-0010, 24x36, Timesaver (290)",Quality Assurance,9919,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1235,EQ ID 1235,"Fixture, F-0010, 24x36, Timesaver (290)",Quality Assurance,744,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1236,EQ ID 1236,"Fixture, F-0015, Lock Assembly (262)",Quality Assurance,9920,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1236,EQ ID 1236,"Fixture, F-0015, Lock Assembly (262)",Quality Assurance,745,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1237,EQ ID 1237,"Fixture, F-0016, Weld Test (221)",Quality Assurance,9913,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1237,EQ ID 1237,"Fixture, F-0016, Weld Test (221)",Quality Assurance,746,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1238,EQ ID 1238,"Fixture, F-0017, Cam Arbor Press (2888)",Quality Assurance,5397,"1) Cleaning
+2) Visual
+3) Functional",Pending,4/21/2024,,QA Technician,0.00,0.00,0.00,,,[]
+1238,EQ ID 1238,"Fixture, F-0017, Cam Arbor Press (2888)",Quality Assurance,747,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,test,QA Technician,0.00,0.00,0.00,4/21/2023,,[]
+1239,EQ ID 1239,"Fixture, F-0018, 270 Lid, 262/270 Fladder",Quality Assurance,9916,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1239,EQ ID 1239,"Fixture, F-0018, 270 Lid, 262/270 Fladder",Quality Assurance,748,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1240,EQ ID 1240,"Fixture, F-0019, 270 Lid, 262/270 Fladder",Quality Assurance,9890,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1240,EQ ID 1240,"Fixture, F-0019, 270 Lid, 262/270 Fladder",Quality Assurance,749,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1241,EQ ID 1241,"Fixture, F-0020, 270 Lid, 262/270 Fladder",Quality Assurance,9851,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1241,EQ ID 1241,"Fixture, F-0020, 270 Lid, 262/270 Fladder",Quality Assurance,750,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1242,EQ ID 1242,"Fixture, F-0021, 262 Door, 262/270 Fladder",Quality Assurance,9852,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1242,EQ ID 1242,"Fixture, F-0021, 262 Door, 262/270 Fladder",Quality Assurance,751,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1243,EQ ID 1243,"Fixture, F-0022, 262 Door, 262/270 Fladder",Quality Assurance,9849,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1243,EQ ID 1243,"Fixture, F-0022, 262 Door, 262/270 Fladder",Quality Assurance,752,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1244,EQ ID 1244,"Fixture, F-0023, 262 Door, 262/270 Fladder",Quality Assurance,9856,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1244,EQ ID 1244,"Fixture, F-0023, 262 Door, 262/270 Fladder",Quality Assurance,753,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1245,EQ ID 1245,"Fixture, F-0024, 262 Door, 262/270 Fladder",Quality Assurance,9891,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1245,EQ ID 1245,"Fixture, F-0024, 262 Door, 262/270 Fladder",Quality Assurance,754,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1246,EQ ID 1246,"Fixture, F-0025, 2621 Door, 262/270 Fladder",Quality Assurance,9932,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1246,EQ ID 1246,"Fixture, F-0025, 2621 Door, 262/270 Fladder",Quality Assurance,755,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1247,EQ ID 1247,"Fixture, F-0026, 2621 Door, 262/270 Fladder",Quality Assurance,9880,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1247,EQ ID 1247,"Fixture, F-0026, 2621 Door, 262/270 Fladder",Quality Assurance,756,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1248,EQ ID 1248,"Fixture, F-0027, 2621 Door, 262/270 Fladder",Quality Assurance,9918,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1248,EQ ID 1248,"Fixture, F-0027, 2621 Door, 262/270 Fladder",Quality Assurance,757,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1249,EQ ID 1249,"Fixture, F-0028, Screw (Stainless)",Quality Assurance,9762,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1249,EQ ID 1249,"Fixture, F-0028, Screw (Stainless)",Quality Assurance,758,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,1/16/2024,,[]
+1250,EQ ID 1250,"Fixture, F-0029, Outswing (Solid)",Quality Assurance,9929,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1250,EQ ID 1250,"Fixture, F-0029, Outswing (Solid)",Quality Assurance,759,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1251,EQ ID 1251,"Boundary Board, BB-0001, Corner Sander (290)",Quality Assurance,9876,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1251,EQ ID 1251,"Boundary Board, BB-0001, Corner Sander (290)",Quality Assurance,760,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1252,EQ ID 1252,"Boundary Board, BB-0002, Corner Welder (290)",Quality Assurance,9917,"1) Review Samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1252,EQ ID 1252,"Boundary Board, BB-0002, Corner Welder (290)",Quality Assurance,761,"1) Review Samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1253,EQ ID 1253,"Boundary Board, BB-0003, Glass (Mirrors)",Quality Assurance,9926,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1253,EQ ID 1253,"Boundary Board, BB-0003, Glass (Mirrors)",Quality Assurance,762,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1254,EQ ID 1254,"Boundary Board, BB-0004, Miter Sander (290)",Quality Assurance,9895,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1254,EQ ID 1254,"Boundary Board, BB-0004, Miter Sander (290)",Quality Assurance,763,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1255,EQ ID 1255,"Boundary Board, BB-0005, Side Polisher (290)",Quality Assurance,9921,"1) Review samples
+2) Review labels & stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1255,EQ ID 1255,"Boundary Board, BB-0005, Side Polisher (290)",Quality Assurance,764,"1) Review samples
+2) Review labels & stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1256,EQ ID 1256,"Boundary Board, BB-0006, Weld (Fabrication)",Quality Assurance,9894,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1256,EQ ID 1256,"Boundary Board, BB-0006, Weld (Fabrication)",Quality Assurance,765,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1257,EQ ID 1257,"Boundary Board, BB-0007, Burr (Fabrication)",Quality Assurance,9924,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1257,EQ ID 1257,"Boundary Board, BB-0007, Burr (Fabrication)",Quality Assurance,766,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1258,EQ ID 1258,"Boundary Board, BB-0008, Dent (Fabrication)",Quality Assurance,9848,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1258,EQ ID 1258,"Boundary Board, BB-0008, Dent (Fabrication)",Quality Assurance,767,"1) Review samples
+2) Review labels and stickers
+
+Replace anything damaged or missing, which may require request from manufacturing",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1264,EQ ID 1264,"Refractometer, M-0001, RHB Series, Brix (Mirrors)",Quality Assurance,9940,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1264,EQ ID 1264,"Refractometer, M-0001, RHB Series, Brix (Mirrors)",Quality Assurance,768,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1265,EQ ID 1265,"6"" Caliper, M-0002, Serial Number 0111691, Mitutoyo (Mirrors)",Quality Assurance,9899,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1265,EQ ID 1265,"6"" Caliper, M-0002, Serial Number 0111691, Mitutoyo (Mirrors)",Quality Assurance,769,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1266,EQ ID 1266,"6"" Caliper, M-0003, Serial Number 12506371, Mitutoyo (T. Magneson)",Quality Assurance,9933,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1266,EQ ID 1266,"6"" Caliper, M-0003, Serial Number 12506371, Mitutoyo (T. Magneson)",Quality Assurance,770,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1267,EQ ID 1267,"6"" Caliper, M-0004, Serial Number BF016622, Mitutoyo (Fabrication)",Quality Assurance,9938,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1267,EQ ID 1267,"6"" Caliper, M-0004, Serial Number BF016622, Mitutoyo (Fabrication)",Quality Assurance,771,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1268,EQ ID 1268,"12"" Caliper, M-0005, Serial Number 07533667, Mitutoyo (Fabrication)",Quality Assurance,9935,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1268,EQ ID 1268,"12"" Caliper, M-0005, Serial Number 07533667, Mitutoyo (Fabrication)",Quality Assurance,772,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1269,EQ ID 1269,"24"" Caliper, M-0006, Serial Number 321984, Mitutoyo (Fabrication)",Quality Assurance,9943,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1269,EQ ID 1269,"24"" Caliper, M-0006, Serial Number 321984, Mitutoyo (Fabrication)",Quality Assurance,773,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1270,EQ ID 1270,"Bent Feeler Gage Set, M-0007 (Fabrication)",Quality Assurance,9946,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1270,EQ ID 1270,"Bent Feeler Gage Set, M-0007 (Fabrication)",Quality Assurance,774,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1271,EQ ID 1271,"Feeler Gage Set, M-0008, 70-817, Armstrong (Fabrication)",Quality Assurance,9927,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1271,EQ ID 1271,"Feeler Gage Set, M-0008, 70-817, Armstrong (Fabrication)",Quality Assurance,775,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1272,EQ ID 1272,"6"" Double Square, M-0009, 7182-006, Products Engineering (Fabrication)",Quality Assurance,9882,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1272,EQ ID 1272,"6"" Double Square, M-0009, 7182-006, Products Engineering (Fabrication)",Quality Assurance,776,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1273,EQ ID 1273,"Micrometer, 0-1"", M-0010, 103-113, Mitutoyo (Fabrication)",Quality Assurance,9942,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1273,EQ ID 1273,"Micrometer, 0-1"", M-0010, 103-113, Mitutoyo (Fabrication)",Quality Assurance,777,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1274,EQ ID 1274,"Radius Gage Set, M-0011, S167C, Starrett (Fabrication)",Quality Assurance,9888,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1274,EQ ID 1274,"Radius Gage Set, M-0011, S167C, Starrett (Fabrication)",Quality Assurance,778,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1275,EQ ID 1275,"Combination Set, M-0012, C9-12-4R, Starrett (Fabrication)",Quality Assurance,9836,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1275,EQ ID 1275,"Combination Set, M-0012, C9-12-4R, Starrett (Fabrication)",Quality Assurance,779,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1276,EQ ID 1276,"6"" Caliper, M-0013, Serial Number 08379672, Mitutoyo (Holzma)",Quality Assurance,9853,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1276,EQ ID 1276,"6"" Caliper, M-0013, Serial Number 08379672, Mitutoyo (Holzma)",Quality Assurance,780,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1277,EQ ID 1277,"72"" Level, M-0014 (Holzma)",Quality Assurance,9855,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1277,EQ ID 1277,"72"" Level, M-0014 (Holzma)",Quality Assurance,781,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1278,EQ ID 1278,"72"" Level, M-0015 (Laminate)",Quality Assurance,9854,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1278,EQ ID 1278,"72"" Level, M-0015 (Laminate)",Quality Assurance,782,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1279,EQ ID 1279,"Jig, J-0001, Contura Lock Bracket Weld (2888)",Quality Assurance,9889,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1279,EQ ID 1279,"Jig, J-0001, Contura Lock Bracket Weld (2888)",Quality Assurance,783,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1280,EQ ID 1280,"Jig, J-0002, Door to Frame Weld (2888)",Quality Assurance,9941,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1280,EQ ID 1280,"Jig, J-0002, Door to Frame Weld (2888)",Quality Assurance,784,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1281,EQ ID 1281,"jig, J-0003, Stop Bracket Weld (2888)",Quality Assurance,9884,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1281,EQ ID 1281,"jig, J-0003, Stop Bracket Weld (2888)",Quality Assurance,785,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1282,EQ ID 1282,"Jig, J-0004, Hinge Weld (262)",Quality Assurance,9936,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1282,EQ ID 1282,"Jig, J-0004, Hinge Weld (262)",Quality Assurance,786,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1283,EQ ID 1283,"Jig, J-0005, Towel Tray Weld (262)",Quality Assurance,9948,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1283,EQ ID 1283,"Jig, J-0005, Towel Tray Weld (262)",Quality Assurance,787,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1284,EQ ID 1284,"Jig, J-0006, Towel Tray Weld (262)",Quality Assurance,9953,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1284,EQ ID 1284,"Jig, J-0006, Towel Tray Weld (262)",Quality Assurance,788,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1285,EQ ID 1285,"Jig, J-0007, Door to Unit Weld (262)",Quality Assurance,9950,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1285,EQ ID 1285,"Jig, J-0007, Door to Unit Weld (262)",Quality Assurance,789,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1286,EQ ID 1286,"Jig, J-0008, Hinge Weld (270)",Quality Assurance,9957,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1286,EQ ID 1286,"Jig, J-0008, Hinge Weld (270)",Quality Assurance,790,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1287,EQ ID 1287,"Jig, J-0009, Hinge Weld (270)",Quality Assurance,9944,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1287,EQ ID 1287,"Jig, J-0009, Hinge Weld (270)",Quality Assurance,791,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1288,EQ ID 1288,"Jig, J-0010, Hinge (Privada)",Quality Assurance,9887,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1288,EQ ID 1288,"Jig, J-0010, Hinge (Privada)",Quality Assurance,792,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1289,EQ ID 1289,"Jig, J-0011, Magnet (Privada)",Quality Assurance,9949,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1289,EQ ID 1289,"Jig, J-0011, Magnet (Privada)",Quality Assurance,793,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1290,EQ ID 1290,"jig, J-0012, In Swing/Out Swing (Privada)",Quality Assurance,9897,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1290,EQ ID 1290,"jig, J-0012, In Swing/Out Swing (Privada)",Quality Assurance,794,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1291,EQ ID 1291,"Gauge, G-0002, Foam Thickness, Go/No Go (165)",Quality Assurance,9863,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1291,EQ ID 1291,"Gauge, G-0002, Foam Thickness, Go/No Go (165)",Quality Assurance,795,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1292,EQ ID 1292,"Gauge, G-0003, Corner Gap (290)",Quality Assurance,9865,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1292,EQ ID 1292,"Gauge, G-0003, Corner Gap (290)",Quality Assurance,796,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1293,EQ ID 1293,"Gauge, G-0004, Corner Gap (290)",Quality Assurance,9867,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1293,EQ ID 1293,"Gauge, G-0004, Corner Gap (290)",Quality Assurance,797,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1294,EQ ID 1294,"Gauge, G-0005, Miter Corner Gap (165)",Quality Assurance,9866,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1294,EQ ID 1294,"Gauge, G-0005, Miter Corner Gap (165)",Quality Assurance,798,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1295,EQ ID 1295,"Gauge, G-0006, Miter Corner Gap (165)",Quality Assurance,9923,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1295,EQ ID 1295,"Gauge, G-0006, Miter Corner Gap (165)",Quality Assurance,799,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1296,EQ ID 1296,"Gauge, G-0007, Miter Corner Gap (165)",Quality Assurance,9955,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1296,EQ ID 1296,"Gauge, G-0007, Miter Corner Gap (165)",Quality Assurance,800,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1297,EQ ID 1297,"Gauge, G-0008, Miter Corner Gap (165)",Quality Assurance,9898,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1297,EQ ID 1297,"Gauge, G-0008, Miter Corner Gap (165)",Quality Assurance,801,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1298,EQ ID 1298,"Gauge, G-0009, Miter Corner Gap (165)",Quality Assurance,9951,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1298,EQ ID 1298,"Gauge, G-0009, Miter Corner Gap (165)",Quality Assurance,802,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1299,EQ ID 1299,"Gauge, G-0010, Miter Corner Gap (165)",Quality Assurance,9945,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1299,EQ ID 1299,"Gauge, G-0010, Miter Corner Gap (165)",Quality Assurance,803,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1300,EQ ID 1300,"Gauge, G-0011, Miter Corner Gap (165)",Quality Assurance,9960,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1300,EQ ID 1300,"Gauge, G-0011, Miter Corner Gap (165)",Quality Assurance,804,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1301,EQ ID 1301,"Gauge, G-0012, Door Frame (2888)",Quality Assurance,9829,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1301,EQ ID 1301,"Gauge, G-0012, Door Frame (2888)",Quality Assurance,805,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1302,EQ ID 1302,"Gauge, G-0013, Drop Test (2888)",Quality Assurance,9828,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1302,EQ ID 1302,"Gauge, G-0013, Drop Test (2888)",Quality Assurance,806,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1303,EQ ID 1303,"Gauge, G-0014, Material Thickness, Go/No Go (Holzma) Ref: G-1080",Quality Assurance,9831,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1303,EQ ID 1303,"Gauge, G-0014, Material Thickness, Go/No Go (Holzma) Ref: G-1080",Quality Assurance,807,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1304,EQ ID 1304,"Gauge, G-0015, Magnet, Go/No Go (Privada)",Quality Assurance,9900,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1304,EQ ID 1304,"Gauge, G-0015, Magnet, Go/No Go (Privada)",Quality Assurance,808,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1305,EQ ID 1305,"Gauge, G-0016, Shaper 1, Go/No Go (Privada)",Quality Assurance,9956,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1305,EQ ID 1305,"Gauge, G-0016, Shaper 1, Go/No Go (Privada)",Quality Assurance,809,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1306,EQ ID 1306,"Gauge, G-0017, Shaper 2, Go/No Go (Privada)",Quality Assurance,9843,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1306,EQ ID 1306,"Gauge, G-0017, Shaper 2, Go/No Go (Privada)",Quality Assurance,810,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1307,EQ ID 1307,"Gauge, G-0018, Shaper 3, Go/No Go (Privada)",Quality Assurance,9965,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1307,EQ ID 1307,"Gauge, G-0018, Shaper 3, Go/No Go (Privada)",Quality Assurance,811,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1308,EQ ID 1308,"Gauge, G-0019, Shaper 4, Go/No Go (Privda)",Quality Assurance,9877,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1308,EQ ID 1308,"Gauge, G-0019, Shaper 4, Go/No Go (Privda)",Quality Assurance,812,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1309,EQ ID 1309,"Gauge, G-0020, MS-47PT1 Magnet/Pole Tester (Privada)",Quality Assurance,9893,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1309,EQ ID 1309,"Gauge, G-0020, MS-47PT1 Magnet/Pole Tester (Privada)",Quality Assurance,813,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1310,EQ ID 1310,"Gauge, G-0021, Measuring, 40.25"" (Stainless) Ref: T-1030318",Quality Assurance,9879,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1310,EQ ID 1310,"Gauge, G-0021, Measuring, 40.25"" (Stainless) Ref: T-1030318",Quality Assurance,814,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1311,EQ ID 1311,"Gauge, G-0022, Measuring, 72.25"" (Stainless) Ref: T-1030318",Quality Assurance,9868,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1311,EQ ID 1311,"Gauge, G-0022, Measuring, 72.25"" (Stainless) Ref: T-1030318",Quality Assurance,815,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1312,EQ ID 1312,"Gauge, G-0023, Measuring, 86"" (Stainless) Ref: T-1030318",Quality Assurance,9959,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1312,EQ ID 1312,"Gauge, G-0023, Measuring, 86"" (Stainless) Ref: T-1030318",Quality Assurance,816,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1313,EQ ID 1313,"Gauge, G-0024, Measuring, 96"" (Stainless) Ref: T-1030318",Quality Assurance,9952,"1) Cleaning
+2) Visual
+2) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1313,EQ ID 1313,"Gauge, G-0024, Measuring, 96"" (Stainless) Ref: T-1030318",Quality Assurance,817,"1) Cleaning
+2) Visual
+2) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1314,EQ ID 1314,"Gauge, G-0025, Depth (Solid)",Quality Assurance,9966,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1314,EQ ID 1314,"Gauge, G-0025, Depth (Solid)",Quality Assurance,818,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1316,EQ ID 1316,"Gauge, G-0026, Go/No Go (Door Notcher)",Quality Assurance,9947,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1316,EQ ID 1316,"Gauge, G-0026, Go/No Go (Door Notcher)",Quality Assurance,12080,"!) Make sure access doors & E-stop is working properly before running machine
+2) Make sure saw & bit is secured firmly before running machine",Pending,6/17/2024,,Operator,0.00,0.00,0.00,,,[]
+1316,EQ ID 1316,"Gauge, G-0026, Go/No Go (Door Notcher)",Quality Assurance,12081,Hub city pillow block bearings should be greased weekly.,Pending,6/17/2024,,Operator,0.00,0.00,0.00,,,[]
+1316,EQ ID 1316,"Gauge, G-0026, Go/No Go (Door Notcher)",Quality Assurance,819,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1317,EQ ID 1317,"Gauge, G-0027, Go/No Go (Gapless)",Quality Assurance,9963,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1317,EQ ID 1317,"Gauge, G-0027, Go/No Go (Gapless)",Quality Assurance,820,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1318,EQ ID 1318,"Gauge, G-0028, Drill Bit Depth (Laminate)",Quality Assurance,9830,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1318,EQ ID 1318,"Gauge, G-0028, Drill Bit Depth (Laminate)",Quality Assurance,821,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1319,EQ ID 1319,"Jig, J-0013, In Swing/Out Swing (1040)",Quality Assurance,9964,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1319,EQ ID 1319,"Jig, J-0013, In Swing/Out Swing (1040)",Quality Assurance,822,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1320,EQ ID 1320,"Jig, J-0014, In Swing/Out Swing (1040)",Quality Assurance,9972,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1320,EQ ID 1320,"Jig, J-0014, In Swing/Out Swing (1040)",Quality Assurance,823,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1321,EQ ID 1321,"Jig, J-0015, Leveling Bar (1540)",Quality Assurance,9971,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1321,EQ ID 1321,"Jig, J-0015, Leveling Bar (1540)",Quality Assurance,824,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1322,EQ ID 1322,"Jig, J-0016, Leveling Bar (1540)",Quality Assurance,9961,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1322,EQ ID 1322,"Jig, J-0016, Leveling Bar (1540)",Quality Assurance,825,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1323,EQ ID 1323,"Jig, J-0017, Leveling Bar (1541/1548)",Quality Assurance,9826,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1323,EQ ID 1323,"Jig, J-0017, Leveling Bar (1541/1548)",Quality Assurance,826,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1324,EQ ID 1324,"Jig, J-0018, Leveling Bar (1541 4"" stile)",Quality Assurance,9958,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1324,EQ ID 1324,"Jig, J-0018, Leveling Bar (1541 4"" stile)",Quality Assurance,827,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1325,EQ ID 1325,"Jig, J-0019, Leveling Bar, 1542/1552 7"" stile)",Quality Assurance,9954,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1325,EQ ID 1325,"Jig, J-0019, Leveling Bar, 1542/1552 7"" stile)",Quality Assurance,828,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1326,EQ ID 1326,"Jig, J-0020, Leveling Bar (1541 3"" stile)",Quality Assurance,9870,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1326,EQ ID 1326,"Jig, J-0020, Leveling Bar (1541 3"" stile)",Quality Assurance,829,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1327,EQ ID 1327,"Jig, J-0021, Leveling Bar (1541 3"" stile)",Quality Assurance,9869,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1327,EQ ID 1327,"Jig, J-0021, Leveling Bar (1541 3"" stile)",Quality Assurance,830,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1328,EQ ID 1328,"Jig, J-0022, Leveling Bar (1541 5"" stile)",Quality Assurance,9874,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1328,EQ ID 1328,"Jig, J-0022, Leveling Bar (1541 5"" stile)",Quality Assurance,831,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1331,EQ ID 1331,"72"" Level, M-0016 (Privada)",Quality Assurance,9837,"1) Cleaning
+2) Visual
+3) Functional",Pending,1/16/2025,,QA Technician,0.00,0.00,0.00,,,[]
+1331,EQ ID 1331,"72"" Level, M-0016 (Privada)",Quality Assurance,833,"1) Cleaning
+2) Visual
+3) Functional",Closed and Completed,3/18/2023,.,QA Technician,0.00,0.00,0.00,5/16/2023,,[]
+1719,EQ ID 1719,Arpac stretch wrapper,Shipping,11690,"Make sure power is OFF or disconnected before servicing.
+1) Clean up trash around area, wipe up and grease or spills.
+2) Using wipes and warm soapy water, clean external surfaces of machine.
+
+Machine should be on for this part of servicing.
+1) While machine is cycling, press E-Stop. The machine should immediately stop, pull button back up to reset.",Pending,5/18/2024,,Operator,0.00,0.00,0.00,,,[]
+1719,EQ ID 1719,Arpac stretch wrapper,Shipping,11691,"Machine power should be OFF or disconnected before servicing. 
+1) Cleaning film saver pre-stretch roller
+   - Do NOT use acetone to clean rollers or they will be damaged
+   - Push knob down to open roller door, thoroughly clean roller with wipes and isopropyl alcohol. Close door when finished.
+2) Cleaning Photo Sensor
+   - Spray small amount of window cleaning solution to face of photo eye, then dry photo eye with cleaning wipe.",Pending,5/30/2024,,Operator,0.00,0.00,0.00,,,[]
+1719,EQ ID 1719,Arpac stretch wrapper,Shipping,11692,"Machine power should be OFF or disconnected before servicing.
+1) Greasing center shaft bearing
+  - Apply one pump of grease (grease gun with No.2 Grade Lithium Grease) to the grease fitting, then wipe fitting clean.",Pending,9/13/2024,,Operator,0.00,0.00,0.00,,,[]
+1719,EQ ID 1719,Arpac stretch wrapper,Shipping,11693,"Machine power should be OFF or disconnected before servicing.
+1) Checking Turntable Drive Chain Tension
+  - Loosen bolt.
+  - Turn nut until you begin to feel resistance of chain tightener against the chain, then turn another 30 degrees.
+  - While holding nut still, tighten bolt. Do NOT overtighten chain, machine will get damaged if you do.
+2) Check Fasteners for Tightness
+  - Check all exterior fasteners for tightness, tighten as required.
+3) Grease Carriage Lift Chain
+  - Appy a thin film of grease (No.2 lithium grease) to the lift chain, then wipe any excess grease.",Pending,5/4/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1720,EQ ID 1720,Cousins stretch wrapper,Shipping,11724,"LP-SRT High/Low Profile
+1) Test operation & adjust carriage safety switch as required
+2) Inspect & tighten set screws of pre-stretch roller bearings
+3) Lubricate & adjust tension of pre-stretch chains
+4) Inspect & tighten set-screws pre-stretch sprockets",Pending,7/17/2024,,Operator,0.00,0.00,0.00,,,[]
+1720,EQ ID 1720,Cousins stretch wrapper,Shipping,11723,"LP-SRT High/Low Profile
+1) Inspect turntable support rollers
+2) Lubricate & adjust tension of turntable drive chain
+3) Inspect & tighten set screws on turntable gear reducer sprocket
+4) Inspect, check or adjust sensing distance of 1PX turntable pulse prox. sensor, tighten locking nuts if required
+5)  Inspect, check or adjust sensing distance of 5PX carriage pulse prox. sensor, tighten locking nuts if required
+6) Lubricate & adjust tension of carriage lift chain
+7) Inspect & tighten mounting/ set screws of carriage lift sprockets
+8) Inspect carriage limit switch arms",Closed and Completed,10/17/2024,Gen Pac,Maintenance Mechanic,0.00,0.00,0.00,9/27/2024,Andy Curtis - 02/10/25 10:11:15 PM: This was done on a yearly PM at inventory last year in Sept.,[]
+5337,EQ ID 5337,262 Multi-Gun Welder,Stainless,12428,"1) Check water 
+2) Check tip condition",Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5337,EQ ID 5337,262 Multi-Gun Welder,Stainless,12429,"1) Clean air filter
+2) Check air regulator
+3) Check oiler
+4) Check cylinder",Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5337,EQ ID 5337,262 Multi-Gun Welder,Stainless,14343,"1) Check tap switch
+2) Check ground connections
+3) Check copper secondary insulation
+4) Tighten all bolts, holders, adapter, etc.",Pending,7/14/2025,,Maintenance,0.00,0.00,0.00,,,[]
+5337,EQ ID 5337,262 Multi-Gun Welder,Stainless,12431,"1) Clean & inspect between sections of the copper secondary joints
+2) Check & clean air valves
+3) Check if all control functions are working properly
+4) Check all fuses",Pending,7/7/2025,,Maintenance,0.00,0.00,0.00,,,[]
+5337,EQ ID 5337,262 Multi-Gun Welder,Stainless,12430,"1) Check tap switch
+2) Check ground connections
+3) Check copper secondary insulation
+4) Tighten all bolts, holders, adapter, etc.",Closed and Completed,1/6/2025,.,Maintenance,0.00,0.00,0.00,1/13/2025,Andy Curtis - 01/14/25  1:19:29 AM: New welder,[]
+647,EQ ID 647,2888 Cam Riviter,Stainless,11770,"Lubricate Hilliard (roller type) clutches:
+-Use National River part (#250-320) Roller clutch oil. Apply a dew drops every few days. For an alternative, you can use R & O (rust & oxidation type viscosity ISO 32 WITHOUT Antiwear (AW) or Extreme pressure (DP) additives 
+-DO NOT USE MOTOR OIL",Pending,6/3/2024,,Operator,0.00,0.00,0.00,,,[]
+647,EQ ID 647,2888 Cam Riviter,Stainless,11771,"Clean rivet feed system
+-Vibratory Hooper, should be cleaned with any commercial grade cleaner.
+-Slide Rail
+-Shuttle
+-Jaw Set",Pending,5/28/2024,,Operator,0.00,0.00,0.00,,,[]
+647,EQ ID 647,2888 Cam Riviter,Stainless,11961,"Grease flywheel, top pivot pin, links & connecting rod with general purpose grease.",Pending,7/1/2024,,Operator,0.00,0.00,0.00,,,[]
+647,EQ ID 647,2888 Cam Riviter,Stainless,11962,"Drop a few drops of SAE 10 oil on each part weekly
+1) Shuttle block
+2) Hopper shaft and rachet
+3) eccentric drive and drive spring
+4) Shuttle actuator
+5) Hopper drive lever pin
+6) Plunger and jaw carrier
+7) Clutch and clutch trip mechanism",Pending,7/5/2024,,Operator,0.00,0.00,0.00,,,[]
+647,EQ ID 647,2888 Cam Riviter,Stainless,11964,Lubricate crankshaft bearings with general purpose grease,Pending,8/5/2024,,Operator,0.00,0.00,0.00,,,[]
+1637,EQ ID 1637,221 Finished Product Lift,Stainless,16121,"1) Inspect center pivot bushing and pins, cylinder clevis pins and bushings. Apply oil or WD40 to parts if needed.
+2) Check level and appearance of hydraulic fluid. With machine on lowered position, there should be about 3/4 inch of air space in tank. If machine fully elevated there should be 3/4 inch of oil left in tank. Change oil if dark, milky white or feels gritty/sticky.",Pending,7/17/2025,,Outside Service,0.00,0.00,0.00,,,[]
+1637,EQ ID 1637,221 Finished Product Lift,Stainless,14514,"1)  Check all hydraulic fittings and hoses, repair connections if needed.
+2) Remove down valve from pump and solenoid. Disassemble and clean with compressed air, then reassemble.
+3) Drain all hydraulic fluid from tank and cylinder and discard it. Refill tank with new hydraulic fluid
+4) Remove suction filter from tank. Clean with compressed air then reinstall fittings",Pending,7/29/2025,,Outside Service,0.00,0.00,0.00,,,[]
+1637,EQ ID 1637,221 Finished Product Lift,Stainless,11876,"1)  Check all hydraulic fittings and hoses, repair connections if needed.
+2) Remove down valve from pump and solenoid. Disassemble and clean with compressed air, then reassemble.
+3) Drain all hydraulic fluid from tank and cylinder and discard it. Refill tank with new hydraulic fluid
+4) Remove suction filter from tank. Clean with compressed air then reinstall fittings",Closed and Completed,11/4/2024,Lily Company,Outside Service,0.00,0.00,0.00,9/26/2024,Garrett Blankenship - 01/29/25  2:00:59 AM: Done by Lily during inventory in September.,[]
+1637,EQ ID 1637,221 Finished Product Lift,Stainless,11875,"1) Inspect center pivot bushing and pins, cylinder clevis pins and bushings. Apply oil or WD40 to parts if needed.
+2) Check level and appearance of hydraulic fluid. With machine on lowered position, there should be about 3/4 inch of air space in tank. If machine fully elevated there should be 3/4 inch of oil left in tank. Change oil if dark, milky white or feels gritty/sticky.",Closed and Completed,6/17/2024,Lily Company,Outside Service,0.00,0.00,0.00,1/29/2025,Garrett Blankenship - 01/28/25 11:58:56 PM: Service was done by Lily during inventory.,[]
+1637,EQ ID 1637,221 Finished Product Lift,Stainless,14510,"1) Inspect center pivot bushing and pins, cylinder clevis pins and bushings. Apply oil or WD40 to parts if needed.
+2) Check level and appearance of hydraulic fluid. With machine on lowered position, there should be about 3/4 inch of air space in tank. If machine fully elevated there should be 3/4 inch of oil left in tank. Change oil if dark, milky white or feels gritty/sticky.",Closed and Completed,2/28/2025,Lilly company,Outside Service,0.00,0.00,0.00,3/11/2025,Bart James - 06/17/25  9:06:58 AM: complete linkage rebuild,[]
+1730,EQ ID 1730,262 Cartoner,Stainless,11837,"1)  Inspect vacuum cups, lines & filters for wear and clean.
+2)  Clean machine inside and out. Remove glue with Goo Gone or similar solvent.
+3)  Lubricate vacuum bearings
+4)  Lubricate all sliding guides
+5)  Inspect for and drain the water from the air filter.",Pending,6/3/2024,,Operator,0.00,0.00,0.00,,,[]
+1730,EQ ID 1730,262 Cartoner,Stainless,11838,"1) Check all safeties and E-stops for proper operation
+2) Inspect all cylinders, air leaking from them means seal is no good. Must replace 
+3) Inspect scoop paddle system focus, on brass bearings, check for ease of movement. Replace if binding",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+1730,EQ ID 1730,262 Cartoner,Stainless,16142,Check vacuum filter & change vacuum filter if needed.,Pending,9/18/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1730,EQ ID 1730,262 Cartoner,Stainless,11839,Check vacuum filter & change vacuum filter if needed.,Closed and Completed,7/1/2024,"Andy Curtis, Garrett Blankenship",Maintenance Mechanic,0.50,0.00,0.00,1/29/2025,Andy Curtis - 01/29/25  1:57:21 AM: Took filter out and cleaned it.,[]
+1730,EQ ID 1730,262 Cartoner,Stainless,14511,Check vacuum filter & change vacuum filter if needed.,Closed and Completed,4/29/2025,Terry Wilson,Maintenance Mechanic,0.00,0.00,0.00,5/15/2025,,[]
+1803,EQ ID 1803,Fladder 262-270,Stainless,11783,"Use compressed air but do NOT blow dust into tightenings and bearings
+1) Clean dust around gear head with the 6 spindles.
+2) Clean off dust and remove clocked oil on the rails of the movable suspension for gear head",Pending,5/25/2024,,Operator,0.00,0.00,0.00,,,[]
+1803,EQ ID 1803,Fladder 262-270,Stainless,11786,"1) Grease nipple at toothed rim
+-Apply totally 4 loads with grease gun
+-Do NOT grease toothed rim
+2) Inner of machine must be cleaned by blowing and wiping dust away
+-Conveyor belt must be cleaned to maintain rough surface",Pending,6/5/2024,,Operator,0.00,0.00,0.00,,,[]
+1803,EQ ID 1803,Fladder 262-270,Stainless,11787,"1) Grease nipples at bearings on conveyor shaft.
+-At each bearing there is 1 grease nipple (1 load each)
+2) Grease nipple for height adjustment of gear head",Pending,10/17/2024,,Operator,0.00,0.00,0.00,,,[]
+1803,EQ ID 1803,Fladder 262-270,Stainless,11788,"1) Change oil of gear head
+-DO NOT change oil in the conveyor gearbox or the oscillation gearbox",Pending,4/7/2026,,Maintenance,0.00,0.00,0.00,,,[]
+648,EQ ID 648,2888 Auto Rivet Machine (Door),Stainless,11931,"Daily Lubrication schedule (SAE 20 oil)
+1) Toggle eccentric strap
+2) Lift level stud & pin
+3) Trip cut-off lever pin
+4) Upper & lower toke pins
+5) Treadle shaft
+6) Transfer slide lever shaft
+7) Jaw carrier bar
+8) Clutch stop latch & screw
+9) Hopper connecting bar stud
+10) Lower, Center & upper toggle pins
+11) Clutch roller cage
+12) Pawl rocker & connecting lug
+13) Pawl pin
+14) Plunger",Pending,6/5/2024,,Operator,0.00,0.00,0.00,,,[]
+648,EQ ID 648,2888 Auto Rivet Machine (Door),Stainless,11932,"Weekly Lubrication Schedule 
+(use SAE 20 oil for the following):
+1) Hooper shaft
+2) Motor bearings
+
+(use No. 2 Cup Grease for the following):
+3) Cut-off stud
+4) Flywheel
+5) Knock-off pin
+6) Clutch Shaft",Pending,6/5/2024,,Operator,0.00,0.00,0.00,,,[]
+595,EQ ID 595,160 TStraight Side Press (270),Stainless,9804,Change oil filter cartridge on top of tank every 500 hours of use.,Pending,4/16/2024,,Technician,0.00,0.00,0.00,,,[]
+595,EQ ID 595,160 TStraight Side Press (270),Stainless,11667,"Change hydraulic oil, clean tank and suction strainer every 2 years.",Pending,5/15/2026,,Technician,0.00,0.00,0.00,,,[]
+595,EQ ID 595,160 TStraight Side Press (270),Stainless,9862,Grease motor once a year only.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+595,EQ ID 595,160 TStraight Side Press (270),Stainless,347,Change oil filter cartridge on top of tank every 500 hours of use.,Closed and Completed,6/18/2022,Jimmy Sadler,Technician,0.50,20.00,0.00,8/18/2022,,[]
+595,EQ ID 595,160 TStraight Side Press (270),Stainless,349,Grease motor once a year only.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+595,EQ ID 595,160 TStraight Side Press (270),Stainless,2671,Change oil filter cartridge on top of tank every 500 hours of use.,Closed and Completed,1/13/2023,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+595,EQ ID 595,160 TStraight Side Press (270),Stainless,348,"Change hydraulic oil, clean tank and suction strainer every 2 years.",Closed and Completed,3/18/2024,Jimmy,Technician,0.00,0.00,0.00,5/15/2024,,[]
+596,EQ ID 596,SGR 165 Ton Press,Stainless,9782,"1)Inspect connection point of counterbalance rod to slide.
+2)Inspect and adjust the drive belt tension. Replace belts in sets.
+3)Make certain connection bolts are secure and show no signs of wear or fatigue.
+4)Inspect and adjust the Clutch and brake lining clearances. Adjust to .03""-.05""
+5)Inspect the interior walls and seals of both air counterbalance cylinders.",Pending,2/16/2024,,Technician,0.00,0.00,0.00,,,[]
+596,EQ ID 596,SGR 165 Ton Press,Stainless,9858,"1)Inspect complete air clutch and braking system. Refer to manual.
+2)Check the dual press valve solenoids and pressure switches for proper operation. Refer to manual.
+3)Inspect and verify all bolts, fittings and attachments for loose, worn or broken parts.",Pending,1/16/2025,,Outside Service,0.00,0.00,0.00,,,[]
+596,EQ ID 596,SGR 165 Ton Press,Stainless,350,"1)Inspect connection point of counterbalance rod to slide.
+2)Inspect and adjust the drive belt tension. Replace belts in sets.
+3)Make certain connection bolts are secure and show no signs of wear or fatigue.
+4)Inspect and adjust the Clutch and brake lining clearances. Adjust to .03""-.05""
+5)Inspect the interior walls and seals of both air counterbalance cylinders.",Closed and Completed,4/18/2022,Columbia Machine Tool,Technician,4.00,0.00,4.00,8/1/2022,,[]
+596,EQ ID 596,SGR 165 Ton Press,Stainless,2672,"1)Inspect connection point of counterbalance rod to slide.
+2)Inspect and adjust the drive belt tension. Replace belts in sets.
+3)Make certain connection bolts are secure and show no signs of wear or fatigue.
+4)Inspect and adjust the Clutch and brake lining clearances. Adjust to .03""-.05""
+5)Inspect the interior walls and seals of both air counterbalance cylinders.",Closed and Completed,11/13/2022,.,Technician,0.00,0.00,0.00,12/5/2022,,[]
+596,EQ ID 596,SGR 165 Ton Press,Stainless,351,"1)Inspect complete air clutch and braking system. Refer to manual.
+2)Check the dual press valve solenoids and pressure switches for proper operation. Refer to manual.
+3)Inspect and verify all bolts, fittings and attachments for loose, worn or broken parts.",Closed and Completed,3/18/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,15850,Verify PH of coolant water in barrels is above 7.0.,Pending,6/6/2025,,Operator,0.00,0.00,0.00,,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,16507,"1)  Drain water from air filter bowl.
+2)  Check water coolant level and proper flow.
+3)  Inspect and make sure all safety devices are properly installed and fully operational.
+4)  Inspect air lubrication oil on bowl and fill as needed with mineral oil.",Pending,7/29/2025,,Operator,0.00,0.00,0.00,,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,9807,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,352,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,4/2/2022,Ricky Cary,Operator,0.50,1.00,0.00,5/20/2022,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,353,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,4/18/2022,Ricky Cary,Operator,0.10,1.00,0.00,8/12/2022,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,2674,"1)  Drain water from air filter bowl.
+2)  Check water coolant level and proper flow.
+3)  Inspect and make sure all safety devices are properly installed and fully operational.
+4)  Inspect air lubrication oil on bowl and fill as needed with mineral oil.",Closed and Completed,10/14/2022,D.Jones,Operator,0.50,1.00,0.00,11/2/2022,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,2673,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,10/28/2022,T. Thomason,Operator,0.50,1.00,0.00,11/4/2022,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,3104,"1)  Drain water from air filter bowl.
+2)  Check water coolant level and proper flow.
+3)  Inspect and make sure all safety devices are properly installed and fully operational.
+4)  Inspect air lubrication oil on bowl and fill as needed with mineral oil.",Closed and Completed,11/3/2022,J. Allen,Operator,0.50,1.00,0.00,11/11/2022,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,3303,"1)  Drain water from air filter bowl.
+2)  Check water coolant level and proper flow.
+3)  Inspect and make sure all safety devices are properly installed and fully operational.
+4)  Inspect air lubrication oil on bowl and fill as needed with mineral oil.",Closed and Completed,11/19/2022,Johnie Williams,Operator,0.10,1.00,0.00,11/21/2022,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,2675,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed without Action,11/13/2022,Tyler Thomason,Operator,0.10,1.00,0.00,11/23/2022,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,3295,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,12/3/2022,Tyler Thomason,Operator,0.10,1.00,0.00,12/5/2022,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,4498,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,3/7/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,4183,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,2/28/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,4495,"1)  Drain water from air filter bowl.
+2)  Check water coolant level and proper flow.
+3)  Inspect and make sure all safety devices are properly installed and fully operational.
+4)  Inspect air lubrication oil on bowl and fill as needed with mineral oil.",Closed and Completed,2/21/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,9840,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,1/31/2024,Dale Kee (Test),Operator,0.25,0.00,0.00,5/22/2025,,[]
+598,EQ ID 598,221 Multi-head Welder,Stainless,9802,"1)  Drain water from air filter bowl.
+2)  Check water coolant level and proper flow.
+3)  Inspect and make sure all safety devices are properly installed and fully operational.
+4)  Inspect air lubrication oil on bowl and fill as needed with mineral oil.",Closed and Completed,1/17/2024,Dale Kee,Operator,0.00,0.00,0.00,7/28/2025,,[]
+599,EQ ID 599,221 Cartoner,Stainless,9745,Change out vacuum filters and clean vacuum lines.,Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+599,EQ ID 599,221 Cartoner,Stainless,11763,"1) Clean and inspect vacuum cups, use lacquer thinner or water only to clean.
+2) Blow machine with compressed air & remove any glue build up on glue panel plows
+3) Inspect and dump any water in air regulator reservoir, replace filter if needed.
+5) Remove any cartons in magazine and store flat in a dry place",Pending,5/23/2024,,Operator,0.00,0.00,0.00,,,[]
+599,EQ ID 599,221 Cartoner,Stainless,11764,"1) Check all safeties and E-stops for proper operation
+2) Inspect all cylinders, air leaking from them means seal is no good. Must replace 
+3) Inspect scoop paddle system focus, on brass bearings, check for ease of movement. Replace if binding",Pending,7/12/2024,,Operator,0.00,0.00,0.00,,,[]
+599,EQ ID 599,221 Cartoner,Stainless,354,Change out vacuum filters and clean vacuum lines.,Closed and Completed,6/18/2022,Michelle Love,Operator,1.00,5.00,1.00,9/30/2022,,[]
+599,EQ ID 599,221 Cartoner,Stainless,2676,Change out vacuum filters and clean vacuum lines.,Closed and Completed,1/13/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+603,EQ ID 603,262-1 Rocker Arm Welder,Stainless,9809,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+603,EQ ID 603,262-1 Rocker Arm Welder,Stainless,9842,Verify PH of coolant water in barrels is above 7.0.,Pending,1/31/2024,,Operator,0.00,0.00,0.00,,,[]
+603,EQ ID 603,262-1 Rocker Arm Welder,Stainless,356,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,4/2/2022,Ricky Cary,Operator,0.10,1.00,0.00,5/20/2022,,[]
+603,EQ ID 603,262-1 Rocker Arm Welder,Stainless,355,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,4/18/2022,Ricky Cary,Operator,0.10,1.00,0.00,8/12/2022,,[]
+603,EQ ID 603,262-1 Rocker Arm Welder,Stainless,2678,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,10/28/2022,T. Thomason,Operator,0.50,1.00,0.00,11/4/2022,,[]
+603,EQ ID 603,262-1 Rocker Arm Welder,Stainless,2677,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed without Action,11/13/2022,Tyler Thomason,Operator,0.10,1.00,0.00,11/23/2022,,[]
+603,EQ ID 603,262-1 Rocker Arm Welder,Stainless,3294,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,12/3/2022,Tyler Thomason,Operator,0.10,1.00,0.00,12/5/2022,,[]
+603,EQ ID 603,262-1 Rocker Arm Welder,Stainless,4497,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,3/7/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+603,EQ ID 603,262-1 Rocker Arm Welder,Stainless,4184,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,2/28/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+604,EQ ID 604,262-3 Rocker Arm Welder,Stainless,9832,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+604,EQ ID 604,262-3 Rocker Arm Welder,Stainless,9845,Verify PH of coolant water in barrels is above 7.0.,Pending,1/31/2024,,Operator,0.00,0.00,0.00,,,[]
+604,EQ ID 604,262-3 Rocker Arm Welder,Stainless,358,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,4/2/2022,D. Jones,Operator,0.01,1.00,0.00,5/10/2022,,[]
+604,EQ ID 604,262-3 Rocker Arm Welder,Stainless,357,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,4/18/2022,Tyler Thomason,Operator,0.10,1.00,0.00,8/12/2022,,[]
+604,EQ ID 604,262-3 Rocker Arm Welder,Stainless,2680,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,10/28/2022,T.Thomason,Operator,0.10,1.00,0.00,9/29/2022,,[]
+604,EQ ID 604,262-3 Rocker Arm Welder,Stainless,2679,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,11/13/2022,Tyler Thomason,Operator,0.10,1.00,0.00,11/14/2022,,[]
+604,EQ ID 604,262-3 Rocker Arm Welder,Stainless,3105,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,11/17/2022,Tyler Thomason,Operator,0.10,1.00,0.00,11/18/2022,,[]
+604,EQ ID 604,262-3 Rocker Arm Welder,Stainless,4494,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,3/7/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+604,EQ ID 604,262-3 Rocker Arm Welder,Stainless,4365,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,3/14/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+605,EQ ID 605,262-35 Ton Press Brake,Stainless,9726,Replace filter cartridge if filter indicator is in the red or..,Pending,5/16/2024,,Technician,0.00,0.00,0.00,,,[]
+605,EQ ID 605,262-35 Ton Press Brake,Stainless,360,"Change hydraulic oil, clean oil tank and clean or change suction strainer.",Pending,3/18/2024,,Technician,0.00,0.00,0.00,,,[]
+605,EQ ID 605,262-35 Ton Press Brake,Stainless,9838,Grease motor fittings.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+605,EQ ID 605,262-35 Ton Press Brake,Stainless,361,Grease motor fittings.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+605,EQ ID 605,262-35 Ton Press Brake,Stainless,359,Replace filter cartridge if filter indicator is in the red or..,Closed and Completed,7/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+606,EQ ID 606,Die Lubricant Sprayer,Stainless,9808,"1) Check the filters in the reservoir.
+2) Check and fill the lubricant bowl with mineral oil.
+3) Check for proper spray pattern.
+-Clogged spray tips
+-Dirty strainers behind tips
+-Loose fittings
+-Holes in spray line tubing
+-Worn O-rings inside pumps
+-Air supply (air pressure)
+-Viscosity of lubricant
+4) Check and drain the water bowl.",Pending,1/31/2024,,Operator,0.00,0.00,0.00,,,[]
+606,EQ ID 606,Die Lubricant Sprayer,Stainless,362,"1) Check the filters in the reservoir.
+2) Check and fill the lubricant bowl with mineral oil.
+3) Check for proper spray pattern.
+-Clogged spray tips
+-Dirty strainers behind tips
+-Loose fittings
+-Holes in spray line tubing
+-Worn O-rings inside pumps
+-Air supply (air pressure)
+-Viscosity of lubricant
+4) Check and drain the water bowl.",Closed and Completed,4/2/2022,Terry Wilson,Operator,0.10,1.00,0.00,5/19/2022,,[]
+606,EQ ID 606,Die Lubricant Sprayer,Stainless,2681,"1) Check the filters in the reservoir.
+2) Check and fill the lubricant bowl with mineral oil.
+3) Check for proper spray pattern.
+-Clogged spray tips
+-Dirty strainers behind tips
+-Loose fittings
+-Holes in spray line tubing
+-Worn O-rings inside pumps
+-Air supply (air pressure)
+-Viscosity of lubricant
+4) Check and drain the water bowl.",Closed and Completed,10/28/2022,T.Wilson,Operator,1.00,1.00,0.00,11/11/2022,,[]
+606,EQ ID 606,Die Lubricant Sprayer,Stainless,3293,"1) Check the filters in the reservoir.
+2) Check and fill the lubricant bowl with mineral oil.
+3) Check for proper spray pattern.
+-Clogged spray tips
+-Dirty strainers behind tips
+-Loose fittings
+-Holes in spray line tubing
+-Worn O-rings inside pumps
+-Air supply (air pressure)
+-Viscosity of lubricant
+4) Check and drain the water bowl.",Closed and Completed,12/3/2022,Robert Crook,Operator,0.10,1.00,0.00,12/5/2022,,[]
+606,EQ ID 606,Die Lubricant Sprayer,Stainless,4496,"1) Check the filters in the reservoir.
+2) Check and fill the lubricant bowl with mineral oil.
+3) Check for proper spray pattern.
+-Clogged spray tips
+-Dirty strainers behind tips
+-Loose fittings
+-Holes in spray line tubing
+-Worn O-rings inside pumps
+-Air supply (air pressure)
+-Viscosity of lubricant
+4) Check and drain the water bowl.",Closed and Completed,3/7/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,9801,"1) Hydraulic Filter Replacement
+2) Inspect Hydraulic System",Pending,4/16/2024,,Technician,0.00,0.00,0.00,,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,9755,"1) Sprocket Inspection
+2) Setscrew and Bushing Inspection
+3) Clean the chain
+4) Chain Elongation Inspection
+5) Re-Installing the Chain
+6) Sprocket Replacement (Smaller)
+7) Sprocket Replacement (Larger)",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,9825,"1) Spring Tension Adjustment (Failsafe Brake)
+2) Brake Pad Replacement
+3) Lubricate Chain
+4) Sprocket Alignment
+5) Check Hydraulic Fluid Level
+6) Inspect Brake Pad (Replace at 1/8"")
+7) Test Chain Tension
+8) Lubricate Mandrel Tube",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,366,"1) Check and adjust, if necessary, the Mandrel Expansion Assy.
+2) Hydraulic Fluid Replacement
+3) Check and Adjust 2nd Regulator (Failsafe Brake Only) if pressure has been changed",Pending,3/18/2024,,Technician,0.00,0.00,0.00,,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,9780,"1) Sprocket Alignment
+2) Lubricate Chain
+3) Test Chain Tension
+4) Brake Pad Replacement
+5) Lubricate Mandrel Tube
+6) Check Hyd. Fluid Levels
+7) Inspect Brake Pad (Replace at 1/8"")",Pending,2/16/2024,,Technician,0.00,0.00,0.00,,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,365,"1) Spring Tension Adjustment (Failsafe Brake)
+2) Brake Pad Replacement
+3) Lubricate Chain
+4) Sprocket Alignment
+5) Check Hydraulic Fluid Level
+6) Inspect Brake Pad (Replace at 1/8"")
+7) Test Chain Tension
+8) Lubricate Mandrel Tube",Closed and Completed,4/18/2022,Tracy Hardin,Operator,0.30,3.00,0.50,8/11/2022,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,367,"1) Sprocket Alignment
+2) Lubricate Chain
+3) Test Chain Tension
+4) Brake Pad Replacement
+5) Lubricate Mandrel Tube
+6) Check Hyd. Fluid Levels
+7) Inspect Brake Pad (Replace at 1/8"")",Closed and Completed,4/18/2022,Terry Wilson,Technician,1.40,3.00,2.00,8/12/2022,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,363,"1) Hydraulic Filter Replacement
+2) Inspect Hydraulic System",Closed without Action,6/18/2022,Jimmy Sadler,Technician,1.00,20.00,0.00,9/30/2022,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,2683,"1) Spring Tension Adjustment (Failsafe Brake)
+2) Brake Pad Replacement
+3) Lubricate Chain
+4) Sprocket Alignment
+5) Check Hydraulic Fluid Level
+6) Inspect Brake Pad (Replace at 1/8"")
+7) Test Chain Tension
+8) Lubricate Mandrel Tube",Closed and Completed,11/13/2022,Terry Wilson/Tracy Hardin,Operator,1.00,3.00,0.00,11/14/2022,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,4371,"1) Spring Tension Adjustment (Failsafe Brake)
+2) Brake Pad Replacement
+3) Lubricate Chain
+4) Sprocket Alignment
+5) Check Hydraulic Fluid Level
+6) Inspect Brake Pad (Replace at 1/8"")
+7) Test Chain Tension
+8) Lubricate Mandrel Tube",Closed and Completed,3/14/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,2682,"1) Hydraulic Filter Replacement
+2) Inspect Hydraulic System",Closed and Completed,1/13/2023,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,364,"1) Sprocket Inspection
+2) Setscrew and Bushing Inspection
+3) Clean the chain
+4) Chain Elongation Inspection
+5) Re-Installing the Chain
+6) Sprocket Replacement (Smaller)
+7) Sprocket Replacement (Larger)",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+607,EQ ID 607,Pull Off Coil Reel,Stainless,2684,"1) Sprocket Alignment
+2) Lubricate Chain
+3) Test Chain Tension
+4) Brake Pad Replacement
+5) Lubricate Mandrel Tube
+6) Check Hyd. Fluid Levels
+7) Inspect Brake Pad (Replace at 1/8"")",Closed and Completed,11/13/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,14341,"1)  Lubricate the hand wheel bearing.
+2)  Clean the feed rollers and control cabinet fan per instructions in the manual.",Pending,4/14/2025,,Operator,0.00,0.00,0.00,,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,9786,"1) Inspect all mechanical, electrical and pneumatic components and connections.
+2)Remove the gear side guard and inspect the gear faces for excessive wear and backlash. Replace gears if necessary per instructions.",Pending,4/16/2024,,Technician,0.00,0.00,0.00,,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,14336,"1)Remove the gear side guard and grease the gears per instructions in the manual.
+2)Remove the drive side guard and inspect the belt for wear or damage.
+3)Check the drive belt tension and adjust per instructions in the manual.",Pending,2/14/2025,,Technician,0.00,0.00,0.00,,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,370,"1)Remove the gear side guard and grease the gears per instructions in the manual.
+2)Remove the drive side guard and inspect the belt for wear or damage.
+3)Check the drive belt tension and adjust per instructions in the manual.",Closed and Completed,4/18/2022,Tracy Hardin,Technician,0.30,0.00,0.30,8/12/2022,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,369,"1) Inspect all mechanical, electrical and pneumatic components and connections.
+2)Remove the gear side guard and inspect the gear faces for excessive wear and backlash. Replace gears if necessary per instructions.",Closed and Completed,6/18/2022,Tracy Hardin,Technician,0.50,0.00,0.00,9/30/2022,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,368,"1)  Lubricate the hand wheel bearing.
+2)  Clean the feed rollers and control cabinet fan per instructions in the manual.",Closed and Completed,6/18/2022,Terry Wilson,Operator,1.00,0.00,1.00,9/30/2022,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,2687,"1)Remove the gear side guard and grease the gears per instructions in the manual.
+2)Remove the drive side guard and inspect the belt for wear or damage.
+3)Check the drive belt tension and adjust per instructions in the manual.",Closed without Action,11/13/2022,Tracy Hardin,Technician,0.50,2.00,0.00,11/13/2022,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,2686,"1) Inspect all mechanical, electrical and pneumatic components and connections.
+2)Remove the gear side guard and inspect the gear faces for excessive wear and backlash. Replace gears if necessary per instructions.",Closed and Completed,1/13/2023,.,Technician,0.00,0.00,0.00,12/20/2022,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,2685,"1)  Lubricate the hand wheel bearing.
+2)  Clean the feed rollers and control cabinet fan per instructions in the manual.",Closed and Completed,1/13/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,4485,"1)Remove the gear side guard and grease the gears per instructions in the manual.
+2)Remove the drive side guard and inspect the belt for wear or damage.
+3)Check the drive belt tension and adjust per instructions in the manual.",Closed and Completed,3/20/2023,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,9982,"1)Remove the gear side guard and grease the gears per instructions in the manual.
+2)Remove the drive side guard and inspect the belt for wear or damage.
+3)Check the drive belt tension and adjust per instructions in the manual.",Closed and Completed,2/16/2024,Andy Curtis,Technician,0.50,0.00,0.00,1/14/2025,Andy Curtis - 01/14/25  1:09:48 AM: Completed,[]
+608,EQ ID 608,ServoMaster Feed,Stainless,9799,"1)  Lubricate the hand wheel bearing.
+2)  Clean the feed rollers and control cabinet fan per instructions in the manual.",Closed and Completed,4/16/2024,"Andy Curtis, Garrett Blankenship",Operator,0.50,0.00,0.00,1/14/2025,Andy Curtis - 01/14/25  1:16:48 AM: Completed,[]
+609,EQ ID 609,Shear,Stainless,16120,"1) Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2) Remove top cover of each side panel and grease the gib plate.
+3) Grease all fittings for the support bearings and linkage shaft.
+4) Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Pending,7/17/2025,,Maintenance,0.00,0.00,0.00,,,[]
+609,EQ ID 609,Shear,Stainless,371,"1) Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2) Remove top cover of each side panel and grease the gib plate.
+3) Grease all fittings for the support bearings and linkage shaft.
+4) Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Closed without Action,4/18/2022,Terry Wilson,Maintenance,1.50,3.00,1.50,8/12/2022,,[]
+609,EQ ID 609,Shear,Stainless,2688,"1) Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2) Remove top cover of each side panel and grease the gib plate.
+3) Grease all fittings for the support bearings and linkage shaft.
+4) Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Closed and Completed,11/13/2022,Tracy Hardin/Terry Wilson,Maintenance,1.50,2.00,0.00,11/14/2022,,[]
+609,EQ ID 609,Shear,Stainless,4367,"1) Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2) Remove top cover of each side panel and grease the gib plate.
+3) Grease all fittings for the support bearings and linkage shaft.
+4) Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Closed and Completed,3/14/2023,.,Maintenance,0.00,0.00,0.00,5/16/2023,,[]
+609,EQ ID 609,Shear,Stainless,9839,"1) Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2) Remove top cover of each side panel and grease the gib plate.
+3) Grease all fittings for the support bearings and linkage shaft.
+4) Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Closed and Completed,2/16/2024,Garrett Blankenship,Maintenance,1.00,0.00,0.00,1/14/2025,"Garrett Blankenship - 01/14/25  1:14:05 AM: Brake okay. Gib plates appear greased, but stripped bolts prevented removal of covers. Greased fittings for support bearings and linking shaft. Rest looked good",[]
+609,EQ ID 609,Shear,Stainless,14339,"1) Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2) Remove top cover of each side panel and grease the gib plate.
+3) Grease all fittings for the support bearings and linkage shaft.
+4) Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Closed and Completed,2/14/2025,Maintenance Crew,Maintenance,0.00,0.00,0.00,4/18/2025,Bart James - 06/17/25  9:05:57 AM: complete linkage rebuild,[]
+610,EQ ID 610,End Drive Conveyor,Stainless,9725,Check motor amp draw and compare with factory specification.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+610,EQ ID 610,End Drive Conveyor,Stainless,9812,"1) Inspect gear motor drive/timing belt for wear.
+2) Inspect roller bearings for smooth operation.",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+610,EQ ID 610,End Drive Conveyor,Stainless,373,"1) Inspect gear motor drive/timing belt for wear.
+2) Inspect roller bearings for smooth operation.",Closed and Completed,4/18/2022,Tracy Hardin,Operator,0.30,0.00,0.30,8/12/2022,,[]
+610,EQ ID 610,End Drive Conveyor,Stainless,2689,"1) Inspect gear motor drive/timing belt for wear.
+2) Inspect roller bearings for smooth operation.",Closed and Completed,11/13/2022,Tracy Hardin,Operator,0.30,0.00,0.00,11/14/2022,,[]
+610,EQ ID 610,End Drive Conveyor,Stainless,4368,"1) Inspect gear motor drive/timing belt for wear.
+2) Inspect roller bearings for smooth operation.",Closed and Completed,3/14/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+610,EQ ID 610,End Drive Conveyor,Stainless,372,Check motor amp draw and compare with factory specification.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+611,EQ ID 611,Stacker,Stainless,9822,Inspect entire unit and tighten all fasteners.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+611,EQ ID 611,Stacker,Stainless,14310,Grease adjusting screws.,Pending,7/9/2025,,Technician,0.00,0.00,0.00,,,[]
+611,EQ ID 611,Stacker,Stainless,374,Inspect entire unit and tighten all fasteners.,Closed and Completed,4/18/2022,Terry Wilson,Operator,0.30,0.00,0.30,8/12/2022,,[]
+611,EQ ID 611,Stacker,Stainless,2690,Inspect entire unit and tighten all fasteners.,Closed and Completed,11/13/2022,Tracy Hardin,Operator,0.30,0.00,0.00,11/14/2022,,[]
+611,EQ ID 611,Stacker,Stainless,4369,Inspect entire unit and tighten all fasteners.,Closed and Completed,3/14/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+611,EQ ID 611,Stacker,Stainless,375,Grease adjusting screws.,Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+611,EQ ID 611,Stacker,Stainless,9746,Grease adjusting screws.,Closed and Completed,7/16/2024,Jimmy,Technician,0.25,0.00,0.00,1/9/2025,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,9813,"1) Check the level (min. 3/4"") and appearance of the hydraulic fluid.
+2) Inspect leg rollers, all bushings and pins for wear.
+3) Apply mineral oil to the rollers, bushings and pins.",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,9738,Inspect motor starter contacts and limit switches for pitting and wear.,Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,9776,"Inspect all hydraulic hoses, couplings and fittings for leaks.",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,9772,"Drain hydraulic fluid, blow out the filter and install new fluid.",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,9790,Inspect entire lift for wear and lubricate all pivot points.,Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,9857,Check motor amp draw and compare with factory specifications.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,376,"1) Check the level (min. 3/4"") and appearance of the hydraulic fluid.
+2) Inspect leg rollers, all bushings and pins for wear.
+3) Apply mineral oil to the rollers, bushings and pins.",Closed and Completed,4/18/2022,Tracy Hardin,Operator,0.30,2.00,0.30,8/12/2022,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,2691,"1) Check the level (min. 3/4"") and appearance of the hydraulic fluid.
+2) Inspect leg rollers, all bushings and pins for wear.
+3) Apply mineral oil to the rollers, bushings and pins.",Closed and Completed,11/13/2022,Tracy Hardin,Operator,0.30,0.00,0.00,11/14/2022,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,4370,"1) Check the level (min. 3/4"") and appearance of the hydraulic fluid.
+2) Inspect leg rollers, all bushings and pins for wear.
+3) Apply mineral oil to the rollers, bushings and pins.",Closed and Completed,3/14/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,381,Check motor amp draw and compare with factory specifications.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,380,Inspect entire lift for wear and lubricate all pivot points.,Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,377,Inspect motor starter contacts and limit switches for pitting and wear.,Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,379,"Drain hydraulic fluid, blow out the filter and install new fluid.",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+612,EQ ID 612,Lift Table- Coil line flip table,Stainless,378,"Inspect all hydraulic hoses, couplings and fittings for leaks.",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+614,EQ ID 614,262-200 T Press Brake,Stainless,9970,Clean Filter in hydraulic cooler,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+614,EQ ID 614,262-200 T Press Brake,Stainless,9733,Change oil filter cartridge on top of tank every 500 hours of use.,Pending,4/16/2024,,Technician,0.00,0.00,0.00,,,[]
+614,EQ ID 614,262-200 T Press Brake,Stainless,384,"Change hydraulic oil, clean tank and suction strainer every 2 years.",Pending,3/18/2024,,Technician,0.00,0.00,0.00,,,[]
+614,EQ ID 614,262-200 T Press Brake,Stainless,9859,Grease motor once a year only.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+614,EQ ID 614,262-200 T Press Brake,Stainless,382,Clean Filter in hydraulic cooler,Closed without Action,4/18/2022,Jimmy Sadler,Operator,0.50,0.00,0.00,8/12/2022,,[]
+614,EQ ID 614,262-200 T Press Brake,Stainless,2692,Clean Filter in hydraulic cooler,Closed and Completed,11/13/2022,Tyler Thaomason,Operator,0.50,0.00,0.00,2/20/2023,,[]
+614,EQ ID 614,262-200 T Press Brake,Stainless,4487,Clean Filter in hydraulic cooler,Closed and Completed,3/20/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+614,EQ ID 614,262-200 T Press Brake,Stainless,385,Grease motor once a year only.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+614,EQ ID 614,262-200 T Press Brake,Stainless,383,Change oil filter cartridge on top of tank every 500 hours of use.,Closed and Completed,6/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+617,EQ ID 617,2888 Multi-head Welder,Stainless,9811,Inspect and make sure all safety devices are properly installed and fully operational.,Pending,1/31/2024,,Operator,0.00,0.00,0.00,,,[]
+617,EQ ID 617,2888 Multi-head Welder,Stainless,9968,"1)Lock out machine, remove front cover and clean transformers and under cabinet.
+2)Verify PH of coolant water in barrels is above 7.0.
+3)Treat coolant water with Algaecide as needed. 7 drops per 20 gal.",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+617,EQ ID 617,2888 Multi-head Welder,Stainless,386,Inspect and make sure all safety devices are properly installed and fully operational.,Closed and Completed,4/2/2022,Ricky Cary,Operator,0.10,1.00,0.00,7/21/2022,,[]
+617,EQ ID 617,2888 Multi-head Welder,Stainless,387,"1)Lock out machine, remove front cover and clean transformers and under cabinet.
+2)Verify PH of coolant water in barrels is above 7.0.
+3)Treat coolant water with Algaecide as needed. 7 drops per 20 gal.",Closed and Completed,4/18/2022,Jeff Hall,Operator,0.50,2.00,0.50,8/12/2022,,[]
+617,EQ ID 617,2888 Multi-head Welder,Stainless,2693,Inspect and make sure all safety devices are properly installed and fully operational.,Closed and Completed,10/28/2022,J. Hall,Operator,0.10,0.00,0.00,11/18/2022,,[]
+617,EQ ID 617,2888 Multi-head Welder,Stainless,3296,Inspect and make sure all safety devices are properly installed and fully operational.,Closed and Completed,12/3/2022,Tyler Thomason,Operator,0.00,0.00,0.00,12/5/2022,,[]
+617,EQ ID 617,2888 Multi-head Welder,Stainless,2694,"1)Lock out machine, remove front cover and clean transformers and under cabinet.
+2)Verify PH of coolant water in barrels is above 7.0.
+3)Treat coolant water with Algaecide as needed. 7 drops per 20 gal.",Closed and Completed,11/13/2022,Derick Jones/Johnie Williams,Operator,0.20,0.00,0.00,2/17/2023,,[]
+617,EQ ID 617,2888 Multi-head Welder,Stainless,4488,"1)Lock out machine, remove front cover and clean transformers and under cabinet.
+2)Verify PH of coolant water in barrels is above 7.0.
+3)Treat coolant water with Algaecide as needed. 7 drops per 20 gal.",Closed and Completed,3/20/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+617,EQ ID 617,2888 Multi-head Welder,Stainless,4499,Inspect and make sure all safety devices are properly installed and fully operational.,Closed and Completed,3/7/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+618,EQ ID 618,2888-1 Rocker Arm Welder,Stainless,9781,Verify PH of coolant water in barrels is above 7.0.,Pending,1/31/2024,,Operator,0.00,0.00,0.00,,,[]
+618,EQ ID 618,2888-1 Rocker Arm Welder,Stainless,9814,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+618,EQ ID 618,2888-1 Rocker Arm Welder,Stainless,388,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,4/2/2022,Tyler Thomason,Operator,0.10,1.00,0.00,7/21/2022,,[]
+618,EQ ID 618,2888-1 Rocker Arm Welder,Stainless,389,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,4/18/2022,Tyler Thomason,Operator,0.10,1.00,0.00,8/12/2022,,[]
+618,EQ ID 618,2888-1 Rocker Arm Welder,Stainless,2696,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,11/13/2022,Tyler Thomason,Operator,0.10,1.00,0.00,11/14/2022,,[]
+618,EQ ID 618,2888-1 Rocker Arm Welder,Stainless,2695,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,10/28/2022,T. Thomason,Operator,0.10,1.00,0.00,11/18/2022,,[]
+618,EQ ID 618,2888-1 Rocker Arm Welder,Stainless,3297,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,12/3/2022,Tyler Thomason,Operator,0.10,1.00,0.00,12/5/2022,,[]
+618,EQ ID 618,2888-1 Rocker Arm Welder,Stainless,4375,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,3/14/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+619,EQ ID 619,2888-2 Rocker Arm Welder,Stainless,9835,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+619,EQ ID 619,2888-2 Rocker Arm Welder,Stainless,391,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,4/2/2022,Tyler Thomason,Operator,0.10,1.00,0.00,3/18/2022,,[]
+619,EQ ID 619,2888-2 Rocker Arm Welder,Stainless,390,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,4/18/2022,Tyler Thomason,Operator,0.10,1.00,0.00,8/18/2022,,[]
+619,EQ ID 619,2888-2 Rocker Arm Welder,Stainless,2698,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,10/28/2022,T. Thomason,Operator,0.10,1.00,0.00,11/4/2022,,[]
+619,EQ ID 619,2888-2 Rocker Arm Welder,Stainless,2697,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed without Action,11/13/2022,Tyler Thomason,Operator,0.10,1.00,0.00,11/14/2022,,[]
+619,EQ ID 619,2888-2 Rocker Arm Welder,Stainless,4376,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,3/14/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+619,EQ ID 619,2888-2 Rocker Arm Welder,Stainless,3301,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,12/3/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+619,EQ ID 619,2888-2 Rocker Arm Welder,Stainless,9779,Verify PH of coolant water in barrels is above 7.0.,Closed without Action,1/31/2024,dawn,Operator,0.00,1.00,0.00,2/1/2026,,[]
+620,EQ ID 620,2888-3 Rocker Arm Welder,Stainless,9817,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+620,EQ ID 620,2888-3 Rocker Arm Welder,Stainless,9788,Verify PH of coolant water in barrels is above 7.0.,Pending,1/31/2024,,Operator,0.00,0.00,0.00,,,[]
+620,EQ ID 620,2888-3 Rocker Arm Welder,Stainless,393,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,4/2/2022,Ricky CAry,Operator,0.10,1.00,0.00,7/22/2022,,[]
+620,EQ ID 620,2888-3 Rocker Arm Welder,Stainless,392,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,4/18/2022,Tyler Thomason,Operator,0.10,1.00,0.00,8/12/2022,,[]
+620,EQ ID 620,2888-3 Rocker Arm Welder,Stainless,2700,Verify PH of coolant water in barrels is above 7.0.,Closed without Action,10/28/2022,T. Thomason,Operator,0.10,1.00,0.00,11/4/2022,,[]
+620,EQ ID 620,2888-3 Rocker Arm Welder,Stainless,2699,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,11/13/2022,Tyler Thomason,Operator,0.10,1.00,0.00,11/14/2022,,[]
+620,EQ ID 620,2888-3 Rocker Arm Welder,Stainless,3299,Verify PH of coolant water in barrels is above 7.0.,Closed and Completed,12/3/2022,.,Operator,0.00,0.00,0.00,12/20/2022,,[]
+620,EQ ID 620,2888-3 Rocker Arm Welder,Stainless,4377,Treat coolant water with Algaecide as needed. 7 drops per 20 gal.,Closed and Completed,3/14/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+621,EQ ID 621,2888-35 T Press Brake,Stainless,9985,Replace filter cartridge if filter indicator is in the red or..,Pending,5/16/2024,,Technician,0.00,0.00,0.00,,,[]
+621,EQ ID 621,2888-35 T Press Brake,Stainless,395,"Change hydraulic oil, clean oil tank and clean or change suction strainer.",Pending,3/18/2024,,Technician,0.00,0.00,0.00,,,[]
+621,EQ ID 621,2888-35 T Press Brake,Stainless,9881,Grease motor fittings.,Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+621,EQ ID 621,2888-35 T Press Brake,Stainless,394,Replace filter cartridge if filter indicator is in the red or..,Closed and Completed,7/18/2022,Ricky Cary,Technician,0.10,0.00,0.00,7/22/2022,,[]
+621,EQ ID 621,2888-35 T Press Brake,Stainless,2701,Replace filter cartridge if filter indicator is in the red or..,Closed and Completed,2/13/2023,Derick Jones,Technician,0.50,0.00,0.00,2/14/2023,,[]
+621,EQ ID 621,2888-35 T Press Brake,Stainless,396,Grease motor fittings.,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+621,EQ ID 621,2888-35 T Press Brake,Stainless,4379,Replace filter cartridge if filter indicator is in the red or..,Closed and Completed,6/14/2023,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+624,EQ ID 624,Gauer Deburring Machine,Stainless,9984,"1) Inspect gears, sprocket and chain assy. condition.
+2) Check oil in worm gear box.",Pending,7/16/2024,,Operator,0.00,0.00,0.00,,,[]
+624,EQ ID 624,Gauer Deburring Machine,Stainless,9800,Inspect pinch rollers and edge rollers for wear.,Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+624,EQ ID 624,Gauer Deburring Machine,Stainless,398,Inspect pinch rollers and edge rollers for wear.,Closed and Completed,6/18/2022,Terry Wilson,Operator,0.50,0.00,0.00,9/30/2022,,[]
+624,EQ ID 624,Gauer Deburring Machine,Stainless,397,"1) Inspect gears, sprocket and chain assy. condition.
+2) Check oil in worm gear box.",Closed and Completed,9/18/2022,Tracy Hardin,Operator,0.10,0.00,0.00,9/30/2022,,[]
+624,EQ ID 624,Gauer Deburring Machine,Stainless,2702,"1) Inspect gears, sprocket and chain assy. condition.
+2) Check oil in worm gear box.",Closed and Completed,4/13/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+624,EQ ID 624,Gauer Deburring Machine,Stainless,2703,Inspect pinch rollers and edge rollers for wear.,Closed and Completed,1/13/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,9758,"1)Sprocket Replacement (Larger)
+2)Chain Elongation Inspection
+3)Re-Installing of Chain
+4)Sprocket Replacement (Smaller)
+5)Sprocket Inspection
+6)Clean Chain
+7)Set Screw and Bushing Inspection",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,402,"1)  Hyd. Fluid Replacement
+2)  Check and Adjust (if necessary) Mandrel Expansion Assy.
+3)  Check and Adjust 2nd Regulator (Failsafe Brake Only) if pressure has been changed",Pending,3/18/2024,,Technician,0.00,0.00,0.00,,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,9810,Spring Tension Adjustment (Failsafe Brake),Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,9803,"1) Hyd. Filter Replacement
+2) Inspect Hyd. System",Pending,4/16/2024,,Technician,0.00,0.00,0.00,,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,9768,"1)Sprocket Alignment
+2)Lubricate Chain
+3)Test Chain Tension
+4)Brake Pad Replacement
+5)Lubricate Mandrel Tube
+6)Check Hyd. Fluid Levels
+7)Inspect Brake Pad (Replace at 1/8"")",Pending,2/16/2024,,Technician,0.00,0.00,0.00,,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,403,Spring Tension Adjustment (Failsafe Brake),Closed and Completed,4/18/2022,Jimmy Sadler,Operator,0.20,0.00,0.20,8/12/2022,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,405,"1)Sprocket Alignment
+2)Lubricate Chain
+3)Test Chain Tension
+4)Brake Pad Replacement
+5)Lubricate Mandrel Tube
+6)Check Hyd. Fluid Levels
+7)Inspect Brake Pad (Replace at 1/8"")",Closed and Completed,4/18/2022,Tracy Hardin,Technician,0.50,4.00,0.00,8/17/2022,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,404,"1) Hyd. Filter Replacement
+2) Inspect Hyd. System",Closed and Completed,6/18/2022,Jimmy Sadler,Technician,1.00,20.00,0.00,9/30/2022,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,2704,Spring Tension Adjustment (Failsafe Brake),Closed and Completed,11/13/2022,Tracy Hardin,Operator,0.20,0.00,0.00,11/14/2022,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,4378,Spring Tension Adjustment (Failsafe Brake),Closed and Completed,3/14/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,2705,"1) Hyd. Filter Replacement
+2) Inspect Hyd. System",Closed and Completed,1/13/2023,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,2706,"1)Sprocket Alignment
+2)Lubricate Chain
+3)Test Chain Tension
+4)Brake Pad Replacement
+5)Lubricate Mandrel Tube
+6)Check Hyd. Fluid Levels
+7)Inspect Brake Pad (Replace at 1/8"")",Closed and Completed,11/13/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+632,EQ ID 632,Pull Off Coil Reel 05,Stainless,401,"1)Sprocket Replacement (Larger)
+2)Chain Elongation Inspection
+3)Re-Installing of Chain
+4)Sprocket Replacement (Smaller)
+5)Sprocket Inspection
+6)Clean Chain
+7)Set Screw and Bushing Inspection",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+634,EQ ID 634,Straightener,Stainless,9789,Remove gear side guard and inspect gear faces for excessive wear,Pending,4/16/2024,,Technician,0.00,0.00,0.00,,,[]
+634,EQ ID 634,Straightener,Stainless,9740,"Remove the gear reducer from drive , drain and refill per instructions",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+634,EQ ID 634,Straightener,Stainless,9973,"1)Clean rollers per instructions in the manual
+2)Apply one shot of grease to fittings on gear side guard. Rotate gears if needed",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+634,EQ ID 634,Straightener,Stainless,408,"1)Clean rollers per instructions in the manual
+2)Apply one shot of grease to fittings on gear side guard. Rotate gears if needed",Closed and Completed,4/18/2022,Tracy Hardin,Operator,0.10,2.00,0.00,8/18/2022,,[]
+634,EQ ID 634,Straightener,Stainless,407,Remove gear side guard and inspect gear faces for excessive wear,Closed and Completed,6/18/2022,Tracy Hardin,Technician,0.10,0.00,0.00,9/30/2022,,[]
+634,EQ ID 634,Straightener,Stainless,2708,"1)Clean rollers per instructions in the manual
+2)Apply one shot of grease to fittings on gear side guard. Rotate gears if needed",Closed and Completed,11/13/2022,Tracy Hardin,Operator,0.10,2.00,0.00,11/14/2022,,[]
+634,EQ ID 634,Straightener,Stainless,2707,Remove gear side guard and inspect gear faces for excessive wear,Closed and Completed,1/13/2023,.,Technician,0.00,0.00,0.00,12/20/2022,,[]
+634,EQ ID 634,Straightener,Stainless,4492,"1)Clean rollers per instructions in the manual
+2)Apply one shot of grease to fittings on gear side guard. Rotate gears if needed",Closed and Completed,3/20/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+634,EQ ID 634,Straightener,Stainless,406,"Remove the gear reducer from drive , drain and refill per instructions",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+635,EQ ID 635,Straightener 05,Stainless,9975,"1)Clean rollers per instructions in the manual
+2)Apply one shot of grease to fittings on gear side guard. Rotate gears if needed",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+635,EQ ID 635,Straightener 05,Stainless,9798,"Remove the gear reducer from the drive, drain and refill per instructions",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+635,EQ ID 635,Straightener 05,Stainless,9795,Remove the gear side guard and inspect the gear faces for excessive wear,Pending,4/16/2024,,Technician,0.00,0.00,0.00,,,[]
+635,EQ ID 635,Straightener 05,Stainless,409,"1)Clean rollers per instructions in the manual
+2)Apply one shot of grease to fittings on gear side guard. Rotate gears if needed",Closed and Completed,4/18/2022,Tracy Hardin,Operator,0.50,2.00,0.00,8/18/2022,,[]
+635,EQ ID 635,Straightener 05,Stainless,411,Remove the gear side guard and inspect the gear faces for excessive wear,Closed and Completed,6/18/2022,Terry Wilson,Technician,0.50,0.00,0.00,9/30/2022,,[]
+635,EQ ID 635,Straightener 05,Stainless,2709,"1)Clean rollers per instructions in the manual
+2)Apply one shot of grease to fittings on gear side guard. Rotate gears if needed",Closed and Completed,11/13/2022,Tracy Hardin,Operator,0.50,2.00,0.00,11/14/2022,,[]
+635,EQ ID 635,Straightener 05,Stainless,4493,"1)Clean rollers per instructions in the manual
+2)Apply one shot of grease to fittings on gear side guard. Rotate gears if needed",Closed and Completed,3/20/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+635,EQ ID 635,Straightener 05,Stainless,410,"Remove the gear reducer from the drive, drain and refill per instructions",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+635,EQ ID 635,Straightener 05,Stainless,2710,Remove the gear side guard and inspect the gear faces for excessive wear,Closed and Completed,1/13/2023,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,9796,"1) Inspect all mechanical, electrical and pneumatic components and connections.
+2) Remove the gear side guard and inspect the gear faces for excessive wear and backlash. Replace gears if necessary per instructions.",Pending,4/16/2024,,Technician,0.00,0.00,0.00,,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,14340,"1) Lubricate the hand wheel bearing.
+2) Clean the feed rollers and control cabinet fan per instructions in the manual.",Pending,4/14/2025,,Maintenance,0.00,0.00,0.00,,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,14337,"1) Check the drive belt tension and adjust per manual instructions
+2) Remove drive side guard and inspect the belt for wear or damage
+3) Remove gear side guard and grease the gears per manual instructions",Pending,2/14/2025,,Operator,0.00,0.00,0.00,,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,14338,"1) Check the drive belt tension and adjust per manual instructions
+2) Remove drive side guard and inspect the belt for wear or damage
+3) Remove gear side guard and grease the gears per manual instructions",Pending,2/14/2025,,Operator,0.00,0.00,0.00,,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,414,"1) Check the drive belt tension and adjust per manual instructions
+2) Remove drive side guard and inspect the belt for wear or damage
+3) Remove gear side guard and grease the gears per manual instructions",Closed and Completed,4/18/2022,Tracy Hardin,Operator,0.10,2.00,0.00,8/18/2022,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,413,"1) Lubricate the hand wheel bearing.
+2) Clean the feed rollers and control cabinet fan per instructions in the manual.",Closed and Completed,6/18/2022,Terry Wilson,Maintenance,0.50,2.00,0.00,9/30/2022,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,412,"1) Inspect all mechanical, electrical and pneumatic components and connections.
+2) Remove the gear side guard and inspect the gear faces for excessive wear and backlash. Replace gears if necessary per instructions.",Closed and Completed,6/18/2022,Terry Wilson,Technician,0.50,0.00,0.00,9/30/2022,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,2713,"1) Check the drive belt tension and adjust per manual instructions
+2) Remove drive side guard and inspect the belt for wear or damage
+3) Remove gear side guard and grease the gears per manual instructions",Closed and Completed,11/13/2022,Tracy Hardin,Operator,0.30,2.00,0.00,11/13/2022,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,2712,"1) Lubricate the hand wheel bearing.
+2) Clean the feed rollers and control cabinet fan per instructions in the manual.",Closed and Completed,1/13/2023,.,Maintenance,0.00,0.00,0.00,5/16/2023,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,4486,"1) Check the drive belt tension and adjust per manual instructions
+2) Remove drive side guard and inspect the belt for wear or damage
+3) Remove gear side guard and grease the gears per manual instructions",Closed and Completed,3/20/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,2711,"1) Inspect all mechanical, electrical and pneumatic components and connections.
+2) Remove the gear side guard and inspect the gear faces for excessive wear and backlash. Replace gears if necessary per instructions.",Closed and Completed,1/13/2023,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,9977,"1) Check the drive belt tension and adjust per manual instructions
+2) Remove drive side guard and inspect the belt for wear or damage
+3) Remove gear side guard and grease the gears per manual instructions",Closed and Completed,2/16/2024,Andy Curtis,Operator,0.25,0.00,0.00,1/14/2025,Andy Curtis - 01/14/25  1:11:28 AM: Completed,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,9983,"1) Check the drive belt tension and adjust per manual instructions
+2) Remove drive side guard and inspect the belt for wear or damage
+3) Remove gear side guard and grease the gears per manual instructions",Closed and Completed,2/16/2024,Andy Curtis,Operator,0.25,0.00,0.00,1/14/2025,Andy Curtis - 01/14/25  1:12:09 AM: Completed,[]
+636,EQ ID 636,Servomaster Feed 05,Stainless,9805,"1) Lubricate the hand wheel bearing.
+2) Clean the feed rollers and control cabinet fan per instructions in the manual.",Closed and Completed,4/16/2024,"Andy Curtis, Garrett Blankenship",Maintenance,0.50,0.00,0.00,1/14/2025,Andy Curtis - 01/14/25  1:15:40 AM: Completed | Andy Curtis - 01/14/25  1:14:54 AM: Completed,[]
+637,EQ ID 637,Shear 05,Stainless,14342,"1)Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2)Remove top cover of each side panel and grease the gib plate.
+3)Grease all fittings for the support bearings and linkage shaft.
+4)Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Pending,2/14/2025,,Operator,0.00,0.00,0.00,,,[]
+637,EQ ID 637,Shear 05,Stainless,415,"1)Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2)Remove top cover of each side panel and grease the gib plate.
+3)Grease all fittings for the support bearings and linkage shaft.
+4)Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Closed and Completed,4/18/2022,Tracy Hardin,Operator,2.00,4.00,0.00,8/17/2022,,[]
+637,EQ ID 637,Shear 05,Stainless,2714,"1)Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2)Remove top cover of each side panel and grease the gib plate.
+3)Grease all fittings for the support bearings and linkage shaft.
+4)Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Closed and Completed,11/13/2022,Tracy Hardin,Operator,0.50,0.00,0.00,11/14/2022,,[]
+637,EQ ID 637,Shear 05,Stainless,4489,"1)Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2)Remove top cover of each side panel and grease the gib plate.
+3)Grease all fittings for the support bearings and linkage shaft.
+4)Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Closed and Completed,3/20/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+637,EQ ID 637,Shear 05,Stainless,9974,"1)Inspect operation of brake (Ref. Sew-Eurodrive manual)
+2)Remove top cover of each side panel and grease the gib plate.
+3)Grease all fittings for the support bearings and linkage shaft.
+4)Inspect gear oil level, coupling alignment, belt or chain tension and mounting bolts on gear motor.",Closed and Completed,2/16/2024,Garrett Blankenship,Operator,1.00,0.00,0.00,1/14/2025,"Garrett Blankenship - 01/14/25  1:18:21 AM: Brake okay. Gibs look greased, but stripped bolts prevented removal of the cover. Greased fittings for support bearings and linkage shaft.
+Rest okay",[]
+638,EQ ID 638,Stacker 05,Stainless,9976,Grease adjusting screws,Pending,7/16/2024,,Outside Service,0.00,0.00,0.00,,,[]
+638,EQ ID 638,Stacker 05,Stainless,9969,Inspect entire unit and tighten all fasteners,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+638,EQ ID 638,Stacker 05,Stainless,417,Inspect entire unit and tighten all fasteners,Closed and Completed,4/18/2022,Tracy Hardin,Operator,0.10,0.00,0.00,8/16/2022,,[]
+638,EQ ID 638,Stacker 05,Stainless,416,Grease adjusting screws,Closed and Completed,9/18/2022,Terry Wilson,Outside Service,0.10,2.00,0.00,9/30/2022,,[]
+638,EQ ID 638,Stacker 05,Stainless,2716,Inspect entire unit and tighten all fasteners,Closed and Completed,11/13/2022,Terry  Wilson,Operator,0.50,0.00,0.00,11/14/2022,,[]
+638,EQ ID 638,Stacker 05,Stainless,4490,Inspect entire unit and tighten all fasteners,Closed and Completed,3/20/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+638,EQ ID 638,Stacker 05,Stainless,2715,Grease adjusting screws,Closed and Completed,4/13/2023,.,Outside Service,0.00,0.00,0.00,5/16/2023,,[]
+641,EQ ID 641,Aida 110 ton,Stainless,9883,"1) Check RUBBER HOSES for deterioration
+2) Check SLIDE GIB CLEARANCE (refer to pg.225 in manual)
+3) Check PRESS LEVEL
+4) Check/replace FILTERS
+5) Check CLUTCH STROKE is not larger than proper stroke value (refer to pg 229 in manual)
+6) Check ALL SOLENOIDS
+7) Replace oil in gear box oil bath, slide suspension point, clutch/brake",Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+641,EQ ID 641,Aida 110 ton,Stainless,9753,"1) Check INSTRUMENTS, cranks angle indicator (180 at bottom dead center), die height indicator is correct, air pressure gauge (should read 0 when air is totally exhausted 
+2) Check CLUTCH/BRAKE SOLENOID VALVE for air leakage",Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+641,EQ ID 641,Aida 110 ton,Stainless,9747,"1) Check V-BELTS for damage and proper tension refer to manual pg.226
+2) Check PUSHBUTTONS/SWITCHES for proper/smooth operation, damage, and clean away dust and oil
+3) Check HYDRAULIC OVERLOAD PROTECTOR PNEUMATIC PUMP, make sure pump can be heard every 30 minutes - 2 hours during normal conditions
+4) Check ELECTRICAL WIRES AND CONNECTIONS
+5) Check OIL FILTER ELEMENT on downstream for damage/clogging
+6) Check CLUTCH/BRAKE SOLENOID VALVE damage, excessive leaking of oil out of muffler, coil makes a humming noise, conduct function test. (Refer to print out)
+7) Check AUTO-DRAIN FILTER for any damage
+8) Check RELAYS
+9) Check GROUND FAULT CIRCUIT BREAKER",Pending,2/16/2024,,Technician,0.00,0.00,0.00,,,[]
+641,EQ ID 641,Aida 110 ton,Stainless,12030,"Change oil in the following:
+1) Gearbox bath
+2) Slide suspension point section
+3) Clutch and brake
+4) Die lifter/ die clamper oil reservoir",Pending,5/5/2025,,Maintenance,0.00,0.00,0.00,,,[]
+641,EQ ID 641,Aida 110 ton,Stainless,420,"1) Check V-BELTS for damage and proper tension refer to manual pg.226
+2) Check PUSHBUTTONS/SWITCHES for proper/smooth operation, damage, and clean away dust and oil
+3) Check HYDRAULIC OVERLOAD PROTECTOR PNEUMATIC PUMP, make sure pump can be heard every 30 minutes - 2 hours during normal conditions
+4) Check ELECTRICAL WIRES AND CONNECTIONS
+5) Check OIL FILTER ELEMENT on downstream for damage/clogging
+6) Check CLUTCH/BRAKE SOLENOID VALVE damage, excessive leaking of oil out of muffler, coil makes a humming noise, conduct function test. (Refer to print out)
+7) Check AUTO-DRAIN FILTER for any damage
+8) Check RELAYS
+9) Check GROUND FAULT CIRCUIT BREAKER",Closed and Completed,4/18/2022,Tracy Hardin,Technician,0.40,2.00,0.40,4/18/2022,,[]
+641,EQ ID 641,Aida 110 ton,Stainless,418,"1) Check RUBBER HOSES for deterioration
+2) Check SLIDE GIB CLEARANCE (refer to pg.225 in manual)
+3) Check PRESS LEVEL
+4) Check/replace FILTERS
+5) Check CLUTCH STROKE is not larger than proper stroke value (refer to pg 229 in manual)
+6) Check ALL SOLENOIDS
+7) Replace oil in gear box oil bath, slide suspension point, clutch/brake",Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+641,EQ ID 641,Aida 110 ton,Stainless,2717,"1) Check V-BELTS for damage and proper tension refer to manual pg.226
+2) Check PUSHBUTTONS/SWITCHES for proper/smooth operation, damage, and clean away dust and oil
+3) Check HYDRAULIC OVERLOAD PROTECTOR PNEUMATIC PUMP, make sure pump can be heard every 30 minutes - 2 hours during normal conditions
+4) Check ELECTRICAL WIRES AND CONNECTIONS
+5) Check OIL FILTER ELEMENT on downstream for damage/clogging
+6) Check CLUTCH/BRAKE SOLENOID VALVE damage, excessive leaking of oil out of muffler, coil makes a humming noise, conduct function test. (Refer to print out)
+7) Check AUTO-DRAIN FILTER for any damage
+8) Check RELAYS
+9) Check GROUND FAULT CIRCUIT BREAKER",Closed and Completed,11/13/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+641,EQ ID 641,Aida 110 ton,Stainless,419,"1) Check INSTRUMENTS, cranks angle indicator (180 at bottom dead center), die height indicator is correct, air pressure gauge (should read 0 when air is totally exhausted 
+2) Check CLUTCH/BRAKE SOLENOID VALVE for air leakage",Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+643,EQ ID 643,cat wet dust collector,Stainless,11732,Remove sludge,Closed and Completed,5/21/2024,Stainless operators,Operator,0.00,0.00,0.00,9/27/2024,Andy Curtis - 01/13/25 10:59:07 PM: This was cleaned at inventory,[]
+643,EQ ID 643,cat wet dust collector,Stainless,11733,"Stop fan, remove doors and clean internally.",Closed and Completed,5/29/2024,Stainless group,Maintenance,0.00,0.00,0.00,9/27/2024,Andy Curtis - 01/13/25  9:23:43 PM: This was cleaned during Inventory.,[]
+643,EQ ID 643,cat wet dust collector,Stainless,11734,"1) Remove all water and give all internal surfaces a thorough cleaning. Water can be disposed of properly or put back in unit. 
+2) Check for dust buildup on fan blades, this can lead to unbalancing and vibration.",Closed and Completed,10/10/2024,Stainless operators,Lead,0.00,0.00,0.00,9/27/2024,Andy Curtis - 01/13/25 10:58:11 PM: This unit was cleaned during inventory,[]
+1334,EQ ID 1334,221 Sutherland Press,Stainless,9962,"1)Check mode selector switch and run buttons wires are seated tightly.
+2)Check emergency stop button, top stop button wires are seated tightly.
+3)Check relays, seated tightly, motor starters, make sure inside of electrical panel is clean.",Pending,1/16/2025,,Technician,0.00,0.00,0.00,,,[]
+1334,EQ ID 1334,221 Sutherland Press,Stainless,9967,"1)Confirm air pressure switch is normal.
+2)Check all wires and connections and confirm secure and undamaged.
+3)Any safety devices and point of operation guards are in place and functional.
+.",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+1334,EQ ID 1334,221 Sutherland Press,Stainless,835,"1)Confirm air pressure switch is normal.
+2)Check all wires and connections and confirm secure and undamaged.
+3)Any safety devices and point of operation guards are in place and functional.
+.",Closed and Completed,4/18/2022,Robert Crook,Operator,0.20,0.00,0.00,8/17/2022,,[]
+1334,EQ ID 1334,221 Sutherland Press,Stainless,2765,"1)Confirm air pressure switch is normal.
+2)Check all wires and connections and confirm secure and undamaged.
+3)Any safety devices and point of operation guards are in place and functional.
+.",Closed and Completed,11/13/2022,James Allen,Operator,0.20,0.00,0.00,11/14/2022,,[]
+1334,EQ ID 1334,221 Sutherland Press,Stainless,4491,"1)Confirm air pressure switch is normal.
+2)Check all wires and connections and confirm secure and undamaged.
+3)Any safety devices and point of operation guards are in place and functional.
+.",Closed and Completed,3/20/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+1334,EQ ID 1334,221 Sutherland Press,Stainless,834,"1)Check mode selector switch and run buttons wires are seated tightly.
+2)Check emergency stop button, top stop button wires are seated tightly.
+3)Check relays, seated tightly, motor starters, make sure inside of electrical panel is clean.",Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+700,EQ ID 700,Fladder Return System,Stainless,11941,"Complete Curve
+1) Visual check
+2) Check chain tension
+3) Lubricate chain wear guides",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+700,EQ ID 700,Fladder Return System,Stainless,11942,"Complete Curve
+1) Visual check
+2) Ensure tightness of fasteners & bolts on the side of frame",Pending,6/24/2024,,Operator,0.00,0.00,0.00,,,[]
+700,EQ ID 700,Fladder Return System,Stainless,16146,"Belt inspection
+1) Tension adjustment
+2) General condition and cleanliness
+
+ Drive chain
+3) Lubricate
+4) Inspect attachment links
+5) Inspect seams",Pending,9/18/2025,,Maintenance,0.00,0.00,0.00,,,[]
+700,EQ ID 700,Fladder Return System,Stainless,16147,"Drive Motor Inspection 
+1) Ensure tightness of fasteners & bolts
+2) Excessive noise
+3) Vibration",Pending,9/18/2025,,Maintenance,0.00,0.00,0.00,,,[]
+700,EQ ID 700,Fladder Return System,Stainless,11943,"Belt inspection
+1) Tension adjustment
+2) General condition and cleanliness
+
+ Drive chain
+3) Lubricate
+4) Inspect attachment links
+5) Inspect seams",Closed and Completed,8/12/2024,"Andy Curtis, Garrett Blankenship",Maintenance,2.00,0.00,0.00,1/29/2025,Andy Curtis - 01/29/25  1:58:58 AM: Completed,[]
+700,EQ ID 700,Fladder Return System,Stainless,11944,"Drive Motor Inspection 
+1) Ensure tightness of fasteners & bolts
+2) Excessive noise
+3) Vibration",Closed and Completed,8/12/2024,"Andy Curtis, Garrett Blankenship",Maintenance,1.00,0.00,0.00,1/29/2025,Andy Curtis - 01/29/25  2:00:46 AM: Completed,[]
+700,EQ ID 700,Fladder Return System,Stainless,14512,"Belt inspection
+1) Tension adjustment
+2) General condition and cleanliness
+
+ Drive chain
+3) Lubricate
+4) Inspect attachment links
+5) Inspect seams",Closed and Completed,4/29/2025,Johnny Williams,Maintenance,0.00,0.00,0.00,5/16/2025,,[]
+700,EQ ID 700,Fladder Return System,Stainless,14513,"Drive Motor Inspection 
+1) Ensure tightness of fasteners & bolts
+2) Excessive noise
+3) Vibration",Closed and Completed,4/29/2025,Bart  James,Maintenance,0.00,0.00,0.00,6/18/2025,,[]
+701,EQ ID 701,Fladder,Stainless,11792,"1) Clean dust around sanding head and the spindles.
+2) Cleaning of dust and removal of dirt on guide ways and carriage",Pending,5/28/2024,,Operator,0.00,0.00,0.00,,,[]
+701,EQ ID 701,Fladder,Stainless,11795,"1) Grease nipple at toothed rim.
+-Apply totally 4 loads with grease gun
+-Toothed rim CANNOT be greased
+2) Clean sanding head of the inner machine by blowing & wiping dust away
+-Conveyor belt must be cleaned with denatured spirits to maintain rough surface",Pending,6/3/2024,,Operator,0.00,0.00,0.00,,,[]
+701,EQ ID 701,Fladder,Stainless,11798,"1) Change oil in conveyor gear
+--Approx. 0.6 liters of SAE 80 transmission oil
+2) Change oil in oscillation gear
+--Approx. 1.1 liters of SAE 80 transmission oil
+3) Change oil in sanding head
+-Approx. 2.3 liters of SAE 80 transmission oil",Pending,4/7/2026,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12412,Check air pressure (6.5 bar),Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12413,"1) Clean filters with compressed air
+2) Clean vacuum pre-filter
+3) Clean photocells",Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12414,"1) Check cooling liquid level
+2) Check condensation level
+3) 5 Zerk fittings along back of machine require EPO grease
+4) Check the Auto Lube. This is filled from in front of and below horizontal tool holder",Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12416,"Boring block: Requires Kluber NBU15
+1) All vertical zerks (1) pump of grease 
+2) All horizontal zerks (2) pumps of grease 
+3) Saw (3) pumps of grease",Pending,7/22/2024,,Operator,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12417,1) Filter element replacement (cartridge),Pending,8/19/2024,,Maintenance,0.00,0.00,0.00,,,[]
+5339,EQ ID 5339,Fora -Fresatrice CNC (NEW),Thrislington,12418,"1) Check Palette
+2) Lubricate bearings",Pending,1/5/2026,,Operator,0.00,0.00,0.00,,,[]
+5230,EQ ID 5230,Black Bros Glue Spreader,Thrislington,11686,Lubricate idler bearings with high grade ball bearing grease every 16 hours of operation. Do NOT mix oils.,Pending,5/21/2024,,Operator,0.00,0.00,0.00,,,[]
+5230,EQ ID 5230,Black Bros Glue Spreader,Thrislington,11688,"Lubricate all lubrication points EXCEPT idler bearings. Machine oil should be used on roller chains, elevating screws, pivot points, etc. Do NOT mix oils.",Pending,7/14/2024,,Operator,0.00,0.00,0.00,,,[]
+5175,EQ ID 5175,Edge Bander,Thrislington,11878,"1) Clean dust and adhesive residue 
+2) Make sure that the alignment is calibrated for accurate edge banding",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5175,EQ ID 5175,Edge Bander,Thrislington,14316,Replace worn or broken blades when necessary to avoid uneven edge banding and reduced efficiency. Ensure you properly adjust the trimming unit to achieve clean and precise cuts.,Pending,2/10/2025,,Lead,0.00,0.00,0.00,,,[]
+5175,EQ ID 5175,Edge Bander,Thrislington,11879,Replace worn or broken blades when necessary to avoid uneven edge banding and reduced efficiency. Ensure you properly adjust the trimming unit to achieve clean and precise cuts.,Closed and Completed,6/10/2024,Operator,Lead,0.00,0.00,0.00,1/9/2025,Andy Curtis - 01/10/25  1:09:43 AM: Operator changes the blades when needed.,[]
+5173,EQ ID 5173,Shaper,Thrislington,11683,"Dust filter on electrical box should be removed and cleaned out with compressed air. Keep nozzle 6 inches away from filter to avoid damaging it, replace filter if necessary.",Pending,7/16/2024,,Operator,0.00,0.00,0.00,,,[]
+5173,EQ ID 5173,Shaper,Thrislington,11684,"1) Inspect conveyor chain every 500 hours of operation.
+2) Raise the hold down assembly, (using screwdrivers) lift conveyor chain up out of its slide trough.
+3) Should be enough slack to lift high enough to see condition of the plastic tape using a light. It is normal for grooves to be worn in tape. The tape is (1/32) inch thick and must be replaced BEFORE is wears through. 
+4) If tape must be replaced, refer to section on CHANGING THE UHMW TAPE ON 390 SHAPER (page 23 of manual).",Closed and Completed,11/16/2024,Andy Curtis,Maintenance Mechanic,0.00,0.00,0.00,1/9/2025,Andy Curtis - 01/09/25  8:03:55 PM: This machine has been removed from the cell.,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11804,"1) Clean machine
+2) Clean tool storage
+3) Clean and restore tool lubricant level
+4) Check tool integrity
+5) Check pneumatic system",Pending,6/3/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11805,Clean electro-spindle,Pending,5/28/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11806,"1) Clean filter bowl
+2) Check electric cabinet fan
+3) Check safety devices",Pending,7/17/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11807,Check refill level of electro-spindle coolant liquid,Pending,9/1/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11808,"1) Grease clamps and stops
+2) Lubricate electro-spindle head slides greasing
+3) Check electrical connections",Pending,11/1/2024,,Operator,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11809,"1) Clean and replace electrical cabinet cooling fan filters
+2) Grease swarf exhauster bearings
+3) Check limit switch",Pending,4/1/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+5172,EQ ID 5172,Emmegi Drilling Machine,Thrislington,11813,"1) Check axes racks state for wear
+2) Check tooling integrity control unit
+3) Check tightness of fasteners on machine structure
+4) Electro-spindle refrigerant change",Pending,4/7/2026,,Operator,0.00,0.00,0.00,,,[]
+5171,EQ ID 5171,Emmegi Dual Saw,Thrislington,11994,"1) Clean head movement areas
+2) Remove swarf from working areas
+3) Clean microswitches and limit switches
+4) Clean control and check zones on machine
+5) Clean slide bars and supporting surfaces",Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5171,EQ ID 5171,Emmegi Dual Saw,Thrislington,11995,Lubricate slide bars and supporting surfaces,Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+5171,EQ ID 5171,Emmegi Dual Saw,Thrislington,14315,"1) Drain condensate if needed
+2) Topping up lubricant tanks",Pending,4/10/2025,,Operator,0.00,0.00,0.00,,,[]
+5171,EQ ID 5171,Emmegi Dual Saw,Thrislington,11996,"1) Drain condensate if needed
+2) Topping up lubricant tanks",Closed and Completed,8/5/2024,"Andy Curtis, Garrett Blankenship",Operator,0.25,0.00,0.00,1/9/2025,"Andy Curtis - 01/10/25  1:08:35 AM: Drained the condensate bowl.
+Operator filled up lubricant tanks when needed.",[]
+565,EQ ID 565,"60"" Return Conveyor (1080 1/2"" Panel finisher)",Toilet Partitions,9749,Check oil level in gear reducer.,Pending,7/16/2024,,Technician,0.00,0.00,0.00,,,[]
+565,EQ ID 565,"60"" Return Conveyor (1080 1/2"" Panel finisher)",Toilet Partitions,9618,Lubricate all bearings.,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+565,EQ ID 565,"60"" Return Conveyor (1080 1/2"" Panel finisher)",Toilet Partitions,312,Lubricate all bearings.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+565,EQ ID 565,"60"" Return Conveyor (1080 1/2"" Panel finisher)",Toilet Partitions,311,Check oil level in gear reducer.,Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+698,EQ ID 698,Universal 280 - 3/4 Finishing Machine (1080),Toilet Partitions,12002,Keep work unit clean. remove dust and shavings away from unit.,Pending,6/10/2024,,Operator,0.00,0.00,0.00,,,[]
+698,EQ ID 698,Universal 280 - 3/4 Finishing Machine (1080),Toilet Partitions,12003,"1) Lubricate the slide guides
+2) Lubricate the ball screws",Pending,7/8/2024,,Operator,0.00,0.00,0.00,,,[]
+282,EQ ID 282,CNC Router #153 (Gapless) Anderson Router,Toilet Partitions,11890,"1) Check the machine’s air pressure regulator
+2) If spindle is liquid cooled, check water cooling system. Alternately if the spindle is air cooled, you will clean the spindle fan.",Pending,6/3/2024,,Operator,0.00,0.00,0.00,,,[]
+282,EQ ID 282,CNC Router #153 (Gapless) Anderson Router,Toilet Partitions,11891,"1) Clean and lubricate bearings and screws
+2) Clean vacuum pump filters
+3) Clean the spindle taper
+4) Check all connections",Pending,6/7/2024,,Operator,0.00,0.00,0.00,,,[]
+282,EQ ID 282,CNC Router #153 (Gapless) Anderson Router,Toilet Partitions,16116,"1) Clean the control cabinet
+2) Clean rails & check for loose bolts on machine
+3) Lubricate racks",Pending,9/17/2025,,Maintenance,0.00,0.00,0.00,,,[]
+282,EQ ID 282,CNC Router #153 (Gapless) Anderson Router,Toilet Partitions,11894,"1) Clean the control cabinet
+2) Clean rails & check for loose bolts on machine
+3) Lubricate racks",Closed and Completed,6/17/2024,TSG JD Young,Maintenance,0.00,0.00,0.00,3/5/2025,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9901,"1) Cleaning, side pressure device
+2) Check rubber seal on chip channel (dust extraction system)",Pending,1/16/2025,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,10025,Check rubber strips and brushes on pressure beam,Pending,2/2/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9624,"1) Check oil level on compressed air system
+2) Check wipers on saw carriage
+3) Check wipers on program fence",Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,16115,"1) Check rubber on clamp jaw, panel clamping
+2) Air conditioning unit, Check condensation hose",Pending,9/17/2025,,Maintenance,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9625,Check wipers on saw carriage,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9821,Check rubber seal on chip channel (dust extraction system),Pending,1/16/2025,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9731,"Air conditioning unit, Check condensation hose",Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9626,Check wipers on program fence,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,443,"1) Cleaning, side pressure device
+2) Check rubber seal on chip channel (dust extraction system)",Closed and Completed,3/18/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,448,Check rubber seal on chip channel (dust extraction system),Closed and Completed,3/18/2023,.,Operator,0.00,0.00,0.00,5/16/2023,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,444,Check rubber strips and brushes on pressure beam,Closed and Completed,4/2/2022,111,Operator,0.00,0.00,0.00,9/15/2023,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,445,"1) Check oil level on compressed air system
+2) Check wipers on saw carriage
+3) Check wipers on program fence",Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,447,Check wipers on saw carriage,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,450,Check wipers on program fence,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,449,"Air conditioning unit, Check condensation hose",Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,446,"1) Check rubber on clamp jaw, panel clamping
+2) Air conditioning unit, Check condensation hose",Closed and Completed,6/18/2022,.,Maintenance,0.00,0.00,0.00,1/16/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,7252,Check rubber strips and brushes on pressure beam,Closed and Completed,9/30/2023,.,Operator,0.00,0.00,0.00,1/18/2024,,[]
+667,EQ ID 667,Holzma Panel Saw,Toilet Partitions,9736,"1) Check rubber on clamp jaw, panel clamping
+2) Air conditioning unit, Check condensation hose",Closed and Completed,4/16/2024,Bart James,Maintenance,0.00,0.00,0.00,4/16/2024,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,9722,Clean glue pot,Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,9628,Clean sensor in glue pot,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,11887,"Refill tank, when refilling tank do not allow dust to fall in oil container.",Pending,9/2/2024,,Operator,0.00,0.00,0.00,,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,11888,"1) Lubricate chain track
+2) Lubricate conveyor chain
+3) Lubricate top pressure unit",Pending,6/5/2024,,Operator,0.00,0.00,0.00,,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,485,Clean sensor in glue pot,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+709,EQ ID 709,Edgebander KDN 1630,Toilet Partitions,484,Clean glue pot,Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+710,EQ ID 710,Outswing drilling machine,Toilet Partitions,11969,check and fill airline oiler.,Pending,5/5/2025,,Operator,0.00,0.00,0.00,,,[]
+310,EQ ID 310,A&S Panel Saw #221 (Packing Saw),Toilet Partitions,16119,"1) Remove & replace oil filter.
+2) Check for oil leaks
+3) Tighten bolts & fittings if necessary",Pending,12/17/2025,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+310,EQ ID 310,A&S Panel Saw #221 (Packing Saw),Toilet Partitions,11918,"1) Remove & replace oil filter.
+2) Check for oil leaks
+3) Tighten bolts & fittings if necessary",Closed and Completed,10/7/2024,Jeff Riffle,Maintenance Mechanic,0.00,0.00,0.00,8/5/2024,Bart James - 06/17/25  9:00:58 AM: PM completed during roller change,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,9730,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,9617,Check overhead crane components.,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,9778,Check and clean filter element.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,295,Check and clean filter element.,Closed and Completed,4/18/2022,Dan Taylor,Operator,0.00,0.00,0.00,5/9/2022,Dan Taylor - 05/09/22  3:54:15 PM: Cleaned | Dan Taylor - 05/09/22  3:52:38 PM: Cleaned | Dan Taylor - 05/09/22  3:52:06 PM: Cleaned | Dan Taylor - 05/09/22  3:51:46 PM: Cleaned | Dan Taylor - 05/09/22  3:51:20 PM: Cleaned | Dan Taylor - 05/09/22  3:50:48 PM: Cleaned | Dan Taylor - 05/09/22  3:50:25 PM: Cleaned | Dan Taylor - 05/09/22  3:49:51 PM: cleaned | Dan Taylor - 05/09/22  3:48:09 PM: Cleaned filter and housing | Dan Taylor - 05/09/22  3:47:00 PM: Cleaned filter and housing,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,293,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,4/18/2022,1,Operator,0.00,0.00,0.00,9/25/2023,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,294,Check overhead crane components.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,7325,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,10/25/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+547,EQ ID 547,250# Vacuum Lift A- 1540 door notcher,Toilet Partitions,2666,Check and clean filter element.,Closed and Completed,11/13/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,9769,Check and clean filter element.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,9615,Check bolt and nut tightness.,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,9616,Check overhead crane components.,Pending,2/10/2024,,Operator,0.00,0.00,0.00,,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,296,Check and clean filter element.,Closed and Completed,4/18/2022,Dan Taylor,Operator,0.50,0.00,0.00,5/9/2022,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,297,Check bolt and nut tightness.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,298,Check overhead crane components.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/10/2024,,[]
+548,EQ ID 548,250# Vacuum Lift B- 1080 Panel Cell,Toilet Partitions,2667,Check and clean filter element.,Closed and Completed,11/13/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,299,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,4/18/2022,Dan Taylor,Operator,0.50,0.00,0.00,5/9/2022,Dan Taylor - 05/09/22  3:53:08 PM: Cleaned,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,300,Check overhead crane components.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,301,Check bolt and nut tightness.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,2668,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,11/13/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,9773,"1) Check bolt and nut tightness.
+2) Check overhead crane components.
+3) Check and clean filter element.",Closed and Completed,2/16/2024,Karolina TEST,Operator,0.00,0.00,1.00,7/28/2025,,[]
+549,EQ ID 549,250# Vacuum Lift C- 1540 Glue Spreader,Toilet Partitions,9592,Check overhead crane components.,Closed and Completed,2/9/2024,Dale Kee Ron Miller (Test),Operator,0.00,0.00,0.10,8/6/2025,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,9771,Check and clean filter element.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,9594,Check overhead crane components.,Pending,2/9/2024,,Operator,0.00,0.00,0.00,,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,9595,Check bolt and nut tightness.,Pending,2/9/2024,,Operator,0.00,0.00,0.00,,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,302,Check and clean filter element.,Closed and Completed,4/18/2022,Dan Taylor,Operator,0.50,0.00,0.00,5/9/2022,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,303,Check overhead crane components.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,304,Check bolt and nut tightness.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+550,EQ ID 550,250# Vacuum Lift- 1080,Toilet Partitions,2669,Check and clean filter element.,Closed and Completed,11/13/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,9981,Grease slides.,Pending,2/16/2024,,Operator,0.00,0.00,0.00,,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,9591,Clean and oil chain.,Pending,2/9/2024,,Operator,0.00,0.00,0.00,,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,9596,Grease sprocket shaft bearings.,Pending,2/9/2024,,Operator,0.00,0.00,0.00,,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,305,Grease slides.,Closed and Completed,4/18/2022,TEST,Operator,0.00,0.00,0.10,4/21/2023,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,306,Clean and oil chain.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,307,Grease sprocket shaft bearings.,Closed and Completed,4/18/2022,.,Operator,0.00,0.00,0.00,1/9/2024,,[]
+553,EQ ID 553,A&S Saw,Toilet Partitions,5395,Grease slides.,Closed and Completed,5/21/2023,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+680,EQ ID 680,Gannomat 1080 Drilling Machine,Toilet Partitions,9612,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Pending,2/10/2024,,,0.00,0.00,0.00,,,[]
+680,EQ ID 680,Gannomat 1080 Drilling Machine,Toilet Partitions,474,QA to inspect the drill bit per drawing # T-10801090 Step Drill CNC Rev B,Closed and Completed,4/18/2022,.,,0.00,0.00,0.00,1/10/2024,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9791,"1) Lubricate slide
+2) Check ARF",Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9792,Check ARF,Pending,4/16/2024,,Operator,0.00,0.00,0.00,,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,16151,Square the back and side fences,Pending,12/18/2025,,Technician,0.00,0.00,0.00,,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,16150,"1) Check for Squareness
+2) Check Sensors",Pending,6/18/2026,,Technician,0.00,0.00,0.00,,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,478,Check Sensors,Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,479,"1) Check for Squareness
+2) Check Sensors",Closed and Completed,3/18/2023,.,Technician,0.00,0.00,0.00,5/16/2023,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,477,Square the back and side fences,Closed and Completed,9/18/2022,.,Technician,0.00,0.00,0.00,1/16/2024,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,476,Check ARF,Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,475,"1) Lubricate slide
+2) Check ARF",Closed and Completed,6/18/2022,.,Operator,0.00,0.00,0.00,1/16/2024,,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9767,Square the back and side fences,Closed without Action,7/16/2024,Day shift,Technician,0.00,0.00,0.00,6/18/2025,Andy Curtis - 06/18/25  7:31:54 PM: New Machine,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9911,"1) Check for Squareness
+2) Check Sensors",Closed without Action,1/16/2025,Day shift,Technician,0.00,0.00,0.00,6/18/2025,Andy Curtis - 06/18/25  7:30:56 PM: New Machine,[]
+689,EQ ID 689,Leveling Bar Drilling Machine,Toilet Partitions,9905,Check Sensors,Closed without Action,1/16/2025,Day shift,Technician,0.00,0.00,0.00,6/18/2025,Andy Curtis - 06/18/25  7:31:23 PM: New Machine,[]
+1385,EQ ID 1385,Multicyl Punch,Toilet Partitions,16152,"Oil level may have to be topped up. Generally, the sealed Multicyl oil system should only be replaced when doing a seal change, or after service of one year",Pending,6/18/2026,,Maintenance Mechanic,0.00,0.00,0.00,,,[]
+1385,EQ ID 1385,Multicyl Punch,Toilet Partitions,11886,"Oil level may have to be topped up. Generally, the sealed Multicyl oil system should only be replaced when doing a seal change, or after service of one year",Closed without Action,3/10/2025,.,Maintenance Mechanic,0.00,0.00,0.00,6/18/2025,Andy Curtis - 06/18/25  7:33:54 PM: Not used often.,[]
+2022,EQ ID 2022,Saw 2 (north) Homag,Toilet Partitions,11762,"1) Refill lubricant tank
+2) Check and clean lubrication points",Pending,3/2/2025,,Operator,0.00,0.00,0.00,,,[]
+2020,EQ ID 2020,Intel-Store,Toilet Partitions,5467,"Location -Top part of the scissor lift mechanism
+Use Reference pictures notes from Manual
+*Check black tooth belt for damage check tension replace or adjust if needed .
+*Check all guide rollers on X  and Y axis check for play check that all are moving and clean guides.
+*Check sliding blocks for damage replace if needed
+*Inspect power chain blow if needed 
+*Check Transmission gears for leaks check oil level 
+*Clean dust deposits from dive on transmission
+*Grease the toothed segments with Molykote lube 
+*Grease all bearing  nipples using Part #4-155-70-0005 make sure to grease until a fresh rim of grease forms at the seals .
+*Grease the scissor lift mechanism  bearings 
+*Grease rotary drive bearings 
+*Check both drive tires make sure they are in the center and not drifting to the side look at the shaft no grease swirl marks should be seen tighten locks if needed",Closed and Completed,7/1/2023,Stiles Tech,Maintenance Mechanic,0.00,"4,000.00",0.00,1/16/2024,,[]
+2020,EQ ID 2020,Intel-Store,Toilet Partitions,5468,"*Wipe and clean steel cable inspect for damage or if its worn out 
+*Lightly lubricate the steel cable once each year with a brush",Closed and Completed,5/1/2024,Jimmy Sadler,Maintenance Mechanic,0.00,0.00,0.00,6/5/2024,,[]
