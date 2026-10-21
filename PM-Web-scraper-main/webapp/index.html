@@ -147,7 +147,12 @@
     //                    so no action is ever blocked by a missing name.
     function getRawUser() { try { return localStorage.getItem("mintUser") || ""; } catch (e) { return ""; } }
     function getUserName() { return getRawUser() || "Guest"; }
-    function setUserName(v) { try { localStorage.setItem("mintUser", v || ""); } catch (e) {} }
+    function setUserName(v) {
+      try { localStorage.setItem("mintUser", v || ""); } catch (e) {}
+      // Let anything showing per-identity data (e.g. notification banners)
+      // know the signed-in identity just changed, without a full reload.
+      try { window.dispatchEvent(new Event("mint-user-changed")); } catch (e) {}
+    }
 
     // The admin password (gates deleting work orders + viewing version history)
     // is kept only in sessionStorage - cleared when the browser tab closes -
@@ -382,6 +387,75 @@
         <div className="flex items-center gap-3 text-emerald-700 py-6">
           <div className="w-5 h-5 border-2 border-emerald-200 border-t-emerald-700 rounded-full animate-spin"></div>
           <span>${label || "Loading…"}</span>
+        </div>`;
+    }
+
+    // Whoever is "browsing as" right now for notification-matching purposes:
+    // an active role (e.g. "M/E") takes priority over a signed-in technician
+    // name, which takes priority over nobody (guest, no notifications).
+    // Re-syncs whenever the signed-in identity changes (see setUserName).
+    function useCurrentIdentity(activeRole) {
+      const [user, setUser] = useState(getRawUser());
+      useEffect(() => {
+        const sync = () => setUser(getRawUser());
+        window.addEventListener("mint-user-changed", sync);
+        return () => window.removeEventListener("mint-user-changed", sync);
+      }, []);
+      return activeRole || user;
+    }
+
+    // Banner shown at the top of a division's page: outstanding "your work
+    // order is now In Progress / Closed and Completed" notifications for
+    // whoever is currently signed in as a technician, or browsing as a
+    // shared role (e.g. "M/E") - matched against the WO's "Owner" field.
+    // Shown on every view that browses into a division except the MINT
+    // master admin pages and the no-sign-in employee request flow.
+    function NotificationBanner({ recipient, divisionKey, onOpenWo }) {
+      const [items, setItems] = useState([]);
+
+      const load = () => {
+        if (!recipient) { setItems([]); return; }
+        getJSON("/api/notifications?recipient=" + encodeURIComponent(recipient) +
+                "&division_key=" + encodeURIComponent(divisionKey || ""))
+          .then((d) => setItems(d.notifications || []))
+          .catch(() => {});
+      };
+      useEffect(load, [recipient, divisionKey]);
+
+      const dismiss = (id) => {
+        setItems((cur) => cur.filter((n) => n.id !== id));
+        sendJSON("/api/notifications/" + id + "/ack", "POST", {}).catch(() => {});
+      };
+      const dismissAll = () => {
+        setItems([]);
+        sendJSON("/api/notifications/ack-all", "POST", { recipient, division_key: divisionKey || "" }).catch(() => {});
+      };
+
+      if (!items.length) return null;
+      return html`
+        <div className="mb-5 space-y-2 fade-in">
+          ${items.length > 1 && html`
+            <div className="flex justify-end">
+              <button onClick=${dismissAll}
+                className="text-xs font-semibold text-emerald-700 hover:text-emerald-800">
+                Dismiss all (${items.length})</button>
+            </div>`}
+          ${items.map((n) => html`
+            <div key=${n.id}
+              className=${"flex items-start gap-3 rounded-2xl border px-4 py-3 shadow-sm " +
+                (n.status === CLOSED_STATUS
+                  ? "bg-emerald-50 border-emerald-200"
+                  : "bg-amber-50 border-amber-200")}>
+              <span className="text-xl leading-none mt-0.5">${n.status === CLOSED_STATUS ? "✅" : "🔧"}</span>
+              <div className="flex-1 min-w-0">
+                <button onClick=${() => onOpenWo && onOpenWo(n.wo_id)}
+                  className="text-sm font-semibold text-slate-800 hover:underline text-left">
+                  ${n.message}
+                </button>
+              </div>
+              <button onClick=${() => dismiss(n.id)} title="Dismiss"
+                className="w-6 h-6 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-700 hover:bg-white/70 text-sm leading-none">×</button>
+            </div>`)}
         </div>`;
     }
 
@@ -1238,7 +1312,7 @@
     }
 
     function Header({ technicians, setTechnicians, roles, setRoles, onHome, onOpenInactive, onOpenSpareParts, onOpenMySchedule, onOpenWo, onOpenMachine,
-                      viewProfiles, activeProfile, viewKey, onChangeView, onViewProfilesChanged, hideUserControls,
+                      viewProfiles, activeProfile, viewKey, onChangeView, onViewProfilesChanged, hideUserControls, canSignInTech,
                       activeRole, onSwitchViewProfile, divisionKey, divisions, onSwitchDivision }) {
       // `user` is the raw signed-in profile ("" when a guest). Guests are the
       // default and are never prompted; they can sign in later if they want.
@@ -1289,6 +1363,36 @@
         }
         setTech(val);
       };
+      // Single combined "who are you?" control: Full Access (no identity,
+      // was confusingly also labeled "Maintenance" - collided with a real
+      // technician of that name), a Views optgroup (role identities, e.g.
+      // "M/E"), and a Sign in as optgroup (technicians + Sean + "someone
+      // else"). Picking either clears the other, so there's exactly one
+      // active identity at a time instead of two independent controls.
+      const showRoleOptions = roles.length > 0 && !!onSwitchViewProfile;
+      // Independent of whether a role is currently active, unlike
+      // `hideUserControls` - lets you switch straight from a role to a
+      // technician (or back) in this one dropdown without an intermediate
+      // "Full Access" step. Only false on pages with no technician roster
+      // at all (e.g. the company-wide overview).
+      const showTechOptions = canSignInTech !== undefined ? canSignInTech : !hideUserControls;
+      const showIdentitySelect = showRoleOptions || showTechOptions;
+      const onSelectIdentity = async (val) => {
+        if (!val || val === "__maintenance") {
+          onSwitchViewProfile && onSwitchViewProfile("__maintenance");
+          switchUser();
+          return;
+        }
+        if (val === "__other") { setShowOther(true); return; }
+        if (val === "sean") { setPendingSupervisor("Sean"); setShowSeanGate(true); return; }
+        if (roles.includes(val)) {
+          switchUser();
+          onSwitchViewProfile(val);
+          return;
+        }
+        onSwitchViewProfile && onSwitchViewProfile("__maintenance");
+        await onSelectUser(val);
+      };
 
       return html`
         <header className="bg-slate-900 text-white shadow-lg">
@@ -1313,32 +1417,25 @@
                   ${divisions.map((d) => html`
                     <option key=${d.key} value=${d.key} className="text-slate-700">${d.name}</option>`)}
                 </select>`}
-              ${roles.length > 0 && onSwitchViewProfile && html`
-                <select value=${activeRole || "__maintenance"} onChange=${(e) => onSwitchViewProfile(e.target.value)}
-                  title="Switch view"
-                  className="px-3 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold
+              ${showIdentitySelect && html`
+                <select value=${activeRole || (signedIn ? user : "__maintenance")} onChange=${(e) => onSelectIdentity(e.target.value)}
+                  title="Who are you?"
+                  className="px-3 py-2 rounded-full bg-white text-slate-700 text-sm font-semibold
                              focus:outline-none focus:ring-2 focus:ring-emerald-300 transition cursor-pointer">
-                  <option value="__maintenance" className="text-slate-700">Maintenance</option>
-                  ${roles.map((r) => html`<option key=${r} value=${r} className="text-slate-700">${r}</option>`)}
+                  ${showRoleOptions && html`<optgroup label="Views">
+                    ${roles.map((r) => html`<option key=${r} value=${r}>${r}</option>`)}
+                  </optgroup>`}
+                  ${showTechOptions && html`<optgroup label="Sign in as">
+                    ${technicians.map((n) => html`<option key=${n} value=${n}>${n}</option>`)}
+                    ${divisionKey === "bla" && html`<option value="sean">Sean (supervisor)</option>`}
+                    <option value="__other">Someone else…</option>
+                  </optgroup>`}
                 </select>`}
               ${!!activeRole && html`
-                <span className="text-sm font-semibold text-emerald-100">Viewing as: ${activeRole}</span>
                 <button onClick=${onOpenMySchedule}
                   className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
                   My schedule</button>`}
-              ${!hideUserControls && !signedIn && html`
-                <span className="text-sm text-emerald-100/70">Guest</span>
-                <select value="" onChange=${(e) => onSelectUser(e.target.value)}
-                  className="px-3 py-2 rounded-full bg-white text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-300">
-                  <option value="">Sign in…</option>
-                  ${technicians.map((n) => html`<option key=${n} value=${n}>${n}</option>`)}
-                  <option value="__other">Someone else…</option>
-                </select>
-                <button onClick=${() => { setPendingSupervisor("Sean"); setShowSeanGate(true); }}
-                  className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
-                  Sean (supervisor)</button>`}
-              ${!hideUserControls && signedIn && html`
-                <span className="text-sm font-semibold text-emerald-100">${user}</span>
+              ${!activeRole && !hideUserControls && signedIn && html`
                 ${isAssignable && !sean && html`
                   <button onClick=${onOpenMySchedule}
                     className="px-3.5 py-2 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition">
@@ -1358,7 +1455,7 @@
                     Roles</button>`}
                 <button onClick=${switchUser}
                   className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
-                  Switch user</button>`}
+                  Sign out</button>`}
               ${(showInactive || showSpareParts) && html`<span className="w-px h-6 bg-white/15 mx-1"></span>`}
               ${showInactive && html`
                 <button onClick=${() => onOpenInactive(divisionKey)} title="Inactive machines"
@@ -1514,20 +1611,17 @@
               className="text-left bg-white rounded-2xl p-6 shadow-sm border border-emerald-100
                          hover:shadow-lg hover:border-emerald-300 transition group">
               <div className="text-xl font-extrabold text-slate-800 group-hover:text-emerald-800">Maintenance</div>
-              <div className="text-sm text-slate-500 mt-1">Full maintenance access. Sean sign-in and technician schedules are available.</div>
             </button>
             ${roles.map((r) => html`
               <button key=${r} onClick=${() => onSelectRole(r)}
                 className="text-left bg-white rounded-2xl p-6 shadow-sm border border-emerald-100
                            hover:shadow-lg hover:border-emerald-300 transition group">
                 <div className="text-xl font-extrabold text-slate-800 group-hover:text-emerald-800">${r}</div>
-                <div className="text-sm text-slate-500 mt-1">Their assigned view, plus their weekly schedule filtered by division.</div>
               </button>`)}
             <button onClick=${openMint}
               className="text-left bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-800
                          hover:shadow-lg hover:border-slate-700 transition group">
               <div className="text-xl font-extrabold text-white">Mint</div>
-              <div className="text-sm text-slate-300 mt-1">Admin: assign which view each role sees. Password protected.</div>
             </button>
           </div>
           ${showGate && html`<${MasterGate} actionLabel="enter the MINT admin"
@@ -1726,9 +1820,10 @@
     /* ------------------------------------------------------------------ */
     /* Company dashboard (top layer)                                       */
     /* ------------------------------------------------------------------ */
-    function CompanyDashboard({ onOpenDivision, viewProfile }) {
+    function CompanyDashboard({ onOpenDivision, viewProfile, activeRole, onOpenWo }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
+      const identity = useCurrentIdentity(activeRole);
 
       useEffect(() => {
         getJSON("/api/company").then(setData).catch((e) => setErr(e.message));
@@ -1739,6 +1834,7 @@
 
       return html`
         <div className="fade-in">
+          <${NotificationBanner} recipient=${identity} divisionKey="" onOpenWo=${onOpenWo} />
           <h1 className="text-2xl font-extrabold text-slate-800 mb-1">${data.name}</h1>
           <p className="text-slate-500 mb-5">Company-wide maintenance overview across all divisions.</p>
           ${featureAllowed(viewProfile, "dashboard") && html`<${KpiRow} stats=${data.totals} />`}
@@ -2473,8 +2569,9 @@
     /* ------------------------------------------------------------------ */
     const DIV_TABS = ["Departments", "Longevity", "Weekly Schedule", "Monthly Calendar", "Unscheduled", "Scheduled", "Spare Parts"];
 
-    function DivisionDashboard({ divisionKey, onHome, onOpenDept, onOpenWo, refreshSignal, viewProfile }) {
+    function DivisionDashboard({ divisionKey, onHome, onOpenDept, onOpenWo, refreshSignal, viewProfile, activeRole }) {
       const divKey = divisionKey || "bla";
+      const identity = useCurrentIdentity(activeRole);
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [tab, setTab] = useState("Departments");
@@ -2519,6 +2616,7 @@
             { label: "Bobrick", onClick: onHome },
             { label: data.name + " Division" },
           ]} />`}
+          <${NotificationBanner} recipient=${identity} divisionKey=${divKey} onOpenWo=${onOpenWo} />
           <div className="flex items-start justify-between flex-wrap gap-3 mb-1">
             <h1 className="text-2xl font-extrabold text-slate-800">${data.name} Division</h1>
             <button onClick=${() => setCreating(true)}
@@ -8111,16 +8209,23 @@
       }, []);
 
       // All navigation goes through navigate() so the Back stack stays accurate.
+      // Each entry snapshots the role/view active at that point too, so Back
+      // restores whichever identity was showing on that page - keeping the
+      // header's dropdown in sync instead of leaving it on whatever was most
+      // recently selected.
       const navigate = (next) => {
         const resolved = typeof next === "function" ? next(route) : next;
         if (JSON.stringify(resolved) === JSON.stringify(route)) return;
-        setNavHist((h) => [...h.slice(-49), route]);
+        setNavHist((h) => [...h.slice(-49), { route, activeRole, viewKey }]);
         setRoute(resolved);
       };
       const goBack = () => {
         setNavHist((h) => {
           if (!h.length) return h;
-          setRoute(h[h.length - 1]);
+          const prev = h[h.length - 1];
+          setRoute(prev.route);
+          setActiveRole(prev.activeRole || "");
+          changeView(prev.viewKey || "");
           return h.slice(0, -1);
         });
       };
@@ -8178,7 +8283,7 @@
         <div className="min-h-screen">
           <${Header} technicians=${technicians} setTechnicians=${setTechnicians} roles=${roles} setRoles=${setRoles} onHome=${headerHome} onOpenInactive=${openInactive} onOpenSpareParts=${openSpareParts} onOpenMySchedule=${openMySchedule} onOpenWo=${setWoId} onOpenMachine=${goToMachine}
             viewProfiles=${viewProfiles} activeProfile=${activeProfile} viewKey=${viewKey} onChangeView=${changeView} onViewProfilesChanged=${refreshViewProfiles}
-            hideUserControls=${!!activeRole || !isBlaContext}
+            hideUserControls=${!!activeRole || !isBlaContext} canSignInTech=${isBlaContext}
             activeRole=${activeRole} onSwitchRole=${goLanding} onSwitchViewProfile=${switchViewProfile} divisionKey=${headerDivisionKey}
             divisions=${divisionsList} onSwitchDivision=${switchDivision} />
           <main className="max-w-6xl mx-auto px-6 py-8">
@@ -8191,7 +8296,7 @@
             ${route.view === "divisions" && html`<${DivisionPicker} onSelectDiv=${selectDivision} onSelectCompany=${goCompany} onBack=${goLanding} />`}
             ${route.view === "manage-role-views" && html`<${ManageRoleViewsPage} roles=${roles} roleViews=${roleViews} viewProfiles=${viewProfiles} onBack=${goLanding}
                 onChanged=${() => { refreshViewProfiles(); refreshRoleViews(); }} />`}
-            ${route.view === "company" && html`<${CompanyDashboard} onOpenDivision=${openDivision} viewProfile=${activeProfile} />`}
+            ${route.view === "company" && html`<${CompanyDashboard} onOpenDivision=${openDivision} viewProfile=${activeProfile} activeRole=${activeRole} onOpenWo=${setWoId} />`}
             ${route.view === "inactive" && html`<${InactivePage} onCompany=${goCompany} onOpenDept=${openDept} divisionKey=${route.divisionKey} />`}
             ${route.view === "spare-parts" && html`<${SparePartsPage} onCompany=${goCompany} onOpenMachine=${openMachine} onOpenDept=${openDept} lockDivisionKey=${route.divisionKey} />`}
             ${route.view === "my-schedule" && (activeRole
@@ -8199,7 +8304,7 @@
               : html`<${MySchedulePage} user=${getRawUser()} onCompany=${goCompany} onOpenWo=${setWoId} defaultDivisionKey=${route.divisionKey || ""} />`)}
             ${route.view === "division" && html`
               <${DivisionDashboard} divisionKey=${route.divisionKey || "bla"} onHome=${goCompany}
-                refreshSignal=${dataVersion}
+                refreshSignal=${dataVersion} activeRole=${activeRole}
                 onOpenDept=${openDept} onOpenWo=${setWoId} viewProfile=${activeProfile} />`}
             ${route.view === "department" && html`
               <${DepartmentDashboard} deptKey=${route.deptKey}

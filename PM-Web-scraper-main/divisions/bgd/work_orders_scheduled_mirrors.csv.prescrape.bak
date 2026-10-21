@@ -1,0 +1,77 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+1671,EQ ID 1671,Lift Table (293 cell 11320),Mirrors,7526,"1.) Replace Hydraulic filter  assembly
+2.) Filter part# 035114",Pending,5/1/2024,,Maintenance,0.00,0.00,0.00,,,[]
+1671,EQ ID 1671,Lift Table (293 cell 11320),Mirrors,7527,"1.) Replace Hydraulic filter  assembly
+2.) Filter part# 035114",Pending,5/1/2024,,Maintenance,0.00,0.00,0.00,,,[]
+1671,EQ ID 1671,Lift Table (293 cell 11320),Mirrors,7505,"1.) Check condition of pump
+2.) Check the condition of hydraulic fittings and hoses
+3.) Check  caster wheel (if equipped) for wear and proper function
+4.) Inspect wiring for loose connections and damage insulation
+
+5.) Lubricate upper, lower roller, pivot point 
+6.) lubricate lift cylinder with BRUSH",Closed and Completed,12/1/2023,Josh Patton,Maintenance,1.00,0.00,0.00,3/12/2024,,[]
+1671,EQ ID 1671,Lift Table (293 cell 11320),Mirrors,7518,1.) Check lift cylinder wiper ring and packing,Closed and Completed,3/1/2024,Josh PAtton,Maintenance,0.15,0.00,0.00,3/13/2024,,[]
+274,EQ ID 274,"Roll Former, Channel Frame",Mirrors,7232,"1.) grease all zerks. 
+2. remove top cover and visually inspect all dies and gears for damage.
+3.)remove bottom cover and inspect motor and drive chain for damage and lube chain.",Closed and Completed,11/13/2023,Dennis Davis,Maintenance,1.00,0.00,0.00,5/13/2024,Dennis Davis - 10/09/25 11:02:33 AM: Completed all,[]
+275,EQ ID 275,Uncoiler (Notchline),Mirrors,7220,1.) Lubricate horizontal drum rod with a thin coat of light machine oil.,Closed and Completed,12/1/2023,Josh Patton,Maintenance,0.15,0.00,0.00,3/12/2024,,[]
+842,EQ ID 842,Uncoiler (Hyraulic Notchline),Mirrors,7218,1.) Lubricate horizontal drum rod with a light coat of machine oil.,Closed and Completed,12/1/2023,Josh Patton,Maintenance,0.15,0.00,0.00,5/14/2024,,[]
+1690,EQ ID 1690,Lift Table (293 cell 11181),Mirrors,7525,"1.) Replace Hydraulic filter  assembly
+2.) Filter part# 035114",Pending,5/1/2024,,Maintenance,0.00,0.00,0.00,,,[]
+1690,EQ ID 1690,Lift Table (293 cell 11181),Mirrors,7517,1.) Check lift cylinder wiper ring and packing,Closed and Completed,3/1/2024,Josh Patton,Maintenance Mechanic,0.00,0.00,0.00,3/13/2024,,[]
+1690,EQ ID 1690,Lift Table (293 cell 11181),Mirrors,7504,"1.) Check condition of pump
+2.) Check the condition of hydraulic fittings and hoses
+3.) Check  caster wheel (if equipped) for wear and proper function
+4.) Inspect wiring for loose connections and damage insulation
+
+5.) Lubricate upper, lower roller, pivot point 
+6.) lubricate lift cylinder with BRUSH",Closed and Completed,12/1/2023,Josh Patton,Maintenance,0.50,0.00,0.00,5/14/2024,,[]
+1860,EQ ID 1860,Lift Table (Crating North),Mirrors,7528,"1.) Replace Hydraulic filter  assembly
+2.) Filter part# 035114",Pending,5/1/2024,,Maintenance,0.00,0.00,0.00,,,[]
+1860,EQ ID 1860,Lift Table (Crating North),Mirrors,7506,"1.) Check condition of pump
+2.) Check the condition of hydraulic fittings and hoses
+3.) Check  caster wheel (if equipped) for wear and proper function
+4.) Inspect wiring for loose connections and damage insulation
+
+5.) Lubricate upper, lower roller, pivot point 
+6.) lubricate lift cylinder with BRUSH",Closed and Completed,12/1/2023,Josh Patton,Maintenance,0.15,0.00,0.00,3/13/2024,,[]
+1860,EQ ID 1860,Lift Table (Crating North),Mirrors,7519,1.) Check lift cylinder wiper ring and packing,Closed and Completed,3/1/2024,Josh Patton,Maintenance,0.15,0.00,0.00,3/13/2024,,[]
+1861,EQ ID 1861,Lift Table (Crating South),Mirrors,7529,"1.) Replace Hydraulic filter  assembly
+2.) Filter part# 035114",Pending,5/1/2024,,Maintenance,0.00,0.00,0.00,,,[]
+1861,EQ ID 1861,Lift Table (Crating South),Mirrors,7507,"1.) Check condition of pump
+2.) Check the condition of hydraulic fittings and hoses
+3.) Check  caster wheel (if equipped) for wear and proper function
+4.) Inspect wiring for loose connections and damage insulation
+
+5.) Lubricate upper, lower roller, pivot point 
+6.) lubricate lift cylinder with BRUSH",Closed and Completed,12/1/2023,Josh Patton,Maintenance,0.01,0.00,0.00,3/13/2024,,[]
+1861,EQ ID 1861,Lift Table (Crating South),Mirrors,7520,1.) Check lift cylinder wiper ring and packing,Closed and Completed,3/1/2024,Josh Patton,Maintenance,0.15,0.00,0.00,3/13/2024,,[]
+1862,EQ ID 1862,Lift Table (Large Mirrors),Mirrors,7530,"1.) Replace Hydraulic filter  assembly
+2.) Filter part# 035114",Pending,5/1/2024,,Maintenance,0.00,0.00,0.00,,,[]
+1862,EQ ID 1862,Lift Table (Large Mirrors),Mirrors,7521,1.) Check lift cylinder wiper ring and packing,Closed and Completed,3/1/2024,Josh Patton,Maintenance,0.15,0.00,0.00,3/13/2024,,[]
+1862,EQ ID 1862,Lift Table (Large Mirrors),Mirrors,7522,1.) Check lift cylinder wiper ring and packing,Closed and Completed,3/1/2024,Josh Patton,Maintenance,0.15,0.00,0.00,3/13/2024,,[]
+1862,EQ ID 1862,Lift Table (Large Mirrors),Mirrors,7508,"1.) Check condition of pump
+2.) Check the condition of hydraulic fittings and hoses
+3.) Check  caster wheel (if equipped) for wear and proper function
+4.) Inspect wiring for loose connections and damage insulation
+
+5.) Lubricate upper, lower roller, pivot point 
+6.) lubricate lift cylinder with BRUSH",Closed and Completed,12/1/2023,Josh Patton,Maintenance,0.50,0.00,0.00,5/14/2024,,[]
+1863,EQ ID 1863,Lift Table (Shear),Mirrors,7524,"1.) Replace Hydraulic filter  assembly
+2. Filter part# 035114",Pending,5/1/2024,,Maintenance,0.00,0.00,0.00,,,[]
+1863,EQ ID 1863,Lift Table (Shear),Mirrors,7531,"1.) Replace Hydraulic filter  assembly
+2.) Filter part# 035114",Pending,5/1/2024,,Maintenance,0.00,0.00,0.00,,,[]
+1863,EQ ID 1863,Lift Table (Shear),Mirrors,7509,"1.) Check condition of pump
+2.) Check the condition of hydraulic fittings and hoses
+3.) Check  caster wheel (if equipped) for wear and proper function
+4.) Inspect wiring for loose connections and damage insulation
+
+5.) Lubricate upper, lower roller, pivot point 
+6.) lubricate lift cylinder with BRUSH",Closed and Completed,12/1/2023,Josh Patton,Maintenance,0.01,0.00,0.00,3/13/2024,,[]
+1863,EQ ID 1863,Lift Table (Shear),Mirrors,7523,1.) Check lift cylinder wiper ring and packing,Closed and Completed,3/1/2024,Josh Patton,Maintenance,0.15,0.00,0.00,5/14/2024,,[]
+1883,EQ ID 1883,Rollformer (293),Mirrors,7229,"1.) grease all zerk
+2.) Remove bottom machine guard and inspect motor 
+3. inspect chain drive and lubricate chain.",Closed and Completed,11/13/2023,Dennis Davis,Maintenance,0.45,0.00,0.00,10/8/2025,Dennis Davis - 10/09/25 11:04:54 AM: completed all audit items | Joshua Patton - 05/14/24  9:57:19 AM: there are 4 C batteries,[]
+1961,EQ ID 1961,Robotic Welder,Mirrors,7205,1.) Change CPU Lithium battery (WITH POWER ON).,Pending,9/13/2024,,Maintenance,0.00,0.00,0.00,,,[]
+1961,EQ ID 1961,Robotic Welder,Mirrors,7208,1.)Grease Robot mechanical Unit.,Pending,9/13/2026,,Maintenance,0.00,0.00,0.00,,,[]
+1961,EQ ID 1961,Robotic Welder,Mirrors,7204,1.) change D-cell or C-cell encoder batteries WITH ROBOT ON.,Closed and Completed,3/13/2024,Josh Patton,Maintenance,0.25,0.00,0.00,5/14/2024,Joshua Patton - 05/14/24  8:26:31 AM: there are 4 C batteries,[]

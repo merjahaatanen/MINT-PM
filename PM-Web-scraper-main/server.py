@@ -263,6 +263,25 @@ def _aliases_for(name: str) -> set[str]:
     return {(name or "").strip().lower()}
 
 
+def _full_aliases(name: str) -> set[str]:
+    """Same idea as `_aliases_for`, but works symmetrically: `name` can be
+    the canonical technician/role name OR any one of its aliases (e.g.
+    "shinobi" for "Gabriel") and still resolves to the complete alias set.
+    Used to match a WO's `owner` (always stored canonically, since it's
+    picked from the technician/role dropdown) against whatever identity
+    string someone actually signed in under."""
+    name_l = (name or "").strip().lower()
+    if not name_l:
+        return set()
+    for aliases in _TECH_ALIASES.values():
+        if name_l in aliases:
+            return aliases
+    for aliases in _ROLE_ALIASES.values():
+        if name_l in aliases:
+            return aliases
+    return {name_l}
+
+
 os.makedirs(GUIDES_DIR, exist_ok=True)
 
 app = Flask(__name__, static_folder=WEBAPP_DIR, static_url_path="")
@@ -3006,6 +3025,22 @@ def api_create_workorder():
         email_result = emailer.notify_new_unscheduled(
             rec2, dept_label=DEPARTMENTS[dept_key]["label"])
 
+    # Notify whoever this new work order is assigned to (the "Owner" picked
+    # at creation - a technician or shared role/group like "M/E" - and, for
+    # scheduled WOs, "Assigned To" as well if different) so it shows up as a
+    # banner the next time they open this division under that same identity.
+    division_key = _DEPT_DIVISION.get(dept_key, "")
+    what = (rec.get("equipment_name") or rec.get("problem") or rec["wo_id"]).strip()
+    notified = set()
+    for recipient in (fields.get("owner"), fields.get("assigned_to")):
+        recipient = (recipient or "").strip()
+        key = recipient.lower()
+        if not recipient or key in notified:
+            continue
+        notified.add(key)
+        message = f"New work order {rec['wo_id']} ({what}) has been assigned to you."
+        store.add_notification(rec["wo_id"], division_key, dept_key, recipient, "New", message)
+
     # For a recurring scheduled WO, reload so the auto-generated next occurrence
     # is immediately visible on the dashboard.
     if wo_type == "scheduled" and fields.get("frequency"):
@@ -3114,6 +3149,7 @@ def api_edit_workorder(wo_id):
             editable[df] = _normalize_date(editable[df])
 
     prev_completed = _is_completed(rec.get("status"))
+    prev_status = (rec.get("status") or "").strip()
     store.set_override(wo_id, editable, author=author)
     with _DATA_LOCK:
         rec.update(editable)
@@ -3127,6 +3163,22 @@ def api_edit_workorder(wo_id):
         dept_key = rec.get("department_key")
         dept_label = DEPARTMENTS.get(dept_key, {}).get("label", "") if dept_key else ""
         email_result = emailer.notify_completed(rec, dept_label=dept_label)
+
+    # Notify whoever owns the WO (the technician or shared role picked as its
+    # "Owner" at creation, e.g. "M/E") when it moves into "In Progress" or
+    # "Closed and Completed" - but only on the actual transition, not every
+    # re-save. They'll see it as a banner the next time they open this
+    # division as that same identity.
+    new_status = (rec.get("status") or "").strip()
+    if new_status != prev_status and new_status in ("In Progress", CLOSED_STATUS):
+        owner = (rec.get("owner") or "").strip()
+        if owner:
+            dept_key = rec.get("department_key") or ""
+            division_key = _DEPT_DIVISION.get(dept_key, "")
+            what = (rec.get("equipment_name") or rec.get("problem") or wo_id).strip()
+            verb = "completed" if new_status == CLOSED_STATUS else "in progress"
+            message = f"Work order {wo_id} ({what}) is now {verb}."
+            store.add_notification(wo_id, division_key, dept_key, owner, new_status, message)
 
     return jsonify({"ok": True, "work_order": _wo_detail(rec), "email": email_result})
 
@@ -3578,6 +3630,45 @@ def api_delete_view_profile(key):
     if not store.delete_view_profile(key, author=author):
         return jsonify({"error": "View profile not found."}), 404
     return jsonify({"ok": True})
+
+
+# --------------------------------------------------------------------------- #
+# Notifications (work-order status changes for whoever owns/filed a WO)
+# --------------------------------------------------------------------------- #
+@app.route("/api/notifications", methods=["GET"])
+def api_list_notifications():
+    """Notifications for the signed-in identity only (a technician name or
+    shared role like 'M/E'), optionally scoped to one division - resolved
+    through the full alias set (e.g. signed in as "shinobi" still matches a
+    WO whose Owner was picked as "Gabriel"). With no identity (guest / plain
+    "Maintenance", nobody signed in), returns nothing - there's no "me" to
+    match against."""
+    recipient = (request.args.get("recipient") or "").strip()
+    division_key = (request.args.get("division_key") or "").strip()
+    if not recipient:
+        return jsonify({"notifications": []})
+    return jsonify({"notifications": store.list_notifications(_full_aliases(recipient), division_key=division_key)})
+
+
+@app.route("/api/notifications/<int:notif_id>/ack", methods=["POST"])
+def api_ack_notification(notif_id):
+    """Dismiss a single notification."""
+    if not store.acknowledge_notification(notif_id):
+        return jsonify({"error": "Notification not found."}), 404
+    return jsonify({"ok": True})
+
+
+@app.route("/api/notifications/ack-all", methods=["POST"])
+def api_ack_all_notifications():
+    """Dismiss every outstanding notification for a recipient (optionally
+    scoped to one division) in one go, resolved through the full alias set."""
+    body = request.get_json(silent=True) or {}
+    recipient = (body.get("recipient") or "").strip()
+    division_key = (body.get("division_key") or "").strip()
+    if not recipient:
+        return jsonify({"error": "recipient is required"}), 400
+    n = store.acknowledge_notifications_for(_full_aliases(recipient), division_key=division_key)
+    return jsonify({"ok": True, "acknowledged": n})
 
 
 # --------------------------------------------------------------------------- #
@@ -4752,7 +4843,7 @@ def _start_chrome():
 
 if __name__ == "__main__":
     host = os.environ.get("SERVER_HOST", "0.0.0.0")
-    port = int(os.environ.get("SERVER_PORT", "5000"))
+    port = int(os.environ.get("SERVER_PORT", "8080"))
     print("=" * 60)
     print("BLA Maintenance Dashboard")
     print(f"  Local:   http://127.0.0.1:{port}")

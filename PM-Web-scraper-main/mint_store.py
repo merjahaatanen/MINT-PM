@@ -324,6 +324,21 @@ def _init() -> None:
                 updated_at TEXT NOT NULL,
                 updated_by TEXT NOT NULL DEFAULT ''
             );
+
+            CREATE TABLE IF NOT EXISTS notifications (
+                id              INTEGER PRIMARY KEY AUTOINCREMENT,
+                wo_id           TEXT NOT NULL,
+                division_key    TEXT NOT NULL DEFAULT '',
+                department_key  TEXT NOT NULL DEFAULT '',
+                recipient       TEXT NOT NULL,
+                status          TEXT NOT NULL,
+                message         TEXT NOT NULL,
+                created_at      TEXT NOT NULL,
+                acknowledged    INTEGER NOT NULL DEFAULT 0,
+                acknowledged_at TEXT NOT NULL DEFAULT ''
+            );
+
+            CREATE INDEX IF NOT EXISTS idx_notif_recipient ON notifications (recipient, acknowledged);
             """
         )
         # Migration: add summary_json column if it exists from an older schema.
@@ -1663,6 +1678,96 @@ def delete_view_profile(key: str, author: str = "") -> bool:
         _audit("", author, "delete_view_profile", key)
         return True
     return False
+
+
+# --------------------------------------------------------------------------- #
+# Notifications (work-order status changes for whoever owns/filed a WO)
+# --------------------------------------------------------------------------- #
+# Whenever an unscheduled/scheduled work order transitions into "In Progress"
+# or "Closed and Completed", server.py drops a notification here for the WO's
+# `owner` field (a technician name or shared role identity, e.g. "M/E"). The
+# division dashboard shows these as a banner to whoever is signed in under
+# that same identity the next time they open that division, until dismissed.
+def add_notification(wo_id: str, division_key: str, department_key: str,
+                      recipient: str, status: str, message: str) -> dict | None:
+    recipient = (recipient or "").strip()
+    if not recipient:
+        return None
+    now = _now()
+    with _lock, _connect() as c:
+        cur = c.execute(
+            "INSERT INTO notifications "
+            "(wo_id, division_key, department_key, recipient, status, message, created_at, acknowledged, acknowledged_at) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, 0, '')",
+            (str(wo_id or ""), division_key or "", department_key or "", recipient, status, message, now),
+        )
+        nid = cur.lastrowid
+        row = c.execute("SELECT * FROM notifications WHERE id = ?", (nid,)).fetchone()
+    return dict(row) if row else None
+
+
+def list_notifications(recipient=None, division_key: str = "", unacknowledged_only: bool = True) -> list[dict]:
+    """`recipient` may be:
+      - None -> no recipient filter at all (every outstanding notification
+        in scope) - used for the general "Maintenance" overview where
+        nobody's signed in under a specific identity, so it shows
+        everything happening instead of nothing,
+      - a single identity string, or
+      - an iterable of aliases that should all be treated as the same
+        person/role (e.g. {"gabriel", "shinobi"}) - any of them matches.
+    """
+    query = "SELECT * FROM notifications WHERE 1=1"
+    params = []
+    if recipient is not None:
+        recipients = {recipient} if isinstance(recipient, str) else set(recipient or [])
+        recipients_l = [(r or "").strip().lower() for r in recipients if (r or "").strip()]
+        if not recipients_l:
+            return []
+        placeholders = ", ".join("?" for _ in recipients_l)
+        query += f" AND LOWER(recipient) IN ({placeholders})"
+        params.extend(recipients_l)
+    if division_key:
+        query += " AND division_key = ?"
+        params.append(division_key)
+    if unacknowledged_only:
+        query += " AND acknowledged = 0"
+    query += " ORDER BY created_at DESC"
+    with _connect() as c:
+        rows = c.execute(query, params).fetchall()
+    return [dict(r) for r in rows]
+
+
+def acknowledge_notification(notif_id: int, author: str = "") -> bool:
+    now = _now()
+    with _lock, _connect() as c:
+        row = c.execute(
+            "UPDATE notifications SET acknowledged = 1, acknowledged_at = ? WHERE id = ?",
+            (now, notif_id),
+        ).rowcount
+    return row > 0
+
+
+def acknowledge_notifications_for(recipient=None, division_key: str = "", author: str = "") -> int:
+    """`recipient` may be None (dismiss every outstanding notification in
+    scope - the "Maintenance" overview's dismiss-all), a single identity
+    string, or an iterable of aliases - see `list_notifications`."""
+    now = _now()
+    query = "UPDATE notifications SET acknowledged = 1, acknowledged_at = ? WHERE acknowledged = 0"
+    params = [now]
+    if recipient is not None:
+        recipients = {recipient} if isinstance(recipient, str) else set(recipient or [])
+        recipients_l = [(r or "").strip().lower() for r in recipients if (r or "").strip()]
+        if not recipients_l:
+            return 0
+        placeholders = ", ".join("?" for _ in recipients_l)
+        query += f" AND LOWER(recipient) IN ({placeholders})"
+        params.extend(recipients_l)
+    if division_key:
+        query += " AND division_key = ?"
+        params.append(division_key)
+    with _lock, _connect() as c:
+        row = c.execute(query, params).rowcount
+    return row
 
 
 # --------------------------------------------------------------------------- #

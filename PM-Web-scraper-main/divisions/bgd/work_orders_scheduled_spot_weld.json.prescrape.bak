@@ -1,0 +1,20 @@
+[
+  {
+    "equipment_id": "256",
+    "equipment_eq_id": "EQ ID 256",
+    "equipment_name": "Spotwelder, C-Gun",
+    "department": "Spot Weld",
+    "wo_id": "7536",
+    "audit_item": "1.) visually inspect air lines for damage \n2.) Visually inspect Power cords for damage.",
+    "status": "Closed and Completed",
+    "due_date": "12/13/2023",
+    "work_performed_by": "Josh Patton",
+    "assigned_to": "Maintenance",
+    "labor_time": "0.05",
+    "material_cost": "0.00",
+    "downtime_hours": "0.00",
+    "completed_datetime": "3/13/2024",
+    "comments": "",
+    "attachments": []
+  }
+]

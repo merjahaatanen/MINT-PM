@@ -1,0 +1,2 @@
+equipment_id,equipment_eq_id,equipment_name,department,wo_id,audit_item,status,due_date,work_performed_by,assigned_to,labor_time,material_cost,downtime_hours,completed_datetime,comments,attachments
+1416,EQ ID 1416,2013 Chevrolet Silverado,Maintenance,10732,Annual Inspection,Pending,7/1/2025,,Outside Service,0.00,0.00,0.00,,,[]
