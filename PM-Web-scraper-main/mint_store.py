@@ -638,6 +638,12 @@ def inactive_machine_map() -> dict[str, set[str]]:
     return out
 
 
+def archived_work_order_ids() -> set[str]:
+    """wo_id of every work order flagged archived (same registry as inactive
+    departments/machines, just a different item_type)."""
+    return {r["item_key"] for r in list_inactive("work_order")}
+
+
 # --------------------------------------------------------------------------- #
 # Machine information / longevity (editable layer)
 # --------------------------------------------------------------------------- #

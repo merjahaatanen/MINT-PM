@@ -283,6 +283,44 @@ def notify_new_unscheduled(wo: dict, dept_label: str = "") -> dict:
     return _send(subject, text_body, get_recipients(), html_body)
 
 
+def notify_new_scheduled(wo: dict, dept_label: str = "") -> dict:
+    """Called when a new scheduled (PM audit) work order is created."""
+    wo_id = wo.get("wo_id", "?")
+    dept = dept_label or wo.get("department", "")
+    subject = f"[MINT] New scheduled work order {wo_id} - {wo.get('equipment_name', '')}"
+
+    rows = [
+        ("Department:", _esc(dept)),
+        ("Created By:", _esc(wo.get("created_by", ""))),
+        ("Equipment Affected:", _esc(wo.get("equipment_name", ""))),
+        ("Audit Item:", _esc(wo.get("audit_item", ""))),
+        ("Frequency:", _esc(wo.get("frequency", ""))),
+        ("Due Date:", _esc(wo.get("due_date", ""))),
+        ("Owner:", _esc(wo.get("owner", ""))),
+        ("Assigned To:", _esc(wo.get("assigned_to", ""))),
+    ]
+    sections = ('<table role="presentation" cellpadding="0" cellspacing="0" '
+                f'style="font-size:14px;width:100%;">{_rows_html(rows)}</table>')
+    title = ("This is a notification to inform you that a new scheduled "
+             "work order has been created")
+    html_body = _shell(title, sections, wo_id)
+
+    text_body = (
+        f"A new scheduled work order was created in MINT.\n\n"
+        f"Work Order: {wo_id}\n"
+        f"Department: {dept}\n"
+        f"Created By: {wo.get('created_by', '')}\n"
+        f"Equipment Affected: {wo.get('equipment_name', '')} ({wo.get('equipment_eq_id', '')})\n"
+        f"Audit Item: {wo.get('audit_item', '')}\n"
+        f"Frequency: {wo.get('frequency', '')}\n"
+        f"Due Date: {wo.get('due_date', '')}\n"
+        f"Owner: {wo.get('owner', '')}\n"
+        f"Assigned To: {wo.get('assigned_to', '')}\n\n"
+        f"Link to item: {_item_link(wo_id)}\n"
+    )
+    return _send(subject, text_body, get_recipients(), html_body)
+
+
 def notify_completed(wo: dict, dept_label: str = "") -> dict:
     """Called when any work order (scheduled OR unscheduled) is marked
     Closed & Completed. Mirrors the UWO 'Closed and Completed' email layout."""

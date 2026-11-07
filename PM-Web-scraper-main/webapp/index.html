@@ -166,7 +166,7 @@
       return h;
     }
 
-    const STATUS_OPTIONS = ["Pending", "Assigned", "In Progress", "Closed and Completed", "Cancelled"];
+    const STATUS_OPTIONS = ["Pending", "Assigned", "In Progress", "Closed and Completed", "Closed without action", "Cancelled"];
     const CLOSED_STATUS = "Closed and Completed";
     const FREQUENCY_OPTIONS = ["Weekly", "Bi-Weekly", "Monthly", "Quarterly", "Semi-Annually", "Annually"];
     // Initial technician list; App fetches the live list from /api/technicians.
@@ -174,6 +174,14 @@
 
     function isTechnician(name) {
       return TECHNICIANS.some((t) => t.toLowerCase() === (name || "").trim().toLowerCase());
+    }
+
+    // "Maintenance" is a generic/shared technician identity (not a specific
+    // person) - a WO assigned to it, or with no assignee at all, is treated
+    // as unassigned throughout the UI (calendar, weekly/team schedule).
+    function isUnassignedTo(assignedTo) {
+      const v = (assignedTo || "").trim().toLowerCase();
+      return !v || v === "maintenance";
     }
 
     // Technician names (lowercased) flagged as supervisors by the store --
@@ -1055,6 +1063,78 @@
         </div>`, document.body);
     }
 
+    // Sean-only modal listing every archived scheduled work order, with a
+    // one-click Restore. Archiving itself happens from the WO detail modal.
+    function ArchivedWorkOrdersModal({ onClose, onOpenWo }) {
+      const [items, setItems] = useState(null);
+      const [err, setErr] = useState(null);
+      const [restoring, setRestoring] = useState(null);
+      const [name, setName] = useState(getUserName());
+
+      const refresh = async () => {
+        try {
+          const d = await getJSON("/api/archived-workorders");
+          setItems(d.archived || []);
+        } catch (e) { setErr(e.message); }
+      };
+      useEffect(() => { refresh(); }, []);
+
+      const restore = async (woId) => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        setRestoring(woId); setErr(null);
+        try {
+          const r = await fetch(API + "/api/workorder/" + woId + "/archive", {
+            method: "DELETE", headers: seanHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({ author: name.trim() }),
+          });
+          const d = await r.json().catch(() => ({}));
+          if (!r.ok) throw new Error(d.error || "failed to restore");
+          await refresh();
+        } catch (e) { setErr(e.message); } finally { setRestoring(null); }
+      };
+
+      return ReactDOM.createPortal(html`
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] flex items-start justify-center p-4 overflow-y-auto"
+          onClick=${onClose}>
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg my-8 fade-in"
+            onClick=${(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-emerald-100">
+              <div className="font-extrabold text-lg text-emerald-800">Archived PMs</div>
+              <button onClick=${onClose}
+                className="w-9 h-9 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xl leading-none">×</button>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="text-sm text-slate-500">
+                Scheduled work orders archived out of every list and schedule. Restore one to bring it back.
+              </div>
+              <${NameInput} value=${name} onChange=${setName} />
+              ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+              ${!items && !err && html`<${Spinner} label="Loading archived PMs…" />`}
+              ${items && items.length === 0 && html`<div className="text-sm text-slate-400">No archived work orders.</div>`}
+              ${items && items.length > 0 && html`
+                <div className="space-y-2">
+                  ${items.map((it) => html`
+                    <div key=${it.wo_id} className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-slate-50">
+                      <div className="min-w-0">
+                        <button onClick=${() => { if (onOpenWo) onOpenWo(it.wo_id); onClose(); }}
+                          className="text-sm font-semibold text-emerald-800 hover:underline truncate block">
+                          WO #${it.wo_id} — ${it.name}</button>
+                        <div className="text-[11px] text-slate-400 truncate">
+                          ${it.dept_label}${it.due_date ? " · due " + it.due_date : ""}
+                          ${it.archived_by ? " · archived by " + it.archived_by : ""}
+                          ${!it.exists && html`<span className="text-rose-500"> · no longer in source data</span>`}
+                        </div>
+                      </div>
+                      <button onClick=${() => restore(it.wo_id)} disabled=${restoring === it.wo_id}
+                        className="px-3 py-1 rounded-full bg-sky-50 text-sky-700 text-xs font-semibold hover:bg-sky-100 disabled:opacity-60 shrink-0">
+                        ${restoring === it.wo_id ? "Restoring…" : "Restore"}</button>
+                    </div>`)}
+                </div>`}
+            </div>
+          </div>
+        </div>`, document.body);
+    }
+
     // A single technician's weekly schedule + monthly trends.
     function TechStats({ tech, onOpenWo }) {
       const completed = tech.completed || [];
@@ -1313,7 +1393,7 @@
 
     function Header({ technicians, setTechnicians, roles, setRoles, onHome, onOpenInactive, onOpenSpareParts, onOpenMySchedule, onOpenWo, onOpenMachine,
                       viewProfiles, activeProfile, viewKey, onChangeView, onViewProfilesChanged, hideUserControls, canSignInTech,
-                      activeRole, onSwitchViewProfile, divisionKey, divisions, onSwitchDivision }) {
+                      activeRole, onSwitchViewProfile, divisionKey, divisions, onSwitchDivision, isLanding }) {
       // `user` is the raw signed-in profile ("" when a guest). Guests are the
       // default and are never prompted; they can sign in later if they want.
       const [user, setUser] = useState(getRawUser());
@@ -1331,6 +1411,7 @@
       const [showTeamSchedule, setShowTeamSchedule] = useState(false);
       const [showManageTechs, setShowManageTechs] = useState(false);
       const [showManageRoles, setShowManageRoles] = useState(false);
+      const [showArchived, setShowArchived] = useState(false);
       const [showOther, setShowOther] = useState(false);
       const [otherName, setOtherName] = useState("");
       const showInactive = onOpenInactive && featureAllowed(activeProfile, "inactive");
@@ -1342,6 +1423,11 @@
       const unlockSupervisor = (name, pw) => { setUserName(name); setUser(name); setSean(true); setIsSean(true); setSeanPw(pw); setShowSeanGate(false); };
       const unlockSean = (pw) => unlockSupervisor("Sean", pw);
       const switchUser = () => { setUserName(""); setUser(""); setSean(false); setIsSean(false); setSeanPw(""); };
+      // The landing ("Who are you?") screen is the true start: reaching it
+      // (via the logo, or Back) should always drop back to guest, so a
+      // previously signed-in name (e.g. "Lead") doesn't linger in the header
+      // after picking "Maintenance" or a different view from that screen.
+      useEffect(() => { if (isLanding) switchUser(); }, [isLanding]);
       const confirmOther = () => {
         const n = otherName.trim();
         if (!n) return;
@@ -1417,11 +1503,15 @@
                   ${divisions.map((d) => html`
                     <option key=${d.key} value=${d.key} className="text-slate-700">${d.name}</option>`)}
                 </select>`}
-              ${showIdentitySelect && html`
+              ${isLanding && !activeRole && !signedIn && html`
+                <span className="px-3 py-2 rounded-full bg-white/10 text-white text-sm font-semibold">
+                  Who are you?</span>`}
+              ${!isLanding && showIdentitySelect && html`
                 <select value=${activeRole || (signedIn ? user : "__maintenance")} onChange=${(e) => onSelectIdentity(e.target.value)}
                   title="Who are you?"
                   className="px-3 py-2 rounded-full bg-white text-slate-700 text-sm font-semibold
                              focus:outline-none focus:ring-2 focus:ring-emerald-300 transition cursor-pointer">
+                  ${!activeRole && !signedIn && html`<option value="__maintenance">Maintenance</option>`}
                   ${showRoleOptions && html`<optgroup label="Views">
                     ${roles.map((r) => html`<option key=${r} value=${r}>${r}</option>`)}
                   </optgroup>`}
@@ -1452,7 +1542,10 @@
                     Technicians</button>
                   <button onClick=${() => setShowManageRoles(true)}
                     className="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
-                    Roles</button>`}
+                    Roles</button>
+                  <button onClick=${() => setShowArchived(true)}
+                    className="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
+                    Archived PMs</button>`}
                 <button onClick=${switchUser}
                   className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-semibold transition">
                   Sign out</button>`}
@@ -1501,6 +1594,7 @@
           ${showTeamSchedule && html`<${TeamScheduleModal} technicians=${technicians} onClose=${() => setShowTeamSchedule(false)} onOpenWo=${onOpenWo} />`}
           ${showManageTechs && html`<${ManageTechniciansModal} technicians=${technicians} setTechnicians=${setTechnicians} onClose=${() => setShowManageTechs(false)} />`}
           ${showManageRoles && html`<${ManageRolesModal} roles=${roles} setRoles=${setRoles} onClose=${() => setShowManageRoles(false)} />`}
+          ${showArchived && html`<${ArchivedWorkOrdersModal} onClose=${() => setShowArchived(false)} onOpenWo=${onOpenWo} />`}
         </header>`;
     }
 
@@ -2657,7 +2751,9 @@
                 predicate=${() => true}
                 showDept=${true}
                 onOpenWo=${onOpenWo}
-                subtitle="All departments · scheduled & unscheduled work orders by week (Sunday → Sunday)." />
+                enableDivisionFilter=${true}
+                defaultDivisionKey=${divKey}
+                subtitle="Scheduled & unscheduled work orders by week (Sunday → Sunday)." />
             </div>`}
 
           ${activeTab === "Monthly Calendar" && html`
@@ -2666,8 +2762,10 @@
                 predicate=${() => true}
                 showDept=${true}
                 onOpenWo=${onOpenWo}
+                enableDivisionFilter=${true}
+                defaultDivisionKey=${divKey}
                 title="Monthly Calendar"
-                subtitle="All departments · scheduled & unscheduled work orders for the month." />
+                subtitle="Scheduled & unscheduled work orders for the month." />
             </div>`}
 
           ${(activeTab === "Unscheduled" || activeTab === "Scheduled") && html`
@@ -3605,10 +3703,107 @@
         </div>`;
     }
 
+    // Lightweight status-only update: just the status dropdown, plus the
+    // completion fields when closing out - without entering full Edit mode
+    // (which exposes every field and can be confusing for a quick status change).
+    function StatusChangeForm({ rec, name, setName, technicians, onSaved, onCancel }) {
+      const scheduled = rec.wo_type === "scheduled";
+      const completerOptions = [
+        { value: "", label: "Select who completed this…" },
+        ...(technicians || []).map((n) => ({ value: n, label: n })),
+        { value: "__other__", label: "Other" },
+      ];
+      const completerNames = (technicians || []);
+      const initialPerformed = (rec.work_performed_by || "").trim();
+      const knownCompleter = completerNames.includes(initialPerformed);
+      const [status, setStatus] = useState(rec.status || "Pending");
+      const [f, setF] = useState({
+        work_performed_by: initialPerformed,
+        helpers: rec.helpers || "",
+        labor_time: rec.labor_time || "",
+        material_cost: rec.material_cost || "",
+        downtime_hours: rec.downtime_hours || "",
+        downtime_end: rec.downtime_end || "",
+        completed_datetime: rec.completed_datetime || "",
+        completion_comments: rec.completion_comments || "",
+      });
+      const [primaryCompleter, setPrimaryCompleter] = useState(knownCompleter ? initialPerformed : "__other__");
+      const [otherName, setOtherName] = useState(knownCompleter ? "" : initialPerformed);
+      const set = (k) => (v) => setF((s) => ({ ...s, [k]: v }));
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+
+      const closing = status === CLOSED_STATUS;
+
+      const save = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        const fields = { status };
+        if (closing) {
+          fields.work_performed_by = primaryCompleter === "__other__" ? otherName.trim() : primaryCompleter;
+          fields.helpers = f.helpers;
+          fields.labor_time = f.labor_time;
+          fields.material_cost = f.material_cost;
+          fields.completion_comments = f.completion_comments;
+          fields.completed_datetime = f.completed_datetime;
+          if (rec.is_downtime) fields.downtime_end = f.downtime_end;
+          else fields.downtime_hours = f.downtime_hours;
+          const req = [
+            ["work_performed_by", "Work performed by"],
+            ["labor_time", "Labor time"],
+            ["material_cost", "Material cost"],
+            ["completion_comments", "Comments"],
+          ];
+          if (scheduled) req.unshift(["completed_datetime", "Date completed"]);
+          if (rec.is_downtime) req.push(["downtime_end", "Machine back up at"]);
+          for (const [k, lbl] of req) {
+            if (!String(fields[k] ?? "").trim()) { setErr(lbl + " is required to close this work order."); return; }
+          }
+          if (!String(fields.completed_datetime || "").trim()) fields.completed_datetime = todayMDY();
+        }
+        setBusy(true); setErr(null);
+        try {
+          const d = await sendJSON("/api/workorder/" + rec.wo_id, "PATCH", { author: name.trim(), fields });
+          onSaved(d.work_order);
+        } catch (e) { setErr(e.message); } finally { setBusy(false); }
+      };
+
+      return html`
+        <div className="space-y-4">
+          <${NameInput} value=${name} onChange=${setName} />
+          <${SelectInput} label="Status" value=${status} onChange=${setStatus} options=${STATUS_OPTIONS} />
+
+          ${closing && html`
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-4 space-y-3">
+              <div className="text-sm font-bold text-emerald-800">Completion details (required)</div>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <${SelectInput} label="Work Completed By" required=${true} value=${primaryCompleter} onChange=${setPrimaryCompleter} options=${completerOptions} />
+                ${primaryCompleter === "__other__" && html`<${TextInput} label="Other Name" required=${true} value=${otherName} onChange=${setOtherName} placeholder="Who completed this?" />`}
+                <${TextInput} label="Helpers" value=${f.helpers} onChange=${set("helpers")} placeholder="e.g. Gabriel, Max" hint="Comma-separated names of people who helped." />
+                <${TextInput} label="Date Completed" required=${scheduled} value=${f.completed_datetime} onChange=${set("completed_datetime")} placeholder="MM/DD/YYYY" hint=${scheduled ? "" : "Defaults to today if left blank."} />
+                <${TextInput} label="Labor Time (h)" required=${true} value=${f.labor_time} onChange=${set("labor_time")} type="number" />
+                <${TextInput} label="Material Cost ($)" required=${true} value=${f.material_cost} onChange=${set("material_cost")} type="number" />
+                ${rec.is_downtime
+                  ? html`<${TextInput} label="Machine Back Up At" required=${true} value=${f.downtime_end} onChange=${set("downtime_end")} placeholder="MM/DD/YYYY hh:mm AM/PM" hint="When the machine actually started running again (may be earlier than today)." />`
+                  : html`<${TextInput} label="Downtime (h)" value=${f.downtime_hours} onChange=${set("downtime_hours")} type="number" />`}
+              </div>
+              <${TextArea} label="Comments" required=${true} value=${f.completion_comments} onChange=${set("completion_comments")} rows=${3}
+                placeholder="Summary of the completed work…" />
+            </div>`}
+
+          ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
+          <div className="flex gap-2 justify-end">
+            <button onClick=${onCancel} className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">Cancel</button>
+            <button onClick=${save} disabled=${busy}
+              className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60">
+              ${busy ? "Saving…" : (closing ? "Close & complete" : "Update status")}</button>
+          </div>
+        </div>`;
+    }
+
     // The "Solution" log for a work order: an append-only list of dated,
     // attributed entries. Legacy scraped "comments" show as an imported note.
     function SolutionSection({ rec, name, setName, onChanged }) {
-      const label = rec.wo_type === "scheduled" ? "Notes" : "Solution";
+      const label = rec.wo_type === "scheduled" ? "Notes" : "Comments";
       const [text, setText] = useState("");
       const [busy, setBusy] = useState(false);
       const [err, setErr] = useState(null);
@@ -3955,6 +4150,7 @@
       const [rec, setRec] = useState(null);
       const [err, setErr] = useState(null);
       const [editing, setEditing] = useState(false);
+      const [changingStatus, setChangingStatus] = useState(false);
       const [showHistory, setShowHistory] = useState(false);
       const [name, setName] = useState(getUserName());
       const [adminProtected, setAdminProtected] = useState(false);
@@ -3963,13 +4159,14 @@
       const [auditLoading, setAuditLoading] = useState(false);
       const [deleting, setDeleting] = useState(false);
       const [stopping, setStopping] = useState(false);
+      const [archiving, setArchiving] = useState(false);
 
       const load = useCallback(() => {
         setRec(null); setErr(null);
         getJSON("/api/workorder/" + woId).then(setRec).catch((e) => setErr(e.message));
       }, [woId]);
 
-      useEffect(() => { load(); setEditing(false); setShowHistory(false); setAudit(null); }, [load]);
+      useEffect(() => { load(); setEditing(false); setChangingStatus(false); setShowHistory(false); setAudit(null); }, [load]);
       useEffect(() => {
         getJSON("/api/admin-auth").then((d) => setAdminProtected(!!d.protected)).catch(() => {});
       }, []);
@@ -3979,11 +4176,24 @@
         if (onChanged) onChanged();
       };
 
+      // Mechanics (regular technicians) may only change a scheduled PM's
+      // status, not edit its other fields - that stays Sean/supervisor-only.
+      // Unscheduled WOs are unaffected.
+      const canFullyEdit = rec && (rec.wo_type !== "scheduled" || isSeanMode());
+
       // Run `action` if admin isn't required / already unlocked this session;
       // otherwise pop the password gate first and run it once unlocked.
       const requireAdmin = (label, action) => {
         if (!adminProtected || getAdminPw()) { action(); return; }
         setGate({ label, action });
+      };
+
+      // Stop-recurrence is Sean-gated rather than admin-gated: already open if
+      // signed in as Sean/a supervisor technician (their password is
+      // remembered for the session), otherwise prompts for Sean's password.
+      const requireSean = (label, action) => {
+        if (isSeanMode()) { action(); return; }
+        setGate({ label, action, kind: "sean" });
       };
 
       const doDelete = async () => {
@@ -4005,16 +4215,50 @@
         setStopping(true); setErr(null);
         try {
           const r = await fetch(API + "/api/workorder/" + woId + "/stop-recurrence", {
-            method: "POST", headers: adminHeaders({ "Content-Type": "application/json" }),
+            method: "POST", headers: seanHeaders({ "Content-Type": "application/json" }),
             body: JSON.stringify({ author: getUserName() }),
           });
           const d = await r.json().catch(() => ({}));
-          if (r.status === 401) { setAdminPw(""); setStopping(false); setGate({ label: "stop recurrence", action: doStopRecurrence }); return; }
+          if (r.status === 401) { setSeanPw(""); setStopping(false); setGate({ label: "stop recurrence", action: doStopRecurrence, kind: "sean" }); return; }
           if (!r.ok) throw new Error(d.error || "failed to stop recurrence");
           refresh();
         } catch (e) { setErr(e.message); } finally { setStopping(false); }
       };
-      const stopRecur = () => requireAdmin("stop recurrence", doStopRecurrence);
+      const stopRecur = () => requireSean("stop recurrence", doStopRecurrence);
+
+      // Archive / restore a scheduled work order (Sean-only). Archiving hides
+      // it from every list/schedule view without deleting it - useful for
+      // scraped PMs, which can't be deleted at all.
+      const doArchive = async () => {
+        if (!window.confirm("Archive this work order? It will be hidden from all lists and schedules until restored.")) return;
+        setArchiving(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/workorder/" + woId + "/archive", {
+            method: "POST", headers: seanHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({ author: getUserName() }),
+          });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setSeanPw(""); setArchiving(false); setGate({ label: "archive this work order", action: doArchive, kind: "sean" }); return; }
+          if (!r.ok) throw new Error(d.error || "failed to archive");
+          refresh();
+        } catch (e) { setErr(e.message); } finally { setArchiving(false); }
+      };
+      const archiveWo = () => requireSean("archive this work order", doArchive);
+
+      const doUnarchive = async () => {
+        setArchiving(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/workorder/" + woId + "/archive", {
+            method: "DELETE", headers: seanHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({ author: getUserName() }),
+          });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setSeanPw(""); setArchiving(false); setGate({ label: "restore this work order", action: doUnarchive, kind: "sean" }); return; }
+          if (!r.ok) throw new Error(d.error || "failed to restore");
+          refresh();
+        } catch (e) { setErr(e.message); } finally { setArchiving(false); }
+      };
+      const unarchiveWo = () => requireSean("restore this work order", doUnarchive);
 
       // Build a PDF of the work order (via jsPDF) and download it directly - no
       // print dialog. Works for any WO (scraped or MINT-created) using the detail
@@ -4068,6 +4312,8 @@
         add("Department", rec.department);
         add("Type", rec.wo_type);
         add("Status", rec.status);
+        add("Assigned to", rec.assigned_to);
+        add("Owner", rec.owner);
         add("Urgency", rec.urgency);
         add("Date Notified", rec.date_notified);
         add("Due Date", rec.due_date);
@@ -4160,17 +4406,28 @@
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="font-extrabold text-lg text-emerald-800">Work Order #${woId}</span>
                 ${rec && rec.is_manual && html`<span className="text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">MINT</span>`}
+                ${rec && rec.archived && html`<span className="text-[10px] font-bold uppercase bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">Archived</span>`}
               </div>
               <div className="flex items-center gap-2">
-                ${rec && !editing && html`<button onClick=${exportWo} title="Export / print this work order"
+                ${rec && !editing && !changingStatus && html`<button onClick=${exportWo} title="Export / print this work order"
                   className="px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-semibold">Export</button>`}
-                ${rec && !editing && html`<button onClick=${() => setEditing(true)}
+                ${rec && !editing && !changingStatus && html`<button onClick=${() => setChangingStatus(true)} title="Change the status without editing other fields"
+                  className="px-3 py-1.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-800 text-sm font-semibold">Update Status</button>`}
+                ${rec && !editing && !changingStatus && canFullyEdit && html`<button onClick=${() => setEditing(true)}
                   className="px-3 py-1.5 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-sm font-semibold">Edit</button>`}
-                ${rec && rec.is_manual && !editing && rec.wo_type === "scheduled" && rec.frequency && !rec.recurrence_stopped && html`
+                ${rec && rec.is_manual && !editing && !changingStatus && rec.wo_type === "scheduled" && rec.frequency && !rec.recurrence_stopped && html`
                   <button onClick=${stopRecur} disabled=${stopping}
                     className="px-3 py-1.5 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-700 text-sm font-semibold disabled:opacity-60">
                     ${stopping ? "Stopping…" : "Stop recurrence"}</button>`}
-                ${rec && rec.is_manual && !editing && html`<button onClick=${remove} disabled=${deleting}
+                ${rec && !editing && !changingStatus && rec.wo_type === "scheduled" && !rec.archived && html`
+                  <button onClick=${archiveWo} disabled=${archiving} title="Hide this PM from every list/schedule - can be restored anytime"
+                    className="px-3 py-1.5 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-700 text-sm font-semibold disabled:opacity-60">
+                    ${archiving ? "Archiving…" : "Archive"}</button>`}
+                ${rec && !editing && !changingStatus && rec.archived && html`
+                  <button onClick=${unarchiveWo} disabled=${archiving}
+                    className="px-3 py-1.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-800 text-sm font-semibold disabled:opacity-60">
+                    ${archiving ? "Restoring…" : "Restore"}</button>`}
+                ${rec && rec.is_manual && !editing && !changingStatus && html`<button onClick=${remove} disabled=${deleting}
                   className="px-3 py-1.5 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-600 text-sm font-semibold disabled:opacity-60">
                   ${deleting ? "Deleting…" : "Delete"}</button>`}
                 <button onClick=${onClose}
@@ -4184,7 +4441,11 @@
                 <${WoEditForm} rec=${rec} name=${name} setName=${setName} technicians=${technicians}
                   onCancel=${() => setEditing(false)}
                   onSaved=${(wo) => { setRec(wo); setEditing(false); if (onChanged) onChanged(); }} />`}
-              ${rec && !editing && html`
+              ${rec && !editing && changingStatus && html`
+                <${StatusChangeForm} rec=${rec} name=${name} setName=${setName} technicians=${technicians}
+                  onCancel=${() => setChangingStatus(false)}
+                  onSaved=${(wo) => { setRec(wo); setChangingStatus(false); if (onChanged) onChanged(); }} />`}
+              ${rec && !editing && !changingStatus && html`
                 <div className="grid sm:grid-cols-2 gap-4">
                   <${Field} label="Machine" value=${rec.equipment_name} />
                   <${Field} label="EQ ID" value=${rec.equipment_eq_id} />
@@ -4237,7 +4498,10 @@
               `}
             </div>
           </div>
-          ${gate && html`<${AdminGate} actionLabel=${gate.label}
+          ${gate && gate.kind === "sean" && html`<${SeanGate} actionLabel=${gate.label}
+            onCancel=${() => setGate(null)}
+            onUnlock=${(pw) => { setSeanPw(pw); setIsSean(true); const a = gate.action; setGate(null); a(); }} />`}
+          ${gate && gate.kind !== "sean" && html`<${AdminGate} actionLabel=${gate.label}
             onCancel=${() => setGate(null)}
             onUnlock=${() => { const a = gate.action; setGate(null); a(); }} />`}
         </div>`;
@@ -4250,7 +4514,7 @@
       const [depts, setDepts] = useState(null);
       const [deptKey, setDeptKey] = useState(presetDeptKey || "");
       const [machines, setMachines] = useState([]);
-      const [woType, setWoType] = useState(defaultType || "scheduled");
+      const [woType, setWoType] = useState(defaultType || "unscheduled");
       const [name, setName] = useState(getUserName());
       const todayStr = (() => {
         const d = new Date();
@@ -4361,7 +4625,7 @@
             </div>
             <div className="p-6 space-y-4">
               <div className="inline-flex rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
-                ${["scheduled", "unscheduled"].map((t) => html`
+                ${["unscheduled", "scheduled"].map((t) => html`
                   <button key=${t} onClick=${() => setWoType(t)}
                     className=${"px-4 py-1.5 rounded-full transition capitalize " +
                       (woType === t ? "bg-emerald-700 text-white shadow-sm" : "text-slate-600 hover:text-emerald-800")}>${t}</button>`)}
@@ -6657,10 +6921,11 @@
 
     function WeekWORow({ r, showDept, deptLabels, onOpenWo }) {
       const when = r.wo_type === "scheduled" ? r.due_date : r.date_notified;
+      const unassigned = !isClosedCompleted(r) && isUnassignedTo(r.assigned_to);
       return html`
         <button onClick=${() => onOpenWo(r.wo_id)}
-          className="w-full text-left bg-white rounded-xl px-3 py-2 border border-emerald-100
-                     hover:border-emerald-300 hover:shadow-sm transition">
+          className=${"w-full text-left bg-white rounded-xl px-3 py-2 border hover:shadow-sm transition " +
+            (unassigned ? "border-amber-300 hover:border-amber-400" : "border-emerald-100 hover:border-emerald-300")}>
           <div className="flex items-center justify-between gap-2">
             <span className="font-bold text-emerald-800 text-sm">WO #${r.wo_id}</span>
             <span className="text-[11px] text-slate-400 whitespace-nowrap">${when || ""}</span>
@@ -6671,6 +6936,9 @@
             ${r.status && html`<span className=${"text-[10px] px-1.5 py-0.5 rounded-full border " + statusColor(r.status)}>${r.status}</span>`}
             ${isClosedCompleted(r) && html`<span className="text-emerald-600" title="Closed and completed"><${MintLeaf} className="w-4 h-4" /></span>`}
             ${showDept && deptLabels[r.department_key] && html`<span className="text-[10px] px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100">${deptLabels[r.department_key]}</span>`}
+            ${!isUnassignedTo(r.assigned_to)
+              ? html`<span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-50 text-slate-600 border border-slate-200">👤 ${r.assigned_to}</span>`
+              : unassigned && html`<span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-300 font-bold">⚠ Unassigned</span>`}
           </div>
         </button>`;
     }
@@ -6680,14 +6948,16 @@
       const uns = bucket.unscheduled || [];
       const showSch = typeFilter !== "unscheduled";
       const showUns = typeFilter !== "scheduled";
+      const unassignedCount = [...sch, ...uns].filter((r) => !isClosedCompleted(r) && isUnassignedTo(r.assigned_to)).length;
       return html`
         <section className=${"bg-slate-50 rounded-2xl border " + def.accent + " overflow-hidden flex flex-col"}>
           <div className=${"px-4 py-3 " + def.head}>
             <div className="font-extrabold">${def.label}</div>
             <div className="text-xs opacity-80">${week ? (week.start + " → " + week.end) : ""}</div>
-            <div className="flex gap-2 mt-2 text-xs">
+            <div className="flex gap-2 mt-2 text-xs flex-wrap">
               <span className="bg-white/80 text-sky-700 rounded-full px-2 py-0.5 font-semibold">${sch.length} scheduled</span>
               <span className="bg-white/80 text-rose-700 rounded-full px-2 py-0.5 font-semibold">${uns.length} unscheduled</span>
+              ${unassignedCount > 0 && html`<span className="bg-amber-100 text-amber-800 rounded-full px-2 py-0.5 font-bold">⚠ ${unassignedCount} unassigned</span>`}
             </div>
           </div>
           <div className="p-3 space-y-4 overflow-y-auto" style=${{ maxHeight: "62vh" }}>
@@ -7166,18 +7436,33 @@
     // machine). Used embedded inside the department and machine views so the
     // relevant weekly schedule shows up automatically - no manual filtering.
     // Supports paging through earlier/upcoming weeks like the monthly calendar.
-    function EmbeddedWeekly({ predicate, showDept, onOpenWo, title, subtitle }) {
+    function EmbeddedWeekly({ predicate, showDept, onOpenWo, title, subtitle, enableDivisionFilter, defaultDivisionKey }) {
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
       const [weekOffset, setWeekOffset] = useState(0);
+      const [divisions, setDivisions] = useState([]);
+      const [divisionKey, setDivisionKey] = useState(defaultDivisionKey || "");
       useEffect(() => {
-        getJSON("/api/weekly?offset=" + weekOffset).then(setData).catch((e) => setErr(e.message));
-      }, [weekOffset]);
+        if (enableDivisionFilter) {
+          getJSON("/api/company").then((d) => setDivisions(d.divisions || [])).catch(() => {});
+        }
+      }, [enableDivisionFilter]);
+      useEffect(() => { setDivisionKey(defaultDivisionKey || ""); }, [defaultDivisionKey]);
+      useEffect(() => {
+        const qs = "?offset=" + weekOffset + (enableDivisionFilter && divisionKey ? "&division_key=" + encodeURIComponent(divisionKey) : "");
+        getJSON("/api/weekly" + qs).then(setData).catch((e) => setErr(e.message));
+      }, [weekOffset, enableDivisionFilter, divisionKey]);
       if (err) return html`<div className="text-rose-600 text-sm">${err}</div>`;
       if (!data) return html`<${Spinner} label="Loading weekly schedule…" />`;
       return html`
         <div className="fade-in">
           <div className="flex items-center gap-3 flex-wrap mb-4">
+            ${enableDivisionFilter && html`
+              <select value=${divisionKey} onChange=${(e) => setDivisionKey(e.target.value)}
+                className="px-3 py-2 rounded-full border border-emerald-200 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                <option value="">All Divisions</option>
+                ${divisions.map((d) => html`<option key=${d.key} value=${d.key}>${d.name}</option>`)}
+              </select>`}
             <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
               <button onClick=${() => setWeekOffset((o) => o - 1)}
                 title="Previous weeks"
@@ -7200,7 +7485,7 @@
     // Month calendar grid. Fetches /api/monthly (which projects recurring PMs
     // into the month) and renders a Sunday-aligned month view. Reused in the
     // division, department and machine views.
-    function EmbeddedMonthly({ predicate, showDept, onOpenWo, title, subtitle, deptKey, eqId }) {
+    function EmbeddedMonthly({ predicate, showDept, onOpenWo, title, subtitle, deptKey, eqId, enableDivisionFilter, defaultDivisionKey }) {
       const now = new Date();
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
@@ -7212,13 +7497,24 @@
       const [editProtected, setEditProtected] = useState(false);
       const [editGateAction, setEditGateAction] = useState(null);
       const [eventMachines, setEventMachines] = useState([]);
+      const [divisions, setDivisions] = useState([]);
+      const [divisionKey, setDivisionKey] = useState(defaultDivisionKey || "");
+
+      useEffect(() => {
+        if (enableDivisionFilter) {
+          getJSON("/api/company").then((d) => setDivisions(d.divisions || [])).catch(() => {});
+        }
+      }, [enableDivisionFilter]);
+      useEffect(() => { setDivisionKey(defaultDivisionKey || ""); }, [defaultDivisionKey]);
 
       const load = useCallback(() => {
         setErr(null);
-        getJSON("/api/monthly?year=" + year + "&month=" + month)
+        const qs = "?year=" + year + "&month=" + month +
+          (enableDivisionFilter && divisionKey ? "&division_key=" + encodeURIComponent(divisionKey) : "");
+        getJSON("/api/monthly" + qs)
           .then(setData)
           .catch((e) => setErr(e.message));
-      }, [year, month]);
+      }, [year, month, enableDivisionFilter, divisionKey]);
       useEffect(() => { load(); }, [load]);
 
       useEffect(() => {
@@ -7360,6 +7656,11 @@
         return "bg-sky-50 text-sky-700 border-sky-200";
       };
 
+      // Flags WOs that still need a technician assigned, so they can be
+      // visually called out on the calendar (quick scan for Sean).
+      const isUnassigned = (r) => !r.is_event && !r.is_projected && !isClosedCompleted(r) && isUnassignedTo(r.assigned_to);
+      const unassignedCount = Object.values(byDate).flat().filter(isUnassigned).length;
+
       const renderClickableChip = (r) => {
         if (r.is_event) {
           return html`
@@ -7380,6 +7681,7 @@
             title=${(r.is_projected ? "Projected occurrence\n" : "") + (r.audit_item || r.problem || "Work order") +
               (showDept && r.department_key && deptLabels[r.department_key] ? "\n" + deptLabels[r.department_key] : "")}
             className=${"w-full text-left rounded-lg px-1.5 py-1 text-[11px] leading-tight border " + chipColor(r) +
+              (isUnassigned(r) ? " ring-1 ring-amber-400" : "") +
               (r.wo_id ? " hover:shadow-sm cursor-pointer" : " cursor-default")}>
             <div className="flex items-center gap-1">
               ${isClosedCompleted(r) && html`<span className="text-emerald-600" title="Closed and completed"><${MintLeaf} className="w-4 h-4" /></span>`}
@@ -7387,6 +7689,9 @@
             </div>
             ${showDept && r.department_key && html`<div className="truncate opacity-70">${deptLabels[r.department_key]}</div>`}
             ${r.equipment_name && html`<div className="truncate opacity-80">${r.equipment_name}</div>`}
+            ${!isUnassignedTo(r.assigned_to)
+              ? html`<div className="truncate opacity-80">👤 ${r.assigned_to}</div>`
+              : isUnassigned(r) && html`<div className="truncate font-bold text-amber-600">⚠ Unassigned</div>`}
           </button>`;
       };
 
@@ -7394,10 +7699,23 @@
         <div className="fade-in space-y-4">
           <div className="flex items-start justify-between flex-wrap gap-3">
             <div>
-              ${title && html`<h2 className="text-lg font-extrabold text-slate-800">${title}</h2>`}
+              <div className="flex items-center gap-2 flex-wrap">
+                ${title && html`<h2 className="text-lg font-extrabold text-slate-800">${title}</h2>`}
+                ${unassignedCount > 0 && html`
+                  <span title="Work orders in this view with no technician assigned"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-300 text-xs font-bold">
+                    ⚠ ${unassignedCount} unassigned
+                  </span>`}
+              </div>
               ${subtitle && html`<p className="text-slate-500 text-sm">${subtitle}</p>`}
             </div>
             <div className="flex items-center gap-3 flex-wrap">
+              ${enableDivisionFilter && html`
+                <select value=${divisionKey} onChange=${(e) => setDivisionKey(e.target.value)}
+                  className="px-3 py-2 rounded-full border border-emerald-200 bg-white text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-300">
+                  <option value="">All Divisions</option>
+                  ${divisions.map((d) => html`<option key=${d.key} value=${d.key}>${d.name}</option>`)}
+                </select>`}
               <div className="inline-flex rounded-full border border-emerald-200 bg-white p-0.5 text-sm font-semibold">
                 ${TYPE_TABS.map((t) => html`
                   <button key=${t.key} onClick=${() => setTypeFilter(t.key)}
@@ -8285,7 +8603,7 @@
             viewProfiles=${viewProfiles} activeProfile=${activeProfile} viewKey=${viewKey} onChangeView=${changeView} onViewProfilesChanged=${refreshViewProfiles}
             hideUserControls=${!!activeRole || !isBlaContext} canSignInTech=${isBlaContext}
             activeRole=${activeRole} onSwitchRole=${goLanding} onSwitchViewProfile=${switchViewProfile} divisionKey=${headerDivisionKey}
-            divisions=${divisionsList} onSwitchDivision=${switchDivision} />
+            divisions=${divisionsList} onSwitchDivision=${switchDivision} isLanding=${route.view === "landing"} />
           <main className="max-w-6xl mx-auto px-6 py-8">
             ${navHist.length > 0 && html`
               <button onClick=${goBack}

@@ -184,12 +184,16 @@ _TECH_ALIASES: dict[str, set[str]] = {}
 _SUPERVISOR_TECHS: set[str] = set()
 
 
+_TECH_DIVISION: dict[str, str] = {}
+
+
 def _load_technicians() -> None:
     """Reload the in-memory technician sets from the store."""
-    global _TECHNICIANS, _TECH_ALIASES, _SUPERVISOR_TECHS
+    global _TECHNICIANS, _TECH_ALIASES, _SUPERVISOR_TECHS, _TECH_DIVISION
     _TECHNICIANS = set()
     _TECH_ALIASES = {}
     _SUPERVISOR_TECHS = set()
+    _TECH_DIVISION = {}
     for t in store.list_technicians(active_only=True):
         name = (t.get("name") or "").strip()
         if not name:
@@ -202,6 +206,7 @@ def _load_technicians() -> None:
             if a:
                 aliases.add(a)
         _TECH_ALIASES[name] = aliases
+        _TECH_DIVISION[name] = (t.get("division_key") or "bla").strip().lower()
         if t.get("is_supervisor"):
             _SUPERVISOR_TECHS.add(name_l)
 
@@ -211,6 +216,29 @@ _load_technicians()
 
 def _is_technician(name: str) -> bool:
     return (name or "").strip().lower() in _TECHNICIANS
+
+
+def _is_team_aggregator(tech: str) -> bool:
+    """True for a shared "team queue" technician sign-in (e.g. "Maintenance",
+    aliased as "maintenance mechanic") whose schedule should show every
+    teammate's assigned work plus anything unassigned in its division, not
+    just work assigned to itself."""
+    return "maintenance mechanic" in _aliases_for(tech)
+
+
+def _team_aliases_for(tech: str) -> set[str]:
+    """For a team-aggregator identity, every OTHER active technician's aliases
+    in the same division (so their assigned work also counts as "ours")."""
+    if not _is_team_aggregator(tech):
+        return set()
+    division = _TECH_DIVISION.get(tech)
+    extra: set[str] = set()
+    for other, aliases in _TECH_ALIASES.items():
+        if other == tech:
+            continue
+        if _TECH_DIVISION.get(other) == division:
+            extra |= aliases
+    return extra
 
 
 # Shared "assigned to" role identities (e.g. "QA Technician", "Mechanic") that
@@ -1089,6 +1117,20 @@ def reload_data() -> datetime:
         rec["_sol_count"] = sol_counts.get(wid, 0)
         rec["_att_count"] = att_counts.get(wid, 0) + len(rec.get("attachments") or [])
         rec["downtime_hours"] = _compute_downtime_hours(rec)
+
+    # Archived work orders (Sean-only action, scheduled PMs) are hidden from
+    # every list/schedule view but stay in `wo_index` so the detail modal and
+    # /api/archived-workorders can still fetch them directly, and can be
+    # restored at any time via the same registry used for inactive machines.
+    archived_ids = store.archived_work_order_ids()
+    if archived_ids:
+        for wid in archived_ids:
+            rec = wo_index.get(wid)
+            if rec is not None:
+                rec["archived"] = True
+        for data in dept_data.values():
+            for kind in ("unscheduled", "scheduled"):
+                data[kind] = [r for r in data[kind] if str(r.get("wo_id") or "") not in archived_ids]
 
     equip = _load_equipment()
 
@@ -2571,6 +2613,11 @@ def _tech_schedule(tech: str) -> dict:
         return d.strftime("%Y-%m-%d") if d else None
 
     aliases = _aliases_for(tech)
+    # Team-aggregator identities (e.g. the shared "Maintenance" sign-in) also
+    # pick up every teammate's assigned work in their division, plus anything
+    # still unassigned there, so the queue shows the whole team's open work.
+    team_aliases = _team_aliases_for(tech)
+    team_division = _TECH_DIVISION.get(tech) if team_aliases else None
     out = {"name": tech, "completed": [], "upcoming": []}
     with _DATA_LOCK:
         for rec in _WO_INDEX.values():
@@ -2590,7 +2637,13 @@ def _tech_schedule(tech: str) -> dict:
                 })
             else:
                 assignee = (rec.get("assigned_to") or "").strip().lower()
-                if assignee not in aliases:
+                own = assignee in aliases
+                teammate_or_unassigned = (
+                    team_division is not None
+                    and _DEPT_DIVISION.get(rec.get("department_key")) == team_division
+                    and (not assignee or assignee in team_aliases)
+                )
+                if not (own or teammate_or_unassigned):
                     continue
                 due = rec.get("due_date") or rec.get("date_notified")
                 out["upcoming"].append({
@@ -2602,6 +2655,7 @@ def _tech_schedule(tech: str) -> dict:
                     "status": rec.get("status"),
                     "due_date": due,
                     "due_iso": _iso(due),
+                    "assigned_to": rec.get("assigned_to") or "Unassigned",
                 })
         out["trends"] = _technician_trends(tech)
     out["completed"].sort(
@@ -3019,10 +3073,13 @@ def api_create_workorder():
         rec["_sol_count"] = rec.get("_sol_count", 0) + 1
 
     email_result = None
+    rec2 = dict(rec)
+    rec2["created_by"] = author
     if wo_type == "unscheduled":
-        rec2 = dict(rec)
-        rec2["created_by"] = author
         email_result = emailer.notify_new_unscheduled(
+            rec2, dept_label=DEPARTMENTS[dept_key]["label"])
+    else:
+        email_result = emailer.notify_new_scheduled(
             rec2, dept_label=DEPARTMENTS[dept_key]["label"])
 
     # Notify whoever this new work order is assigned to (the "Owner" picked
@@ -3211,9 +3268,10 @@ def api_delete_workorder(wo_id):
 @app.route("/api/workorder/<wo_id>/stop-recurrence", methods=["POST"])
 def api_stop_recurrence(wo_id):
     """Stop a recurring scheduled-WO series so no further occurrences are ever
-    generated. Existing occurrences are kept. Gated by the admin password."""
-    if not _admin_ok(request):
-        return jsonify({"error": "Enter the admin password to stop recurrence."}), 401
+    generated. Existing occurrences are kept. Gated by Sean's password (or the
+    admin password, kept for backward compatibility)."""
+    if not (_sean_ok(request) or _admin_ok(request)):
+        return jsonify({"error": "Enter Sean's password to stop recurrence."}), 401
     wo_id = str(wo_id).strip()
     rec = _WO_INDEX.get(wo_id) or store.get_work_order(wo_id)
     if rec is None:
@@ -3226,6 +3284,67 @@ def api_stop_recurrence(wo_id):
     flagged = store.stop_recurrence(series_id, author=author)
     reload_data()  # rebuild caches so the "stopped" state is reflected everywhere
     return jsonify({"ok": True, "series_id": series_id, "stopped": flagged})
+
+
+@app.route("/api/workorder/<wo_id>/archive", methods=["POST"])
+def api_archive_workorder(wo_id):
+    """Archive a scheduled work order (Sean-only): hides it from every list and
+    schedule view, but it stays fetchable by ID and can be restored anytime."""
+    if not _sean_ok(request):
+        return jsonify({"error": "Enter Sean's password to archive a work order."}), 401
+    wo_id = str(wo_id).strip()
+    rec = _WO_INDEX.get(wo_id) or store.get_work_order(wo_id)
+    if rec is None:
+        return jsonify({"error": "work order not found"}), 404
+    if rec.get("wo_type") != "scheduled":
+        return jsonify({"error": "only scheduled work orders can be archived"}), 400
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    store.set_inactive(
+        "work_order", wo_id,
+        dept_key=rec.get("department_key") or "",
+        dept_label=rec.get("department") or "",
+        name=(rec.get("equipment_name") or rec.get("audit_item") or wo_id),
+        author=author,
+    )
+    reload_data()
+    return jsonify({"ok": True, "wo_id": wo_id})
+
+
+@app.route("/api/workorder/<wo_id>/archive", methods=["DELETE"])
+def api_unarchive_workorder(wo_id):
+    """Restore a previously archived work order (Sean-only)."""
+    if not _sean_ok(request):
+        return jsonify({"error": "Enter Sean's password to restore a work order."}), 401
+    wo_id = str(wo_id).strip()
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    store.restore_inactive("work_order", wo_id, author=author)
+    reload_data()
+    return jsonify({"ok": True, "wo_id": wo_id})
+
+
+@app.route("/api/archived-workorders")
+def api_list_archived_workorders():
+    """List every archived work order (Sean's restore UI). Open read (no
+    password) since it only exposes what's already visible elsewhere once
+    restored; archiving/restoring itself stays Sean-gated."""
+    out = []
+    for it in store.list_inactive("work_order"):
+        wid = it.get("item_key")
+        rec = _WO_INDEX.get(wid)
+        out.append({
+            "wo_id": wid,
+            "name": it.get("name") or wid,
+            "dept_key": it.get("dept_key") or "",
+            "dept_label": it.get("dept_label") or "",
+            "archived_at": it.get("created_at") or "",
+            "archived_by": it.get("created_by") or "",
+            "due_date": (rec or {}).get("due_date") or "",
+            "audit_item": (rec or {}).get("audit_item") or "",
+            "exists": rec is not None,
+        })
+    return jsonify({"archived": out})
 
 
 @app.route("/api/workorder/<wo_id>/solutions", methods=["POST"])
@@ -4278,21 +4397,37 @@ def api_weekly():
     consecutive Sunday->Sunday weeks. By default these are last/this/next week,
     but `offset` (in whole weeks from the current Sunday) shifts the view so the
     frontend can page through earlier/upcoming weeks just like the monthly
-    calendar."""
+    calendar. An optional `division_key` restricts the result to a single
+    division; omitted/blank means every division."""
     try:
         offset = int((request.args.get("offset") or "0").strip() or "0")
     except (TypeError, ValueError):
         offset = 0
-    return jsonify(_weekly_payload(offset))
+    division_key = (request.args.get("division_key") or "").strip()
+    predicate = None
+    if division_key:
+        def predicate(r: dict) -> bool:
+            return _DEPT_DIVISION.get(r.get("department_key")) == division_key
+    return jsonify(_weekly_payload(offset, predicate))
 
 
 def _tech_wo_predicate(rec: dict, tech: str) -> bool:
     """True if a work order belongs on a technician's personal weekly view:
-    completed WOs credited to the tech, or open WOs assigned to the tech."""
+    completed WOs credited to the tech, or open WOs assigned to the tech. For
+    a team-aggregator identity (e.g. the shared "Maintenance" sign-in), also
+    true for teammates' assigned work and anything unassigned in its division."""
     aliases = _aliases_for(tech)
     if _is_completed(rec.get("status")):
         return _wo_credited_to(rec, tech)
-    return (rec.get("assigned_to") or "").strip().lower() in aliases
+    assignee = (rec.get("assigned_to") or "").strip().lower()
+    if assignee in aliases:
+        return True
+    team_aliases = _team_aliases_for(tech)
+    if not team_aliases:
+        return False
+    team_division = _TECH_DIVISION.get(tech)
+    return (_DEPT_DIVISION.get(rec.get("department_key")) == team_division
+            and (not assignee or assignee in team_aliases))
 
 
 @app.route("/api/my-weekly", methods=["POST"])
@@ -4355,7 +4490,9 @@ def api_monthly():
     creates occurrences through the next upcoming one), so the calendar shows
     every upcoming occurrence in the month. Projected entries have wo_id=None and
     is_projected=True. The grid is Sunday-aligned and covers whole weeks so the
-    frontend can render a clean month view."""
+    frontend can render a clean month view. An optional `division_key` restricts
+    the result (departments, work orders, and events) to a single division;
+    omitted/blank means every division."""
     now = datetime.now()
 
     def _int(name, default):
@@ -4366,6 +4503,7 @@ def api_monthly():
 
     year = _int("year", now.year)
     month = _int("month", now.month)
+    division_key = (request.args.get("division_key") or "").strip()
     if month < 1 or month > 12:
         year, month = now.year, now.month
 
@@ -4392,6 +4530,7 @@ def api_monthly():
             "problem": r.get("problem"),
             "audit_item": r.get("audit_item"),
             "frequency": r.get("frequency"),
+            "assigned_to": r.get("assigned_to"),
             "date": date_iso,
             "is_projected": projected,
         }
@@ -4400,6 +4539,8 @@ def api_monthly():
     with _DATA_LOCK:
         departments = [{"key": k, "label": c["label"]} for k, c in DEPARTMENTS.items()]
         for key, cfg in DEPARTMENTS.items():
+            if division_key and _DEPT_DIVISION.get(key) != division_key:
+                continue
             data = _DEPT_DATA.get(key, {"unscheduled": [], "scheduled": []})
 
             # Unscheduled work: placed by date_notified (only past/current days).
@@ -4475,6 +4616,7 @@ def api_monthly():
             "is_event": True,
         }
         for e in calendar_events
+        if not division_key or not e["department_key"] or _DEPT_DIVISION.get(e["department_key"]) == division_key
     ]
 
     return jsonify({
