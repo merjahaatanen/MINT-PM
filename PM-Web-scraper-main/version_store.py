@@ -41,6 +41,8 @@ SOURCE_LABELS = {
     "manual_edit": "Manual edit",
     "import": "Imported (pre-versioning)",
     "restore": "Restored version",
+    "procedure_generate": "AI generated (procedure)",
+    "procedure_update": "AI update (new suggested step)",
 }
 
 

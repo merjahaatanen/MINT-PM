@@ -248,6 +248,17 @@ def new_records(records: list[dict], markdown: str) -> list[dict]:
 # --------------------------------------------------------------------------- #
 # Generation / update
 # --------------------------------------------------------------------------- #
+def apply_markdown(eq_id, new_markdown: str, source: str = "ai_update",
+                   author: str = "") -> dict:
+    """Write regenerated checklist content WITHOUT recording a manual-edit
+    entry (unlike save_edit): backs up the old file and records a version."""
+    backup_guide(eq_id)
+    record_version(eq_id, new_markdown, source=source, author=author)
+    _write(guide_path(eq_id), new_markdown)
+    return {"markdown": new_markdown,
+            "generated_at": os.path.getmtime(guide_path(eq_id))}
+
+
 def save_edit(eq_id, new_markdown: str, author: str = "", source: str = "manual_edit") -> dict:
     """Persist an operator-edited checklist: back up the old file, record the
     manual-edit diff into the log, save a new version, then write the new

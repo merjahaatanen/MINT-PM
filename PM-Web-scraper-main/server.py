@@ -43,6 +43,7 @@ load_dotenv()
 import analyze_equipment as ae
 import guide_engine as ge
 import mint_store as store
+import version_store as vs
 import mint_email as emailer
 import longevity_parser as lp
 import nightly_update
@@ -57,13 +58,21 @@ CLOSED_STATUS = "Closed and Completed"
 # source of truth for AI note sorting.
 EQUIPMENT_PAGES_DIR = os.path.join(OUTPUT_DIR, "pages", "equipment")
 
-# Gemini model name (only used if LLM_PROVIDER=gemini). Checklists default to
-# Ollama Cloud because OLLAMA_API_KEY is present in the .env file.
+# Gemini model name (the active provider - see LLM_PROVIDER below).
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 
 # Ollama Cloud model. The default in analyze_equipment.py ("gemma4:31b") is not
 # a real cloud model, so pin a valid one here unless the user overrides it.
 ae.OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "gpt-oss:120b")
+# Provider: Ollama Cloud ran out of credits, so the app runs on Gemini via the
+# NEW_GEMINI_API key in .env (mapped to the standard GEMINI_API_KEY name here).
+if os.environ.get("NEW_GEMINI_API"):
+    os.environ["GEMINI_API_KEY"] = os.environ["NEW_GEMINI_API"]
+os.environ["LLM_PROVIDER"] = "gemini"
+# A second Ollama key can be added as OLLAMA_API_KEY_2 in .env; when present it
+# takes precedence (e.g. after the first key runs out of cloud credits).
+if os.environ.get("OLLAMA_API_KEY_2"):
+    os.environ["OLLAMA_API_KEY"] = os.environ["OLLAMA_API_KEY_2"]
 
 # Shared password that gates checklist editing (generate / edit-save / update).
 # Set EDIT_PASSWORD in the .env file. If it is left blank, editing stays OPEN
@@ -1988,10 +1997,15 @@ def api_department_longevity(dept_key):
 @app.route("/api/workorders")
 def api_workorders():
     """All departments' work orders (compact, newest -> oldest). Powers the
-    home-page 'Unscheduled' / 'Scheduled' tabs that span the whole division."""
+    home-page 'Unscheduled' / 'Scheduled' tabs that span the whole division.
+    Optional ?division_key=bla limits the lists to that division's
+    departments."""
+    division_key = (request.args.get("division_key") or "").strip().lower()
     with _DATA_LOCK:
         uns, sch = [], []
         for key, cfg in DEPARTMENTS.items():
+            if division_key and _DEPT_DIVISION.get(key) != division_key:
+                continue
             data = _DEPT_DATA.get(key, {"unscheduled": [], "scheduled": []})
             uns.extend(data["unscheduled"])
             sch.extend(data["scheduled"])
@@ -4169,6 +4183,160 @@ def api_save_guide(dept_key, eq_id):
 
 
 # --------------------------------------------------------------------------- #
+# Suggested steps - employee-written procedure notes for scheduled tasks.
+# Keyed by (dept, machine, audit item) so they follow every recurring
+# occurrence of the task, and feed the AI procedure generator as local data.
+# --------------------------------------------------------------------------- #
+def _wo_task_key(rec: dict) -> tuple[str, str, str]:
+    """(dept_key, eq_id, audit_item) identifying the recurring scheduled task
+    a work-order record belongs to."""
+    return (
+        (rec.get("department_key") or "").strip(),
+        _num_id(rec.get("equipment_id") or rec.get("equipment_eq_id") or ""),
+        (rec.get("audit_item") or "").strip(),
+    )
+
+
+@app.route("/api/workorder/<wo_id>/suggested-steps")
+def api_list_suggested_steps(wo_id):
+    # The suggestion box contents are reviewer-only (edit password).
+    if not _edit_ok(request):
+        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+    rec = _WO_INDEX.get(str(wo_id).strip()) or store.get_work_order(str(wo_id).strip())
+    if rec is None:
+        return jsonify({"error": "work order not found"}), 404
+    dept_key, eq_id, audit_item = _wo_task_key(rec)
+    return jsonify({"steps": store.list_suggested_steps(dept_key, eq_id, audit_item)})
+
+
+@app.route("/api/workorder/<wo_id>/suggested-steps", methods=["POST"])
+def api_add_suggested_step(wo_id):
+    rec = _WO_INDEX.get(str(wo_id).strip()) or store.get_work_order(str(wo_id).strip())
+    if rec is None:
+        return jsonify({"error": "work order not found"}), 404
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    text = (body.get("text") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not text:
+        return jsonify({"error": "Step text is required."}), 400
+    dept_key, eq_id, audit_item = _wo_task_key(rec)
+    try:
+        step = store.add_suggested_step(dept_key, eq_id, audit_item, text, author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    # New suggestions start as 'pending' and do NOT feed the AI until a
+    # reviewer (edit password) accepts them; regeneration then happens once
+    # for all accepted suggestions, not once per suggestion.
+    return jsonify({"ok": True, "step": step})
+
+
+def _generate_procedure(rec: dict, source: str, author: str = "") -> tuple[dict | None, str | None]:
+    """Generate the AI procedure for a scheduled WO from local data and store
+    it as a new version. Returns (payload, error_message)."""
+    wo_id = str(rec.get("wo_id") or "").strip()
+    dept_key, eq_id, audit_item = _wo_task_key(rec)
+    equipment_name = (rec.get("equipment_name") or "").strip() or "Unknown machine"
+    eq_label = (rec.get("equipment_eq_id") or "").strip()
+    label = f"{equipment_name} ({eq_label})" if eq_label else equipment_name
+    make, model = _machine_make_model(dept_key, eq_id) if dept_key and eq_id else ("", "")
+
+    suggested = store.list_suggested_steps(dept_key, eq_id, audit_item)
+    prior_context = _prior_procedure_context(dept_key, eq_id, audit_item, wo_id)
+    if not suggested and not prior_context:
+        return None, ("No local steps or notes recorded for this task yet. "
+                      "Add suggested steps below first - the AI only writes "
+                      "procedures from what our team has recorded, so it never "
+                      "makes something up.")
+
+    prompt = ae.build_scheduled_procedure_prompt(
+        audit_item, label, make=make, model=model, eq_label=eq_label,
+        employee_steps=[s.get("text", "") for s in suggested],
+        prior_context=prior_context,
+    )
+    try:
+        markdown = ae.analyze(prompt, MODEL)
+    except SystemExit as e:
+        return None, str(e)
+    if markdown.strip() == "INSUFFICIENT_DATA":
+        return None, ("Not enough recorded information to write a safe procedure. "
+                      "Add more suggested steps or notes for this task, then try "
+                      "again - the AI won't fill in gaps on its own.")
+
+    path = _procedure_path(wo_id)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(markdown)
+    vs.add_version("wo:" + wo_id, markdown, source, author=author)
+    return {"exists": True, "markdown": markdown,
+            "generated_at": os.path.getmtime(path)}, None
+
+
+@app.route("/api/suggested-steps/<int:step_id>", methods=["PATCH"])
+def api_review_suggested_step(step_id):
+    """Accept or decline a suggested step. Edit-password gated - this is the
+    review queue. Accepting does NOT regenerate; the reviewer triggers a
+    single regeneration via POST /procedure when done."""
+    if not _edit_ok(request):
+        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+    body = request.get_json(silent=True) or {}
+    status = (body.get("status") or "").strip()
+    author = (body.get("author") or "").strip()
+    try:
+        ok = store.set_suggested_step_status(step_id, status, author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    if not ok:
+        return jsonify({"error": "suggested step not found"}), 404
+    return jsonify({"ok": True})
+
+
+@app.route("/api/suggested-steps/<int:step_id>", methods=["DELETE"])
+def api_delete_suggested_step(step_id):
+    """Remove a suggested step. Sean-only (it's shared team knowledge)."""
+    if not _sean_ok(request):
+        return jsonify({"error": "Enter Sean's password to remove a suggested step."}), 401
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "Sean").strip() or "Sean"
+    if not store.delete_suggested_step(step_id, author):
+        return jsonify({"error": "step not found"}), 404
+    return jsonify({"ok": True})
+
+
+def _prior_procedure_context(dept_key: str, eq_id: str, audit_item: str,
+                             exclude_wo: str, limit: int = 3) -> str:
+    """Notes and previously AI-generated procedures from OTHER work orders for
+    the same scheduled task (same machine + audit item). Local context only."""
+    chunks = []
+    with _DATA_LOCK:
+        recs = [r for r in _WO_INDEX.values()
+                if str(r.get("wo_id")) != str(exclude_wo)
+                and r.get("wo_type") == "scheduled"
+                and (r.get("department_key") or "") == dept_key
+                and _num_id(r.get("equipment_id") or r.get("equipment_eq_id") or "") == eq_id
+                and (r.get("audit_item") or "").strip() == audit_item]
+    for r in recs[-limit:]:
+        parts = []
+        wid = str(r.get("wo_id") or "")
+        notes = [s.get("text") for s in store.list_solutions(wid) if s.get("text")]
+        if notes:
+            parts.append("Technician notes: " + "; ".join(notes[:8]))
+        comments = (r.get("comments") or "").strip()
+        if comments:
+            parts.append("PM comments: " + comments[:1000])
+        path = _procedure_path(wid)
+        if os.path.exists(path):
+            try:
+                with open(path, encoding="utf-8") as f:
+                    parts.append("Previously generated procedure:\n" + f.read()[:3000])
+            except OSError:
+                pass
+        if parts:
+            chunks.append(f"--- Work order {wid} ---\n" + "\n".join(parts))
+    return "\n\n".join(chunks)
+
+
+# --------------------------------------------------------------------------- #
 # Scheduled work-order step-by-step procedure (Ollama)
 # --------------------------------------------------------------------------- #
 @app.route("/api/workorder/<wo_id>/procedure")
@@ -4187,48 +4355,72 @@ def api_get_procedure(wo_id):
 @app.route("/api/workorder/<wo_id>/procedure", methods=["POST"])
 def api_generate_procedure(wo_id):
     """Generate (or regenerate) an AI step-by-step procedure for a SCHEDULED
-    work order, from its Audit Item text plus the specific machine's
-    make/model, so maintenance personnel get concrete guidance instead of the
-    bare checklist line. First-time generation needs the edit password; a
-    regenerate (?regenerate=1) needs the admin password, matching the
-    per-machine troubleshooting checklist."""
-    regen = str(request.args.get("regenerate") or "").strip() not in ("", "0", "false")
-    if regen:
-        if not _admin_ok(request):
-            return jsonify({"error": "Admin password required to regenerate this procedure."}), 401
-    elif not _edit_ok(request):
-        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
-
+    work order, built only from local data: ACCEPTED employee-suggested steps
+    plus notes/procedures from previous occurrences of the same task.
+    Open to anyone - generating a guide is not an editing action."""
     rec = _WO_INDEX.get(str(wo_id).strip()) or store.get_work_order(str(wo_id).strip())
     if rec is None:
         return jsonify({"error": "work order not found"}), 404
     if rec.get("wo_type") != "scheduled":
         return jsonify({"error": "step-by-step procedures are only generated for scheduled work orders"}), 400
 
-    dept_key = rec.get("department_key") or ""
-    eq_id = _num_id(rec.get("equipment_id") or rec.get("equipment_eq_id") or "")
-    equipment_name = (rec.get("equipment_name") or "").strip() or "Unknown machine"
-    eq_label = (rec.get("equipment_eq_id") or "").strip()
-    label = f"{equipment_name} ({eq_label})" if eq_label else equipment_name
-    make, model = _machine_make_model(dept_key, eq_id) if dept_key and eq_id else ("", "")
-    audit_item = (rec.get("audit_item") or "").strip()
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    regen = str(request.args.get("regenerate") or "").strip() not in ("", "0", "false")
+    source = "procedure_update" if regen else "procedure_generate"
+    payload, err_msg = _generate_procedure(rec, source, author=author)
+    if payload is None:
+        return jsonify({"error": err_msg}), 400
+    return jsonify(payload)
 
-    prompt = ae.build_scheduled_procedure_prompt(
-        audit_item, label, make=make, model=model, eq_label=eq_label
-    )
-    try:
-        markdown = ae.analyze(prompt, MODEL)
-    except SystemExit as e:  # analyze() calls sys.exit on failure
-        return jsonify({"error": str(e)}), 502
 
+# --------------------------------------------------------------------------- #
+# Procedure version history - same append-only version store as checklists,
+# keyed "wo:<wo_id>". Lets reviewers see and restore previous guides.
+# --------------------------------------------------------------------------- #
+@app.route("/api/workorder/<wo_id>/procedure/versions")
+def api_procedure_versions(wo_id):
+    """List every stored version of a scheduled WO's generated procedure."""
+    if not _edit_ok(request):
+        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+    key = "wo:" + str(wo_id).strip()
+    versions = vs.list_versions(key)
+    current = versions[0]["version_number"] if versions else None
+    return jsonify({"wo_id": str(wo_id), "current_version": current,
+                    "versions": versions})
+
+
+@app.route("/api/workorder/<wo_id>/procedure/versions/<int:version_number>")
+def api_procedure_version(wo_id, version_number):
+    """Full content of one historical procedure version."""
+    if not _edit_ok(request):
+        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+    v = vs.get_version("wo:" + str(wo_id).strip(), version_number)
+    if v is None:
+        return jsonify({"error": "version not found"}), 404
+    return jsonify(v)
+
+
+@app.route("/api/workorder/<wo_id>/procedure/versions/<int:version_number>/restore",
+           methods=["POST"])
+def api_restore_procedure_version(wo_id, version_number):
+    """Restore an older procedure version as the live guide (new 'restore'
+    version, history preserved)."""
+    if not _edit_ok(request):
+        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+    key = "wo:" + str(wo_id).strip()
+    v = vs.get_version(key, version_number)
+    if v is None:
+        return jsonify({"error": "version not found"}), 404
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
     path = _procedure_path(wo_id)
     with open(path, "w", encoding="utf-8") as f:
-        f.write(markdown)
-    return jsonify({
-        "exists": True,
-        "markdown": markdown,
-        "generated_at": os.path.getmtime(path),
-    })
+        f.write(v["content"])
+    vs.add_version(key, v["content"], "restore", author=author)
+    return jsonify({"exists": True, "markdown": v["content"],
+                    "generated_at": os.path.getmtime(path),
+                    "restored_from": version_number})
 
 
 @app.route("/api/departments/<dept_key>/machines/<eq_id>/guide/update", methods=["POST"])
@@ -4262,6 +4454,90 @@ def api_update_guide(dept_key, eq_id):
         "new_count": result["new_count"],
         "generated_at": os.path.getmtime(ge.guide_path(eq_id)),
     })
+
+
+# --------------------------------------------------------------------------- #
+# Checklist suggestions - employee-submitted additions/fixes for a machine's
+# troubleshooting checklist. Anyone may submit; accepting/declining is
+# edit-password gated, and applying all accepted suggestions regenerates the
+# checklist ONCE (never once per suggestion).
+# --------------------------------------------------------------------------- #
+@app.route("/api/departments/<dept_key>/machines/<eq_id>/suggestions")
+def api_list_checklist_suggestions(dept_key, eq_id):
+    # The suggestion box contents are reviewer-only (edit password).
+    if not _edit_ok(request):
+        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+    return jsonify({"suggestions": store.list_checklist_suggestions(dept_key, eq_id)})
+
+
+@app.route("/api/departments/<dept_key>/machines/<eq_id>/suggestions", methods=["POST"])
+def api_add_checklist_suggestion(dept_key, eq_id):
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    text = (body.get("text") or "").strip()
+    if not author:
+        return jsonify({"error": "Your name is required."}), 400
+    if not text:
+        return jsonify({"error": "Suggestion text is required."}), 400
+    try:
+        sugg = store.add_checklist_suggestion(dept_key, eq_id, text, author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    return jsonify({"ok": True, "suggestion": sugg})
+
+
+@app.route("/api/checklist-suggestions/<int:sugg_id>", methods=["PATCH"])
+def api_review_checklist_suggestion(sugg_id):
+    """Accept or decline a checklist suggestion. Edit-password gated."""
+    if not _edit_ok(request):
+        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+    body = request.get_json(silent=True) or {}
+    status = (body.get("status") or "").strip()
+    author = (body.get("author") or "").strip()
+    try:
+        ok = store.set_checklist_suggestion_status(sugg_id, status, author)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+    if not ok:
+        return jsonify({"error": "suggestion not found"}), 404
+    return jsonify({"ok": True})
+
+
+@app.route("/api/departments/<dept_key>/machines/<eq_id>/guide/apply-suggestions",
+           methods=["POST"])
+def api_apply_checklist_suggestions(dept_key, eq_id):
+    """Regenerate the checklist ONCE incorporating every ACCEPTED suggestion.
+    Edit-password gated (the reviewer's 'apply' action)."""
+    if not _edit_ok(request):
+        return jsonify({"error": "Editing is locked. Enter the shared edit password."}), 401
+    if dept_key not in DEPARTMENTS:
+        return jsonify({"error": "department not found"}), 404
+    groups = _machine_groups(dept_key)
+    recs = groups.get(eq_id)
+    if recs is None:
+        return jsonify({"error": "machine not found"}), 404
+    if not ge.guide_exists(eq_id):
+        return jsonify({"error": "no existing checklist to update; generate one first"}), 400
+
+    body = request.get_json(silent=True) or {}
+    author = (body.get("author") or "").strip()
+    accepted = store.list_checklist_suggestions(dept_key, eq_id, status="accepted")
+    texts = [s.get("text", "") for s in accepted if s.get("text")]
+    if not texts:
+        return jsonify({"error": "No accepted suggestions to apply."}), 400
+
+    existing = ge.read_guide(eq_id) or ""
+    unscheduled = recs["unscheduled"]
+    label = f"{_machine_name(unscheduled)} ({_eq_label(unscheduled, eq_id)})"
+    prompt = ae.build_apply_suggestions_prompt(existing, texts, label=label)
+    try:
+        markdown = ae.analyze(prompt, MODEL)
+    except SystemExit as e:
+        return jsonify({"error": str(e)}), 502
+    result = ge.apply_markdown(eq_id, markdown, source="ai_update", author=author)
+    return jsonify({"exists": True, "markdown": result["markdown"],
+                    "applied_count": len(texts),
+                    "generated_at": result["generated_at"]})
 
 
 # --------------------------------------------------------------------------- #
@@ -4991,10 +5267,15 @@ if __name__ == "__main__":
     print(f"  Local:   http://127.0.0.1:{port}")
     if host == "0.0.0.0":
         print(f"  Network: http://<this-machine-ip>:{port}  (reachable on your LAN)")
-    print(f"  Checklist provider: {'ollama' if os.environ.get('OLLAMA_API_KEY') else 'gemini'} "
-          f"(model: {ae.OLLAMA_MODEL})")
+    _prov = os.environ.get("LLM_PROVIDER", "gemini")
+    _model = ae.OLLAMA_MODEL if _prov == "ollama" else MODEL
+    print(f"  Checklist provider: {_prov} (model: {_model})")
     print("=" * 60)
     _start_chrome()
     _start_nightly()
     _start_weekly_digest()
+    app.run(host=host, port=port, threaded=True, debug=False, use_reloader=False)
+    app.run(host=host, port=port, threaded=True, debug=False, use_reloader=False)
+    _start_weekly_digest()
+    app.run(host=host, port=port, threaded=True, debug=False, use_reloader=False)
     app.run(host=host, port=port, threaded=True, debug=False, use_reloader=False)

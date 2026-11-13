@@ -173,6 +173,29 @@ def _init() -> None:
             CREATE INDEX IF NOT EXISTS idx_chart_events_date ON chart_events (date);
 
             CREATE INDEX IF NOT EXISTS idx_solutions_wo ON solutions (wo_id);
+
+            CREATE TABLE IF NOT EXISTS suggested_steps (
+                id         INTEGER PRIMARY KEY AUTOINCREMENT,
+                dept_key   TEXT NOT NULL DEFAULT '',
+                eq_id      TEXT NOT NULL DEFAULT '',
+                audit_item TEXT NOT NULL DEFAULT '',
+                author     TEXT NOT NULL DEFAULT '',
+                text       TEXT NOT NULL,
+                status     TEXT NOT NULL DEFAULT 'pending',
+                created_at TEXT NOT NULL
+            );
+            CREATE INDEX IF NOT EXISTS idx_suggested_steps_task ON suggested_steps (dept_key, eq_id, audit_item);
+
+            CREATE TABLE IF NOT EXISTS checklist_suggestions (
+                id         INTEGER PRIMARY KEY AUTOINCREMENT,
+                dept_key   TEXT NOT NULL DEFAULT '',
+                eq_id      TEXT NOT NULL DEFAULT '',
+                author     TEXT NOT NULL DEFAULT '',
+                text       TEXT NOT NULL,
+                status     TEXT NOT NULL DEFAULT 'pending',
+                created_at TEXT NOT NULL
+            );
+            CREATE INDEX IF NOT EXISTS idx_checklist_sugg_machine ON checklist_suggestions (dept_key, eq_id);
             CREATE INDEX IF NOT EXISTS idx_attachments_wo ON attachments (wo_id);
             CREATE INDEX IF NOT EXISTS idx_audit_wo ON audit_log (wo_id);
 
@@ -361,6 +384,12 @@ def _init() -> None:
             c.execute("ALTER TABLE technicians ADD COLUMN division_key TEXT NOT NULL DEFAULT 'bla'")
         if "is_supervisor" not in tech_cols:
             c.execute("ALTER TABLE technicians ADD COLUMN is_supervisor INTEGER NOT NULL DEFAULT 0")
+        # Migration: add status to suggested_steps (review workflow added later).
+        # Steps recorded before review existed are treated as ACCEPTED so they
+        # keep feeding the AI generator.
+        ss_cols = {r["name"] for r in c.execute("PRAGMA table_info(suggested_steps)").fetchall()}
+        if "status" not in ss_cols:
+            c.execute("ALTER TABLE suggested_steps ADD COLUMN status TEXT NOT NULL DEFAULT 'accepted'")
         # Migration: add division_key to vendor_contacts if it exists from an older schema.
         vendor_cols = {r["name"] for r in c.execute("PRAGMA table_info(vendor_contacts)").fetchall()}
         if "division_key" not in vendor_cols:
@@ -1171,6 +1200,123 @@ def solution_counts() -> dict[str, int]:
         rows = c.execute(
             "SELECT wo_id, COUNT(*) AS n FROM solutions GROUP BY wo_id").fetchall()
     return {r["wo_id"]: int(r["n"]) for r in rows}
+
+
+# --------------------------------------------------------------------------- #
+# Suggested steps - employee-written procedure notes for scheduled (PM) tasks.
+# Keyed by (dept_key, eq_id, audit_item) rather than wo_id so the steps follow
+# every recurring occurrence of the same task on the same machine, and feed the
+# AI step-by-step procedure generator as local, human-authored source material.
+# --------------------------------------------------------------------------- #
+def list_suggested_steps(dept_key: str, eq_id: str, audit_item: str,
+                         status: str | None = None) -> list[dict]:
+    """Suggested steps for a task. `status` None = everything; otherwise only
+    rows with that status ('pending' / 'accepted' / 'declined')."""
+    sql = ("SELECT id, dept_key, eq_id, audit_item, author, text, status, created_at "
+           "FROM suggested_steps WHERE dept_key = ? AND eq_id = ? AND audit_item = ?")
+    params: list = [dept_key or "", str(eq_id or "").strip(), audit_item or ""]
+    if status:
+        sql += " AND status = ?"
+        params.append(status)
+    sql += " ORDER BY id"
+    with _connect() as c:
+        rows = c.execute(sql, params).fetchall()
+    return [dict(r) for r in rows]
+
+
+def add_suggested_step(dept_key: str, eq_id: str, audit_item: str,
+                       text: str, author: str = "") -> dict:
+    text = (text or "").strip()
+    if not text:
+        raise ValueError("step text is required")
+    with _lock, _connect() as c:
+        cur = c.execute(
+            "INSERT INTO suggested_steps (dept_key, eq_id, audit_item, author, text, status, created_at) "
+            "VALUES (?, ?, ?, ?, ?, 'pending', ?)",
+            (dept_key or "", str(eq_id or "").strip(), audit_item or "",
+             author or "", text, _now()),
+        )
+        new_id = cur.lastrowid
+        row = c.execute(
+            "SELECT id, dept_key, eq_id, audit_item, author, text, status, created_at "
+            "FROM suggested_steps WHERE id = ?", (new_id,)).fetchone()
+    _audit("", author, "add_suggested_step",
+           f"EQ {eq_id}: {text[:120]}")
+    return dict(row)
+
+
+def set_suggested_step_status(step_id: int, status: str, author: str = "") -> bool:
+    status = (status or "").strip()
+    if status not in ("pending", "accepted", "declined"):
+        raise ValueError("status must be pending, accepted or declined")
+    with _lock, _connect() as c:
+        cur = c.execute("UPDATE suggested_steps SET status = ? WHERE id = ?",
+                        (status, int(step_id)))
+    if cur.rowcount:
+        _audit("", author, "suggested_step_" + status, f"id={step_id}")
+        return True
+    return False
+
+
+def delete_suggested_step(step_id: int, author: str = "") -> bool:
+    with _lock, _connect() as c:
+        cur = c.execute("DELETE FROM suggested_steps WHERE id = ?", (int(step_id),))
+    if cur.rowcount:
+        _audit("", author, "delete_suggested_step", f"id={step_id}")
+        return True
+    return False
+
+
+# --------------------------------------------------------------------------- #
+# Checklist suggestions - employee-submitted additions/fixes for a machine's
+# troubleshooting checklist. Same review workflow as suggested steps:
+# pending -> accepted (feeds the next regeneration) or declined.
+# --------------------------------------------------------------------------- #
+def list_checklist_suggestions(dept_key: str, eq_id: str,
+                               status: str | None = None) -> list[dict]:
+    sql = ("SELECT id, dept_key, eq_id, author, text, status, created_at "
+           "FROM checklist_suggestions WHERE dept_key = ? AND eq_id = ?")
+    params: list = [dept_key or "", str(eq_id or "").strip()]
+    if status:
+        sql += " AND status = ?"
+        params.append(status)
+    sql += " ORDER BY id"
+    with _connect() as c:
+        rows = c.execute(sql, params).fetchall()
+    return [dict(r) for r in rows]
+
+
+def add_checklist_suggestion(dept_key: str, eq_id: str, text: str,
+                             author: str = "") -> dict:
+    text = (text or "").strip()
+    if not text:
+        raise ValueError("suggestion text is required")
+    with _lock, _connect() as c:
+        cur = c.execute(
+            "INSERT INTO checklist_suggestions (dept_key, eq_id, author, text, status, created_at) "
+            "VALUES (?, ?, ?, ?, 'pending', ?)",
+            (dept_key or "", str(eq_id or "").strip(), author or "", text, _now()),
+        )
+        new_id = cur.lastrowid
+        row = c.execute(
+            "SELECT id, dept_key, eq_id, author, text, status, created_at "
+            "FROM checklist_suggestions WHERE id = ?", (new_id,)).fetchone()
+    _audit("", author, "add_checklist_suggestion",
+           f"EQ {eq_id}: {text[:120]}")
+    return dict(row)
+
+
+def set_checklist_suggestion_status(sugg_id: int, status: str, author: str = "") -> bool:
+    status = (status or "").strip()
+    if status not in ("pending", "accepted", "declined"):
+        raise ValueError("status must be pending, accepted or declined")
+    with _lock, _connect() as c:
+        cur = c.execute("UPDATE checklist_suggestions SET status = ? WHERE id = ?",
+                        (status, int(sugg_id)))
+    if cur.rowcount:
+        _audit("", author, "checklist_suggestion_" + status, f"id={sugg_id}")
+        return True
+    return False
 
 
 # --------------------------------------------------------------------------- #

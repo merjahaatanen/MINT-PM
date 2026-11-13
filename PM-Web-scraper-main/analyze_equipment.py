@@ -272,11 +272,17 @@ GENERAL RULES:
 
 
 def build_scheduled_procedure_prompt(audit_item: str, label: str, make: str = "",
-                                     model: str = "", eq_label: str = "") -> str:
+                                     model: str = "", eq_label: str = "",
+                                     employee_steps: list[str] | None = None,
+                                     prior_context: str = "") -> str:
     """Prompt asking the model to turn a scheduled (preventive-maintenance)
-    work order's short Audit Item text into a concrete, safe, step-by-step
-    procedure a maintenance technician can follow - explicitly researching the
-    named machine make/model rather than staying generic."""
+    work order's short Audit Item text into a step-by-step procedure using
+    LOCAL data only: steps written by our own employees for this task plus
+    notes/procedures from previous occurrences of the same scheduled task.
+
+    The model must NOT rely on outside knowledge or invent machine-specific
+    details. If the supplied local data is not enough to write a safe,
+    concrete procedure, it must reply with exactly INSUFFICIENT_DATA."""
     machine_lines = [f"- Machine: {label}"]
     if eq_label:
         machine_lines.append(f"- EQ ID: {eq_label}")
@@ -285,22 +291,24 @@ def build_scheduled_procedure_prompt(audit_item: str, label: str, make: str = ""
     if model:
         machine_lines.append(f"- Model: {model}")
     machine_block = "\n".join(machine_lines)
-    research_hint = (
-        "Use your knowledge of this EXACT make/model (manuals, OEM maintenance "
-        "guidance, common technician practice for this machine) to make the "
-        "steps specific and accurate - do not write a generic PM checklist that "
-        "could apply to any machine."
-        if (make or model) else
-        "The make/model was not recorded in PM, so infer the likely machine type "
-        "from its name below and research typical maintenance practice for that "
-        "TYPE of equipment. Say so briefly if you have to generalize."
-    )
+
+    steps = [s for s in (employee_steps or []) if s]
+    if steps:
+        employee_block = "\n".join(f"- {s}" for s in steps)
+    else:
+        employee_block = "(none recorded yet)"
+    prior_block = (prior_context or "").strip() or "(none available)"
 
     return f"""You are a senior maintenance technician. A scheduled (preventive
 maintenance) work order has been issued with only a short checklist line (the
 "Audit Item") describing what to do. Maintenance personnel have asked for a
-clear, step-by-step procedure they can follow, because the Audit Item alone is
-sometimes too brief to act on.
+clear, step-by-step procedure they can follow.
+
+IMPORTANT: you may ONLY use the local data provided below - the Audit Item,
+the machine identity, the employee-suggested steps, and notes from previous
+occurrences of this task. Do NOT use outside or general knowledge about this
+machine type, and do NOT invent steps, parts, measurements, or details that
+are not present in the data.
 
 === MACHINE ===
 {machine_block}
@@ -308,35 +316,41 @@ sometimes too brief to act on.
 === AUDIT ITEM (the task as written in PM) ===
 {audit_item or "(not provided)"}
 
-{research_hint}
+=== EMPLOYEE-SUGGESTED STEPS (written by our staff for this task) ===
+{employee_block}
 
-Produce the procedure as Markdown using EXACTLY this structure:
+=== NOTES FROM PREVIOUS OCCURRENCES OF THIS TASK ===
+{prior_block}
+
+If the local data above is NOT sufficient to write a concrete, safe,
+step-by-step procedure, reply with exactly this single line and nothing else:
+
+INSUFFICIENT_DATA
+
+Otherwise, produce the procedure as Markdown using EXACTLY this structure:
 
 1. A single H1 title line: "# Scheduled Maintenance Procedure: {label}".
 2. A one-paragraph "## Overview" explaining, in plain language, WHY this task
-   matters for this specific machine (what it prevents / protects).
-3. A "## Tools & Parts Needed" bulleted list (PPE, tools, consumables/spares).
-   If nothing special is needed, write "- Standard hand tools; no special parts."
-4. A "## Safety" bulleted list of any lockout/tagout, power-down, or PPE steps
-   required BEFORE starting, specific to this machine type where relevant.
-5. A "## Step-by-Step Procedure" as a NUMBERED list. Each step must be a single
-   concrete, actionable instruction (not vague like "inspect the machine" -
-   say what to look at, where, and what "good" vs "needs attention" looks like).
-6. A "## Completion Checklist" bulleted list of what to verify/confirm before
-   marking the work order complete.
+   matters, based only on what the local data indicates.
+3. A "## Tools & Parts Needed" bulleted list containing ONLY tools/parts that
+   are mentioned or clearly implied by the local data. If none are mentioned,
+   write "- Standard hand tools; no special parts."
+4. A "## Safety" bulleted list of safety steps ONLY where the local data
+   supports them (e.g. lockout/tagout if the data mentions power-down).
+5. A "## Step-by-Step Procedure" as a NUMBERED list assembled PRIMARILY from
+   the employee-suggested steps above - keep their wording and intent,
+   lightly reorganize/combine for clarity, and expand ONLY with connective
+   detail that is directly supported by the data.
+6. A "## Completion Checklist" bulleted list of what to verify, drawn from
+   the local data.
 
 RULES:
-- Be concrete and specific to the named machine make/model - reference actual
-  components, access points, or adjustment points for that machine when you
-  can. If you are not certain about a machine-specific detail, phrase it as
-  general best practice rather than inventing a specific part number or
-  measurement you don't actually know.
-- Do NOT invent error codes, exact torque/pressure values, or part numbers you
-  are not confident about - prefer general guidance ("per OEM manual") over a
-  fabricated number.
+- Every step must be traceable to the employee-suggested steps or the
+  previous-occurrence notes. Do not add machine-specific details that are
+  not in the data.
 - Keep language direct and usable on the shop floor.
 - Do NOT add disclaimers, meta-commentary, or a preamble before the title.
-- Output ONLY the Markdown described above.
+- Output ONLY the Markdown described above (or INSUFFICIENT_DATA).
 """
 
 
@@ -394,6 +408,50 @@ RULES:
 - Do NOT invent error codes, parts, or steps not supported by the data.
 - Do NOT add a "Safety First" section, disclaimers, warnings, or any preamble.
   Start with the existing H1 title.
+- Output ONLY the full updated Markdown checklist (title + the two tables).
+"""
+
+
+def build_apply_suggestions_prompt(existing_markdown: str, suggestions: list[str],
+                                   label: str = "") -> str:
+    """Prompt to fold REVIEWED employee suggestions into the current
+    troubleshooting checklist in a single pass. Suggestions are instructions
+    from our own staff (e.g. 'add a step to check the belt guard'), not new
+    work orders."""
+    sugg_block = "\n".join(f"- {s}" for s in suggestions if s) or "(none)"
+
+    return f"""You are a senior maintenance technician maintaining an operator
+TROUBLESHOOTING CHECKLIST for this equipment: {label}.
+
+You are given (1) the CURRENT checklist Markdown and (2) employee suggestions
+that a reviewer has accepted for incorporation.
+
+=== CURRENT CHECKLIST ===
+{existing_markdown}
+
+=== ACCEPTED EMPLOYEE SUGGESTIONS ===
+{sugg_block}
+
+Incorporate the accepted suggestions into the checklist.
+
+RULES:
+- Keep the EXACT same two-table structure and column headers as the current
+  checklist. Inside a table cell, put each item on its own line using a
+  literal "<br>" and start EVERY line with "- " (even single-item cells).
+  Never use real line breaks in a cell.
+- Each suggestion adds or refines content where it belongs: append to the
+  relevant existing Issue row's symptom/steps, or add a NEW row to BOTH
+  tables (same Issue name in each) when the suggestion describes a genuinely
+  new failure mode. Fill "Avg. Fix Time" for a new row from the suggestion
+  if stated, otherwise "No data" - never invent a number.
+- Only include steps that are SAFE for an operator; route repairs to
+  Maintenance.
+- Do NOT delete, remove, or reorder existing rows except where a suggestion
+  explicitly asks for a correction.
+- Do NOT use Markdown bold (**...**) or italics inside table cells.
+- Do NOT invent error codes, parts, or steps not in the data or the
+  suggestions.
+- Do NOT add a "Safety First" section, disclaimers, or any preamble.
 - Output ONLY the full updated Markdown checklist (title + the two tables).
 """
 

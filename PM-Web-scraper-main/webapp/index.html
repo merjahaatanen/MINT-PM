@@ -246,6 +246,7 @@
       { id: "machine_info", label: "Machine Info" },
       { id: "checklist", label: "Checklist" },
       { id: "spare_parts", label: "Spare Parts" },
+      { id: "contacts", label: "Contacts (vendors & machine contacts)" },
       { id: "inactive", label: "Inactive items" },
     ];
 
@@ -552,7 +553,7 @@
         } catch (e) { setErr(e.message); } finally { setBusy(false); }
       };
       return ReactDOM.createPortal(html`
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/20 backdrop-blur-[2px] p-4"
           onClick=${onCancel}>
           <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-sm p-6"
             onClick=${(e) => e.stopPropagation()}>
@@ -600,7 +601,7 @@
         } catch (e) { setErr(e.message); } finally { setBusy(false); }
       };
       return ReactDOM.createPortal(html`
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/20 backdrop-blur-[2px] p-4"
           onClick=${onCancel}>
           <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-sm p-6"
             onClick=${(e) => e.stopPropagation()}>
@@ -804,9 +805,12 @@
     // Sean-only weekly schedule modal: one tab per technician, showing that
     // technician's assigned/completed/upcoming work orders week by week.
     function TeamScheduleModal({ technicians, onClose, onOpenWo }) {
+      // "Maintenance" is a placeholder identity (not a person on Sean's team) -
+      // keep it out of the tabs so the schedule shows only real technicians.
+      const teamTechs = technicians.filter((n) => n !== "Maintenance");
       const [data, setData] = useState(null);
       const [err, setErr] = useState(null);
-      const [tab, setTab] = useState(technicians[0] || "");
+      const [tab, setTab] = useState(teamTechs[0] || "");
       const [weekOffset, setWeekOffset] = useState(0);
       useEffect(() => {
         (async () => {
@@ -822,8 +826,8 @@
       }, [weekOffset]);
 
       useEffect(() => {
-        if (technicians.length && !technicians.includes(tab)) setTab(technicians[0]);
-      }, [technicians, tab]);
+        if (teamTechs.length && !teamTechs.includes(tab)) setTab(teamTechs[0]);
+      }, [teamTechs.length, tab]);
 
       const tech = (data || []).find((t) => t.name === tab) || (data || [])[0] || null;
       const openWo = (id) => { if (onOpenWo && id) { onOpenWo(id); onClose(); } };
@@ -841,7 +845,7 @@
             <div className="px-6 pt-4">
               <div className="flex items-center gap-3 flex-wrap">
                 <div className="flex gap-2 flex-wrap">
-                  ${technicians.map((n) => html`
+                  ${teamTechs.map((n) => html`
                     <button key=${n} onClick=${() => setTab(n)}
                       className=${"px-4 py-2 rounded-full text-sm font-semibold transition " +
                         (tab === n ? "bg-emerald-700 text-white" : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100")}>
@@ -1419,8 +1423,16 @@
 
       const setTech = (name) => { setUserName(name); setUser(name); setSean(false); setIsSean(false); setSeanPw(""); };
       // Sign in as a supervisor identity (Sean, or a supervisor technician)
-      // once their password has been verified (or found to need none).
-      const unlockSupervisor = (name, pw) => { setUserName(name); setUser(name); setSean(true); setIsSean(true); setSeanPw(pw); setShowSeanGate(false); };
+      // once their password has been verified (or found to need none). Any
+      // active role view must be cleared too, or the header keeps showing the
+      // role name (e.g. "Lead") instead of the signed-in name.
+      const unlockSupervisor = (name, pw) => {
+        setUserName(name); setUser(name); setSean(true); setIsSean(true); setSeanPw(pw); setShowSeanGate(false);
+        onSwitchViewProfile && onSwitchViewProfile("__maintenance");
+        // Switching views can leave the scroll position clamped at the bottom
+        // of a shorter page - reset to the top so sign-in feels normal.
+        window.scrollTo(0, 0);
+      };
       const unlockSean = (pw) => unlockSupervisor("Sean", pw);
       const switchUser = () => { setUserName(""); setUser(""); setSean(false); setIsSean(false); setSeanPw(""); };
       // The landing ("Who are you?") screen is the true start: reaching it
@@ -1507,7 +1519,7 @@
                 <span className="px-3 py-2 rounded-full bg-white/10 text-white text-sm font-semibold">
                   Who are you?</span>`}
               ${!isLanding && showIdentitySelect && html`
-                <select value=${activeRole || (signedIn ? user : "__maintenance")} onChange=${(e) => onSelectIdentity(e.target.value)}
+                <select value=${sean ? "sean" : (signedIn ? user : (activeRole || "__maintenance"))} onChange=${(e) => onSelectIdentity(e.target.value)}
                   title="Who are you?"
                   className="px-3 py-2 rounded-full bg-white text-slate-700 text-sm font-semibold
                              focus:outline-none focus:ring-2 focus:ring-emerald-300 transition cursor-pointer">
@@ -1518,6 +1530,8 @@
                   ${showTechOptions && html`<optgroup label="Sign in as">
                     ${technicians.map((n) => html`<option key=${n} value=${n}>${n}</option>`)}
                     ${divisionKey === "bla" && html`<option value="sean">Sean (supervisor)</option>`}
+                    ${signedIn && !sean && !technicians.includes(user) && html`
+                      <option value=${user}>${user}</option>`}
                     <option value="__other">Someone else…</option>
                   </optgroup>`}
                 </select>`}
@@ -1569,7 +1583,7 @@
           </div>
           </div>
           ${showOther && html`
-            <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+            <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/20 backdrop-blur-[2px] p-4"
               onClick=${() => setShowOther(false)}>
               <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-sm p-6"
                 onClick=${(e) => e.stopPropagation()}>
@@ -1715,7 +1729,7 @@
             <button onClick=${openMint}
               className="text-left bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-800
                          hover:shadow-lg hover:border-slate-700 transition group">
-              <div className="text-xl font-extrabold text-white">Mint</div>
+              <div className="text-xl font-extrabold text-white">Settings</div>
             </button>
           </div>
           ${showGate && html`<${MasterGate} actionLabel="enter the MINT admin"
@@ -2684,15 +2698,15 @@
 
       // Drop the cached work-order lists when a WO is created/edited/deleted so
       // the open tab refetches.
-      useEffect(() => { setWoData(null); setWoErr(null); }, [refreshSignal]);
+      useEffect(() => { setWoData(null); setWoErr(null); }, [refreshSignal, divKey]);
 
       // Lazily load the division-wide work-order lists the first time the user
       // opens the Unscheduled/Scheduled tab (it's a large payload).
       useEffect(() => {
         if ((tab === "Unscheduled" || tab === "Scheduled") && !woData && !woErr) {
-          getJSON("/api/workorders").then(setWoData).catch((e) => setWoErr(e.message));
+          getJSON("/api/workorders?division_key=" + divKey).then(setWoData).catch((e) => setWoErr(e.message));
         }
-      }, [tab, woData, woErr]);
+      }, [tab, woData, woErr, divKey]);
 
       const refreshAll = () => { setReloadKey((k) => k + 1); setWoData(null); setWoErr(null); };
 
@@ -3257,6 +3271,7 @@
       "Unscheduled": "work_orders",
       "Scheduled": "work_orders",
       "Spare Parts": "spare_parts",
+      "Contacts": "contacts",
     };
     const visibleTabs = (tabs, viewProfile) =>
       tabs.filter((t) => !TAB_FEATURE[t] || featureAllowed(viewProfile, TAB_FEATURE[t]));
@@ -3973,7 +3988,7 @@
         } catch (e) { setErr(e.message); } finally { setBusy(false); }
       };
       return html`
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/20 backdrop-blur-[2px] p-4"
           onClick=${onCancel}>
           <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-sm p-6"
             onClick=${(e) => e.stopPropagation()}>
@@ -4068,8 +4083,9 @@
       const [busy, setBusy] = useState(false);
       const [err, setErr] = useState(null);
       const [protectedEdit, setProtectedEdit] = useState(false);
-      const [adminProtected, setAdminProtected] = useState(false);
-      const [gate, setGate] = useState(null);   // {label, kind: "edit"|"admin", action}
+      const [gate, setGate] = useState(null);   // {label, action}
+      const [versions, setVersions] = useState(null);   // history list
+      const [viewing, setViewing] = useState(null);     // historical version preview
       const base = "/api/workorder/" + woId + "/procedure";
 
       const load = useCallback(() => {
@@ -4077,41 +4093,81 @@
         getJSON(base).then((d) => setState({ loading: false, ...d })).catch((e) => setErr(e.message));
       }, [base]);
 
-      useEffect(() => { load(); setErr(null); }, [load]);
+      useEffect(() => { load(); setErr(null); setViewing(null); setVersions(null); }, [load]);
       useEffect(() => { getJSON("/api/edit-auth").then((d) => setProtectedEdit(!!d.protected)).catch(() => {}); }, []);
-      useEffect(() => { getJSON("/api/admin-auth").then((d) => setAdminProtected(!!d.protected)).catch(() => {}); }, []);
+
+      const requireAuth = (action) => {
+        const isAuthed = !protectedEdit || !!getEditPw();
+        if (isAuthed) action(); else setGate({ label: "unlock editing", action });
+      };
 
       const runGenerate = useCallback(async (regen) => {
         setBusy(true); setErr(null);
         try {
           const url = API + base + (regen ? "?regenerate=1" : "");
-          const r = await fetch(url, { method: "POST", headers: regen ? adminHeaders() : editHeaders() });
+          const r = await fetch(url, { method: "POST", headers: editHeaders() });
           const d = await r.json();
           if (r.status === 401) {
-            if (regen) { setAdminPw(""); setGate({ label: "regenerate this procedure", kind: "admin", action: () => runGenerate(true) }); }
-            else { setEditPw(""); setGate({ label: "generate this procedure", kind: "edit", action: () => runGenerate(false) }); }
+            setEditPw(""); setGate({ label: "unlock editing", action: () => runGenerate(regen) });
             return;
           }
           if (!r.ok) throw new Error(d.error || "generation failed");
           setState({ loading: false, ...d });
+          setViewing(null);
         } catch (e) { setErr(e.message); }
         finally { setBusy(false); }
       }, [base]);
 
-      const requireAuth = (action) => {
-        const isAuthed = !protectedEdit || !!getEditPw();
-        if (isAuthed) action(); else setGate({ label: "generate this procedure", kind: "edit", action });
-      };
-      const generate = () => requireAuth(() => runGenerate(false));
+      const generate = () => runGenerate(false);            // open - no password
       const regenerate = () => {
-        if (!adminProtected || getAdminPw()) {
-          if (window.confirm("Regenerate this procedure from scratch?")) runGenerate(true);
-        } else {
-          setGate({ label: "regenerate this procedure", kind: "admin", action: () => runGenerate(true) });
-        }
+        if (window.confirm("Regenerate this procedure? The current version is kept in history."))
+          runGenerate(true);
       };
 
+      /* ---- version history (same store/pattern as the machine checklist) ---- */
+      const loadHistory = useCallback(async () => {
+        try {
+          const r = await fetch(API + base + "/versions", { headers: editHeaders() });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setEditPw(""); setVersions(null); setGate({ label: "view version history", action: loadHistory }); return; }
+          if (!r.ok) throw new Error(d.error || "failed to load history");
+          setVersions(d.versions || []);
+        } catch (e) { setErr(e.message); }
+      }, [base]);
+
+      const openHistory = () => requireAuth(() => { setViewing(null); loadHistory(); });
+
+      const openVersion = useCallback(async (n) => {
+        setErr(null);
+        try {
+          const r = await fetch(API + base + "/versions/" + n, { headers: editHeaders() });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setEditPw(""); setGate({ label: "view version history", action: () => openVersion(n) }); return; }
+          if (!r.ok) throw new Error(d.error || "failed to load version");
+          setViewing(d);
+        } catch (e) { setErr(e.message); }
+      }, [base]);
+
+      const restoreVersion = useCallback(async (n) => {
+        setBusy(true); setErr(null);
+        try {
+          const r = await fetch(API + base + "/versions/" + n + "/restore", {
+            method: "POST",
+            headers: editHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({ author: getUserName() }),
+          });
+          const d = await r.json().catch(() => ({}));
+          if (r.status === 401) { setEditPw(""); setGate({ label: "restore a version", action: () => restoreVersion(n) }); return; }
+          if (!r.ok) throw new Error(d.error || "restore failed");
+          setState({ loading: false, ...d });
+          setViewing(null);
+          loadHistory();
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(false); }
+      }, [base, loadHistory]);
+
       const renderedHtml = state.markdown ? marked.parse(state.markdown) : "";
+      const viewHtml = viewing ? marked.parse(viewing.content || "") : "";
 
       return html`
         <div className="mt-4 border border-indigo-100 bg-indigo-50/40 rounded-2xl p-4">
@@ -4119,6 +4175,10 @@
             <div className="font-bold text-indigo-800 text-sm">AI Step-by-Step Procedure</div>
             ${!state.loading && html`
               <div className="flex items-center gap-2">
+                ${state.exists && html`<button onClick=${versions ? () => setVersions(null) : openHistory} disabled=${busy}
+                    className="px-3 py-1 rounded-full bg-white border border-indigo-200 text-indigo-700 text-xs font-semibold hover:bg-indigo-100 disabled:opacity-60"
+                    title="See and restore previous versions">
+                    ${versions ? "Hide history" : "History"}${protectedEdit && !getEditPw() ? " 🔒" : ""}</button>`}
                 ${state.exists
                   ? html`<button onClick=${regenerate} disabled=${busy}
                       className="px-3 py-1 rounded-full bg-white border border-indigo-200 text-indigo-700 text-xs font-semibold hover:bg-indigo-100 disabled:opacity-60">
@@ -4132,17 +4192,201 @@
           ${state.loading && html`<div className="text-indigo-400 text-sm mt-2">Loading…</div>`}
           ${!state.loading && !state.exists && !err && html`
             <div className="text-indigo-500 text-sm mt-2">
-              No step-by-step guide yet. Generate one from this task's Audit Item and the machine's make/model.
+              No step-by-step guide yet. Add suggested steps below, get them
+              accepted, then generate - the guide is built only from what our
+              team has recorded for this task.
             </div>`}
-          ${state.exists && html`
+          ${viewing && html`
+            <div className="flex items-center justify-between gap-3 flex-wrap bg-amber-50 border border-amber-200 text-amber-800 rounded-xl px-4 py-2.5 mt-3 text-sm">
+              <span>Viewing <b>version ${viewing.version_number}</b> · ${viewing.source_label}
+                <span className="opacity-70">(read-only)</span></span>
+              <span className="flex gap-2">
+                <button onClick=${() => setViewing(null)}
+                  className="px-3 py-1 rounded-full bg-white border border-amber-300 text-amber-700 hover:bg-amber-100 text-xs font-semibold">
+                  Back to current</button>
+                <button onClick=${() => restoreVersion(viewing.version_number)} disabled=${busy}
+                  className="px-3 py-1 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold disabled:opacity-50">
+                  ${busy ? "Restoring…" : "Restore this version"}</button>
+              </span>
+            </div>
+            <div className="guide bg-white rounded-2xl p-4 mt-2 border border-amber-200"
+                 dangerouslySetInnerHTML=${{ __html: viewHtml }} />`}
+          ${versions && !viewing && html`
+            <div className="mt-3 space-y-1.5">
+              ${versions.length === 0
+                ? html`<div className="text-slate-400 text-sm italic">No recorded versions.</div>`
+                : versions.map((v) => html`
+                    <button key=${v.version_number} onClick=${() => openVersion(v.version_number)}
+                      className="w-full text-left flex items-center justify-between gap-3 rounded-xl bg-white border border-indigo-100 px-3 py-2 hover:bg-indigo-50">
+                      <span className="text-sm font-semibold text-slate-700">v${v.version_number} · ${v.source_label}</span>
+                      <span className="text-xs text-slate-400">${fmtVersionStamp(v.created_at)}${v.author ? " · " + v.author : ""}</span>
+                    </button>`)}
+            </div>`}
+          ${state.exists && !viewing && html`
             <div className="guide bg-white rounded-2xl p-4 mt-3 border border-indigo-100"
                  dangerouslySetInnerHTML=${{ __html: renderedHtml }} />`}
-          ${gate && gate.kind === "admin" && html`<${AdminGate} actionLabel=${gate.label}
+          ${gate && html`<${PasswordGate}
             onCancel=${() => setGate(null)}
             onUnlock=${() => { const a = gate.action; setGate(null); a(); }} />`}
-          ${gate && gate.kind === "edit" && html`<${PasswordGate}
+        </div>`;
+    }
+
+    /* Suggested steps: an open input box where employees write down how a
+       scheduled task is actually done. Steps are stored per machine + audit
+       item (so they follow every recurring occurrence) and are the ONLY
+       source the AI procedure generator is allowed to use. */
+    const SUGG_STATUS = {
+      pending:  { label: "Pending review", cls: "bg-amber-50 text-amber-700 border-amber-200" },
+      accepted: { label: "Accepted - feeds the AI", cls: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+      declined: { label: "Declined", cls: "bg-slate-50 text-slate-500 border-slate-200" },
+    };
+
+    function SuggestedStepsPanel({ woId, name, setName }) {
+      const [steps, setSteps] = useState(null);
+      const [text, setText] = useState("");
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [gate, setGate] = useState(null);        // {action} Sean gate for delete
+      const [editGate, setEditGate] = useState(null); // {action} edit gate for review
+      const [reviewing, setReviewing] = useState(false); // reviewer unlocked
+
+      const load = useCallback(() => {
+        // Suggestion contents are reviewer-only - fetch carries the edit header.
+        fetch(API + "/api/workorder/" + woId + "/suggested-steps", { headers: editHeaders() })
+          .then((r) => (r.ok ? r.json() : Promise.reject(r)))
+          .then((d) => setSteps(d.steps || []))
+          .catch(() => setSteps(null));
+      }, [woId]);
+      useEffect(() => { if (reviewing) load(); else setSteps(null); }, [load, reviewing]);
+
+      const add = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!text.trim()) { setErr("Write the step first."); return; }
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/workorder/" + woId + "/suggested-steps", "POST",
+            { author: name.trim(), text: text.trim() });
+          setUserName(name.trim());
+          setText("");
+          load();
+        } catch (e) { setErr(e.message || "Save failed."); }
+        finally { setBusy(false); }
+      };
+
+      const setStatus = async (id, status) => {
+        setBusy(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/suggested-steps/" + id, {
+            method: "PATCH",
+            headers: editHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({ status, author: name.trim() }),
+          });
+          if (r.status === 401) {
+            setEditPw("");
+            setEditGate({ action: () => setStatus(id, status) });
+            return;
+          }
+          const d = await r.json().catch(() => ({}));
+          if (!r.ok) throw new Error(d.error || "review failed");
+          load();
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(false); }
+      };
+      const review = (id, status) => {
+        if (reviewing || getEditPw()) setStatus(id, status);
+        else setEditGate({ action: () => { setReviewing(true); setStatus(id, status); } });
+      };
+
+      const doDelete = async (id) => {
+        setBusy(true); setErr(null);
+        try {
+          await sendJSON("/api/suggested-steps/" + id, "DELETE", {}, seanHeaders());
+          load();
+        } catch (e) {
+          setSeanPw("");
+          setGate({ action: () => doDelete(id) });
+        } finally { setBusy(false); }
+      };
+      const del = (id) => {
+        if (isSeanMode()) doDelete(id);
+        else setGate({ action: () => doDelete(id) });
+      };
+
+      const pendingCount = (steps || []).filter((s) => s.status === "pending").length;
+
+      return html`
+        <div className="mt-4 border border-teal-100 bg-teal-50/40 rounded-2xl p-4">
+          <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
+            <div className="font-bold text-teal-800 text-sm">Suggested Steps</div>
+            ${pendingCount > 0 && html`
+              <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-semibold">
+                ${pendingCount} pending review</span>`}
+          </div>
+          <div className="text-xs text-teal-600 mb-3">
+            How do our people actually do this task? Add a suggestion below - a
+            reviewer (edit password) accepts or declines it, and accepted steps
+            are what the AI guide is built from.
+          </div>
+          <div className="space-y-2 mb-3">
+            ${steps !== null && !reviewing && html`
+              <div className="text-teal-600 text-sm">
+                🔒 ${steps.length} suggestion${steps.length === 1 ? "" : "s"} in the box -
+                unlock with the edit password to view and review.</div>`}
+            ${reviewing && steps === null && html`<div className="text-teal-400 text-sm">Loading…</div>`}
+            ${reviewing && (steps || []).map((s) => {
+              const st = SUGG_STATUS[s.status] || SUGG_STATUS.pending;
+              return html`
+              <div key=${s.id} className="rounded-xl bg-white border border-teal-100 p-3 flex items-start gap-2">
+                <div className="flex-1">
+                  <div className="text-[11px] font-semibold text-slate-400 mb-0.5 flex items-center gap-2 flex-wrap">
+                    <span>${s.author || "Unknown"} · ${s.created_at || ""}</span>
+                    <span className=${"px-1.5 py-0.5 rounded-full border text-[10px] " + st.cls}>${st.label}</span>
+                  </div>
+                  <div className="text-sm text-slate-700 whitespace-pre-wrap">${s.text}</div>
+                </div>
+                ${reviewing && html`
+                  <span className="flex gap-1 shrink-0">
+                    ${s.status !== "accepted" && html`
+                      <button onClick=${() => setStatus(s.id, "accepted")} disabled=${busy}
+                        className="px-2 py-0.5 rounded-full bg-emerald-700 text-white text-[10px] font-semibold hover:bg-emerald-800 disabled:opacity-50"
+                        title="Accept - the AI will use this">✓</button>`}
+                    ${s.status !== "declined" && html`
+                      <button onClick=${() => setStatus(s.id, "declined")} disabled=${busy}
+                        className="px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 text-[10px] font-semibold hover:bg-slate-300 disabled:opacity-50"
+                        title="Decline - the AI ignores this">✕</button>`}
+                  </span>`}
+                ${!reviewing && html`
+                  <button onClick=${() => del(s.id)} disabled=${busy}
+                    className="text-rose-500 hover:text-rose-700 text-xs font-semibold disabled:opacity-50"
+                    title="Remove (Sean)">✕</button>`}
+              </div>`;
+            })}
+            ${steps !== null && steps.length === 0 && html`
+              <div className="text-teal-500/70 text-sm italic">No suggestions yet.</div>`}
+          </div>
+          <textarea value=${text} rows=${3} placeholder="e.g. Press the red button on the tool holder to release the tool…"
+            onChange=${(e) => setText(e.target.value)}
+            className="w-full px-3 py-2 rounded-xl border border-teal-100 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-300" />
+          ${err && html`<div className="text-rose-600 text-sm mt-2">${err}</div>`}
+          <div className="flex items-center justify-between gap-2 mt-2 flex-wrap">
+            <button onClick=${() => reviewing ? setReviewing(false) : setEditGate({ action: () => setReviewing(true) })}
+              className="text-xs font-semibold text-teal-700 hover:text-teal-900">
+              ${reviewing ? "Done reviewing" : "Review suggestions 🔒"}</button>
+            <button onClick=${add} disabled=${busy}
+              className="px-4 py-1.5 rounded-full bg-teal-700 text-white text-sm font-semibold hover:bg-teal-800 disabled:opacity-60">
+              ${busy ? "Saving…" : "+ Add step"}</button>
+          </div>
+          ${reviewing && html`
+            <div className="text-[11px] text-teal-600 mt-2">
+              Accept or decline each suggestion, then hit <b>Regenerate</b> on the
+              guide above to rebuild it once with everything accepted.
+            </div>`}
+          ${gate && html`<${SeanGate} actionLabel="remove this suggested step"
             onCancel=${() => setGate(null)}
-            onUnlock=${() => { const a = gate.action; setGate(null); a(); }} />`}
+            onUnlock=${(pw) => { const a = gate.action; setGate(null); a(); }} />`}
+          ${editGate && html`<${PasswordGate}
+            onCancel=${() => setEditGate(null)}
+            onUnlock=${() => { const a = editGate.action; setEditGate(null); a(); }} />`}
         </div>`;
     }
 
@@ -4473,6 +4717,7 @@
                   ${rec.status === CLOSED_STATUS && html`<${Field} label="Comments" value=${rec.completion_comments} />`}
                 </div>
                 ${rec.wo_type === "scheduled" && html`<${ScheduledProcedurePanel} woId=${woId} />`}
+                ${rec.wo_type === "scheduled" && html`<${SuggestedStepsPanel} woId=${woId} name=${name} setName=${setName} />`}
                 <${AssignmentSection} rec=${rec} technicians=${technicians} onChanged=${(wo) => { if (wo) setRec(wo); refresh(); }} />
                 ${rec.wo_type !== "scheduled" && html`<${SolutionSection} rec=${rec} name=${name} setName=${setName} onChanged=${refresh} />`}
                 <${AttachmentSection} rec=${rec} name=${name} setName=${setName} onChanged=${refresh} />
@@ -4862,7 +5107,7 @@
         finally { setBusy(false); }
       };
       return html`
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4"
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/20 backdrop-blur-[2px] p-4"
           onClick=${onCancel}>
           <div className="bg-white rounded-2xl shadow-xl border border-emerald-100 w-full max-w-sm p-6"
             onClick=${(e) => e.stopPropagation()}>
@@ -5239,6 +5484,10 @@
                 : !busy && html`<div className="text-slate-400 bg-white rounded-2xl p-10 text-center border border-dashed border-emerald-200">
                      Click <b>Generate Checklist</b> to build an operator troubleshooting guide.</div>`}
 
+          ${!editing && html`<${ChecklistSuggestionsPanel}
+            deptKey=${deptKey} eqId=${eqId}
+            canApply=${!!state.exists} onApplied=${load} />`}
+
           ${showHistory && html`
             <div className="fixed inset-0 z-40" onClick=${() => setShowHistory(false)}>
               <div className="absolute inset-0 bg-slate-900/20"></div>
@@ -5284,6 +5533,161 @@
                 </div>
               </aside>
             </div>`}
+        </div>`;
+    }
+
+    /* Employee suggestion box for a machine's troubleshooting checklist.
+       Anyone can submit; a reviewer (edit password) accepts or declines each
+       suggestion, then applies them ALL in one regeneration. */
+    function ChecklistSuggestionsPanel({ deptKey, eqId, canApply, onApplied }) {
+      const suggBase = "/api/departments/" + deptKey + "/machines/" + eqId + "/suggestions";
+      const [items, setItems] = useState(null);
+      const [text, setText] = useState("");
+      const [name, setName] = useState(getUserName());
+      const [busy, setBusy] = useState(false);
+      const [err, setErr] = useState(null);
+      const [info, setInfo] = useState(null);
+      const [reviewing, setReviewing] = useState(false);
+      const [editGate, setEditGate] = useState(null); // {action}
+
+      const load = useCallback(() => {
+        getJSON(suggBase)
+          .then((d) => setItems(d.suggestions || []))
+          .catch(() => setItems([]));
+      }, [suggBase]);
+      useEffect(load, [load]);
+
+      const add = async () => {
+        if (!name.trim()) { setErr("Your name is required."); return; }
+        if (!text.trim()) { setErr("Write the suggestion first."); return; }
+        setBusy(true); setErr(null); setInfo(null);
+        try {
+          await sendJSON(suggBase, "POST", { author: name.trim(), text: text.trim() });
+          setUserName(name.trim());
+          setText("");
+          load();
+        } catch (e) { setErr(e.message || "Save failed."); }
+        finally { setBusy(false); }
+      };
+
+      const setStatus = async (id, status) => {
+        setBusy(true); setErr(null);
+        try {
+          const r = await fetch(API + "/api/checklist-suggestions/" + id, {
+            method: "PATCH",
+            headers: editHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({ status, author: name.trim() }),
+          });
+          if (r.status === 401) {
+            setEditPw("");
+            setEditGate({ action: () => setStatus(id, status) });
+            return;
+          }
+          const d = await r.json().catch(() => ({}));
+          if (!r.ok) throw new Error(d.error || "review failed");
+          load();
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(false); }
+      };
+
+      // Apply ALL accepted suggestions in a single checklist regeneration.
+      const apply = async () => {
+        setBusy(true); setErr(null); setInfo(null);
+        try {
+          const r = await fetch(API + "/api/departments/" + deptKey + "/machines/" + eqId + "/guide/apply-suggestions", {
+            method: "POST",
+            headers: editHeaders({ "Content-Type": "application/json" }),
+            body: JSON.stringify({ author: name.trim() }),
+          });
+          if (r.status === 401) {
+            setEditPw("");
+            setEditGate({ action: apply });
+            return;
+          }
+          const d = await r.json().catch(() => ({}));
+          if (!r.ok) throw new Error(d.error || "apply failed");
+          setInfo("Applied " + (d.applied_count || 0) + " suggestion(s) - checklist regenerated.");
+          onApplied && onApplied();
+        } catch (e) { setErr(e.message); }
+        finally { setBusy(false); }
+      };
+
+      const pendingCount = (items || []).filter((s) => s.status === "pending").length;
+      const acceptedCount = (items || []).filter((s) => s.status === "accepted").length;
+
+      return html`
+        <div className="mt-6 border border-teal-100 bg-teal-50/40 rounded-2xl p-4">
+          <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
+            <div className="font-bold text-teal-800 text-sm">Suggest a change to this checklist</div>
+            ${reviewing && pendingCount > 0 && html`
+              <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-semibold">
+                ${pendingCount} pending review</span>`}
+          </div>
+          <div className="text-xs text-teal-600 mb-3">
+            Know something this checklist should say differently? Write it below -
+            a reviewer (edit password) accepts or declines each suggestion, and
+            accepted ones get folded into the checklist in a single update.
+          </div>
+          <div className="space-y-2 mb-3">
+            ${!reviewing && html`
+              <div className="text-teal-600 text-sm">
+                🔒 The suggestion box is locked - unlock with the edit password
+                to view and review suggestions.</div>`}
+            ${reviewing && items === null && html`<div className="text-teal-400 text-sm">Loading…</div>`}
+            ${reviewing && (items || []).map((s) => {
+              const st = SUGG_STATUS[s.status] || SUGG_STATUS.pending;
+              return html`
+              <div key=${s.id} className="rounded-xl bg-white border border-teal-100 p-3 flex items-start gap-2">
+                <div className="flex-1">
+                  <div className="text-[11px] font-semibold text-slate-400 mb-0.5 flex items-center gap-2 flex-wrap">
+                    <span>${s.author || "Unknown"} · ${s.created_at || ""}</span>
+                    <span className=${"px-1.5 py-0.5 rounded-full border text-[10px] " + st.cls}>${st.label}</span>
+                  </div>
+                  <div className="text-sm text-slate-700 whitespace-pre-wrap">${s.text}</div>
+                </div>
+                ${reviewing && html`
+                  <span className="flex gap-1 shrink-0">
+                    ${s.status !== "accepted" && html`
+                      <button onClick=${() => setStatus(s.id, "accepted")} disabled=${busy}
+                        className="px-2 py-0.5 rounded-full bg-emerald-700 text-white text-[10px] font-semibold hover:bg-emerald-800 disabled:opacity-50"
+                        title="Accept - the AI will use this">✓</button>`}
+                    ${s.status !== "declined" && html`
+                      <button onClick=${() => setStatus(s.id, "declined")} disabled=${busy}
+                        className="px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 text-[10px] font-semibold hover:bg-slate-300 disabled:opacity-50"
+                        title="Decline - the AI ignores this">✕</button>`}
+                  </span>`}
+              </div>`;
+            })}
+            ${items !== null && items.length === 0 && html`
+              <div className="text-teal-500/70 text-sm italic">No suggestions yet.</div>`}
+          </div>
+          <div className="flex gap-2">
+            <input value=${name} onInput=${(e) => setName(e.target.value)} placeholder="Your name"
+              className="w-40 px-3 py-2 rounded-xl border border-teal-100 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-300" />
+            <textarea value=${text} rows=${2} placeholder="e.g. Add 'check the drive belt tension' under Won't start…"
+              onChange=${(e) => setText(e.target.value)}
+              className="flex-1 px-3 py-2 rounded-xl border border-teal-100 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-300" />
+          </div>
+          ${err && html`<div className="text-rose-600 text-sm mt-2">${err}</div>`}
+          ${info && html`<div className="text-emerald-700 text-sm mt-2 font-semibold">${info}</div>`}
+          <div className="flex items-center justify-between gap-2 mt-2 flex-wrap">
+            <button onClick=${() => reviewing ? setReviewing(false) : setEditGate({ action: () => setReviewing(true) })}
+              className="text-xs font-semibold text-teal-700 hover:text-teal-900">
+              ${reviewing ? "Done reviewing" : "Review suggestions 🔒"}</button>
+            <div className="flex gap-2">
+              ${reviewing && canApply && acceptedCount > 0 && html`
+                <button onClick=${apply} disabled=${busy}
+                  className="px-4 py-1.5 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 disabled:opacity-60"
+                  title="Regenerate the checklist once with every accepted suggestion">
+                  ${busy ? "Applying…" : "Apply " + acceptedCount + " accepted"}</button>`}
+              <button onClick=${add} disabled=${busy}
+                className="px-4 py-1.5 rounded-full bg-teal-700 text-white text-sm font-semibold hover:bg-teal-800 disabled:opacity-60">
+                ${busy ? "Saving…" : "+ Add suggestion"}</button>
+            </div>
+          </div>
+          ${editGate && html`<${PasswordGate}
+            onCancel=${() => setEditGate(null)}
+            onUnlock=${() => { const a = editGate.action; setEditGate(null); a(); }} />`}
         </div>`;
     }
 
@@ -6027,7 +6431,8 @@
         </div>`;
     }
 
-    function MachineInfoTab({ info, deptKey, eqId, machineName }) {
+    function MachineInfoTab({ info, deptKey, eqId, machineName, viewProfile }) {
+      const showContacts = featureAllowed(viewProfile, "contacts");
       const SUMMARY_FIELDS = [
         { key: "pm_make", label: "Make" },
         { key: "pm_model", label: "Model" },
@@ -6599,7 +7004,7 @@
               </div>
 
               <!-- Contacts -->
-              <div className="bg-slate-50 rounded-xl border border-slate-200 p-4">
+              ${showContacts && html`<div className="bg-slate-50 rounded-xl border border-slate-200 p-4">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <span className="w-6 h-6 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center text-xs font-bold">C</span>
@@ -6658,7 +7063,7 @@
                         </div>`)}
                     </div>
                   </div>`}
-              </div>
+              </div>`}
 
               <div className="mt-2 border-t border-slate-100 pt-5">
                 <${NameInput} value=${author} onChange=${setAuthor} />
@@ -6767,7 +7172,7 @@
 
           ${activeTab === "Machine Info" && html`
             <div className="fade-in">
-              <${MachineInfoTab} info=${data.info} deptKey=${deptKey} eqId=${eqId} machineName=${m.name} />
+              <${MachineInfoTab} info=${data.info} deptKey=${deptKey} eqId=${eqId} machineName=${m.name} viewProfile=${viewProfile} />
             </div>`}
 
           ${activeTab === "Trends" && html`
@@ -8605,11 +9010,19 @@
             activeRole=${activeRole} onSwitchRole=${goLanding} onSwitchViewProfile=${switchViewProfile} divisionKey=${headerDivisionKey}
             divisions=${divisionsList} onSwitchDivision=${switchDivision} isLanding=${route.view === "landing"} />
           <main className="max-w-6xl mx-auto px-6 py-8">
-            ${navHist.length > 0 && html`
-              <button onClick=${goBack}
-                className="mb-4 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-emerald-200 text-emerald-800 text-sm font-semibold shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition">
-                <span aria-hidden="true">←</span> Back
-              </button>`}
+            ${(navHist.length > 0 || route.view !== "landing") && html`
+              <div className="mb-4 flex items-center gap-2">
+                ${navHist.length > 0 && html`
+                  <button onClick=${goBack}
+                    className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-emerald-200 text-emerald-800 text-sm font-semibold shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition">
+                    <span aria-hidden="true">←</span> Back
+                  </button>`}
+                ${route.view !== "landing" && html`
+                  <button onClick=${goLanding}
+                    className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-emerald-200 text-emerald-800 text-sm font-semibold shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition">
+                    <span aria-hidden="true">⌂</span> Start
+                  </button>`}
+              </div>`}
             ${route.view === "landing" && html`<${LandingPage} roles=${roles} onSelectView=${selectView} onSelectRole=${selectRole} onSelectMint=${selectMint} />`}
             ${route.view === "divisions" && html`<${DivisionPicker} onSelectDiv=${selectDivision} onSelectCompany=${goCompany} onBack=${goLanding} />`}
             ${route.view === "manage-role-views" && html`<${ManageRoleViewsPage} roles=${roles} roleViews=${roleViews} viewProfiles=${viewProfiles} onBack=${goLanding}
@@ -8647,5 +9060,7 @@
 
     ReactDOM.createRoot(document.getElementById("root")).render(html`<${App} />`);
   </script>
+</body>
+</html>
 </body>
 </html>
