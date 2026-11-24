@@ -3737,6 +3737,7 @@ def api_save_view_profile():
     author = (body.get("author") or "").strip()
     label = (body.get("label") or "").strip()
     features = body.get("features") or []
+    departments = body.get("departments") or []
     key = (body.get("key") or "").strip()
     if not author:
         return jsonify({"error": "Your name is required."}), 400
@@ -3744,8 +3745,11 @@ def api_save_view_profile():
         return jsonify({"error": "View name is required."}), 400
     if not isinstance(features, list):
         return jsonify({"error": "features must be a list."}), 400
+    if not isinstance(departments, list):
+        return jsonify({"error": "departments must be a list."}), 400
     try:
-        profile = store.save_view_profile(label, features, author=author, key=key)
+        profile = store.save_view_profile(label, features, author=author, key=key,
+                                           departments=departments)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
     return jsonify({"ok": True, "profile": profile})

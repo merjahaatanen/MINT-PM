@@ -256,6 +256,16 @@
       if (!activeProfile) return true;
       return (activeProfile.features || []).includes(featureId);
     }
+
+    // Returns true if `deptKey` should be shown given the active view profile.
+    // No active view, or an empty department list on the profile, = all
+    // departments visible (default MINT). Otherwise only the listed ones show.
+    function departmentAllowed(activeProfile, deptKey) {
+      if (!activeProfile) return true;
+      const allowed = activeProfile.departments || [];
+      if (allowed.length === 0) return true;
+      return allowed.includes(deptKey);
+    }
     const URGENCY_OPTIONS = [
       "1. Prod Stopped",
       "2. General Maint - High Priority",
@@ -469,19 +479,32 @@
     }
 
     const KPI_DEFS = [
-      { key: "unscheduled_count", label: "Unscheduled WOs", fmt: num, accent: "from-emerald-600 to-emerald-500" },
-      { key: "scheduled_count",   label: "Scheduled WOs",   fmt: num, accent: "from-teal-600 to-teal-500" },
-      { key: "labor_time",        label: "Labor Time",      fmt: hours, accent: "from-cyan-600 to-cyan-500" },
-      { key: "material_cost",     label: "Material Cost",   fmt: money, accent: "from-sky-600 to-sky-500" },
-      { key: "downtime_hours",    label: "Downtime",        fmt: hours, accent: "from-indigo-500 to-indigo-400" },
+      { key: "unscheduled_count", label: "Unscheduled WOs", fmt: num, accent: "from-emerald-600 to-emerald-500",
+        tip: "Reactive, unplanned repairs logged when something breaks or needs attention. Includes work orders imported from the PM maintenance system plus any created directly in MINT." },
+      { key: "scheduled_count",   label: "Scheduled WOs",   fmt: num, accent: "from-teal-600 to-teal-500",
+        tip: "Planned preventive-maintenance work orders that recur on a set schedule. Includes work orders imported from the PM maintenance system plus any created directly in MINT." },
+      { key: "labor_time",        label: "Labor Time",      fmt: hours, accent: "from-cyan-600 to-cyan-500",
+        tip: "Total technician hours logged across all completed work orders." },
+      { key: "material_cost",     label: "Material Cost",   fmt: money, accent: "from-sky-600 to-sky-500",
+        tip: "Total cost of parts and materials used across all completed work orders." },
+      { key: "downtime_hours",    label: "Downtime",        fmt: hours, accent: "from-indigo-500 to-indigo-400",
+        tip: "Total hours equipment was out of service. For work orders created in MINT and flagged \u201cMachine is down,\u201d it\u2019s auto-calculated from when the issue was reported until the machine was back up, counting only business hours (Mon–Fri, 5AM–10PM). For work orders imported from the PM maintenance system, it\u2019s simply the downtime hours entered there." },
     ];
 
     function KpiCard({ def, value }) {
       return html`
-        <div className="bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 fade-in">
+        <div className="group relative bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 fade-in cursor-help">
           <div className="text-sm text-emerald-600 font-bold">${def.label}</div>
           <div className="mt-1 text-2xl font-extrabold text-slate-800">${def.fmt(value)}</div>
           <div className=${"mt-3 h-1.5 rounded-full bg-gradient-to-r " + def.accent}></div>
+          ${def.tip && html`
+            <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-full mb-2 z-20 w-56
+                            opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+              <div className="rounded-xl bg-slate-800 text-white text-xs leading-snug px-3 py-2 shadow-lg">
+                ${def.tip}
+              </div>
+              <div className="w-2.5 h-2.5 bg-slate-800 rotate-45 mx-auto -mt-1.5"></div>
+            </div>`}
         </div>`;
     }
 
@@ -632,15 +655,27 @@
       const [editing, setEditing] = useState(null); // profile being edited, or {} for new
       const [label, setLabel] = useState("");
       const [features, setFeatures] = useState([]);
+      const [departments, setDepartments] = useState([]); // allowed dept keys ([] = all)
+      const [allDepts, setAllDepts] = useState([]);        // every department to pick from
       const [busy, setBusy] = useState(false);
       const [err, setErr] = useState(null);
       const [deleting, setDeleting] = useState(null);
 
-      const startNew = () => { setEditing({}); setLabel(""); setFeatures([]); setErr(null); };
-      const startEdit = (p) => { setEditing(p); setLabel(p.label); setFeatures(p.features || []); setErr(null); };
+      // Load the full department list once so the picker can show every
+      // department (grouped by division) a view can be scoped to.
+      useEffect(() => {
+        getJSON("/api/departments")
+          .then((d) => setAllDepts(d.departments || []))
+          .catch(() => setAllDepts([]));
+      }, []);
+
+      const startNew = () => { setEditing({}); setLabel(""); setFeatures([]); setDepartments([]); setErr(null); };
+      const startEdit = (p) => { setEditing(p); setLabel(p.label); setFeatures(p.features || []); setDepartments(p.departments || []); setErr(null); };
       const cancelEdit = () => { setEditing(null); setErr(null); };
       const toggleFeature = (id) =>
         setFeatures((f) => f.includes(id) ? f.filter((x) => x !== id) : [...f, id]);
+      const toggleDept = (key) =>
+        setDepartments((d) => d.includes(key) ? d.filter((x) => x !== key) : [...d, key]);
 
       const save = async () => {
         if (!author.trim()) { setErr("Your name is required."); return; }
@@ -648,12 +683,20 @@
         setBusy(true); setErr(null);
         try {
           await sendJSON("/api/view-profiles", "POST",
-            { author: author.trim(), label: label.trim(), features, key: editing && editing.key ? editing.key : "" },
+            { author: author.trim(), label: label.trim(), features, departments, key: editing && editing.key ? editing.key : "" },
             masterHeaders());
           setEditing(null);
           onChanged();
         } catch (e) { setErr(e.message); } finally { setBusy(false); }
       };
+
+      // Departments grouped by division, so the picker reads "BLA: Maintenance,
+      // Shipping…" etc. Keys are division slugs; values are the dept rows.
+      const deptsByDivision = {};
+      allDepts.forEach((d) => {
+        const dk = (d.division_key || "bla").toUpperCase();
+        (deptsByDivision[dk] = deptsByDivision[dk] || []).push(d);
+      });
 
       const doDelete = async (p) => {
         if (!author.trim()) { setErr("Your name is required."); return; }
@@ -691,7 +734,7 @@
                       <div key=${p.key} className="flex items-center justify-between gap-3 bg-emerald-50/60 rounded-xl px-4 py-3">
                         <div>
                           <div className="font-semibold text-slate-800">${p.label}</div>
-                          <div className="text-xs text-slate-500">${(p.features || []).length} feature(s) enabled</div>
+                          <div className="text-xs text-slate-500">${(p.features || []).length} feature(s) enabled · ${(p.departments || []).length === 0 ? "all departments" : (p.departments || []).length + " department(s)"}</div>
                         </div>
                         <div className="flex gap-2">
                           <button onClick=${() => startEdit(p)}
@@ -720,6 +763,34 @@
                         ${f.label}
                       </label>`)}
                   </div>
+
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-sm font-semibold text-slate-600">Visible departments</div>
+                    ${departments.length > 0 && html`
+                      <button onClick=${() => setDepartments([])}
+                        className="text-xs font-semibold text-emerald-700 hover:text-emerald-900">
+                        Clear (show all)</button>`}
+                  </div>
+                  <div className="text-xs text-slate-500 mb-2">
+                    Leave all unchecked to show every department. Check specific
+                    ones to limit this view to just those.
+                  </div>
+                  <div className="space-y-3 mb-5 max-h-64 overflow-y-auto pr-1">
+                    ${Object.keys(deptsByDivision).sort().map((dk) => html`
+                      <div key=${dk}>
+                        <div className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">${dk}</div>
+                        <div className="grid sm:grid-cols-2 gap-2">
+                          ${deptsByDivision[dk].map((d) => html`
+                            <label key=${d.key} className="flex items-center gap-2 bg-slate-50 rounded-lg px-3 py-2 text-sm cursor-pointer">
+                              <input type="checkbox" checked=${departments.includes(d.key)}
+                                onChange=${() => toggleDept(d.key)} />
+                              <span className="truncate">${d.label}</span>
+                            </label>`)}
+                        </div>
+                      </div>`)}
+                    ${allDepts.length === 0 && html`<div className="text-slate-400 text-sm">Loading departments…</div>`}
+                  </div>
+
                   <div className="flex justify-end gap-2">
                     <button onClick=${cancelEdit}
                       className="px-4 py-2 rounded-full border border-slate-200 text-slate-600 text-sm font-semibold hover:bg-slate-50">
@@ -1858,28 +1929,52 @@
       const [showGate, setShowGate] = useState(!getMasterPw());
       const [busyRole, setBusyRole] = useState(null);
       const [err, setErr] = useState(null);
+      const [allDepts, setAllDepts] = useState([]);
       const author = getUserName();
 
+      // Load every department so each role gets a department picker grouped by
+      // division (BLA, BED, …).
+      useEffect(() => {
+        getJSON("/api/departments")
+          .then((d) => setAllDepts(d.departments || []))
+          .catch(() => setAllDepts([]));
+      }, []);
+
+      const deptsByDivision = {};
+      allDepts.forEach((d) => {
+        const dk = (d.division_key || "bla").toUpperCase();
+        (deptsByDivision[dk] = deptsByDivision[dk] || []).push(d);
+      });
+
+      const profileFor = (role) => {
+        const key = roleViews[role];
+        return key ? viewProfiles.find((p) => p.key === key) : null;
+      };
+
       // A role with no assigned profile has unrestricted (full) access, so
-      // every checkbox starts checked; unchecking one creates/updates a
+      // every feature checkbox starts checked; unchecking one creates/updates a
       // per-role profile (key auto-slugified from the role name) with the
       // remaining features and assigns it to that role.
       const featuresFor = (role) => {
-        const key = roleViews[role];
-        if (!key) return VIEW_FEATURES.map((f) => f.id);
-        const profile = viewProfiles.find((p) => p.key === key);
+        const profile = profileFor(role);
+        if (!roleViews[role]) return VIEW_FEATURES.map((f) => f.id);
         return profile ? profile.features : [];
       };
 
-      const toggle = async (role, featureId) => {
+      // Allowed departments for a role: empty list ( = all departments) is the
+      // default for an unrestricted role.
+      const departmentsFor = (role) => {
+        const profile = profileFor(role);
+        return profile ? (profile.departments || []) : [];
+      };
+
+      // Save a role's profile, always sending BOTH features and departments so
+      // toggling one never wipes the other.
+      const saveProfile = async (role, features, departments) => {
         setBusyRole(role); setErr(null);
         try {
-          const current = featuresFor(role);
-          const next = current.includes(featureId)
-            ? current.filter((f) => f !== featureId)
-            : [...current, featureId];
           const saved = await sendJSON("/api/view-profiles", "POST",
-            { author, label: role, features: next }, masterHeaders());
+            { author, label: role, features, departments }, masterHeaders());
           const key = saved.profile.key;
           if (roleViews[role] !== key) {
             await sendJSON("/api/roles/" + encodeURIComponent(role) + "/view", "POST",
@@ -1888,6 +1983,24 @@
           onChanged();
         } catch (e) { setErr(e.message); } finally { setBusyRole(null); }
       };
+
+      const toggle = (role, featureId) => {
+        const current = featuresFor(role);
+        const next = current.includes(featureId)
+          ? current.filter((f) => f !== featureId)
+          : [...current, featureId];
+        saveProfile(role, next, departmentsFor(role));
+      };
+
+      const toggleDept = (role, deptKey) => {
+        const current = departmentsFor(role);
+        const next = current.includes(deptKey)
+          ? current.filter((d) => d !== deptKey)
+          : [...current, deptKey];
+        saveProfile(role, featuresFor(role), next);
+      };
+
+      const clearDepts = (role) => saveProfile(role, featuresFor(role), []);
 
       return html`
         <div className="fade-in max-w-3xl mx-auto py-10">
@@ -1898,15 +2011,17 @@
           </button>
           <div className="mb-8">
             <h1 className="text-3xl font-extrabold text-slate-800 mb-2">Mint: assign role views</h1>
-            <p className="text-slate-500">Check which features each role can see when they sign in from the landing page.</p>
+            <p className="text-slate-500">Check which features and departments each role can see when they sign in from the landing page.</p>
           </div>
           ${err && html`<div className="text-rose-600 mb-4">${err}</div>`}
           <div className="space-y-4">
             ${roles.map((r) => {
               const features = featuresFor(r);
+              const depts = departmentsFor(r);
               return html`
                 <div key=${r} className="bg-white rounded-xl border border-emerald-100 p-4 shadow-sm">
                   <div className="font-semibold text-slate-800 mb-3">${r}</div>
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Features</div>
                   <div className="grid sm:grid-cols-2 gap-2">
                     ${VIEW_FEATURES.map((f) => html`
                       <label key=${f.id}
@@ -1916,6 +2031,34 @@
                         <span>${f.label}</span>
                       </label>`)}
                   </div>
+
+                  <div className="flex items-center justify-between mt-4 mb-1">
+                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wide">Departments</div>
+                    ${depts.length > 0 && html`
+                      <button onClick=${() => clearDepts(r)} disabled=${busyRole === r}
+                        className="text-xs font-semibold text-emerald-700 hover:text-emerald-900 disabled:opacity-60">
+                        Clear (show all)</button>`}
+                  </div>
+                  <div className="text-xs text-slate-500 mb-2">
+                    Leave all unchecked to show every department, or check specific ones to limit this role.
+                  </div>
+                  ${allDepts.length === 0
+                    ? html`<div className="text-slate-400 text-sm">Loading departments…</div>`
+                    : html`<div className="space-y-3">
+                        ${Object.keys(deptsByDivision).sort().map((dk) => html`
+                          <div key=${dk}>
+                            <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wide mb-1">${dk}</div>
+                            <div className="grid sm:grid-cols-2 gap-2">
+                              ${deptsByDivision[dk].map((d) => html`
+                                <label key=${d.key}
+                                  className="flex items-center gap-2 bg-slate-50 rounded-lg px-3 py-2 text-sm cursor-pointer">
+                                  <input type="checkbox" checked=${depts.includes(d.key)} disabled=${busyRole === r}
+                                    onChange=${() => toggleDept(r, d.key)} />
+                                  <span className="truncate">${d.label}</span>
+                                </label>`)}
+                            </div>
+                          </div>`)}
+                      </div>`}
                 </div>`;
             })}
           </div>
@@ -2551,7 +2694,7 @@
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-extrabold text-slate-800">${title}</h2>
-              <p className="text-slate-500 text-sm">Machine condition and estimated replacement year data from the longevity workbook.</p>
+              <p className="text-slate-500 text-sm">Machine condition and estimated replacement year data.</p>
               <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-500">
                 <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-rose-400"></span>Past due</span>
                 <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-orange-400"></span>Due this year</span>
@@ -2713,8 +2856,10 @@
       if (err) return html`<div className="text-rose-600">${err}</div>`;
       if (!data) return html`<${Spinner} label="Loading division…" />`;
 
-      const totalUns = data.departments.reduce((a, d) => a + (d.unscheduled_count || 0), 0);
-      const totalSch = data.departments.reduce((a, d) => a + (d.scheduled_count || 0), 0);
+      // Hide departments the active view profile isn't allowed to see.
+      const visibleDepts = data.departments.filter((d) => departmentAllowed(viewProfile, d.key));
+      const totalUns = visibleDepts.reduce((a, d) => a + (d.unscheduled_count || 0), 0);
+      const totalSch = visibleDepts.reduce((a, d) => a + (d.scheduled_count || 0), 0);
       const divTabs = visibleTabs([...DIV_TABS, "Contacts"], viewProfile);
       const activeTab = divTabs.includes(tab) ? tab : divTabs[0];
 
@@ -2731,7 +2876,7 @@
               className="px-4 py-2 rounded-full bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 shadow-sm">
               + New Work Order</button>
           </div>
-          <p className="text-slate-500 mb-5">Combined quick view across all departments.</p>
+          <p className="text-slate-500 mb-5">Combined stats across all departments.</p>
           ${featureAllowed(viewProfile, "dashboard") && html`<${KpiRow} stats=${data.totals} />`}
           ${creating && html`<${CreateWorkOrderModal} divisionKey=${divKey}
             onClose=${() => setCreating(false)} onCreated=${refreshAll} onOpenWo=${onOpenWo} />`}
@@ -2797,7 +2942,7 @@
           ${activeTab === "Departments" && html`
           <div className="fade-in">
           <div className="grid md:grid-cols-2 gap-5">
-            ${data.departments.map((d) => html`
+            ${visibleDepts.map((d) => html`
               <div key=${d.key} onClick=${() => onOpenDept(d.key)}
                 className="relative text-left bg-white rounded-3xl p-6 shadow-sm border border-emerald-100
                            hover:shadow-xl hover:border-emerald-300 transition group cursor-pointer">
@@ -3607,6 +3752,7 @@
         completed_datetime: rec.completed_datetime || "",
         completion_comments: rec.completion_comments || "",
         frequency: rec.frequency || "",
+        used_ai_steps: !!rec.used_ai_steps,
       });
       const [primaryCompleter, setPrimaryCompleter] = useState(knownCompleter ? initialPerformed : "__other__");
       const [otherName, setOtherName] = useState(knownCompleter ? "" : initialPerformed);
@@ -3706,6 +3852,12 @@
               </div>
               <${TextArea} label="Comments" required=${true} value=${f.completion_comments} onChange=${set("completion_comments")} rows=${3}
                 placeholder="Summary of the completed work…" />
+              ${scheduled && html`
+                <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer bg-white border border-emerald-200 rounded-xl px-3 py-2">
+                  <input type="checkbox" checked=${!!f.used_ai_steps}
+                    onChange=${(e) => set("used_ai_steps")(e.target.checked)} />
+                  <span>I used the AI-suggested step-by-step procedure</span>
+                </label>`}
             </div>`}
 
           ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
@@ -3741,6 +3893,7 @@
         downtime_end: rec.downtime_end || "",
         completed_datetime: rec.completed_datetime || "",
         completion_comments: rec.completion_comments || "",
+        used_ai_steps: !!rec.used_ai_steps,
       });
       const [primaryCompleter, setPrimaryCompleter] = useState(knownCompleter ? initialPerformed : "__other__");
       const [otherName, setOtherName] = useState(knownCompleter ? "" : initialPerformed);
@@ -3760,6 +3913,7 @@
           fields.material_cost = f.material_cost;
           fields.completion_comments = f.completion_comments;
           fields.completed_datetime = f.completed_datetime;
+          if (scheduled) fields.used_ai_steps = f.used_ai_steps;
           if (rec.is_downtime) fields.downtime_end = f.downtime_end;
           else fields.downtime_hours = f.downtime_hours;
           const req = [
@@ -3803,6 +3957,12 @@
               </div>
               <${TextArea} label="Comments" required=${true} value=${f.completion_comments} onChange=${set("completion_comments")} rows=${3}
                 placeholder="Summary of the completed work…" />
+              ${scheduled && html`
+                <label className="flex items-center gap-2 text-sm text-slate-700 cursor-pointer bg-white border border-emerald-200 rounded-xl px-3 py-2">
+                  <input type="checkbox" checked=${!!f.used_ai_steps}
+                    onChange=${(e) => set("used_ai_steps")(e.target.checked)} />
+                  <span>I used the AI-suggested step-by-step procedure</span>
+                </label>`}
             </div>`}
 
           ${err && html`<div className="text-rose-600 text-sm">${err}</div>`}
@@ -4709,7 +4869,8 @@
                     <${Field} label="Helpers" value=${rec.helpers} />
                     <${Field} label="Labor Time" value=${rec.labor_time ? hours(rec.labor_time) : ""} />
                     <${Field} label="Material Cost" value=${rec.material_cost ? money(rec.material_cost) : ""} />
-                    <${Field} label="Downtime" value=${rec.downtime_hours ? hours(rec.downtime_hours) : ""} />`}
+                    <${Field} label="Downtime" value=${rec.downtime_hours ? hours(rec.downtime_hours) : ""} />
+                    ${rec.wo_type === "scheduled" && html`<${Field} label="Used AI-suggested steps" value=${rec.used_ai_steps ? "Yes" : "No"} />`}`}
                 </div>
                 <div className="mt-4 space-y-4">
                   <${Field} label="Problem" value=${rec.problem} />

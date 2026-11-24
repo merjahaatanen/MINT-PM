@@ -340,12 +340,13 @@ def _init() -> None:
             CREATE INDEX IF NOT EXISTS idx_spm_machine ON spare_part_machines (dept_key, eq_id);
 
             CREATE TABLE IF NOT EXISTS view_profiles (
-                key        TEXT PRIMARY KEY,
-                label      TEXT NOT NULL,
-                features   TEXT NOT NULL DEFAULT '[]',
-                created_at TEXT NOT NULL,
-                updated_at TEXT NOT NULL,
-                updated_by TEXT NOT NULL DEFAULT ''
+                key         TEXT PRIMARY KEY,
+                label       TEXT NOT NULL,
+                features    TEXT NOT NULL DEFAULT '[]',
+                departments TEXT NOT NULL DEFAULT '[]',
+                created_at  TEXT NOT NULL,
+                updated_at  TEXT NOT NULL,
+                updated_by  TEXT NOT NULL DEFAULT ''
             );
 
             CREATE TABLE IF NOT EXISTS notifications (
@@ -376,6 +377,11 @@ def _init() -> None:
         role_cols = {r["name"] for r in c.execute("PRAGMA table_info(roles)").fetchall()}
         if "view_key" not in role_cols:
             c.execute("ALTER TABLE roles ADD COLUMN view_key TEXT NOT NULL DEFAULT ''")
+        # Migration: add departments (allowed dept keys) to view_profiles. An
+        # empty list means "all departments visible" (the prior behavior).
+        vp_cols = {r["name"] for r in c.execute("PRAGMA table_info(view_profiles)").fetchall()}
+        if "departments" not in vp_cols:
+            c.execute("ALTER TABLE view_profiles ADD COLUMN departments TEXT NOT NULL DEFAULT '[]'")
         # Migration: add title/division_key to technicians if from an older schema.
         tech_cols = {r["name"] for r in c.execute("PRAGMA table_info(technicians)").fetchall()}
         if "title" not in tech_cols:
@@ -986,6 +992,9 @@ WO_FIELDS = (
     # employee "general maintenance request" intake form (not asked for on
     # the normal maintenance-staff WO creation form).
     "requester_email",
+    # Whether the technician used the AI-suggested step-by-step procedure when
+    # completing a scheduled WO. Captured at close-out (scheduled WOs only).
+    "used_ai_steps",
 )
 
 
@@ -1758,20 +1767,25 @@ def _slugify(label: str) -> str:
     return slug or uuid.uuid4().hex[:8]
 
 
+def _shape_view_profile(data: dict) -> dict:
+    """Decode the JSON list columns on a view_profiles row."""
+    for col in ("features", "departments"):
+        try:
+            data[col] = json.loads(data.get(col) or "[]")
+        except (json.JSONDecodeError, TypeError):
+            data[col] = []
+    return data
+
+
 def list_view_profiles() -> list[dict]:
     with _connect() as c:
         rows = c.execute(
-            "SELECT key, label, features, created_at, updated_at, updated_by "
+            "SELECT key, label, features, departments, created_at, updated_at, updated_by "
             "FROM view_profiles ORDER BY label COLLATE NOCASE"
         ).fetchall()
     out = []
     for r in rows:
-        data = dict(r)
-        try:
-            data["features"] = json.loads(data.get("features") or "[]")
-        except (json.JSONDecodeError, TypeError):
-            data["features"] = []
-        out.append(data)
+        out.append(_shape_view_profile(dict(r)))
     return out
 
 
@@ -1781,40 +1795,40 @@ def get_view_profile(key: str) -> dict | None:
         return None
     with _connect() as c:
         r = c.execute(
-            "SELECT key, label, features, created_at, updated_at, updated_by "
+            "SELECT key, label, features, departments, created_at, updated_at, updated_by "
             "FROM view_profiles WHERE key = ?",
             (key,),
         ).fetchone()
     if r is None:
         return None
-    data = dict(r)
-    try:
-        data["features"] = json.loads(data.get("features") or "[]")
-    except (json.JSONDecodeError, TypeError):
-        data["features"] = []
-    return data
+    return _shape_view_profile(dict(r))
 
 
-def save_view_profile(label: str, features: list[str], author: str = "", key: str = "") -> dict:
-    """Create (key blank) or update (key given) a view profile."""
+def save_view_profile(label: str, features: list[str], author: str = "", key: str = "",
+                      departments: list[str] | None = None) -> dict:
+    """Create (key blank) or update (key given) a view profile. `departments`
+    is the list of department keys the profile may see; an empty list means
+    all departments are visible."""
     label = (label or "").strip()
     if not label:
         raise ValueError("label is required")
     features = sorted({(f or "").strip() for f in (features or []) if (f or "").strip()})
+    departments = sorted({(d or "").strip() for d in (departments or []) if (d or "").strip()})
     key = (key or "").strip() or _slugify(label)
     now = _now()
     with _lock, _connect() as c:
         existing = c.execute("SELECT key FROM view_profiles WHERE key = ?", (key,)).fetchone()
         if existing:
             c.execute(
-                "UPDATE view_profiles SET label = ?, features = ?, updated_at = ?, updated_by = ? WHERE key = ?",
-                (label, json.dumps(features), now, author or "", key),
+                "UPDATE view_profiles SET label = ?, features = ?, departments = ?, "
+                "updated_at = ?, updated_by = ? WHERE key = ?",
+                (label, json.dumps(features), json.dumps(departments), now, author or "", key),
             )
         else:
             c.execute(
-                "INSERT INTO view_profiles (key, label, features, created_at, updated_at, updated_by) "
-                "VALUES (?, ?, ?, ?, ?, ?)",
-                (key, label, json.dumps(features), now, now, author or ""),
+                "INSERT INTO view_profiles (key, label, features, departments, created_at, updated_at, updated_by) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                (key, label, json.dumps(features), json.dumps(departments), now, now, author or ""),
             )
     _audit("", author, "save_view_profile", key)
     return get_view_profile(key)
